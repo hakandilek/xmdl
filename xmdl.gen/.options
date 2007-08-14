@@ -1,0 +1,3 @@
+chrome.xmdl.gen/debug = true
+chrome.xmdl.gen/debug/flag = true
+chrome.xmdl.gen/debug/filter = *
