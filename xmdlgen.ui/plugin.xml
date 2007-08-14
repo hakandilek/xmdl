@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin
+   id="xmdlgen.ui"
+   name="%pluginName"
+   version="0.4.7"
+   provider-name="%providerName"
+   class="chrome.xmdlgen.ui.XmdlgenEditPlugin$Implementation">
+
+   <requires>
+      <import plugin="xmdl"/>
+      <import plugin="xmdl.ui"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.emf.common.ui"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+   </requires>
+
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http:///chrome/xmdl.gen.ecore" 
+       class = "chrome.xmdlgen.provider.XmdlgenItemProviderAdapterFactory"
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+  
+
+
+  <extension point = "org.eclipse.ui.editors">
+    <editor
+        id = "chrome.xmdlgen.presentation.XmdlgenEditorID"
+        name = "%_UI_XmdlgenEditor_label"
+        icon = "icons/full/obj16/XmdlgenModelFile.gif"
+        extensions = "xmdlgen"
+        class = "chrome.xmdlgen.presentation.XmdlgenEditor" 
+        contributorClass="chrome.xmdlgen.presentation.XmdlgenActionBarContributor" >
+    </editor>
+  </extension>    
+  
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http:///chrome/xmdl.gen.ecore" 
+       class = "chrome.xmdlgen.XmdlgenPackage"
+       genModel = "model/xmdlgen.genmodel" /> 
+  </extension>
+  
+</plugin>
