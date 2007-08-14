@@ -1,0 +1,23 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.ui.web.jsp.part.impl" 
+	imports="java.util.* 
+			chrome.xmdl.*
+			chrome.xmdl.gen.util.*
+			chrome.xmdl.core.util.*
+			org.eclipse.emf.codegen.util.*
+			org.eclipse.emf.ecore.EObject"
+	class="SearchFormFieldDateImpl"
+	startTag="<$" endTag="$>" 
+%><$
+	XAttribute attrib = (XAttribute) argument;
+	XClass xClass = attrib.getXClass();	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+	String formName = UIHelper.formObject(xClass);
+$><layout:row>
+    <layout:date name="<$=formName$>Form" property="<$=helper.uncapSafeName(xClass)$>.<$=attrib.getName()$>Min" styleClass="<$=helper.uncapSafeName(attrib)$>Min"  
+    	key="<$=helper.getObjectName(xClass)$>.form.<$=attrib.getName()$>Min" editType="date" patternKey="date.format" />
+    <layout:date name="<$=formName$>Form" property="<$=helper.uncapSafeName(xClass)$>.<$=attrib.getName()$>Max" styleClass="<$=helper.uncapSafeName(attrib)$>Max"  
+    	key="<$=helper.getObjectName(xClass)$>.form.<$=attrib.getName()$>Max" editType="date" patternKey="date.format" />
+</layout:row>
+
+   	

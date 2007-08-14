@@ -1,0 +1,22 @@
+<%@ jet 
+    package="chrome.xmdl.core.templates.test.bo.impl" 
+    imports="java.util.* 
+            chrome.xmdl.*
+			chrome.xmdl.core.util.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*"
+    class="BOTestPropertiesTemplateImpl" %>        
+<%  XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage(); 
+    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
+    ClassHelper helper = XMDLEntityHelper.INSTANCE;
+    TestHelper testHelper = TestHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+    %>
+# Test data for <%=helper.getCapName(xClass)%>ServiceTest    
+<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    XAttribute attribute = (XAttribute) i.next();%>
+<%if (attribute.getType() != null && !attribute.isReference()) {%>
+<%=attribute.getName()%> = <%=testHelper.randomValuePlain(attribute)%>
+<%}//if (attribute.getType() !=null%>
+<%}//for%>

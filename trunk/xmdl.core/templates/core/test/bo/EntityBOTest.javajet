@@ -1,0 +1,245 @@
+<%@ jet 
+    package="chrome.xmdl.core.templates.test.bo.impl" 
+    imports="java.util.* 
+            chrome.xmdl.*
+			chrome.xmdl.core.util.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*"
+    class="BOTestTemplateImpl" %>    
+    
+<%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage(); 
+    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
+    ClassHelper helper = XMDLEntityHelper.INSTANCE;
+    TestHelper testHelper = TestHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+    %>
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.bo;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport("java.util.*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.impl.*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".dao.*");%>
+<%importManager.addImport("chrome.xmdl.lib.test.*");%>
+<%importManager.addImport("chrome.xmdl.lib.dao.*");%>
+
+<%importManager.addImport("org.apache.commons.logging.*");%>
+<%importManager.addImport("org.apache.commons.chain.*");%>
+<%importManager.addImport("org.apache.commons.chain.impl.*");%>
+
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * @generated
+ */
+public class <%=helper.getCapName(xClass)%>ServiceTest extends BaseServiceTest<<%=helper.getCapName(xClass)%>> {
+
+    /**
+     * @generated
+     */
+    private static final Log LOGGER = LogFactory.getLog(<%=helper.getCapName(xClass)%>ServiceTest.class);
+
+    /**
+     * @generated
+     */
+    private <%=helper.getCapName(xClass)%>Service <%=helper.uncapName(xClass.getName())%>Service;
+
+    /**
+     * @generated
+     */
+    private DAO<<%=helper.getCapName(xClass)%>> dao = null;
+
+    /**
+     * @generated
+     */
+    public void set<%=helper.getCapName(xClass)%>Service(<%=helper.getCapName(xClass)%>Service <%=helper.uncapName(xClass.getName())%>Service) {
+        this.<%=helper.uncapName(xClass.getName())%>Service = <%=helper.uncapName(xClass.getName())%>Service;
+    }
+
+    /**
+     * @generated
+     */
+    public void setDAO(<%=helper.getCapName(xClass)%>DAO dao) {
+        this.dao = dao;
+    }
+    <% if(MasterChildHelper.INST.isChild(xClass)){%>
+    <% 
+    	String	masterName=MasterChildHelper.INST.getMaster(xClass).getName();
+    	String	unCapMasterName=helper.uncapName(masterName);
+    	
+    %>
+	/**
+     * @generated 
+     */ 
+    public <%=xClass.getName()%> populate(<%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%>) throws Exception {
+        <%=helper.uncapName(xClass.getName())%>=super.populate(<%=helper.uncapName(xClass.getName())%>);
+        <%=masterName%>Service <%=unCapMasterName%>Service = (<%=masterName%>Service) applicationContext.getBean("<%=unCapMasterName%>Service");
+        <%=masterName%> <%=unCapMasterName%> = new <%=masterName%>ServiceTest().populate(<%=unCapMasterName%>Service.get<%=masterName%>DAO(),identifier);
+        <%=helper.uncapName(xClass.getName())%>.set<%=masterName%>(<%=unCapMasterName%>);
+        return <%=helper.uncapName(xClass.getName())%>;
+    }    
+    <%}%>
+    /**
+     * @generated
+     */
+    public void testSave() throws Exception {
+        List<<%=helper.getCapName(xClass)%>> all = dao.findAll(identifier);
+        int size = all.size();
+
+        <%=helper.getCapName(xClass)%> <%=helper.uncapName(xClass.getName())%> = dao.newEntity();
+        <%=helper.uncapName(xClass.getName())%> = populate(<%=helper.uncapName(xClass.getName())%>);
+
+        Context ctx = new ContextBase();
+        <% if(MasterChildHelper.INST.isChild(xClass)){%>
+        <% 
+    	String	masterName=MasterChildHelper.INST.getMaster(xClass).getName();    	    	    	
+    	%>        
+        ctx.put(<%=masterName%>Service.<%=helper.capAllName(masterName)%>_ID_KEY,<%=helper.uncapName(xClass.getName())%>.get<%=MasterChildHelper.INST.getMaster(xClass).getName()%>().getID());
+        <%}%>
+        
+        <%=helper.uncapName(xClass.getName())%>Service.putEntity(ctx, <%=helper.uncapName(xClass.getName())%>);
+
+        LOGGER.debug("Executing Service...");
+        <%=helper.uncapName(xClass.getName())%>Service.save(ctx);
+        LOGGER.debug("Service executed. ");
+
+        <%=helper.uncapName(xClass.getName())%> = <%=helper.uncapName(xClass.getName())%>Service.getEntity(ctx);
+        assertNotNull(<%=helper.uncapName(xClass.getName())%>);
+
+        List<<%=helper.getCapName(xClass)%>> list = dao.findAll(identifier);
+        assertNotNull(list);
+        assertTrue(list.size() > 0);
+        assertTrue(list.size() > size);
+
+        <%=helper.getCapName(xClass)%> <%=helper.uncapName(xClass.getName())%>2 = dao.newEntity();
+        <%=helper.uncapName(xClass.getName())%>2 = populate(<%=helper.uncapName(xClass.getName())%>2);
+
+<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    XAttribute attribute = (XAttribute) i.next();%>
+<%if (attribute.getType() != null && !attribute.isReference()) {%>
+        assertEquals(<%=helper.uncapName(xClass.getName())%>2.<%=helper.getGetAccessor(attribute)%>(), <%=helper.uncapName(xClass.getName())%>.<%=helper.getGetAccessor(attribute)%>());
+<%}//if (attribute.getType() !=null%>
+<%}//for%>        
+    }
+
+    /**
+     * @generated
+     */
+    public void testDelete() throws Exception {
+        <%=helper.getCapName(xClass)%> <%=helper.uncapName(xClass.getName())%> = dao.newEntity();
+        <%=helper.uncapName(xClass.getName())%> = populate(<%=helper.uncapName(xClass.getName())%>);
+
+        List<<%=helper.getCapName(xClass)%>> all = dao.findAll(identifier);
+        int size = all.size();
+        dao.dbInsert(<%=helper.uncapName(xClass.getName())%>, identifier);
+
+        long id = <%=helper.uncapName(xClass.getName())%>.getID();
+        Context ctx = new ContextBase();
+        <%=helper.uncapName(xClass.getName())%>Service.putID(ctx, id);
+		<% if(MasterChildHelper.INST.isChild(xClass)){%>
+        <% 
+    	String	masterName=MasterChildHelper.INST.getMaster(xClass).getName();    	    	    	
+    	%>        
+        ctx.put(<%=masterName%>Service.<%=helper.capAllName(masterName)%>_ID_KEY,<%=helper.uncapName(xClass.getName())%>.get<%=MasterChildHelper.INST.getMaster(xClass).getName()%>().getID());
+        <%}%>
+		
+        LOGGER.debug("Executing Service...");
+        <%=helper.uncapName(xClass.getName())%>Service.delete(ctx);
+        LOGGER.debug("Service executed. ");
+
+        <%=helper.uncapName(xClass.getName())%> = dao.load(id, identifier);
+        assertNull(<%=helper.uncapName(xClass.getName())%>);
+
+        List<<%=helper.getCapName(xClass)%>> list =  dao.findAll(identifier);
+        assertNotNull(list);
+        assertEquals(size, list.size());
+    }
+
+    /**
+     * @generated
+     */
+    public void testEdit() throws Exception {
+        <%=helper.getCapName(xClass)%> <%=helper.uncapName(xClass.getName())%> = dao.newEntity();
+        <%=helper.uncapName(xClass.getName())%> = populate(<%=helper.uncapName(xClass.getName())%>);
+        dao.dbInsert(<%=helper.uncapName(xClass.getName())%>, identifier);
+
+        Context ctx = new ContextBase();
+        <%=helper.uncapName(xClass.getName())%>Service.putEntity(ctx, <%=helper.uncapName(xClass.getName())%>);
+        <% if(MasterChildHelper.INST.isChild(xClass)){%>
+        <% 
+    	String	masterName=MasterChildHelper.INST.getMaster(xClass).getName();    	    	    	
+    	%>        
+        ctx.put(<%=masterName%>Service.<%=helper.capAllName(masterName)%>_ID_KEY,<%=helper.uncapName(xClass.getName())%>.get<%=MasterChildHelper.INST.getMaster(xClass).getName()%>().getID());
+        <%}%>
+        LOGGER.debug("Executing Service...");
+        <%=helper.uncapName(xClass.getName())%>Service.edit(ctx);
+        LOGGER.debug("Service executed. ");
+
+        List<<%=helper.getCapName(xClass)%>> list = <%=helper.uncapName(xClass.getName())%>Service.getEntityList(ctx);
+        assertNotNull(list);
+        <%=helper.getCapName(xClass)%> <%=helper.uncapName(xClass.getName())%>2 = <%=helper.uncapName(xClass.getName())%>Service.getEntity(ctx);
+<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    XAttribute attribute = (XAttribute) i.next();%>
+<%if (attribute.getType() != null && !attribute.isReference()) {%>
+        assertEquals(<%=helper.uncapName(xClass.getName())%>.<%=helper.getGetAccessor(attribute)%>(), <%=helper.uncapName(xClass.getName())%>2.<%=helper.getGetAccessor(attribute)%>());
+<%}//if (attribute.getType() !=null%>
+<%}//for%>        
+    }
+
+    /**
+     * @generated
+     */
+    public void testSearch() throws Exception {
+        int size = 10;
+        for (int i = 0; i < size; i++) {
+            <%=helper.getCapName(xClass)%> <%=helper.uncapName(xClass.getName())%> = dao.newEntity();
+            <%=helper.uncapName(xClass.getName())%> = populate(<%=helper.uncapName(xClass.getName())%>);
+            dao.dbInsert(<%=helper.uncapName(xClass.getName())%>, identifier);
+        }
+
+        <%=helper.getCapName(xClass)%>Search searchBean = new <%=helper.getCapName(xClass)%>SearchImpl();
+<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    XAttribute attribute = (XAttribute) i.next();%>
+<%if (attribute.getType() != null && !attribute.isReference() && !attribute.getType().isComparable()) {%>
+        searchBean.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueStringTrimmed(attribute, 2)%>);
+<%}//if (attribute.getType() !=null%>
+<%}//for%>        
+
+        Context ctx = new ContextBase();
+        <%=helper.uncapName(xClass.getName())%>Service.putSearchBean(ctx, searchBean);
+        LOGGER.debug("Executing Service...");
+        <%=helper.uncapName(xClass.getName())%>Service.search(ctx);
+        LOGGER.debug("Service executed. ");
+
+        List<<%=helper.getCapName(xClass)%>> list = <%=helper.uncapName(xClass.getName())%>Service.getEntityList(ctx);
+        assertNotNull(list);
+        assertEquals(size, list.size());
+    }
+    /**
+      * populate and save to db 
+      * @param dao
+      * @param identifier
+      * @return
+      * @throws Exception
+      * @generated
+      */
+      public <%=xClass.getName()%> populate(<%=xClass.getName()%>DAO dao,Identifier identifier) throws Exception {
+        <%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%> = dao.newEntity();
+        <%=helper.uncapName(xClass.getName())%> = populate(<%=helper.uncapName(xClass.getName())%>);
+        dao.dbInsert(<%=helper.uncapName(xClass.getName())%>,identifier);
+        return <%=helper.uncapName(xClass.getName())%>;
+     }
+}	
+	 
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="xmdl.core"
+   name="%pluginName"
+   version="0.4.7"
+   provider-name="%providerName">
+   <runtime/>
+   <requires>
+      <import plugin="xmdl"/>
+      <import plugin="xmdl.gen" export="false"/>
+      <import plugin="xmdl.lib.log4j"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.codegen"/>
+      <import plugin="org.eclipse.core.runtime"/>
+   </requires>
+   <extension
+         id="xmdl.core"
+         name="XMDL Core Platform"
+         point="xmdl.gen.register">
+      <platform
+            class="chrome.xmdl.core.platform.XmdlCorePlatform"
+            name="Cekirdek"
+            version="0.4.7"/>
+   </extension>
+
+
+</plugin>

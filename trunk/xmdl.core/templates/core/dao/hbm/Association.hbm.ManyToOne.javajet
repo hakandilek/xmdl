@@ -1,0 +1,22 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.dao.hbm.impl" 
+	imports="java.util.* 
+			chrome.xmdl.*
+			chrome.xmdl.gen.util.*
+			chrome.xmdl.core.util.*
+			org.eclipse.emf.codegen.util.*
+			chrome.xmdldb.*"
+	class="AssociationHBMManyToOneImpl" 
+%><%	
+	AttributePair pair = (AttributePair) argument;	
+	DField f = pair.getField();	
+	XAttribute a = pair.getAttribute();
+	XAssociationBehaviour b = a.getAssociationBehaviour();
+	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+%><many-to-one 
+	name="<%=a.getName()%>" 
+	class="<%=helper.getObjectImplName(a.getType())%>"
+	cascade="<%=XAssociationBehaviour.COMPOSITION == b.getValue() ? "delete" : "none" %>"
+	column="<%=f.getName()%>"
+	/>

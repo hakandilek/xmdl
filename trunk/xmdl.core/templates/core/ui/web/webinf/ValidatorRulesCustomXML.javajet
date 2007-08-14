@@ -1,0 +1,19 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.ui.web.webinf.impl" 
+	imports="java.util.* 
+			chrome.xmdl.*
+			chrome.xmdl.gen.util.*
+			org.eclipse.emf.codegen.util.*
+			org.eclipse.emf.ecore.EObject"
+	class="ValidatorRulesCustomXMLImpl" 
+%><%
+	XProject project = (XProject) argument;	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+%><!DOCTYPE form-validation PUBLIC
+     "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.2.0//EN"
+     "http://jakarta.apache.org/commons/dtds/validator_1_2_0.dtd">
+
+<form-validation>
+    <global>
+    </global>
+</form-validation>

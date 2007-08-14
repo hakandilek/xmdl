@@ -1,0 +1,90 @@
+<%@ jet 
+    package="chrome.xmdl.core.templates.model.impl" 
+    imports="java.util.* 
+            chrome.xmdl.*
+			chrome.xmdl.core.util.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*"
+    class="EntityImplTemplateImpl" %>    
+<%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage(); 
+    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
+    ClassHelper helper = XMDLEntityHelper.INSTANCE;    
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");
+    %>
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.model.impl;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport("java.util.*");%>
+<%importManager.addImport("chrome.xmdl.lib.dao.*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
+
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+/** 
+ * $Id$       
+ * @generated
+ */ 
+public class <%=helper.getCapName(xClass)%>Impl extends AbstractEntity implements <%=helper.getCapName(xClass)%> {
+
+    /**
+     * @generated
+     */
+    public <%=helper.getCapName(xClass)%>Impl() { }
+        
+<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    XAttribute attribute = (XAttribute) i.next();%>
+<%if (attribute.getType() != null) {%>
+    /** 
+     * @generated
+     */
+    private <%=helper.getImportedAttributeType(attribute)%> <%=helper.uncapSafeName(attribute)%> = <%=helper.getDefaultValue(attribute)%>;
+<%}%>
+<%}%>
+
+
+<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    XAttribute attribute = (XAttribute) i.next();%>
+<%if (attribute.getType() != null) {%>
+    /**
+     * @generated
+     */
+    public <%=helper.getImportedAttributeType(attribute)%> <%=helper.getGetAccessor(attribute)%>() {
+        return <%=helper.uncapSafeName(attribute)%>;
+    }
+
+    /**
+     * @generated
+     */
+    public void set<%=helper.getAccessorName(attribute)%>(<%=helper.getImportedAttributeType(attribute)%> new<%=helper.getCapName(attribute)%>)    {
+        this.<%=helper.uncapSafeName(attribute)%> = new<%=helper.getCapName(attribute)%>;
+    }
+<%}//if (attribute.getType() !=null%>
+<%}//for%>
+
+    /**
+     * @generated
+     */
+    public String toString() {
+        return getClass() + "(" + getID() + ")" +
+<%for (Iterator i= xClass.getSimpleAttributes().iterator(); i.hasNext();) {
+    XAttribute attribute = (XAttribute) i.next();%>
+<%if (attribute.getType() != null && !attribute.isReference()) {%>
+"[<%=attribute.getName()%>:" + <%=helper.getGetAccessor(attribute)%>() + "]" <%=i.hasNext() ? "+" : ";"%>
+<%}//if (attribute.getType() !=null%>
+<%}//for%>
+
+    }
+
+} //<%=helper.getCapName(xClass)%>
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

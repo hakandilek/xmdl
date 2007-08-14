@@ -1,0 +1,23 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.ui.web.webinf.impl" 
+	imports="java.util.* 
+			chrome.xmdl.*
+			chrome.xmdl.gen.util.*
+			org.eclipse.emf.codegen.util.*
+			org.eclipse.emf.ecore.EObject"
+	class="DecoratorsXMLImpl" 
+%><%
+	XProject project = (XProject) argument;	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+%><decorators defaultdir="/decorators">
+    <excludes>
+        <pattern>/include/*</pattern>
+        <pattern>/common/*</pattern>
+        <pattern>/config/*</pattern>
+        <pattern>/decorators/*</pattern>
+        <pattern>/images/*</pattern>
+    </excludes> 
+    <decorator name="default" page="application01.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>

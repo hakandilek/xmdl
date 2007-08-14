@@ -1,0 +1,36 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.ui.web.webinf.impl" 
+	imports="java.util.* 
+			chrome.xmdl.*
+			chrome.xmdl.gen.util.*
+			org.eclipse.emf.codegen.util.*
+			org.eclipse.emf.ecore.EObject"
+	class="CustomTLDImpl" 
+%><%
+	XProject project = (XProject) argument;	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+    XPackage xPackage = (XPackage) project.getPackages().get(0); 
+%><?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE taglib PUBLIC
+    "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+    "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name><%=project.getName()%>-custom tld</short-name>
+
+    <description><![CDATA[Custom tag library for this application]]></description>
+
+
+
+    <tag>
+
+       <name>sample</name>
+       <tag-class><%=helper.getQualifiedName(xPackage)%>.ui.web.taglib.SampleTag</tag-class>
+
+    </tag>
+
+</taglib>

@@ -1,0 +1,101 @@
+<%@ jet 
+    package="chrome.xmdl.core.templates.service.impl" 
+    imports="java.util.* 
+            chrome.xmdl.*
+			chrome.xmdl.core.util.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*"
+    class="EntityServiceTemplateImpl" 
+%><%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage();
+    XProject  xProject = xPackage.getProject(); 
+     
+    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+    %>
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.bo;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport("java.util.*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage) + ".dao.*");%>
+<%importManager.addImport("chrome.xmdl.lib.dao.*");%>
+<%importManager.addImport("java.io.Serializable");%>
+<%importManager.addImport("org.apache.commons.beanutils.BeanUtils");%>
+
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+import chrome.xmdl.lib.bo.EntityService;
+import <%=helper.getObjectName(xClass)%>;
+
+/** 
+ * $Id$
+ *
+ * @generated
+ */ 
+public interface <%=helper.getCapName(xClass)%>Service 
+extends EntityService <<%=helper.getCapName(xClass)%>> {
+
+    /** 
+     * @generated
+     */
+    public <%=helper.getCapName(xClass)%>DAO get<%=helper.getCapName(xClass)%>DAO();
+
+    /** 
+     * @generated
+     */
+    public void set<%=helper.getCapName(xClass)%>DAO(<%=helper.getCapName(xClass)%>DAO dao);
+
+    /**
+     * Key used to identify a <%=helper.getCapName(xClass)%> entity
+     * @generated
+     */
+    static final Object <%=helper.capAllName(xClass.getName())%>_KEY = <%=helper.getCapName(xClass)%>.class.getName() + ".entity";
+
+    /** 
+     * Key used to identify a <%=helper.getCapName(xClass)%> entity ID
+     * @generated
+     */
+    static final Object <%=helper.capAllName(xClass.getName())%>_ID_KEY = <%=helper.getCapName(xClass)%>.class.getName() + ".key";
+
+    /** 
+     * Key used to identify a <%=helper.getCapName(xClass)%> entity list
+     * @generated
+     */
+    static final Object <%=helper.capAllName(xClass.getName())%>_LIST_KEY = <%=helper.getCapName(xClass)%>.class.getName() + ".list";
+
+    /** 
+     * Key used to identify a <%=helper.getCapName(xClass)%> entity search bean
+     * @generated
+     */
+    static final Object <%=helper.capAllName(xClass.getName())%>_SEARCH_KEY = <%=helper.getCapName(xClass)%>.class.getName() + ".searchEntity";
+    
+		<%	XClass master = null;
+			if (MasterChildHelper.INST.isChild(xClass)) { 
+			   master = MasterChildHelper.INST.getMaster(xClass);
+			   if (master != null) { %>
+    /** 
+     * Key used to identify a <%=helper.getCapName(master)%> entity search bean
+     * @generated
+     */
+    static final Object <%=helper.capAllName(master.getName())%>_ID_KEY = <%=helper.getCapName(master)%>Service.<%=helper.capAllName(master.getName())%>_ID_KEY;
+
+    /** 
+     * Key used to identify a <%=helper.getCapName(master)%> entity search bean
+     * @generated
+     */
+    static final Object <%=helper.capAllName(master.getName())%>_KEY = <%=helper.getCapName(master)%>Service.<%=helper.capAllName(master.getName())%>_KEY;    
+			   <%}
+		   } %>
+
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

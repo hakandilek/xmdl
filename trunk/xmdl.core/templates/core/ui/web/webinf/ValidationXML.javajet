@@ -1,0 +1,59 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.ui.web.webinf.impl" 
+	imports="java.util.* 
+			chrome.xmdl.*
+			chrome.xmdl.gen.util.*
+			org.eclipse.emf.codegen.util.*
+			org.eclipse.emf.ecore.EObject"
+	class="ValidationXMLImpl" 
+%><%
+	XProject project = (XProject) argument;	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+%><?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE form-validation PUBLIC "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+
+<form-validation>
+    <global>
+        <constant>
+            <constant-name>phone</constant-name>
+            <constant-value>^\(?(\d{3})\)?[-| ]?(\d{3})[-| ]?(\d{4})$</constant-value>
+        </constant>
+        <constant>
+            <constant-name>zip</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        <constant>
+            <constant-name>currency</constant-name>
+            <constant-value>^\d{1,3}(,?\d{1,3})*\.?(\d{1,2})?$</constant-value>
+        </constant>
+    </global>
+        <!--
+          Define form validation config in validation-forms.xml
+        -->
+
+    <formset>
+	<%for (Iterator i = project.getPackages().iterator(); i.hasNext();) {
+	    XPackage xPackage = (XPackage) i.next();
+		for (Iterator i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
+		    XClass xClass = (XClass) i2.next();%>
+        <form name="<%=helper.uncapSafeName(xClass)%>Form">
+		    <%for (Iterator i3= xClass.getAttributes().iterator(); i3.hasNext();) {
+	    		XAttribute attribute = (XAttribute) i3.next();
+	    		XType type = attribute.getType();
+	    		if (!(type instanceof XEnumeration 
+	    			|| attribute.isReference()
+	    			|| type == XmdlTypes.BOOLEAN
+	    			|| type == XmdlTypes.JAVA_BOOLEAN)){%>
+            <field property="<%=helper.uncapSafeName(xClass)%>.<%=attribute.getName()%>" depends="required">
+                <msg name="required" key="errors.required"/>
+
+                <arg0 key="<%=helper.getObjectName(xClass)%>.form.<%=helper.uncapSafeName(attribute)%>"/>
+            </field>            
+        	  <%}
+        	}%>
+        </form>
+        <%}  
+	  } %>
+    </formset>
+	
+</form-validation>
