@@ -1,0 +1,329 @@
+<%@ jet 
+    package="chrome.xmdl.core.templates.ui.web.action.impl" 
+    imports="chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+			chrome.xmdl.core.util.*
+            org.eclipse.emf.codegen.util.*"
+    class="EntityActionImpl" 
+%><%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage();
+    XProject  xProject = xPackage.getProject(); 
+     
+    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+    %>
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.ui.web.action;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport(xPackage.getName() + ".model.*");%>
+<%importManager.addImport(xPackage.getName() + ".bo.*");%>
+<%importManager.addImport(xPackage.getName() + ".ui.web.form.*");%>
+
+<%importManager.addImport("chrome.xmdl.lib.bo.*");%>
+<%importManager.addImport("chrome.xmdl.lib.helper.*");%>
+<%importManager.addImport("chrome.xmdl.lib.ui.web.action.*");%>
+<%importManager.addImport("chrome.xmdl.lib.bo.DispatchService");%>
+<%importManager.addImport("org.apache.commons.chain.*");%>
+<%importManager.addImport("org.apache.commons.chain.impl.*");%>
+<%importManager.addImport("org.apache.commons.logging.*");%>
+<%importManager.addImport("org.apache.struts.action.*");%>
+<%importManager.addImport("javax.servlet.http.*");%>
+<%importManager.addImport("java.util.*");%>
+
+
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * @author hd
+ * @generated 
+ */
+public final class <%=xClass.getName()%>Action extends BaseAction implements Constants {
+
+	/**
+	 * @generated 
+	 */
+    private static final Log LOGGER = LogFactory.getLog(<%=xClass.getName()%>Action.class);
+
+	/**
+	 * @generated 
+	 */
+    private Command <%=helper.uncapName(xClass.getName())%>Service= null;
+
+	/**
+	 * @generated 
+	 */
+    public void set<%=xClass.getName()%>Service(Command <%=helper.uncapName(xClass.getName())%>Service) {
+        this.<%=helper.uncapName(xClass.getName())%>Service = <%=helper.uncapName(xClass.getName())%>Service;
+    }
+
+	/**
+	 * @generated 
+	 */
+    public ActionForward cancel(ActionMapping mapping, ActionForm actionForm,
+                                HttpServletRequest request, HttpServletResponse response) throws Exception {
+        LOGGER.debug("Entering '<%=xClass.getName()%>Action.cancel' method");
+
+        HttpSession session = request.getSession();
+        session.removeAttribute(<%=helper.capAllName(xClass.getName())%>_ENTITY);
+
+        return mapping.findForward("list");
+    }
+
+	/**
+	 * @generated 
+	 */
+    public ActionForward edit(ActionMapping mapping, ActionForm actionForm,
+                              HttpServletRequest request, HttpServletResponse response) throws Exception {
+        LOGGER.debug("Entering '<%=xClass.getName()%>Action.edit' method");
+
+        HttpSession session = request.getSession();
+        <%=xClass.getName()%>Form form = (<%=xClass.getName()%>Form) actionForm;
+        ActionMessages messages = new ActionMessages();
+
+		<%	XClass master = null;
+			if (MasterChildHelper.INST.isChild(xClass)) { 
+			   master = MasterChildHelper.INST.getMaster(xClass);
+			   if (master != null) { %>
+        Long <%=helper.uncapSafeName(master)%>ID = form.get<%=master.getName()%>ID();
+        if (<%=helper.uncapSafeName(master)%>ID == null 
+        	|| <%=helper.uncapSafeName(master)%>ID <= 0){
+            <%=helper.uncapSafeName(master)%>ID = (Long) session.getAttribute(<%=helper.capAllName(master.getName())%>_ID);
+        }
+        if (<%=helper.uncapSafeName(master)%>ID == null 
+        	|| <%=helper.uncapSafeName(master)%>ID <= 0){
+            messages.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage(MK_<%=helper.capAllName(master.getName())%>_NOT_FOUND));
+            // save messages in request
+            saveMessages(request, messages);
+            return mapping.findForward("master");
+        }			    
+			   <%}
+		   } %>
+
+        List<<%=xClass.getName()%>> prevList = (List<<%=xClass.getName()%>>) session.getAttribute(<%=helper.capAllName(xClass.getName())%>_LIST);
+
+        <%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%> = form.get<%=xClass.getName()%>();
+        LOGGER.debug("<%=helper.uncapName(xClass.getName())%> = " + <%=helper.uncapName(xClass.getName())%>);
+        
+        /** 
+         * Uncomment for sticky edit
+         * if (<%=helper.uncapName(xClass.getName())%>.getID() <= 0) {
+         *    Object attribute = session.getAttribute(<%=helper.capAllName(xClass.getName())%>_ENTITY);
+         *    LOGGER.debug("attribute = " + attribute);
+         *    if (attribute != null) <%=helper.uncapName(xClass.getName())%> = (<%=xClass.getName()%>) attribute;
+         * }
+         */
+
+        String copyParam = request.getParameter("copy");
+        boolean copy = "true".equalsIgnoreCase(copyParam) || "1".equals(copyParam) || "yes".equalsIgnoreCase(copyParam);
+        LOGGER.debug("copy = " + copy);
+
+        Context ctx = new ContextBase();
+
+		<% if (master != null) { %>
+        ctx.put(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_ID_KEY, <%=helper.uncapSafeName(master)%>ID);
+		<% } %>
+        ctx.put(EntityService.COPY_KEY, copy);
+        ctx.put(<%=xClass.getName()%>Service.<%=helper.capAllName(xClass.getName())%>_LIST_KEY, prevList);
+        ctx.put(<%=xClass.getName()%>Service.<%=helper.capAllName(xClass.getName())%>_KEY, <%=helper.uncapName(xClass.getName())%>);
+        ctx.put(DispatchService.METHOD, DispatchService.EDIT_METHOD);
+        <%=helper.uncapName(xClass.getName())%>Service.execute(ctx);
+        
+        <%=xClass.getName()%> out<%=xClass.getName()%> = (<%=xClass.getName()%>) ctx.get(<%=xClass.getName()%>Service.<%=helper.capAllName(xClass.getName())%>_KEY);
+        LOGGER.debug("out<%=xClass.getName()%> = " + out<%=xClass.getName()%>);
+        
+		<% if (master != null) { %>
+        <%=master.getName()%> out<%=master.getName()%> = (<%=master.getName()%>) ctx.get(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_KEY);
+        LOGGER.debug("out<%=master.getName()%> = " + out<%=master.getName()%>);
+        request.setAttribute(<%=helper.capAllName(master.getName())%>_ENTITY, out<%=master.getName()%>);
+        session.setAttribute(<%=helper.capAllName(master.getName())%>_ID, <%=helper.uncapSafeName(master)%>ID);
+        ctx.put(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_ID_KEY, <%=helper.uncapSafeName(master)%>ID);
+		<% } %>
+        
+        //bean to form
+        form.set<%=xClass.getName()%>(out<%=xClass.getName()%>);
+        LOGGER.debug("form = " + form);
+
+        List<<%=xClass.getName()%>> postList = (List<<%=(xClass.getName())%>>) ctx.get(<%=xClass.getName()%>Service.<%=helper.capAllName(xClass.getName())%>_LIST_KEY);
+        
+		<% if (master != null) { %>
+        request.setAttribute(<%=helper.capAllName(xClass.getName())%>_LIST, postList);
+		<% } else { %>
+        session.setAttribute(<%=helper.capAllName(xClass.getName())%>_LIST, postList);
+		<% } %>
+        updateFormBean(mapping, request, form);
+        LOGGER.debug("postList = " + postList);
+
+        saveMessages(request, messages);       
+        return mapping.findForward("success");
+    }
+
+	/**
+	 * @generated 
+	 */
+    public ActionForward save(ActionMapping mapping, ActionForm actionForm,
+                              HttpServletRequest request, HttpServletResponse response) throws Exception {
+        LOGGER.debug("Entering '<%=xClass.getName()%>Action.save' method");
+
+        HttpSession session = request.getSession();
+        <%=xClass.getName()%>Form form = (<%=xClass.getName()%>Form) actionForm;
+        ActionMessages messages = new ActionMessages();
+
+		<% if (master != null) { %>
+        Long <%=helper.uncapSafeName(master)%>ID = form.get<%=master.getName()%>ID();
+        if (<%=helper.uncapSafeName(master)%>ID == null 
+        	|| <%=helper.uncapSafeName(master)%>ID <= 0){
+            <%=helper.uncapSafeName(master)%>ID = (Long) session.getAttribute(<%=helper.capAllName(master.getName())%>_ID);
+        }
+        if (<%=helper.uncapSafeName(master)%>ID == null 
+        	|| <%=helper.uncapSafeName(master)%>ID <= 0){
+            messages.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage(MK_<%=helper.capAllName(master.getName())%>_NOT_FOUND));
+            // save messages in request
+            saveMessages(request, messages);
+            return mapping.findForward("master");
+        }			    
+		<% } %>
+
+        <%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%> = form.get<%=xClass.getName()%>();
+        LOGGER.debug("<%=helper.uncapName(xClass.getName())%> = " + <%=helper.uncapName(xClass.getName())%>);
+        
+        boolean isNew = (0 == <%=helper.uncapName(xClass.getName())%>.getID());
+
+        Context ctx = new ContextBase();
+		<% if (master != null) { %>
+        ctx.put(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_ID_KEY, <%=helper.uncapSafeName(master)%>ID);
+		<% } %>
+        ctx.put(<%=xClass.getName()%>Service.<%=helper.capAllName(xClass.getName())%>_KEY,form.get<%=xClass.getName()%>());
+        ctx.put(DispatchService.METHOD, DispatchService.SAVE_METHOD);
+        <%=helper.uncapName(xClass.getName())%>Service.execute(ctx);
+        
+        <%=xClass.getName()%> out<%=xClass.getName()%> = (<%=xClass.getName()%>) ctx.get(<%=xClass.getName()%>Service.<%=helper.capAllName(xClass.getName())%>_KEY);
+        List<<%=xClass.getName()%>> resultList = (List<<%=(xClass.getName())%>>) ctx.get(<%=xClass.getName()%>Service.<%=helper.capAllName(xClass.getName())%>_LIST_KEY);
+        session.setAttribute(<%=helper.capAllName(xClass.getName())%>_LIST, resultList);
+
+        /** 
+         * Uncomment for sticky edit
+         * session.setAttribute(<%=helper.capAllName(xClass.getName())%>_ENTITY, out<%=xClass.getName()%>);
+         */
+        
+		<% if (master != null) { %>
+        <%=master.getName()%> out<%=master.getName()%> = (<%=master.getName()%>) ctx.get(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_KEY);
+        LOGGER.debug("out<%=master.getName()%> = " + out<%=master.getName()%>);
+        request.setAttribute(<%=helper.capAllName(master.getName())%>_ENTITY, out<%=master.getName()%>);
+        session.setAttribute(<%=helper.capAllName(master.getName())%>_ID, <%=helper.uncapSafeName(master)%>ID);
+        ctx.put(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_ID_KEY, <%=helper.uncapSafeName(master)%>ID);
+		<% } %>
+
+        // add success messages
+        if (isNew) {
+            LOGGER.debug("<%=xClass.getName()%> added: " + out<%=xClass.getName()%>);
+            messages.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage(MK_<%=helper.capAllName(xClass.getName())%>_ADDED));
+
+        } else {
+            LOGGER.debug("<%=xClass.getName()%> updated: " + out<%=xClass.getName()%>);
+            messages.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage(MK_<%=helper.capAllName(xClass.getName())%>_UPDATED));
+        }
+        
+        updateFormBean(mapping, request, form);
+        
+        // save messages in session to survive a redirect
+        saveMessages(request.getSession(), messages);
+        // save messages in request
+        saveMessages(request, messages);        
+        return mapping.findForward("list");
+    }
+
+	/**
+	 * @generated 
+	 */
+    public ActionForward delete(ActionMapping mapping, ActionForm actionForm,
+                                HttpServletRequest request, HttpServletResponse response) throws Exception {
+        LOGGER.debug("Entering '<%=xClass.getName()%>Action.delete' method");
+        HttpSession session = request.getSession();
+        ActionMessages messages = new ActionMessages();
+        <%=xClass.getName()%>Form form = (<%=xClass.getName()%>Form) actionForm;
+
+		<% if (master != null) { %>
+        Long <%=helper.uncapSafeName(master)%>ID = form.get<%=master.getName()%>ID();
+        if (<%=helper.uncapSafeName(master)%>ID == null 
+        	|| <%=helper.uncapSafeName(master)%>ID <= 0){
+            <%=helper.uncapSafeName(master)%>ID = (Long) session.getAttribute(<%=helper.capAllName(master.getName())%>_ID);
+        }
+        if (<%=helper.uncapSafeName(master)%>ID == null 
+        	|| <%=helper.uncapSafeName(master)%>ID <= 0){
+            messages.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage(MK_<%=helper.capAllName(master.getName())%>_NOT_FOUND));
+            // save messages in request
+            saveMessages(request, messages);
+            return mapping.findForward("master");
+        }			    
+		<% } %>
+
+        <%=xClass.getName()%> session<%=xClass.getName()%> = (<%=xClass.getName()%>) session.getAttribute(<%=helper.capAllName(xClass.getName())%>_ENTITY);
+        LOGGER.debug("session<%=xClass.getName()%> = " + session<%=xClass.getName()%>);
+
+        Context ctx = new ContextBase();
+        Long[] ids = form.getDeleteID();
+		<% if (master != null) { %>
+        ctx.put(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_ID_KEY, <%=helper.uncapSafeName(master)%>ID);
+		<% } %>
+        ctx.put(<%=xClass.getName()%>Service.<%=helper.capAllName(xClass.getName())%>_ID_KEY, ids);
+        ctx.put(DispatchService.METHOD, DispatchService.DELETE_METHOD);
+        <%=helper.uncapName(xClass.getName())%>Service.execute(ctx);
+        
+        if (session<%=xClass.getName()%> != null) {
+            //if deleted item is in session, clean session
+            long sessionID = session<%=xClass.getName()%>.getID();
+            if (ArrayUtil.contains(ids, sessionID)) {
+                session.removeAttribute(<%=helper.capAllName(xClass.getName())%>_ENTITY);
+            }
+        }
+
+        messages.add(ActionMessages.GLOBAL_MESSAGE,
+                new ActionMessage(MK_<%=helper.capAllName(xClass.getName())%>_DELETED));
+
+        List<<%=xClass.getName()%>> resultList = (List<<%=(xClass.getName())%>>)  ctx.get(<%=xClass.getName()%>Service.<%=helper.capAllName(xClass.getName())%>_LIST_KEY);
+        session.setAttribute(<%=helper.capAllName(xClass.getName())%>_LIST, resultList);
+
+        saveMessages(request, messages);
+        return mapping.findForward("list");
+    }
+
+	/**
+	 * @generated 
+	 */
+    public ActionForward search(ActionMapping mapping, ActionForm actionForm,
+                                HttpServletRequest request, HttpServletResponse response) throws Exception {
+        LOGGER.debug("Entering '<%=xClass.getName()%>Action.search' method");
+
+        <%=xClass.getName()%>Form form = (<%=xClass.getName()%>Form) actionForm;
+        <%=xClass.getName()%>Search searchBean = form.get<%=xClass.getName()%>Search();
+
+        Context ctx = new ContextBase();
+        ctx.put(<%=xClass.getName()%>Service.<%=helper.capAllName(xClass.getName())%>_SEARCH_KEY, searchBean);
+        // Exceptions are caught by ExceptionHandleAction
+        ctx.put(DispatchService.METHOD, DispatchService.SEARCH_METHOD);
+        <%=helper.uncapName(xClass.getName())%>Service.execute(ctx);
+
+        List<<%=xClass.getName()%>> <%=helper.uncapName(xClass.getName())%>List = (List<<%=xClass.getName()%>>)ctx.get(<%=helper.capName(xClass.getName())%>Service.<%=helper.capAllName(xClass.getName())%>_LIST_KEY);
+        request.setAttribute(Constants.<%=helper.capAllName(xClass.getName())%>_LIST, <%=helper.uncapName(xClass.getName())%>List);
+
+        // return a forward to the <%=helper.uncapName(xClass.getName())%> list definition
+        return mapping.findForward("success");
+    }
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

@@ -1,0 +1,300 @@
+<%@ jet 
+    package="chrome.xmdl.core.templates.service.impl" 
+    imports="java.util.* 
+            chrome.xmdl.*
+			chrome.xmdl.core.util.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*"
+    class="EntityServiceImplTemplateImpl" 
+%><%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage();
+    XProject  xProject = xPackage.getProject(); 
+     
+    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+    %>
+    
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.bo.impl;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>    
+
+<%
+importManager.addImport("org.apache.commons.logging.*");
+importManager.addImport("org.apache.commons.chain.*");
+importManager.addImport("java.util.*");
+importManager.addImport("java.io.Serializable");
+importManager.addImport("org.apache.commons.beanutils.BeanUtils"); 
+ 
+ 
+
+
+importManager.addImport("chrome.xmdl.lib.dao.*");
+importManager.addImport("chrome.xmdl.lib.bo.*");
+importManager.addImport(helper.getQualifiedName(xPackage) + ".bo.*");
+importManager.addImport(helper.getQualifiedName(xPackage) + ".dao.*");
+importManager.addImport(helper.getQualifiedName(xPackage) + ".model.*");
+
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/** 
+ * @generated
+ */
+public class <%=xClass.getName()%>ServiceImpl extends AbstractEntityService<<%=xClass.getName()%>>
+        implements <%=xClass.getName()%>Service {
+        
+	/** 
+	 * @generated
+	 */
+    private static final Log LOGGER = LogFactory.getLog(<%=xClass.getName()%>ServiceImpl.class);
+
+    /** 
+     * @generated
+     */
+    protected <%=xClass.getName()%>DAO dao;
+
+	/** 
+	 * @generated
+	 */
+    public <%=xClass.getName()%>ServiceImpl() {
+        LOGGER.debug("creating <%=xClass.getName()%>ServiceImpl");
+    }
+
+    /** 
+     * @generated
+     */
+    public <%=xClass.getName()%>DAO get<%=helper.getCapName(xClass)%>DAO() {
+        return dao;
+    }
+
+    /** 
+     * @generated
+     */
+    public void set<%=helper.getCapName(xClass)%>DAO(<%=xClass.getName()%>DAO dao) {
+        this.dao = dao;
+    }
+
+    /** 
+     * @generated
+     */
+    public DAO<<%=helper.getCapName(xClass)%>> getDAO() {
+        return get<%=helper.getCapName(xClass)%>DAO();
+    }
+
+    /** 
+     * @generated
+     */
+    public void putEntity(Context context, <%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%>) {
+        context.put(<%=helper.capAllName(xClass.getName())%>_KEY, <%=helper.uncapName(xClass.getName())%>);
+    }
+
+    /** 
+     * @generated
+     */
+    public <%=xClass.getName()%> getEntity(Context context) {
+        return (<%=xClass.getName()%>) context.get(<%=helper.capAllName(xClass.getName())%>_KEY);
+    }
+
+    /** 
+     * @generated
+     */
+    public void putID(Context context, Long id) {
+        context.put(<%=helper.capAllName(xClass.getName())%>_ID_KEY, id);
+    }
+
+    /** 
+     * @generated
+     */
+    public Long getID(Context context) {
+        return (Long) context.get(<%=helper.capAllName(xClass.getName())%>_ID_KEY);
+    }
+
+    /** 
+     * @generated
+     */
+    public void putEntityList(Context context, List<<%=xClass.getName()%>> <%=helper.uncapName(xClass.getName())%>s) {
+        context.put(<%=helper.capAllName(xClass.getName())%>_LIST_KEY, <%=helper.uncapName(xClass.getName())%>s);
+    }
+
+    /** 
+     * @generated
+     */
+    public List<<%=xClass.getName()%>> getEntityList(Context context) {
+        return (List<<%=xClass.getName()%>>) context.get(<%=helper.capAllName(xClass.getName())%>_LIST_KEY);
+    }
+
+
+    /** 
+     * @generated
+     */
+    public Object getKeys(Context context) {
+        return context.get(<%=helper.capAllName(xClass.getName())%>_ID_KEY);
+    }
+
+    /** 
+     * @generated
+     */
+    public SearchBean<<%=xClass.getName()%>> getSearchBean(Context context) {
+        return (SearchBean<<%=xClass.getName()%>>) context.get(<%=helper.capAllName(xClass.getName())%>_SEARCH_KEY);
+    }
+
+    /** 
+     * @generated
+     */
+    public void putSearchBean(Context context, SearchBean<<%=xClass.getName()%>> searchBean) {
+        context.put(<%=helper.capAllName(xClass.getName())%>_SEARCH_KEY, searchBean);
+    }
+
+    /** 
+     * @generated
+     */
+    protected <%=xClass.getName()%> merge(<%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%>1, <%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%>2) {
+        <%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%> = <%=helper.uncapName(xClass.getName())%>1;
+        //todo
+        return <%=helper.uncapName(xClass.getName())%>;
+    }
+     /** 
+     * @generated
+     */
+	public void putEntity(Context context, <%=xClass.getName()%>Service entity) {
+		context.put(<%=helper.capAllName(xClass.getName())%>_KEY,entity);
+		
+	}
+     /** 
+     * @generated
+     */	
+
+	<%	XClass master = null;
+		if (MasterChildHelper.INST.isChild(xClass)) { 
+		   master = MasterChildHelper.INST.getMaster(xClass);
+		   if (master != null) { %>
+		   
+    /** 
+     * @generated
+     */
+	private <%=master.getName()%>DAO <%=helper.uncapName(master.getName())%>DAO=null; 	   
+    /** 
+     * @generated
+     */
+     public void set<%=master.getName()%>DAO(<%=master.getName()%>DAO dao){
+     	this.<%=helper.uncapName(master.getName())%>DAO=dao;
+     }
+     
+     
+    /** 
+     * @generated
+     */
+	public <%=master.getName()%>DAO get<%=master.getName()%>DAO(){
+     	return <%=helper.uncapName(master.getName())%>DAO;
+     }     
+    /** 
+     * @generated
+     */
+    public boolean edit(Context context) throws Exception {
+        LOGGER.debug("edit.execute");
+        Identifier identifier = createIdentifier(context);
+
+        List<<%=xClass.getName()%>> list = getEntityList(context);
+        if (LOGGER.isDebugEnabled()) {
+            int s = list == null ? 0 : list.size();
+            LOGGER.debug("list.size() = " + s);
+        }
+
+        <%=xClass.getName()%> entity = getEntity(context);
+        LOGGER.debug("entity = " + entity);
+
+        Serializable masterID = (Serializable) context.get(<%=master.getName()%>Service.<%=helper.capAllName(master.getName())%>_ID_KEY);
+        <%=master.getName()%> <%=helper.uncapName(master.getName())%> =(<%=master.getName()%>) get<%=master.getName()%>DAO().load(masterID, identifier);
+        entity.set<%=master.getName()%>(<%=helper.uncapName(master.getName())%>);
+        context.put(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_KEY, <%=helper.uncapName(master.getName())%>);
+
+        if (list == null) {
+            List<<%=xClass.getName()%>> all = get<%=xClass.getName()%>DAO().findBy(<%=helper.uncapName(master.getName())%>, identifier);
+            putEntityList(context, all);
+        }
+
+        LOGGER.debug("entity.get<%=master.getName()%>() = " + entity.get<%=master.getName()%>());
+
+        Boolean copy = (Boolean) context.get(COPY_KEY);
+        if (copy == null) copy = Boolean.FALSE;
+        LOGGER.debug("copy = " + copy);
+        Long id = (Long) entity.getID();
+        LOGGER.debug("masterID = " + id);
+        if (id > 0) {
+            <%=xClass.getName()%> dbEntity = getDAO().load(id, identifier);
+            if (copy) {
+                <%=xClass.getName()%> e = getDAO().newEntity();
+                BeanUtils.copyProperties(e, dbEntity);
+                dbEntity = e;
+                dbEntity.setID(0);
+            }
+            LOGGER.debug("dbEntity = " + dbEntity);
+            putEntity(context, dbEntity);
+        }
+        return true;
+    }
+
+    /** 
+     * @generated
+     */
+    public boolean save(Context context) throws Exception {
+        LOGGER.debug("save.execute");
+
+        <%=xClass.getName()%> originalE = getEntity(context);
+        Identifier identifier = createIdentifier(context);
+
+        <%=xClass.getName()%> entity = getDAO().newEntity();
+        BeanUtils.copyProperties(entity, originalE);
+
+        Serializable masterID = (Serializable) context.get(<%=master.getName()%>Service.<%=helper.capAllName(master.getName())%>_ID_KEY);
+        <%=master.getName()%> <%=helper.uncapName(master.getName())%> = ( <%=master.getName()%> )get<%=master.getName()%>DAO().load(masterID, identifier);
+        entity.set<%=master.getName()%>(<%=helper.uncapName(master.getName())%>);
+        context.put(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_KEY, <%=helper.uncapName(master.getName())%>);
+
+        getDAO().dbModify(entity, identifier);
+
+        List<<%=xClass.getName()%>> all = get<%=xClass.getName()%>DAO().findBy(<%=helper.uncapName(master.getName())%>, identifier);
+        putEntity(context, entity);
+        putEntityList(context, all);
+        return true;
+    }
+
+    /** 
+     * @generated
+     */
+    public boolean delete(Context context) throws Exception {
+        LOGGER.debug("delete.execute");
+
+        Identifier identifier = createIdentifier(context);
+
+        Object oKeys = getKeys(context);
+        Serializable[] keys = extractKeys(oKeys);
+        LOGGER.debug("keys = " + keys);
+
+        getDAO().dbDelete(keys, identifier);
+
+        Serializable masterID = (Serializable) context.get(<%=master.getName()%>Service.<%=helper.capAllName(master.getName())%>_ID_KEY);
+        LOGGER.debug("masterID = " + masterID);
+        <%=master.getName()%> <%=helper.uncapName(master.getName())%> = ( <%=master.getName()%> ) get<%=master.getName()%>DAO().load(masterID, identifier);
+        context.put(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_KEY, <%=helper.uncapName(master.getName())%>);
+
+        List<<%=xClass.getName()%>> all = get<%=xClass.getName()%>DAO().findBy(<%=helper.uncapName(master.getName())%>, identifier);
+        LOGGER.debug("all.size() = " + all.size());
+        putEntityList(context, all);
+
+        return true;
+    }
+		   <%}
+	   } %>
+
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>
+    

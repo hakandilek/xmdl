@@ -1,0 +1,98 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.ui.web.jsp.impl" 
+	imports="java.util.* 
+			chrome.xmdl.*
+			chrome.xmdl.gen.util.*
+			chrome.xmdl.core.util.*
+			chrome.xmdl.xgen.*
+			org.eclipse.emf.codegen.util.*
+			org.eclipse.emf.ecore.EObject"
+	class="EntitySearchJSPImpl"
+	startTag="<$" endTag="$>" 
+%><$
+	XClass xClass = (XClass) argument;	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+	XAttribute firstAttribute = null;
+	List attributes = xClass.getAttributes();
+	if (attributes != null && attributes.size() >0 ){
+		firstAttribute = (XAttribute) attributes.get(0);
+	}	
+$>
+<%@ include file="/include/taglibs.jsp"%>
+
+<title><fmt:message key="<$=helper.getObjectName(xClass)$>.list.title"/></title>
+
+<fmt:message key="<$=helper.getObjectName(xClass)$>.list.heading"/>
+
+<%-- For linking to edit screen --%>
+<bean:struts id="editURL" forward="edit<$=helper.getCapName(xClass)$>"/>
+
+
+<layout:form align="left" action="search<$=helper.getCapName(xClass)$>" method="post"
+    styleClass="<$=helper.uncapSafeName(xClass)$>Form" <$=firstAttribute != null ? "focus=\""+ helper.uncapSafeName(xClass) + "." + helper.uncapSafeName(firstAttribute)  +"\"" : "" $> 
+    onsubmit="return validate<$=helper.getCapName(xClass)$>Form(this)">
+    
+	<$for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+	    XAttribute attribute = (XAttribute) i.next();$>
+	<$  if (!attribute.isReference()) {  
+		Template t = UIHelper.getSearchFormFieldTemplate(attribute);
+		$>
+		<$=t.generate(attribute)$>
+	<$  } $> 
+	<$}$>    
+    <tr>
+        <td></td>
+        <td class="buttonBar">
+            <html:submit styleClass="button" property="method.search" onclick="bCancel=false">
+                <bean:message key="button.search"/>
+            </html:submit>
+
+            <html:cancel styleClass="button" onclick="bCancel=true">
+                <bean:message key="button.cancel"/>
+            </html:cancel>
+        </td>
+    </tr>
+</layout:form>
+
+<hr />
+
+<display:table name="${<$=helper.uncapSafeName(xClass)$>List}" cellspacing="0" cellpadding="0"
+    requestURI="" defaultsort="1" export="true" id="<$=helper.uncapSafeName(xClass)$>s"
+    pagesize="25" styleClass="list <$=helper.uncapSafeName(xClass)$>List">
+  
+    <%-- Table columns --%>
+    <display:column property="ID" sort="true"
+    	headerClass="sortable" width="17%"
+        url="${editURL.path}?from=list" 
+        paramId="ID" paramProperty="ID"
+        titleKey="<$=helper.getObjectName(xClass)$>.list.ID"/>
+        
+	<$for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+	    XAttribute attribute = (XAttribute) i.next();
+	    XType t = attribute.getType();
+	    boolean comp = t.isComparable();
+	    if (!attribute.isReference()) { $>
+    <display:column property="<$=attribute.getName()$>" 
+    	<$ if (comp) { $> sort="true"  headerClass="sortable" <$ } $> 
+    	width="20%"
+    	autolink="true"
+        titleKey="<$=helper.getObjectName(xClass)$>.list.<$=attribute.getName()$>" 
+        />		
+	<$  } $> 
+	<$}$>
+        
+    <display:setProperty name="paging.banner.item_name" value="<$=helper.uncapSafeName(xClass)$>"/>
+    <display:setProperty name="paging.banner.items_name" value="<$=helper.uncapSafeName(xClass)$>s"/>
+
+    <display:setProperty name="export.excel.filename" value="<$=helper.uncapSafeName(xClass)$>List.xls"/>
+    <display:setProperty name="export.csv.filename" value="<$=helper.uncapSafeName(xClass)$>List.csv"/>
+    <display:setProperty name="export.pdf.filename" value="<$=helper.uncapSafeName(xClass)$>List.pdf"/>
+</display:table>
+
+<%--<c:out value="${buttons}" escapeXml="false" />--%>
+            
+<script type="text/javascript">
+<!--
+highlightTableRows("<$=helper.uncapSafeName(xClass)$>s");
+//-->
+</script>

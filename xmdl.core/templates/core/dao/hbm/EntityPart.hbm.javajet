@@ -1,0 +1,69 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.dao.hbm.impl" 
+	imports="java.util.*  
+			chrome.xmdl.*
+			chrome.xmdldb.*
+			chrome.xmdl.core.util.*
+			chrome.xmdl.gen.util.*
+			chrome.xmdl.xgen.*
+			org.eclipse.emf.codegen.util.*"
+	class="EntityHBMTemplatePartImpl"
+%><%
+	DTable dTable =(DTable) argument;
+	DPackage dPackage = dTable.getDPackage();
+	
+	XClass xClass = dTable.getXClass();
+	XPackage xPackage = xClass.getXPackage(); 
+	
+	
+	ClassHelper helper = XMDLEntityHelper.INSTANCE;	
+	DBHelper dbHelper = XMDLDBHelper.INSTANCE;	
+	
+%>
+<%  if (xClass != null) {%>
+	<class name="<%=helper.getObjectImplName(xClass)%>"
+		   table="<%=dTable.getName()%>"
+		   lazy="true"
+		   proxy="<%=helper.getObjectName(xClass)%>"
+		   >
+
+		<id name="ID"
+			type="long"
+			column="ID"
+			unsaved-value="0"
+			>
+			<generator class="hilo"/>
+		</id>		
+		 
+	<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+		XAttribute attribute = (XAttribute) i.next();
+		DField field = XmdldbUtils.findField(attribute, dTable);		
+		XType type = attribute.getType();
+		if (type instanceof XEnumeration) {
+			XEnumeration enumeration = (XEnumeration) type;%>
+	    <property name="<%=attribute.getName()%>" >
+	        <column name="<%=field.getName()%>"/>
+	        <type name="chrome.xmdl.lib.dao.hib.PersistentEnumType">
+	            <param name="targetClass"><%=helper.getObjectName(type)%></param>
+	        </type>
+        </property>
+		<%} else {
+			if (!attribute.isReference()) { %> 
+		<property name="<%=attribute.getName()%>"
+				type="<%=attribute.getType().getClassName()%>"
+				column="<%=field.getName()%>"
+				length="<%=field.getLength()%>"
+				not-null="false"/>
+			<%} else {
+			AttributePair pair = new AttributePair(attribute, field, dTable);
+			Template t = dbHelper.getTemplate(attribute);
+			%>
+			<%=t.generate(pair)%>
+			<%} //if%>
+		<%} //if-else%>
+	<%}//for%>			 
+	
+	
+	</class>
+<%  } %>
+

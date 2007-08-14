@@ -1,0 +1,32 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.context.impl" 
+	imports="java.util.* 
+			chrome.xmdl.*
+			chrome.xmdl.gen.util.*
+			org.eclipse.emf.codegen.util.*
+			org.eclipse.emf.ecore.EObject"
+	class="ApplicationContextDBImpl" 
+%><%
+	XPackage xPackage = (XPackage) argument;	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+%><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:<%=helper.getQualifiedPath(xPackage)%>/database.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${hibernate.connection.driver_class}"/>
+        <property name="url" value="${hibernate.connection.url}"/>
+        <property name="username" value="${hibernate.connection.username}"/>
+        <property name="password" value="${hibernate.connection.password}"/>
+    </bean>
+
+</beans>
