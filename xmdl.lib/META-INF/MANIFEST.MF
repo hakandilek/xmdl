@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: xmdl.lib
+Bundle-Version: 0.4.7
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Require-Bundle: xmdl.lib.commons-beanutils,
+ xmdl.lib.commons-logging,
+ xmdl.lib.log4j
