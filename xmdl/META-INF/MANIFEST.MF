@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
  xmdl.lib.log4j,
  xmdl.lib.commons-beanutils,
- xmdl.lib.commons-logging
+ xmdl.lib.commons-logging,
+ org.eclipse.emf.mapping
 Eclipse-LazyStart: true
 Export-Package: chrome.xmdl,
  chrome.xmdl.impl,
