@@ -21,15 +21,16 @@ public class RequestLogFilter implements Filter {
         LOGGER.info("RequestLogFilter initialized.");
     }
 
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    @SuppressWarnings("unchecked")
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         if (LOGGER.isDebugEnabled()) {
             StringBuffer sb = new StringBuffer();
-            Enumeration names;
+            Enumeration<String> names;
             sb.append("Logging : \n");
             names = request.getParameterNames();
             sb.append("--- Request Parameters: ---\n");
             while (names.hasMoreElements()) {
-                String name = (String) names.nextElement();
+                String name = names.nextElement();
                 sb.append("\t").append(name)
                         .append(":").append(request.getParameter(name))
                         .append("\n");
@@ -38,7 +39,7 @@ public class RequestLogFilter implements Filter {
             names = request.getAttributeNames();
             sb.append("--- Request Attributes: ---\n");
             while (names.hasMoreElements()) {
-                String name = (String) names.nextElement();
+                String name = names.nextElement();
                 sb.append("\t").append(name)
                         .append(":").append(request.getAttribute(name))
                         .append("\n");

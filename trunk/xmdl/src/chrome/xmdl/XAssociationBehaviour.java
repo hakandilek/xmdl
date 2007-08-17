@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,25 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class XAssociationBehaviour extends AbstractEnumerator {
+public enum XAssociationBehaviour implements Enumerator {
+	/**
+	 * The '<em><b>Aggregation</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #AGGREGATION
+	 * @generated
+	 * @ordered
+	 */
+	AGGREGATION_LITERAL(0, "aggregation", "aggregation"),
+	/**
+	 * The '<em><b>Composition</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #COMPOSITION
+	 * @generated
+	 * @ordered
+	 */
+	COMPOSITION_LITERAL(1, "composition", "composition");
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,28 +78,6 @@ public final class XAssociationBehaviour extends AbstractEnumerator {
 	public static final int COMPOSITION = 1;
 
 	/**
-	 * The '<em><b>Aggregation</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #AGGREGATION
-	 * @generated
-	 * @ordered
-	 */
-	public static final XAssociationBehaviour AGGREGATION_LITERAL = new XAssociationBehaviour(
-			AGGREGATION, "aggregation");
-
-	/**
-	 * The '<em><b>Composition</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #COMPOSITION
-	 * @generated
-	 * @ordered
-	 */
-	public static final XAssociationBehaviour COMPOSITION_LITERAL = new XAssociationBehaviour(
-			COMPOSITION, "composition");
-
-	/**
 	 * An array of all the '<em><b>XAssociation Behaviour</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,19 +92,19 @@ public final class XAssociationBehaviour extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays
-			.asList(VALUES_ARRAY));
+	public static final List<XAssociationBehaviour> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>XAssociation Behaviour</b></em>' literal with the specified name.
+	 * Returns the '<em><b>XAssociation Behaviour</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static XAssociationBehaviour get(String name) {
+	public static XAssociationBehaviour get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			XAssociationBehaviour result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -116,7 +112,23 @@ public final class XAssociationBehaviour extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>XAssociation Behaviour</b></em>' literal with the specified value.
+	 * Returns the '<em><b>XAssociation Behaviour</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static XAssociationBehaviour getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			XAssociationBehaviour result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>XAssociation Behaviour</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -132,13 +144,73 @@ public final class XAssociationBehaviour extends AbstractEnumerator {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private XAssociationBehaviour(int value, String name) {
-		super(value, name);
+	private XAssociationBehaviour(int value, String name, String literal) {
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //XAssociationBehaviour
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+		return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+		return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

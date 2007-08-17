@@ -6,16 +6,6 @@
  */
 package chrome.xmdldb.impl;
 
-import chrome.xmdl.XAttribute;
-import chrome.xmdl.XClass;
-
-import chrome.xmdldb.DField;
-import chrome.xmdldb.DIndex;
-import chrome.xmdldb.DPackage;
-import chrome.xmdldb.DTable;
-import chrome.xmdldb.XmdldbFactory;
-import chrome.xmdldb.XmdldbPackage;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,22 +17,24 @@ import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.DelegatingEList;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import chrome.xmdl.XAttribute;
+import chrome.xmdl.XClass;
+import chrome.xmdldb.DField;
+import chrome.xmdldb.DIndex;
+import chrome.xmdldb.DPackage;
+import chrome.xmdldb.DTable;
+import chrome.xmdldb.XmdldbFactory;
+import chrome.xmdldb.XmdldbPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>DTable</b></em>'.
@@ -95,7 +87,7 @@ public class DTableImpl extends EObjectImpl implements DTable {
 	 * @generated
 	 * @ordered
 	 */
-	protected XClass xClass = null;
+	protected XClass xClass;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -122,7 +114,7 @@ public class DTableImpl extends EObjectImpl implements DTable {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList dFields = null;
+	protected EList<DField> dFields;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -136,8 +128,9 @@ public class DTableImpl extends EObjectImpl implements DTable {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdldbPackage.eINSTANCE.getDTable();
+		return XmdldbPackage.Literals.DTABLE;
 	}
 
 	/**
@@ -189,7 +182,19 @@ public class DTableImpl extends EObjectImpl implements DTable {
 	public DPackage getDPackage() {
 		if (eContainerFeatureID != XmdldbPackage.DTABLE__DPACKAGE)
 			return null;
-		return (DPackage) eContainer;
+		return (DPackage) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDPackage(DPackage newDPackage,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newDPackage,
+				XmdldbPackage.DTABLE__DPACKAGE, msgs);
+		return msgs;
 	}
 
 	/**
@@ -197,19 +202,18 @@ public class DTableImpl extends EObjectImpl implements DTable {
 	 * @generated
 	 */
 	public void setDPackage(DPackage newDPackage) {
-		if (newDPackage != eContainer
+		if (newDPackage != eInternalContainer()
 				|| (eContainerFeatureID != XmdldbPackage.DTABLE__DPACKAGE && newDPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newDPackage))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDPackage != null)
 				msgs = ((InternalEObject) newDPackage).eInverseAdd(this,
 						XmdldbPackage.DPACKAGE__DTABLES, DPackage.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newDPackage,
-					XmdldbPackage.DTABLE__DPACKAGE, msgs);
+			msgs = basicSetDPackage(newDPackage, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -221,10 +225,10 @@ public class DTableImpl extends EObjectImpl implements DTable {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDFields() {
+	public EList<DField> getDFields() {
 		if (dFields == null) {
-			dFields = new EObjectContainmentWithInverseEList(DField.class,
-					this, XmdldbPackage.DTABLE__DFIELDS,
+			dFields = new EObjectContainmentWithInverseEList<DField>(
+					DField.class, this, XmdldbPackage.DTABLE__DFIELDS,
 					XmdldbPackage.DFIELD__DTABLE);
 		}
 		return dFields;
@@ -236,8 +240,8 @@ public class DTableImpl extends EObjectImpl implements DTable {
 	 */
 	public XClass getXClass() {
 		if (xClass != null && xClass.eIsProxy()) {
-			XClass oldXClass = xClass;
-			xClass = (XClass) eResolveProxy((InternalEObject) xClass);
+			InternalEObject oldXClass = (InternalEObject) xClass;
+			xClass = (XClass) eResolveProxy(oldXClass);
 			if (xClass != oldXClass) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -269,20 +273,20 @@ public class DTableImpl extends EObjectImpl implements DTable {
 
 	/**
 	 */
-	public EList getIndices() {
-		EList list = new BasicEList();
+	public EList<DIndex> getIndices() {
+		EList<DIndex> list = new BasicEList<DIndex>();
 
-		Map<Integer, List> idxMap = new HashMap();
+		Map<Integer, List<DField>> idxMap = new HashMap<Integer, List<DField>>();
 
 		List<DField> fields = getDFields();
 		for (int i = 0; i < fields.size(); i++) {
 			DField field = fields.get(i);
-			EList indices = field.getIndices();
+			List<Integer> indices = field.getIndices();
 			for (int j = 0; j < indices.size(); i++) {
 				Integer index = (Integer) indices.get(j);
-				List l = idxMap.get(index);
+				List<DField> l = idxMap.get(index);
 				if (l == null) {
-					l = new ArrayList();
+					l = new ArrayList<DField>();
 					idxMap.put(index, l);
 				}
 			}
@@ -303,6 +307,164 @@ public class DTableImpl extends EObjectImpl implements DTable {
 		return list;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdldbPackage.DTABLE__DPACKAGE:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetDPackage((DPackage) otherEnd, msgs);
+		case XmdldbPackage.DTABLE__DFIELDS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getDFields())
+					.basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdldbPackage.DTABLE__DPACKAGE:
+			return basicSetDPackage(null, msgs);
+		case XmdldbPackage.DTABLE__DFIELDS:
+			return ((InternalEList<?>) getDFields())
+					.basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+		case XmdldbPackage.DTABLE__DPACKAGE:
+			return eInternalContainer().eInverseRemove(this,
+					XmdldbPackage.DPACKAGE__DTABLES, DPackage.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+		case XmdldbPackage.DTABLE__PERSISTENT:
+			return isPersistent() ? Boolean.TRUE : Boolean.FALSE;
+		case XmdldbPackage.DTABLE__XCLASS:
+			if (resolve)
+				return getXClass();
+			return basicGetXClass();
+		case XmdldbPackage.DTABLE__NAME:
+			return getName();
+		case XmdldbPackage.DTABLE__DPACKAGE:
+			return getDPackage();
+		case XmdldbPackage.DTABLE__DFIELDS:
+			return getDFields();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+		case XmdldbPackage.DTABLE__PERSISTENT:
+			setPersistent(((Boolean) newValue).booleanValue());
+			return;
+		case XmdldbPackage.DTABLE__XCLASS:
+			setXClass((XClass) newValue);
+			return;
+		case XmdldbPackage.DTABLE__NAME:
+			setName((String) newValue);
+			return;
+		case XmdldbPackage.DTABLE__DPACKAGE:
+			setDPackage((DPackage) newValue);
+			return;
+		case XmdldbPackage.DTABLE__DFIELDS:
+			getDFields().clear();
+			getDFields().addAll((Collection<? extends DField>) newValue);
+			return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+		case XmdldbPackage.DTABLE__PERSISTENT:
+			setPersistent(PERSISTENT_EDEFAULT);
+			return;
+		case XmdldbPackage.DTABLE__XCLASS:
+			setXClass((XClass) null);
+			return;
+		case XmdldbPackage.DTABLE__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case XmdldbPackage.DTABLE__DPACKAGE:
+			setDPackage((DPackage) null);
+			return;
+		case XmdldbPackage.DTABLE__DFIELDS:
+			getDFields().clear();
+			return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+		case XmdldbPackage.DTABLE__PERSISTENT:
+			return persistent != PERSISTENT_EDEFAULT;
+		case XmdldbPackage.DTABLE__XCLASS:
+			return xClass != null;
+		case XmdldbPackage.DTABLE__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
+		case XmdldbPackage.DTABLE__DPACKAGE:
+			return getDPackage() != null;
+		case XmdldbPackage.DTABLE__DFIELDS:
+			return dFields != null && !dFields.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
+
 	private String fieldsAsString() {
 		StringBuffer sb = new StringBuffer();
 		List<DField> fields = getDFields();
@@ -320,164 +482,7 @@ public class DTableImpl extends EObjectImpl implements DTable {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdldbPackage.DTABLE__DPACKAGE:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-						XmdldbPackage.DTABLE__DPACKAGE, msgs);
-			case XmdldbPackage.DTABLE__DFIELDS:
-				return ((InternalEList) getDFields()).basicAdd(otherEnd, msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdldbPackage.DTABLE__DPACKAGE:
-				return eBasicSetContainer(null, XmdldbPackage.DTABLE__DPACKAGE,
-						msgs);
-			case XmdldbPackage.DTABLE__DFIELDS:
-				return ((InternalEList) getDFields()).basicRemove(otherEnd,
-						msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-			case XmdldbPackage.DTABLE__DPACKAGE:
-				return eContainer.eInverseRemove(this,
-						XmdldbPackage.DPACKAGE__DTABLES, DPackage.class, msgs);
-			default:
-				return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-				- eContainerFeatureID, null, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdldbPackage.DTABLE__PERSISTENT:
-			return isPersistent() ? Boolean.TRUE : Boolean.FALSE;
-		case XmdldbPackage.DTABLE__XCLASS:
-			if (resolve)
-				return getXClass();
-			return basicGetXClass();
-		case XmdldbPackage.DTABLE__NAME:
-			return getName();
-		case XmdldbPackage.DTABLE__DPACKAGE:
-			return getDPackage();
-		case XmdldbPackage.DTABLE__DFIELDS:
-			return getDFields();
-		}
-		return eDynamicGet(eFeature, resolve);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdldbPackage.DTABLE__PERSISTENT:
-			setPersistent(((Boolean) newValue).booleanValue());
-			return;
-		case XmdldbPackage.DTABLE__XCLASS:
-			setXClass((XClass) newValue);
-			return;
-		case XmdldbPackage.DTABLE__NAME:
-			setName((String) newValue);
-			return;
-		case XmdldbPackage.DTABLE__DPACKAGE:
-			setDPackage((DPackage) newValue);
-			return;
-		case XmdldbPackage.DTABLE__DFIELDS:
-			getDFields().clear();
-			getDFields().addAll((Collection) newValue);
-			return;
-		}
-		eDynamicSet(eFeature, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdldbPackage.DTABLE__PERSISTENT:
-			setPersistent(PERSISTENT_EDEFAULT);
-			return;
-		case XmdldbPackage.DTABLE__XCLASS:
-			setXClass((XClass) null);
-			return;
-		case XmdldbPackage.DTABLE__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case XmdldbPackage.DTABLE__DPACKAGE:
-			setDPackage((DPackage) null);
-			return;
-		case XmdldbPackage.DTABLE__DFIELDS:
-			getDFields().clear();
-			return;
-		}
-		eDynamicUnset(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdldbPackage.DTABLE__PERSISTENT:
-			return persistent != PERSISTENT_EDEFAULT;
-		case XmdldbPackage.DTABLE__XCLASS:
-			return xClass != null;
-		case XmdldbPackage.DTABLE__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
-		case XmdldbPackage.DTABLE__DPACKAGE:
-			return getDPackage() != null;
-		case XmdldbPackage.DTABLE__DFIELDS:
-			return dFields != null && !dFields.isEmpty();
-		}
-		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -500,13 +505,14 @@ public class DTableImpl extends EObjectImpl implements DTable {
 		setName("TBL_" + xClass.getName().toUpperCase(Locale.ENGLISH));
 
 		// Attribute Loop
-		for (Iterator it = xClass.getAttributes().iterator(); it.hasNext();) {
+		for (Iterator<XAttribute> it = xClass.getAttributes().iterator(); it
+				.hasNext();) {
 			XAttribute xAttribute = (XAttribute) it.next();
 
 			DField foundField = null;
 
-			EList dFields = getDFields();
-			for (Iterator it2 = dFields.iterator(); it2.hasNext();) {
+			EList<DField> dFields = getDFields();
+			for (Iterator<DField> it2 = dFields.iterator(); it2.hasNext();) {
 				DField dField = (DField) it2.next();
 				if (xAttribute.equals(dField.getXAttribute())) {
 					foundField = dField;

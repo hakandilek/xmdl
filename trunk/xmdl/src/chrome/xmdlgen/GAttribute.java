@@ -129,7 +129,7 @@ public interface GAttribute extends EObject{
 	 * @see #setGClass(GClass)
 	 * @see chrome.xmdlgen.XmdlgenPackage#getGAttribute_GClass()
 	 * @see chrome.xmdlgen.GClass#getGAttributes
-	 * @model opposite="gAttributes" required="true"
+	 * @model opposite="gAttributes" required="true" transient="false"
 	 * @generated
 	 */
 	GClass getGClass();

@@ -61,6 +61,7 @@ public class XmdldbAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -77,40 +78,49 @@ public class XmdldbAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected XmdldbSwitch modelSwitch = new XmdldbSwitch() {
-		public Object caseDModel(DModel object) {
+	protected XmdldbSwitch<Adapter> modelSwitch = new XmdldbSwitch<Adapter>() {
+		@Override
+		public Adapter caseDModel(DModel object) {
 			return createDModelAdapter();
 		}
 
-		public Object caseDPackage(DPackage object) {
+		@Override
+		public Adapter caseDPackage(DPackage object) {
 			return createDPackageAdapter();
 		}
 
-		public Object caseDTable(DTable object) {
+		@Override
+		public Adapter caseDTable(DTable object) {
 			return createDTableAdapter();
 		}
 
-		public Object caseDField(DField object) {
+		@Override
+		public Adapter caseDField(DField object) {
 			return createDFieldAdapter();
 		}
 
-		public Object caseXMDLDBModel(XMDLDBModel object) {
+		@Override
+		public Adapter caseXMDLDBModel(XMDLDBModel object) {
 			return createXMDLDBModelAdapter();
 		}
 
-		public Object caseDIndex(DIndex object) {
+		@Override
+		public Adapter caseDIndex(DIndex object) {
 			return createDIndexAdapter();
 		}
 
-		public Object casePersistable(Persistable object) {
+		@Override
+		public Adapter casePersistable(Persistable object) {
 			return createPersistableAdapter();
 		}
 
-		public Object caseXModel(XModel object) {
+		@Override
+		public Adapter caseXModel(XModel object) {
 			return createXModelAdapter();
 		}
 
-		public Object defaultCase(EObject object) {
+		@Override
+		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
 	};
@@ -123,8 +133,9 @@ public class XmdldbAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter) modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
 
 	/**

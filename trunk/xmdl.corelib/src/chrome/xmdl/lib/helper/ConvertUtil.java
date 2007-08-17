@@ -1,16 +1,20 @@
 package chrome.xmdl.lib.helper;
 
+import java.beans.PropertyDescriptor;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.ResourceBundle;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.aop.support.AopUtils;
 
-import java.beans.PropertyDescriptor;
-import java.util.*;
-
-import chrome.xmdl.lib.dao.Bean;
 import chrome.xmdl.lib.ui.web.form.Form;
 
 
@@ -39,28 +43,17 @@ public final class ConvertUtil {
      * @param rb a given resource bundle
      * @return Map a populated map
      */
-    public static Map convertBundleToMap(ResourceBundle rb) {
-        Map map = new HashMap();
+    public static Map<String, String> convertBundleToMap(ResourceBundle rb) {
+        Map<String, String> map = new HashMap<String, String>();
 
-        for (Enumeration keys = rb.getKeys(); keys.hasMoreElements();) {
-            String key = (String) keys.nextElement();
+        for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements();) {
+            String key = keys.nextElement();
             map.put(key, rb.getString(key));
         }
 
         return map;
     }
     
-//    public static Map convertListToMap(List list) {
-//        Map map = new LinkedHashMap();
-//
-//        for (Iterator it = list.iterator(); it.hasNext();) {
-//            LabelValue option = (LabelValue) it.next();
-//            map.put(option.getLabel(), option.getValue());
-//        }
-//
-//        return map;
-//    }
-
     /**
      * Method to convert a ResourceBundle to a Properties object.
      * @param rb a given resource bundle
@@ -69,8 +62,8 @@ public final class ConvertUtil {
     public static Properties convertBundleToProperties(ResourceBundle rb) {
         Properties props = new Properties();
 
-        for (Enumeration keys = rb.getKeys(); keys.hasMoreElements();) {
-            String key = (String) keys.nextElement();
+        for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements();) {
+            String key = keys.nextElement();
             props.put(key, rb.getString(key));
         }
 
@@ -86,8 +79,7 @@ public final class ConvertUtil {
      */
     public static Object populateObject(Object obj, ResourceBundle rb) {
         try {
-            Map map = convertBundleToMap(rb);
-
+            Map<String, String> map = convertBundleToMap(rb);
             BeanUtils.copyProperties(obj, map);
         } catch (Exception e) {
             e.printStackTrace();
@@ -130,7 +122,7 @@ public final class ConvertUtil {
             name += "Form";
         }
 
-        Class obj = Class.forName(name);
+        Class<?> obj = Class.forName(name);
 
         if (log.isDebugEnabled()) {
             log.debug("returning className: " + obj.getName());
@@ -162,7 +154,8 @@ public final class ConvertUtil {
      * @return
      * @throws Exception
      */
-    public static Object convertLists(Object o) throws Exception {
+    @SuppressWarnings("unchecked")
+	public static Object convertLists(Object o) throws Exception {
         if (o == null) {
             return null;
         }
@@ -176,7 +169,7 @@ public final class ConvertUtil {
             String name = origDescriptors[i].getName();
 
             if (origDescriptors[i].getPropertyType().equals(List.class)) {
-                List list = (List) PropertyUtils.getProperty(o, name);
+                List<Object> list = (List) PropertyUtils.getProperty(o, name);
                 for (int j=0; j < list.size(); j++) {
                     Object origin = list.get(j);
                     target = convert(origin);

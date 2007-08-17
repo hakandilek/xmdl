@@ -3,9 +3,7 @@
 	imports="java.util.* 
 			chrome.xmdl.*
 			chrome.xmdl.gen.util.*
-			chrome.xmdl.core.util.*			
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+			chrome.xmdl.core.util.*"
 	class="ApplicationContextDAOImpl" 
 %><%
 	XPackage xPackage = (XPackage) argument;	
@@ -58,7 +56,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-<%for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 		XClass xClass = (XClass) it.next();
 %>
     <!-- <%=helper.getCapName(xClass)%>DAO: Hibernate implementation -->

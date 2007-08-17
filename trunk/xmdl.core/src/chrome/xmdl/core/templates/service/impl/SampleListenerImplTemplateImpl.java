@@ -1,7 +1,6 @@
 package chrome.xmdl.core.templates.service.impl;
 
 import chrome.xmdl.*;
-import chrome.xmdl.core.util.*;
 import chrome.xmdl.gen.util.*;
 import org.eclipse.emf.codegen.util.*;
 
@@ -30,7 +29,6 @@ public class SampleListenerImplTemplateImpl
     XProject xProject = (XProject) argument;
     XPackage xPackage = (XPackage) xProject.getPackages().get(0);
      
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     

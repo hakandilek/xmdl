@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see chrome.xmdlgen.XmdlgenPackage
  * @generated
  */
-public class XmdlgenSwitch {
+public class XmdlgenSwitch<T> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,7 +63,7 @@ public class XmdlgenSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -74,16 +74,16 @@ public class XmdlgenSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
 		else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return
 				eSuperTypes.isEmpty() ?
 					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
+					doSwitch(eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -94,35 +94,35 @@ public class XmdlgenSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case XmdlgenPackage.GMODEL: {
 				GModel gModel = (GModel)theEObject;
-				Object result = caseGModel(gModel);
+				T result = caseGModel(gModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case XmdlgenPackage.GPACKAGE: {
 				GPackage gPackage = (GPackage)theEObject;
-				Object result = caseGPackage(gPackage);
+				T result = caseGPackage(gPackage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case XmdlgenPackage.GCLASS: {
 				GClass gClass = (GClass)theEObject;
-				Object result = caseGClass(gClass);
+				T result = caseGClass(gClass);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case XmdlgenPackage.GATTRIBUTE: {
 				GAttribute gAttribute = (GAttribute)theEObject;
-				Object result = caseGAttribute(gAttribute);
+				T result = caseGAttribute(gAttribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case XmdlgenPackage.XMDL_GEN_MODEL: {
 				XMDLGenModel xmdlGenModel = (XMDLGenModel)theEObject;
-				Object result = caseXMDLGenModel(xmdlGenModel);
+				T result = caseXMDLGenModel(xmdlGenModel);
 				if (result == null) result = caseXModel(xmdlGenModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -132,107 +132,107 @@ public class XmdlgenSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>GModel</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>GModel</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>GModel</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>GModel</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGModel(GModel object) {
+	public T caseGModel(GModel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>GPackage</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>GPackage</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>GPackage</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>GPackage</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGPackage(GPackage object) {
+	public T caseGPackage(GPackage object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>GClass</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>GClass</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>GClass</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>GClass</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGClass(GClass object) {
+	public T caseGClass(GClass object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>GAttribute</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>GAttribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>GAttribute</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>GAttribute</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseGAttribute(GAttribute object) {
+	public T caseGAttribute(GAttribute object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XMDL Gen Model</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XMDL Gen Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XMDL Gen Model</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XMDL Gen Model</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXMDLGenModel(XMDLGenModel object) {
+	public T caseXMDLGenModel(XMDLGenModel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XModel</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XModel</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XModel</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XModel</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXModel(XModel object) {
+	public T caseXModel(XModel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

@@ -2,7 +2,6 @@ package chrome.xmdl.core.templates.model.impl;
 
 import java.util.*;
 import chrome.xmdl.*;
-import chrome.xmdl.core.util.*;
 import chrome.xmdl.gen.util.*;
 import org.eclipse.emf.codegen.util.*;
 
@@ -54,7 +53,6 @@ public class EntityImplTemplateImpl
     
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage(); 
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLEntityHelper.INSTANCE;    
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");
     
@@ -85,7 +83,7 @@ public class EntityImplTemplateImpl
     stringBuffer.append(TEXT_8);
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_9);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null) {
     stringBuffer.append(TEXT_10);
@@ -98,7 +96,7 @@ public class EntityImplTemplateImpl
     }
     }
     stringBuffer.append(TEXT_14);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null) {
     stringBuffer.append(TEXT_15);
@@ -121,7 +119,7 @@ public class EntityImplTemplateImpl
     }//if (attribute.getType() !=null
     }//for
     stringBuffer.append(TEXT_24);
-    for (Iterator i= xClass.getSimpleAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getSimpleAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_25);

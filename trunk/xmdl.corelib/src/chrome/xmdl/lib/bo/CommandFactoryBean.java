@@ -11,7 +11,9 @@ import org.springframework.core.io.Resource;
  * @author hd
  */
 public class CommandFactoryBean extends ChainListener {
-    private Resource[] locations;
+    
+	private Resource[] locations;
+
     private String ruleSet;
 
     public void setLocations(Resource[] locations) {
@@ -21,13 +23,20 @@ public class CommandFactoryBean extends ChainListener {
     public void setRuleSet(String ruleSet) {
         this.ruleSet = ruleSet;
     }
+    
+    public Resource[] getLocations() {
+		return locations;
+	}
 
-    public CommandFactoryBean() {
+	public String getRuleSet() {
+		return ruleSet;
+	}
+
+	public CommandFactoryBean() {
         initialize();
     }
 
     protected void initialize() {
-        Catalog catalog = createCatalog();
         // Construct the configuration resource parser we will use
         ConfigParser parser = new ConfigParser();
         if (ruleSet != null) {
@@ -37,7 +46,7 @@ public class CommandFactoryBean extends ChainListener {
                 if (loader == null) {
                     loader = this.getClass().getClassLoader();
                 }
-                Class clazz = loader.loadClass(ruleSet);
+                Class<?> clazz = loader.loadClass(ruleSet);
                 parser.setRuleSet((RuleSet) clazz.newInstance());
             } catch (Exception e) {
                 throw new RuntimeException("Exception initalizing RuleSet '"
@@ -68,4 +77,6 @@ public class CommandFactoryBean extends ChainListener {
         catalog = new CatalogBase();
         return catalog;
     }
+    
+    
 }

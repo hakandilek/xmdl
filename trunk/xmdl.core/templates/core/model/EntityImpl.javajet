@@ -2,14 +2,12 @@
     package="chrome.xmdl.core.templates.model.impl" 
     imports="java.util.* 
             chrome.xmdl.*
-			chrome.xmdl.core.util.*
             chrome.xmdl.gen.util.*
             org.eclipse.emf.codegen.util.*"
     class="EntityImplTemplateImpl" %>    
 <%
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage(); 
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLEntityHelper.INSTANCE;    
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");
     %>
@@ -42,7 +40,7 @@ public class <%=helper.getCapName(xClass)%>Impl extends AbstractEntity implement
      */
     public <%=helper.getCapName(xClass)%>Impl() { }
         
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null) {%>
     /** 
@@ -53,7 +51,7 @@ public class <%=helper.getCapName(xClass)%>Impl extends AbstractEntity implement
 <%}%>
 
 
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null) {%>
     /**
@@ -77,7 +75,7 @@ public class <%=helper.getCapName(xClass)%>Impl extends AbstractEntity implement
      */
     public String toString() {
         return getClass() + "(" + getID() + ")" +
-<%for (Iterator i= xClass.getSimpleAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getSimpleAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
 "[<%=attribute.getName()%>:" + <%=helper.getGetAccessor(attribute)%>() + "]" <%=i.hasNext() ? "+" : ";"%>

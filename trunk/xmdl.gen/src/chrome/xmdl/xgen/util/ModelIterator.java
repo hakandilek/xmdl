@@ -30,7 +30,7 @@ public class ModelIterator implements Iterator<EObject>{
 				XClass class1 =  iterator.next();
 				list.add(class1);
 			}
-			List enumerations = element.getEnumerations();
+			List<XEnumeration> enumerations = element.getEnumerations();
 			for (Iterator<XEnumeration> iterator = enumerations.iterator(); iterator.hasNext();) {
 				XEnumeration enumer= iterator.next();
 				list.add(enumer);
@@ -42,12 +42,12 @@ public class ModelIterator implements Iterator<EObject>{
 		
 		ArrayList<EObject> list = new ArrayList<EObject>();
 		list.add(root);
-		List packages = root.getDPackages();
-		for (Iterator iter = packages.iterator(); iter.hasNext();) {
+		List<DPackage> packages = root.getDPackages();
+		for (Iterator<DPackage> iter = packages.iterator(); iter.hasNext();) {
 			DPackage element = (DPackage) iter.next();
 			list.add(element);
-			List classes = element.getDTables();
-			for (Iterator iterator = classes.iterator(); iterator.hasNext();) {
+			List<DTable> tables = element.getDTables();
+			for (Iterator<DTable> iterator = tables.iterator(); iterator.hasNext();) {
 				DTable class1 = (DTable) iterator.next();
 				list.add(class1);
 			}

@@ -1,10 +1,10 @@
 <%@ jet 
 	package="chrome.xmdl.core.templates.ui.web.include.impl" 
-	imports="java.util.* 
+	imports="
+            java.util.* 
 			chrome.xmdl.*
 			chrome.xmdl.gen.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+			"
 	class="MenuJSPImpl"
 	startTag="<$" endTag="$>" 
 %><$ 
@@ -18,9 +18,9 @@ $><%@ include file="/include/taglibs.jsp"%>
 <menu:useMenuDisplayer name="TabbedMenu"
     bundle="org.apache.struts.action.MESSAGE">
     <menu:displayMenu name="Home"/>
-	<$for (Iterator i = project.getPackages().iterator(); i.hasNext();) {
+	<$for (Iterator<XPackage> i = project.getPackages().iterator(); i.hasNext();) {
 	    XPackage xPackage = (XPackage) i.next();$>
-		<$for (Iterator i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
+		<$for (Iterator<XClass> i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
 		    XClass xClass = (XClass) i2.next();
 		    if (MasterChildHelper.INST.isMaster(xClass)) {
 		    $>

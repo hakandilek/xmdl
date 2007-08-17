@@ -6,16 +6,13 @@
  */
 package chrome.xmdl.impl;
 
-import chrome.xmdl.XException;
-import chrome.xmdl.XmdlPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import chrome.xmdl.XException;
+import chrome.xmdl.XmdlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,16 +36,6 @@ public class XExceptionImpl extends EObjectImpl implements XException {
 	public static final String copyright = "hd";
 
 	/**
-	 * The default value of the '{@link #getJavaClass() <em>Java Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getJavaClass()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Class JAVA_CLASS_EDEFAULT = Exception.class;
-
-	/**
 	 * The cached value of the '{@link #getJavaClass() <em>Java Class</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,7 +43,7 @@ public class XExceptionImpl extends EObjectImpl implements XException {
 	 * @generated
 	 * @ordered
 	 */
-	protected Class javaClass = JAVA_CLASS_EDEFAULT;
+	protected Class<?> javaClass;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,8 +59,9 @@ public class XExceptionImpl extends EObjectImpl implements XException {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlPackage.eINSTANCE.getXException();
+		return XmdlPackage.Literals.XEXCEPTION;
 	}
 
 	/**
@@ -81,7 +69,7 @@ public class XExceptionImpl extends EObjectImpl implements XException {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Class getJavaClass() {
+	public Class<?> getJavaClass() {
 		return javaClass;
 	}
 
@@ -90,8 +78,8 @@ public class XExceptionImpl extends EObjectImpl implements XException {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setJavaClass(Class newJavaClass) {
-		Class oldJavaClass = javaClass;
+	public void setJavaClass(Class<?> newJavaClass) {
+		Class<?> oldJavaClass = javaClass;
 		javaClass = newJavaClass;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
@@ -103,12 +91,13 @@ public class XExceptionImpl extends EObjectImpl implements XException {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case XmdlPackage.XEXCEPTION__JAVA_CLASS:
 			return getJavaClass();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -116,13 +105,14 @@ public class XExceptionImpl extends EObjectImpl implements XException {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 		case XmdlPackage.XEXCEPTION__JAVA_CLASS:
-			setJavaClass((Class) newValue);
+			setJavaClass((Class<?>) newValue);
 			return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -130,13 +120,14 @@ public class XExceptionImpl extends EObjectImpl implements XException {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XEXCEPTION__JAVA_CLASS:
-			setJavaClass(JAVA_CLASS_EDEFAULT);
+			setJavaClass((Class<?>) null);
 			return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -144,13 +135,13 @@ public class XExceptionImpl extends EObjectImpl implements XException {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XEXCEPTION__JAVA_CLASS:
-			return JAVA_CLASS_EDEFAULT == null ? javaClass != null
-					: !JAVA_CLASS_EDEFAULT.equals(javaClass);
+			return javaClass != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -158,6 +149,7 @@ public class XExceptionImpl extends EObjectImpl implements XException {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

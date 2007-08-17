@@ -1,11 +1,10 @@
 <%@ jet 
 	package="chrome.xmdl.core.templates.ui.web.jsp.part.impl" 
-	imports="java.util.* 
+	imports="
 			chrome.xmdl.*
 			chrome.xmdl.gen.util.*
 			chrome.xmdl.core.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+			"
 	class="SearchFormFieldDateImpl"
 	startTag="<$" endTag="$>" 
 %><$

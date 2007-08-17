@@ -2,7 +2,6 @@ package chrome.xmdl.core.templates.ui.web.form.impl;
 
 import java.util.*;
 import chrome.xmdl.*;
-import chrome.xmdl.core.util.*;
 import chrome.xmdl.gen.util.*;
 import org.eclipse.emf.codegen.util.*;
 
@@ -79,9 +78,7 @@ public class EntityFormImpl
     
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage();
-    XProject  xProject = xPackage.getProject(); 
      
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     
@@ -142,7 +139,7 @@ public class EntityFormImpl
     }
 	   } 
     stringBuffer.append(TEXT_20);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() instanceof XEnumeration) {
     stringBuffer.append(TEXT_21);

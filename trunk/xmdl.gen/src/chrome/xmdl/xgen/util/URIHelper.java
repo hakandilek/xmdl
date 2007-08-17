@@ -6,6 +6,7 @@ import java.net.URL;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 
+@SuppressWarnings("deprecation")
 public class URIHelper {
 
 	protected static URI fix(URL url, String fragment) throws IOException {

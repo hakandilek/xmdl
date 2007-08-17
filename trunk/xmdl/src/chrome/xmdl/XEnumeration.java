@@ -64,10 +64,10 @@ public interface XEnumeration extends XBase, XType {
 	 * @return the value of the '<em>Literals</em>' containment reference list.
 	 * @see chrome.xmdl.XmdlPackage#getXEnumeration_Literals()
 	 * @see chrome.xmdl.XEnumerationLiteral#getEnumeration
-	 * @model type="chrome.xmdl.XEnumerationLiteral" opposite="enumeration" containment="true"
+	 * @model opposite="enumeration" containment="true"
 	 * @generated
 	 */
-	EList getLiterals();
+	EList<XEnumerationLiteral> getLiterals();
 
 	/**
 	 * Returns the value of the '<em><b>Default Literal</b></em>' reference.

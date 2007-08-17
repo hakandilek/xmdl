@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.criterion.Example;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.apache.commons.logging.LogFactory;
@@ -41,9 +42,10 @@ public abstract class HibernateDAO <E extends Entity>
      *
      * @return Entity Class type
      */
-    protected abstract Class getEntityClass();
+    protected abstract Class<E> getEntityClass();
 
-    public List<E> findAll(Serializable[] pks, Identifier identifier) throws DataAccessException {
+    @SuppressWarnings("unchecked")
+	public List<E> findAll(Serializable[] pks, Identifier identifier) throws DataAccessException {
         LOGGER.debug("HibernateDAO.findAll");
         if (pks == null)
             return Collections.emptyList();
@@ -54,7 +56,8 @@ public abstract class HibernateDAO <E extends Entity>
         try {
             Query _query = getSession().createQuery("from " + getEntityClass().getName() + " as o where o.ID in (:IDset) ");
             _query.setParameterList("IDset", array, Hibernate.LONG);
-            return _query.list();
+            List<E> list = _query.list();
+			return list;
         } catch (HibernateException e) {
             throw convertException(e);                   
         }
@@ -114,47 +117,59 @@ public abstract class HibernateDAO <E extends Entity>
         }
     }
 
-    public List<E> findAll(Identifier identifier) throws DataAccessException {
+    @SuppressWarnings("unchecked")
+	public List<E> findAll(Identifier identifier) throws DataAccessException {
         LOGGER.debug("HibernateDAO.findAll");
         List<E> items;
         try {
-            Class clazz = getEntityClass();
-            items = getSession().createCriteria(clazz).list();
+            Class<E> clazz = getEntityClass();
+            Session session = getSession();
+			Criteria criteria = session.createCriteria(clazz);
+			items = criteria.list();
         } catch (HibernateException ex) {
             throw convertException(ex);
         }
         return items;
     }
 
-    public List<E> findByExample(E sample, Identifier identifier)
+    @SuppressWarnings("unchecked")
+	public List<E> findByExample(E sample, Identifier identifier)
             throws DataAccessException {
         LOGGER.debug("HibernateDAO.findByExample");
         List<E> list;
         try {
-            Class clazz = getEntityClass();
+            Class<E> clazz = getEntityClass();
             Criteria crit = getSession().createCriteria(clazz);
-            list = crit.add(Example.create(sample)).list();
+            Example example = Example.create(sample);
+			Criteria criteria = crit.add(example);
+			list = criteria.list();
         } catch (HibernateException ex) {
             throw convertException(ex);
         }
         return list;
     }
 
-    public E load(Serializable pk, Identifier identifier) throws DataAccessException {
+    @SuppressWarnings("unchecked")
+	public E load(Serializable pk, Identifier identifier) throws DataAccessException {
         LOGGER.debug("HibernateDAO.load");
-        Class entityClass = getEntityClass();
+        Class<E> entityClass = getEntityClass();
         try {
-            return (E) getSession().get(entityClass, pk);
+            Session session = getSession();
+			E e = (E) session.get(entityClass, pk);
+			return e;
         } catch (HibernateException e) {
             throw convertException(e);
         }
     }
 
-    public E loadLazy(Serializable pk, Identifier identifier) throws DataAccessException {
+    @SuppressWarnings("unchecked")
+	public E loadLazy(Serializable pk, Identifier identifier) throws DataAccessException {
         LOGGER.debug("HibernateDAO.loadLazy");
-        Class entityClass = getEntityClass();
+        Class<E> entityClass = getEntityClass();
         try {
-            return (E) getSession().load(entityClass, pk);
+            Session session = getSession();
+			E load = (E) session.load(entityClass, pk);
+			return load;
         } catch (HibernateException e) {
             throw convertException(e);
         }

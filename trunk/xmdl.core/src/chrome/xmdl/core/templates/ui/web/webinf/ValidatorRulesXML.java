@@ -11,8 +11,6 @@ public class ValidatorRulesXML
 	public String targetFile(Object object) {
 		
 		StringBuffer buffer = new StringBuffer("web/");		
-		XProject project = (XProject) object;
-
 
 		buffer.append("WEB-INF/");
 		buffer.append("validator-rules.xml");

@@ -47,6 +47,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//BParameter" containment="true" eOpposite="#//BParameter/method"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="service" eType="#//BService"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="service" eType="#//BService"
+        eOpposite="#//BService/methods"/>
   </eClassifiers>
 </ecore:EPackage>

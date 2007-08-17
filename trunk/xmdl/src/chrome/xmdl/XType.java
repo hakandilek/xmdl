@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link chrome.xmdl.XType#getName <em>Name</em>}</li>
  *   <li>{@link chrome.xmdl.XType#getClassName <em>Class Name</em>}</li>
- *   <li>{@link chrome.xmdl.XType#getXPackage <em>XPackage</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model interface="true" abstract="true"
  * @generated NOT
  */
-public interface XType extends EObject, Comparable {
+public interface XType extends EObject, Comparable<XType> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -114,22 +113,6 @@ public interface XType extends EObject, Comparable {
 	boolean isSetClassName();
 
 	/**
-	 * Returns the value of the '<em><b>XPackage</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>XPackage</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>XPackage</em>' reference.
-	 * @see #setXPackage(XPackage)
-	 * @see chrome.xmdl.XmdlPackage#getXType_XPackage()
-	 * @model required="true" derived="true"
-	 * @generated
-	 */
-	XPackage getXPackage();
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
@@ -153,12 +136,7 @@ public interface XType extends EObject, Comparable {
 	 */
 	boolean isBasic();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true" oRequired="true"
-	 * @generated
-	 */
-	int compareTo(Object o);
+	/** @return the package containing this type */
+	XPackage getXPackage();
 
 } // XType

@@ -5,8 +5,6 @@ import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
 import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class EntityEditJSPImpl
 {
@@ -78,7 +76,7 @@ public class EntityEditJSPImpl
 	XClass xClass = (XClass) argument;	
 	ClassHelper helper = XMDLClassHelper.INSTANCE;
 	XAttribute firstAttribute = null;
-	List attributes = xClass.getAttributes();
+	List<XAttribute> attributes = xClass.getAttributes();
 	if (attributes != null && attributes.size() >0 ){
 		firstAttribute = (XAttribute) attributes.get(0);
 	}
@@ -98,7 +96,7 @@ public class EntityEditJSPImpl
     stringBuffer.append(TEXT_7);
     stringBuffer.append(helper.uncapSafeName(xClass));
     stringBuffer.append(TEXT_8);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	    XAttribute attribute = (XAttribute) i.next();
     stringBuffer.append(TEXT_9);
       if (!attribute.isReference()) {  
@@ -114,8 +112,8 @@ public class EntityEditJSPImpl
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_14);
      if (MasterChildHelper.INST.isMaster(xClass)) {
-	  List children = MasterChildHelper.INST.getChildren(xClass);		
-	  for (Iterator it = children.iterator(); it.hasNext();) {
+	  List<XClass> children = MasterChildHelper.INST.getChildren(xClass);		
+	  for (Iterator<XClass> it = children.iterator(); it.hasNext();) {
 		  XClass child = (XClass) it.next();
 
     stringBuffer.append(TEXT_15);
@@ -140,7 +138,7 @@ public class EntityEditJSPImpl
     stringBuffer.append(TEXT_24);
     stringBuffer.append(helper.getObjectName(xClass));
     stringBuffer.append(TEXT_25);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	    XAttribute attribute = (XAttribute) i.next();
 	    XType t = attribute.getType();
 	    boolean comp = t.isComparable();
@@ -169,8 +167,8 @@ public class EntityEditJSPImpl
     stringBuffer.append(helper.getObjectName(xClass));
     stringBuffer.append(TEXT_37);
      if (MasterChildHelper.INST.isMaster(xClass)) {
-		  List children = MasterChildHelper.INST.getChildren(xClass);		
-		  for (Iterator it = children.iterator(); it.hasNext();) {
+		  List<XClass> children = MasterChildHelper.INST.getChildren(xClass);		
+		  for (Iterator<XClass> it = children.iterator(); it.hasNext();) {
 			  XClass child = (XClass) it.next();
 	
     stringBuffer.append(TEXT_38);

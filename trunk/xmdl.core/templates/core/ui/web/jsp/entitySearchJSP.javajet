@@ -4,16 +4,14 @@
 			chrome.xmdl.*
 			chrome.xmdl.gen.util.*
 			chrome.xmdl.core.util.*
-			chrome.xmdl.xgen.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+			chrome.xmdl.xgen.*"
 	class="EntitySearchJSPImpl"
 	startTag="<$" endTag="$>" 
 %><$
 	XClass xClass = (XClass) argument;	
 	ClassHelper helper = XMDLClassHelper.INSTANCE;
 	XAttribute firstAttribute = null;
-	List attributes = xClass.getAttributes();
+	List<XAttribute> attributes = xClass.getAttributes();
 	if (attributes != null && attributes.size() >0 ){
 		firstAttribute = (XAttribute) attributes.get(0);
 	}	
@@ -32,7 +30,7 @@ $>
     styleClass="<$=helper.uncapSafeName(xClass)$>Form" <$=firstAttribute != null ? "focus=\""+ helper.uncapSafeName(xClass) + "." + helper.uncapSafeName(firstAttribute)  +"\"" : "" $> 
     onsubmit="return validate<$=helper.getCapName(xClass)$>Form(this)">
     
-	<$for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+	<$for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	    XAttribute attribute = (XAttribute) i.next();$>
 	<$  if (!attribute.isReference()) {  
 		Template t = UIHelper.getSearchFormFieldTemplate(attribute);
@@ -67,7 +65,7 @@ $>
         paramId="ID" paramProperty="ID"
         titleKey="<$=helper.getObjectName(xClass)$>.list.ID"/>
         
-	<$for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+	<$for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	    XAttribute attribute = (XAttribute) i.next();
 	    XType t = attribute.getType();
 	    boolean comp = t.isComparable();

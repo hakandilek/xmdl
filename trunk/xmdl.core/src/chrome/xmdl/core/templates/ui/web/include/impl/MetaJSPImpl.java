@@ -1,11 +1,5 @@
 package chrome.xmdl.core.templates.ui.web.include.impl;
 
-import java.util.*;
-import chrome.xmdl.*;
-import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
-
 public class MetaJSPImpl
 {
   protected static String nl;
@@ -18,15 +12,11 @@ public class MetaJSPImpl
   }
 
   public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
-  protected final String TEXT_1 = "        <!-- HTTP 1.1 -->" + NL + "        <meta http-equiv=\"Cache-Control\" content=\"no-store\"/>" + NL + "        <!-- HTTP 1.0 -->" + NL + "        <meta http-equiv=\"Pragma\" content=\"no-cache\"/>" + NL + "        <!-- Prevents caching at the Proxy Server -->" + NL + "        <meta http-equiv=\"Expires\" content=\"0\"/>" + NL + "        " + NL + "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-9\"/> " + NL + "        <c:set var=\"ctxPath\" value=\"${pageContext.request.contextPath}\" scope=\"request\"/>" + NL + "        <link rel=\"icon\" href=\"<c:url value=\"/images/favicon.ico\"/>\"/>";
+  protected final String TEXT_1 = "    <!-- HTTP 1.1 -->" + NL + "    <meta http-equiv=\"Cache-Control\" content=\"no-store\"/>" + NL + "    <!-- HTTP 1.0 -->" + NL + "    <meta http-equiv=\"Pragma\" content=\"no-cache\"/>" + NL + "    <!-- Prevents caching at the Proxy Server -->" + NL + "    <meta http-equiv=\"Expires\" content=\"0\"/>" + NL + "    " + NL + "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-9\"/> " + NL + "    <c:set var=\"ctxPath\" value=\"${pageContext.request.contextPath}\" scope=\"request\"/>" + NL + "    <link rel=\"icon\" href=\"<c:url value=\"/images/favicon.ico\"/>\"/>";
 
   public String generate(Object argument)
   {
     final StringBuffer stringBuffer = new StringBuffer();
-     
-	XProject project = (XProject) argument;	
-	ClassHelper helper = XMDLClassHelper.INSTANCE;
-
     stringBuffer.append(TEXT_1);
     return stringBuffer.toString();
   }

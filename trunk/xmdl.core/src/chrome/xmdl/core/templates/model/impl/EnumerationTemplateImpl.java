@@ -20,7 +20,7 @@ public class EnumerationTemplateImpl
   protected final String TEXT_1 = "package ";
   protected final String TEXT_2 = ".model;";
   protected final String TEXT_3 = NL;
-  protected final String TEXT_4 = NL + "/** " + NL + " * $Id$" + NL + " * Created: 15.�ub.2006 08:22:32" + NL + " *" + NL + " * @author hd" + NL + " * @generated" + NL + " */" + NL + "public class ";
+  protected final String TEXT_4 = NL + "/** " + NL + " * $Id$" + NL + " * Created: 15.?ub.2006 08:22:32" + NL + " *" + NL + " * @author hd" + NL + " * @generated" + NL + " */" + NL + "public class ";
   protected final String TEXT_5 = " extends PersistentEnum {" + NL;
   protected final String TEXT_6 = NL + "    /**" + NL + "     * @generated" + NL + "     */ " + NL + "    public static final ";
   protected final String TEXT_7 = " ";
@@ -74,7 +74,7 @@ public class EnumerationTemplateImpl
     stringBuffer.append(TEXT_4);
     stringBuffer.append(helper.getCapName(enumeration));
     stringBuffer.append(TEXT_5);
-    for (Iterator i= enumeration.getLiterals().iterator(); i.hasNext();) {
+    for (Iterator<XEnumerationLiteral> i= enumeration.getLiterals().iterator(); i.hasNext();) {
     XEnumerationLiteral l = (XEnumerationLiteral) i.next();
     stringBuffer.append(TEXT_6);
     stringBuffer.append(helper.getCapName(enumeration));

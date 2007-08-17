@@ -6,14 +6,10 @@
  */
 package chrome.xmdl.core.plugin;
 
-import java.io.IOException;
-import java.util.Properties;
-
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-import org.eclipse.emf.common.EMFPlugin; 
+import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.osgi.framework.BundleContext;
 
 
 /**
@@ -23,7 +19,10 @@ import org.eclipse.emf.common.util.ResourceLocator;
  * @generated
  */
 public final class XMDLCorePlugin extends EMFPlugin {
+	
+	/** the logger */
 	private static final Logger LOGGER= Logger.getLogger(XMDLCorePlugin.class);  
+	
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
@@ -98,6 +97,18 @@ public final class XMDLCorePlugin extends EMFPlugin {
 			// Remember the static instance.
 			//
 			plugin = this;
+		}
+
+		@Override
+		public void start(BundleContext context) throws Exception {
+			super.start(context);
+			LOGGER.info("Plugin startup completed");
+		}
+
+		@Override
+		public void stop(BundleContext context) throws Exception {
+			super.stop(context);
+			LOGGER.info("Plugin stooped");
 		}
 	}
 

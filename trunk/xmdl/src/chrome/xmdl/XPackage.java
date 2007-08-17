@@ -62,10 +62,10 @@ public interface XPackage extends XBase {
 	 * @return the value of the '<em>Classes</em>' containment reference list.
 	 * @see chrome.xmdl.XmdlPackage#getXPackage_Classes()
 	 * @see chrome.xmdl.XClass#getXPackage
-	 * @model type="chrome.xmdl.XClass" opposite="xPackage" containment="true" resolveProxies="false"
+	 * @model opposite="xPackage" containment="true"
 	 * @generated
 	 */
-	EList getClasses();
+	EList<XClass> getClasses();
 
 	/**
 	 * Returns the value of the '<em><b>Enumerations</b></em>' containment reference list.
@@ -80,9 +80,9 @@ public interface XPackage extends XBase {
 	 * @return the value of the '<em>Enumerations</em>' containment reference list.
 	 * @see chrome.xmdl.XmdlPackage#getXPackage_Enumerations()
 	 * @see chrome.xmdl.XEnumeration#getXPackage
-	 * @model type="chrome.xmdl.XEnumeration" opposite="xPackage" containment="true" resolveProxies="false"
+	 * @model opposite="xPackage" containment="true"
 	 * @generated
 	 */
-	EList getEnumerations();
+	EList<XEnumeration> getEnumerations();
 
 } // XPackage

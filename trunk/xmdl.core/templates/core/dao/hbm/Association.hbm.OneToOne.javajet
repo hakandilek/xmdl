@@ -1,15 +1,12 @@
 <%@ jet 
 	package="chrome.xmdl.core.templates.dao.hbm.impl" 
-	imports="java.util.* 
-			chrome.xmdl.*
+	imports="chrome.xmdl.*
 			chrome.xmdl.core.util.*
-			chrome.xmdl.gen.util.*
-			org.eclipse.emf.codegen.util.*
-			chrome.xmdldb.*"
+			chrome.xmdl.gen.util.*"
 	class="AssociationHBMOneToOneImpl" 
 %><%
 	AttributePair pair = (AttributePair) argument;	
-	DField f = pair.getField();	
+//	DField f = pair.getField();	
 	XAttribute a = pair.getAttribute();
 	XAssociationBehaviour b = a.getAssociationBehaviour();
 	

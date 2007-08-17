@@ -6,27 +6,23 @@
  */
 package chrome.xmdlbo.impl;
 
-import chrome.xmdlbo.BMethod;
-import chrome.xmdlbo.BParameter;
-import chrome.xmdlbo.BService;
-import chrome.xmdlbo.XmdlboPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import chrome.xmdlbo.BMethod;
+import chrome.xmdlbo.BParameter;
+import chrome.xmdlbo.BService;
+import chrome.xmdlbo.XmdlboPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,18 +68,8 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList parameters = null;
+	protected EList<BParameter> parameters;
 
-
-	/**
-	 * The cached value of the '{@link #getService() <em>Service</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getService()
-	 * @generated
-	 * @ordered
-	 */
-	protected BService service = null;
 
 	public BMethodImpl() {
 		super();
@@ -94,8 +80,9 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlboPackage.eINSTANCE.getBMethod();
+		return XmdlboPackage.Literals.BMETHOD;
 	}
 
 	/**
@@ -125,15 +112,8 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * @generated
 	 */
 	public BService getService() {
-		if (service != null && service.eIsProxy()) {
-			BService oldService = service;
-			service = (BService)eResolveProxy((InternalEObject)service);
-			if (service != oldService) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, XmdlboPackage.BMETHOD__SERVICE, oldService, service));
-			}
-		}
-		return service;
+		if (eContainerFeatureID != XmdlboPackage.BMETHOD__SERVICE) return null;
+		return (BService)eContainer();
 	}
 
 	/**
@@ -141,8 +121,9 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BService basicGetService() {
-		return service;
+	public NotificationChain basicSetService(BService newService, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newService, XmdlboPackage.BMETHOD__SERVICE, msgs);
+		return msgs;
 	}
 
 	/**
@@ -151,22 +132,19 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * @generated
 	 */
 	public void setService(BService newService) {
-		BService oldService = service;
-		service = newService;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, XmdlboPackage.BMETHOD__SERVICE, oldService, service));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentWithInverseEList(BParameter.class, this, XmdlboPackage.BMETHOD__PARAMETERS, XmdlboPackage.BPARAMETER__METHOD);
+		if (newService != eInternalContainer() || (eContainerFeatureID != XmdlboPackage.BMETHOD__SERVICE && newService != null)) {
+			if (EcoreUtil.isAncestor(this, newService))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newService != null)
+				msgs = ((InternalEObject)newService).eInverseAdd(this, XmdlboPackage.BSERVICE__METHODS, BService.class, msgs);
+			msgs = basicSetService(newService, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
-		return parameters;
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, XmdlboPackage.BMETHOD__SERVICE, newService, newService));
 	}
 
 	/**
@@ -174,18 +152,18 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlboPackage.BMETHOD__PARAMETERS:
-					return ((InternalEList)getParameters()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+		@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlboPackage.BMETHOD__PARAMETERS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getParameters()).basicAdd(otherEnd, msgs);
+			case XmdlboPackage.BMETHOD__SERVICE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetService((BService)otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -193,16 +171,15 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlboPackage.BMETHOD__PARAMETERS:
-					return ((InternalEList)getParameters()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlboPackage.BMETHOD__PARAMETERS:
+				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+			case XmdlboPackage.BMETHOD__SERVICE:
+				return basicSetService(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -210,17 +187,31 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case XmdlboPackage.BMETHOD__SERVICE:
+				return eInternalContainer().eInverseRemove(this, XmdlboPackage.BSERVICE__METHODS, BService.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case XmdlboPackage.BMETHOD__NAME:
 				return getName();
 			case XmdlboPackage.BMETHOD__PARAMETERS:
 				return getParameters();
 			case XmdlboPackage.BMETHOD__SERVICE:
-				if (resolve) return getService();
-				return basicGetService();
+				return getService();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -228,20 +219,22 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+		@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case XmdlboPackage.BMETHOD__NAME:
 				setName((String)newValue);
 				return;
 			case XmdlboPackage.BMETHOD__PARAMETERS:
 				getParameters().clear();
-				getParameters().addAll((Collection)newValue);
+				getParameters().addAll((Collection<? extends BParameter>)newValue);
 				return;
 			case XmdlboPackage.BMETHOD__SERVICE:
 				setService((BService)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -249,8 +242,9 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case XmdlboPackage.BMETHOD__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -261,7 +255,7 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 				setService((BService)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -269,16 +263,17 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case XmdlboPackage.BMETHOD__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case XmdlboPackage.BMETHOD__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 			case XmdlboPackage.BMETHOD__SERVICE:
-				return service != null;
+				return getService() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -286,6 +281,19 @@ public class BMethodImpl extends EObjectImpl implements BMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<BParameter> getParameters() {
+		if (parameters == null) {
+			parameters = new EObjectContainmentWithInverseEList<BParameter>(BParameter.class, this, XmdlboPackage.BMETHOD__PARAMETERS, XmdlboPackage.BPARAMETER__METHOD);
+		}
+		return parameters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

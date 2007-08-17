@@ -3,7 +3,6 @@ package chrome.xmdl.core.templates.test.ui.web.action.impl;
 import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
-import chrome.xmdl.core.util.*;
 import org.eclipse.emf.codegen.util.*;
 
 public class EntityActionTestImpl
@@ -61,9 +60,6 @@ public class EntityActionTestImpl
     
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage();
-    XProject  xProject = xPackage.getProject(); 
-     
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     TestHelper testHelper = TestHelper.INSTANCE;    
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
@@ -109,7 +105,7 @@ public class EntityActionTestImpl
     stringBuffer.append(TEXT_15);
     stringBuffer.append(helper.uncapSafeName(xClass));
     stringBuffer.append(TEXT_16);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_17);
@@ -132,7 +128,7 @@ public class EntityActionTestImpl
     stringBuffer.append(TEXT_25);
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_26);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_27);

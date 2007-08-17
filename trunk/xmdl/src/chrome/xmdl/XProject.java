@@ -42,9 +42,9 @@ public interface XProject extends XBase {
 	 * @return the value of the '<em>Packages</em>' containment reference list.
 	 * @see chrome.xmdl.XmdlPackage#getXProject_Packages()
 	 * @see chrome.xmdl.XPackage#getProject
-	 * @model type="chrome.xmdl.XPackage" opposite="project" containment="true" resolveProxies="false"
+	 * @model opposite="project" containment="true"
 	 * @generated
 	 */
-	EList getPackages();
+	EList<XPackage> getPackages();
 
 }

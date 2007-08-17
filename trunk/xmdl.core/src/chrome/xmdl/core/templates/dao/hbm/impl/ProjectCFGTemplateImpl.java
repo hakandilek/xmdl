@@ -4,7 +4,6 @@ import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
 import chrome.xmdl.xgen.util.*;
-import org.eclipse.emf.codegen.util.*;
 import org.eclipse.emf.ecore.EObject;
 
 public class ProjectCFGTemplateImpl
@@ -31,7 +30,7 @@ public class ProjectCFGTemplateImpl
     final StringBuffer stringBuffer = new StringBuffer();
     
 	XProject project = (XProject) argument;
-	Iterator iterator=new ModelIterator(project);
+	Iterator<EObject> iterator=new ModelIterator(project);
 	ClassHelper helper = XMDLClassHelper.INSTANCE;
 
     stringBuffer.append(TEXT_1);

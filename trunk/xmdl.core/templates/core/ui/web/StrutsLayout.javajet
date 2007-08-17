@@ -1,15 +1,10 @@
 <%@ jet 
 	package="chrome.xmdl.core.templates.ui.web.impl" 
-	imports="java.util.* 
-			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+	imports=" 
+			"
 	class="StrutsLayoutImpl" 
-%><%
-	XProject project = (XProject) argument;	
-	ClassHelper helper = XMDLClassHelper.INSTANCE;
-%>#skin name. Default is the first parameter or the file name (ie Struts-Layout_blue.properties -> blue.css)
+%>
+#skin name. Default is the first parameter or the file name (ie Struts-Layout_blue.properties -> blue.css)
 skin = 
 
 # web directory in which are located the images

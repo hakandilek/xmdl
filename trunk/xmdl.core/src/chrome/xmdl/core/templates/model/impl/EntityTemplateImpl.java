@@ -2,7 +2,6 @@ package chrome.xmdl.core.templates.model.impl;
 
 import java.util.*;
 import chrome.xmdl.*;
-import chrome.xmdl.core.util.*;
 import chrome.xmdl.gen.util.*;
 import org.eclipse.emf.codegen.util.*;
 
@@ -38,7 +37,6 @@ public class EntityTemplateImpl
     
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage(); 
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     
@@ -62,7 +60,7 @@ public class EntityTemplateImpl
     stringBuffer.append(TEXT_4);
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_5);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null) {
     stringBuffer.append(TEXT_6);

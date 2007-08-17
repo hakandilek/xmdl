@@ -1,10 +1,8 @@
 <%@ jet 
 	package="chrome.xmdl.core.templates.dao.hbm.impl" 
-	imports="java.util.* 
-			chrome.xmdl.*
+	imports="chrome.xmdl.*
 			chrome.xmdl.gen.util.*
 			chrome.xmdl.core.util.*
-			org.eclipse.emf.codegen.util.*
 			chrome.xmdldb.*"
 	class="AssociationHBMOneToManyImpl" 
 %><%	

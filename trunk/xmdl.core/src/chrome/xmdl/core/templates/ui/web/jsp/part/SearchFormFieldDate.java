@@ -1,11 +1,8 @@
 package chrome.xmdl.core.templates.ui.web.jsp.part;
 
 import chrome.xmdl.XAttribute;
-import chrome.xmdl.xgen.*;
-import chrome.xmdl.core.templates.ui.web.jsp.part.impl.FormFieldDefaultImpl;
-import chrome.xmdl.core.templates.ui.web.jsp.part.impl.FormFieldDoubleImpl;
 import chrome.xmdl.core.templates.ui.web.jsp.part.impl.SearchFormFieldDateImpl;
-import chrome.xmdl.core.templates.ui.web.jsp.part.impl.SearchFormFieldDoubleImpl;
+import chrome.xmdl.xgen.Template;
 
 public class SearchFormFieldDate extends SearchFormFieldDateImpl
 		implements Template {

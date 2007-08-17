@@ -23,7 +23,7 @@ public interface XmdlboFactory extends EFactory{
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	XmdlboFactory eINSTANCE = new chrome.xmdlbo.impl.XmdlboFactoryImpl();
+	XmdlboFactory eINSTANCE = chrome.xmdlbo.impl.XmdlboFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>BModel</em>'.

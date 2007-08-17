@@ -6,10 +6,13 @@
  */
 package chrome.xmdldb.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import chrome.xmdl.XmdlPackage;
-
-import chrome.xmdl.impl.XmdlPackageImpl;
-
 import chrome.xmdldb.DField;
 import chrome.xmdldb.DIndex;
 import chrome.xmdldb.DModel;
@@ -19,13 +22,6 @@ import chrome.xmdldb.Persistable;
 import chrome.xmdldb.XMDLDBModel;
 import chrome.xmdldb.XmdldbFactory;
 import chrome.xmdldb.XmdldbPackage;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -152,7 +148,7 @@ public class XmdldbPackageImpl extends EPackageImpl implements XmdldbPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		XmdlPackageImpl.init();
+		XmdlPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theXmdldbPackage.createPackageContents();
@@ -528,8 +524,12 @@ public class XmdldbPackageImpl extends EPackageImpl implements XmdldbPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XmdlPackageImpl theXmdlPackage = (XmdlPackageImpl) EPackage.Registry.INSTANCE
+		XmdlPackage theXmdlPackage = (XmdlPackage) EPackage.Registry.INSTANCE
 				.getEPackage(XmdlPackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		dTableEClass.getESuperTypes().add(this.getPersistable());
@@ -599,7 +599,8 @@ public class XmdldbPackageImpl extends EPackageImpl implements XmdldbPackage {
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
-		addEOperation(dTableEClass, this.getDIndex(), "getIndices");
+		addEOperation(dTableEClass, this.getDIndex(), "getIndices", 0, -1,
+				IS_UNIQUE, IS_ORDERED);
 
 		initEClass(dFieldEClass, DField.class, "DField", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

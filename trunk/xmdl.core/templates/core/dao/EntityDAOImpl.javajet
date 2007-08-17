@@ -99,7 +99,7 @@ public class <%=helper.getCapName(xClass)%>DAOImpl extends HibernateDAO<<%=helpe
 
 
         long ID = _search.getID();
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	XAttribute attribute = (XAttribute) i.next();
 	if (!attribute.isReference()) {
 		XType type = attribute.getType();
@@ -117,7 +117,7 @@ public class <%=helper.getCapName(xClass)%>DAOImpl extends HibernateDAO<<%=helpe
             _criteria.add(Expression.eq("ID", ID));
         }
 
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	XAttribute attribute = (XAttribute) i.next();
 	if (!attribute.isReference()) {
 		XType type = attribute.getType();

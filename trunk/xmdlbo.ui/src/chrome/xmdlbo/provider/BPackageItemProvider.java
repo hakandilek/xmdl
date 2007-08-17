@@ -20,9 +20,11 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -60,7 +62,8 @@ public class BPackageItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -85,8 +88,10 @@ public class BPackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BPackage_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_BPackage_name_feature", "_UI_BPackage_type"),
-				 XmdlboPackage.eINSTANCE.getBPackage_Name(),
+				 XmdlboPackage.Literals.BPACKAGE__NAME,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 getString("_UI_BusinessModelPropertyCategory"),
 				 null));
@@ -105,8 +110,10 @@ public class BPackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BPackage_model_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_BPackage_model_feature", "_UI_BPackage_type"),
-				 XmdlboPackage.eINSTANCE.getBPackage_Model(),
+				 XmdlboPackage.Literals.BPACKAGE__MODEL,
 				 true,
+				 false,
+				 false,
 				 null,
 				 getString("_UI_BusinessModelPropertyCategory"),
 				 null));
@@ -125,7 +132,9 @@ public class BPackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BPackage_xPackage_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_BPackage_xPackage_feature", "_UI_BPackage_type"),
-				 XmdlboPackage.eINSTANCE.getBPackage_XPackage(),
+				 XmdlboPackage.Literals.BPACKAGE__XPACKAGE,
+				 false,
+				 false,
 				 false,
 				 null,
 				 getString("_UI_BaseModelPropertyCategory"),
@@ -145,8 +154,10 @@ public class BPackageItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BPackage_services_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_BPackage_services_feature", "_UI_BPackage_type"),
-				 XmdlboPackage.eINSTANCE.getBPackage_Services(),
+				 XmdlboPackage.Literals.BPACKAGE__SERVICES,
 				 true,
+				 false,
+				 false,
 				 null,
 				 getString("_UI_BusinessModelPropertyCategory"),
 				 null));
@@ -160,12 +171,26 @@ public class BPackageItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(XmdlboPackage.eINSTANCE.getBPackage_Services());
+			childrenFeatures.add(XmdlboPackage.Literals.BPACKAGE__SERVICES);
 		}
 		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -174,8 +199,9 @@ public class BPackageItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/BPackage");
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/BPackage"));
 	}
 
 	/**
@@ -184,6 +210,7 @@ public class BPackageItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((BPackage)object).getName();
 		return label == null || label.length() == 0 ?
@@ -198,6 +225,7 @@ public class BPackageItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -214,18 +242,19 @@ public class BPackageItemProvider
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
 			(createChildParameter
-				(XmdlboPackage.eINSTANCE.getBPackage_Services(),
+				(XmdlboPackage.Literals.BPACKAGE__SERVICES,
 				 XmdlboFactory.eINSTANCE.createBService()));
 	}
 
@@ -235,6 +264,7 @@ public class BPackageItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XmdlboEditPlugin.INSTANCE;
 	}

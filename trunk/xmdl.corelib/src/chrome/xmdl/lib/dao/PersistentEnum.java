@@ -12,8 +12,8 @@ import java.util.HashMap;
  * @author hd
  */
 public abstract class PersistentEnum implements Serializable {
-    protected static Map<Class, Map<String, PersistentEnum>> names = new HashMap<Class, Map<String, PersistentEnum>>(15);
-    protected static HashMap<Class, Map<Integer, PersistentEnum>> ordinals = new HashMap<Class, Map<Integer, PersistentEnum>>(15);
+    protected static Map<Class<?>, Map<String, PersistentEnum>> names = new HashMap<Class<?>, Map<String, PersistentEnum>>(15);
+    protected static HashMap<Class<?>, Map<Integer, PersistentEnum>> ordinals = new HashMap<Class<?>, Map<Integer, PersistentEnum>>(15);
 
     protected int ordinal;
     protected transient String name;
@@ -25,7 +25,7 @@ public abstract class PersistentEnum implements Serializable {
     }
 
     protected void add() {
-        Class<? extends Object> aClass = getClass();
+        Class<?> aClass = getClass();
         Map<String, PersistentEnum> namesMap = names.get(aClass);
         Map<Integer, PersistentEnum> ordinalsMap = ordinals.get(aClass);
         if (namesMap == null) {
@@ -40,13 +40,13 @@ public abstract class PersistentEnum implements Serializable {
         ordinalsMap.put(this.ordinal, this);
     }
 
-    public static PersistentEnum get(Class aClass, String name) {
+    public static PersistentEnum get(Class<?> aClass, String name) {
         Map<String, PersistentEnum> map = names.get(aClass);
         if (map == null) return null;
         return map.get(name);
     }
 
-    public static PersistentEnum get(Class aClass, int ordinal) {
+    public static PersistentEnum get(Class<?> aClass, int ordinal) {
         Map<Integer, PersistentEnum> map = ordinals.get(aClass);
         if (map == null) return null;
         return map.get(ordinal);

@@ -115,7 +115,7 @@ public interface XmdldbPackage extends EPackage {
 	int DMODEL__DPACKAGES = 3;
 
 	/**
-	 * The number of structural features of the the '<em>DModel</em>' class.
+	 * The number of structural features of the '<em>DModel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -200,7 +200,7 @@ public interface XmdldbPackage extends EPackage {
 	int DPACKAGE__DTABLES = 3;
 
 	/**
-	 * The number of structural features of the the '<em>DPackage</em>' class.
+	 * The number of structural features of the '<em>DPackage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -228,7 +228,7 @@ public interface XmdldbPackage extends EPackage {
 	int PERSISTABLE__PERSISTENT = 0;
 
 	/**
-	 * The number of structural features of the the '<em>Persistable</em>' class.
+	 * The number of structural features of the '<em>Persistable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -282,7 +282,7 @@ public interface XmdldbPackage extends EPackage {
 	int DTABLE__DFIELDS = PERSISTABLE_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the the '<em>DTable</em>' class.
+	 * The number of structural features of the '<em>DTable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -354,7 +354,7 @@ public interface XmdldbPackage extends EPackage {
 	int DFIELD__FOREIGN = PERSISTABLE_FEATURE_COUNT + 5;
 
 	/**
-	 * The number of structural features of the the '<em>DField</em>' class.
+	 * The number of structural features of the '<em>DField</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -373,7 +373,7 @@ public interface XmdldbPackage extends EPackage {
 	int XMDLDB_MODEL = 4;
 
 	/**
-	 * The number of structural features of the the '<em>XMDLDB Model</em>' class.
+	 * The number of structural features of the '<em>XMDLDB Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -428,7 +428,7 @@ public interface XmdldbPackage extends EPackage {
 	int DINDEX__DFIELDS = 3;
 
 	/**
-	 * The number of structural features of the the '<em>DIndex</em>' class.
+	 * The number of structural features of the '<em>DIndex</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -757,5 +757,275 @@ public interface XmdldbPackage extends EPackage {
 	 * @generated
 	 */
 	XmdldbFactory getXmdldbFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link chrome.xmdldb.impl.DModelImpl <em>DModel</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdldb.impl.DModelImpl
+		 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getDModel()
+		 * @generated
+		 */
+		EClass DMODEL = eINSTANCE.getDModel();
+
+		/**
+		 * The meta object literal for the '<em><b>XProject</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DMODEL__XPROJECT = eINSTANCE.getDModel_XProject();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DMODEL__NAME = eINSTANCE.getDModel_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>XModel</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DMODEL__XMODEL = eINSTANCE.getDModel_XModel();
+
+		/**
+		 * The meta object literal for the '<em><b>DPackages</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DMODEL__DPACKAGES = eINSTANCE.getDModel_DPackages();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdldb.impl.DPackageImpl <em>DPackage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdldb.impl.DPackageImpl
+		 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getDPackage()
+		 * @generated
+		 */
+		EClass DPACKAGE = eINSTANCE.getDPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DPACKAGE__NAME = eINSTANCE.getDPackage_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>XPackage</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DPACKAGE__XPACKAGE = eINSTANCE.getDPackage_XPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Model</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DPACKAGE__MODEL = eINSTANCE.getDPackage_Model();
+
+		/**
+		 * The meta object literal for the '<em><b>DTables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DPACKAGE__DTABLES = eINSTANCE.getDPackage_DTables();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdldb.impl.DTableImpl <em>DTable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdldb.impl.DTableImpl
+		 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getDTable()
+		 * @generated
+		 */
+		EClass DTABLE = eINSTANCE.getDTable();
+
+		/**
+		 * The meta object literal for the '<em><b>XClass</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DTABLE__XCLASS = eINSTANCE.getDTable_XClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DTABLE__NAME = eINSTANCE.getDTable_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>DPackage</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DTABLE__DPACKAGE = eINSTANCE.getDTable_DPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>DFields</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DTABLE__DFIELDS = eINSTANCE.getDTable_DFields();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdldb.impl.DFieldImpl <em>DField</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdldb.impl.DFieldImpl
+		 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getDField()
+		 * @generated
+		 */
+		EClass DFIELD = eINSTANCE.getDField();
+
+		/**
+		 * The meta object literal for the '<em><b>XAttribute</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DFIELD__XATTRIBUTE = eINSTANCE.getDField_XAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>DTable</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DFIELD__DTABLE = eINSTANCE.getDField_DTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DFIELD__NAME = eINSTANCE.getDField_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DFIELD__LENGTH = eINSTANCE.getDField_Length();
+
+		/**
+		 * The meta object literal for the '<em><b>Indices</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DFIELD__INDICES = eINSTANCE.getDField_Indices();
+
+		/**
+		 * The meta object literal for the '<em><b>Foreign</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DFIELD__FOREIGN = eINSTANCE.getDField_Foreign();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdldb.impl.XMDLDBModelImpl <em>XMDLDB Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdldb.impl.XMDLDBModelImpl
+		 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getXMDLDBModel()
+		 * @generated
+		 */
+		EClass XMDLDB_MODEL = eINSTANCE.getXMDLDBModel();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdldb.impl.DIndexImpl <em>DIndex</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdldb.impl.DIndexImpl
+		 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getDIndex()
+		 * @generated
+		 */
+		EClass DINDEX = eINSTANCE.getDIndex();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DINDEX__NAME = eINSTANCE.getDIndex_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Unique</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DINDEX__UNIQUE = eINSTANCE.getDIndex_Unique();
+
+		/**
+		 * The meta object literal for the '<em><b>DTable</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DINDEX__DTABLE = eINSTANCE.getDIndex_DTable();
+
+		/**
+		 * The meta object literal for the '<em><b>Dfields</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DINDEX__DFIELDS = eINSTANCE.getDIndex_Dfields();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdldb.Persistable <em>Persistable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdldb.Persistable
+		 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getPersistable()
+		 * @generated
+		 */
+		EClass PERSISTABLE = eINSTANCE.getPersistable();
+
+		/**
+		 * The meta object literal for the '<em><b>Persistent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERSISTABLE__PERSISTENT = eINSTANCE
+				.getPersistable_Persistent();
+
+	}
 
 } //XmdldbPackage

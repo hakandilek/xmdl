@@ -6,10 +6,14 @@
  */
 package chrome.xmdlbo.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import chrome.xmdl.XmdlPackage;
-
-import chrome.xmdl.impl.XmdlPackageImpl;
-
 import chrome.xmdlbo.BMethod;
 import chrome.xmdlbo.BModel;
 import chrome.xmdlbo.BPackage;
@@ -19,14 +23,6 @@ import chrome.xmdlbo.BService;
 import chrome.xmdlbo.XMDLBOModel;
 import chrome.xmdlbo.XmdlboFactory;
 import chrome.xmdlbo.XmdlboPackage;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -141,7 +137,7 @@ public class XmdlboPackageImpl extends EPackageImpl implements XmdlboPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		XmdlPackageImpl.init();
+		XmdlPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theXmdlboPackage.createPackageContents();
@@ -486,7 +482,11 @@ public class XmdlboPackageImpl extends EPackageImpl implements XmdlboPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XmdlPackageImpl theXmdlPackage = (XmdlPackageImpl)EPackage.Registry.INSTANCE.getEPackage(XmdlPackage.eNS_URI);
+		XmdlPackage theXmdlPackage = (XmdlPackage)EPackage.Registry.INSTANCE.getEPackage(XmdlPackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		xmdlboModelEClass.getESuperTypes().add(theXmdlPackage.getXModel());
@@ -522,7 +522,7 @@ public class XmdlboPackageImpl extends EPackageImpl implements XmdlboPackage {
 		initEClass(bMethodEClass, BMethod.class, "BMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBMethod_Name(), ecorePackage.getEString(), "name", null, 1, 1, BMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBMethod_Parameters(), this.getBParameter(), this.getBParameter_Method(), "parameters", null, 0, -1, BMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBMethod_Service(), this.getBService(), null, "service", null, 0, 1, BMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBMethod_Service(), this.getBService(), this.getBService_Methods(), "service", null, 0, 1, BMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(bParameterNatureEEnum, BParameterNature.class, "BParameterNature");

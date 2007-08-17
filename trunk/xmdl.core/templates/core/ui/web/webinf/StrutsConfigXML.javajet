@@ -2,9 +2,7 @@
 	package="chrome.xmdl.core.templates.ui.web.webinf.impl" 
 	imports="java.util.* 
 			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+			chrome.xmdl.gen.util.*"
 	class="StrutsConfigXMLImpl" 
 %><%
 	XProject project = (XProject) argument;	
@@ -25,9 +23,9 @@
 
     <!-- ========== Form Bean Definitions =================================== -->
     <form-beans>
-<%for (Iterator itp = project.getPackages().iterator(); itp.hasNext();) {
+<%for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
 		XPackage xPackage = (XPackage ) itp.next();%>
-	<%for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+	<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 			XClass xClass = (XClass) it.next();%>
         <form-bean
             name="<%=helper.uncapSafeName(xClass)%>Form"
@@ -56,9 +54,9 @@
         
         <forward name="logout" path="/logout.jsp"/>        
         
-<%for (Iterator itp = project.getPackages().iterator(); itp.hasNext();) {
+<%for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
 		XPackage xPackage = (XPackage ) itp.next();%>
-	<%for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+	<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 			XClass xClass = (XClass) it.next();%>
         <forward name="edit<%=helper.getCapName(xClass)%>" path="/edit<%=helper.getCapName(xClass)%>.do"/>
 	<%}%>
@@ -69,9 +67,9 @@
 
     <!-- ========== Action Mapping Definitions =================================== -->
     <action-mappings>
-<%for (Iterator itp = project.getPackages().iterator(); itp.hasNext();) {
+<%for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
 		XPackage xPackage = (XPackage ) itp.next();%>
-	<%for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+	<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 			XClass xClass = (XClass) it.next();%>
         <action
             path="/search<%=helper.getCapName(xClass)%>"
@@ -137,7 +135,7 @@
 
     <controller nocache="true" inputForward="true" maxFileSize="2M"/>
 
-<%for (Iterator itp = project.getPackages().iterator(); itp.hasNext();) {
+<%for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
 		XPackage xPackage = (XPackage ) itp.next();%>
     <message-resources parameter="<%=xPackage.getName()%>.ApplicationResources"/>
 <%}%>

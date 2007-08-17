@@ -49,8 +49,9 @@ public class XMDLBOModelImpl extends EObjectImpl implements XMDLBOModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlboPackage.eINSTANCE.getXMDLBOModel();
+		return XmdlboPackage.Literals.XMDLBO_MODEL;
 	}
 
 	/**
@@ -74,8 +75,8 @@ public class XMDLBOModelImpl extends EObjectImpl implements XMDLBOModel {
 	 * @model
 	 */
 	public EObject loadRoot(XProject project, Resource resource) {
-		List contents = resource.getContents();
-		for (Iterator it = contents.iterator(); it.hasNext();) {
+		List<EObject> contents = resource.getContents();
+		for (Iterator<EObject> it = contents.iterator(); it.hasNext();) {
 			EObject element = (EObject) it.next();
 			if (element instanceof BModel) {
 				BModel model = (BModel) element;

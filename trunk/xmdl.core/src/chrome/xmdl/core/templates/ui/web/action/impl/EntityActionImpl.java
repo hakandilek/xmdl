@@ -2,7 +2,6 @@ package chrome.xmdl.core.templates.ui.web.action.impl;
 
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
-import chrome.xmdl.core.util.*;
 import org.eclipse.emf.codegen.util.*;
 
 public class EntityActionImpl
@@ -244,9 +243,6 @@ public class EntityActionImpl
     
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage();
-    XProject  xProject = xPackage.getProject(); 
-     
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     

@@ -1,6 +1,5 @@
 package chrome.xmdl.init;
 
-
 public class Initializer {
 	protected static Assertion TRUE = new TrueAssertion();
 
@@ -8,25 +7,25 @@ public class Initializer {
 
 	public Initializer() {
 		super();
-		reset(); 
+		reset();
 	}
 
 	public void reset() {
 		registry = new Registry();
 	}
 
-	public void addSetProperty(Class clazz, String propertyName) {
+	public void addSetProperty(Class<?> clazz, String propertyName) {
 		Task task = new SetPropertyTask(propertyName);
 		registry.addTask(clazz, task);
 	}
-	
-	public void addSetConstantPropertyIfDifferent(Class clazz, String propertyName, Object value) {
+
+	public void addSetConstantPropertyIfDifferent(Class<?> clazz,
+			String propertyName, Object value) {
 		Task task = new SetConstantPropertyTask(propertyName, value);
 		registry.addTask(clazz, task);
 	}
 
-
-	public void addSetPropertyIfDifferent(Class clazz, String propertyName,
+	public void addSetPropertyIfDifferent(Class<?> clazz, String propertyName,
 			String referenceName) {
 		Assertion assertion = createReferenceDifferent(referenceName);
 		Task task = new SetPropertyTask(propertyName);
@@ -38,19 +37,20 @@ public class Initializer {
 		return new AssertReferenceDifferent(referenceName);
 	}
 
-	public void addSetPropertyIfDifferent(Class clazz, String propertyName) {
+	public void addSetPropertyIfDifferent(Class<?> clazz, String propertyName) {
 		addSetPropertyIfDifferent(clazz, propertyName, clazz.getSimpleName());
 	}
 
-	public void addSetPropertyStringUppercaseWithPrefix(Class clazz,
+	public void addSetPropertyStringUppercaseWithPrefix(Class<?> clazz,
 			String propertyName, String prefix) {
 		Task task = new SetPropertyStringUppercaseWithPrefixTask(propertyName,
 				prefix);
 		registry.addTask(clazz, task);
 	}
 
-	public void addSetPropertyStringUppercaseWithPrefixIfDifferent(Class clazz,
-			String propertyName, String prefix, String referenceName) {
+	public void addSetPropertyStringUppercaseWithPrefixIfDifferent(
+			Class<?> clazz, String propertyName, String prefix,
+			String referenceName) {
 		Assertion assertion = createReferenceDifferent(referenceName);
 
 		Task task = new SetPropertyStringUppercaseWithPrefixTask(propertyName,
@@ -60,14 +60,15 @@ public class Initializer {
 		registry.addTask(clazz, wrapperTask);
 	}
 
-	public void addSetPropertyStringUppercaseWithPrefixIfDifferent(Class clazz,
-			String propertyName, String prefix) {
+	public void addSetPropertyStringUppercaseWithPrefixIfDifferent(
+			Class<?> clazz, String propertyName, String prefix) {
 		addSetPropertyStringUppercaseWithPrefixIfDifferent(clazz, propertyName,
 				prefix, clazz.getSimpleName());
 	}
 
-	public void addSetPropertyStringUppercaseWithPrefixIfDifferent(Class clazz,
-			String propertyName, String prefix, Assertion prefixAssertion) {
+	public void addSetPropertyStringUppercaseWithPrefixIfDifferent(
+			Class<?> clazz, String propertyName, String prefix,
+			Assertion prefixAssertion) {
 		Assertion assertion = createReferenceDifferent(propertyName);
 
 		SetPropertyStringTask task = new SetPropertyStringUppercaseWithPrefixTask(
@@ -79,9 +80,9 @@ public class Initializer {
 		registry.addTask(clazz, wrapperTask);
 	}
 
-	public void addSetPropertyStringUppercaseWithPrefixAndSuffixIfDifferent(Class clazz,
-			String propertyName, String prefix, Assertion prefixAssertion, 
-			String suffix, Assertion suffixAssertion) {
+	public void addSetPropertyStringUppercaseWithPrefixAndSuffixIfDifferent(
+			Class<?> clazz, String propertyName, String prefix,
+			Assertion prefixAssertion, String suffix, Assertion suffixAssertion) {
 		Assertion assertion = createReferenceDifferent(propertyName);
 
 		SetPropertyStringTask task = new SetPropertyStringUppercaseTask(
@@ -94,20 +95,20 @@ public class Initializer {
 		registry.addTask(clazz, wrapperTask);
 	}
 
-	public void addCopyChildren(Class clazz, String sourceChildName,
+	public void addCopyChildren(Class<?> clazz, String sourceChildName,
 			String destChildName, String referenceName, Object newChild) {
 		addCopyChildren(clazz, sourceChildName, destChildName, referenceName,
 				newChild, ((Assertion) null));
 	}
 
-	public void addCopyChildren(Class clazz, String sourceChildName,
+	public void addCopyChildren(Class<?> clazz, String sourceChildName,
 			String destChildName, String referenceName, Object newChild,
 			Assertion considerAssertion) {
 		addCopyChildren(clazz, sourceChildName, destChildName, referenceName,
 				newChild, considerAssertion, null);
 	}
 
-	public void addCopyChildren(Class clazz, String sourceChildName,
+	public void addCopyChildren(Class<?> clazz, String sourceChildName,
 			String destChildName, String referenceName, Object newChild,
 			Assertion considerAssertion, Assertion copyAssertion) {
 		Task task = new CopyChildrenTask(sourceChildName, destChildName,
@@ -125,7 +126,7 @@ public class Initializer {
 	 * @param clazz
 	 * @param referenceName
 	 */
-	public void addSetReference(Class clazz, String referenceName) {
+	public void addSetReference(Class<?> clazz, String referenceName) {
 		Task task = new SetReferenceTask(referenceName);
 		registry.addTask(clazz, task);
 	}
@@ -141,17 +142,16 @@ public class Initializer {
 	 * @param assertion
 	 *            assertion to be tested
 	 */
-	public void addAssertionTask(Class clazz, Task task, Assertion assertion) {
+	public void addAssertionTask(Class<?> clazz, Task task, Assertion assertion) {
 		Task wrapper = new AssertionWrapperTask(task, assertion);
 		registry.addTask(clazz, wrapper);
 	}
 
-	public void addTask(Class clazz, Task task) {
+	public void addTask(Class<?> clazz, Task task) {
 		registry.addTask(clazz, task);
 	}
 
-
-	public void addSetPropertyWithPrefixIfDifferent(Class clazz,
+	public void addSetPropertyWithPrefixIfDifferent(Class<?> clazz,
 			String propertyName, String referenceName, String prefix,
 			String suffix) {
 		Assertion assertion = createReferenceDifferent(referenceName);
@@ -160,7 +160,7 @@ public class Initializer {
 		registry.addTask(clazz, wrapperTask);
 	}
 
-	public void addSetPropertyWithPrefixIfDifferent(Class clazz,
+	public void addSetPropertyWithPrefixIfDifferent(Class<?> clazz,
 			String propertyName, String prefix, String suffix) {
 		addSetPropertyWithPrefixIfDifferent(clazz, propertyName, clazz
 				.getSimpleName(), prefix, suffix);

@@ -71,7 +71,7 @@ public interface BService extends EObject{
 	 * @see #setBPackage(BPackage)
 	 * @see chrome.xmdlbo.XmdlboPackage#getBService_BPackage()
 	 * @see chrome.xmdlbo.BPackage#getServices
-	 * @model opposite="services"
+	 * @model opposite="services" transient="false"
 	 * @generated
 	 */
 	BPackage getBPackage();
@@ -99,10 +99,10 @@ public interface BService extends EObject{
 	 * @return the value of the '<em>Methods</em>' containment reference list.
 	 * @see chrome.xmdlbo.XmdlboPackage#getBService_Methods()
 	 * @see chrome.xmdlbo.BMethod#getService
-	 * @model type="chrome.xmdlbo.BMethod" opposite="service" containment="true"
+	 * @model opposite="service" containment="true"
 	 * @generated
 	 */
-	EList getMethods();
+	EList<BMethod> getMethods();
 
 	/**
 	 * Returns the value of the '<em><b>XClass</b></em>' reference.

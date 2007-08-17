@@ -71,7 +71,7 @@ public interface BPackage extends EObject{
 	 * @see #setModel(BModel)
 	 * @see chrome.xmdlbo.XmdlboPackage#getBPackage_Model()
 	 * @see chrome.xmdlbo.BModel#getBPackages
-	 * @model opposite="bPackages" required="true"
+	 * @model opposite="bPackages" required="true" transient="false"
 	 * @generated
 	 */
 	BModel getModel();
@@ -125,9 +125,9 @@ public interface BPackage extends EObject{
 	 * @return the value of the '<em>Services</em>' containment reference list.
 	 * @see chrome.xmdlbo.XmdlboPackage#getBPackage_Services()
 	 * @see chrome.xmdlbo.BService#getBPackage
-	 * @model type="chrome.xmdlbo.BService" opposite="bPackage" containment="true"
+	 * @model opposite="bPackage" containment="true"
 	 * @generated
 	 */
-	EList getServices();
+	EList<BService> getServices();
 
 } // BPackage

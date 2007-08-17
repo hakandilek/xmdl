@@ -3,8 +3,6 @@ package chrome.xmdl.core.templates.ui.web.webinf.impl;
 import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class WebXMLImpl
 {
@@ -40,7 +38,7 @@ public class WebXMLImpl
 	ClassHelper helper = XMDLClassHelper.INSTANCE;
 
     stringBuffer.append(TEXT_1);
-    for (Iterator itp = project.getPackages().iterator(); itp.hasNext();) {
+    for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
 		XPackage xPackage = (XPackage ) itp.next();
     stringBuffer.append(TEXT_2);
     stringBuffer.append(XMDLClassHelper.INSTANCE.getQualifiedName(xPackage));
@@ -48,17 +46,17 @@ public class WebXMLImpl
     stringBuffer.append(itp.hasNext()? ",": "");
     }
     stringBuffer.append(TEXT_4);
-    for (Iterator itp = project.getPackages().iterator(); itp.hasNext();) {
+    for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
 		XPackage xPackage = (XPackage ) itp.next();
     stringBuffer.append(TEXT_5);
     stringBuffer.append(XMDLClassHelper.INSTANCE.getQualifiedPath(xPackage));
     stringBuffer.append(TEXT_6);
     }
     stringBuffer.append(TEXT_7);
-    for (Iterator i = project.getPackages().iterator(); i.hasNext();) {
+    for (Iterator<XPackage> i = project.getPackages().iterator(); i.hasNext();) {
 	    XPackage xPackage = (XPackage) i.next();
     stringBuffer.append(TEXT_8);
-    for (Iterator i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
+    for (Iterator<XClass> i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
 		    XClass xClass = (XClass) i2.next();
     stringBuffer.append(TEXT_9);
     stringBuffer.append(helper.getCapName(xClass));

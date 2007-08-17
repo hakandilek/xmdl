@@ -121,7 +121,6 @@ public interface XMethod extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' reference.
-	 * The default value is <code>"XmdlTypes.VOID"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' reference isn't clear,
@@ -159,10 +158,10 @@ public interface XMethod extends EObject {
 	 * @return the value of the '<em>Parameters</em>' containment reference list.
 	 * @see chrome.xmdl.XmdlPackage#getXMethod_Parameters()
 	 * @see chrome.xmdl.XParameter#getMethod
-	 * @model type="chrome.xmdl.XParameter" opposite="method" containment="true" resolveProxies="false"
+	 * @model opposite="method" containment="true"
 	 * @generated
 	 */
-	EList getParameters();
+	EList<XParameter> getParameters();
 
 	/**
 	 * Returns the value of the '<em><b>Exceptions</b></em>' containment reference list.
@@ -175,9 +174,9 @@ public interface XMethod extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Exceptions</em>' containment reference list.
 	 * @see chrome.xmdl.XmdlPackage#getXMethod_Exceptions()
-	 * @model type="chrome.xmdl.XException" containment="true" resolveProxies="false"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getExceptions();
+	EList<XException> getExceptions();
 
 } // XMethod

@@ -40,6 +40,7 @@ import chrome.xmdlbo.XmdlboFactory;
 import chrome.xmdldb.XmdldbFactory;
 import chrome.xmdlgen.XmdlgenFactory;
 
+@SuppressWarnings("deprecation")
 public class Generator {
 
 	private static final Logger LOGGER = Logger.getLogger(Generator.class);
@@ -47,8 +48,6 @@ public class Generator {
 	public static final String KEEP_EXPRESSION = "@keep";
 
 	private XProject project;
-
-//	private TaskFactory taskFactory;
 
 	private IWorkspaceRoot workspaceRoot;
 
@@ -314,7 +313,7 @@ public class Generator {
 	 *            destination
 	 * @throws IOException
 	 */
-	private void writeTo(Reader reader, File file) throws IOException {
+	protected void writeTo(Reader reader, File file) throws IOException {
 		Writer w = new FileWriter(file);
 		writeTo(reader, w);
 	}
@@ -328,7 +327,7 @@ public class Generator {
 	 *            destination
 	 * @throws IOException
 	 */
-	private void writeTo(InputStream inputStream, File file) throws IOException {
+	protected void writeTo(InputStream inputStream, File file) throws IOException {
 		Writer w = new FileWriter(file);
 		writeTo(inputStream, w);
 	}
@@ -342,7 +341,7 @@ public class Generator {
 	 *            destination
 	 * @throws IOException
 	 */
-	private void writeTo(InputStream inputStream, Writer writer)
+	protected void writeTo(InputStream inputStream, Writer writer)
 			throws IOException {
 		Reader reader = new BufferedReader(new InputStreamReader(inputStream));
 		writeTo(reader, writer);
@@ -357,7 +356,7 @@ public class Generator {
 	 *            destination
 	 * @throws IOException
 	 */
-	private void writeTo(Reader reader, Writer writer) throws IOException {
+	protected void writeTo(Reader reader, Writer writer) throws IOException {
 		char[] buff = new char[8192];
 		int i = reader.read(buff);
 		while (i > 0) {

@@ -115,7 +115,7 @@ public interface XmdlgenPackage extends EPackage{
 	int GMODEL__GPACKAGES = 3;
 
 	/**
-	 * The number of structural features of the the '<em>GModel</em>' class.
+	 * The number of structural features of the '<em>GModel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -170,7 +170,7 @@ public interface XmdlgenPackage extends EPackage{
 	int GPACKAGE__GCLASSES = 3;
 
 	/**
-	 * The number of structural features of the the '<em>GPackage</em>' class.
+	 * The number of structural features of the '<em>GPackage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -270,7 +270,7 @@ public interface XmdlgenPackage extends EPackage{
 	int GCLASS__SEARCH_SERVICE_NAME = 8;
 
 	/**
-	 * The number of structural features of the the '<em>GClass</em>' class.
+	 * The number of structural features of the '<em>GClass</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -325,7 +325,7 @@ public interface XmdlgenPackage extends EPackage{
 	int GATTRIBUTE__GCLASS = 3;
 
 	/**
-	 * The number of structural features of the the '<em>GAttribute</em>' class.
+	 * The number of structural features of the '<em>GAttribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -344,7 +344,7 @@ public interface XmdlgenPackage extends EPackage{
 	int XMDL_GEN_MODEL = 4;
 
 	/**
-	 * The number of structural features of the the '<em>XMDL Gen Model</em>' class.
+	 * The number of structural features of the '<em>XMDL Gen Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -642,5 +642,238 @@ public interface XmdlgenPackage extends EPackage{
 	 * @generated
 	 */
 	XmdlgenFactory getXmdlgenFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link chrome.xmdlgen.impl.GModelImpl <em>GModel</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdlgen.impl.GModelImpl
+		 * @see chrome.xmdlgen.impl.XmdlgenPackageImpl#getGModel()
+		 * @generated
+		 */
+		EClass GMODEL = eINSTANCE.getGModel();
+
+		/**
+		 * The meta object literal for the '<em><b>XProject</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GMODEL__XPROJECT = eINSTANCE.getGModel_XProject();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GMODEL__NAME = eINSTANCE.getGModel_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>XModel</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GMODEL__XMODEL = eINSTANCE.getGModel_XModel();
+
+		/**
+		 * The meta object literal for the '<em><b>GPackages</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GMODEL__GPACKAGES = eINSTANCE.getGModel_GPackages();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdlgen.impl.GPackageImpl <em>GPackage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdlgen.impl.GPackageImpl
+		 * @see chrome.xmdlgen.impl.XmdlgenPackageImpl#getGPackage()
+		 * @generated
+		 */
+		EClass GPACKAGE = eINSTANCE.getGPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GPACKAGE__NAME = eINSTANCE.getGPackage_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>XPackage</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GPACKAGE__XPACKAGE = eINSTANCE.getGPackage_XPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>GModel</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GPACKAGE__GMODEL = eINSTANCE.getGPackage_GModel();
+
+		/**
+		 * The meta object literal for the '<em><b>GClasses</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GPACKAGE__GCLASSES = eINSTANCE.getGPackage_GClasses();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdlgen.impl.GClassImpl <em>GClass</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdlgen.impl.GClassImpl
+		 * @see chrome.xmdlgen.impl.XmdlgenPackageImpl#getGClass()
+		 * @generated
+		 */
+		EClass GCLASS = eINSTANCE.getGClass();
+
+		/**
+		 * The meta object literal for the '<em><b>XClass</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GCLASS__XCLASS = eINSTANCE.getGClass_XClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GCLASS__NAME = eINSTANCE.getGClass_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>GPackage</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GCLASS__GPACKAGE = eINSTANCE.getGClass_GPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>GAttributes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GCLASS__GATTRIBUTES = eINSTANCE.getGClass_GAttributes();
+
+		/**
+		 * The meta object literal for the '<em><b>Persistent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GCLASS__PERSISTENT = eINSTANCE.getGClass_Persistent();
+
+		/**
+		 * The meta object literal for the '<em><b>Delete Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GCLASS__DELETE_SERVICE_NAME = eINSTANCE.getGClass_DeleteServiceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Edit Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GCLASS__EDIT_SERVICE_NAME = eINSTANCE.getGClass_EditServiceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Save Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GCLASS__SAVE_SERVICE_NAME = eINSTANCE.getGClass_SaveServiceName();
+
+		/**
+		 * The meta object literal for the '<em><b>Search Service Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GCLASS__SEARCH_SERVICE_NAME = eINSTANCE.getGClass_SearchServiceName();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdlgen.impl.GAttributeImpl <em>GAttribute</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdlgen.impl.GAttributeImpl
+		 * @see chrome.xmdlgen.impl.XmdlgenPackageImpl#getGAttribute()
+		 * @generated
+		 */
+		EClass GATTRIBUTE = eINSTANCE.getGAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>XAttribute</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GATTRIBUTE__XATTRIBUTE = eINSTANCE.getGAttribute_XAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GATTRIBUTE__NAME = eINSTANCE.getGAttribute_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Persistent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GATTRIBUTE__PERSISTENT = eINSTANCE.getGAttribute_Persistent();
+
+		/**
+		 * The meta object literal for the '<em><b>GClass</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GATTRIBUTE__GCLASS = eINSTANCE.getGAttribute_GClass();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdlgen.impl.XMDLGenModelImpl <em>XMDL Gen Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdlgen.impl.XMDLGenModelImpl
+		 * @see chrome.xmdlgen.impl.XmdlgenPackageImpl#getXMDLGenModel()
+		 * @generated
+		 */
+		EClass XMDL_GEN_MODEL = eINSTANCE.getXMDLGenModel();
+
+	}
 
 } //XmdlgenPackage

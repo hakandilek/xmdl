@@ -5,8 +5,6 @@ import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
 import chrome.xmdl.core.util.*;
 import chrome.xmdl.xgen.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class EntitySearchJSPImpl
 {
@@ -60,7 +58,7 @@ public class EntitySearchJSPImpl
 	XClass xClass = (XClass) argument;	
 	ClassHelper helper = XMDLClassHelper.INSTANCE;
 	XAttribute firstAttribute = null;
-	List attributes = xClass.getAttributes();
+	List<XAttribute> attributes = xClass.getAttributes();
 	if (attributes != null && attributes.size() >0 ){
 		firstAttribute = (XAttribute) attributes.get(0);
 	}	
@@ -80,7 +78,7 @@ public class EntitySearchJSPImpl
     stringBuffer.append(TEXT_7);
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_8);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	    XAttribute attribute = (XAttribute) i.next();
     stringBuffer.append(TEXT_9);
       if (!attribute.isReference()) {  
@@ -101,7 +99,7 @@ public class EntitySearchJSPImpl
     stringBuffer.append(TEXT_16);
     stringBuffer.append(helper.getObjectName(xClass));
     stringBuffer.append(TEXT_17);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	    XAttribute attribute = (XAttribute) i.next();
 	    XType t = attribute.getType();
 	    boolean comp = t.isComparable();

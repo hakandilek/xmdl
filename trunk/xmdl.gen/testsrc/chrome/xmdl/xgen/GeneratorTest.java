@@ -3,10 +3,8 @@ package chrome.xmdl.xgen;
 import java.io.IOException;
 
 import junit.framework.TestCase;
-
 import chrome.xmdl.XProject;
 import chrome.xmdl.xgen.util.ResourceHelper;
-import chrome.xmdldb.init.AbstractTestCase;
 
 public class GeneratorTest extends TestCase {
 	protected XProject project;

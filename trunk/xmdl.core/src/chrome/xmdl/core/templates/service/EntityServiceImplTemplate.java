@@ -2,9 +2,8 @@ package chrome.xmdl.core.templates.service;
 
 import chrome.xmdl.XClass;
 import chrome.xmdl.XPackage;
-import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.service.impl.EntityServiceImplTemplateImpl;
-import chrome.xmdl.core.templates.service.impl.EntityServiceTemplateImpl;
+import chrome.xmdl.xgen.Template;
 
 public class EntityServiceImplTemplate extends EntityServiceImplTemplateImpl implements Template {
 

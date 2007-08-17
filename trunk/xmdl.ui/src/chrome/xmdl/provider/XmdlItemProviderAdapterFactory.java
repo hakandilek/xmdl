@@ -67,7 +67,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -97,6 +97,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXAttributeAdapter() {
 		if (xAttributeItemProvider == null) {
 			xAttributeItemProvider = new XAttributeItemProvider(this);
@@ -119,6 +120,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXClassAdapter() {
 		if (xClassItemProvider == null) {
 			xClassItemProvider = new XClassItemProvider(this);
@@ -141,6 +143,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXPackageAdapter() {
 		if (xPackageItemProvider == null) {
 			xPackageItemProvider = new XPackageItemProvider(this);
@@ -163,6 +166,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXProjectAdapter() {
 		if (xProjectItemProvider == null) {
 			xProjectItemProvider = new XProjectItemProvider(this);
@@ -185,6 +189,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXMethodAdapter() {
 		if (xMethodItemProvider == null) {
 			xMethodItemProvider = new XMethodItemProvider(this);
@@ -207,6 +212,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXParameterAdapter() {
 		if (xParameterItemProvider == null) {
 			xParameterItemProvider = new XParameterItemProvider(this);
@@ -229,6 +235,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXExceptionAdapter() {
 		if (xExceptionItemProvider == null) {
 			xExceptionItemProvider = new XExceptionItemProvider(this);
@@ -251,6 +258,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXEnumerationAdapter() {
 		if (xEnumerationItemProvider == null) {
 			xEnumerationItemProvider = new XEnumerationItemProvider(this);
@@ -273,6 +281,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXEnumerationLiteralAdapter() {
 		if (xEnumerationLiteralItemProvider == null) {
 			xEnumerationLiteralItemProvider = new XEnumerationLiteralItemProvider(
@@ -309,6 +318,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -319,6 +329,7 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -328,11 +339,12 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
 			if (!(type instanceof Class)
-					|| (((Class) type).isInstance(adapter))) {
+					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -381,24 +393,24 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
 	 * @generated
 	 */
 	public void dispose() {
-		if (xAttributeItemProvider != null)
-			xAttributeItemProvider.dispose();
-		if (xClassItemProvider != null)
-			xClassItemProvider.dispose();
-		if (xPackageItemProvider != null)
-			xPackageItemProvider.dispose();
 		if (xProjectItemProvider != null)
 			xProjectItemProvider.dispose();
+		if (xPackageItemProvider != null)
+			xPackageItemProvider.dispose();
+		if (xClassItemProvider != null)
+			xClassItemProvider.dispose();
+		if (xEnumerationItemProvider != null)
+			xEnumerationItemProvider.dispose();
+		if (xEnumerationLiteralItemProvider != null)
+			xEnumerationLiteralItemProvider.dispose();
+		if (xAttributeItemProvider != null)
+			xAttributeItemProvider.dispose();
 		if (xMethodItemProvider != null)
 			xMethodItemProvider.dispose();
 		if (xParameterItemProvider != null)
 			xParameterItemProvider.dispose();
 		if (xExceptionItemProvider != null)
 			xExceptionItemProvider.dispose();
-		if (xEnumerationItemProvider != null)
-			xEnumerationItemProvider.dispose();
-		if (xEnumerationLiteralItemProvider != null)
-			xEnumerationLiteralItemProvider.dispose();
 	}
 
 }

@@ -1,10 +1,8 @@
 package chrome.xmdl.core.templates.ui.web.impl;
 
-import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
 import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class ParameterKeysImpl
 {
@@ -21,7 +19,7 @@ public class ParameterKeysImpl
   protected final String TEXT_1 = "package ";
   protected final String TEXT_2 = ".ui.web.action;";
   protected final String TEXT_3 = NL;
-  protected final String TEXT_4 = NL + NL + "/**" + NL + " * $Id$" + NL + " * Created: 17.�ub.2006 13:28:22" + NL + " *" + NL + " * @author hd" + NL + " * @generated" + NL + " */" + NL + "public interface ParameterKeys {" + NL + NL;
+  protected final String TEXT_4 = NL + NL + "/**" + NL + " * $Id$" + NL + " * Created: 17.?ub.2006 13:28:22" + NL + " *" + NL + " * @author hd" + NL + " * @generated" + NL + " */" + NL + "public interface ParameterKeys {" + NL + NL;
   protected final String TEXT_5 = NL + "   /**" + NL + "     * The request scope attribute that holds the {@link ";
   protected final String TEXT_6 = "} form." + NL + "\t * @generated " + NL + "     */" + NL + "    public static final String ";
   protected final String TEXT_7 = "_FORM = \"";

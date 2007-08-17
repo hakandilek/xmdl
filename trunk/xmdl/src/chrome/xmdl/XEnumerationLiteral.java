@@ -26,7 +26,8 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated NOT
  */
-public interface XEnumerationLiteral extends EObject, Comparable {
+public interface XEnumerationLiteral extends EObject,
+		Comparable<XEnumerationLiteral> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -47,7 +48,7 @@ public interface XEnumerationLiteral extends EObject, Comparable {
 	 * @see #setEnumeration(XEnumeration)
 	 * @see chrome.xmdl.XmdlPackage#getXEnumerationLiteral_Enumeration()
 	 * @see chrome.xmdl.XEnumeration#getLiterals
-	 * @model opposite="literals" required="true"
+	 * @model opposite="literals" required="true" transient="false"
 	 * @generated
 	 */
 	XEnumeration getEnumeration();

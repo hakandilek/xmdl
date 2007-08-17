@@ -6,25 +6,19 @@
  */
 package chrome.xmdlbo.impl;
 
-import chrome.xmdl.XType;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import chrome.xmdl.XType;
 import chrome.xmdlbo.BMethod;
 import chrome.xmdlbo.BParameter;
 import chrome.xmdlbo.BParameterNature;
-import chrome.xmdlbo.BService;
 import chrome.xmdlbo.XmdlboPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,7 +66,7 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 * @generated
 	 * @ordered
 	 */
-	protected XType type = null;
+	protected XType type;
 
 	/**
 	 * The default value of the '{@link #getNature() <em>Nature</em>}' attribute.
@@ -124,8 +118,9 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlboPackage.eINSTANCE.getBParameter();
+		return XmdlboPackage.Literals.BPARAMETER;
 	}
 
 	/**
@@ -156,8 +151,8 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 */
 	public XType getType() {
 		if (type != null && type.eIsProxy()) {
-			XType oldType = type;
-			type = (XType)eResolveProxy((InternalEObject)type);
+			InternalEObject oldType = (InternalEObject)type;
+			type = (XType)eResolveProxy(oldType);
 			if (type != oldType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, XmdlboPackage.BPARAMETER__TYPE, oldType, type));
@@ -236,7 +231,17 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 */
 	public BMethod getMethod() {
 		if (eContainerFeatureID != XmdlboPackage.BPARAMETER__METHOD) return null;
-		return (BMethod)eContainer;
+		return (BMethod)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMethod(BMethod newMethod, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newMethod, XmdlboPackage.BPARAMETER__METHOD, msgs);
+		return msgs;
 	}
 
 	/**
@@ -245,15 +250,15 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 * @generated
 	 */
 	public void setMethod(BMethod newMethod) {
-		if (newMethod != eContainer || (eContainerFeatureID != XmdlboPackage.BPARAMETER__METHOD && newMethod != null)) {
+		if (newMethod != eInternalContainer() || (eContainerFeatureID != XmdlboPackage.BPARAMETER__METHOD && newMethod != null)) {
 			if (EcoreUtil.isAncestor(this, newMethod))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newMethod != null)
 				msgs = ((InternalEObject)newMethod).eInverseAdd(this, XmdlboPackage.BMETHOD__PARAMETERS, BMethod.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newMethod, XmdlboPackage.BPARAMETER__METHOD, msgs);
+			msgs = basicSetMethod(newMethod, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -265,20 +270,15 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlboPackage.BPARAMETER__METHOD:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, XmdlboPackage.BPARAMETER__METHOD, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlboPackage.BPARAMETER__METHOD:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetMethod((BMethod)otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -286,16 +286,13 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlboPackage.BPARAMETER__METHOD:
-					return eBasicSetContainer(null, XmdlboPackage.BPARAMETER__METHOD, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlboPackage.BPARAMETER__METHOD:
+				return basicSetMethod(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -303,16 +300,13 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case XmdlboPackage.BPARAMETER__METHOD:
-					return eContainer.eInverseRemove(this, XmdlboPackage.BMETHOD__PARAMETERS, BMethod.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case XmdlboPackage.BPARAMETER__METHOD:
+				return eInternalContainer().eInverseRemove(this, XmdlboPackage.BMETHOD__PARAMETERS, BMethod.class, msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -320,8 +314,9 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case XmdlboPackage.BPARAMETER__NAME:
 				return getName();
 			case XmdlboPackage.BPARAMETER__TYPE:
@@ -334,7 +329,7 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 			case XmdlboPackage.BPARAMETER__METHOD:
 				return getMethod();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -342,8 +337,9 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case XmdlboPackage.BPARAMETER__NAME:
 				setName((String)newValue);
 				return;
@@ -360,7 +356,7 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 				setMethod((BMethod)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -368,8 +364,9 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case XmdlboPackage.BPARAMETER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -386,7 +383,7 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 				setMethod((BMethod)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -394,8 +391,9 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case XmdlboPackage.BPARAMETER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case XmdlboPackage.BPARAMETER__TYPE:
@@ -407,7 +405,7 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 			case XmdlboPackage.BPARAMETER__METHOD:
 				return getMethod() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -415,6 +413,7 @@ public class BParameterImpl extends EObjectImpl implements BParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

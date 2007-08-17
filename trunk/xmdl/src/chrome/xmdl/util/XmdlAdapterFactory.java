@@ -59,6 +59,7 @@ public class XmdlAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -75,56 +76,69 @@ public class XmdlAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected XmdlSwitch modelSwitch = new XmdlSwitch() {
-		public Object caseXAttribute(XAttribute object) {
-			return createXAttributeAdapter();
-		}
-
-		public Object caseXClass(XClass object) {
-			return createXClassAdapter();
-		}
-
-		public Object caseXPackage(XPackage object) {
-			return createXPackageAdapter();
-		}
-
-		public Object caseXProject(XProject object) {
+	protected XmdlSwitch<Adapter> modelSwitch = new XmdlSwitch<Adapter>() {
+		@Override
+		public Adapter caseXProject(XProject object) {
 			return createXProjectAdapter();
 		}
 
-		public Object caseXBase(XBase object) {
-			return createXBaseAdapter();
+		@Override
+		public Adapter caseXPackage(XPackage object) {
+			return createXPackageAdapter();
 		}
 
-		public Object caseXMethod(XMethod object) {
-			return createXMethodAdapter();
+		@Override
+		public Adapter caseXClass(XClass object) {
+			return createXClassAdapter();
 		}
 
-		public Object caseXParameter(XParameter object) {
-			return createXParameterAdapter();
-		}
-
-		public Object caseXException(XException object) {
-			return createXExceptionAdapter();
-		}
-
-		public Object caseXType(XType object) {
-			return createXTypeAdapter();
-		}
-
-		public Object caseXModel(XModel object) {
-			return createXModelAdapter();
-		}
-
-		public Object caseXEnumeration(XEnumeration object) {
+		@Override
+		public Adapter caseXEnumeration(XEnumeration object) {
 			return createXEnumerationAdapter();
 		}
 
-		public Object caseXEnumerationLiteral(XEnumerationLiteral object) {
+		@Override
+		public Adapter caseXEnumerationLiteral(XEnumerationLiteral object) {
 			return createXEnumerationLiteralAdapter();
 		}
 
-		public Object defaultCase(EObject object) {
+		@Override
+		public Adapter caseXAttribute(XAttribute object) {
+			return createXAttributeAdapter();
+		}
+
+		@Override
+		public Adapter caseXMethod(XMethod object) {
+			return createXMethodAdapter();
+		}
+
+		@Override
+		public Adapter caseXParameter(XParameter object) {
+			return createXParameterAdapter();
+		}
+
+		@Override
+		public Adapter caseXBase(XBase object) {
+			return createXBaseAdapter();
+		}
+
+		@Override
+		public Adapter caseXType(XType object) {
+			return createXTypeAdapter();
+		}
+
+		@Override
+		public Adapter caseXException(XException object) {
+			return createXExceptionAdapter();
+		}
+
+		@Override
+		public Adapter caseXModel(XModel object) {
+			return createXModelAdapter();
+		}
+
+		@Override
+		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
 	};
@@ -137,8 +151,9 @@ public class XmdlAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter) modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
 
 	/**

@@ -6,31 +6,24 @@
  */
 package chrome.xmdlgen.impl;
 
-import chrome.xmdl.XClass;
-
-import chrome.xmdlgen.GAttribute;
-import chrome.xmdlgen.GClass;
-import chrome.xmdlgen.GPackage;
-import chrome.xmdlgen.XmdlgenPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import chrome.xmdl.XClass;
+import chrome.xmdlgen.GAttribute;
+import chrome.xmdlgen.GClass;
+import chrome.xmdlgen.GPackage;
+import chrome.xmdlgen.XmdlgenPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,7 +62,7 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * @generated
 	 * @ordered
 	 */
-	protected XClass xClass = null;
+	protected XClass xClass;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -99,7 +92,7 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList gAttributes = null;
+	protected EList<GAttribute> gAttributes;
 
 	/**
 	 * The default value of the '{@link #isPersistent() <em>Persistent</em>}' attribute.
@@ -215,8 +208,9 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlgenPackage.eINSTANCE.getGClass();
+		return XmdlgenPackage.Literals.GCLASS;
 	}
 
 	/**
@@ -226,8 +220,8 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 */
 	public XClass getXClass() {
 		if (xClass != null && xClass.eIsProxy()) {
-			XClass oldXClass = xClass;
-			xClass = (XClass)eResolveProxy((InternalEObject)xClass);
+			InternalEObject oldXClass = (InternalEObject)xClass;
+			xClass = (XClass)eResolveProxy(oldXClass);
 			if (xClass != oldXClass) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, XmdlgenPackage.GCLASS__XCLASS, oldXClass, xClass));
@@ -285,7 +279,17 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 */
 	public GPackage getGPackage() {
 		if (eContainerFeatureID != XmdlgenPackage.GCLASS__GPACKAGE) return null;
-		return (GPackage)eContainer;
+		return (GPackage)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetGPackage(GPackage newGPackage, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newGPackage, XmdlgenPackage.GCLASS__GPACKAGE, msgs);
+		return msgs;
 	}
 
 	/**
@@ -294,15 +298,15 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * @generated
 	 */
 	public void setGPackage(GPackage newGPackage) {
-		if (newGPackage != eContainer || (eContainerFeatureID != XmdlgenPackage.GCLASS__GPACKAGE && newGPackage != null)) {
+		if (newGPackage != eInternalContainer() || (eContainerFeatureID != XmdlgenPackage.GCLASS__GPACKAGE && newGPackage != null)) {
 			if (EcoreUtil.isAncestor(this, newGPackage))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newGPackage != null)
 				msgs = ((InternalEObject)newGPackage).eInverseAdd(this, XmdlgenPackage.GPACKAGE__GCLASSES, GPackage.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newGPackage, XmdlgenPackage.GCLASS__GPACKAGE, msgs);
+			msgs = basicSetGPackage(newGPackage, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -314,9 +318,9 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getGAttributes() {
+	public EList<GAttribute> getGAttributes() {
 		if (gAttributes == null) {
-			gAttributes = new EObjectContainmentWithInverseEList(GAttribute.class, this, XmdlgenPackage.GCLASS__GATTRIBUTES, XmdlgenPackage.GATTRIBUTE__GCLASS);
+			gAttributes = new EObjectContainmentWithInverseEList<GAttribute>(GAttribute.class, this, XmdlgenPackage.GCLASS__GATTRIBUTES, XmdlgenPackage.GATTRIBUTE__GCLASS);
 		}
 		return gAttributes;
 	}
@@ -431,22 +435,18 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlgenPackage.GCLASS__GPACKAGE:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, XmdlgenPackage.GCLASS__GPACKAGE, msgs);
-				case XmdlgenPackage.GCLASS__GATTRIBUTES:
-					return ((InternalEList)getGAttributes()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlgenPackage.GCLASS__GPACKAGE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetGPackage((GPackage)otherEnd, msgs);
+			case XmdlgenPackage.GCLASS__GATTRIBUTES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getGAttributes()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -454,18 +454,15 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlgenPackage.GCLASS__GPACKAGE:
-					return eBasicSetContainer(null, XmdlgenPackage.GCLASS__GPACKAGE, msgs);
-				case XmdlgenPackage.GCLASS__GATTRIBUTES:
-					return ((InternalEList)getGAttributes()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlgenPackage.GCLASS__GPACKAGE:
+				return basicSetGPackage(null, msgs);
+			case XmdlgenPackage.GCLASS__GATTRIBUTES:
+				return ((InternalEList<?>)getGAttributes()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -473,16 +470,13 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case XmdlgenPackage.GCLASS__GPACKAGE:
-					return eContainer.eInverseRemove(this, XmdlgenPackage.GPACKAGE__GCLASSES, GPackage.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case XmdlgenPackage.GCLASS__GPACKAGE:
+				return eInternalContainer().eInverseRemove(this, XmdlgenPackage.GPACKAGE__GCLASSES, GPackage.class, msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -490,8 +484,9 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case XmdlgenPackage.GCLASS__XCLASS:
 				if (resolve) return getXClass();
 				return basicGetXClass();
@@ -512,7 +507,7 @@ public class GClassImpl extends EObjectImpl implements GClass {
 			case XmdlgenPackage.GCLASS__SEARCH_SERVICE_NAME:
 				return getSearchServiceName();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -520,8 +515,10 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case XmdlgenPackage.GCLASS__XCLASS:
 				setXClass((XClass)newValue);
 				return;
@@ -533,7 +530,7 @@ public class GClassImpl extends EObjectImpl implements GClass {
 				return;
 			case XmdlgenPackage.GCLASS__GATTRIBUTES:
 				getGAttributes().clear();
-				getGAttributes().addAll((Collection)newValue);
+				getGAttributes().addAll((Collection<? extends GAttribute>)newValue);
 				return;
 			case XmdlgenPackage.GCLASS__PERSISTENT:
 				setPersistent(((Boolean)newValue).booleanValue());
@@ -551,7 +548,7 @@ public class GClassImpl extends EObjectImpl implements GClass {
 				setSearchServiceName((String)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -559,8 +556,9 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case XmdlgenPackage.GCLASS__XCLASS:
 				setXClass((XClass)null);
 				return;
@@ -589,7 +587,7 @@ public class GClassImpl extends EObjectImpl implements GClass {
 				setSearchServiceName(SEARCH_SERVICE_NAME_EDEFAULT);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -597,8 +595,9 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case XmdlgenPackage.GCLASS__XCLASS:
 				return xClass != null;
 			case XmdlgenPackage.GCLASS__NAME:
@@ -618,7 +617,7 @@ public class GClassImpl extends EObjectImpl implements GClass {
 			case XmdlgenPackage.GCLASS__SEARCH_SERVICE_NAME:
 				return SEARCH_SERVICE_NAME_EDEFAULT == null ? searchServiceName != null : !SEARCH_SERVICE_NAME_EDEFAULT.equals(searchServiceName);
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -626,6 +625,7 @@ public class GClassImpl extends EObjectImpl implements GClass {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

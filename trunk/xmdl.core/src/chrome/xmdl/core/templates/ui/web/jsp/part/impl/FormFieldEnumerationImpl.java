@@ -4,8 +4,6 @@ import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
 import chrome.xmdl.core.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class FormFieldEnumerationImpl
 {
@@ -53,7 +51,7 @@ public class FormFieldEnumerationImpl
     stringBuffer.append(TEXT_5);
     stringBuffer.append(attrib.getName());
     stringBuffer.append(TEXT_6);
-    for (Iterator i= enumeration.getLiterals().iterator(); i.hasNext();) {
+    for (Iterator<XEnumerationLiteral> i= enumeration.getLiterals().iterator(); i.hasNext();) {
 	    XEnumerationLiteral lit = (XEnumerationLiteral) i.next();
     stringBuffer.append(TEXT_7);
     stringBuffer.append(helper.getObjectName(xClass));

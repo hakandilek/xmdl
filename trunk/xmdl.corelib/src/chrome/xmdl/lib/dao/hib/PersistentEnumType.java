@@ -23,7 +23,7 @@ import chrome.xmdl.lib.dao.PersistentEnum;
 public class PersistentEnumType implements UserType, ParameterizedType {
 
     private static final int[] SQL_TYPES = new int[]{Types.INTEGER};
-    private Class targetClass;
+    private Class<?> targetClass;
 
     public void setParameterValues(Properties parameters) {
         String targetClassName = parameters.getProperty("targetClass");
@@ -42,7 +42,7 @@ public class PersistentEnumType implements UserType, ParameterizedType {
         return SQL_TYPES;
     }
 
-    public Class returnedClass() {
+    public Class<?> returnedClass() {
         return targetClass;
     }
 

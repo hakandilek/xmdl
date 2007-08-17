@@ -6,6 +6,14 @@
  */
 package chrome.xmdl.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import chrome.xmdl.XAssociationBehaviour;
 import chrome.xmdl.XAssociationType;
 import chrome.xmdl.XAttribute;
@@ -14,44 +22,29 @@ import chrome.xmdl.XEnumeration;
 import chrome.xmdl.XType;
 import chrome.xmdl.XmdlPackage;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>XAttribute</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link chrome.xmdl.impl.XAttributeImpl#getName <em>Name</em>}</li>
- * <li>{@link chrome.xmdl.impl.XAttributeImpl#getLength <em>Length</em>}</li>
- * <li>{@link chrome.xmdl.impl.XAttributeImpl#getDefaultValue <em>Default Value</em>}</li>
- * <li>{@link chrome.xmdl.impl.XAttributeImpl#getXClass <em>XClass</em>}</li>
- * <li>{@link chrome.xmdl.impl.XAttributeImpl#getType <em>Type</em>}</li>
- * <li>{@link chrome.xmdl.impl.XAttributeImpl#getAssociationType <em>Association Type</em>}</li>
- * <li>{@link chrome.xmdl.impl.XAttributeImpl#getAssociationBehaviour <em>Association Behaviour</em>}</li>
- * <li>{@link chrome.xmdl.impl.XAttributeImpl#getOpposite <em>Opposite</em>}</li>
- * <li>{@link chrome.xmdl.impl.XAttributeImpl#isNavigable <em>Navigable</em>}</li>
+ *   <li>{@link chrome.xmdl.impl.XAttributeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link chrome.xmdl.impl.XAttributeImpl#getLength <em>Length</em>}</li>
+ *   <li>{@link chrome.xmdl.impl.XAttributeImpl#getDefaultValue <em>Default Value</em>}</li>
+ *   <li>{@link chrome.xmdl.impl.XAttributeImpl#getXClass <em>XClass</em>}</li>
+ *   <li>{@link chrome.xmdl.impl.XAttributeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link chrome.xmdl.impl.XAttributeImpl#getAssociationType <em>Association Type</em>}</li>
+ *   <li>{@link chrome.xmdl.impl.XAttributeImpl#getAssociationBehaviour <em>Association Behaviour</em>}</li>
+ *   <li>{@link chrome.xmdl.impl.XAttributeImpl#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link chrome.xmdl.impl.XAttributeImpl#isNavigable <em>Navigable</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static final String copyright = "hd";
@@ -59,7 +52,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -69,7 +61,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -77,9 +68,8 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLength() <em>Length</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getLength() <em>Length</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -87,9 +77,8 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	protected static final int LENGTH_EDEFAULT = 15;
 
 	/**
-	 * The cached value of the '{@link #getLength() <em>Length</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getLength()
 	 * @generated
 	 * @ordered
@@ -97,9 +86,8 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	protected int length = LENGTH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDefaultValue()
 	 * @generated
 	 * @ordered
@@ -107,9 +95,8 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	protected static final Object DEFAULT_VALUE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDefaultValue()
 	 * @generated
 	 * @ordered
@@ -119,17 +106,15 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected XType type = null;
+	protected XType type;
 
 	/**
-	 * The default value of the '{@link #getAssociationType() <em>Association Type</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getAssociationType() <em>Association Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAssociationType()
 	 * @generated
 	 * @ordered
@@ -137,9 +122,8 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	protected static final XAssociationType ASSOCIATION_TYPE_EDEFAULT = XAssociationType.ONE_TO_ONE_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getAssociationType() <em>Association Type</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getAssociationType() <em>Association Type</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAssociationType()
 	 * @generated
 	 * @ordered
@@ -147,9 +131,8 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	protected XAssociationType associationType = ASSOCIATION_TYPE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getAssociationBehaviour() <em>Association Behaviour</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #getAssociationBehaviour() <em>Association Behaviour</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAssociationBehaviour()
 	 * @generated
 	 * @ordered
@@ -157,9 +140,8 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	protected static final XAssociationBehaviour ASSOCIATION_BEHAVIOUR_EDEFAULT = XAssociationBehaviour.AGGREGATION_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getAssociationBehaviour() <em>Association Behaviour</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getAssociationBehaviour() <em>Association Behaviour</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAssociationBehaviour()
 	 * @generated
 	 * @ordered
@@ -167,19 +149,17 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	protected XAssociationBehaviour associationBehaviour = ASSOCIATION_BEHAVIOUR_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}'
-	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getOpposite()
 	 * @generated
 	 * @ordered
 	 */
-	protected XAttribute opposite = null;
+	protected XAttribute opposite;
 
 	/**
-	 * The default value of the '{@link #isNavigable() <em>Navigable</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The default value of the '{@link #isNavigable() <em>Navigable</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isNavigable()
 	 * @generated
 	 * @ordered
@@ -187,9 +167,8 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	protected static final boolean NAVIGABLE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isNavigable() <em>Navigable</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #isNavigable() <em>Navigable</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isNavigable()
 	 * @generated
 	 * @ordered
@@ -198,7 +177,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected XAttributeImpl() {
@@ -207,16 +185,15 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlPackage.eINSTANCE.getXAttribute();
+		return XmdlPackage.Literals.XATTRIBUTE;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -225,7 +202,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setName(String newName) {
@@ -238,7 +214,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getLength() {
@@ -247,7 +222,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setLength(int newLength) {
@@ -260,7 +234,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Object getDefaultValue() {
@@ -269,7 +242,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setDefaultValue(Object newDefaultValue) {
@@ -283,34 +255,43 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public XClass getXClass() {
 		if (eContainerFeatureID != XmdlPackage.XATTRIBUTE__XCLASS)
 			return null;
-		return (XClass) eContainer;
+		return (XClass) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetXClass(XClass newXClass,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newXClass,
+				XmdlPackage.XATTRIBUTE__XCLASS, msgs);
+		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setXClass(XClass newXClass) {
-		if (newXClass != eContainer
+		if (newXClass != eInternalContainer()
 				|| (eContainerFeatureID != XmdlPackage.XATTRIBUTE__XCLASS && newXClass != null)) {
 			if (EcoreUtil.isAncestor(this, newXClass))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newXClass != null)
 				msgs = ((InternalEObject) newXClass).eInverseAdd(this,
 						XmdlPackage.XCLASS__ATTRIBUTES, XClass.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newXClass,
-					XmdlPackage.XATTRIBUTE__XCLASS, msgs);
+			msgs = basicSetXClass(newXClass, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -320,13 +301,12 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public XType getType() {
 		if (type != null && type.eIsProxy()) {
-			XType oldType = type;
-			type = (XType) eResolveProxy((InternalEObject) type);
+			InternalEObject oldType = (InternalEObject) type;
+			type = (XType) eResolveProxy(oldType);
 			if (type != oldType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -338,7 +318,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public XType basicGetType() {
@@ -347,7 +326,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setType(XType newType) {
@@ -360,7 +338,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public XAssociationType getAssociationType() {
@@ -369,7 +346,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setAssociationType(XAssociationType newAssociationType) {
@@ -384,7 +360,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public XAssociationBehaviour getAssociationBehaviour() {
@@ -393,7 +368,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setAssociationBehaviour(
@@ -409,13 +383,12 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public XAttribute getOpposite() {
 		if (opposite != null && opposite.eIsProxy()) {
-			XAttribute oldOpposite = opposite;
-			opposite = (XAttribute) eResolveProxy((InternalEObject) opposite);
+			InternalEObject oldOpposite = (InternalEObject) opposite;
+			opposite = (XAttribute) eResolveProxy(oldOpposite);
 			if (opposite != oldOpposite) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -428,7 +401,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public XAttribute basicGetOpposite() {
@@ -437,7 +409,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setOpposite(XAttribute newOpposite) {
@@ -450,7 +421,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public boolean isNavigable() {
@@ -459,7 +429,6 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setNavigable(boolean newNavigable) {
@@ -482,74 +451,61 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XATTRIBUTE__XCLASS:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-						XmdlPackage.XATTRIBUTE__XCLASS, msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XATTRIBUTE__XCLASS:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetXClass((XClass) otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XATTRIBUTE__XCLASS:
-				return eBasicSetContainer(null, XmdlPackage.XATTRIBUTE__XCLASS,
-						msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XATTRIBUTE__XCLASS:
+			return basicSetXClass(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-			case XmdlPackage.XATTRIBUTE__XCLASS:
-				return eContainer.eInverseRemove(this,
-						XmdlPackage.XCLASS__ATTRIBUTES, XClass.class, msgs);
-			default:
-				return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+		case XmdlPackage.XATTRIBUTE__XCLASS:
+			return eInternalContainer().eInverseRemove(this,
+					XmdlPackage.XCLASS__ATTRIBUTES, XClass.class, msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-				- eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case XmdlPackage.XATTRIBUTE__NAME:
 			return getName();
 		case XmdlPackage.XATTRIBUTE__LENGTH:
@@ -573,16 +529,17 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 		case XmdlPackage.XATTRIBUTE__NAVIGABLE:
 			return isNavigable() ? Boolean.TRUE : Boolean.FALSE;
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 		case XmdlPackage.XATTRIBUTE__NAME:
 			setName((String) newValue);
 			return;
@@ -590,7 +547,7 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 			setLength(((Integer) newValue).intValue());
 			return;
 		case XmdlPackage.XATTRIBUTE__DEFAULT_VALUE:
-			setDefaultValue((Object) newValue);
+			setDefaultValue(newValue);
 			return;
 		case XmdlPackage.XATTRIBUTE__XCLASS:
 			setXClass((XClass) newValue);
@@ -611,16 +568,17 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 			setNavigable(((Boolean) newValue).booleanValue());
 			return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XATTRIBUTE__NAME:
 			setName(NAME_EDEFAULT);
 			return;
@@ -649,16 +607,17 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 			setNavigable(NAVIGABLE_EDEFAULT);
 			return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XATTRIBUTE__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
 					.equals(name);
@@ -680,14 +639,14 @@ public class XAttributeImpl extends EObjectImpl implements XAttribute {
 		case XmdlPackage.XATTRIBUTE__NAVIGABLE:
 			return navigable != NAVIGABLE_EDEFAULT;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

@@ -1,6 +1,5 @@
 package chrome.xmdlbo.init;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -28,7 +27,7 @@ public class XMDLBOInitializerTest extends AbstractTestCase {
 		assertNotNull(bModel);
 		
 		assertEquals("xmdl.xmp", bModel.getName());
-		List packages = bModel.getBPackages();
+		List<BPackage> packages = bModel.getBPackages();
 		assertNotNull(packages);
 		assertEquals(1, packages.size());
 	}
@@ -36,23 +35,23 @@ public class XMDLBOInitializerTest extends AbstractTestCase {
 	public void testBPackage(){
 		EObject object = ResourceHelper.loadResource(path);
 		BModel gModel = (BModel) object;
-		List packages = gModel.getBPackages();
-		BPackage bPackage = (BPackage) packages.get(0);
+		List<BPackage> packages = gModel.getBPackages();
+		BPackage bPackage = packages.get(0);
 		
 		assertNotNull(bPackage);
 		assertEquals("chrome.xmdl.demo", bPackage.getName());
-		List bClasses = bPackage.getServices();
-		assertNotNull(bClasses);
-		assertEquals(2, bClasses.size());
+		List<BService> services = bPackage.getServices();
+		assertNotNull(services);
+		assertEquals(2, services.size());
 	}
 
 	public void testBService(){
 		EObject object = ResourceHelper.loadResource(path);
 		BModel bModel = (BModel) object;
-		List packages = bModel.getBPackages();
-		BPackage bPackage = (BPackage) packages.get(0);
-		List gClasses = bPackage.getServices();
-		BService service = (BService) gClasses.get(0);
+		List<BPackage> packages = bModel.getBPackages();
+		BPackage bPackage =  packages.get(0);
+		List<BService> services = bPackage.getServices();
+		BService service =  services.get(0);
 
 		assertNotNull(service);
 
@@ -61,7 +60,7 @@ public class XMDLBOInitializerTest extends AbstractTestCase {
 		assertEquals("Customer", cls.getName());
 		
 		assertEquals("CustomerService", service.getName());
-		List methods = service.getMethods();
+		List<BMethod> methods = service.getMethods();
 		assertNotNull(methods);
 		assertEquals(0, methods.size());
 	}

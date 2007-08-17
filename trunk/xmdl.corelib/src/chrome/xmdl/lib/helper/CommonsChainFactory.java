@@ -32,7 +32,7 @@ public class CommonsChainFactory extends AbstractFactoryBean implements org.spri
             throw new RuntimeException("Commmand Names expepected");
         }
         String[] strings = commandNames/*.split(",")*/;
-        List list = new ArrayList();
+        List<Object> list = new ArrayList<Object>();
         for (int i = 0; i < strings.length; i++) {
             String name = strings[i];
             Object bean = applicationContext.getBean(name);
@@ -45,7 +45,7 @@ public class CommonsChainFactory extends AbstractFactoryBean implements org.spri
         return new ChainBase(list);
     }
 
-    public Class getObjectType() {
+    public Class<?> getObjectType() {
         return Chain.class;
     }
 

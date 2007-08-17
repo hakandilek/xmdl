@@ -6,32 +6,28 @@
  */
 package chrome.xmdldb.provider;
 
-import chrome.xmdldb.DField;
-import chrome.xmdldb.XmdldbPackage;
-
-import chrome.xmdl.*;
-
-import chrome.xmdldb.*;
-
-import chrome.xmdldb.ui.XmdldbEditPlugin;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import chrome.xmdl.XAttribute;
+import chrome.xmdl.XType;
+import chrome.xmdldb.DField;
+import chrome.xmdldb.XmdldbPackage;
+import chrome.xmdldb.ui.XmdldbEditPlugin;
 
 /**
  * This is the item provider adapter for a {@link chrome.xmdldb.DField} object.
@@ -65,7 +61,8 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -93,9 +90,9 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 				getString("_UI_Persistable_persistent_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_Persistable_persistent_feature",
-						"_UI_Persistable_type"), XmdldbPackage.eINSTANCE
-						.getPersistable_Persistent(), true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+						"_UI_Persistable_type"),
+				XmdldbPackage.Literals.PERSISTABLE__PERSISTENT, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -111,8 +108,8 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DField_xAttribute_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DField_xAttribute_feature", "_UI_DField_type"),
-				XmdldbPackage.eINSTANCE.getDField_XAttribute(), false, null,
-				getString("_UI_BaseModelPropertyCategory"), null));
+				XmdldbPackage.Literals.DFIELD__XATTRIBUTE, false, false, false,
+				null, getString("_UI_BaseModelPropertyCategory"), null));
 	}
 
 	/**
@@ -128,7 +125,7 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DField_name_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DField_name_feature", "_UI_DField_type"),
-				XmdldbPackage.eINSTANCE.getDField_Name(), true,
+				XmdldbPackage.Literals.DFIELD__NAME, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getString("_UI_DBModelPropertyCategory"), null));
 	}
@@ -146,7 +143,7 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DField_length_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DField_length_feature", "_UI_DField_type"),
-				XmdldbPackage.eINSTANCE.getDField_Length(), true,
+				XmdldbPackage.Literals.DFIELD__LENGTH, true, false, false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				getString("_UI_DBModelPropertyCategory"), null));
 	}
@@ -164,7 +161,7 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DField_indices_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DField_indices_feature", "_UI_DField_type"),
-				XmdldbPackage.eINSTANCE.getDField_Indices(), true,
+				XmdldbPackage.Literals.DFIELD__INDICES, true, false, false,
 				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				getString("_UI_DBModelPropertyCategory"), null));
 	}
@@ -182,8 +179,8 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DField_foreign_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DField_foreign_feature", "_UI_DField_type"),
-				XmdldbPackage.eINSTANCE.getDField_Foreign(), true, null, null,
-				null));
+				XmdldbPackage.Literals.DFIELD__FOREIGN, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -199,8 +196,8 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DField_dTable_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DField_dTable_feature", "_UI_DField_type"),
-				XmdldbPackage.eINSTANCE.getDField_DTable(), false, null,
-				getString("_UI_DBModelPropertyCategory"), null));
+				XmdldbPackage.Literals.DFIELD__DTABLE, false, false, false,
+				null, getString("_UI_DBModelPropertyCategory"), null));
 	}
 
 	/**
@@ -209,8 +206,10 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/DField");
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/DField"));
 	}
 
 	/**
@@ -243,6 +242,7 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -259,14 +259,15 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors,
-			Object object) {
+	@Override
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -276,6 +277,7 @@ public class DFieldItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XmdldbEditPlugin.INSTANCE;
 	}

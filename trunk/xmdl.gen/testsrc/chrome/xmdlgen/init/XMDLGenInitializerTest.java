@@ -1,6 +1,7 @@
 package chrome.xmdlgen.init;
 
-import org.eclipse.emf.common.util.EList;
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 
 import chrome.xmdl.xgen.util.ResourceHelper;
@@ -25,7 +26,7 @@ public class XMDLGenInitializerTest extends AbstractTestCase {
 		assertNotNull(gModel);
 		
 		assertEquals("xmdl.xmp", gModel.getName());
-		EList packages = gModel.getGPackages();
+		List<GPackage> packages = gModel.getGPackages();
 		assertNotNull(packages);
 		assertEquals(1, packages.size());
 	}
@@ -33,12 +34,12 @@ public class XMDLGenInitializerTest extends AbstractTestCase {
 	public void testGPackage(){
 		EObject object = ResourceHelper.loadResource(path);
 		GModel gModel = (GModel) object;
-		EList packages = gModel.getGPackages();
-		GPackage gPackage = (GPackage) packages.get(0);
+		List<GPackage> packages = gModel.getGPackages();
+		GPackage gPackage = packages.get(0);
 		
 		assertNotNull(gPackage);
 		assertEquals("chrome.xmdl.demo", gPackage.getName());
-		EList gClasses = gPackage.getGClasses();
+		List<GClass> gClasses = gPackage.getGClasses();
 		assertNotNull(gClasses);
 		assertEquals(2, gClasses.size());
 	}
@@ -46,15 +47,15 @@ public class XMDLGenInitializerTest extends AbstractTestCase {
 	public void testGClass(){
 		EObject object = ResourceHelper.loadResource(path);
 		GModel gModel = (GModel) object;
-		EList packages = gModel.getGPackages();
-		GPackage gPackage = (GPackage) packages.get(0);
-		EList gClasses = gPackage.getGClasses();
-		GClass gClass = (GClass) gClasses.get(0);
+		List<GPackage> packages = gModel.getGPackages();
+		GPackage gPackage = packages.get(0);
+		List<GClass> gClasses = gPackage.getGClasses();
+		GClass gClass = gClasses.get(0);
 
 		assertNotNull(gClass);
 		assertEquals("Customer", gClass.getName());
 		assertEquals(true, gClass.isPersistent());
-		EList gAttributes = gClass.getGAttributes();
+		List<GAttribute> gAttributes = gClass.getGAttributes();
 		assertNotNull(gAttributes);
 		assertEquals(2, gAttributes.size());
 	}
@@ -62,11 +63,11 @@ public class XMDLGenInitializerTest extends AbstractTestCase {
 	public void testGAttribute(){
 		EObject object = ResourceHelper.loadResource(path);
 		GModel gModel = (GModel) object;
-		EList packages = gModel.getGPackages();
-		GPackage gPackage = (GPackage) packages.get(0);
-		EList gClasses = gPackage.getGClasses();
-		GClass gClass = (GClass) gClasses.get(0);
-		EList gAttributes = gClass.getGAttributes();
+		List<GPackage> packages = gModel.getGPackages();
+		GPackage gPackage = packages.get(0);
+		List<GClass> gClasses = gPackage.getGClasses();
+		GClass gClass = gClasses.get(0);
+		List<GAttribute> gAttributes = gClass.getGAttributes();
 		GAttribute gAttribute = (GAttribute) gAttributes.get(0);
 		
 

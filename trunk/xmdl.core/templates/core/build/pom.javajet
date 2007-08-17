@@ -1,10 +1,6 @@
 <%@ jet 
     package="chrome.xmdl.core.templates.build.impl" 
-    imports="java.util.* 
-            chrome.xmdl.*
-            chrome.xmdl.gen.util.*
-			chrome.xmdl.core.util.*
-            org.eclipse.emf.codegen.util.*"
+    imports="chrome.xmdl.*"
     class="POMImpl" %>    
      
 <%

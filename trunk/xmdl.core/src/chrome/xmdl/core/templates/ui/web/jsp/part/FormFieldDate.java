@@ -1,9 +1,8 @@
 package chrome.xmdl.core.templates.ui.web.jsp.part;
 
 import chrome.xmdl.XAttribute;
-import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.ui.web.jsp.part.impl.FormFieldDateImpl;
-import chrome.xmdl.core.templates.ui.web.jsp.part.impl.FormFieldDefaultImpl;
+import chrome.xmdl.xgen.Template;
 
 public class FormFieldDate extends FormFieldDateImpl
 		implements Template {

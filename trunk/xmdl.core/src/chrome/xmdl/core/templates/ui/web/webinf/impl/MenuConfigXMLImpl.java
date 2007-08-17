@@ -3,8 +3,6 @@ package chrome.xmdl.core.templates.ui.web.webinf.impl;
 import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class MenuConfigXMLImpl
 {
@@ -41,10 +39,10 @@ public class MenuConfigXMLImpl
 	ClassHelper helper = XMDLClassHelper.INSTANCE;
 
     stringBuffer.append(TEXT_1);
-    for (Iterator i = project.getPackages().iterator(); i.hasNext();) {
+    for (Iterator<XPackage> i = project.getPackages().iterator(); i.hasNext();) {
 	    XPackage xPackage = (XPackage) i.next();
     stringBuffer.append(TEXT_2);
-    for (Iterator i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
+    for (Iterator<XClass> i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
 		    XClass xClass = (XClass) i2.next();
     stringBuffer.append(TEXT_3);
     stringBuffer.append(helper.getCapName(xClass));

@@ -19,7 +19,7 @@ public class ArrayUtil {
      * @param value
      * @return
      */
-    private static int indexOf(Comparable[] array, Comparable value) {
+    private static int indexOf(Comparable<?>[] array, Comparable<?> value) {
         LOGGER.debug("ArrayUtil.indexOf");
         Arrays.sort(array);
         int idx = Arrays.binarySearch(array, value);
@@ -47,7 +47,7 @@ public class ArrayUtil {
         return idx >= 0;
     }
 
-    public static boolean contains(Comparable[] array, Comparable value) {
+    public static boolean contains(Comparable<?>[] array, Comparable<?> value) {
         LOGGER.debug("ArrayUtil.contains");
         int idx = indexOf(array, value);
         return idx >= 0;

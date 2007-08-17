@@ -1,7 +1,6 @@
 <%@ jet 
     package="chrome.xmdl.core.templates.service.impl" 
     imports="chrome.xmdl.*
-			chrome.xmdl.core.util.*
              chrome.xmdl.gen.util.*
              org.eclipse.emf.codegen.util.*"
     class="SampleListenerImplTemplateImpl" 
@@ -9,7 +8,6 @@
     XProject xProject = (XProject) argument;
     XPackage xPackage = (XPackage) xProject.getPackages().get(0);
      
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     %>

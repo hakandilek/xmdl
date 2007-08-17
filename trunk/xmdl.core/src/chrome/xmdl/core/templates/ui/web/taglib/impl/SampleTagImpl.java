@@ -1,6 +1,5 @@
 package chrome.xmdl.core.templates.ui.web.taglib.impl;
 
-import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
 import org.eclipse.emf.codegen.util.*;

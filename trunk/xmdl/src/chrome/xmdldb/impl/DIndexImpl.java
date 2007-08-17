@@ -6,25 +6,20 @@
  */
 package chrome.xmdldb.impl;
 
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
 import chrome.xmdldb.DField;
 import chrome.xmdldb.DIndex;
 import chrome.xmdldb.DTable;
 import chrome.xmdldb.XmdldbPackage;
-
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -98,7 +93,7 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 	 * @generated
 	 * @ordered
 	 */
-	protected DTable dTable = null;
+	protected DTable dTable;
 
 	/**
 	 * The cached value of the '{@link #getDfields() <em>Dfields</em>}' reference list.
@@ -108,7 +103,7 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList dfields = null;
+	protected EList<DField> dfields;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,8 +119,9 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdldbPackage.eINSTANCE.getDIndex();
+		return XmdldbPackage.Literals.DINDEX;
 	}
 
 	/**
@@ -179,8 +175,8 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 	 */
 	public DTable getDTable() {
 		if (dTable != null && dTable.eIsProxy()) {
-			DTable oldDTable = dTable;
-			dTable = (DTable) eResolveProxy((InternalEObject) dTable);
+			InternalEObject oldDTable = (InternalEObject) dTable;
+			dTable = (DTable) eResolveProxy(oldDTable);
 			if (dTable != oldDTable) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -217,9 +213,9 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDfields() {
+	public EList<DField> getDfields() {
 		if (dfields == null) {
-			dfields = new EObjectResolvingEList(DField.class, this,
+			dfields = new EObjectResolvingEList<DField>(DField.class, this,
 					XmdldbPackage.DINDEX__DFIELDS);
 		}
 		return dfields;
@@ -230,8 +226,9 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case XmdldbPackage.DINDEX__NAME:
 			return getName();
 		case XmdldbPackage.DINDEX__UNIQUE:
@@ -243,7 +240,7 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 		case XmdldbPackage.DINDEX__DFIELDS:
 			return getDfields();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -251,8 +248,10 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 		case XmdldbPackage.DINDEX__NAME:
 			setName((String) newValue);
 			return;
@@ -264,10 +263,10 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 			return;
 		case XmdldbPackage.DINDEX__DFIELDS:
 			getDfields().clear();
-			getDfields().addAll((Collection) newValue);
+			getDfields().addAll((Collection<? extends DField>) newValue);
 			return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -275,8 +274,9 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 		case XmdldbPackage.DINDEX__NAME:
 			setName(NAME_EDEFAULT);
 			return;
@@ -290,7 +290,7 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 			getDfields().clear();
 			return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -298,8 +298,9 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 		case XmdldbPackage.DINDEX__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
 					.equals(name);
@@ -310,7 +311,7 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 		case XmdldbPackage.DINDEX__DFIELDS:
 			return dfields != null && !dfields.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -318,6 +319,7 @@ public class DIndexImpl extends EObjectImpl implements DIndex {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

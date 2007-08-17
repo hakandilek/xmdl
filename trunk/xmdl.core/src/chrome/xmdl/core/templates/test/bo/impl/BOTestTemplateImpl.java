@@ -2,7 +2,6 @@ package chrome.xmdl.core.templates.test.bo.impl;
 
 import java.util.*;
 import chrome.xmdl.*;
-import chrome.xmdl.core.util.*;
 import chrome.xmdl.gen.util.*;
 import org.eclipse.emf.codegen.util.*;
 
@@ -187,7 +186,6 @@ public class BOTestTemplateImpl
     
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage(); 
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLEntityHelper.INSTANCE;
     TestHelper testHelper = TestHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
@@ -346,7 +344,7 @@ public class BOTestTemplateImpl
     stringBuffer.append(TEXT_71);
     stringBuffer.append(helper.uncapName(xClass.getName()));
     stringBuffer.append(TEXT_72);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_73);
@@ -451,7 +449,7 @@ public class BOTestTemplateImpl
     stringBuffer.append(TEXT_124);
     stringBuffer.append(helper.uncapName(xClass.getName()));
     stringBuffer.append(TEXT_125);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_126);
@@ -483,7 +481,7 @@ public class BOTestTemplateImpl
     stringBuffer.append(TEXT_140);
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_141);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference() && !attribute.getType().isComparable()) {
     stringBuffer.append(TEXT_142);

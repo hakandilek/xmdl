@@ -6,10 +6,13 @@
  */
 package chrome.xmdlgen.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import chrome.xmdl.XmdlPackage;
-
-import chrome.xmdl.impl.XmdlPackageImpl;
-
 import chrome.xmdlgen.GAttribute;
 import chrome.xmdlgen.GClass;
 import chrome.xmdlgen.GModel;
@@ -17,13 +20,6 @@ import chrome.xmdlgen.GPackage;
 import chrome.xmdlgen.XMDLGenModel;
 import chrome.xmdlgen.XmdlgenFactory;
 import chrome.xmdlgen.XmdlgenPackage;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -131,7 +127,7 @@ public class XmdlgenPackageImpl extends EPackageImpl implements XmdlgenPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		XmdlPackageImpl.init();
+		XmdlPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theXmdlgenPackage.createPackageContents();
@@ -463,7 +459,11 @@ public class XmdlgenPackageImpl extends EPackageImpl implements XmdlgenPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		XmdlPackageImpl theXmdlPackage = (XmdlPackageImpl)EPackage.Registry.INSTANCE.getEPackage(XmdlPackage.eNS_URI);
+		XmdlPackage theXmdlPackage = (XmdlPackage)EPackage.Registry.INSTANCE.getEPackage(XmdlPackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		xmdlGenModelEClass.getESuperTypes().add(theXmdlPackage.getXModel());

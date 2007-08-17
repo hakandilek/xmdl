@@ -30,7 +30,7 @@ public interface XmdlgenFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	XmdlgenFactory eINSTANCE = new chrome.xmdlgen.impl.XmdlgenFactoryImpl();
+	XmdlgenFactory eINSTANCE = chrome.xmdlgen.impl.XmdlgenFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>GModel</em>'.

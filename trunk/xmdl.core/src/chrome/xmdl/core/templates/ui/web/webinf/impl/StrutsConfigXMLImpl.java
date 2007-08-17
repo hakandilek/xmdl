@@ -3,8 +3,6 @@ package chrome.xmdl.core.templates.ui.web.webinf.impl;
 import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class StrutsConfigXMLImpl
 {
@@ -56,10 +54,10 @@ public class StrutsConfigXMLImpl
 	
 
     stringBuffer.append(TEXT_1);
-    for (Iterator itp = project.getPackages().iterator(); itp.hasNext();) {
+    for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
 		XPackage xPackage = (XPackage ) itp.next();
     stringBuffer.append(TEXT_2);
-    for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+    for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 			XClass xClass = (XClass) it.next();
     stringBuffer.append(TEXT_3);
     stringBuffer.append(helper.uncapSafeName(xClass));
@@ -69,10 +67,10 @@ public class StrutsConfigXMLImpl
     }
     }
     stringBuffer.append(TEXT_6);
-    for (Iterator itp = project.getPackages().iterator(); itp.hasNext();) {
+    for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
 		XPackage xPackage = (XPackage ) itp.next();
     stringBuffer.append(TEXT_7);
-    for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+    for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 			XClass xClass = (XClass) it.next();
     stringBuffer.append(TEXT_8);
     stringBuffer.append(helper.getCapName(xClass));
@@ -82,10 +80,10 @@ public class StrutsConfigXMLImpl
     }
     }
     stringBuffer.append(TEXT_11);
-    for (Iterator itp = project.getPackages().iterator(); itp.hasNext();) {
+    for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
 		XPackage xPackage = (XPackage ) itp.next();
     stringBuffer.append(TEXT_12);
-    for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+    for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 			XClass xClass = (XClass) it.next();
     stringBuffer.append(TEXT_13);
     stringBuffer.append(helper.getCapName(xClass));
@@ -115,7 +113,7 @@ public class StrutsConfigXMLImpl
     }
     }
     stringBuffer.append(TEXT_24);
-    for (Iterator itp = project.getPackages().iterator(); itp.hasNext();) {
+    for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
 		XPackage xPackage = (XPackage ) itp.next();
     stringBuffer.append(TEXT_25);
     stringBuffer.append(xPackage.getName());

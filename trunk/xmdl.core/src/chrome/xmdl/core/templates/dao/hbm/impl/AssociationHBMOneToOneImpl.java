@@ -1,11 +1,8 @@
 package chrome.xmdl.core.templates.dao.hbm.impl;
 
-import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.core.util.*;
 import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
-import chrome.xmdldb.*;
 
 public class AssociationHBMOneToOneImpl
 {
@@ -29,7 +26,7 @@ public class AssociationHBMOneToOneImpl
     final StringBuffer stringBuffer = new StringBuffer();
     
 	AttributePair pair = (AttributePair) argument;	
-	DField f = pair.getField();	
+//	DField f = pair.getField();	
 	XAttribute a = pair.getAttribute();
 	XAssociationBehaviour b = a.getAssociationBehaviour();
 	

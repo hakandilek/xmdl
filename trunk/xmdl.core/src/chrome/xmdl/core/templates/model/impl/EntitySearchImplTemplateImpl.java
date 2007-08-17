@@ -2,7 +2,6 @@ package chrome.xmdl.core.templates.model.impl;
 
 import java.util.*;
 import chrome.xmdl.*;
-import chrome.xmdl.core.util.*;
 import chrome.xmdl.gen.util.*;
 import org.eclipse.emf.codegen.util.*;
 
@@ -75,7 +74,6 @@ public class EntitySearchImplTemplateImpl
     
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage(); 
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     
@@ -106,7 +104,7 @@ importManager.addImport(helper.getQualifiedName(xPackage) + ".model.*");
     stringBuffer.append(TEXT_6);
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_7);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     stringBuffer.append(TEXT_8);
     if (attribute.getType() != null && !attribute.isReference()) {
@@ -140,7 +138,7 @@ importManager.addImport(helper.getQualifiedName(xPackage) + ".model.*");
     }
     }
     stringBuffer.append(TEXT_21);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     stringBuffer.append(TEXT_22);
     if (attribute.getType() != null && !attribute.isReference()) {

@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,35 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class BParameterNature extends AbstractEnumerator {
+public enum BParameterNature implements Enumerator
+{
+	/**
+	 * The '<em><b>IN</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #IN
+	 * @generated
+	 * @ordered
+	 */
+	IN_LITERAL(1, "IN", "IN"),
+	/**
+	 * The '<em><b>OUT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OUT
+	 * @generated
+	 * @ordered
+	 */
+	OUT_LITERAL(2, "OUT", "OUT"),
+	/**
+	 * The '<em><b>IN OUT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #IN_OUT
+	 * @generated
+	 * @ordered
+	 */
+	IN_OUT_LITERAL(3, "IN_OUT", "IN_OUT");
 	/**
 	 * The '<em><b>IN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
@@ -68,36 +96,6 @@ public final class BParameterNature extends AbstractEnumerator {
 	public static final int IN_OUT = 3;
 
 	/**
-	 * The '<em><b>IN</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #IN
-	 * @generated
-	 * @ordered
-	 */
-	public static final BParameterNature IN_LITERAL = new BParameterNature(IN, "IN");
-
-	/**
-	 * The '<em><b>OUT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #OUT
-	 * @generated
-	 * @ordered
-	 */
-	public static final BParameterNature OUT_LITERAL = new BParameterNature(OUT, "OUT");
-
-	/**
-	 * The '<em><b>IN OUT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #IN_OUT
-	 * @generated
-	 * @ordered
-	 */
-	public static final BParameterNature IN_OUT_LITERAL = new BParameterNature(IN_OUT, "IN_OUT");
-
-	/**
 	 * An array of all the '<em><b>BParameter Nature</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -116,18 +114,18 @@ public final class BParameterNature extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<BParameterNature> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>BParameter Nature</b></em>' literal with the specified name.
+	 * Returns the '<em><b>BParameter Nature</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static BParameterNature get(String name) {
+	public static BParameterNature get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			BParameterNature result = VALUES_ARRAY[i];
-			if (result.toString().equals(name)) {
+			if (result.toString().equals(literal)) {
 				return result;
 			}
 		}
@@ -135,7 +133,23 @@ public final class BParameterNature extends AbstractEnumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>BParameter Nature</b></em>' literal with the specified value.
+	 * Returns the '<em><b>BParameter Nature</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static BParameterNature getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			BParameterNature result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>BParameter Nature</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -146,8 +160,29 @@ public final class BParameterNature extends AbstractEnumerator {
 			case OUT: return OUT_LITERAL;
 			case IN_OUT: return IN_OUT_LITERAL;
 		}
-		return null;	
+		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -155,8 +190,47 @@ public final class BParameterNature extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private BParameterNature(int value, String name) {
-		super(value, name);
+	private BParameterNature(int value, String name, String literal) {
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //BParameterNature
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}
