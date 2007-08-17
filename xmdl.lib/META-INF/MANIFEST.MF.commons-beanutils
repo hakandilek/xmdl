@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: xmdl.lib.commons-beanutils
-Bundle-SymbolicName: xmdl.lib.commons-beanutils
+Bundle-Name: xmdl.lib.commons_beanutils
+Bundle-SymbolicName: xmdl.lib.commons_beanutils
 Bundle-Version: 1.6
 Bundle-Vendor: chrome
 Bundle-Localization: plugin
