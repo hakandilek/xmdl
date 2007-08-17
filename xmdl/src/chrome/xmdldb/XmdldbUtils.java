@@ -20,14 +20,13 @@ public class XmdldbUtils {
 	 *            the attribute
 	 * @param table
 	 *            the table
-	 * @return corresponsing field of attribute
+	 * @return corresponding field of attribute
 	 */
 	public static DField findField(XAttribute attribute, DTable table) {
 		if (table == null || attribute == null)
 			return null;
-		List fields = table.getDFields();
-		for (Iterator it = fields.iterator(); it.hasNext();) {
-			DField f = (DField) it.next();
+		List<DField> fields = table.getDFields();
+		for (DField f : fields) {
 			if (attribute.equals(f.getXAttribute())) {
 				return f;
 			}
@@ -113,8 +112,8 @@ public class XmdldbUtils {
 						DTable oppTable = findTableOf(model, oppClass);
 						if (oppTable == null)
 							return null;
-						List fields = oppTable.getDFields();
-						for (Iterator iter = fields.iterator(); iter.hasNext();) {
+						List<DField> fields = oppTable.getDFields();
+						for (Iterator<DField> iter = fields.iterator(); iter.hasNext();) {
 							DField opposite = (DField) iter.next();
 							if (opposite.getXAttribute().equals(oppAttrib)) {
 								return opposite;
@@ -173,8 +172,8 @@ public class XmdldbUtils {
 		XClass oppClass = oppAttrib.getXClass();
 		//XClass xClass = table.getXClass();
 		DPackage dPackage = table.getDPackage();
-		List tables = dPackage.getDTables();
-		for (Iterator it = tables.iterator(); it.hasNext();) {
+		List<DTable> tables = dPackage.getDTables();
+		for (Iterator<DTable> it = tables.iterator(); it.hasNext();) {
 			DTable t = (DTable) it.next();
 			XClass class1 = t.getXClass();
 			if (class1 != null && class1.equals(oppClass)) {

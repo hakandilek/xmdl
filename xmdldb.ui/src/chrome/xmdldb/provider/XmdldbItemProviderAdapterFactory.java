@@ -67,7 +67,7 @@ public class XmdldbItemProviderAdapterFactory extends XmdldbAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -97,6 +97,7 @@ public class XmdldbItemProviderAdapterFactory extends XmdldbAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDModelAdapter() {
 		if (dModelItemProvider == null) {
 			dModelItemProvider = new DModelItemProvider(this);
@@ -119,6 +120,7 @@ public class XmdldbItemProviderAdapterFactory extends XmdldbAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDPackageAdapter() {
 		if (dPackageItemProvider == null) {
 			dPackageItemProvider = new DPackageItemProvider(this);
@@ -141,6 +143,7 @@ public class XmdldbItemProviderAdapterFactory extends XmdldbAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDTableAdapter() {
 		if (dTableItemProvider == null) {
 			dTableItemProvider = new DTableItemProvider(this);
@@ -163,6 +166,7 @@ public class XmdldbItemProviderAdapterFactory extends XmdldbAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDFieldAdapter() {
 		if (dFieldItemProvider == null) {
 			dFieldItemProvider = new DFieldItemProvider(this);
@@ -185,6 +189,7 @@ public class XmdldbItemProviderAdapterFactory extends XmdldbAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXMDLDBModelAdapter() {
 		if (xmdldbModelItemProvider == null) {
 			xmdldbModelItemProvider = new XMDLDBModelItemProvider(this);
@@ -207,6 +212,7 @@ public class XmdldbItemProviderAdapterFactory extends XmdldbAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDIndexAdapter() {
 		if (dIndexItemProvider == null) {
 			dIndexItemProvider = new DIndexItemProvider(this);
@@ -242,6 +248,7 @@ public class XmdldbItemProviderAdapterFactory extends XmdldbAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -252,6 +259,7 @@ public class XmdldbItemProviderAdapterFactory extends XmdldbAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -261,11 +269,12 @@ public class XmdldbItemProviderAdapterFactory extends XmdldbAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
 			if (!(type instanceof Class)
-					|| (((Class) type).isInstance(adapter))) {
+					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

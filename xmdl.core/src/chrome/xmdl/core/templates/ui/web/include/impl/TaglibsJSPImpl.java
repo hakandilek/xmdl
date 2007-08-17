@@ -1,10 +1,6 @@
 package chrome.xmdl.core.templates.ui.web.include.impl;
 
-import java.util.*;
 import chrome.xmdl.*;
-import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class TaglibsJSPImpl
 {
@@ -27,7 +23,6 @@ public class TaglibsJSPImpl
     final StringBuffer stringBuffer = new StringBuffer();
      
 	XProject project = (XProject) argument;	
-	ClassHelper helper = XMDLClassHelper.INSTANCE;
 
     stringBuffer.append(TEXT_1);
     stringBuffer.append(project.getName());

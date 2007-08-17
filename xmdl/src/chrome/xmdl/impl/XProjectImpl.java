@@ -12,12 +12,10 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import chrome.xmdl.XPackage;
@@ -74,7 +72,7 @@ public class XProjectImpl extends EObjectImpl implements XProject {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList packages = null;
+	protected EList<XPackage> packages;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -90,8 +88,9 @@ public class XProjectImpl extends EObjectImpl implements XProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlPackage.eINSTANCE.getXProject();
+		return XmdlPackage.Literals.XPROJECT;
 	}
 
 	/**
@@ -121,10 +120,10 @@ public class XProjectImpl extends EObjectImpl implements XProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPackages() {
+	public EList<XPackage> getPackages() {
 		if (packages == null) {
-			packages = new EObjectContainmentWithInverseEList(XPackage.class,
-					this, XmdlPackage.XPROJECT__PACKAGES,
+			packages = new EObjectContainmentWithInverseEList<XPackage>(
+					XPackage.class, this, XmdlPackage.XPROJECT__PACKAGES,
 					XmdlPackage.XPACKAGE__PROJECT);
 		}
 		return packages;
@@ -135,19 +134,16 @@ public class XProjectImpl extends EObjectImpl implements XProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XPROJECT__PACKAGES:
-				return ((InternalEList) getPackages()).basicAdd(otherEnd, msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XPROJECT__PACKAGES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getPackages())
+					.basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -155,19 +151,15 @@ public class XProjectImpl extends EObjectImpl implements XProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XPROJECT__PACKAGES:
-				return ((InternalEList) getPackages()).basicRemove(otherEnd,
-						msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XPROJECT__PACKAGES:
+			return ((InternalEList<?>) getPackages()).basicRemove(otherEnd,
+					msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -175,14 +167,15 @@ public class XProjectImpl extends EObjectImpl implements XProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case XmdlPackage.XPROJECT__NAME:
 			return getName();
 		case XmdlPackage.XPROJECT__PACKAGES:
 			return getPackages();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -190,17 +183,19 @@ public class XProjectImpl extends EObjectImpl implements XProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 		case XmdlPackage.XPROJECT__NAME:
 			setName((String) newValue);
 			return;
 		case XmdlPackage.XPROJECT__PACKAGES:
 			getPackages().clear();
-			getPackages().addAll((Collection) newValue);
+			getPackages().addAll((Collection<? extends XPackage>) newValue);
 			return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -208,8 +203,9 @@ public class XProjectImpl extends EObjectImpl implements XProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XPROJECT__NAME:
 			setName(NAME_EDEFAULT);
 			return;
@@ -217,7 +213,7 @@ public class XProjectImpl extends EObjectImpl implements XProject {
 			getPackages().clear();
 			return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -225,15 +221,16 @@ public class XProjectImpl extends EObjectImpl implements XProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XPROJECT__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
 					.equals(name);
 		case XmdlPackage.XPROJECT__PACKAGES:
 			return packages != null && !packages.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -241,6 +238,7 @@ public class XProjectImpl extends EObjectImpl implements XProject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

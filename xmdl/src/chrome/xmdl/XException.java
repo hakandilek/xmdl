@@ -47,7 +47,7 @@ public interface XException extends EObject {
 	 * @model default="java.lang.Exception" required="true"
 	 * @generated
 	 */
-	Class getJavaClass();
+	Class<?> getJavaClass();
 
 	/**
 	 * Sets the value of the '{@link chrome.xmdl.XException#getJavaClass <em>Java Class</em>}' attribute.
@@ -57,6 +57,6 @@ public interface XException extends EObject {
 	 * @see #getJavaClass()
 	 * @generated
 	 */
-	void setJavaClass(Class value);
+	void setJavaClass(Class<?> value);
 
 } // XException

@@ -6,33 +6,26 @@
  */
 package chrome.xmdl.impl;
 
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import chrome.xmdl.XClass;
 import chrome.xmdl.XException;
 import chrome.xmdl.XMethod;
 import chrome.xmdl.XParameter;
 import chrome.xmdl.XType;
 import chrome.xmdl.XmdlPackage;
-
-import chrome.xmdl.*;
-
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -108,7 +101,7 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * @generated
 	 * @ordered
 	 */
-	protected XType type = null;
+	protected XType type;
 
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -118,7 +111,7 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList parameters = null;
+	protected EList<XParameter> parameters;
 
 	/**
 	 * The cached value of the '{@link #getExceptions() <em>Exceptions</em>}' containment reference list.
@@ -128,7 +121,7 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList exceptions = null;
+	protected EList<XException> exceptions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -144,8 +137,9 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlPackage.eINSTANCE.getXMethod();
+		return XmdlPackage.Literals.XMETHOD;
 	}
 
 	/**
@@ -200,7 +194,19 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	public XClass getXClass() {
 		if (eContainerFeatureID != XmdlPackage.XMETHOD__XCLASS)
 			return null;
-		return (XClass) eContainer;
+		return (XClass) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetXClass(XClass newXClass,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newXClass,
+				XmdlPackage.XMETHOD__XCLASS, msgs);
+		return msgs;
 	}
 
 	/**
@@ -209,19 +215,18 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * @generated
 	 */
 	public void setXClass(XClass newXClass) {
-		if (newXClass != eContainer
+		if (newXClass != eInternalContainer()
 				|| (eContainerFeatureID != XmdlPackage.XMETHOD__XCLASS && newXClass != null)) {
 			if (EcoreUtil.isAncestor(this, newXClass))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newXClass != null)
 				msgs = ((InternalEObject) newXClass).eInverseAdd(this,
 						XmdlPackage.XCLASS__METHODS, XClass.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newXClass,
-					XmdlPackage.XMETHOD__XCLASS, msgs);
+			msgs = basicSetXClass(newXClass, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -236,8 +241,8 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 */
 	public XType getType() {
 		if (type != null && type.eIsProxy()) {
-			XType oldType = type;
-			type = (XType) eResolveProxy((InternalEObject) type);
+			InternalEObject oldType = (InternalEObject) type;
+			type = (XType) eResolveProxy(oldType);
 			if (type != oldType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -274,9 +279,9 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getParameters() {
+	public EList<XParameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectContainmentWithInverseEList(
+			parameters = new EObjectContainmentWithInverseEList<XParameter>(
 					XParameter.class, this, XmdlPackage.XMETHOD__PARAMETERS,
 					XmdlPackage.XPARAMETER__METHOD);
 		}
@@ -288,10 +293,10 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getExceptions() {
+	public EList<XException> getExceptions() {
 		if (exceptions == null) {
-			exceptions = new EObjectContainmentEList(XException.class, this,
-					XmdlPackage.XMETHOD__EXCEPTIONS);
+			exceptions = new EObjectContainmentEList<XException>(
+					XException.class, this, XmdlPackage.XMETHOD__EXCEPTIONS);
 		}
 		return exceptions;
 	}
@@ -301,25 +306,20 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XMETHOD__XCLASS:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-						XmdlPackage.XMETHOD__XCLASS, msgs);
-			case XmdlPackage.XMETHOD__PARAMETERS:
-				return ((InternalEList) getParameters()).basicAdd(otherEnd,
-						msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XMETHOD__XCLASS:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetXClass((XClass) otherEnd, msgs);
+		case XmdlPackage.XMETHOD__PARAMETERS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getParameters())
+					.basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -327,25 +327,20 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XMETHOD__XCLASS:
-				return eBasicSetContainer(null, XmdlPackage.XMETHOD__XCLASS,
-						msgs);
-			case XmdlPackage.XMETHOD__PARAMETERS:
-				return ((InternalEList) getParameters()).basicRemove(otherEnd,
-						msgs);
-			case XmdlPackage.XMETHOD__EXCEPTIONS:
-				return ((InternalEList) getExceptions()).basicRemove(otherEnd,
-						msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XMETHOD__XCLASS:
+			return basicSetXClass(null, msgs);
+		case XmdlPackage.XMETHOD__PARAMETERS:
+			return ((InternalEList<?>) getParameters()).basicRemove(otherEnd,
+					msgs);
+		case XmdlPackage.XMETHOD__EXCEPTIONS:
+			return ((InternalEList<?>) getExceptions()).basicRemove(otherEnd,
+					msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -353,18 +348,15 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-			case XmdlPackage.XMETHOD__XCLASS:
-				return eContainer.eInverseRemove(this,
-						XmdlPackage.XCLASS__METHODS, XClass.class, msgs);
-			default:
-				return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+		case XmdlPackage.XMETHOD__XCLASS:
+			return eInternalContainer().eInverseRemove(this,
+					XmdlPackage.XCLASS__METHODS, XClass.class, msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-				- eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -372,8 +364,9 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case XmdlPackage.XMETHOD__INDEX:
 			return getIndex();
 		case XmdlPackage.XMETHOD__NAME:
@@ -389,7 +382,7 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 		case XmdlPackage.XMETHOD__EXCEPTIONS:
 			return getExceptions();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -397,8 +390,10 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 		case XmdlPackage.XMETHOD__INDEX:
 			setIndex((String) newValue);
 			return;
@@ -413,14 +408,14 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 			return;
 		case XmdlPackage.XMETHOD__PARAMETERS:
 			getParameters().clear();
-			getParameters().addAll((Collection) newValue);
+			getParameters().addAll((Collection<? extends XParameter>) newValue);
 			return;
 		case XmdlPackage.XMETHOD__EXCEPTIONS:
 			getExceptions().clear();
-			getExceptions().addAll((Collection) newValue);
+			getExceptions().addAll((Collection<? extends XException>) newValue);
 			return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -428,8 +423,9 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XMETHOD__INDEX:
 			setIndex(INDEX_EDEFAULT);
 			return;
@@ -449,7 +445,7 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 			getExceptions().clear();
 			return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -457,8 +453,9 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XMETHOD__INDEX:
 			return INDEX_EDEFAULT == null ? index != null : !INDEX_EDEFAULT
 					.equals(index);
@@ -474,7 +471,7 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 		case XmdlPackage.XMETHOD__EXCEPTIONS:
 			return exceptions != null && !exceptions.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -482,6 +479,7 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

@@ -3,15 +3,11 @@
     imports="java.util.* 
             chrome.xmdl.* 
             chrome.xmdl.gen.util.*
-			chrome.xmdl.core.util.*
             org.eclipse.emf.codegen.util.*"
     class="EntityFormTestImpl" 
 %><%
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage();
-    XProject  xProject = xPackage.getProject(); 
-     
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     %>
@@ -46,7 +42,7 @@ public class <%=helper.getCapName(xClass)%>FormTest extends TestCase {
         <%=helper.getCapName(xClass)%> bean = form.get<%=helper.getCapName(xClass)%>();
 
         assertNotNull(bean);        
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null) {%>
     	assertEquals(<%=helper.getDefaultValue(attribute)%>, bean.<%=helper.getGetAccessor(attribute)%>());
@@ -63,7 +59,7 @@ public class <%=helper.getCapName(xClass)%>FormTest extends TestCase {
 
         assertNotNull(search);
         
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     XType type = attribute.getType();
     %>

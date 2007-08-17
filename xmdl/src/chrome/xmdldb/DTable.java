@@ -6,11 +6,9 @@
  */
 package chrome.xmdldb;
 
-import chrome.xmdl.XClass;
-
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
+import chrome.xmdl.XClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,7 +76,7 @@ public interface DTable extends Persistable {
 	 * @see #setDPackage(DPackage)
 	 * @see chrome.xmdldb.XmdldbPackage#getDTable_DPackage()
 	 * @see chrome.xmdldb.DPackage#getDTables
-	 * @model opposite="dTables"
+	 * @model opposite="dTables" transient="false"
 	 * @generated
 	 */
 	DPackage getDPackage();
@@ -106,10 +104,10 @@ public interface DTable extends Persistable {
 	 * @return the value of the '<em>DFields</em>' containment reference list.
 	 * @see chrome.xmdldb.XmdldbPackage#getDTable_DFields()
 	 * @see chrome.xmdldb.DField#getDTable
-	 * @model type="chrome.xmdldb.DField" opposite="dTable" containment="true"
+	 * @model opposite="dTable" containment="true"
 	 * @generated
 	 */
-	EList getDFields();
+	EList<DField> getDFields();
 
 	/**
 	 * Returns the value of the '<em><b>XClass</b></em>' reference.
@@ -140,10 +138,10 @@ public interface DTable extends Persistable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" type="chrome.xmdldb.DIndex"
+	 * @model kind="operation"
 	 * @generated
 	 */
-	EList getIndices();
+	EList<DIndex> getIndices();
 
 	void initialize(XClass xClass);
 

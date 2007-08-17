@@ -1,11 +1,8 @@
 package chrome.xmdl.core.templates.dao.hbm.impl;
 
-import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
 import chrome.xmdl.core.util.*;
-import org.eclipse.emf.codegen.util.*;
-import chrome.xmdldb.*;
 
 public class AssociationHBMManyToManyImpl
 {
@@ -35,7 +32,7 @@ public class AssociationHBMManyToManyImpl
 //	XAttribute a = f.getXAttribute();
 //	DField of = XmdldbUtils.getOpposite(f);
 	//DTable ot = of.getDTable();
-	XAssociationBehaviour b = a.getAssociationBehaviour();
+//	XAssociationBehaviour b = a.getAssociationBehaviour();
 
     stringBuffer.append(TEXT_1);
     stringBuffer.append(a.getName());

@@ -14,7 +14,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -100,8 +99,9 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlPackage.eINSTANCE.getXEnumerationLiteral();
+		return XmdlPackage.Literals.XENUMERATION_LITERAL;
 	}
 
 	/**
@@ -112,7 +112,19 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 	public XEnumeration getEnumeration() {
 		if (eContainerFeatureID != XmdlPackage.XENUMERATION_LITERAL__ENUMERATION)
 			return null;
-		return (XEnumeration) eContainer;
+		return (XEnumeration) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetEnumeration(XEnumeration newEnumeration,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newEnumeration,
+				XmdlPackage.XENUMERATION_LITERAL__ENUMERATION, msgs);
+		return msgs;
 	}
 
 	/**
@@ -121,20 +133,19 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 	 * @generated
 	 */
 	public void setEnumeration(XEnumeration newEnumeration) {
-		if (newEnumeration != eContainer
+		if (newEnumeration != eInternalContainer()
 				|| (eContainerFeatureID != XmdlPackage.XENUMERATION_LITERAL__ENUMERATION && newEnumeration != null)) {
 			if (EcoreUtil.isAncestor(this, newEnumeration))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newEnumeration != null)
 				msgs = ((InternalEObject) newEnumeration).eInverseAdd(this,
 						XmdlPackage.XENUMERATION__LITERALS, XEnumeration.class,
 						msgs);
-			msgs = eBasicSetContainer((InternalEObject) newEnumeration,
-					XmdlPackage.XENUMERATION_LITERAL__ENUMERATION, msgs);
+			msgs = basicSetEnumeration(newEnumeration, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -192,22 +203,16 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XENUMERATION_LITERAL__ENUMERATION:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-						XmdlPackage.XENUMERATION_LITERAL__ENUMERATION, msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XENUMERATION_LITERAL__ENUMERATION:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetEnumeration((XEnumeration) otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -215,19 +220,14 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XENUMERATION_LITERAL__ENUMERATION:
-				return eBasicSetContainer(null,
-						XmdlPackage.XENUMERATION_LITERAL__ENUMERATION, msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XENUMERATION_LITERAL__ENUMERATION:
+			return basicSetEnumeration(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -235,19 +235,16 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-			case XmdlPackage.XENUMERATION_LITERAL__ENUMERATION:
-				return eContainer.eInverseRemove(this,
-						XmdlPackage.XENUMERATION__LITERALS, XEnumeration.class,
-						msgs);
-			default:
-				return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+		case XmdlPackage.XENUMERATION_LITERAL__ENUMERATION:
+			return eInternalContainer().eInverseRemove(this,
+					XmdlPackage.XENUMERATION__LITERALS, XEnumeration.class,
+					msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-				- eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -255,8 +252,9 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case XmdlPackage.XENUMERATION_LITERAL__ENUMERATION:
 			return getEnumeration();
 		case XmdlPackage.XENUMERATION_LITERAL__NAME:
@@ -264,7 +262,7 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 		case XmdlPackage.XENUMERATION_LITERAL__VALUE:
 			return new Integer(getValue());
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -272,8 +270,9 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 		case XmdlPackage.XENUMERATION_LITERAL__ENUMERATION:
 			setEnumeration((XEnumeration) newValue);
 			return;
@@ -284,7 +283,7 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 			setValue(((Integer) newValue).intValue());
 			return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -292,8 +291,9 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XENUMERATION_LITERAL__ENUMERATION:
 			setEnumeration((XEnumeration) null);
 			return;
@@ -304,7 +304,7 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 			setValue(VALUE_EDEFAULT);
 			return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -312,8 +312,9 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XENUMERATION_LITERAL__ENUMERATION:
 			return getEnumeration() != null;
 		case XmdlPackage.XENUMERATION_LITERAL__NAME:
@@ -322,7 +323,7 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 		case XmdlPackage.XENUMERATION_LITERAL__VALUE:
 			return value != VALUE_EDEFAULT;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -341,17 +342,8 @@ public class XEnumerationLiteralImpl extends EObjectImpl implements
 		return result.toString();
 	}
 
-	/**
-	 * @generated
-	 * @return
-	 */
-	public String toStringGen() {
-		return name;		
-	}
-
-	public int compareTo(Object o) {
-		if (o != null && o instanceof XEnumerationLiteral) {
-			XEnumerationLiteral other = (XEnumerationLiteral) o;
+	public int compareTo(XEnumerationLiteral other) {
+		if (other != null) {
 			int value2 = other.getValue();
 			return getValue() - value2;
 		}

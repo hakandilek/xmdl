@@ -10,6 +10,7 @@ import chrome.xmdl.ui.XMDLUIPlugin;
 
 import org.eclipse.emf.common.EMFPlugin;
 
+import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
@@ -50,9 +51,9 @@ public final class XmdlgenEditPlugin extends EMFPlugin {
 	 */
 	public XmdlgenEditPlugin() {
 		super
-		  (new ResourceLocator [] {
-		     XMDLUIPlugin.INSTANCE,
-		   });
+			(new ResourceLocator [] {
+				XMDLUIPlugin.INSTANCE,
+			});
 	}
 
 	/**
@@ -62,6 +63,7 @@ public final class XmdlgenEditPlugin extends EMFPlugin {
 	 * @return the singleton instance.
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getPluginResourceLocator() {
 		return plugin;
 	}
@@ -83,7 +85,7 @@ public final class XmdlgenEditPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static class Implementation extends EclipsePlugin {
+	public static class Implementation extends EclipseUIPlugin {
 		/**
 		 * Creates an instance.
 		 * <!-- begin-user-doc -->
@@ -92,7 +94,7 @@ public final class XmdlgenEditPlugin extends EMFPlugin {
 		 */
 		public Implementation() {
 			super();
-
+	
 			// Remember the static instance.
 			//
 			plugin = this;

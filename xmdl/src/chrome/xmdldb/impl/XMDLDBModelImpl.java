@@ -9,24 +9,19 @@ package chrome.xmdldb.impl;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+
 import chrome.xmdl.XProject;
 import chrome.xmdl.init.Initializer;
-
 import chrome.xmdldb.DModel;
 import chrome.xmdldb.XMDLDBModel;
 import chrome.xmdldb.XmdldbFactory;
 import chrome.xmdldb.XmdldbPackage;
 import chrome.xmdldb.init.XMDLDBInitializer;
-
-import org.eclipse.core.runtime.IPath;
-
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * <!-- begin-user-doc --> 
@@ -59,8 +54,9 @@ public class XMDLDBModelImpl extends EObjectImpl implements XMDLDBModel {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdldbPackage.eINSTANCE.getXMDLDBModel();
+		return XmdldbPackage.Literals.XMDLDB_MODEL;
 	}
 
 	//	/**
@@ -92,8 +88,8 @@ public class XMDLDBModelImpl extends EObjectImpl implements XMDLDBModel {
 	 * @model
 	 */
 	public EObject loadRoot(XProject project, Resource resource) {
-		List contents = resource.getContents();
-		for (Iterator it = contents.iterator(); it.hasNext();) {
+		List<EObject> contents = resource.getContents();
+		for (Iterator<EObject> it = contents.iterator(); it.hasNext();) {
 			EObject element = (EObject) it.next();
 			if (element instanceof DModel) {
 				DModel model = (DModel) element;

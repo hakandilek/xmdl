@@ -6,78 +6,75 @@
  */
 package chrome.xmdldb.presentation;
 
-import org.eclipse.emf.common.command.BasicCommandStack;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CommandStackListener;
-
-import org.eclipse.emf.common.notify.AdapterFactory;
-
-import org.eclipse.emf.common.ui.ViewerPane;
-
-import org.eclipse.emf.common.ui.viewer.IViewerProvider;
-
-import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-
-import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
-
-import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
-
-import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
-
-import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
-
-import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
-import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
-import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
-
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EValidator;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import java.io.IOException;
-
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EventObject;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.command.BasicCommandStack;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.command.CommandStackListener;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.ui.MarkerHelper;
+import org.eclipse.emf.common.ui.ViewerPane;
+import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
+import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EValidator;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
+import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
+import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
+import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
+import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
+import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
+import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
+import org.eclipse.emf.edit.ui.util.EditUIUtil;
+import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
-
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -91,62 +88,42 @@ import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
-
 import org.eclipse.swt.SWT;
-
 import org.eclipse.swt.custom.CTabFolder;
-
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
-
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
-
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
-
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
-
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
-import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
-
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.SaveAsDialog;
-
 import org.eclipse.ui.ide.IGotoMarker;
-
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
-
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
-
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import chrome.xmdl.provider.XmdlItemProviderAdapterFactory;
-
 import chrome.xmdldb.provider.XmdldbItemProviderAdapterFactory;
-
 import chrome.xmdldb.ui.XmdldbEditPlugin;
-
-import java.util.HashMap;
-
-import org.eclipse.core.runtime.NullProgressMonitor;
-
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * This is an example of a Xmdldb model editor.
@@ -293,7 +270,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection selectionChangedListeners = new ArrayList();
+	protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 
 	/**
 	 * This keeps track of the selection of the editor as a whole.
@@ -302,6 +279,15 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	protected ISelection editorSelection = StructuredSelection.EMPTY;
+
+	/**
+	 * The MarkerHelper is responsible for creating workspace resource markers presented
+	 * in Eclipse's Problems View.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MarkerHelper markerHelper = new EditUIMarkerHelper();
 
 	/**
 	 * This listens for when the outline becomes active
@@ -330,15 +316,19 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 		}
 
 		public void partBroughtToTop(IWorkbenchPart p) {
+			// Ignore.
 		}
 
 		public void partClosed(IWorkbenchPart p) {
+			// Ignore.
 		}
 
 		public void partDeactivated(IWorkbenchPart p) {
+			// Ignore.
 		}
 
 		public void partOpened(IWorkbenchPart p) {
+			// Ignore.
 		}
 	};
 
@@ -346,19 +336,85 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * Resources that have been removed since last activation.
 	 * @generated
 	 */
-	Collection removedResources = new ArrayList();
+	protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
 	/**
 	 * Resources that have been changed since last activation.
 	 * @generated
 	 */
-	Collection changedResources = new ArrayList();
+	protected Collection<Resource> changedResources = new ArrayList<Resource>();
 
 	/**
 	 * Resources that have been saved.
 	 * @generated
 	 */
-	Collection savedResources = new ArrayList();
+	protected Collection<Resource> savedResources = new ArrayList<Resource>();
+
+	/**
+	 * Map to store the diagnostic associated with a resource.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<Resource, Diagnostic>();
+
+	/**
+	 * Controls whether the problem indication should be updated.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected boolean updateProblemIndication = true;
+
+	/**
+	 * Adapter used to update the problem indication when resources are demanded loaded.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
+		@Override
+		public void notifyChanged(Notification notification) {
+			if (notification.getNotifier() instanceof Resource) {
+				switch (notification.getFeatureID(Resource.class)) {
+				case Resource.RESOURCE__IS_LOADED:
+				case Resource.RESOURCE__ERRORS:
+				case Resource.RESOURCE__WARNINGS: {
+					Resource resource = (Resource) notification.getNotifier();
+					Diagnostic diagnostic = analyzeResourceProblems(resource,
+							null);
+					if (diagnostic.getSeverity() != Diagnostic.OK) {
+						resourceToDiagnosticMap.put(resource, diagnostic);
+					} else {
+						resourceToDiagnosticMap.remove(resource);
+					}
+
+					if (updateProblemIndication) {
+						getSite().getShell().getDisplay().asyncExec(
+								new Runnable() {
+									public void run() {
+										updateProblemIndication();
+									}
+								});
+					}
+					break;
+				}
+				}
+			} else {
+				super.notifyChanged(notification);
+			}
+		}
+
+		@Override
+		protected void setTarget(Resource target) {
+			basicSetTarget(target);
+		}
+
+		@Override
+		protected void unsetTarget(Resource target) {
+			basicUnsetTarget(target);
+		}
+	};
 
 	/**
 	 * This listens for workspace changes.
@@ -376,10 +432,8 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 					class ResourceDeltaVisitor implements IResourceDeltaVisitor {
 						protected ResourceSet resourceSet = editingDomain
 								.getResourceSet();
-
-						protected Collection changedResources = new ArrayList();
-
-						protected Collection removedResources = new ArrayList();
+						protected Collection<Resource> changedResources = new ArrayList<Resource>();
+						protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
 						public boolean visit(IResourceDelta delta) {
 							if (delta.getFlags() != IResourceDelta.MARKERS
@@ -392,7 +446,8 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 									if (resource != null) {
 										if ((delta.getKind() & IResourceDelta.REMOVED) != 0) {
 											removedResources.add(resource);
-										} else {
+										} else if (!savedResources
+												.remove(resource)) {
 											changedResources.add(resource);
 										}
 									}
@@ -402,11 +457,11 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 							return true;
 						}
 
-						public Collection getChangedResources() {
+						public Collection<Resource> getChangedResources() {
 							return changedResources;
 						}
 
-						public Collection getRemovedResources() {
+						public Collection<Resource> getRemovedResources() {
 							return removedResources;
 						}
 					}
@@ -430,6 +485,14 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 
 					if (!visitor.getChangedResources().isEmpty()) {
 						changedResources.addAll(visitor.getChangedResources());
+						if (getSite().getPage().getActiveEditor() == XmdldbEditor.this) {
+							getSite().getShell().getDisplay().asyncExec(
+									new Runnable() {
+										public void run() {
+											handleActivate();
+										}
+									});
+						}
 					}
 				} catch (CoreException exception) {
 					XmdldbEditPlugin.INSTANCE.log(exception);
@@ -479,13 +542,72 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 				&& (!isDirty() || handleDirtyConflict())) {
 			editingDomain.getCommandStack().flush();
 
-			for (Iterator i = changedResources.iterator(); i.hasNext();) {
-				Resource resource = (Resource) i.next();
+			updateProblemIndication = false;
+			for (Resource resource : changedResources) {
 				if (resource.isLoaded()) {
 					resource.unload();
 					try {
 						resource.load(Collections.EMPTY_MAP);
 					} catch (IOException exception) {
+						if (!resourceToDiagnosticMap.containsKey(resource)) {
+							resourceToDiagnosticMap
+									.put(resource, analyzeResourceProblems(
+											resource, exception));
+						}
+					}
+				}
+			}
+			updateProblemIndication = true;
+			updateProblemIndication();
+		}
+	}
+
+	/**
+	 * Updates the problems indication with the information described in the specified diagnostic.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void updateProblemIndication() {
+		if (updateProblemIndication) {
+			BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
+					"xmdldb.edit", 0, null, new Object[] { editingDomain
+							.getResourceSet() });
+			for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
+				if (childDiagnostic.getSeverity() != Diagnostic.OK) {
+					diagnostic.add(childDiagnostic);
+				}
+			}
+
+			int lastEditorPage = getPageCount() - 1;
+			if (lastEditorPage >= 0
+					&& getEditor(lastEditorPage) instanceof ProblemEditorPart) {
+				((ProblemEditorPart) getEditor(lastEditorPage))
+						.setDiagnostic(diagnostic);
+				if (diagnostic.getSeverity() != Diagnostic.OK) {
+					setActivePage(lastEditorPage);
+				}
+			} else if (diagnostic.getSeverity() != Diagnostic.OK) {
+				ProblemEditorPart problemEditorPart = new ProblemEditorPart();
+				problemEditorPart.setDiagnostic(diagnostic);
+				problemEditorPart.setMarkerHelper(markerHelper);
+				try {
+					addPage(++lastEditorPage, problemEditorPart,
+							getEditorInput());
+					setPageText(lastEditorPage, problemEditorPart.getPartName());
+					setActivePage(lastEditorPage);
+					showTabs();
+				} catch (PartInitException exception) {
+					XmdldbEditPlugin.INSTANCE.log(exception);
+				}
+			}
+
+			if (markerHelper.hasMarkers(editingDomain.getResourceSet())) {
+				markerHelper.deleteMarkers(editingDomain.getResourceSet());
+				if (diagnostic.getSeverity() != Diagnostic.OK) {
+					try {
+						markerHelper.createMarkers(diagnostic);
+					} catch (CoreException exception) {
 						XmdldbEditPlugin.INSTANCE.log(exception);
 					}
 				}
@@ -507,20 +629,32 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * This creates a model editor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	public XmdldbEditor() {
 		super();
+		initializeEditingDomain();
+	}
 
+	/**
+	 * This sets up the editing domain for the model editor.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void initializeEditingDomain() {
 		// Create an adapter factory that yields item providers.
 		//
-		List factories = new ArrayList();
-		factories.add(new ResourceItemProviderAdapterFactory());
-		factories.add(new XmdldbItemProviderAdapterFactory());
-		factories.add(new XmdlItemProviderAdapterFactory());
-		factories.add(new ReflectiveItemProviderAdapterFactory());
+		adapterFactory = new ComposedAdapterFactory(
+				ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
-		adapterFactory = new ComposedAdapterFactory(factories);
+		adapterFactory
+				.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+		adapterFactory
+				.addAdapterFactory(new XmdldbItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new XmdlItemProviderAdapterFactory());
+		adapterFactory
+				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
 		//
@@ -542,7 +676,8 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 							setSelectionToViewer(mostRecentCommand
 									.getAffectedObjects());
 						}
-						if (propertySheetPage != null) {
+						if (propertySheetPage != null
+								&& !propertySheetPage.getControl().isDisposed()) {
 							propertySheetPage.refresh();
 						}
 					}
@@ -553,7 +688,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 		// Create the editing domain with a special command stack.
 		//
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory,
-				commandStack, new HashMap());
+				commandStack, new HashMap<Resource, Boolean>());
 	}
 
 	/**
@@ -562,6 +697,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected void firePropertyChange(int action) {
 		super.firePropertyChange(action);
 	}
@@ -572,8 +708,8 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSelectionToViewer(Collection collection) {
-		final Collection theSelection = collection;
+	public void setSelectionToViewer(Collection<?> collection) {
+		final Collection<?> theSelection = collection;
 		// Make sure it's okay.
 		//
 		if (theSelection != null && !theSelection.isEmpty()) {
@@ -728,7 +864,8 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 		contextMenu.addMenuListener(this);
 		Menu menu = contextMenu.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(contextMenu, viewer);
+		getSite().registerContextMenu(contextMenu,
+				new UnwrappingSelectionProvider(viewer));
 
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
 		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
@@ -745,17 +882,56 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	public void createModel() {
-		// I assume that the input is a file object.
-		//
-		IFileEditorInput modelFile = (IFileEditorInput) getEditorInput();
-
+		URI resourceURI = EditUIUtil.getURI(getEditorInput());
+		Exception exception = null;
+		Resource resource = null;
 		try {
 			// Load the resource through the editing domain.
 			//
-			editingDomain.loadResource(URI.createPlatformResourceURI(
-					modelFile.getFile().getFullPath().toString()).toString());
-		} catch (Exception exception) {
-			XmdldbEditPlugin.INSTANCE.log(exception);
+			resource = editingDomain.getResourceSet().getResource(resourceURI,
+					true);
+		} catch (Exception e) {
+			exception = e;
+			resource = editingDomain.getResourceSet().getResource(resourceURI,
+					false);
+		}
+
+		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
+		if (diagnostic.getSeverity() != Diagnostic.OK) {
+			resourceToDiagnosticMap.put(resource, analyzeResourceProblems(
+					resource, exception));
+		}
+		editingDomain.getResourceSet().eAdapters()
+				.add(problemIndicationAdapter);
+	}
+
+	/**
+	 * Returns a diagnostic describing the errors and warnings listed in the resource
+	 * and the specified exception (if any).
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Diagnostic analyzeResourceProblems(Resource resource,
+			Exception exception) {
+		if (!resource.getErrors().isEmpty()
+				|| !resource.getWarnings().isEmpty()) {
+			BasicDiagnostic basicDiagnostic = new BasicDiagnostic(
+					Diagnostic.ERROR, "xmdldb.edit", 0, getString(
+							"_UI_CreateModelError_message", resource.getURI()),
+					new Object[] { exception == null ? (Object) resource
+							: exception });
+			basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
+			return basicDiagnostic;
+		} else if (exception != null) {
+			return new BasicDiagnostic(
+					Diagnostic.ERROR,
+					"xmdldb.edit",
+					0,
+					getString("_UI_CreateModelError_message", resource.getURI()),
+					new Object[] { exception });
+		} else {
+			return Diagnostic.OK_INSTANCE;
 		}
 	}
 
@@ -765,228 +941,264 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void createPages() {
 		// Creates the model from the editor input
 		//
 		createModel();
 
-		// Create a page for the selection tree view.
+		// Only creates the other pages if there is something that can be edited
 		//
-		{
-			ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-					XmdldbEditor.this) {
-				public Viewer createViewer(Composite composite) {
-					Tree tree = new Tree(composite, SWT.MULTI);
-					TreeViewer newTreeViewer = new TreeViewer(tree);
-					return newTreeViewer;
+		if (!getEditingDomain().getResourceSet().getResources().isEmpty()
+				&& !(getEditingDomain().getResourceSet().getResources().get(0))
+						.getContents().isEmpty()) {
+			// Create a page for the selection tree view.
+			//
+			{
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
+						XmdldbEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						Tree tree = new Tree(composite, SWT.MULTI);
+						TreeViewer newTreeViewer = new TreeViewer(tree);
+						return newTreeViewer;
+					}
+
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
+				viewerPane.createControl(getContainer());
+
+				selectionViewer = (TreeViewer) viewerPane.getViewer();
+				selectionViewer
+						.setContentProvider(new AdapterFactoryContentProvider(
+								adapterFactory));
+
+				selectionViewer
+						.setLabelProvider(new AdapterFactoryLabelProvider(
+								adapterFactory));
+				selectionViewer.setInput(editingDomain.getResourceSet());
+				selectionViewer.setSelection(new StructuredSelection(
+						editingDomain.getResourceSet().getResources().get(0)),
+						true);
+				viewerPane.setTitle(editingDomain.getResourceSet());
+
+				new AdapterFactoryTreeEditor(selectionViewer.getTree(),
+						adapterFactory);
+
+				createContextMenuFor(selectionViewer);
+				int pageIndex = addPage(viewerPane.getControl());
+				setPageText(pageIndex, getString("_UI_SelectionPage_label"));
+			}
+
+			// Create a page for the parent tree view.
+			//
+			{
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
+						XmdldbEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						Tree tree = new Tree(composite, SWT.MULTI);
+						TreeViewer newTreeViewer = new TreeViewer(tree);
+						return newTreeViewer;
+					}
+
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
+				viewerPane.createControl(getContainer());
+
+				parentViewer = (TreeViewer) viewerPane.getViewer();
+				parentViewer.setAutoExpandLevel(30);
+				parentViewer
+						.setContentProvider(new ReverseAdapterFactoryContentProvider(
+								adapterFactory));
+				parentViewer.setLabelProvider(new AdapterFactoryLabelProvider(
+						adapterFactory));
+
+				createContextMenuFor(parentViewer);
+				int pageIndex = addPage(viewerPane.getControl());
+				setPageText(pageIndex, getString("_UI_ParentPage_label"));
+			}
+
+			// This is the page for the list viewer
+			//
+			{
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
+						XmdldbEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						return new ListViewer(composite);
+					}
+
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
+				viewerPane.createControl(getContainer());
+				listViewer = (ListViewer) viewerPane.getViewer();
+				listViewer
+						.setContentProvider(new AdapterFactoryContentProvider(
+								adapterFactory));
+				listViewer.setLabelProvider(new AdapterFactoryLabelProvider(
+						adapterFactory));
+
+				createContextMenuFor(listViewer);
+				int pageIndex = addPage(viewerPane.getControl());
+				setPageText(pageIndex, getString("_UI_ListPage_label"));
+			}
+
+			// This is the page for the tree viewer
+			//
+			{
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
+						XmdldbEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						return new TreeViewer(composite);
+					}
+
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
+				viewerPane.createControl(getContainer());
+				treeViewer = (TreeViewer) viewerPane.getViewer();
+				treeViewer
+						.setContentProvider(new AdapterFactoryContentProvider(
+								adapterFactory));
+				treeViewer.setLabelProvider(new AdapterFactoryLabelProvider(
+						adapterFactory));
+
+				new AdapterFactoryTreeEditor(treeViewer.getTree(),
+						adapterFactory);
+
+				createContextMenuFor(treeViewer);
+				int pageIndex = addPage(viewerPane.getControl());
+				setPageText(pageIndex, getString("_UI_TreePage_label"));
+			}
+
+			// This is the page for the table viewer.
+			//
+			{
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
+						XmdldbEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						return new TableViewer(composite);
+					}
+
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
+				viewerPane.createControl(getContainer());
+				tableViewer = (TableViewer) viewerPane.getViewer();
+
+				Table table = tableViewer.getTable();
+				TableLayout layout = new TableLayout();
+				table.setLayout(layout);
+				table.setHeaderVisible(true);
+				table.setLinesVisible(true);
+
+				TableColumn objectColumn = new TableColumn(table, SWT.NONE);
+				layout.addColumnData(new ColumnWeightData(3, 100, true));
+				objectColumn.setText(getString("_UI_ObjectColumn_label"));
+				objectColumn.setResizable(true);
+
+				TableColumn selfColumn = new TableColumn(table, SWT.NONE);
+				layout.addColumnData(new ColumnWeightData(2, 100, true));
+				selfColumn.setText(getString("_UI_SelfColumn_label"));
+				selfColumn.setResizable(true);
+
+				tableViewer.setColumnProperties(new String[] { "a", "b" });
+				tableViewer
+						.setContentProvider(new AdapterFactoryContentProvider(
+								adapterFactory));
+				tableViewer.setLabelProvider(new AdapterFactoryLabelProvider(
+						adapterFactory));
+
+				createContextMenuFor(tableViewer);
+				int pageIndex = addPage(viewerPane.getControl());
+				setPageText(pageIndex, getString("_UI_TablePage_label"));
+			}
+
+			// This is the page for the table tree viewer.
+			//
+			{
+				ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
+						XmdldbEditor.this) {
+					@Override
+					public Viewer createViewer(Composite composite) {
+						return new TreeViewer(composite);
+					}
+
+					@Override
+					public void requestActivation() {
+						super.requestActivation();
+						setCurrentViewerPane(this);
+					}
+				};
+				viewerPane.createControl(getContainer());
+
+				treeViewerWithColumns = (TreeViewer) viewerPane.getViewer();
+
+				Tree tree = treeViewerWithColumns.getTree();
+				tree.setLayoutData(new FillLayout());
+				tree.setHeaderVisible(true);
+				tree.setLinesVisible(true);
+
+				TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
+				objectColumn.setText(getString("_UI_ObjectColumn_label"));
+				objectColumn.setResizable(true);
+				objectColumn.setWidth(250);
+
+				TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
+				selfColumn.setText(getString("_UI_SelfColumn_label"));
+				selfColumn.setResizable(true);
+				selfColumn.setWidth(200);
+
+				treeViewerWithColumns.setColumnProperties(new String[] { "a",
+						"b" });
+				treeViewerWithColumns
+						.setContentProvider(new AdapterFactoryContentProvider(
+								adapterFactory));
+				treeViewerWithColumns
+						.setLabelProvider(new AdapterFactoryLabelProvider(
+								adapterFactory));
+
+				createContextMenuFor(treeViewerWithColumns);
+				int pageIndex = addPage(viewerPane.getControl());
+				setPageText(pageIndex,
+						getString("_UI_TreeWithColumnsPage_label"));
+			}
+
+			getSite().getShell().getDisplay().asyncExec(new Runnable() {
+				public void run() {
+					setActivePage(0);
 				}
-
-				public void requestActivation() {
-					super.requestActivation();
-					setCurrentViewerPane(this);
-				}
-			};
-			viewerPane.createControl(getContainer());
-
-			selectionViewer = (TreeViewer) viewerPane.getViewer();
-			selectionViewer
-					.setContentProvider(new AdapterFactoryContentProvider(
-							adapterFactory));
-
-			selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(
-					adapterFactory));
-			selectionViewer.setInput(editingDomain.getResourceSet());
-			viewerPane.setTitle(editingDomain.getResourceSet());
-
-			new AdapterFactoryTreeEditor(selectionViewer.getTree(),
-					adapterFactory);
-
-			createContextMenuFor(selectionViewer);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_SelectionPage_label"));
+			});
 		}
 
-		// Create a page for the parent tree view.
+		// Ensures that this editor will only display the page's tab
+		// area if there are more than one page
 		//
-		{
-			ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-					XmdldbEditor.this) {
-				public Viewer createViewer(Composite composite) {
-					Tree tree = new Tree(composite, SWT.MULTI);
-					TreeViewer newTreeViewer = new TreeViewer(tree);
-					return newTreeViewer;
-				}
-
-				public void requestActivation() {
-					super.requestActivation();
-					setCurrentViewerPane(this);
-				}
-			};
-			viewerPane.createControl(getContainer());
-
-			parentViewer = (TreeViewer) viewerPane.getViewer();
-			parentViewer.setAutoExpandLevel(30);
-			parentViewer
-					.setContentProvider(new ReverseAdapterFactoryContentProvider(
-							adapterFactory));
-			parentViewer.setLabelProvider(new AdapterFactoryLabelProvider(
-					adapterFactory));
-
-			createContextMenuFor(parentViewer);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_ParentPage_label"));
-		}
-
-		// This is the page for the list viewer
-		//
-		{
-			ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-					XmdldbEditor.this) {
-				public Viewer createViewer(Composite composite) {
-					return new ListViewer(composite);
-				}
-
-				public void requestActivation() {
-					super.requestActivation();
-					setCurrentViewerPane(this);
-				}
-			};
-			viewerPane.createControl(getContainer());
-			listViewer = (ListViewer) viewerPane.getViewer();
-			listViewer.setContentProvider(new AdapterFactoryContentProvider(
-					adapterFactory));
-			listViewer.setLabelProvider(new AdapterFactoryLabelProvider(
-					adapterFactory));
-
-			createContextMenuFor(listViewer);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_ListPage_label"));
-		}
-
-		// This is the page for the tree viewer
-		//
-		{
-			ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-					XmdldbEditor.this) {
-				public Viewer createViewer(Composite composite) {
-					return new TreeViewer(composite);
-				}
-
-				public void requestActivation() {
-					super.requestActivation();
-					setCurrentViewerPane(this);
-				}
-			};
-			viewerPane.createControl(getContainer());
-			treeViewer = (TreeViewer) viewerPane.getViewer();
-			treeViewer.setContentProvider(new AdapterFactoryContentProvider(
-					adapterFactory));
-			treeViewer.setLabelProvider(new AdapterFactoryLabelProvider(
-					adapterFactory));
-
-			new AdapterFactoryTreeEditor(treeViewer.getTree(), adapterFactory);
-
-			createContextMenuFor(treeViewer);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_TreePage_label"));
-		}
-
-		// This is the page for the table viewer.
-		//
-		{
-			ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-					XmdldbEditor.this) {
-				public Viewer createViewer(Composite composite) {
-					return new TableViewer(composite);
-				}
-
-				public void requestActivation() {
-					super.requestActivation();
-					setCurrentViewerPane(this);
-				}
-			};
-			viewerPane.createControl(getContainer());
-			tableViewer = (TableViewer) viewerPane.getViewer();
-
-			Table table = tableViewer.getTable();
-			TableLayout layout = new TableLayout();
-			table.setLayout(layout);
-			table.setHeaderVisible(true);
-			table.setLinesVisible(true);
-
-			TableColumn objectColumn = new TableColumn(table, SWT.NONE);
-			layout.addColumnData(new ColumnWeightData(3, 100, true));
-			objectColumn.setText(getString("_UI_ObjectColumn_label"));
-			objectColumn.setResizable(true);
-
-			TableColumn selfColumn = new TableColumn(table, SWT.NONE);
-			layout.addColumnData(new ColumnWeightData(2, 100, true));
-			selfColumn.setText(getString("_UI_SelfColumn_label"));
-			selfColumn.setResizable(true);
-
-			tableViewer.setColumnProperties(new String[] { "a", "b" });
-			tableViewer.setContentProvider(new AdapterFactoryContentProvider(
-					adapterFactory));
-			tableViewer.setLabelProvider(new AdapterFactoryLabelProvider(
-					adapterFactory));
-
-			createContextMenuFor(tableViewer);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_TablePage_label"));
-		}
-
-		// This is the page for the table tree viewer.
-		//
-		{
-			ViewerPane viewerPane = new ViewerPane(getSite().getPage(),
-					XmdldbEditor.this) {
-				public Viewer createViewer(Composite composite) {
-					return new TreeViewer(composite);
-				}
-
-				public void requestActivation() {
-					super.requestActivation();
-					setCurrentViewerPane(this);
-				}
-			};
-			viewerPane.createControl(getContainer());
-
-			treeViewerWithColumns = (TreeViewer) viewerPane.getViewer();
-
-			Tree tree = treeViewerWithColumns.getTree();
-			tree.setLayoutData(new FillLayout());
-			tree.setHeaderVisible(true);
-			tree.setLinesVisible(true);
-
-			TreeColumn objectColumn = new TreeColumn(tree, SWT.NONE);
-			objectColumn.setText(getString("_UI_ObjectColumn_label"));
-			objectColumn.setResizable(true);
-			objectColumn.setWidth(250);
-
-			TreeColumn selfColumn = new TreeColumn(tree, SWT.NONE);
-			selfColumn.setText(getString("_UI_SelfColumn_label"));
-			selfColumn.setResizable(true);
-			selfColumn.setWidth(200);
-
-			treeViewerWithColumns
-					.setColumnProperties(new String[] { "a", "b" });
-			treeViewerWithColumns
-					.setContentProvider(new AdapterFactoryContentProvider(
-							adapterFactory));
-			treeViewerWithColumns
-					.setLabelProvider(new AdapterFactoryLabelProvider(
-							adapterFactory));
-
-			createContextMenuFor(treeViewerWithColumns);
-			int pageIndex = addPage(viewerPane.getControl());
-			setPageText(pageIndex, getString("_UI_TreeWithColumnsPage_label"));
-		}
-
-		setActivePage(0);
-
 		getContainer().addControlListener(new ControlAdapter() {
 			boolean guard = false;
 
+			@Override
 			public void controlResized(ControlEvent event) {
 				if (!guard) {
 					guard = true;
@@ -995,11 +1207,17 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 				}
 			}
 		});
+
+		getSite().getShell().getDisplay().asyncExec(new Runnable() {
+			public void run() {
+				updateProblemIndication();
+			}
+		});
 	}
 
 	/**
-	 * If there is just one page in the multi-page editor part, this hides
-	 * the single tab at the bottom.
+	 * If there is just one page in the multi-page editor part,
+	 * this hides the single tab at the bottom.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1016,21 +1234,32 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	}
 
 	/**
+	 * If there is more than one page in the multi-page editor part,
+	 * this shows the tabs at the bottom.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void showTabs() {
+		if (getPageCount() > 1) {
+			setPageText(0, getString("_UI_SelectionPage_label"));
+			if (getContainer() instanceof CTabFolder) {
+				((CTabFolder) getContainer()).setTabHeight(SWT.DEFAULT);
+				Point point = getContainer().getSize();
+				getContainer().setSize(point.x, point.y - 6);
+			}
+		}
+	}
+
+	/**
 	 * This is used to track the active viewer.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected void pageChange(int pageIndex) {
 		super.pageChange(pageIndex);
-
-		// This is a temporary workaround... EATM
-		//
-		Control control = getControl(pageIndex);
-		if (control != null) {
-			control.setVisible(true);
-			control.setFocus();
-		}
 
 		if (contentOutlinePage != null) {
 			handleContentOutlineSelection(contentOutlinePage.getSelection());
@@ -1043,9 +1272,11 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
 	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
-			return getContentOutlinePage();
+			return showOutlineView() ? getContentOutlinePage() : null;
 		} else if (key.equals(IPropertySheetPage.class)) {
 			return getPropertySheetPage();
 		} else if (key.equals(IGotoMarker.class)) {
@@ -1066,6 +1297,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 			// The content outline is just a tree.
 			//
 			class MyContentOutlinePage extends ContentOutlinePage {
+				@Override
 				public void createControl(Composite parent) {
 					super.createControl(parent);
 					contentOutlineViewer = getTreeViewer();
@@ -1090,14 +1322,14 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 							.isEmpty()) {
 						// Select the root object in the view.
 						//
-						ArrayList selection = new ArrayList();
-						selection.add(editingDomain.getResourceSet()
-								.getResources().get(0));
-						contentOutlineViewer.setSelection(
-								new StructuredSelection(selection), true);
+						contentOutlineViewer
+								.setSelection(new StructuredSelection(
+										editingDomain.getResourceSet()
+												.getResources().get(0)), true);
 					}
 				}
 
+				@Override
 				public void makeContributions(IMenuManager menuManager,
 						IToolBarManager toolBarManager,
 						IStatusLineManager statusLineManager) {
@@ -1106,6 +1338,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 					contentOutlineStatusLineManager = statusLineManager;
 				}
 
+				@Override
 				public void setActionBars(IActionBars actionBars) {
 					super.setActionBars(actionBars);
 					getActionBarContributor().shareGlobalActions(this,
@@ -1138,14 +1371,14 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null) {
-			propertySheetPage = new PropertySheetPage() {
-				public void makeContributions(IMenuManager menuManager,
-						IToolBarManager toolBarManager,
-						IStatusLineManager statusLineManager) {
-					super.makeContributions(menuManager, toolBarManager,
-							statusLineManager);
+			propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
+				@Override
+				public void setSelectionToViewer(List<?> selection) {
+					XmdldbEditor.this.setSelectionToViewer(selection);
+					XmdldbEditor.this.setFocus();
 				}
 
+				@Override
 				public void setActionBars(IActionBars actionBars) {
 					super.setActionBars(actionBars);
 					getActionBarContributor().shareGlobalActions(this,
@@ -1169,7 +1402,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	public void handleContentOutlineSelection(ISelection selection) {
 		if (currentViewerPane != null && !selection.isEmpty()
 				&& selection instanceof IStructuredSelection) {
-			Iterator selectedElements = ((IStructuredSelection) selection)
+			Iterator<?> selectedElements = ((IStructuredSelection) selection)
 					.iterator();
 			if (selectedElements.hasNext()) {
 				// Get the first selected element.
@@ -1179,7 +1412,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 				// If it's the selection viewer, then we want it to select the same selection as this selection.
 				//
 				if (currentViewerPane.getViewer() == selectionViewer) {
-					ArrayList selectionList = new ArrayList();
+					ArrayList<Object> selectionList = new ArrayList<Object>();
 					selectionList.add(selectedElement);
 					while (selectedElements.hasNext()) {
 						selectionList.add(selectedElements.next());
@@ -1207,6 +1440,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isDirty() {
 		return ((BasicCommandStack) editingDomain.getCommandStack())
 				.isSaveNeeded();
@@ -1218,26 +1452,43 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
+		// Save only resources that have actually changed.
+		//
+		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
+				Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
 		WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
 			// This is the method that gets invoked when the operation runs.
 			//
+			@Override
 			public void execute(IProgressMonitor monitor) {
-				try {
-					// Save the resource to the file system.
-					//
-					Resource savedResource = (Resource) editingDomain
-							.getResourceSet().getResources().get(0);
-					savedResources.add(savedResource);
-					savedResource.save(Collections.EMPTY_MAP);
-				} catch (Exception exception) {
-					XmdldbEditPlugin.INSTANCE.log(exception);
+				// Save the resources to the file system.
+				//
+				boolean first = true;
+				for (Resource resource : editingDomain.getResourceSet()
+						.getResources()) {
+					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
+							&& !editingDomain.isReadOnly(resource)) {
+						try {
+							savedResources.add(resource);
+							resource.save(saveOptions);
+						} catch (Exception exception) {
+							resourceToDiagnosticMap
+									.put(resource, analyzeResourceProblems(
+											resource, exception));
+						}
+						first = false;
+					}
 				}
 			}
 		};
 
+		updateProblemIndication = false;
 		try {
 			// This runs the options, and shows progress.
 			//
@@ -1253,6 +1504,30 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 			//
 			XmdldbEditPlugin.INSTANCE.log(exception);
 		}
+		updateProblemIndication = true;
+		updateProblemIndication();
+	}
+
+	/**
+	 * This returns whether something has been persisted to the URI of the specified resource.
+	 * The implementation uses the URI converter from the editor's resource set to try to open an input stream. 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected boolean isPersisted(Resource resource) {
+		boolean result = false;
+		try {
+			InputStream stream = editingDomain.getResourceSet()
+					.getURIConverter().createInputStream(resource.getURI());
+			if (stream != null) {
+				result = true;
+				stream.close();
+			}
+		} catch (IOException e) {
+			// Ignore
+		}
+		return result;
 	}
 
 	/**
@@ -1261,6 +1536,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSaveAsAllowed() {
 		return true;
 	}
@@ -1271,6 +1547,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void doSaveAs() {
 		SaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());
 		saveAsDialog.open();
@@ -1279,7 +1556,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
 			if (file != null) {
 				doSaveAs(URI.createPlatformResourceURI(file.getFullPath()
-						.toString()), new FileEditorInput(file));
+						.toString(), true), new FileEditorInput(file));
 			}
 		}
 	}
@@ -1290,9 +1567,8 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * @generated
 	 */
 	protected void doSaveAs(URI uri, IEditorInput editorInput) {
-		((Resource) editingDomain.getResourceSet().getResources().get(0))
-				.setURI(uri);
-		setInput(editorInput);
+		(editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
+		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
 		IProgressMonitor progressMonitor = getActionBars()
 				.getStatusLineManager() != null ? getActionBars()
@@ -1332,9 +1608,10 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void init(IEditorSite site, IEditorInput editorInput) {
 		setSite(site);
-		setInput(editorInput);
+		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
 		site.setSelectionProvider(this);
 		site.getPage().addPartListener(partListener);
@@ -1347,8 +1624,13 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFocus() {
-		getControl(getActivePage()).setFocus();
+		if (currentViewerPane != null) {
+			currentViewerPane.setFocus();
+		} else {
+			getControl(getActivePage()).setFocus();
+		}
 	}
 
 	/**
@@ -1392,10 +1674,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	public void setSelection(ISelection selection) {
 		editorSelection = selection;
 
-		for (Iterator listeners = selectionChangedListeners.iterator(); listeners
-				.hasNext();) {
-			ISelectionChangedListener listener = (ISelectionChangedListener) listeners
-					.next();
+		for (ISelectionChangedListener listener : selectionChangedListeners) {
 			listener
 					.selectionChanged(new SelectionChangedEvent(this, selection));
 		}
@@ -1414,7 +1693,7 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 
 		if (statusLineManager != null) {
 			if (selection instanceof IStructuredSelection) {
-				Collection collection = ((IStructuredSelection) selection)
+				Collection<?> collection = ((IStructuredSelection) selection)
 						.toList();
 				switch (collection.size()) {
 				case 0: {
@@ -1507,7 +1786,10 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
+		updateProblemIndication = false;
+
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(
 				resourceChangeListener);
 
@@ -1528,6 +1810,16 @@ public class XmdldbEditor extends MultiPageEditorPart implements
 		}
 
 		super.dispose();
+	}
+
+	/**
+	 * Returns whether the outline view should be presented to the user.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected boolean showOutlineView() {
+		return true;
 	}
 
 }

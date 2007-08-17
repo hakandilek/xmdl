@@ -2,9 +2,6 @@ package chrome.xmdl.core.templates.dao.hbm.impl;
 
 import java.util.*;
 import chrome.xmdl.*;
-import chrome.xmdl.core.util.*;
-import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
 import chrome.xmdl.core.templates.dao.hbm.*;
 import chrome.xmdldb.*;
 
@@ -33,7 +30,7 @@ public class PackageHBMTemplateImpl
 
     stringBuffer.append(TEXT_1);
     EntityHBMTemplatePart part = new EntityHBMTemplatePart();
-    for (Iterator iter = xPackage.getDTables().iterator(); iter.hasNext();) {
+    for (Iterator<DTable> iter = xPackage.getDTables().iterator(); iter.hasNext();) {
 	DTable element = (DTable) iter.next();
 	XClass xClass = element.getXClass();
 	if (xClass != null){

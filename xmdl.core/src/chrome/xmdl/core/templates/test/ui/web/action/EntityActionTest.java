@@ -2,9 +2,8 @@ package chrome.xmdl.core.templates.test.ui.web.action;
 
 import chrome.xmdl.XClass;
 import chrome.xmdl.XPackage;
-import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.test.ui.web.action.impl.EntityActionTestImpl;
-import chrome.xmdl.core.templates.test.ui.web.form.impl.EntityFormTestImpl;
+import chrome.xmdl.xgen.Template;
 
 public class EntityActionTest extends EntityActionTestImpl implements Template {
 

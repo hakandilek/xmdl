@@ -1,10 +1,6 @@
 package chrome.xmdl.core.templates.context.impl;
 
-import java.util.*;
 import chrome.xmdl.*;
-import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class Log4JPropImpl
 {
@@ -40,7 +36,7 @@ public class Log4JPropImpl
     final StringBuffer stringBuffer = new StringBuffer();
     
 	XProject project = (XProject) argument;	
-	ClassHelper helper = XMDLClassHelper.INSTANCE;	
+	//ClassHelper helper = XMDLClassHelper.INSTANCE;	
 
     stringBuffer.append(TEXT_1);
     stringBuffer.append((project).getName());

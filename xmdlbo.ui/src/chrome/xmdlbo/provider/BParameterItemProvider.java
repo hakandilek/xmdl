@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -59,7 +60,8 @@ public class BParameterItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -84,8 +86,10 @@ public class BParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BParameter_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_BParameter_name_feature", "_UI_BParameter_type"),
-				 XmdlboPackage.eINSTANCE.getBParameter_Name(),
+				 XmdlboPackage.Literals.BPARAMETER__NAME,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 getString("_UI_BusinessModelPropertyCategory"),
 				 null));
@@ -104,8 +108,10 @@ public class BParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BParameter_type_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_BParameter_type_feature", "_UI_BParameter_type"),
-				 XmdlboPackage.eINSTANCE.getBParameter_Type(),
+				 XmdlboPackage.Literals.BPARAMETER__TYPE,
 				 true,
+				 false,
+				 false,
 				 null,
 				 getString("_UI_BusinessModelPropertyCategory"),
 				 null));
@@ -124,8 +130,10 @@ public class BParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BParameter_nature_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_BParameter_nature_feature", "_UI_BParameter_type"),
-				 XmdlboPackage.eINSTANCE.getBParameter_Nature(),
+				 XmdlboPackage.Literals.BPARAMETER__NATURE,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 getString("_UI_BusinessModelPropertyCategory"),
 				 null));
@@ -144,8 +152,10 @@ public class BParameterItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BParameter_constant_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_BParameter_constant_feature", "_UI_BParameter_type"),
-				 XmdlboPackage.eINSTANCE.getBParameter_Constant(),
+				 XmdlboPackage.Literals.BPARAMETER__CONSTANT,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 getString("_UI_BusinessModelPropertyCategory"),
 				 null));
@@ -157,8 +167,9 @@ public class BParameterItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/BParameter");
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/BParameter"));
 	}
 
 	/**
@@ -167,6 +178,7 @@ public class BParameterItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((BParameter)object).getName();
 		return label == null || label.length() == 0 ?
@@ -181,6 +193,7 @@ public class BParameterItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -195,13 +208,14 @@ public class BParameterItemProvider
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -211,6 +225,7 @@ public class BParameterItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XmdlboEditPlugin.INSTANCE;
 	}

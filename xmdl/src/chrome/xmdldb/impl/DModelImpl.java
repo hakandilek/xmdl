@@ -7,26 +7,20 @@
 package chrome.xmdldb.impl;
 
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import chrome.xmdl.XPackage;
 import chrome.xmdl.XProject;
 import chrome.xmdldb.DModel;
 import chrome.xmdldb.DPackage;
-import chrome.xmdldb.XmdldbFactory;
 import chrome.xmdldb.XmdldbPackage;
 
 /**
@@ -60,7 +54,7 @@ public class DModelImpl extends EObjectImpl implements DModel {
 	 * @generated
 	 * @ordered
 	 */
-	protected XProject xProject = null;
+	protected XProject xProject;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -110,7 +104,7 @@ public class DModelImpl extends EObjectImpl implements DModel {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList dPackages = null;
+	protected EList<DPackage> dPackages;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -124,8 +118,9 @@ public class DModelImpl extends EObjectImpl implements DModel {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdldbPackage.eINSTANCE.getDModel();
+		return XmdldbPackage.Literals.DMODEL;
 	}
 
 	/**
@@ -177,10 +172,10 @@ public class DModelImpl extends EObjectImpl implements DModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDPackages() {
+	public EList<DPackage> getDPackages() {
 		if (dPackages == null) {
-			dPackages = new EObjectContainmentWithInverseEList(DPackage.class,
-					this, XmdldbPackage.DMODEL__DPACKAGES,
+			dPackages = new EObjectContainmentWithInverseEList<DPackage>(
+					DPackage.class, this, XmdldbPackage.DMODEL__DPACKAGES,
 					XmdldbPackage.DPACKAGE__MODEL);
 		}
 		return dPackages;
@@ -191,10 +186,137 @@ public class DModelImpl extends EObjectImpl implements DModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdldbPackage.DMODEL__DPACKAGES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getDPackages())
+					.basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdldbPackage.DMODEL__DPACKAGES:
+			return ((InternalEList<?>) getDPackages()).basicRemove(otherEnd,
+					msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+		case XmdldbPackage.DMODEL__XPROJECT:
+			if (resolve)
+				return getXProject();
+			return basicGetXProject();
+		case XmdldbPackage.DMODEL__NAME:
+			return getName();
+		case XmdldbPackage.DMODEL__XMODEL:
+			return getXModel();
+		case XmdldbPackage.DMODEL__DPACKAGES:
+			return getDPackages();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+		case XmdldbPackage.DMODEL__XPROJECT:
+			setXProject((XProject) newValue);
+			return;
+		case XmdldbPackage.DMODEL__NAME:
+			setName((String) newValue);
+			return;
+		case XmdldbPackage.DMODEL__XMODEL:
+			setXModel((String) newValue);
+			return;
+		case XmdldbPackage.DMODEL__DPACKAGES:
+			getDPackages().clear();
+			getDPackages().addAll((Collection<? extends DPackage>) newValue);
+			return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+		case XmdldbPackage.DMODEL__XPROJECT:
+			setXProject((XProject) null);
+			return;
+		case XmdldbPackage.DMODEL__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case XmdldbPackage.DMODEL__XMODEL:
+			setXModel(XMODEL_EDEFAULT);
+			return;
+		case XmdldbPackage.DMODEL__DPACKAGES:
+			getDPackages().clear();
+			return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+		case XmdldbPackage.DMODEL__XPROJECT:
+			return xProject != null;
+		case XmdldbPackage.DMODEL__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
+		case XmdldbPackage.DMODEL__XMODEL:
+			return XMODEL_EDEFAULT == null ? xModel != null : !XMODEL_EDEFAULT
+					.equals(xModel);
+		case XmdldbPackage.DMODEL__DPACKAGES:
+			return dPackages != null && !dPackages.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public XProject getXProject() {
 		if (xProject != null && xProject.eIsProxy()) {
-			XProject oldXProject = xProject;
-			xProject = (XProject) eResolveProxy((InternalEObject) xProject);
+			InternalEObject oldXProject = (InternalEObject) xProject;
+			xProject = (XProject) eResolveProxy(oldXProject);
 			if (xProject != oldXProject) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -232,136 +354,7 @@ public class DModelImpl extends EObjectImpl implements DModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdldbPackage.DMODEL__DPACKAGES:
-				return ((InternalEList) getDPackages())
-						.basicAdd(otherEnd, msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdldbPackage.DMODEL__DPACKAGES:
-				return ((InternalEList) getDPackages()).basicRemove(otherEnd,
-						msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdldbPackage.DMODEL__XPROJECT:
-			if (resolve)
-				return getXProject();
-			return basicGetXProject();
-		case XmdldbPackage.DMODEL__NAME:
-			return getName();
-		case XmdldbPackage.DMODEL__XMODEL:
-			return getXModel();
-		case XmdldbPackage.DMODEL__DPACKAGES:
-			return getDPackages();
-		}
-		return eDynamicGet(eFeature, resolve);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdldbPackage.DMODEL__XPROJECT:
-			setXProject((XProject) newValue);
-			return;
-		case XmdldbPackage.DMODEL__NAME:
-			setName((String) newValue);
-			return;
-		case XmdldbPackage.DMODEL__XMODEL:
-			setXModel((String) newValue);
-			return;
-		case XmdldbPackage.DMODEL__DPACKAGES:
-			getDPackages().clear();
-			getDPackages().addAll((Collection) newValue);
-			return;
-		}
-		eDynamicSet(eFeature, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdldbPackage.DMODEL__XPROJECT:
-			setXProject((XProject) null);
-			return;
-		case XmdldbPackage.DMODEL__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case XmdldbPackage.DMODEL__XMODEL:
-			setXModel(XMODEL_EDEFAULT);
-			return;
-		case XmdldbPackage.DMODEL__DPACKAGES:
-			getDPackages().clear();
-			return;
-		}
-		eDynamicUnset(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdldbPackage.DMODEL__XPROJECT:
-			return xProject != null;
-		case XmdldbPackage.DMODEL__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
-		case XmdldbPackage.DMODEL__XMODEL:
-			return XMODEL_EDEFAULT == null ? xModel != null : !XMODEL_EDEFAULT
-					.equals(xModel);
-		case XmdldbPackage.DMODEL__DPACKAGES:
-			return dPackages != null && !dPackages.isEmpty();
-		}
-		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

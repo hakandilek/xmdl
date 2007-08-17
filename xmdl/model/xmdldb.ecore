@@ -51,7 +51,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="dfields" upperBound="-1"
         eType="#//DField"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Persistable" interface="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Persistable" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="persistent" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
   </eClassifiers>

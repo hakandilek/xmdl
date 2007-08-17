@@ -78,10 +78,10 @@ public interface DPackage extends EObject {
 	 * @return the value of the '<em>DTables</em>' containment reference list.
 	 * @see chrome.xmdldb.XmdldbPackage#getDPackage_DTables()
 	 * @see chrome.xmdldb.DTable#getDPackage
-	 * @model type="chrome.xmdldb.DTable" opposite="dPackage" containment="true"
+	 * @model opposite="dPackage" containment="true"
 	 * @generated
 	 */
-	EList getDTables();
+	EList<DTable> getDTables();
 
 	/**
 	 * Returns the value of the '<em><b>XPackage</b></em>' reference.
@@ -122,7 +122,7 @@ public interface DPackage extends EObject {
 	 * @see #setModel(DModel)
 	 * @see chrome.xmdldb.XmdldbPackage#getDPackage_Model()
 	 * @see chrome.xmdldb.DModel#getDPackages
-	 * @model opposite="dPackages" required="true"
+	 * @model opposite="dPackages" required="true" transient="false"
 	 * @generated
 	 */
 	DModel getModel();

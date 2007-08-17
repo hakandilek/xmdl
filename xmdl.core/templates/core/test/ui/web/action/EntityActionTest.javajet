@@ -3,15 +3,11 @@
     imports="java.util.* 
             chrome.xmdl.* 
             chrome.xmdl.gen.util.*
-			chrome.xmdl.core.util.*
             org.eclipse.emf.codegen.util.*"
     class="EntityActionTestImpl" 
 %><%
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage();
-    XProject  xProject = xPackage.getProject(); 
-     
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     TestHelper testHelper = TestHelper.INSTANCE;    
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
@@ -89,7 +85,7 @@ public class <%=helper.getCapName(xClass)%>ActionTest extends BaseActionTest imp
         addRequestParameter("method", "Save");
         addRequestParameter("<%=helper.uncapSafeName(xClass)%>.ID", "");
         
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
         addRequestParameter("<%=helper.uncapSafeName(xClass)%>.<%=helper.uncapSafeName(attribute)%>", "<%=testHelper.randomValuePlain(attribute)%>");
@@ -120,7 +116,7 @@ public class <%=helper.getCapName(xClass)%>ActionTest extends BaseActionTest imp
         setRequestPathInfo("/search<%=helper.getCapName(xClass)%>");
         addRequestParameter("method", "Search");
 
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
         addRequestParameter("<%=helper.uncapSafeName(xClass)%>.<%=helper.uncapSafeName(attribute)%>", "<%=testHelper.randomValuePlain(attribute)%>");

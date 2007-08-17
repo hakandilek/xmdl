@@ -6,34 +6,27 @@
  */
 package chrome.xmdl.provider;
 
-import chrome.xmdl.XAssociationType;
-import chrome.xmdl.XAttribute;
-import chrome.xmdl.XmdlPackage;
-
-import chrome.xmdl.*;
-
-import chrome.xmdl.ui.XMDLUIPlugin;
-
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import chrome.xmdl.XAttribute;
+import chrome.xmdl.XType;
+import chrome.xmdl.XmdlPackage;
+import chrome.xmdl.ui.XMDLUIPlugin;
 
 /**
  * This is the item provider adapter for a {@link chrome.xmdl.XAttribute} object.
@@ -43,9 +36,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 public class XAttributeItemProvider extends ItemProviderAdapter implements
 		IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
-	
-	private final static Logger LOGGER = Logger
-			.getLogger(XAttributeItemProvider.class);
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,7 +60,8 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 	 * 
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -99,7 +91,7 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XAttribute_name_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_XAttribute_name_feature", "_UI_XAttribute_type"),
-				XmdlPackage.eINSTANCE.getXAttribute_Name(), true,
+				XmdlPackage.Literals.XATTRIBUTE__NAME, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getString("_UI_BasicPropertyCategory"), null));
 	}
@@ -118,9 +110,9 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 						getString("_UI_XAttribute_length_feature"), getString(
 								"_UI_PropertyDescriptor_description",
 								"_UI_XAttribute_length_feature",
-								"_UI_XAttribute_type"), XmdlPackage.eINSTANCE
-								.getXAttribute_Length(), true,
-						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+								"_UI_XAttribute_type"),
+						XmdlPackage.Literals.XATTRIBUTE__LENGTH, true, false,
+						false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 						getString("_UI_BasicPropertyCategory"), null));
 	}
 
@@ -137,9 +129,9 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XAttribute_defaultValue_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_XAttribute_defaultValue_feature",
-						"_UI_XAttribute_type"), XmdlPackage.eINSTANCE
-						.getXAttribute_DefaultValue(), true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+						"_UI_XAttribute_type"),
+				XmdlPackage.Literals.XATTRIBUTE__DEFAULT_VALUE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getString("_UI_BasicPropertyCategory"), null));
 	}
 
@@ -157,9 +149,10 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 						getString("_UI_XAttribute_xClass_feature"), getString(
 								"_UI_PropertyDescriptor_description",
 								"_UI_XAttribute_xClass_feature",
-								"_UI_XAttribute_type"), XmdlPackage.eINSTANCE
-								.getXAttribute_XClass(), false, null,
-						getString("_UI_BasicPropertyCategory"), null));
+								"_UI_XAttribute_type"),
+						XmdlPackage.Literals.XATTRIBUTE__XCLASS, false, false,
+						false, null, getString("_UI_BasicPropertyCategory"),
+						null));
 	}
 
 	/**
@@ -174,8 +167,8 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XAttribute_type_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_XAttribute_type_feature", "_UI_XAttribute_type"),
-				XmdlPackage.eINSTANCE.getXAttribute_Type(), true, null,
-				getString("_UI_BasicPropertyCategory"), null));
+				XmdlPackage.Literals.XATTRIBUTE__TYPE, true, false, false,
+				null, getString("_UI_BasicPropertyCategory"), null));
 	}
 
 	/**
@@ -230,9 +223,9 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XAttribute_associationType_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_XAttribute_associationType_feature",
-						"_UI_XAttribute_type"), XmdlPackage.eINSTANCE
-						.getXAttribute_AssociationType(), true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+						"_UI_XAttribute_type"),
+				XmdlPackage.Literals.XATTRIBUTE__ASSOCIATION_TYPE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getString("_UI_ReferencePropertyCategory"), null));
 	}
 
@@ -248,9 +241,9 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XAttribute_associationBehaviour_feature"),
 				getString("_UI_PropertyDescriptor_description",
 						"_UI_XAttribute_associationBehaviour_feature",
-						"_UI_XAttribute_type"), XmdlPackage.eINSTANCE
-						.getXAttribute_AssociationBehaviour(), true,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+						"_UI_XAttribute_type"),
+				XmdlPackage.Literals.XATTRIBUTE__ASSOCIATION_BEHAVIOUR, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getString("_UI_ReferencePropertyCategory"), null));
 	}
 
@@ -284,9 +277,9 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XAttribute_opposite_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_XAttribute_opposite_feature",
-						"_UI_XAttribute_type"), XmdlPackage.eINSTANCE
-						.getXAttribute_Opposite(), true, null,
-				getString("_UI_ReferencePropertyCategory"), null));
+						"_UI_XAttribute_type"),
+				XmdlPackage.Literals.XATTRIBUTE__OPPOSITE, true, false, false,
+				null, getString("_UI_ReferencePropertyCategory"), null));
 	}
 
 	/**
@@ -302,8 +295,8 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XAttribute_navigable_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_XAttribute_navigable_feature",
-						"_UI_XAttribute_type"), XmdlPackage.eINSTANCE
-						.getXAttribute_Navigable(), true,
+						"_UI_XAttribute_type"),
+				XmdlPackage.Literals.XATTRIBUTE__NAVIGABLE, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				getString("_UI_ReferencePropertyCategory"), null));
 	}
@@ -314,51 +307,10 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 	 * 
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		if (object instanceof XAttribute) {
-			XAttribute attrib = (XAttribute) object;
-			if (attrib.isReference())
-			    return getComposedImage(object, getResourceLocator().getImage("full/obj16/XReference"));
-			if (attrib.getType() instanceof XEnumeration)
-				return getResourceLocator().getImage(
-						"full/obj16/XReferenceEnum");
-		}
-		return getResourceLocator().getImage("full/obj16/XAttribute");
-	}
-
-	/**
-	 * Used to compose two images together 
-	 * _hd
-	 * @param object
-	 * @param image
-	 * @return
-	 */
-	private Object getComposedImage(Object object, Object image) {
-		XAttribute attrib = (XAttribute) object;
-		XAssociationType ascType = attrib.getAssociationType();
-	    Collection images = new ArrayList();
-	    images.add(image);
-	    String imageName = "full/obj16/XReference";
-
-	    String name = ascType.getName();
-	    LOGGER.debug("name = " + name);
-	    
-	    imageName += name;	    
-	    LOGGER.debug("imageName = " + imageName);
-	    
-	    images.add(getResourceLocator().getImage(imageName));
-	    
-	    return new ComposedImage(images) {	    	
-	        public List getDrawPoints(Size size) {
-	        	
-	        	List result = super.getDrawPoints(size);
-	        	if (result.size() > 1) {
-	        		((Point)result.get(0)).y = -2;	          
-	        	}
-	        	return result;
-	        	
-	        }	       
-	    };
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/XAttribute"));
 	}
 
 	/**
@@ -373,22 +325,13 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 		String typeName = type == null ? null : type.getName();
 		String label = typeName + " " + name;
 		XAttribute opposite = attribute.getOpposite();
-		if (attribute.isReference() && opposite!= null) {
+		if (attribute.isReference() && opposite != null) {
 			String oppName = opposite.getName();
 			String oppClass = opposite.getXClass().getName();
-			label += " -> " + oppClass + "." + oppName;			
+			label += " -> " + oppClass + "." + oppName;
 		}
 		return label == null || label.length() <= 1 ? getString("_UI_XAttribute_type")
 				: label;
-	}
-
-	/**
-	 * @generated
-	 */
-	public String getTextGen(Object object) {
-		String label = ((XAttribute) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_XAttribute_type")
-				: getString("_UI_XAttribute_type") + " " + label;
 	}
 
 	/**
@@ -398,6 +341,7 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 	 * end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -416,14 +360,15 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors,
-			Object object) {
+	@Override
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -433,6 +378,7 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 	 * 
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XMDLUIPlugin.INSTANCE;
 	}

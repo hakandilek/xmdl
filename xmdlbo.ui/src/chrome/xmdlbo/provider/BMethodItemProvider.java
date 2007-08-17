@@ -21,9 +21,11 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -61,7 +63,8 @@ public class BMethodItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -84,8 +87,10 @@ public class BMethodItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BMethod_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_BMethod_name_feature", "_UI_BMethod_type"),
-				 XmdlboPackage.eINSTANCE.getBMethod_Name(),
+				 XmdlboPackage.Literals.BMETHOD__NAME,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 getString("_UI_BusinessModelPropertyCategory"),
 				 null));
@@ -104,8 +109,10 @@ public class BMethodItemProvider
 				 getResourceLocator(),
 				 getString("_UI_BMethod_service_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_BMethod_service_feature", "_UI_BMethod_type"),
-				 XmdlboPackage.eINSTANCE.getBMethod_Service(),
+				 XmdlboPackage.Literals.BMETHOD__SERVICE,
 				 true,
+				 false,
+				 false,
 				 null,
 				 getString("_UI_BusinessModelPropertyCategory"),
 				 null));
@@ -119,12 +126,26 @@ public class BMethodItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(XmdlboPackage.eINSTANCE.getBMethod_Parameters());
+			childrenFeatures.add(XmdlboPackage.Literals.BMETHOD__PARAMETERS);
 		}
 		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -133,8 +154,9 @@ public class BMethodItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/BMethod");
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/BMethod"));
 	}
 
 	/**
@@ -143,6 +165,7 @@ public class BMethodItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((BMethod)object).getName();
 		return label == null || label.length() == 0 ?
@@ -157,6 +180,7 @@ public class BMethodItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -172,18 +196,19 @@ public class BMethodItemProvider
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
 			(createChildParameter
-				(XmdlboPackage.eINSTANCE.getBMethod_Parameters(),
+				(XmdlboPackage.Literals.BMETHOD__PARAMETERS,
 				 XmdlboFactory.eINSTANCE.createBParameter()));
 	}
 
@@ -193,6 +218,7 @@ public class BMethodItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XmdlboEditPlugin.INSTANCE;
 	}

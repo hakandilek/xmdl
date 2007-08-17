@@ -6,31 +6,28 @@
  */
 package chrome.xmdldb.provider;
 
-import chrome.xmdl.XmdlFactory;
-import chrome.xmdl.XmdlPackage;
-import chrome.xmdldb.DModel;
-import chrome.xmdldb.XmdldbFactory;
-import chrome.xmdldb.XmdldbPackage;
-
-import chrome.xmdldb.ui.XmdldbEditPlugin;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import chrome.xmdldb.DModel;
+import chrome.xmdldb.XmdldbFactory;
+import chrome.xmdldb.XmdldbPackage;
+import chrome.xmdldb.ui.XmdldbEditPlugin;
 
 /**
  * This is the item provider adapter for a {@link chrome.xmdldb.DModel} object.
@@ -64,7 +61,8 @@ public class DModelItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -89,7 +87,7 @@ public class DModelItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DModel_name_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DModel_name_feature", "_UI_DModel_type"),
-				XmdldbPackage.eINSTANCE.getDModel_Name(), true,
+				XmdldbPackage.Literals.DMODEL__NAME, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getString("_UI_DBModelPropertyCategory"), null));
 	}
@@ -107,7 +105,7 @@ public class DModelItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DModel_xModel_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DModel_xModel_feature", "_UI_DModel_type"),
-				XmdldbPackage.eINSTANCE.getDModel_XModel(), true,
+				XmdldbPackage.Literals.DMODEL__XMODEL, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getString("_UI_BaseModelPropertyCategory"), null));
 	}
@@ -125,8 +123,8 @@ public class DModelItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DModel_dPackages_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DModel_dPackages_feature", "_UI_DModel_type"),
-				XmdldbPackage.eINSTANCE.getDModel_DPackages(), true, null,
-				getString("_UI_DBModelPropertyCategory"), null));
+				XmdldbPackage.Literals.DMODEL__DPACKAGES, true, false, false,
+				null, getString("_UI_DBModelPropertyCategory"), null));
 	}
 
 	/**
@@ -142,8 +140,8 @@ public class DModelItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DModel_xProject_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DModel_xProject_feature", "_UI_DModel_type"),
-				XmdldbPackage.eINSTANCE.getDModel_XProject(), false, null,
-				getString("_UI_BaseModelPropertyCategory"), null));
+				XmdldbPackage.Literals.DMODEL__XPROJECT, false, false, false,
+				null, getString("_UI_BaseModelPropertyCategory"), null));
 	}
 
 	/**
@@ -154,12 +152,27 @@ public class DModelItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(XmdldbPackage.eINSTANCE.getDModel_DPackages());
+			childrenFeatures.add(XmdldbPackage.Literals.DMODEL__DPACKAGES);
 		}
 		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -168,8 +181,10 @@ public class DModelItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/DModel");
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/DModel"));
 	}
 
 	/**
@@ -197,6 +212,7 @@ public class DModelItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -215,19 +231,20 @@ public class DModelItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors,
-			Object object) {
+	@Override
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(XmdldbPackage.eINSTANCE
-				.getDModel_DPackages(), XmdldbFactory.eINSTANCE
-				.createDPackage()));
+		newChildDescriptors.add(createChildParameter(
+				XmdldbPackage.Literals.DMODEL__DPACKAGES,
+				XmdldbFactory.eINSTANCE.createDPackage()));
 	}
 
 	/**
@@ -236,6 +253,7 @@ public class DModelItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XmdldbEditPlugin.INSTANCE;
 	}

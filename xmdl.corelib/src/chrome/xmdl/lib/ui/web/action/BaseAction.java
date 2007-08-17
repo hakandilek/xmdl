@@ -1,9 +1,14 @@
 package chrome.xmdl.lib.ui.web.action;
 
-import static chrome.xmdl.lib.bo.DispatchService.METHOD;
-import chrome.xmdl.lib.helper.CurrencyConverter;
-import chrome.xmdl.lib.helper.DateConverter;
-import chrome.xmdl.lib.helper.GeneralConstants;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.converters.IntegerConverter;
 import org.apache.commons.beanutils.converters.LongConverter;
@@ -17,13 +22,9 @@ import org.apache.struts.actions.DispatchAction;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Map;
+import chrome.xmdl.lib.helper.CurrencyConverter;
+import chrome.xmdl.lib.helper.DateConverter;
+import chrome.xmdl.lib.helper.GeneralConstants;
 
 /**
  * Implementation of <strong>Action</strong> that contains base methods for
@@ -69,6 +70,7 @@ import java.util.Map;
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  * @author Rick Hightower (based on his ButtonNameDispatchAction)
  */
+@SuppressWarnings("unchecked")
 public class BaseAction extends DispatchAction {
     private static final Long defaultLong = null;
 
@@ -140,7 +142,7 @@ public class BaseAction extends DispatchAction {
     /** 
      * Gets the method name based on the prepender passed to it.
      */
-    protected String getActionMethod(HttpServletRequest request, String prepend) {
+	protected String getActionMethod(HttpServletRequest request, String prepend) {
         String name = null;
         
         // for backwards compatibility, try with no prepend first
@@ -152,10 +154,10 @@ public class BaseAction extends DispatchAction {
             return name.replace(name.charAt(0), Character.toLowerCase(name.charAt(0)));
         }
         
-        Enumeration e = request.getParameterNames();
+        Enumeration<String> e = request.getParameterNames();
 
         while (e.hasMoreElements()) {
-            String currentName = (String) e.nextElement();
+            String currentName = e.nextElement();
 
             if (currentName.startsWith(prepend + ".")) {
                 if (log.isDebugEnabled()) {
@@ -240,16 +242,6 @@ public class BaseAction extends DispatchAction {
 
         return actionForm;
     }
-
-//    /**
-//     * Convenience method to get the userForm from the session
-//     *
-//     * @param session the current user's session
-//     * @return the user's populated form from the session
-//     */
-//    protected User getUser(HttpSession session) {
-//        return (User) session.getAttribute(GeneralConstants.USER_KEY);
-//    }
 
     /**
      * Convenience method to get the Configuration HashMap

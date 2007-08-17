@@ -9,26 +9,20 @@ package chrome.xmdlgen.impl;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+
 import chrome.xmdl.XProject;
 import chrome.xmdl.init.Initializer;
-
 import chrome.xmdldb.DModel;
-import chrome.xmdldb.XmdldbFactory;
-import chrome.xmdldb.init.XMDLDBInitializer;
 import chrome.xmdlgen.GModel;
 import chrome.xmdlgen.XMDLGenModel;
 import chrome.xmdlgen.XmdlgenFactory;
 import chrome.xmdlgen.XmdlgenPackage;
 import chrome.xmdlgen.init.XMDLGenInitializer;
-
-import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,8 +56,9 @@ public class XMDLGenModelImpl extends EObjectImpl implements XMDLGenModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlgenPackage.eINSTANCE.getXMDLGenModel();
+		return XmdlgenPackage.Literals.XMDL_GEN_MODEL;
 	}
 
 	/**
@@ -87,8 +82,8 @@ public class XMDLGenModelImpl extends EObjectImpl implements XMDLGenModel {
 	 * @model
 	 */
 	public EObject loadRoot(XProject project, Resource resource) {
-		List contents = resource.getContents();
-		for (Iterator it = contents.iterator(); it.hasNext();) {
+		List<EObject> contents = resource.getContents();
+		for (Iterator<EObject> it = contents.iterator(); it.hasNext();) {
 			EObject element = (EObject) it.next();
 			if (element instanceof DModel) {
 				GModel model = (GModel) element;

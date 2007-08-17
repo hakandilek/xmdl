@@ -2,14 +2,12 @@
     package="chrome.xmdl.core.templates.model.impl" 
     imports="java.util.* 
             chrome.xmdl.*
-			chrome.xmdl.core.util.*
             chrome.xmdl.gen.util.*
             org.eclipse.emf.codegen.util.*"
     class="EntityTemplateImpl" 
 %><%
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage(); 
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     %>
@@ -35,7 +33,7 @@ package <%=helper.getQualifiedName(xPackage)%>.model;
  */ 
 public interface <%=helper.getCapName(xClass)%> extends Entity { 
 
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null) {%>
     /** 

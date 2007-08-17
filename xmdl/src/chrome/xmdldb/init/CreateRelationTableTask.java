@@ -1,6 +1,5 @@
 package chrome.xmdldb.init;
 
-import java.util.List;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -21,6 +20,7 @@ public class CreateRelationTableTask implements Task {
 
 	private final String tablePrefix;
 
+	@SuppressWarnings("unused")
 	private final String fieldSuffix;
 
 	public CreateRelationTableTask(String tablePrefix, String fieldSuffix) {
@@ -86,35 +86,6 @@ public class CreateRelationTableTask implements Task {
 						field2.setDTable(null);
 					}
 				}
-
-				// DField newField1 = null;
-				// DField newField2 = null;
-				//
-				// List<DField> fields = relTable.getDFields();
-				// for (DField childField : fields) {
-				// if (childField != null) {
-				// XAttribute attribute = childField.getXAttribute();
-				// if (attribute != null) {
-				// if (attribute.equals(newField1)) {
-				// newField1 = childField;
-				// }
-				// if (attribute.equals(newField2)) {
-				// newField2 = childField;
-				// }
-				// }
-				// }
-				// }
-				//
-				//
-				// if (newField1 == null) {
-				// field1.setDTable(relTable);
-				// field1.setXAttribute(attrib1);
-				// }
-				//
-				// if (newField2 == null) {
-				// field2.setDTable(relTable);
-				// field2.setXAttribute(attrib2);
-				// }
 
 				LOGGER.debug("newTable = " + relTable);
 				LOGGER.debug("field1 = " + field1);

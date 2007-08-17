@@ -58,9 +58,9 @@ public abstract class BaseDAOTestCase <E extends Entity> extends AbstractTransac
     protected E populate(E obj) throws Exception {
         // loop through all the beans methods and set its properties from
         // its .properties file
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<String, String>();
 
-        for (Enumeration keys = rb.getKeys(); keys.hasMoreElements();) {
+        for (Enumeration<String> keys = rb.getKeys(); keys.hasMoreElements();) {
             String key = (String) keys.nextElement();
             map.put(key, rb.getString(key));
         }

@@ -25,7 +25,8 @@ public class EnumerationConverter implements Converter {
      * @exception org.apache.commons.beanutils.ConversionException if conversion cannot be performed
      *  successfully
      */
-    public Object convert(Class type, Object value) {
+    @SuppressWarnings("unchecked")
+	public Object convert(Class type, Object value) {
         if (value instanceof PersistentEnum) {
             return value;
         }

@@ -59,7 +59,7 @@ public class XmdlboItemProviderAdapterFactory extends XmdlboAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -72,7 +72,7 @@ public class XmdlboItemProviderAdapterFactory extends XmdlboAdapterFactory imple
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);		
+		supportedTypes.add(IItemPropertySource.class);
 	}
 
 	/**
@@ -89,6 +89,7 @@ public class XmdlboItemProviderAdapterFactory extends XmdlboAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createBModelAdapter() {
 		if (bModelItemProvider == null) {
 			bModelItemProvider = new BModelItemProvider(this);
@@ -111,6 +112,7 @@ public class XmdlboItemProviderAdapterFactory extends XmdlboAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXMDLBOModelAdapter() {
 		if (xmdlboModelItemProvider == null) {
 			xmdlboModelItemProvider = new XMDLBOModelItemProvider(this);
@@ -133,6 +135,7 @@ public class XmdlboItemProviderAdapterFactory extends XmdlboAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createBPackageAdapter() {
 		if (bPackageItemProvider == null) {
 			bPackageItemProvider = new BPackageItemProvider(this);
@@ -155,6 +158,7 @@ public class XmdlboItemProviderAdapterFactory extends XmdlboAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createBServiceAdapter() {
 		if (bServiceItemProvider == null) {
 			bServiceItemProvider = new BServiceItemProvider(this);
@@ -177,6 +181,7 @@ public class XmdlboItemProviderAdapterFactory extends XmdlboAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createBParameterAdapter() {
 		if (bParameterItemProvider == null) {
 			bParameterItemProvider = new BParameterItemProvider(this);
@@ -199,6 +204,7 @@ public class XmdlboItemProviderAdapterFactory extends XmdlboAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createBMethodAdapter() {
 		if (bMethodItemProvider == null) {
 			bMethodItemProvider = new BMethodItemProvider(this);
@@ -232,6 +238,7 @@ public class XmdlboItemProviderAdapterFactory extends XmdlboAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -242,6 +249,7 @@ public class XmdlboItemProviderAdapterFactory extends XmdlboAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -251,10 +259,11 @@ public class XmdlboItemProviderAdapterFactory extends XmdlboAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class)type).isInstance(adapter))) {
+			if (!(type instanceof Class) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

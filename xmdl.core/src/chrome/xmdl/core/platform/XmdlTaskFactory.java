@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
 import chrome.xmdl.XProject;
 import chrome.xmdl.core.plugin.XMDLCorePlugin;
 import chrome.xmdl.core.templates.build.POM;
-import chrome.xmdl.core.templates.build.impl.POMImpl;
 import chrome.xmdl.core.templates.context.ApplicationContextDAO;
 import chrome.xmdl.core.templates.context.ApplicationContextDB;
 import chrome.xmdl.core.templates.context.ApplicationContextService;
@@ -25,7 +24,6 @@ import chrome.xmdl.core.templates.context.EhCache;
 import chrome.xmdl.core.templates.context.Log4JProp;
 import chrome.xmdl.core.templates.dao.EntityDAOImplTemplate;
 import chrome.xmdl.core.templates.dao.EntityDAOTemplate;
-import chrome.xmdl.core.templates.dao.ProjectCFGTemplate;
 import chrome.xmdl.core.templates.dao.hbm.PackageHBMTemplate;
 import chrome.xmdl.core.templates.model.EntityImplTemplate;
 import chrome.xmdl.core.templates.model.EntitySearchImplTemplate;
@@ -68,8 +66,10 @@ import chrome.xmdl.core.templates.ui.web.webinf.ValidationXML;
 import chrome.xmdl.core.templates.ui.web.webinf.ValidatorRulesCustomXML;
 import chrome.xmdl.core.templates.ui.web.webinf.ValidatorRulesXML;
 import chrome.xmdl.core.templates.ui.web.webinf.WebXML;
-import chrome.xmdl.xgen.*;
-import chrome.xmdl.xgen.util.*;
+import chrome.xmdl.xgen.AbstractTaskFactory;
+import chrome.xmdl.xgen.Task;
+import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.UnzipTask;
 
 public class XmdlTaskFactory extends AbstractTaskFactory {
 	protected List<Template> templates;
@@ -207,7 +207,6 @@ public class XmdlTaskFactory extends AbstractTaskFactory {
 
 			URI targetURI = URI.createFileURI(targetBase);
 			targetURI = URIHelper.asLocalURI(targetURI);
-//			File dest = new File(targetURI.toFileString());
 			String dest = targetBase;
 			UnzipTask unzipTask = new UnzipTask(input, dest);
 			unzipTask.setFilenameReplacement(filenameReplacement);

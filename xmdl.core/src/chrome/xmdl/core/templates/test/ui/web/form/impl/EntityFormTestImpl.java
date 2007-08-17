@@ -3,7 +3,6 @@ package chrome.xmdl.core.templates.test.ui.web.form.impl;
 import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
-import chrome.xmdl.core.util.*;
 import org.eclipse.emf.codegen.util.*;
 
 public class EntityFormTestImpl
@@ -61,9 +60,6 @@ public class EntityFormTestImpl
     
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage();
-    XProject  xProject = xPackage.getProject(); 
-     
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     
@@ -98,7 +94,7 @@ public class EntityFormTestImpl
     stringBuffer.append(TEXT_11);
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_12);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null) {
     stringBuffer.append(TEXT_13);
@@ -119,7 +115,7 @@ public class EntityFormTestImpl
     stringBuffer.append(TEXT_21);
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_22);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     XType type = attribute.getType();
     

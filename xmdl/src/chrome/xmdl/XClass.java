@@ -54,10 +54,10 @@ public interface XClass extends XBase, XType {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Super Types</em>' reference list.
 	 * @see chrome.xmdl.XmdlPackage#getXClass_SuperTypes()
-	 * @model type="chrome.xmdl.XClass" resolveProxies="false"
+	 * @model resolveProxies="false"
 	 * @generated
 	 */
-	EList getSuperTypes();
+	EList<XClass> getSuperTypes();
 
 	/**
 	 * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
@@ -72,10 +72,10 @@ public interface XClass extends XBase, XType {
 	 * @return the value of the '<em>Attributes</em>' containment reference list.
 	 * @see chrome.xmdl.XmdlPackage#getXClass_Attributes()
 	 * @see chrome.xmdl.XAttribute#getXClass
-	 * @model type="chrome.xmdl.XAttribute" opposite="xClass" containment="true" resolveProxies="false"
+	 * @model opposite="xClass" containment="true"
 	 * @generated
 	 */
-	EList getAttributes();
+	EList<XAttribute> getAttributes();
 
 	/**
 	 * Returns the value of the '<em><b>Methods</b></em>' containment reference list.
@@ -90,10 +90,10 @@ public interface XClass extends XBase, XType {
 	 * @return the value of the '<em>Methods</em>' containment reference list.
 	 * @see chrome.xmdl.XmdlPackage#getXClass_Methods()
 	 * @see chrome.xmdl.XMethod#getXClass
-	 * @model type="chrome.xmdl.XMethod" opposite="xClass" containment="true" resolveProxies="false"
+	 * @model opposite="xClass" containment="true"
 	 * @generated
 	 */
-	EList getMethods();
+	EList<XMethod> getMethods();
 
 	/**
 	 * Returns the value of the '<em><b>Comparable</b></em>' attribute.

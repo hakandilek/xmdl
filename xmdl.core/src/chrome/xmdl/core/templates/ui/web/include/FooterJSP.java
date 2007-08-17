@@ -8,8 +8,6 @@ public class FooterJSP extends FooterJSPImpl implements Template {
 
 	public String targetFile(Object object) {
 		StringBuffer buffer = new StringBuffer("web/");		
-		XProject xProject = (XProject) object;
-		
 
 		buffer.append("include/footer.jsp");	
 		

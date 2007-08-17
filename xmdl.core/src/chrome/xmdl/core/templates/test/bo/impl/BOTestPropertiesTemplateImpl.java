@@ -2,9 +2,7 @@ package chrome.xmdl.core.templates.test.bo.impl;
 
 import java.util.*;
 import chrome.xmdl.*;
-import chrome.xmdl.core.util.*;
 import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
 
 public class BOTestPropertiesTemplateImpl
 {
@@ -30,8 +28,6 @@ public class BOTestPropertiesTemplateImpl
     final StringBuffer stringBuffer = new StringBuffer();
     stringBuffer.append(TEXT_1);
       XClass xClass = (XClass) argument;
-    XPackage xPackage = xClass.getXPackage(); 
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLEntityHelper.INSTANCE;
     TestHelper testHelper = TestHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
@@ -39,7 +35,7 @@ public class BOTestPropertiesTemplateImpl
     stringBuffer.append(TEXT_2);
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_3);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_4);

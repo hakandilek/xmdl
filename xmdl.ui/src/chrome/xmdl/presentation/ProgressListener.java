@@ -5,15 +5,18 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import chrome.xmdl.xgen.GeneratorEvent;
 import chrome.xmdl.xgen.GeneratorListener;
 
+/**
+ * 
+ * @author Hakan Dilek
+ *
+ */
 public class ProgressListener implements GeneratorListener {
 
 	private final IProgressMonitor monitor;
-	private int progress;
 
 	public ProgressListener(IProgressMonitor progressMonitor) {
 		super();
 		this.monitor = progressMonitor;
-		this.progress= 0;
 	}
 
 	public void generationInitialized(GeneratorEvent event) {
@@ -29,9 +32,7 @@ public class ProgressListener implements GeneratorListener {
 	}
 
 	public void progress(GeneratorEvent event) {
-		//monitor.worked(++progress);
 		monitor.worked(1);
-//		System.err.println(progress);
 	}
 
 }

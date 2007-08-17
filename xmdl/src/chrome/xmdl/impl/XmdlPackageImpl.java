@@ -6,6 +6,21 @@
  */
 package chrome.xmdl.impl;
 
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.mapping.MappingPackage;
+
 import chrome.xmdl.XAssociationBehaviour;
 import chrome.xmdl.XAssociationType;
 import chrome.xmdl.XAttribute;
@@ -22,23 +37,6 @@ import chrome.xmdl.XProject;
 import chrome.xmdl.XType;
 import chrome.xmdl.XmdlFactory;
 import chrome.xmdl.XmdlPackage;
-
-import org.eclipse.core.runtime.IPath;
-
-import org.eclipse.emf.codegen.ecore.genmodel.impl.GenModelPackageImpl;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.eclipse.emf.ecore.impl.EcorePackageImpl;
-
-import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * <!-- begin-user-doc -->
@@ -242,9 +240,9 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		//MappingPackageImpl.init();
-		GenModelPackageImpl.init();
-		EcorePackageImpl.init();
+		MappingPackage.eINSTANCE.eClass();
+		GenModelPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theXmdlPackage.createPackageContents();
@@ -794,6 +792,34 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 		isCreated = true;
 
 		// Create classes and their features
+		xProjectEClass = createEClass(XPROJECT);
+		createEAttribute(xProjectEClass, XPROJECT__NAME);
+		createEReference(xProjectEClass, XPROJECT__PACKAGES);
+
+		xPackageEClass = createEClass(XPACKAGE);
+		createEAttribute(xPackageEClass, XPACKAGE__NAME);
+		createEReference(xPackageEClass, XPACKAGE__PROJECT);
+		createEReference(xPackageEClass, XPACKAGE__CLASSES);
+		createEReference(xPackageEClass, XPACKAGE__ENUMERATIONS);
+
+		xClassEClass = createEClass(XCLASS);
+		createEReference(xClassEClass, XCLASS__XPACKAGE);
+		createEReference(xClassEClass, XCLASS__SUPER_TYPES);
+		createEReference(xClassEClass, XCLASS__ATTRIBUTES);
+		createEReference(xClassEClass, XCLASS__METHODS);
+		createEAttribute(xClassEClass, XCLASS__COMPARABLE);
+
+		xEnumerationEClass = createEClass(XENUMERATION);
+		createEReference(xEnumerationEClass, XENUMERATION__XPACKAGE);
+		createEReference(xEnumerationEClass, XENUMERATION__LITERALS);
+		createEReference(xEnumerationEClass, XENUMERATION__DEFAULT_LITERAL);
+
+		xEnumerationLiteralEClass = createEClass(XENUMERATION_LITERAL);
+		createEReference(xEnumerationLiteralEClass,
+				XENUMERATION_LITERAL__ENUMERATION);
+		createEAttribute(xEnumerationLiteralEClass, XENUMERATION_LITERAL__NAME);
+		createEAttribute(xEnumerationLiteralEClass, XENUMERATION_LITERAL__VALUE);
+
 		xAttributeEClass = createEClass(XATTRIBUTE);
 		createEAttribute(xAttributeEClass, XATTRIBUTE__NAME);
 		createEAttribute(xAttributeEClass, XATTRIBUTE__LENGTH);
@@ -804,25 +830,6 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 		createEAttribute(xAttributeEClass, XATTRIBUTE__ASSOCIATION_BEHAVIOUR);
 		createEReference(xAttributeEClass, XATTRIBUTE__OPPOSITE);
 		createEAttribute(xAttributeEClass, XATTRIBUTE__NAVIGABLE);
-
-		xClassEClass = createEClass(XCLASS);
-		createEReference(xClassEClass, XCLASS__XPACKAGE);
-		createEReference(xClassEClass, XCLASS__SUPER_TYPES);
-		createEReference(xClassEClass, XCLASS__ATTRIBUTES);
-		createEReference(xClassEClass, XCLASS__METHODS);
-		createEAttribute(xClassEClass, XCLASS__COMPARABLE);
-
-		xPackageEClass = createEClass(XPACKAGE);
-		createEAttribute(xPackageEClass, XPACKAGE__NAME);
-		createEReference(xPackageEClass, XPACKAGE__PROJECT);
-		createEReference(xPackageEClass, XPACKAGE__CLASSES);
-		createEReference(xPackageEClass, XPACKAGE__ENUMERATIONS);
-
-		xProjectEClass = createEClass(XPROJECT);
-		createEAttribute(xProjectEClass, XPROJECT__NAME);
-		createEReference(xProjectEClass, XPROJECT__PACKAGES);
-
-		xBaseEClass = createEClass(XBASE);
 
 		xMethodEClass = createEClass(XMETHOD);
 		createEAttribute(xMethodEClass, XMETHOD__INDEX);
@@ -837,25 +844,16 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 		createEAttribute(xParameterEClass, XPARAMETER__NAME);
 		createEReference(xParameterEClass, XPARAMETER__TYPE);
 
-		xExceptionEClass = createEClass(XEXCEPTION);
-		createEAttribute(xExceptionEClass, XEXCEPTION__JAVA_CLASS);
+		xBaseEClass = createEClass(XBASE);
 
 		xTypeEClass = createEClass(XTYPE);
 		createEAttribute(xTypeEClass, XTYPE__NAME);
 		createEAttribute(xTypeEClass, XTYPE__CLASS_NAME);
 
+		xExceptionEClass = createEClass(XEXCEPTION);
+		createEAttribute(xExceptionEClass, XEXCEPTION__JAVA_CLASS);
+
 		xModelEClass = createEClass(XMODEL);
-
-		xEnumerationEClass = createEClass(XENUMERATION);
-		createEReference(xEnumerationEClass, XENUMERATION__XPACKAGE);
-		createEReference(xEnumerationEClass, XENUMERATION__LITERALS);
-		createEReference(xEnumerationEClass, XENUMERATION__DEFAULT_LITERAL);
-
-		xEnumerationLiteralEClass = createEClass(XENUMERATION_LITERAL);
-		createEReference(xEnumerationLiteralEClass,
-				XENUMERATION_LITERAL__ENUMERATION);
-		createEAttribute(xEnumerationLiteralEClass, XENUMERATION_LITERAL__NAME);
-		createEAttribute(xEnumerationLiteralEClass, XENUMERATION_LITERAL__VALUE);
 
 		// Create enums
 		xAssociationTypeEEnum = createEEnum(XASSOCIATION_TYPE);
@@ -892,15 +890,118 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Create type parameters
+
+		// Set bounds for type parameters
+
 		// Add supertypes to classes
+		xProjectEClass.getESuperTypes().add(this.getXBase());
+		xPackageEClass.getESuperTypes().add(this.getXBase());
 		xClassEClass.getESuperTypes().add(this.getXBase());
 		xClassEClass.getESuperTypes().add(this.getXType());
-		xPackageEClass.getESuperTypes().add(this.getXBase());
-		xProjectEClass.getESuperTypes().add(this.getXBase());
 		xEnumerationEClass.getESuperTypes().add(this.getXBase());
 		xEnumerationEClass.getESuperTypes().add(this.getXType());
 
 		// Initialize classes and features; add operations and parameters
+		initEClass(xProjectEClass, XProject.class, "XProject", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getXProject_Name(), ecorePackage.getEString(), "name",
+				null, 0, 1, XProject.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getXProject_Packages(), this.getXPackage(), this
+				.getXPackage_Project(), "packages", null, 0, -1,
+				XProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(xPackageEClass, XPackage.class, "XPackage", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getXPackage_Name(), ecorePackage.getEString(), "name",
+				null, 0, 1, XPackage.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getXPackage_Project(), this.getXProject(), this
+				.getXProject_Packages(), "project", null, 1, 1, XPackage.class,
+				IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getXPackage_Classes(), this.getXClass(), this
+				.getXClass_XPackage(), "classes", null, 0, -1, XPackage.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getXPackage_Enumerations(), this.getXEnumeration(), this
+				.getXEnumeration_XPackage(), "enumerations", null, 0, -1,
+				XPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(xClassEClass, XClass.class, "XClass", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getXClass_XPackage(), this.getXPackage(), this
+				.getXPackage_Classes(), "xPackage", null, 1, 1, XClass.class,
+				IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getXClass_SuperTypes(), this.getXClass(), null,
+				"superTypes", null, 0, -1, XClass.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getXClass_Attributes(), this.getXAttribute(), this
+				.getXAttribute_XClass(), "attributes", null, 0, -1,
+				XClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getXClass_Methods(), this.getXMethod(), this
+				.getXMethod_XClass(), "methods", null, 0, -1, XClass.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getXClass_Comparable(), ecorePackage.getEBoolean(),
+				"comparable", null, 0, 1, XClass.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(xEnumerationEClass, XEnumeration.class, "XEnumeration",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getXEnumeration_XPackage(), this.getXPackage(), this
+				.getXPackage_Enumerations(), "xPackage", null, 1, 1,
+				XEnumeration.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE,
+				!IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getXEnumeration_Literals(), this
+				.getXEnumerationLiteral(), this
+				.getXEnumerationLiteral_Enumeration(), "literals", null, 0, -1,
+				XEnumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getXEnumeration_DefaultLiteral(), this
+				.getXEnumerationLiteral(), null, "defaultLiteral", null, 1, 1,
+				XEnumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(xEnumerationLiteralEClass, XEnumerationLiteral.class,
+				"XEnumerationLiteral", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getXEnumerationLiteral_Enumeration(), this
+				.getXEnumeration(), this.getXEnumeration_Literals(),
+				"enumeration", null, 1, 1, XEnumerationLiteral.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getXEnumerationLiteral_Name(),
+				ecorePackage.getEString(), "name", null, 1, 1,
+				XEnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getXEnumerationLiteral_Value(), ecorePackage.getEInt(),
+				"value", null, 1, 1, XEnumerationLiteral.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
 		initEClass(xAttributeEClass, XAttribute.class, "XAttribute",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getXAttribute_Name(), ecorePackage.getEString(), "name",
@@ -943,70 +1044,7 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 				!IS_DERIVED, IS_ORDERED);
 
 		addEOperation(xAttributeEClass, ecorePackage.getEBoolean(),
-				"isReference");
-
-		initEClass(xClassEClass, XClass.class, "XClass", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getXClass_XPackage(), this.getXPackage(), this
-				.getXPackage_Classes(), "xPackage", null, 1, 1, XClass.class,
-				IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getXClass_SuperTypes(), this.getXClass(), null,
-				"superTypes", null, 0, -1, XClass.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getXClass_Attributes(), this.getXAttribute(), this
-				.getXAttribute_XClass(), "attributes", null, 0, -1,
-				XClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEReference(getXClass_Methods(), this.getXMethod(), this
-				.getXMethod_XClass(), "methods", null, 0, -1, XClass.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getXClass_Comparable(), ecorePackage.getEBoolean(),
-				"comparable", null, 0, 1, XClass.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-
-		initEClass(xPackageEClass, XPackage.class, "XPackage", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getXPackage_Name(), ecorePackage.getEString(), "name",
-				null, 0, 1, XPackage.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getXPackage_Project(), this.getXProject(), this
-				.getXProject_Packages(), "project", null, 1, 1, XPackage.class,
-				IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getXPackage_Classes(), this.getXClass(), this
-				.getXClass_XPackage(), "classes", null, 0, -1, XPackage.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getXPackage_Enumerations(), this.getXEnumeration(), this
-				.getXEnumeration_XPackage(), "enumerations", null, 0, -1,
-				XPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-
-		initEClass(xProjectEClass, XProject.class, "XProject", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getXProject_Name(), ecorePackage.getEString(), "name",
-				null, 0, 1, XProject.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getXProject_Packages(), this.getXPackage(), this
-				.getXPackage_Project(), "packages", null, 0, -1,
-				XProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-
-		initEClass(xBaseEClass, XBase.class, "XBase", IS_ABSTRACT,
-				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+				"isReference", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(xMethodEClass, XMethod.class, "XMethod", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1023,9 +1061,9 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 				IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
 				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEReference(getXMethod_Type(), this.getXType(), null, "type",
-				"XmdlTypes.VOID", 1, 1, XMethod.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+		initEReference(getXMethod_Type(), this.getXType(), null, "type", null,
+				1, 1, XMethod.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getXMethod_Parameters(), this.getXParameter(), this
 				.getXParameter_Method(), "parameters", null, 0, -1,
@@ -1053,12 +1091,8 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(xExceptionEClass, XException.class, "XException",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getXException_JavaClass(), ecorePackage.getEJavaClass(),
-				"javaClass", "java.lang.Exception", 1, 1, XException.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(xBaseEClass, XBase.class, "XBase", IS_ABSTRACT,
+				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(xTypeEClass, XType.class, "XType", IS_ABSTRACT,
 				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1071,70 +1105,52 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 				IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
-		addEOperation(xTypeEClass, ecorePackage.getEBoolean(), "isPrimitive");
+		addEOperation(xTypeEClass, ecorePackage.getEBoolean(), "isPrimitive",
+				1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(xTypeEClass, ecorePackage.getEBoolean(), "isBasic");
+		addEOperation(xTypeEClass, ecorePackage.getEBoolean(), "isBasic", 1, 1,
+				IS_UNIQUE, IS_ORDERED);
 
 		EOperation op = addEOperation(xTypeEClass, ecorePackage.getEInt(),
-				"compareTo");
-		addEParameter(op, ecorePackage.getEJavaObject(), "o");
+				"compareTo", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getXType(), "o", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(xTypeEClass, ecorePackage.getEBoolean(), "isComparable");
+		addEOperation(xTypeEClass, ecorePackage.getEBoolean(), "isComparable",
+				1, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(xExceptionEClass, XException.class, "XException",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		EGenericType g1 = createEGenericType(ecorePackage.getEJavaClass());
+		EGenericType g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEAttribute(getXException_JavaClass(), g1, "javaClass",
+				"java.lang.Exception", 1, 1, XException.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(xModelEClass, XModel.class, "XModel", IS_ABSTRACT,
 				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(xModelEClass, this.getURI(), "path");
-		addEParameter(op, this.getURI(), "modelURI");
+		op = addEOperation(xModelEClass, this.getURI(), "path", 0, 1,
+				IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getURI(), "modelURI", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
 
 		op = addEOperation(xModelEClass, ecorePackage.getEObject(),
-				"createRoot");
-		addEParameter(op, this.getXProject(), "project");
-		addEParameter(op, this.getURI(), "uri");
-
-		op = addEOperation(xModelEClass, ecorePackage.getEObject(), "loadRoot");
-		addEParameter(op, this.getXProject(), "project");
-		addEParameter(op, this.getResource(), "resource");
-
-		addEOperation(xModelEClass, ecorePackage.getEString(), "name");
-
-		initEClass(xEnumerationEClass, XEnumeration.class, "XEnumeration",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getXEnumeration_XPackage(), this.getXPackage(), this
-				.getXPackage_Enumerations(), "xPackage", null, 1, 1,
-				XEnumeration.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE,
-				!IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEReference(getXEnumeration_Literals(), this
-				.getXEnumerationLiteral(), this
-				.getXEnumerationLiteral_Enumeration(), "literals", null, 0, -1,
-				XEnumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEReference(getXEnumeration_DefaultLiteral(), this
-				.getXEnumerationLiteral(), null, "defaultLiteral", null, 1, 1,
-				XEnumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-
-		initEClass(xEnumerationLiteralEClass, XEnumerationLiteral.class,
-				"XEnumerationLiteral", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getXEnumerationLiteral_Enumeration(), this
-				.getXEnumeration(), this.getXEnumeration_Literals(),
-				"enumeration", null, 1, 1, XEnumerationLiteral.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				"createRoot", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getXProject(), "project", 0, 1, IS_UNIQUE,
 				IS_ORDERED);
-		initEAttribute(getXEnumerationLiteral_Name(),
-				ecorePackage.getEString(), "name", null, 1, 1,
-				XEnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+		addEParameter(op, this.getURI(), "uri", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(xModelEClass, ecorePackage.getEObject(), "loadRoot",
+				0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getXProject(), "project", 0, 1, IS_UNIQUE,
 				IS_ORDERED);
-		initEAttribute(getXEnumerationLiteral_Value(), ecorePackage.getEInt(),
-				"value", null, 1, 1, XEnumerationLiteral.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		addEParameter(op, this.getResource(), "resource", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		addEOperation(xModelEClass, ecorePackage.getEString(), "name", 1, 1,
+				IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(xAssociationTypeEEnum, XAssociationType.class,

@@ -54,6 +54,7 @@ public class XmdlboAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -70,30 +71,38 @@ public class XmdlboAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected XmdlboSwitch modelSwitch =
-		new XmdlboSwitch() {
-			public Object caseBModel(BModel object) {
+	protected XmdlboSwitch<Adapter> modelSwitch =
+		new XmdlboSwitch<Adapter>() {
+			@Override
+			public Adapter caseBModel(BModel object) {
 				return createBModelAdapter();
 			}
-			public Object caseXMDLBOModel(XMDLBOModel object) {
+			@Override
+			public Adapter caseXMDLBOModel(XMDLBOModel object) {
 				return createXMDLBOModelAdapter();
 			}
-			public Object caseBPackage(BPackage object) {
+			@Override
+			public Adapter caseBPackage(BPackage object) {
 				return createBPackageAdapter();
 			}
-			public Object caseBService(BService object) {
+			@Override
+			public Adapter caseBService(BService object) {
 				return createBServiceAdapter();
 			}
-			public Object caseBParameter(BParameter object) {
+			@Override
+			public Adapter caseBParameter(BParameter object) {
 				return createBParameterAdapter();
 			}
-			public Object caseBMethod(BMethod object) {
+			@Override
+			public Adapter caseBMethod(BMethod object) {
 				return createBMethodAdapter();
 			}
-			public Object caseXModel(XModel object) {
+			@Override
+			public Adapter caseXModel(XModel object) {
 				return createXModelAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -106,8 +115,9 @@ public class XmdlboAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

@@ -30,7 +30,7 @@ public interface XmdldbFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	XmdldbFactory eINSTANCE = new chrome.xmdldb.impl.XmdldbFactoryImpl();
+	XmdldbFactory eINSTANCE = chrome.xmdldb.impl.XmdldbFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>DModel</em>'.

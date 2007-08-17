@@ -6,17 +6,18 @@
  */
 package chrome.xmdlgen.util;
 
-import chrome.xmdl.XModel;
-
-import chrome.xmdlgen.*;
-
-import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
+
+import chrome.xmdl.XModel;
+import chrome.xmdlgen.GAttribute;
+import chrome.xmdlgen.GClass;
+import chrome.xmdlgen.GModel;
+import chrome.xmdlgen.GPackage;
+import chrome.xmdlgen.XMDLGenModel;
+import chrome.xmdlgen.XmdlgenPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,8 +63,8 @@ public class XmdlgenAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
-		
 		if (object == modelPackage) {
 			return true;
 		}
@@ -79,27 +80,34 @@ public class XmdlgenAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected XmdlgenSwitch modelSwitch =
-		new XmdlgenSwitch() {
-			public Object caseGModel(GModel object) {
+	protected XmdlgenSwitch<Adapter> modelSwitch =
+		new XmdlgenSwitch<Adapter>() {
+			@Override
+			public Adapter caseGModel(GModel object) {
 				return createGModelAdapter();
 			}
-			public Object caseGPackage(GPackage object) {
+			@Override
+			public Adapter caseGPackage(GPackage object) {
 				return createGPackageAdapter();
 			}
-			public Object caseGClass(GClass object) {
+			@Override
+			public Adapter caseGClass(GClass object) {
 				return createGClassAdapter();
 			}
-			public Object caseGAttribute(GAttribute object) {
+			@Override
+			public Adapter caseGAttribute(GAttribute object) {
 				return createGAttributeAdapter();
 			}
-			public Object caseXMDLGenModel(XMDLGenModel object) {
+			@Override
+			public Adapter caseXMDLGenModel(XMDLGenModel object) {
 				return createXMDLGenModelAdapter();
 			}
-			public Object caseXModel(XModel object) {
+			@Override
+			public Adapter caseXModel(XModel object) {
 				return createXModelAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -112,8 +120,9 @@ public class XmdlgenAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

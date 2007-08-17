@@ -3,8 +3,6 @@ package chrome.xmdl.core.templates.context.impl;
 import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class ApplicationResourcesPropImpl
 {
@@ -110,14 +108,14 @@ public class ApplicationResourcesPropImpl
     final StringBuffer stringBuffer = new StringBuffer();
     
 	XPackage xPackage = (XPackage) argument;
-	XProject xProject = xPackage.getProject();	
+	//XProject xProject = xPackage.getProject();	
 	ClassHelper helper = XMDLClassHelper.INSTANCE;
 	
 
     stringBuffer.append(TEXT_1);
     stringBuffer.append(xPackage.getName());
     stringBuffer.append(TEXT_2);
-    for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+    for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 		XClass xClass = (XClass) it.next();
 
     stringBuffer.append(TEXT_3);
@@ -128,7 +126,7 @@ public class ApplicationResourcesPropImpl
     stringBuffer.append(TEXT_6);
     stringBuffer.append(helper.getObjectName(xClass));
     stringBuffer.append(TEXT_7);
-    for (Iterator it2 = xClass.getAttributes().iterator(); it2.hasNext();) {
+    for (Iterator<XAttribute> it2 = xClass.getAttributes().iterator(); it2.hasNext();) {
 			XAttribute attribute = (XAttribute) it2.next();
 	
     stringBuffer.append(TEXT_8);
@@ -164,7 +162,7 @@ public class ApplicationResourcesPropImpl
     stringBuffer.append(TEXT_22);
     if (attribute.getType() instanceof XEnumeration) {
 			XEnumeration enumeration = (XEnumeration) attribute.getType();
-			for (Iterator i= enumeration.getLiterals().iterator(); i.hasNext();) {
+			for (Iterator<XEnumerationLiteral> i= enumeration.getLiterals().iterator(); i.hasNext();) {
 			    XEnumerationLiteral lit = (XEnumerationLiteral) i.next();
     stringBuffer.append(TEXT_23);
     stringBuffer.append(helper.getObjectName(xClass));
@@ -193,8 +191,8 @@ public class ApplicationResourcesPropImpl
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_36);
      if (MasterChildHelper.INST.isMaster(xClass)) {
-	  List children = MasterChildHelper.INST.getChildren(xClass);		
-	  for (Iterator it2 = children.iterator(); it2.hasNext();) {
+	  List<XClass> children = MasterChildHelper.INST.getChildren(xClass);		
+	  for (Iterator<XClass> it2 = children.iterator(); it2.hasNext();) {
 		  XClass child = (XClass) it2.next();
 
     stringBuffer.append(TEXT_37);
@@ -214,7 +212,7 @@ public class ApplicationResourcesPropImpl
     stringBuffer.append(TEXT_44);
     stringBuffer.append(helper.getObjectName(xClass));
     stringBuffer.append(TEXT_45);
-    for (Iterator it2 = xClass.getAttributes().iterator(); it2.hasNext();) {
+    for (Iterator<XAttribute> it2 = xClass.getAttributes().iterator(); it2.hasNext();) {
 			XAttribute attribute = (XAttribute) it2.next();
 	
     stringBuffer.append(TEXT_46);
@@ -226,7 +224,7 @@ public class ApplicationResourcesPropImpl
     stringBuffer.append(TEXT_49);
     if (attribute.getType() instanceof XEnumeration) {
 		XEnumeration enumeration = (XEnumeration) attribute.getType();
-		for (Iterator i= enumeration.getLiterals().iterator(); i.hasNext();) {
+		for (Iterator<XEnumerationLiteral> i= enumeration.getLiterals().iterator(); i.hasNext();) {
 		    XEnumerationLiteral lit = (XEnumerationLiteral) i.next();
     stringBuffer.append(TEXT_50);
     stringBuffer.append(helper.getObjectName(xClass));

@@ -10,8 +10,6 @@ public class Application01
 
 	public String targetFile(Object object) {
 		StringBuffer buffer = new StringBuffer("web/");		
-		XProject xProject = (XProject) object;
-		
 
 		buffer.append("decorators/application01.jsp");	
 		

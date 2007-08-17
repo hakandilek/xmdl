@@ -3,9 +3,12 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="hd"
     modelDirectory="/xmdl/src" editDirectory="/xmdl.ui/src" editorDirectory="/xmdl.ui/src"
-    modelPluginID="xmdl" runtimeJar="true" modelName="Xmdl" editPluginClass="chrome.xmdl.ui.XMDLUIPlugin"
-    editorPluginClass="chrome.xmdl.ui.XMDLUIPlugin" rootImplementsInterface="java.lang.Comparable"
-    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" usedGenPackages="../../../plugin/org.eclipse.emf.mapping/model/Mapping.genmodel#//mapping ../../../plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel ../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    modelPluginID="xmdl" templateDirectory="" redirection="" modelName="Xmdl" modelPluginClass=""
+    editPluginClass="chrome.xmdl.ui.XMDLUIPlugin" editorPluginClass="chrome.xmdl.ui.XMDLUIPlugin"
+    generateSchema="true" rootImplementsInterface="java.lang.Comparable" featureMapWrapperInterface=""
+    featureMapWrapperInternalInterface="" featureMapWrapperClass="" runtimeCompatibility="true"
+    codeFormatting="true" booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" providerRootExtendsClass="" usedGenPackages="platform:/plugin/org.eclipse.emf.mapping/model/Mapping.genmodel#//mapping platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>xmdl.ecore</foreignModel>
   <genPackages prefix="Xmdl" basePackage="chrome" disposableProviderFactory="true"
       ecorePackage="xmdl.ecore#/">
@@ -23,6 +26,34 @@
     <genDataTypes ecoreDataType="xmdl.ecore#//URI"/>
     <genDataTypes ecoreDataType="xmdl.ecore#//Resource"/>
     <genDataTypes ecoreDataType="xmdl.ecore#//Comparable"/>
+    <genClasses ecoreClass="xmdl.ecore#//XProject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XProject/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XProject/packages"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdl.ecore#//XPackage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XPackage/name"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XPackage/project"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XPackage/classes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XPackage/enumerations"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdl.ecore#//XClass">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XClass/xPackage"/>
+      <genFeatures property="None" children="true" createChild="false" propertyDescription=""
+          ecoreFeature="ecore:EReference xmdl.ecore#//XClass/superTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XClass/attributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XClass/methods"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XClass/comparable"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdl.ecore#//XEnumeration">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XEnumeration/xPackage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XEnumeration/literals"/>
+      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XEnumeration/defaultLiteral"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdl.ecore#//XEnumerationLiteral">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XEnumerationLiteral/enumeration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XEnumerationLiteral/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XEnumerationLiteral/value"/>
+    </genClasses>
     <genClasses ecoreClass="xmdl.ecore#//XAttribute">
       <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute xmdl.ecore#//XAttribute/name"/>
       <genFeatures createChild="false" propertyCategory="Basic" ecoreFeature="ecore:EAttribute xmdl.ecore#//XAttribute/length"/>
@@ -37,25 +68,6 @@
       <genFeatures createChild="false" propertyCategory="Reference" ecoreFeature="ecore:EAttribute xmdl.ecore#//XAttribute/navigable"/>
       <genOperations ecoreOperation="xmdl.ecore#//XAttribute/isReference"/>
     </genClasses>
-    <genClasses ecoreClass="xmdl.ecore#//XClass">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XClass/xPackage"/>
-      <genFeatures property="None" children="true" createChild="false" propertyDescription=""
-          ecoreFeature="ecore:EReference xmdl.ecore#//XClass/superTypes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XClass/attributes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XClass/methods"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XClass/comparable"/>
-    </genClasses>
-    <genClasses ecoreClass="xmdl.ecore#//XPackage">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XPackage/name"/>
-      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XPackage/project"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XPackage/classes"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XPackage/enumerations"/>
-    </genClasses>
-    <genClasses ecoreClass="xmdl.ecore#//XProject">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XProject/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XProject/packages"/>
-    </genClasses>
-    <genClasses ecoreClass="xmdl.ecore#//XBase"/>
     <genClasses ecoreClass="xmdl.ecore#//XMethod">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XMethod/index"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XMethod/name"/>
@@ -69,9 +81,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XParameter/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XParameter/type"/>
     </genClasses>
-    <genClasses ecoreClass="xmdl.ecore#//XException">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XException/javaClass"/>
-    </genClasses>
+    <genClasses ecoreClass="xmdl.ecore#//XBase"/>
     <genClasses image="false" ecoreClass="xmdl.ecore#//XType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XType/name"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XType/className"/>
@@ -81,6 +91,9 @@
         <genParameters ecoreParameter="xmdl.ecore#//XType/compareTo/o"/>
       </genOperations>
       <genOperations ecoreOperation="xmdl.ecore#//XType/isComparable"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdl.ecore#//XException">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XException/javaClass"/>
     </genClasses>
     <genClasses ecoreClass="xmdl.ecore#//XModel">
       <genOperations ecoreOperation="xmdl.ecore#//XModel/path">
@@ -95,16 +108,6 @@
         <genParameters ecoreParameter="xmdl.ecore#//XModel/loadRoot/resource"/>
       </genOperations>
       <genOperations ecoreOperation="xmdl.ecore#//XModel/name"/>
-    </genClasses>
-    <genClasses ecoreClass="xmdl.ecore#//XEnumeration">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XEnumeration/xPackage"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XEnumeration/literals"/>
-      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XEnumeration/defaultLiteral"/>
-    </genClasses>
-    <genClasses ecoreClass="xmdl.ecore#//XEnumerationLiteral">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XEnumerationLiteral/enumeration"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XEnumerationLiteral/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XEnumerationLiteral/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -84,7 +84,7 @@ public class TestHelper {
 		}
 		if (type instanceof XEnumeration) {
 			XEnumeration enumer = (XEnumeration) type;
-			List literals = enumer.getLiterals();
+			List<XEnumerationLiteral> literals = enumer.getLiterals();
 			XEnumerationLiteral literal = (XEnumerationLiteral) utils.randomObject(literals);
 			return literal.getName();
 		}

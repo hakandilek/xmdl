@@ -151,7 +151,7 @@ public interface BParameter extends EObject{
 	 * @see #setMethod(BMethod)
 	 * @see chrome.xmdlbo.XmdlboPackage#getBParameter_Method()
 	 * @see chrome.xmdlbo.BMethod#getParameters
-	 * @model opposite="parameters" required="true"
+	 * @model opposite="parameters" required="true" transient="false"
 	 * @generated
 	 */
 	BMethod getMethod();

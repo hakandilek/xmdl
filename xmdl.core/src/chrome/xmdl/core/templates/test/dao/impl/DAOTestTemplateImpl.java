@@ -2,7 +2,6 @@ package chrome.xmdl.core.templates.test.dao.impl;
 
 import java.util.*;
 import chrome.xmdl.*;
-import chrome.xmdl.core.util.*;
 import chrome.xmdl.gen.util.*;
 import org.eclipse.emf.codegen.util.*;
 
@@ -207,7 +206,6 @@ public class DAOTestTemplateImpl
     
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage(); 
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLEntityHelper.INSTANCE;
     TestHelper testHelper = TestHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
@@ -264,7 +262,7 @@ public class DAOTestTemplateImpl
     stringBuffer.append(TEXT_21);
     stringBuffer.append(helper.uncapName(xClass.getName()));
     stringBuffer.append(TEXT_22);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_23);
@@ -287,7 +285,7 @@ public class DAOTestTemplateImpl
     stringBuffer.append(TEXT_32);
     stringBuffer.append(helper.uncapName(xClass.getName()));
     stringBuffer.append(TEXT_33);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_34);
@@ -333,7 +331,7 @@ public class DAOTestTemplateImpl
     stringBuffer.append(TEXT_56);
     stringBuffer.append(helper.uncapName(xClass.getName()));
     stringBuffer.append(TEXT_57);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_58);
@@ -359,7 +357,7 @@ public class DAOTestTemplateImpl
     stringBuffer.append(TEXT_68);
     stringBuffer.append(helper.uncapName(xClass.getName()));
     stringBuffer.append(TEXT_69);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_70);
@@ -389,7 +387,7 @@ public class DAOTestTemplateImpl
     stringBuffer.append(TEXT_83);
     stringBuffer.append(helper.uncapName(xClass.getName()));
     stringBuffer.append(TEXT_84);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_85);
@@ -415,7 +413,7 @@ public class DAOTestTemplateImpl
     stringBuffer.append(TEXT_95);
     stringBuffer.append(helper.uncapName(xClass.getName()));
     stringBuffer.append(TEXT_96);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_97);
@@ -436,7 +434,7 @@ public class DAOTestTemplateImpl
     stringBuffer.append(TEXT_105);
     stringBuffer.append(helper.uncapName(xClass.getName()));
     stringBuffer.append(TEXT_106);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_107);
@@ -455,7 +453,7 @@ public class DAOTestTemplateImpl
     stringBuffer.append(TEXT_113);
     stringBuffer.append(helper.uncapName(xClass.getName()));
     stringBuffer.append(TEXT_114);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_115);
@@ -484,7 +482,7 @@ public class DAOTestTemplateImpl
     stringBuffer.append(TEXT_127);
     stringBuffer.append(helper.uncapName(xClass.getName()));
     stringBuffer.append(TEXT_128);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference()) {
     stringBuffer.append(TEXT_129);
@@ -572,7 +570,7 @@ public class DAOTestTemplateImpl
     stringBuffer.append(TEXT_175);
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_176);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();
     if (attribute.getType() != null && !attribute.isReference() && !attribute.getType().isComparable()) {
     stringBuffer.append(TEXT_177);

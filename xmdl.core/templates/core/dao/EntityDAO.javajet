@@ -1,9 +1,7 @@
 <%@ jet 
     package="chrome.xmdl.core.templates.dao.impl" 
-    imports="java.util.* 
-            chrome.xmdl.*
+    imports="chrome.xmdl.*
             chrome.xmdl.gen.util.*
-			chrome.xmdl.core.util.*
             org.eclipse.emf.codegen.util.*"
     class="EntityDAOTemplateImpl" %>    
      

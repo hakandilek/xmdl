@@ -1,11 +1,11 @@
 <%@ jet 
 	package="chrome.xmdl.core.templates.ui.web.jsp.part.impl" 
-	imports="java.util.* 
+	imports="
+            java.util.* 
 			chrome.xmdl.*
 			chrome.xmdl.gen.util.*
 			chrome.xmdl.core.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+			"
 	class="FormFieldEnumerationImpl"
 	startTag="<$" endTag="$>" 
 %><$
@@ -17,7 +17,7 @@
 $>
 	<layout:select name="<$=formName$>Form" property="<$=attrib.getName()$>" styleClass="<$=helper.uncapSafeName(attrib)$>" 
     	key="<$=helper.getObjectName(xClass)$>.form.<$=attrib.getName()$>" >
-	<$for (Iterator i= enumeration.getLiterals().iterator(); i.hasNext();) {
+	<$for (Iterator<XEnumerationLiteral> i= enumeration.getLiterals().iterator(); i.hasNext();) {
 	    XEnumerationLiteral lit = (XEnumerationLiteral) i.next();$>
         <layout:option key="<$=helper.getObjectName(xClass)$>.form.<$=attrib.getName()$>.<$=lit.getName()$>" value="<$=lit.getValue()$>" />
 	<$ } $>

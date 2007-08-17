@@ -6,7 +6,6 @@ import chrome.xmdldb.*;
 import chrome.xmdl.core.util.*;
 import chrome.xmdl.gen.util.*;
 import chrome.xmdl.xgen.*;
-import org.eclipse.emf.codegen.util.*;
 
 public class EntityHBMTemplatePartImpl
 {
@@ -46,11 +45,8 @@ public class EntityHBMTemplatePartImpl
     final StringBuffer stringBuffer = new StringBuffer();
     
 	DTable dTable =(DTable) argument;
-	DPackage dPackage = dTable.getDPackage();
 	
 	XClass xClass = dTable.getXClass();
-	XPackage xPackage = xClass.getXPackage(); 
-	
 	
 	ClassHelper helper = XMDLEntityHelper.INSTANCE;	
 	DBHelper dbHelper = XMDLDBHelper.INSTANCE;	
@@ -64,7 +60,7 @@ public class EntityHBMTemplatePartImpl
     stringBuffer.append(TEXT_3);
     stringBuffer.append(helper.getObjectName(xClass));
     stringBuffer.append(TEXT_4);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 		XAttribute attribute = (XAttribute) i.next();
 		DField field = XmdldbUtils.findField(attribute, dTable);		
 		XType type = attribute.getType();
@@ -75,7 +71,7 @@ public class EntityHBMTemplatePartImpl
     stringBuffer.append(TEXT_6);
     stringBuffer.append(field.getName());
     stringBuffer.append(TEXT_7);
-    stringBuffer.append(helper.getObjectName(type));
+    stringBuffer.append(helper.getObjectName(enumeration));
     stringBuffer.append(TEXT_8);
     } else {
 			if (!attribute.isReference()) { 

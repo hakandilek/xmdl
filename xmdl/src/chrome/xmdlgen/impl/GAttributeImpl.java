@@ -6,23 +6,18 @@
  */
 package chrome.xmdlgen.impl;
 
-import chrome.xmdl.XAttribute;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import chrome.xmdl.XAttribute;
 import chrome.xmdlgen.GAttribute;
 import chrome.xmdlgen.GClass;
 import chrome.xmdlgen.XmdlgenPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,7 +51,7 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 * @generated
 	 * @ordered
 	 */
-	protected XAttribute xAttribute = null;
+	protected XAttribute xAttribute;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -112,8 +107,9 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlgenPackage.eINSTANCE.getGAttribute();
+		return XmdlgenPackage.Literals.GATTRIBUTE;
 	}
 
 	/**
@@ -123,8 +119,8 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 */
 	public XAttribute getXAttribute() {
 		if (xAttribute != null && xAttribute.eIsProxy()) {
-			XAttribute oldXAttribute = xAttribute;
-			xAttribute = (XAttribute)eResolveProxy((InternalEObject)xAttribute);
+			InternalEObject oldXAttribute = (InternalEObject)xAttribute;
+			xAttribute = (XAttribute)eResolveProxy(oldXAttribute);
 			if (xAttribute != oldXAttribute) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, XmdlgenPackage.GATTRIBUTE__XATTRIBUTE, oldXAttribute, xAttribute));
@@ -203,7 +199,17 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 */
 	public GClass getGClass() {
 		if (eContainerFeatureID != XmdlgenPackage.GATTRIBUTE__GCLASS) return null;
-		return (GClass)eContainer;
+		return (GClass)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetGClass(GClass newGClass, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newGClass, XmdlgenPackage.GATTRIBUTE__GCLASS, msgs);
+		return msgs;
 	}
 
 	/**
@@ -212,15 +218,15 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 * @generated
 	 */
 	public void setGClass(GClass newGClass) {
-		if (newGClass != eContainer || (eContainerFeatureID != XmdlgenPackage.GATTRIBUTE__GCLASS && newGClass != null)) {
+		if (newGClass != eInternalContainer() || (eContainerFeatureID != XmdlgenPackage.GATTRIBUTE__GCLASS && newGClass != null)) {
 			if (EcoreUtil.isAncestor(this, newGClass))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newGClass != null)
 				msgs = ((InternalEObject)newGClass).eInverseAdd(this, XmdlgenPackage.GCLASS__GATTRIBUTES, GClass.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newGClass, XmdlgenPackage.GATTRIBUTE__GCLASS, msgs);
+			msgs = basicSetGClass(newGClass, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -232,20 +238,15 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlgenPackage.GATTRIBUTE__GCLASS:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, XmdlgenPackage.GATTRIBUTE__GCLASS, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlgenPackage.GATTRIBUTE__GCLASS:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetGClass((GClass)otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -253,16 +254,13 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlgenPackage.GATTRIBUTE__GCLASS:
-					return eBasicSetContainer(null, XmdlgenPackage.GATTRIBUTE__GCLASS, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlgenPackage.GATTRIBUTE__GCLASS:
+				return basicSetGClass(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -270,16 +268,13 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case XmdlgenPackage.GATTRIBUTE__GCLASS:
-					return eContainer.eInverseRemove(this, XmdlgenPackage.GCLASS__GATTRIBUTES, GClass.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case XmdlgenPackage.GATTRIBUTE__GCLASS:
+				return eInternalContainer().eInverseRemove(this, XmdlgenPackage.GCLASS__GATTRIBUTES, GClass.class, msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -287,8 +282,9 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case XmdlgenPackage.GATTRIBUTE__XATTRIBUTE:
 				if (resolve) return getXAttribute();
 				return basicGetXAttribute();
@@ -299,7 +295,7 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 			case XmdlgenPackage.GATTRIBUTE__GCLASS:
 				return getGClass();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -307,8 +303,9 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case XmdlgenPackage.GATTRIBUTE__XATTRIBUTE:
 				setXAttribute((XAttribute)newValue);
 				return;
@@ -322,7 +319,7 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 				setGClass((GClass)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -330,8 +327,9 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case XmdlgenPackage.GATTRIBUTE__XATTRIBUTE:
 				setXAttribute((XAttribute)null);
 				return;
@@ -345,7 +343,7 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 				setGClass((GClass)null);
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -353,8 +351,9 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case XmdlgenPackage.GATTRIBUTE__XATTRIBUTE:
 				return xAttribute != null;
 			case XmdlgenPackage.GATTRIBUTE__NAME:
@@ -364,7 +363,7 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 			case XmdlgenPackage.GATTRIBUTE__GCLASS:
 				return getGClass() != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -372,6 +371,7 @@ public class GAttributeImpl extends EObjectImpl implements GAttribute {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

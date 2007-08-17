@@ -127,9 +127,9 @@ public interface DIndex extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Dfields</em>' reference list.
 	 * @see chrome.xmdldb.XmdldbPackage#getDIndex_Dfields()
-	 * @model type="chrome.xmdldb.DField"
+	 * @model
 	 * @generated
 	 */
-	EList getDfields();
+	EList<DField> getDfields();
 
 } // DIndex

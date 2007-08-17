@@ -8,13 +8,13 @@ package chrome.xmdl.presentation;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.ui.action.WorkbenchWindowActionDelegate;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -42,7 +42,9 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -66,38 +68,60 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public static final String copyright = "hd";
+
+	/**
+	 * Action to create objects from the Xmdl model.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static class NewAction extends WorkbenchWindowActionDelegate {
+		/**
+		 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public void run(IAction action) {
+			XmdlModelWizard wizard = new XmdlModelWizard();
+			wizard.init(getWindow().getWorkbench(), StructuredSelection.EMPTY);
+			WizardDialog wizardDialog = new WizardDialog(
+					getWindow().getShell(), wizard);
+			wizardDialog.open();
+		}
+	}
 
 	private static final Logger LOGGER = Logger
 			.getLogger(XmdlActionBarContributor.class);
 
 	/**
-	 * This keeps track of the active editor. <!-- begin-user-doc --> <!--
+	 * This keeps track of the active editor.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected IEditorPart activeEditorPart;
 
 	/**
-	 * This keeps track of the current selection provider. <!-- begin-user-doc
+	 * This keeps track of the current selection provider.
+	 * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ISelectionProvider selectionProvider;
 
 	/**
-	 * This action opens the Properties view. <!-- begin-user-doc --> <!--
+	 * This action opens the Properties view.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected IAction showPropertiesViewAction = new Action(
 			XMDLUIPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+		@Override
 		public void run() {
 			try {
 				getPage().showView("org.eclipse.ui.views.PropertySheet");
@@ -111,15 +135,16 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	 * This action refreshes the viewer of the current editor if the editor
 	 * implements {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected IAction refreshViewerAction = new Action(XMDLUIPlugin.INSTANCE
 			.getString("_UI_RefreshViewer_menu_item")) {
+		@Override
 		public boolean isEnabled() {
 			return activeEditorPart instanceof IViewerProvider;
 		}
 
+		@Override
 		public void run() {
 			if (activeEditorPart instanceof IViewerProvider) {
 				Viewer viewer = ((IViewerProvider) activeEditorPart)
@@ -132,14 +157,12 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	};
 
 	/**
-	 * This will contain one
-	 * {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to
-	 * each descriptor generated for the current selection by the item provider.
+	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
+	 * generated for the current selection by the item provider.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
-	protected Collection createChildActions;
+	protected Collection<IAction> createChildActions;
 
 	/**
 	 * This will contain one
@@ -147,7 +170,7 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	 * each descriptor generated for the current selection by the item provider.
 	 * 
 	 */
-	protected Collection generateActions;
+	protected Collection<IAction> generateActions;
 
 	/**
 	 * This is the menu manager into which menu contribution items should be
@@ -159,20 +182,17 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	protected IMenuManager createChildMenuManager;
 
 	/**
-	 * This will contain one
-	 * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding
-	 * to each descriptor generated for the current selection by the item
-	 * provider. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding to each descriptor
+	 * generated for the current selection by the item provider.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection createSiblingActions;
+	protected Collection<IAction> createSiblingActions;
 
 	/**
-	 * This is the menu manager into which menu contribution items should be
-	 * added for CreateSibling actions. <!-- begin-user-doc --> <!--
+	 * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected IMenuManager createSiblingMenuManager;
@@ -195,7 +215,7 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	 * @generated NOT
 	 */
 	public XmdlActionBarContributor() {
-			
+
 		LOGGER.debug(" new instance");
 		// init();
 		loadResourceAction = new LoadResourceAction();
@@ -304,6 +324,7 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	 * 
 	 * @generated
 	 */
+	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
 		toolBarManager.add(new Separator("xmdl-settings"));
 		toolBarManager.add(new Separator("xmdl-additions"));
@@ -355,12 +376,12 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	}
 
 	/**
-	 * When the active editor changes, this remembers the change and registers
-	 * with it as a selection provider. <!-- begin-user-doc --> <!--
+	 * When the active editor changes, this remembers the change and registers with it as a selection provider.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
+	@Override
 	public void setActiveEditor(IEditorPart part) {
 		super.setActiveEditor(part);
 		activeEditorPart = part;
@@ -405,14 +426,10 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 			depopulateManager(createSiblingMenuManager, createSiblingActions);
 		}
 
-		if (generateMenuManager != null) {
-			depopulateManager(generateMenuManager, generateActions);
-		}
-
 		// Query the new selection for appropriate new child/sibling descriptors
 		//
-		Collection newChildDescriptors = null;
-		Collection newSiblingDescriptors = null;
+		Collection<?> newChildDescriptors = null;
+		Collection<?> newSiblingDescriptors = null;
 
 		ISelection selection = event.getSelection();
 		if (selection instanceof IStructuredSelection
@@ -453,54 +470,49 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	 * 
 	 * @generated
 	 */
-	protected Collection generateCreateChildActions(Collection descriptors,
-			ISelection selection) {
-		Collection actions = new ArrayList();
+	protected Collection<IAction> generateCreateChildActions(
+			Collection<?> descriptors, ISelection selection) {
+		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
-			for (Iterator i = descriptors.iterator(); i.hasNext();) {
+			for (Object descriptor : descriptors) {
 				actions.add(new CreateChildAction(activeEditorPart, selection,
-						i.next()));
+						descriptor));
 			}
 		}
 		return actions;
 	}
 
 	/**
-	 * This generates a
-	 * {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each
-	 * object in <code>descriptors</code>, and returns the collection of
-	 * these actions. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
+	 * and returns the collection of these actions.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection generateCreateSiblingActions(Collection descriptors,
-			ISelection selection) {
-		Collection actions = new ArrayList();
+	protected Collection<IAction> generateCreateSiblingActions(
+			Collection<?> descriptors, ISelection selection) {
+		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
-			for (Iterator i = descriptors.iterator(); i.hasNext();) {
+			for (Object descriptor : descriptors) {
 				actions.add(new CreateSiblingAction(activeEditorPart,
-						selection, i.next()));
+						selection, descriptor));
 			}
 		}
 		return actions;
 	}
 
 	/**
-	 * This populates the specified <code>manager</code> with
-	 * {@link org.eclipse.jface.action.ActionContributionItem}s based on the
-	 * {@link org.eclipse.jface.action.IAction}s contained in the
-	 * <code>actions</code> collection, by inserting them before the specified
-	 * contribution item <code>contributionID</code>. If <code>ID</code> is
-	 * <code>null</code>, they are simply added. <!-- begin-user-doc --> <!--
+	 * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
+	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection,
+	 * by inserting them before the specified contribution item <code>contributionID</code>.
+	 * If <code>contributionID</code> is <code>null</code>, they are simply added.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void populateManager(IContributionManager manager,
-			Collection actions, String contributionID) {
+			Collection<? extends IAction> actions, String contributionID) {
 		if (actions != null) {
-			for (Iterator i = actions.iterator(); i.hasNext();) {
-				IAction action = (IAction) i.next();
+			for (IAction action : actions) {
 				if (contributionID != null) {
 					manager.insertBefore(contributionID, action);
 				} else {
@@ -511,16 +523,14 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	}
 
 	/**
-	 * This removes from the specified <code>manager</code> all
-	 * {@link org.eclipse.jface.action.ActionContributionItem}s based on the
-	 * {@link org.eclipse.jface.action.IAction}s contained in the
-	 * <code>actions</code> collection. <!-- begin-user-doc --> <!--
+	 * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.ActionContributionItem}s
+	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected void depopulateManager(IContributionManager manager,
-			Collection actions) {
+			Collection<? extends IAction> actions) {
 		if (actions != null) {
 			IContributionItem[] items = manager.getItems();
 			for (int i = 0; i < items.length; i++) {
@@ -561,8 +571,8 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 		populateManager(submenuManager, createChildActions, null);
 		menuManager.insertBefore("additions", submenuManager);
 
-		MenuManager generateSubmenuManager = new MenuManager(XMDLUIPlugin.INSTANCE
-				.getString("_UI_Generate_menu_item"));
+		MenuManager generateSubmenuManager = new MenuManager(
+				XMDLUIPlugin.INSTANCE.getString("_UI_Generate_menu_item"));
 		populateManager(generateSubmenuManager, generateActions, null);
 		menuManager.insertBefore("additions", generateSubmenuManager);
 
@@ -597,6 +607,7 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	 * 
 	 * @generated
 	 */
+	@Override
 	protected void addGlobalActions(IMenuManager menuManager) {
 		menuManager.insertAfter("additions-end", new Separator("ui-actions"));
 		menuManager.insertAfter("ui-actions", showPropertiesViewAction);
@@ -605,6 +616,17 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 		menuManager.insertAfter("ui-actions", refreshViewerAction);
 
 		super.addGlobalActions(menuManager);
+	}
+
+	/**
+	 * This ensures that a delete action will clean up all references to deleted objects.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected boolean removeAllReferencesOnDelete() {
+		return true;
 	}
 
 }

@@ -6,29 +6,23 @@
  */
 package chrome.xmdldb.impl;
 
-import chrome.xmdl.XAttribute;
-
-import chrome.xmdldb.DField;
-import chrome.xmdldb.DTable;
-import chrome.xmdldb.XmdldbPackage;
-
 import java.util.Collection;
 import java.util.Locale;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import chrome.xmdl.XAttribute;
+import chrome.xmdldb.DField;
+import chrome.xmdldb.DTable;
+import chrome.xmdldb.XmdldbPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -85,7 +79,7 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * @generated
 	 * @ordered
 	 */
-	protected XAttribute xAttribute = null;
+	protected XAttribute xAttribute;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -135,7 +129,7 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList indices = null;
+	protected EList<Integer> indices;
 
 	/**
 	 * The cached value of the '{@link #getForeign() <em>Foreign</em>}' reference.
@@ -145,7 +139,7 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * @generated
 	 * @ordered
 	 */
-	protected DField foreign = null;
+	protected DField foreign;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -161,8 +155,9 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdldbPackage.eINSTANCE.getDField();
+		return XmdldbPackage.Literals.DFIELD;
 	}
 
 	/**
@@ -239,7 +234,19 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	public DTable getDTable() {
 		if (eContainerFeatureID != XmdldbPackage.DFIELD__DTABLE)
 			return null;
-		return (DTable) eContainer;
+		return (DTable) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDTable(DTable newDTable,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newDTable,
+				XmdldbPackage.DFIELD__DTABLE, msgs);
+		return msgs;
 	}
 
 	/**
@@ -248,19 +255,18 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * @generated
 	 */
 	public void setDTable(DTable newDTable) {
-		if (newDTable != eContainer
+		if (newDTable != eInternalContainer()
 				|| (eContainerFeatureID != XmdldbPackage.DFIELD__DTABLE && newDTable != null)) {
 			if (EcoreUtil.isAncestor(this, newDTable))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newDTable != null)
 				msgs = ((InternalEObject) newDTable).eInverseAdd(this,
 						XmdldbPackage.DTABLE__DFIELDS, DTable.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newDTable,
-					XmdldbPackage.DFIELD__DTABLE, msgs);
+			msgs = basicSetDTable(newDTable, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -275,8 +281,8 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 */
 	public XAttribute getXAttribute() {
 		if (xAttribute != null && xAttribute.eIsProxy()) {
-			XAttribute oldXAttribute = xAttribute;
-			xAttribute = (XAttribute) eResolveProxy((InternalEObject) xAttribute);
+			InternalEObject oldXAttribute = (InternalEObject) xAttribute;
+			xAttribute = (XAttribute) eResolveProxy(oldXAttribute);
 			if (xAttribute != oldXAttribute) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -314,9 +320,9 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getIndices() {
+	public EList<Integer> getIndices() {
 		if (indices == null) {
-			indices = new EDataTypeUniqueEList(Integer.class, this,
+			indices = new EDataTypeUniqueEList<Integer>(Integer.class, this,
 					XmdldbPackage.DFIELD__INDICES);
 		}
 		return indices;
@@ -329,8 +335,8 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 */
 	public DField getForeign() {
 		if (foreign != null && foreign.eIsProxy()) {
-			DField oldForeign = foreign;
-			foreign = (DField) eResolveProxy((InternalEObject) foreign);
+			InternalEObject oldForeign = (InternalEObject) foreign;
+			foreign = (DField) eResolveProxy(oldForeign);
 			if (foreign != oldForeign) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -367,22 +373,16 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdldbPackage.DFIELD__DTABLE:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-						XmdldbPackage.DFIELD__DTABLE, msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdldbPackage.DFIELD__DTABLE:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetDTable((DTable) otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -390,19 +390,14 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdldbPackage.DFIELD__DTABLE:
-				return eBasicSetContainer(null, XmdldbPackage.DFIELD__DTABLE,
-						msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdldbPackage.DFIELD__DTABLE:
+			return basicSetDTable(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -410,18 +405,15 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-			case XmdldbPackage.DFIELD__DTABLE:
-				return eContainer.eInverseRemove(this,
-						XmdldbPackage.DTABLE__DFIELDS, DTable.class, msgs);
-			default:
-				return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+		case XmdldbPackage.DFIELD__DTABLE:
+			return eInternalContainer().eInverseRemove(this,
+					XmdldbPackage.DTABLE__DFIELDS, DTable.class, msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-				- eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -429,8 +421,9 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case XmdldbPackage.DFIELD__PERSISTENT:
 			return isPersistent() ? Boolean.TRUE : Boolean.FALSE;
 		case XmdldbPackage.DFIELD__XATTRIBUTE:
@@ -450,7 +443,7 @@ public class DFieldImpl extends EObjectImpl implements DField {
 				return getForeign();
 			return basicGetForeign();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -458,8 +451,10 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 		case XmdldbPackage.DFIELD__PERSISTENT:
 			setPersistent(((Boolean) newValue).booleanValue());
 			return;
@@ -477,13 +472,13 @@ public class DFieldImpl extends EObjectImpl implements DField {
 			return;
 		case XmdldbPackage.DFIELD__INDICES:
 			getIndices().clear();
-			getIndices().addAll((Collection) newValue);
+			getIndices().addAll((Collection<? extends Integer>) newValue);
 			return;
 		case XmdldbPackage.DFIELD__FOREIGN:
 			setForeign((DField) newValue);
 			return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -491,8 +486,9 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 		case XmdldbPackage.DFIELD__PERSISTENT:
 			setPersistent(PERSISTENT_EDEFAULT);
 			return;
@@ -515,7 +511,7 @@ public class DFieldImpl extends EObjectImpl implements DField {
 			setForeign((DField) null);
 			return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -523,8 +519,9 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 		case XmdldbPackage.DFIELD__PERSISTENT:
 			return persistent != PERSISTENT_EDEFAULT;
 		case XmdldbPackage.DFIELD__XATTRIBUTE:
@@ -541,7 +538,7 @@ public class DFieldImpl extends EObjectImpl implements DField {
 		case XmdldbPackage.DFIELD__FOREIGN:
 			return foreign != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -549,6 +546,7 @@ public class DFieldImpl extends EObjectImpl implements DField {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

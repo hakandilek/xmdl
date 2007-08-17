@@ -1,14 +1,10 @@
 <%@ jet 
 	package="chrome.xmdl.core.templates.context.impl" 
-	imports="java.util.* 
-			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+	imports="chrome.xmdl.*"
 	class="DatabasePropertiesImpl" 
 %><%
 	XProject project = (XProject) argument;	
-	ClassHelper helper = XMDLClassHelper.INSTANCE;
+	//ClassHelper helper = XMDLClassHelper.INSTANCE;
 %>#Hibernate Configuration for JUnit tests
 #Tue Dec 20 18:55:34 EET 2005
 dao.type=hibernate

@@ -1,10 +1,8 @@
 package chrome.xmdl.core.templates.ui.web.impl;
 
-import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
 import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class ConstantsImpl
 {
@@ -21,7 +19,7 @@ public class ConstantsImpl
   protected final String TEXT_1 = "package ";
   protected final String TEXT_2 = ".ui.web.action;";
   protected final String TEXT_3 = NL;
-  protected final String TEXT_4 = NL + NL + "/**" + NL + " * $Id$" + NL + " * Created: 17.�ub.2006 13:28:22" + NL + " *" + NL + " * @author hd" + NL + " * @generated" + NL + " */" + NL + "public interface Constants extends MessageKeys, ParameterKeys{" + NL + "" + NL + " " + NL + "}";
+  protected final String TEXT_4 = NL + NL + "/**" + NL + " * $Id$" + NL + " * Created: 17.?ub.2006 13:28:22" + NL + " *" + NL + " * @author hd" + NL + " * @generated" + NL + " */" + NL + "public interface Constants extends MessageKeys, ParameterKeys{" + NL + "" + NL + " " + NL + "}";
   protected final String TEXT_5 = NL;
 
   public String generate(Object argument)

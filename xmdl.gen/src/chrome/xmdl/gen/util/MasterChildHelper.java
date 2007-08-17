@@ -6,13 +6,11 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.eclipse.emf.common.util.EList;
 
 import chrome.xmdl.XAssociationBehaviour;
 import chrome.xmdl.XAssociationType;
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.XClass;
-import chrome.xmdl.XPackage;
 import chrome.xmdl.XProject;
 import chrome.xmdl.XType;
 
@@ -71,8 +69,8 @@ public class MasterChildHelper {
 	 */
 	public boolean isMaster(XClass xClass) {
 		LOGGER.debug("isMaster(xClass)");
-		List attributes = xClass.getAttributes();	
-		for (Iterator it = attributes.iterator(); it.hasNext();) {
+		List<XAttribute> attributes = xClass.getAttributes();	
+		for (Iterator<XAttribute> it = attributes.iterator(); it.hasNext();) {
 			XAttribute attribute = (XAttribute) it.next();
 			if(isChild(attribute)){
 				return true;
@@ -103,8 +101,8 @@ public class MasterChildHelper {
 		LOGGER.debug("getMaster(xClass)");
 		if (isChild(xClass)) {
 			
-			List attributes = xClass.getAttributes();
-			for (Iterator it = attributes.iterator(); it.hasNext();) {
+			List<XAttribute> attributes = xClass.getAttributes();
+			for (Iterator<XAttribute> it = attributes.iterator(); it.hasNext();) {
 				XAttribute attribute = (XAttribute) it.next();
 				XAssociationType associationType = attribute.getAssociationType();
 				if (XAssociationType.MANY_TO_ONE_LITERAL == associationType) {
@@ -133,8 +131,8 @@ public class MasterChildHelper {
 	public List<XClass> getChildren(XClass xClass) {
 		LOGGER.debug("getChildren(xClass)");
 		List<XClass> list = new ArrayList<XClass>();
-		List attributes = xClass.getAttributes();
-		for (Iterator it = attributes.iterator(); it.hasNext();) {
+		List<XAttribute> attributes = xClass.getAttributes();
+		for (Iterator<XAttribute> it = attributes.iterator(); it.hasNext();) {
 			XAttribute attribute = (XAttribute) it.next();
 			XType type = attribute.getType();
 			if (type instanceof XClass) {

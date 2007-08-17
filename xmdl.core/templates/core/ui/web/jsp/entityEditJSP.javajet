@@ -4,16 +4,14 @@
 			chrome.xmdl.*
 			chrome.xmdl.gen.util.*
 			chrome.xmdl.xgen.*
-			chrome.xmdl.core.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+			chrome.xmdl.core.util.*"
 	class="EntityEditJSPImpl"
 	startTag="<$" endTag="$>" 
 %><$
 	XClass xClass = (XClass) argument;	
 	ClassHelper helper = XMDLClassHelper.INSTANCE;
 	XAttribute firstAttribute = null;
-	List attributes = xClass.getAttributes();
+	List<XAttribute> attributes = xClass.getAttributes();
 	if (attributes != null && attributes.size() >0 ){
 		firstAttribute = (XAttribute) attributes.get(0);
 	}
@@ -30,7 +28,7 @@ $>
 
     <html:hidden property="<$=helper.uncapSafeName(xClass)$>.ID"/>
 
-	<$for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+	<$for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	    XAttribute attribute = (XAttribute) i.next();$>
 	<$  if (!attribute.isReference()) {  
 		Template t = UIHelper.getEditFormFieldTemplate(attribute);
@@ -58,8 +56,8 @@ $>
 <bean:struts id="editURL" forward="edit<$=helper.getCapName(xClass)$>"/>
 
 <$ if (MasterChildHelper.INST.isMaster(xClass)) {
-	  List children = MasterChildHelper.INST.getChildren(xClass);		
-	  for (Iterator it = children.iterator(); it.hasNext();) {
+	  List<XClass> children = MasterChildHelper.INST.getChildren(xClass);		
+	  for (Iterator<XClass> it = children.iterator(); it.hasNext();) {
 		  XClass child = (XClass) it.next();
 $>
 <bean:struts id="<$=helper.uncapSafeName(child)$>EditURL" forward="edit<$=child.getName()$>"/>
@@ -78,7 +76,7 @@ $>
         paramId="<$=helper.uncapSafeName(xClass)$>.ID" paramProperty="ID"
         titleKey="<$=helper.getObjectName(xClass)$>.list.ID"/>
         
-	<$for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+	<$for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	    XAttribute attribute = (XAttribute) i.next();
 	    XType t = attribute.getType();
 	    boolean comp = t.isComparable();
@@ -104,8 +102,8 @@ $>
         titleKey="<$=helper.getObjectName(xClass)$>.list.COPY"/>
 
 	<$ if (MasterChildHelper.INST.isMaster(xClass)) {
-		  List children = MasterChildHelper.INST.getChildren(xClass);		
-		  for (Iterator it = children.iterator(); it.hasNext();) {
+		  List<XClass> children = MasterChildHelper.INST.getChildren(xClass);		
+		  for (Iterator<XClass> it = children.iterator(); it.hasNext();) {
 			  XClass child = (XClass) it.next();
 	$>
     <display:column property="ID" sort="true"

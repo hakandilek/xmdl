@@ -2,9 +2,7 @@
 	package="chrome.xmdl.core.templates.context.impl" 
 	imports="java.util.* 
 			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+			chrome.xmdl.gen.util.*"
 	class="ApplicationContextWEBImpl" 
 %><%
 	XPackage xPackage = (XPackage) argument;	
@@ -15,7 +13,7 @@
     "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-<%for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 		XClass xClass = (XClass) it.next();
 %>
     <bean name="/search<%=helper.getCapName(xClass)%>" class="<%=helper.getObjectActionName(xClass)%>" singleton="false">

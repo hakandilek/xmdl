@@ -2,13 +2,11 @@
 	package="chrome.xmdl.core.templates.context.impl" 
 	imports="java.util.* 
 			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+			chrome.xmdl.gen.util.*"
 	class="ApplicationResourcesPropImpl" 
 %><%
 	XPackage xPackage = (XPackage) argument;
-	XProject xProject = xPackage.getProject();	
+	//XProject xProject = xPackage.getProject();	
 	ClassHelper helper = XMDLClassHelper.INSTANCE;
 	
 %># -- messages used in decorators & jsp files --
@@ -19,7 +17,7 @@ date.format=dd.MM.yyyy
 currency.format=###,###.00
 time.format=dd.MM.yyyy HH:mm
 
-<%for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 		XClass xClass = (XClass) it.next();
 %>
 
@@ -27,7 +25,7 @@ time.format=dd.MM.yyyy HH:mm
 
 # -- <%=helper.getCapName(xClass)%> form --
 <%=helper.getObjectName(xClass)%>.ID=Id
-	<%for (Iterator it2 = xClass.getAttributes().iterator(); it2.hasNext();) {
+	<%for (Iterator<XAttribute> it2 = xClass.getAttributes().iterator(); it2.hasNext();) {
 			XAttribute attribute = (XAttribute) it2.next();
 	%>
 <%=helper.getObjectName(xClass)%>.form.<%=attribute.getName()%> = <%=helper.getCapName(attribute)%>
@@ -43,7 +41,7 @@ time.format=dd.MM.yyyy HH:mm
 		
 		<%if (attribute.getType() instanceof XEnumeration) {
 			XEnumeration enumeration = (XEnumeration) attribute.getType();
-			for (Iterator i= enumeration.getLiterals().iterator(); i.hasNext();) {
+			for (Iterator<XEnumerationLiteral> i= enumeration.getLiterals().iterator(); i.hasNext();) {
 			    XEnumerationLiteral lit = (XEnumerationLiteral) i.next();%>
 <%=helper.getObjectName(xClass)%>.form.<%=attribute.getName()%>.<%=lit.getName()%> = <%=lit.getName()%>
 			<% }
@@ -55,8 +53,8 @@ time.format=dd.MM.yyyy HH:mm
 <%=helper.getObjectName(xClass)%>.list.heading=<%=helper.getCapName(xClass)%>s
 
 <% if (MasterChildHelper.INST.isMaster(xClass)) {
-	  List children = MasterChildHelper.INST.getChildren(xClass);		
-	  for (Iterator it2 = children.iterator(); it2.hasNext();) {
+	  List<XClass> children = MasterChildHelper.INST.getChildren(xClass);		
+	  for (Iterator<XClass> it2 = children.iterator(); it2.hasNext();) {
 		  XClass child = (XClass) it2.next();
 %>
 <%=helper.getObjectName(xClass)%>.list.<%=child.getName()%>=<%=child.getName()%>
@@ -65,13 +63,13 @@ time.format=dd.MM.yyyy HH:mm
 <%=helper.getObjectName(xClass)%>.list.COPY=Copy
 <%=helper.getObjectName(xClass)%>.list.DELETE=Delete
 <%=helper.getObjectName(xClass)%>.list.ID=ID
-	<%for (Iterator it2 = xClass.getAttributes().iterator(); it2.hasNext();) {
+	<%for (Iterator<XAttribute> it2 = xClass.getAttributes().iterator(); it2.hasNext();) {
 			XAttribute attribute = (XAttribute) it2.next();
 	%>
 <%=helper.getObjectName(xClass)%>.list.<%=attribute.getName()%> = <%=helper.getCapName(attribute)%>
 	<%if (attribute.getType() instanceof XEnumeration) {
 		XEnumeration enumeration = (XEnumeration) attribute.getType();
-		for (Iterator i= enumeration.getLiterals().iterator(); i.hasNext();) {
+		for (Iterator<XEnumerationLiteral> i= enumeration.getLiterals().iterator(); i.hasNext();) {
 		    XEnumerationLiteral lit = (XEnumerationLiteral) i.next();%>
 <%=helper.getObjectName(xClass)%>.list.<%=helper.uncapSafeName(attribute)%>.<%=lit.getName()%> = <%=lit.getName()%>
 			<% }

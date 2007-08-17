@@ -1,10 +1,8 @@
 package chrome.xmdl.core.templates.dao.hbm.impl;
 
-import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
 import chrome.xmdl.core.util.*;
-import org.eclipse.emf.codegen.util.*;
 import chrome.xmdldb.*;
 
 public class AssociationHBMOneToManyImpl

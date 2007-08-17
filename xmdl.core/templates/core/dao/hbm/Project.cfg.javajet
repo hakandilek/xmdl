@@ -4,12 +4,11 @@
 			chrome.xmdl.*
 			chrome.xmdl.gen.util.*
 			chrome.xmdl.xgen.util.*
-			org.eclipse.emf.codegen.util.*
 			org.eclipse.emf.ecore.EObject"
 	class="ProjectCFGTemplateImpl" 
 %><%
 	XProject project = (XProject) argument;
-	Iterator iterator=new ModelIterator(project);
+	Iterator<EObject> iterator=new ModelIterator(project);
 	ClassHelper helper = XMDLClassHelper.INSTANCE;
 %><?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC

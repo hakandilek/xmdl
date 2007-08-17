@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see chrome.xmdldb.XmdldbPackage
  * @generated
  */
-public class XmdldbSwitch {
+public class XmdldbSwitch<T> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,7 +63,7 @@ public class XmdldbSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -74,13 +74,13 @@ public class XmdldbSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		} else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(
-					(EClass) eSuperTypes.get(0), theEObject);
+					eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -91,25 +91,25 @@ public class XmdldbSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 		case XmdldbPackage.DMODEL: {
 			DModel dModel = (DModel) theEObject;
-			Object result = caseDModel(dModel);
+			T result = caseDModel(dModel);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		case XmdldbPackage.DPACKAGE: {
 			DPackage dPackage = (DPackage) theEObject;
-			Object result = caseDPackage(dPackage);
+			T result = caseDPackage(dPackage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		case XmdldbPackage.DTABLE: {
 			DTable dTable = (DTable) theEObject;
-			Object result = caseDTable(dTable);
+			T result = caseDTable(dTable);
 			if (result == null)
 				result = casePersistable(dTable);
 			if (result == null)
@@ -118,7 +118,7 @@ public class XmdldbSwitch {
 		}
 		case XmdldbPackage.DFIELD: {
 			DField dField = (DField) theEObject;
-			Object result = caseDField(dField);
+			T result = caseDField(dField);
 			if (result == null)
 				result = casePersistable(dField);
 			if (result == null)
@@ -127,7 +127,7 @@ public class XmdldbSwitch {
 		}
 		case XmdldbPackage.XMDLDB_MODEL: {
 			XMDLDBModel xmdldbModel = (XMDLDBModel) theEObject;
-			Object result = caseXMDLDBModel(xmdldbModel);
+			T result = caseXMDLDBModel(xmdldbModel);
 			if (result == null)
 				result = caseXModel(xmdldbModel);
 			if (result == null)
@@ -136,14 +136,14 @@ public class XmdldbSwitch {
 		}
 		case XmdldbPackage.DINDEX: {
 			DIndex dIndex = (DIndex) theEObject;
-			Object result = caseDIndex(dIndex);
+			T result = caseDIndex(dIndex);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		case XmdldbPackage.PERSISTABLE: {
 			Persistable persistable = (Persistable) theEObject;
-			Object result = casePersistable(persistable);
+			T result = casePersistable(persistable);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -154,137 +154,137 @@ public class XmdldbSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>DModel</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DModel</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>DModel</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DModel</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDModel(DModel object) {
+	public T caseDModel(DModel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>DPackage</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DPackage</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>DPackage</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DPackage</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDPackage(DPackage object) {
+	public T caseDPackage(DPackage object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>DTable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DTable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>DTable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DTable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDTable(DTable object) {
+	public T caseDTable(DTable object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>DField</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DField</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>DField</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DField</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDField(DField object) {
+	public T caseDField(DField object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XMDLDB Model</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XMDLDB Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XMDLDB Model</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XMDLDB Model</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXMDLDBModel(XMDLDBModel object) {
+	public T caseXMDLDBModel(XMDLDBModel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>DIndex</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DIndex</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>DIndex</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DIndex</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDIndex(DIndex object) {
+	public T caseDIndex(DIndex object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Persistable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Persistable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Persistable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Persistable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePersistable(Persistable object) {
+	public T casePersistable(Persistable object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XModel</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XModel</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XModel</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XModel</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXModel(XModel object) {
+	public T caseXModel(XModel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

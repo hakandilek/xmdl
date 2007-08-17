@@ -1,9 +1,7 @@
 package chrome.xmdl.core.templates.dao.impl;
 
-import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
-import chrome.xmdl.core.util.*;
 import org.eclipse.emf.codegen.util.*;
 
 public class EntityDAOTemplateImpl

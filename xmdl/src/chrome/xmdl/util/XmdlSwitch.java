@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see chrome.xmdl.XmdlPackage
  * @generated
  */
-public class XmdlSwitch {
+public class XmdlSwitch<T> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,7 +61,7 @@ public class XmdlSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
+	public T doSwitch(EObject theEObject) {
 		return doSwitch(theEObject.eClass(), theEObject);
 	}
 
@@ -72,13 +72,13 @@ public class XmdlSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
+	protected T doSwitch(EClass theEClass, EObject theEObject) {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		} else {
-			List eSuperTypes = theEClass.getESuperTypes();
+			List<EClass> eSuperTypes = theEClass.getESuperTypes();
 			return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(
-					(EClass) eSuperTypes.get(0), theEObject);
+					eSuperTypes.get(0), theEObject);
 		}
 	}
 
@@ -89,18 +89,29 @@ public class XmdlSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-		case XmdlPackage.XATTRIBUTE: {
-			XAttribute xAttribute = (XAttribute) theEObject;
-			Object result = caseXAttribute(xAttribute);
+		case XmdlPackage.XPROJECT: {
+			XProject xProject = (XProject) theEObject;
+			T result = caseXProject(xProject);
+			if (result == null)
+				result = caseXBase(xProject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case XmdlPackage.XPACKAGE: {
+			XPackage xPackage = (XPackage) theEObject;
+			T result = caseXPackage(xPackage);
+			if (result == null)
+				result = caseXBase(xPackage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		case XmdlPackage.XCLASS: {
 			XClass xClass = (XClass) theEObject;
-			Object result = caseXClass(xClass);
+			T result = caseXClass(xClass);
 			if (result == null)
 				result = caseXBase(xClass);
 			if (result == null)
@@ -109,69 +120,9 @@ public class XmdlSwitch {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case XmdlPackage.XPACKAGE: {
-			XPackage xPackage = (XPackage) theEObject;
-			Object result = caseXPackage(xPackage);
-			if (result == null)
-				result = caseXBase(xPackage);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case XmdlPackage.XPROJECT: {
-			XProject xProject = (XProject) theEObject;
-			Object result = caseXProject(xProject);
-			if (result == null)
-				result = caseXBase(xProject);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case XmdlPackage.XBASE: {
-			XBase xBase = (XBase) theEObject;
-			Object result = caseXBase(xBase);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case XmdlPackage.XMETHOD: {
-			XMethod xMethod = (XMethod) theEObject;
-			Object result = caseXMethod(xMethod);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case XmdlPackage.XPARAMETER: {
-			XParameter xParameter = (XParameter) theEObject;
-			Object result = caseXParameter(xParameter);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case XmdlPackage.XEXCEPTION: {
-			XException xException = (XException) theEObject;
-			Object result = caseXException(xException);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case XmdlPackage.XTYPE: {
-			XType xType = (XType) theEObject;
-			Object result = caseXType(xType);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
-		case XmdlPackage.XMODEL: {
-			XModel xModel = (XModel) theEObject;
-			Object result = caseXModel(xModel);
-			if (result == null)
-				result = defaultCase(theEObject);
-			return result;
-		}
 		case XmdlPackage.XENUMERATION: {
 			XEnumeration xEnumeration = (XEnumeration) theEObject;
-			Object result = caseXEnumeration(xEnumeration);
+			T result = caseXEnumeration(xEnumeration);
 			if (result == null)
 				result = caseXBase(xEnumeration);
 			if (result == null)
@@ -182,7 +133,56 @@ public class XmdlSwitch {
 		}
 		case XmdlPackage.XENUMERATION_LITERAL: {
 			XEnumerationLiteral xEnumerationLiteral = (XEnumerationLiteral) theEObject;
-			Object result = caseXEnumerationLiteral(xEnumerationLiteral);
+			T result = caseXEnumerationLiteral(xEnumerationLiteral);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case XmdlPackage.XATTRIBUTE: {
+			XAttribute xAttribute = (XAttribute) theEObject;
+			T result = caseXAttribute(xAttribute);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case XmdlPackage.XMETHOD: {
+			XMethod xMethod = (XMethod) theEObject;
+			T result = caseXMethod(xMethod);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case XmdlPackage.XPARAMETER: {
+			XParameter xParameter = (XParameter) theEObject;
+			T result = caseXParameter(xParameter);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case XmdlPackage.XBASE: {
+			XBase xBase = (XBase) theEObject;
+			T result = caseXBase(xBase);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case XmdlPackage.XTYPE: {
+			XType xType = (XType) theEObject;
+			T result = caseXType(xType);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case XmdlPackage.XEXCEPTION: {
+			XException xException = (XException) theEObject;
+			T result = caseXException(xException);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case XmdlPackage.XMODEL: {
+			XModel xModel = (XModel) theEObject;
+			T result = caseXModel(xModel);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -193,197 +193,197 @@ public class XmdlSwitch {
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XAttribute</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XAttribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XAttribute</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XAttribute</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXAttribute(XAttribute object) {
+	public T caseXAttribute(XAttribute object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XClass</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XClass</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XClass</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XClass</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXClass(XClass object) {
+	public T caseXClass(XClass object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XPackage</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XPackage</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XPackage</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XPackage</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXPackage(XPackage object) {
+	public T caseXPackage(XPackage object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XProject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XProject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XProject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XProject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXProject(XProject object) {
+	public T caseXProject(XProject object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XBase</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XBase</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XBase</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XBase</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXBase(XBase object) {
+	public T caseXBase(XBase object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XMethod</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XMethod</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XMethod</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XMethod</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXMethod(XMethod object) {
+	public T caseXMethod(XMethod object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XParameter</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XParameter</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XParameter</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XParameter</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXParameter(XParameter object) {
+	public T caseXParameter(XParameter object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XException</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XException</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XException</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XException</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXException(XException object) {
+	public T caseXException(XException object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XType</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XType</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XType</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XType</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXType(XType object) {
+	public T caseXType(XType object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XModel</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XModel</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XModel</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XModel</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXModel(XModel object) {
+	public T caseXModel(XModel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XEnumeration</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XEnumeration</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XEnumeration</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XEnumeration</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXEnumeration(XEnumeration object) {
+	public T caseXEnumeration(XEnumeration object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>XEnumeration Literal</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XEnumeration Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>XEnumeration Literal</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XEnumeration Literal</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXEnumerationLiteral(XEnumerationLiteral object) {
+	public T caseXEnumerationLiteral(XEnumerationLiteral object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>EObject</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

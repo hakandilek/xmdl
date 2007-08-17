@@ -163,7 +163,7 @@ importManager.addImport("org.hibernate.criterion.*");
     stringBuffer.append(TEXT_22);
     stringBuffer.append(helper.getCapName(xClass));
     stringBuffer.append(TEXT_23);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	XAttribute attribute = (XAttribute) i.next();
 	if (!attribute.isReference()) {
 		XType type = attribute.getType();
@@ -196,7 +196,7 @@ importManager.addImport("org.hibernate.criterion.*");
     }
     }//for
     stringBuffer.append(TEXT_37);
-    for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+    for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
 	XAttribute attribute = (XAttribute) i.next();
 	if (!attribute.isReference()) {
 		XType type = attribute.getType();

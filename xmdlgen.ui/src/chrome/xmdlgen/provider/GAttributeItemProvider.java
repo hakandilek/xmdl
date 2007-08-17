@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -66,7 +67,8 @@ public class GAttributeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -91,7 +93,9 @@ public class GAttributeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GAttribute_xAttribute_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GAttribute_xAttribute_feature", "_UI_GAttribute_type"),
-				 XmdlgenPackage.eINSTANCE.getGAttribute_XAttribute(),
+				 XmdlgenPackage.Literals.GATTRIBUTE__XATTRIBUTE,
+				 false,
+				 false,
 				 false,
 				 null,
 				 getString("_UI_BaseModelPropertyCategory"),
@@ -111,8 +115,10 @@ public class GAttributeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GAttribute_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GAttribute_name_feature", "_UI_GAttribute_type"),
-				 XmdlgenPackage.eINSTANCE.getGAttribute_Name(),
+				 XmdlgenPackage.Literals.GATTRIBUTE__NAME,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 getString("_UI_GenerationModelPropertyCategory"),
 				 null));
@@ -131,8 +137,10 @@ public class GAttributeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GAttribute_persistent_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GAttribute_persistent_feature", "_UI_GAttribute_type"),
-				 XmdlgenPackage.eINSTANCE.getGAttribute_Persistent(),
+				 XmdlgenPackage.Literals.GATTRIBUTE__PERSISTENT,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 getString("_UI_PersistancePropertyCategory"),
 				 null));
@@ -151,8 +159,10 @@ public class GAttributeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GAttribute_gClass_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GAttribute_gClass_feature", "_UI_GAttribute_type"),
-				 XmdlgenPackage.eINSTANCE.getGAttribute_GClass(),
+				 XmdlgenPackage.Literals.GATTRIBUTE__GCLASS,
 				 true,
+				 false,
+				 false,
 				 null,
 				 getString("_UI_GenerationModelPropertyCategory"),
 				 null));
@@ -164,8 +174,9 @@ public class GAttributeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/GAttribute");
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GAttribute"));
 	}
 
 	/**
@@ -174,6 +185,7 @@ public class GAttributeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((GAttribute)object).getName();
 		return label == null || label.length() == 0 ?
@@ -188,6 +200,7 @@ public class GAttributeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -201,13 +214,14 @@ public class GAttributeItemProvider
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -217,6 +231,7 @@ public class GAttributeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XmdlgenEditPlugin.INSTANCE;
 	}

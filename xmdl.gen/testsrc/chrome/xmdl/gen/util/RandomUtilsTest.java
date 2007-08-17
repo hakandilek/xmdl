@@ -42,7 +42,7 @@ public class RandomUtilsTest extends TestCase {
 	}
 
 	public void testRandomObject() {
-		List l = new ArrayList();
+		List<String> l = new ArrayList<String>();
 		for (int i = 0; i < 100; i++) {
 			l.add(""+ i);
 		}		

@@ -6,13 +6,6 @@
  */
 package chrome.xmdl.provider;
 
-import chrome.xmdl.XEnumeration;
-import chrome.xmdl.XEnumerationLiteral;
-import chrome.xmdl.XmdlFactory;
-import chrome.xmdl.XmdlPackage;
-
-import chrome.xmdl.ui.XMDLUIPlugin;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -21,18 +14,24 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import chrome.xmdl.XEnumeration;
+import chrome.xmdl.XEnumerationLiteral;
+import chrome.xmdl.XmdlFactory;
+import chrome.xmdl.XmdlPackage;
+import chrome.xmdl.ui.XMDLUIPlugin;
 
 /**
  * This is the item provider adapter for a {@link chrome.xmdl.XEnumeration} object.
@@ -49,7 +48,7 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 */
 	public static final String copyright = "hd";
-	private Map propertyDescriptors;
+	private Map<String, List<IItemPropertyDescriptor>> propertyDescriptors;
 
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -65,34 +64,41 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated 
+	 * @generated
 	 */
-	public List getPropertyDescriptorsGen(Object object) {
-		return itemPropertyDescriptors;		
+	public List<IItemPropertyDescriptor> getPropertyDescriptorsGen(Object object) {
+		if (itemPropertyDescriptors == null) {
+			super.getPropertyDescriptors(object);
+
+			addNamePropertyDescriptor(object);
+			addClassNamePropertyDescriptor(object);
+			addDefaultLiteralPropertyDescriptor(object);
+		}
+		return itemPropertyDescriptors;
 	}
-	
+
 	/**
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public List getPropertyDescriptors(Object object) {		
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (propertyDescriptors == null) {
-			propertyDescriptors = new HashMap();
+			propertyDescriptors = new HashMap<String, List<IItemPropertyDescriptor>>();
 		}
 
 		XEnumeration xenum = (XEnumeration) object;
 		String key = xenum.getClassName();
-		List list = (List) propertyDescriptors.get(key);
+		List<IItemPropertyDescriptor> list = propertyDescriptors.get(key);
 		if (list == null) {
-			list = new ArrayList();
+			list = new ArrayList<IItemPropertyDescriptor>();
 			list.add(getNamePropertyDescriptor(xenum));
 			list.add(getClassNamePropertyDescriptor(xenum));
 			list.add(getDefaultLiteralPropertyDescriptor(xenum));
 			propertyDescriptors.put(key, list);
 		}
-		
+
 		return list;
 	}
 
@@ -109,7 +115,7 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XType_name_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_XType_name_feature", "_UI_XType_type"),
-				XmdlPackage.eINSTANCE.getXType_Name(), true,
+				XmdlPackage.Literals.XTYPE__NAME, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -137,11 +143,12 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XType_className_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_XType_className_feature", "_UI_XType_type"),
-				XmdlPackage.eINSTANCE.getXType_ClassName(), false,
+				XmdlPackage.Literals.XTYPE__CLASS_NAME, false, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
-	protected ItemPropertyDescriptor getClassNamePropertyDescriptor(Object object) {
+	protected ItemPropertyDescriptor getClassNamePropertyDescriptor(
+			Object object) {
 		return createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 						.getRootAdapterFactory(), getResourceLocator(),
@@ -159,7 +166,8 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 	 * @generated NOT
 	 */
 	protected void addDefaultLiteralPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(new XEnumerationLiteralPropertyDescriptor(((XEnumeration)object),
+		itemPropertyDescriptors.add(new XEnumerationLiteralPropertyDescriptor(
+				((XEnumeration) object),
 				((ComposeableAdapterFactory) adapterFactory)
 						.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_XEnumeration_defaultLiteral_feature"),
@@ -170,8 +178,10 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 				null));
 	}
 
-	protected ItemPropertyDescriptor getDefaultLiteralPropertyDescriptor(Object object) {
-		return new XEnumerationLiteralPropertyDescriptor(((XEnumeration)object),
+	protected ItemPropertyDescriptor getDefaultLiteralPropertyDescriptor(
+			Object object) {
+		return new XEnumerationLiteralPropertyDescriptor(
+				((XEnumeration) object),
 				((ComposeableAdapterFactory) adapterFactory)
 						.getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_XEnumeration_defaultLiteral_feature"),
@@ -190,13 +200,27 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(XmdlPackage.eINSTANCE
-					.getXEnumeration_Literals());
+			childrenFeatures.add(XmdlPackage.Literals.XENUMERATION__LITERALS);
 		}
 		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -205,8 +229,10 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/XEnumeration");
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/XEnumeration"));
 	}
 
 	/**
@@ -219,22 +245,11 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 		XEnumeration enumeration = ((XEnumeration) object);
 		String label = enumeration.getName();
 		XEnumerationLiteral defaultLiteral = enumeration.getDefaultLiteral();
-		if (defaultLiteral != null){
+		if (defaultLiteral != null) {
 			label += " (" + defaultLiteral + ")";
 		}
 		return label == null || label.length() == 0 ? getString("_UI_XEnumeration_type")
 				: /*getString("_UI_XEnumeration_type") + " " +*/label;
-	}
-
-	/**
-	 * @generated
-	 * @param object
-	 * @return
-	 */
-	public String getTextGen(Object object) {
-		String label = ((XEnumeration) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_XEnumeration_type")
-				: getString("_UI_XEnumeration_type") + " " + label;
 	}
 
 	/**
@@ -244,6 +259,7 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -262,19 +278,20 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors,
-			Object object) {
+	@Override
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(XmdlPackage.eINSTANCE
-				.getXEnumeration_Literals(), XmdlFactory.eINSTANCE
-				.createXEnumerationLiteral()));
+		newChildDescriptors.add(createChildParameter(
+				XmdlPackage.Literals.XENUMERATION__LITERALS,
+				XmdlFactory.eINSTANCE.createXEnumerationLiteral()));
 	}
 
 	/**
@@ -283,6 +300,7 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XMDLUIPlugin.INSTANCE;
 	}

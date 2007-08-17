@@ -1,15 +1,9 @@
 <%@ jet 
 	package="chrome.xmdl.core.templates.ui.web.webinf.impl" 
-	imports="java.util.* 
-			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+	imports=""
 	class="SitemeshXMLImpl" 
-%><%
-	XProject project = (XProject) argument;	
-	ClassHelper helper = XMDLClassHelper.INSTANCE;
-%><sitemesh>
+%>
+<sitemesh>
     <property name="decorators-file" value="/WEB-INF/decorators.xml"/>
     <excludes file="${decorators-file}"/> 
     <page-parsers>

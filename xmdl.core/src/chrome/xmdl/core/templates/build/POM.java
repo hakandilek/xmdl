@@ -2,7 +2,6 @@ package chrome.xmdl.core.templates.build;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.core.templates.build.impl.POMImpl;
-import chrome.xmdl.core.templates.context.impl.ApplicationContextDAOImpl;
 import chrome.xmdl.xgen.Template;
 
 public class POM extends POMImpl implements Template {

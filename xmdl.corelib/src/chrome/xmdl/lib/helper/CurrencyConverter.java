@@ -18,7 +18,6 @@ import org.apache.commons.logging.LogFactory;
  */
 public class CurrencyConverter implements Converter {
     protected final Log log = LogFactory.getLog(CurrencyConverter.class);
-//    protected final DecimalFormat formatter = new DecimalFormat("###,###.00");
 
     /**
      * Convert a String to a Double and a Double to a String
@@ -27,7 +26,8 @@ public class CurrencyConverter implements Converter {
      * @param value the object to convert
      * @return object the converted object (Double or String)
      */
-    public final Object convert(final Class type, final Object value) {
+    @SuppressWarnings("unchecked")
+	public final Object convert(final Class type, final Object value) {
         // for a null value, return null
         if (value == null) {
             return null;

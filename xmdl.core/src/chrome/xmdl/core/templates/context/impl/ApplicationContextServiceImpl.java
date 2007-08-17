@@ -3,8 +3,6 @@ package chrome.xmdl.core.templates.context.impl;
 import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class ApplicationContextServiceImpl
 {
@@ -39,7 +37,7 @@ public class ApplicationContextServiceImpl
 	ClassHelper helper = XMDLClassHelper.INSTANCE;	
 
     stringBuffer.append(TEXT_1);
-    for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+    for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 		XClass xClass = (XClass) it.next();
 
     stringBuffer.append(TEXT_2);

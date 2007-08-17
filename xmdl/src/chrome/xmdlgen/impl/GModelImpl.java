@@ -6,29 +6,22 @@
  */
 package chrome.xmdlgen.impl;
 
-import chrome.xmdl.XProject;
-
-import chrome.xmdlgen.GModel;
-import chrome.xmdlgen.GPackage;
-import chrome.xmdlgen.XmdlgenPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import chrome.xmdl.XProject;
+import chrome.xmdlgen.GModel;
+import chrome.xmdlgen.GPackage;
+import chrome.xmdlgen.XmdlgenPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -62,7 +55,7 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 * @generated
 	 * @ordered
 	 */
-	protected XProject xProject = null;
+	protected XProject xProject;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -112,7 +105,7 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList gPackages = null;
+	protected EList<GPackage> gPackages;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,8 +121,9 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlgenPackage.eINSTANCE.getGModel();
+		return XmdlgenPackage.Literals.GMODEL;
 	}
 
 	/**
@@ -139,8 +133,8 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 */
 	public XProject getXProject() {
 		if (xProject != null && xProject.eIsProxy()) {
-			XProject oldXProject = xProject;
-			xProject = (XProject)eResolveProxy((InternalEObject)xProject);
+			InternalEObject oldXProject = (InternalEObject)xProject;
+			xProject = (XProject)eResolveProxy(oldXProject);
 			if (xProject != oldXProject) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, XmdlgenPackage.GMODEL__XPROJECT, oldXProject, xProject));
@@ -217,9 +211,9 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getGPackages() {
+	public EList<GPackage> getGPackages() {
 		if (gPackages == null) {
-			gPackages = new EObjectContainmentWithInverseEList(GPackage.class, this, XmdlgenPackage.GMODEL__GPACKAGES, XmdlgenPackage.GPACKAGE__GMODEL);
+			gPackages = new EObjectContainmentWithInverseEList<GPackage>(GPackage.class, this, XmdlgenPackage.GMODEL__GPACKAGES, XmdlgenPackage.GPACKAGE__GMODEL);
 		}
 		return gPackages;
 	}
@@ -229,18 +223,14 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlgenPackage.GMODEL__GPACKAGES:
-					return ((InternalEList)getGPackages()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlgenPackage.GMODEL__GPACKAGES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getGPackages()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -248,16 +238,13 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlgenPackage.GMODEL__GPACKAGES:
-					return ((InternalEList)getGPackages()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlgenPackage.GMODEL__GPACKAGES:
+				return ((InternalEList<?>)getGPackages()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -265,8 +252,9 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case XmdlgenPackage.GMODEL__XPROJECT:
 				if (resolve) return getXProject();
 				return basicGetXProject();
@@ -277,7 +265,7 @@ public class GModelImpl extends EObjectImpl implements GModel {
 			case XmdlgenPackage.GMODEL__GPACKAGES:
 				return getGPackages();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -285,8 +273,10 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case XmdlgenPackage.GMODEL__XPROJECT:
 				setXProject((XProject)newValue);
 				return;
@@ -298,10 +288,10 @@ public class GModelImpl extends EObjectImpl implements GModel {
 				return;
 			case XmdlgenPackage.GMODEL__GPACKAGES:
 				getGPackages().clear();
-				getGPackages().addAll((Collection)newValue);
+				getGPackages().addAll((Collection<? extends GPackage>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -309,8 +299,9 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case XmdlgenPackage.GMODEL__XPROJECT:
 				setXProject((XProject)null);
 				return;
@@ -324,7 +315,7 @@ public class GModelImpl extends EObjectImpl implements GModel {
 				getGPackages().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -332,8 +323,9 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case XmdlgenPackage.GMODEL__XPROJECT:
 				return xProject != null;
 			case XmdlgenPackage.GMODEL__NAME:
@@ -343,7 +335,7 @@ public class GModelImpl extends EObjectImpl implements GModel {
 			case XmdlgenPackage.GMODEL__GPACKAGES:
 				return gPackages != null && !gPackages.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -351,6 +343,7 @@ public class GModelImpl extends EObjectImpl implements GModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

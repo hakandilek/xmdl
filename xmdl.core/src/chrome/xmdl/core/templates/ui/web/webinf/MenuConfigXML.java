@@ -1,9 +1,8 @@
 package chrome.xmdl.core.templates.ui.web.webinf;
 
-import chrome.xmdl.XPackage;
 import chrome.xmdl.XProject;
-import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.ui.web.webinf.impl.MenuConfigXMLImpl;
+import chrome.xmdl.xgen.Template;
 
 public class MenuConfigXML 
 		extends MenuConfigXMLImpl 
@@ -12,8 +11,6 @@ public class MenuConfigXML
 	public String targetFile(Object object) {
 		
 		StringBuffer buffer = new StringBuffer("web/");		
-		XProject project = (XProject) object;
-
 
 		buffer.append("WEB-INF/");
 		buffer.append("menu-config.xml");

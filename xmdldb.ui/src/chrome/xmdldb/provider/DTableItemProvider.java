@@ -20,9 +20,11 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -62,7 +64,8 @@ public class DTableItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -87,9 +90,9 @@ public class DTableItemProvider extends ItemProviderAdapter implements
 				getString("_UI_Persistable_persistent_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_Persistable_persistent_feature",
-						"_UI_Persistable_type"), XmdldbPackage.eINSTANCE
-						.getPersistable_Persistent(), true,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+						"_UI_Persistable_type"),
+				XmdldbPackage.Literals.PERSISTABLE__PERSISTENT, true, false,
+				false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -105,7 +108,7 @@ public class DTableItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DTable_name_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DTable_name_feature", "_UI_DTable_type"),
-				XmdldbPackage.eINSTANCE.getDTable_Name(), true,
+				XmdldbPackage.Literals.DTABLE__NAME, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				getString("_UI_DBModelPropertyCategory"), null));
 	}
@@ -123,8 +126,8 @@ public class DTableItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DTable_dPackage_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DTable_dPackage_feature", "_UI_DTable_type"),
-				XmdldbPackage.eINSTANCE.getDTable_DPackage(), false, null,
-				getString("_UI_DBModelPropertyCategory"), null));
+				XmdldbPackage.Literals.DTABLE__DPACKAGE, false, false, false,
+				null, getString("_UI_DBModelPropertyCategory"), null));
 	}
 
 	/**
@@ -140,8 +143,8 @@ public class DTableItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DTable_xClass_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DTable_xClass_feature", "_UI_DTable_type"),
-				XmdldbPackage.eINSTANCE.getDTable_XClass(), false, null,
-				getString("_UI_BaseModelPropertyCategory"), null));
+				XmdldbPackage.Literals.DTABLE__XCLASS, false, false, false,
+				null, getString("_UI_BaseModelPropertyCategory"), null));
 	}
 
 	/**
@@ -152,12 +155,27 @@ public class DTableItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(XmdldbPackage.eINSTANCE.getDTable_DFields());
+			childrenFeatures.add(XmdldbPackage.Literals.DTABLE__DFIELDS);
 		}
 		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -166,8 +184,10 @@ public class DTableItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/DTable");
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/DTable"));
 	}
 
 	/**
@@ -195,6 +215,7 @@ public class DTableItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -213,18 +234,20 @@ public class DTableItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors,
-			Object object) {
+	@Override
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(XmdldbPackage.eINSTANCE
-				.getDTable_DFields(), XmdldbFactory.eINSTANCE.createDField()));
+		newChildDescriptors.add(createChildParameter(
+				XmdldbPackage.Literals.DTABLE__DFIELDS, XmdldbFactory.eINSTANCE
+						.createDField()));
 	}
 
 	/**
@@ -233,6 +256,7 @@ public class DTableItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XmdldbEditPlugin.INSTANCE;
 	}

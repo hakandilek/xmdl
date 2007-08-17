@@ -30,7 +30,7 @@ public interface XmdlFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	XmdlFactory eINSTANCE = new chrome.xmdl.impl.XmdlFactoryImpl();
+	XmdlFactory eINSTANCE = chrome.xmdl.impl.XmdlFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>XAttribute</em>'.

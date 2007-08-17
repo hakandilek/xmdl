@@ -4,8 +4,6 @@ import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
 import chrome.xmdl.core.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class ApplicationContextDAOImpl
 {
@@ -39,7 +37,7 @@ public class ApplicationContextDAOImpl
     stringBuffer.append(TEXT_1);
     stringBuffer.append(XMDLDBHelper.INSTANCE.getMappingFile(xPackage));
     stringBuffer.append(TEXT_2);
-    for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+    for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 		XClass xClass = (XClass) it.next();
 
     stringBuffer.append(TEXT_3);

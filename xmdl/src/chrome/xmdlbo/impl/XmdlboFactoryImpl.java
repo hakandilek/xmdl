@@ -12,7 +12,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +23,25 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
  * @generated
  */
 public class XmdlboFactoryImpl extends EFactoryImpl implements XmdlboFactory {
+	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static XmdlboFactory init() {
+		try {
+			XmdlboFactory theXmdlboFactory = (XmdlboFactory)EPackage.Registry.INSTANCE.getEFactory("http://chrome/xmdl.bo.ecore"); 
+			if (theXmdlboFactory != null) {
+				return theXmdlboFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new XmdlboFactoryImpl();
+	}
+
 	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
@@ -36,6 +57,7 @@ public class XmdlboFactoryImpl extends EFactoryImpl implements XmdlboFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case XmdlboPackage.BMODEL: return createBModel();
@@ -54,13 +76,11 @@ public class XmdlboFactoryImpl extends EFactoryImpl implements XmdlboFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case XmdlboPackage.BPARAMETER_NATURE: {
-				BParameterNature result = BParameterNature.get(initialValue);
-				if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-				return result;
-			}
+			case XmdlboPackage.BPARAMETER_NATURE:
+				return createBParameterNatureFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -71,10 +91,11 @@ public class XmdlboFactoryImpl extends EFactoryImpl implements XmdlboFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case XmdlboPackage.BPARAMETER_NATURE:
-				return instanceValue == null ? null : instanceValue.toString();
+				return convertBParameterNatureToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -145,6 +166,26 @@ public class XmdlboFactoryImpl extends EFactoryImpl implements XmdlboFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public BParameterNature createBParameterNatureFromString(EDataType eDataType, String initialValue) {
+		BParameterNature result = BParameterNature.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBParameterNatureToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public XmdlboPackage getXmdlboPackage() {
 		return (XmdlboPackage)getEPackage();
 	}
@@ -155,6 +196,7 @@ public class XmdlboFactoryImpl extends EFactoryImpl implements XmdlboFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static XmdlboPackage getPackage() {
 		return XmdlboPackage.eINSTANCE;
 	}

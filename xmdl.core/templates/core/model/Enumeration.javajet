@@ -36,7 +36,7 @@ package <%=helper.getQualifiedName(xPackage)%>.model;
  */
 public class <%=helper.getCapName(enumeration)%> extends PersistentEnum {
 
-<%for (Iterator i= enumeration.getLiterals().iterator(); i.hasNext();) {
+<%for (Iterator<XEnumerationLiteral> i= enumeration.getLiterals().iterator(); i.hasNext();) {
     XEnumerationLiteral l = (XEnumerationLiteral) i.next();%>
     /**
      * @generated

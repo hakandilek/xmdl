@@ -104,7 +104,7 @@ public interface GPackage extends EObject{
 	 * @see #setGModel(GModel)
 	 * @see chrome.xmdlgen.XmdlgenPackage#getGPackage_GModel()
 	 * @see chrome.xmdlgen.GModel#getGPackages
-	 * @model opposite="gPackages" required="true"
+	 * @model opposite="gPackages" required="true" transient="false"
 	 * @generated
 	 */
 	GModel getGModel();
@@ -132,9 +132,9 @@ public interface GPackage extends EObject{
 	 * @return the value of the '<em>GClasses</em>' containment reference list.
 	 * @see chrome.xmdlgen.XmdlgenPackage#getGPackage_GClasses()
 	 * @see chrome.xmdlgen.GClass#getGPackage
-	 * @model type="chrome.xmdlgen.GClass" opposite="gPackage" containment="true" required="true"
+	 * @model opposite="gPackage" containment="true" required="true"
 	 * @generated
 	 */
-	EList getGClasses();
+	EList<GClass> getGClasses();
 
 } // GPackage

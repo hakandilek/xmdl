@@ -16,8 +16,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 
 /**
@@ -35,6 +37,25 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
 	public static final String copyright = "hd";
 
 	/**
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static XmdlFactory init() {
+		try {
+			XmdlFactory theXmdlFactory = (XmdlFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://chrome/xmdl.ecore");
+			if (theXmdlFactory != null) {
+				return theXmdlFactory;
+			}
+		} catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new XmdlFactoryImpl();
+	}
+
+	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49,26 +70,27 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-		case XmdlPackage.XATTRIBUTE:
-			return createXAttribute();
-		case XmdlPackage.XCLASS:
-			return createXClass();
-		case XmdlPackage.XPACKAGE:
-			return createXPackage();
 		case XmdlPackage.XPROJECT:
 			return createXProject();
+		case XmdlPackage.XPACKAGE:
+			return createXPackage();
+		case XmdlPackage.XCLASS:
+			return createXClass();
+		case XmdlPackage.XENUMERATION:
+			return createXEnumeration();
+		case XmdlPackage.XENUMERATION_LITERAL:
+			return createXEnumerationLiteral();
+		case XmdlPackage.XATTRIBUTE:
+			return createXAttribute();
 		case XmdlPackage.XMETHOD:
 			return createXMethod();
 		case XmdlPackage.XPARAMETER:
 			return createXParameter();
 		case XmdlPackage.XEXCEPTION:
 			return createXException();
-		case XmdlPackage.XENUMERATION:
-			return createXEnumeration();
-		case XmdlPackage.XENUMERATION_LITERAL:
-			return createXEnumerationLiteral();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");
@@ -80,25 +102,14 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-		case XmdlPackage.XASSOCIATION_TYPE: {
-			XAssociationType result = XAssociationType.get(initialValue);
-			if (result == null)
-				throw new IllegalArgumentException("The value '" + initialValue
-						+ "' is not a valid enumerator of '"
-						+ eDataType.getName() + "'");
-			return result;
-		}
-		case XmdlPackage.XASSOCIATION_BEHAVIOUR: {
-			XAssociationBehaviour result = XAssociationBehaviour
-					.get(initialValue);
-			if (result == null)
-				throw new IllegalArgumentException("The value '" + initialValue
-						+ "' is not a valid enumerator of '"
-						+ eDataType.getName() + "'");
-			return result;
-		}
+		case XmdlPackage.XASSOCIATION_TYPE:
+			return createXAssociationTypeFromString(eDataType, initialValue);
+		case XmdlPackage.XASSOCIATION_BEHAVIOUR:
+			return createXAssociationBehaviourFromString(eDataType,
+					initialValue);
 		case XmdlPackage.IPATH:
 			return createIPathFromString(eDataType, initialValue);
 		case XmdlPackage.URI:
@@ -118,12 +129,14 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 		case XmdlPackage.XASSOCIATION_TYPE:
-			return instanceValue == null ? null : instanceValue.toString();
+			return convertXAssociationTypeToString(eDataType, instanceValue);
 		case XmdlPackage.XASSOCIATION_BEHAVIOUR:
-			return instanceValue == null ? null : instanceValue.toString();
+			return convertXAssociationBehaviourToString(eDataType,
+					instanceValue);
 		case XmdlPackage.IPATH:
 			return convertIPathToString(eDataType, instanceValue);
 		case XmdlPackage.URI:
@@ -213,6 +226,56 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public XAssociationType createXAssociationTypeFromString(
+			EDataType eDataType, String initialValue) {
+		XAssociationType result = XAssociationType.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertXAssociationTypeToString(EDataType eDataType,
+			Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public XAssociationBehaviour createXAssociationBehaviourFromString(
+			EDataType eDataType, String initialValue) {
+		XAssociationBehaviour result = XAssociationBehaviour.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertXAssociationBehaviourToString(EDataType eDataType,
+			Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public XEnumeration createXEnumeration() {
 		XEnumerationImpl xEnumeration = new XEnumerationImpl();
 		return xEnumeration;
@@ -289,6 +352,7 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	public Comparable createComparableFromString(EDataType eDataType,
 			String initialValue) {
 		return (Comparable) super.createFromString(eDataType, initialValue);
@@ -319,6 +383,7 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static XmdlPackage getPackage() {
 		return XmdlPackage.eINSTANCE;
 	}

@@ -15,15 +15,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import chrome.xmdl.XAttribute;
@@ -93,7 +89,7 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList superTypes = null;
+	protected EList<XClass> superTypes;
 
 	/**
 	 * The cached value of the '{@link #getAttributes() <em>Attributes</em>}' containment reference list.
@@ -102,7 +98,7 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList attributes = null;
+	protected EList<XAttribute> attributes;
 
 	/**
 	 * The cached value of the '{@link #getMethods() <em>Methods</em>}' containment reference list.
@@ -111,7 +107,7 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList methods = null;
+	protected EList<XMethod> methods;
 
 	/**
 	 * The default value of the '{@link #isComparable() <em>Comparable</em>}' attribute.
@@ -145,8 +141,9 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlPackage.eINSTANCE.getXClass();
+		return XmdlPackage.Literals.XCLASS;
 	}
 
 	/**
@@ -212,16 +209,16 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	public XPackage getXPackage() {
 		if (eContainerFeatureID != XmdlPackage.XCLASS__XPACKAGE)
 			return null;
-		return (XPackage) eContainer;
+		return (XPackage) eContainer();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getSuperTypes() {
+	public EList<XClass> getSuperTypes() {
 		if (superTypes == null) {
-			superTypes = new EObjectEList(XClass.class, this,
+			superTypes = new EObjectEList<XClass>(XClass.class, this,
 					XmdlPackage.XCLASS__SUPER_TYPES);
 		}
 		return superTypes;
@@ -231,9 +228,9 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getAttributes() {
+	public EList<XAttribute> getAttributes() {
 		if (attributes == null) {
-			attributes = new EObjectContainmentWithInverseEList(
+			attributes = new EObjectContainmentWithInverseEList<XAttribute>(
 					XAttribute.class, this, XmdlPackage.XCLASS__ATTRIBUTES,
 					XmdlPackage.XATTRIBUTE__XCLASS);
 		}
@@ -244,10 +241,10 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getMethods() {
+	public EList<XMethod> getMethods() {
 		if (methods == null) {
-			methods = new EObjectContainmentWithInverseEList(XMethod.class,
-					this, XmdlPackage.XCLASS__METHODS,
+			methods = new EObjectContainmentWithInverseEList<XMethod>(
+					XMethod.class, this, XmdlPackage.XCLASS__METHODS,
 					XmdlPackage.XMETHOD__XCLASS);
 		}
 		return methods;
@@ -294,189 +291,11 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> 
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XCLASS__XPACKAGE:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-						XmdlPackage.XCLASS__XPACKAGE, msgs);
-			case XmdlPackage.XCLASS__ATTRIBUTES:
-				return ((InternalEList) getAttributes()).basicAdd(otherEnd,
-						msgs);
-			case XmdlPackage.XCLASS__METHODS:
-				return ((InternalEList) getMethods()).basicAdd(otherEnd, msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
-		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
-	}
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XCLASS__XPACKAGE:
-				return eBasicSetContainer(null, XmdlPackage.XCLASS__XPACKAGE,
-						msgs);
-			case XmdlPackage.XCLASS__ATTRIBUTES:
-				return ((InternalEList) getAttributes()).basicRemove(otherEnd,
-						msgs);
-			case XmdlPackage.XCLASS__METHODS:
-				return ((InternalEList) getMethods()).basicRemove(otherEnd,
-						msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
-			}
-		}
-		return eBasicSetContainer(null, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-			case XmdlPackage.XCLASS__XPACKAGE:
-				return eContainer.eInverseRemove(this,
-						XmdlPackage.XPACKAGE__CLASSES, XPackage.class, msgs);
-			default:
-				return eDynamicBasicRemoveFromContainer(msgs);
-			}
-		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-				- eContainerFeatureID, null, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdlPackage.XCLASS__NAME:
-			return getName();
-		case XmdlPackage.XCLASS__CLASS_NAME:
-			return getClassName();
-		case XmdlPackage.XCLASS__XPACKAGE:
-			return getXPackage();
-		case XmdlPackage.XCLASS__SUPER_TYPES:
-			return getSuperTypes();
-		case XmdlPackage.XCLASS__ATTRIBUTES:
-			return getAttributes();
-		case XmdlPackage.XCLASS__METHODS:
-			return getMethods();
-		case XmdlPackage.XCLASS__COMPARABLE:
-			return isComparable() ? Boolean.TRUE : Boolean.FALSE;
-		}
-		return eDynamicGet(eFeature, resolve);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdlPackage.XCLASS__NAME:
-			setName((String) newValue);
-			return;
-		case XmdlPackage.XCLASS__CLASS_NAME:
-			setClassName((String) newValue);
-			return;
-		case XmdlPackage.XCLASS__SUPER_TYPES:
-			getSuperTypes().clear();
-			getSuperTypes().addAll((Collection) newValue);
-			return;
-		case XmdlPackage.XCLASS__ATTRIBUTES:
-			getAttributes().clear();
-			getAttributes().addAll((Collection) newValue);
-			return;
-		case XmdlPackage.XCLASS__METHODS:
-			getMethods().clear();
-			getMethods().addAll((Collection) newValue);
-			return;
-		case XmdlPackage.XCLASS__COMPARABLE:
-			setComparable(((Boolean) newValue).booleanValue());
-			return;
-		}
-		eDynamicSet(eFeature, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdlPackage.XCLASS__NAME:
-			setName(NAME_EDEFAULT);
-			return;
-		case XmdlPackage.XCLASS__CLASS_NAME:
-			unsetClassName();
-			return;
-		case XmdlPackage.XCLASS__SUPER_TYPES:
-			getSuperTypes().clear();
-			return;
-		case XmdlPackage.XCLASS__ATTRIBUTES:
-			getAttributes().clear();
-			return;
-		case XmdlPackage.XCLASS__METHODS:
-			getMethods().clear();
-			return;
-		case XmdlPackage.XCLASS__COMPARABLE:
-			setComparable(COMPARABLE_EDEFAULT);
-			return;
-		}
-		eDynamicUnset(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
-		case XmdlPackage.XCLASS__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
-		case XmdlPackage.XCLASS__CLASS_NAME:
-			return isSetClassName();
-		case XmdlPackage.XCLASS__XPACKAGE:
-			return getXPackage() != null;
-		case XmdlPackage.XCLASS__SUPER_TYPES:
-			return superTypes != null && !superTypes.isEmpty();
-		case XmdlPackage.XCLASS__ATTRIBUTES:
-			return attributes != null && !attributes.isEmpty();
-		case XmdlPackage.XCLASS__METHODS:
-			return methods != null && !methods.isEmpty();
-		case XmdlPackage.XCLASS__COMPARABLE:
-			return comparable != COMPARABLE_EDEFAULT;
-		}
-		return eDynamicIsSet(eFeature);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == XType.class) {
 			switch (derivedFeatureID) {
 			case XmdlPackage.XCLASS__NAME:
@@ -494,7 +313,8 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == XType.class) {
 			switch (baseFeatureID) {
 			case XmdlPackage.XTYPE__NAME:
@@ -512,6 +332,7 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();
@@ -541,16 +362,195 @@ public class XClassImpl extends EObjectImpl implements XClass {
 			return s.hashCode();
 	}
 
-	public int compareTo(Object o) {
+	public int compareTo(XType o) {
 		return XTypeHelper.INST.compareTo(this, o);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XCLASS__XPACKAGE:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return eBasicSetContainer(otherEnd, XmdlPackage.XCLASS__XPACKAGE,
+					msgs);
+		case XmdlPackage.XCLASS__ATTRIBUTES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getAttributes())
+					.basicAdd(otherEnd, msgs);
+		case XmdlPackage.XCLASS__METHODS:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getMethods())
+					.basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XCLASS__XPACKAGE:
+			return eBasicSetContainer(null, XmdlPackage.XCLASS__XPACKAGE, msgs);
+		case XmdlPackage.XCLASS__ATTRIBUTES:
+			return ((InternalEList<?>) getAttributes()).basicRemove(otherEnd,
+					msgs);
+		case XmdlPackage.XCLASS__METHODS:
+			return ((InternalEList<?>) getMethods())
+					.basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+		case XmdlPackage.XCLASS__XPACKAGE:
+			return eInternalContainer().eInverseRemove(this,
+					XmdlPackage.XPACKAGE__CLASSES, XPackage.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+		case XmdlPackage.XCLASS__NAME:
+			return getName();
+		case XmdlPackage.XCLASS__CLASS_NAME:
+			return getClassName();
+		case XmdlPackage.XCLASS__XPACKAGE:
+			return getXPackage();
+		case XmdlPackage.XCLASS__SUPER_TYPES:
+			return getSuperTypes();
+		case XmdlPackage.XCLASS__ATTRIBUTES:
+			return getAttributes();
+		case XmdlPackage.XCLASS__METHODS:
+			return getMethods();
+		case XmdlPackage.XCLASS__COMPARABLE:
+			return isComparable() ? Boolean.TRUE : Boolean.FALSE;
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+		case XmdlPackage.XCLASS__NAME:
+			setName((String) newValue);
+			return;
+		case XmdlPackage.XCLASS__CLASS_NAME:
+			setClassName((String) newValue);
+			return;
+		case XmdlPackage.XCLASS__SUPER_TYPES:
+			getSuperTypes().clear();
+			getSuperTypes().addAll((Collection<? extends XClass>) newValue);
+			return;
+		case XmdlPackage.XCLASS__ATTRIBUTES:
+			getAttributes().clear();
+			getAttributes().addAll((Collection<? extends XAttribute>) newValue);
+			return;
+		case XmdlPackage.XCLASS__METHODS:
+			getMethods().clear();
+			getMethods().addAll((Collection<? extends XMethod>) newValue);
+			return;
+		case XmdlPackage.XCLASS__COMPARABLE:
+			setComparable(((Boolean) newValue).booleanValue());
+			return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+		case XmdlPackage.XCLASS__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case XmdlPackage.XCLASS__CLASS_NAME:
+			unsetClassName();
+			return;
+		case XmdlPackage.XCLASS__SUPER_TYPES:
+			getSuperTypes().clear();
+			return;
+		case XmdlPackage.XCLASS__ATTRIBUTES:
+			getAttributes().clear();
+			return;
+		case XmdlPackage.XCLASS__METHODS:
+			getMethods().clear();
+			return;
+		case XmdlPackage.XCLASS__COMPARABLE:
+			setComparable(COMPARABLE_EDEFAULT);
+			return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+		case XmdlPackage.XCLASS__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
+					.equals(name);
+		case XmdlPackage.XCLASS__CLASS_NAME:
+			return isSetClassName();
+		case XmdlPackage.XCLASS__XPACKAGE:
+			return getXPackage() != null;
+		case XmdlPackage.XCLASS__SUPER_TYPES:
+			return superTypes != null && !superTypes.isEmpty();
+		case XmdlPackage.XCLASS__ATTRIBUTES:
+			return attributes != null && !attributes.isEmpty();
+		case XmdlPackage.XCLASS__METHODS:
+			return methods != null && !methods.isEmpty();
+		case XmdlPackage.XCLASS__COMPARABLE:
+			return comparable != COMPARABLE_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
+
 	public List<XAttribute> getSimpleAttributes() {
-		List a = getAttributes();
+		List<XAttribute> a = getAttributes();
 		List<XAttribute> simples = new ArrayList<XAttribute>();
 		if (a == null || a.size() == 0)
 			return simples;
-		for (Iterator it = a.iterator(); it.hasNext();) {
+		for (Iterator<XAttribute> it = a.iterator(); it.hasNext();) {
 			XAttribute attrib = (XAttribute) it.next();
 			if (!attrib.isReference())
 				simples.add(attrib);

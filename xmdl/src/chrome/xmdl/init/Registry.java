@@ -12,17 +12,17 @@ import org.apache.log4j.Logger;
 class Registry implements Task {
 	private final static Logger LOGGER = Logger.getLogger(Registry.class);
 	
-	private Map<Class, List<Task>> tasks = new HashMap<Class, List<Task>>();
+	private Map<Class<?>, List<Task>> tasks = new HashMap<Class<?>, List<Task>>();
 
-	public void removeTask(Class clazz, Task task) {
-		List list = tasks.get(clazz);
+	public void removeTask(Class<?> clazz, Task task) {
+		List<Task> list = tasks.get(clazz);
 		if (list != null){
 			list.remove(task);
 		}
 		tasks.remove(task);
 	}
 
-	public void addTask(Class clazz, Task task) {
+	public void addTask(Class<?> clazz, Task task) {
 		List<Task> list = tasks.get(clazz);
 		if (list == null){
 			list = new ArrayList<Task>();
@@ -35,10 +35,10 @@ class Registry implements Task {
 		LOGGER.debug("source = " + source);
 		LOGGER.debug("destination = " + destination);
 		if (source != null){
-			Class cls = source.getClass();
+			Class<?> cls = source.getClass();
 			LOGGER.debug("cls = " + cls);
-			Set<Class> superTypes = getClasses(cls);
-			for (Class superType : superTypes) {			
+			Set<Class<?>> superTypes = getClasses(cls);
+			for (Class<?> superType : superTypes) {			
 				List<Task> list = tasks.get(superType);
 				if (list != null && list.size() > 0) {
 					for (Task task : list) {
@@ -49,17 +49,17 @@ class Registry implements Task {
 		}
 	}
 
-	protected Set<Class> getClasses(Class cls) {
-		Set<Class> set = new HashSet<Class>();
-		Class[] ifcs = cls.getInterfaces();
+	protected Set<Class<?>> getClasses(Class<?> cls) {
+		Set<Class<?>> set = new HashSet<Class<?>>();
+		Class<?>[] ifcs = cls.getInterfaces();
 		for (int i = 0; i < ifcs.length; i++) {
-			Class class1 = ifcs[i];
+			Class<?> class1 = ifcs[i];
 			set.add(class1);
 		}
 		
-		Class superCls = cls.getSuperclass();
+		Class<?> superCls = cls.getSuperclass();
 		if (superCls != null){
-			Set<Class> superSet = getClasses(superCls);
+			Set<Class<?>> superSet = getClasses(superCls);
 			set.addAll(superSet);
 		}
 		return set;

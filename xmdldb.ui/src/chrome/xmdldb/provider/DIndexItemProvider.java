@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -61,7 +62,8 @@ public class DIndexItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -86,7 +88,7 @@ public class DIndexItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DIndex_name_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DIndex_name_feature", "_UI_DIndex_type"),
-				XmdldbPackage.eINSTANCE.getDIndex_Name(), true,
+				XmdldbPackage.Literals.DINDEX__NAME, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -103,7 +105,7 @@ public class DIndexItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DIndex_unique_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DIndex_unique_feature", "_UI_DIndex_type"),
-				XmdldbPackage.eINSTANCE.getDIndex_Unique(), true,
+				XmdldbPackage.Literals.DINDEX__UNIQUE, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -120,8 +122,8 @@ public class DIndexItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DIndex_dTable_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DIndex_dTable_feature", "_UI_DIndex_type"),
-				XmdldbPackage.eINSTANCE.getDIndex_DTable(), true, null, null,
-				null));
+				XmdldbPackage.Literals.DINDEX__DTABLE, true, false, false,
+				null, null, null));
 	}
 
 	/**
@@ -137,8 +139,8 @@ public class DIndexItemProvider extends ItemProviderAdapter implements
 				getString("_UI_DIndex_dfields_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_DIndex_dfields_feature", "_UI_DIndex_type"),
-				XmdldbPackage.eINSTANCE.getDIndex_Dfields(), true, null, null,
-				null));
+				XmdldbPackage.Literals.DINDEX__DFIELDS, true, false, false,
+				null, null, null));
 	}
 
 	/**
@@ -147,8 +149,10 @@ public class DIndexItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/DIndex");
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/DIndex"));
 	}
 
 	/**
@@ -157,6 +161,7 @@ public class DIndexItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((DIndex) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_DIndex_type")
@@ -170,6 +175,7 @@ public class DIndexItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -184,14 +190,15 @@ public class DIndexItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors,
-			Object object) {
+	@Override
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -201,6 +208,7 @@ public class DIndexItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XmdldbEditPlugin.INSTANCE;
 	}

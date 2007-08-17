@@ -103,10 +103,10 @@ public interface DModel extends EObject {
 	 * @return the value of the '<em>DPackages</em>' containment reference list.
 	 * @see chrome.xmdldb.XmdldbPackage#getDModel_DPackages()
 	 * @see chrome.xmdldb.DPackage#getModel
-	 * @model type="chrome.xmdldb.DPackage" opposite="model" containment="true"
+	 * @model opposite="model" containment="true"
 	 * @generated
 	 */
-	EList getDPackages();
+	EList<DPackage> getDPackages();
 
 	/**
 	 * Returns the value of the '<em><b>XProject</b></em>' reference.

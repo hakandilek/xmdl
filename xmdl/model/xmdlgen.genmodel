@@ -4,23 +4,23 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="hd"
     modelDirectory="/xmdl/src" editDirectory="/xmdlgen.ui/src" editorDirectory="/xmdlgen.ui/src"
     modelPluginID="xmdl" runtimeJar="true" modelName="Xmdlgen" editPluginClass="chrome.xmdlgen.ui.XmdlgenEditPlugin"
-    importerID="org.eclipse.emf.importer.ecore" usedGenPackages="../../../plugin/xmdl/model/xmdl.genmodel#//xmdl">
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" usedGenPackages="platform:/plugin/xmdl/model/xmdl.genmodel#//xmdl">
   <foreignModel>xmdlgen.ecore</foreignModel>
   <genPackages prefix="Xmdlgen" basePackage="chrome" disposableProviderFactory="true"
       ecorePackage="xmdlgen.ecore#/">
     <genClasses ecoreClass="xmdlgen.ecore#//GModel">
-      <genFeatures property="Readonly" createChild="false" propertyCategory="Base Model"
-          ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GModel/xModel"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Base Model"
           ecoreFeature="ecore:EReference xmdlgen.ecore#//GModel/xProject"/>
       <genFeatures createChild="false" propertyCategory="Generation Model" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GModel/name"/>
+      <genFeatures property="Readonly" createChild="false" propertyCategory="Base Model"
+          ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GModel/xModel"/>
       <genFeatures children="true" createChild="true" propertyCategory="Generation Model"
           ecoreFeature="ecore:EReference xmdlgen.ecore#//GModel/gPackages"/>
     </genClasses>
     <genClasses ecoreClass="xmdlgen.ecore#//GPackage">
+      <genFeatures createChild="false" propertyCategory="Generation Model" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GPackage/name"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Base Model"
           ecoreFeature="ecore:EReference xmdlgen.ecore#//GPackage/xPackage"/>
-      <genFeatures createChild="false" propertyCategory="Generation Model" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GPackage/name"/>
       <genFeatures createChild="false" propertyCategory="Generation Model" ecoreFeature="ecore:EReference xmdlgen.ecore#//GPackage/gModel"/>
       <genFeatures children="true" createChild="true" propertyCategory="Generation Model"
           ecoreFeature="ecore:EReference xmdlgen.ecore#//GPackage/gClasses"/>
@@ -34,6 +34,10 @@
       <genFeatures children="true" createChild="true" propertyCategory="Generation Model"
           ecoreFeature="ecore:EReference xmdlgen.ecore#//GClass/gAttributes"/>
       <genFeatures createChild="false" propertyCategory="Persistance" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GClass/persistent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GClass/deleteServiceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GClass/editServiceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GClass/saveServiceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GClass/searchServiceName"/>
     </genClasses>
     <genClasses ecoreClass="xmdlgen.ecore#//GAttribute">
       <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Base Model"

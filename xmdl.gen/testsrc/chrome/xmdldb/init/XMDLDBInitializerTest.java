@@ -3,7 +3,6 @@ package chrome.xmdldb.init;
 import java.io.IOException;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import chrome.xmdl.xgen.util.ResourceHelper;
@@ -22,7 +21,7 @@ public class XMDLDBInitializerTest extends AbstractTestCase {
 		assertNotNull(dModel);
 		
 		assertEquals("xmdl.xmp", dModel.getName());
-		List packages = dModel.getDPackages();
+		List<DPackage> packages = dModel.getDPackages();
 		assertNotNull(packages);
 		assertEquals(1, packages.size());
 	}
@@ -30,12 +29,12 @@ public class XMDLDBInitializerTest extends AbstractTestCase {
 	public void testDPackage(){
 		EObject object = ResourceHelper.loadResource(path);
 		DModel gModel = (DModel) object;
-		EList packages = gModel.getDPackages();
-		DPackage gPackage = (DPackage) packages.get(0);
+		List<DPackage> packages = gModel.getDPackages();
+		DPackage gPackage = packages.get(0);
 		
 		assertNotNull(gPackage);
 		assertEquals("chrome.xmdl.demo", gPackage.getName());
-		List dTables = gPackage.getDTables();
+		List<DTable> dTables = gPackage.getDTables();
 		assertNotNull(dTables);
 		assertEquals(3, dTables.size());
 	}
@@ -44,8 +43,8 @@ public class XMDLDBInitializerTest extends AbstractTestCase {
 	public void testDTable() throws IOException {
 		EObject object = ResourceHelper.loadResource(path);
 		DModel gModel = (DModel) object;
-		List packages = gModel.getDPackages();
-		DPackage pack = (DPackage) packages.get(0);
+		List<DPackage> packages = gModel.getDPackages();
+		DPackage pack = packages.get(0);
 		
 		DTable customerTable = null;
 		DTable locationTable = null;
@@ -71,8 +70,8 @@ public class XMDLDBInitializerTest extends AbstractTestCase {
 	public void testDField() throws IOException {
 		EObject object = ResourceHelper.loadResource(path);
 		DModel gModel = (DModel) object;
-		List packages = gModel.getDPackages();
-		DPackage pack = (DPackage) packages.get(0);
+		List<DPackage> packages = gModel.getDPackages();
+		DPackage pack = packages.get(0);
 		
 		DTable customerTable = null;
 		DTable locationTable = null;

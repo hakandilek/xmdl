@@ -1,13 +1,14 @@
 package chrome.xmdl.lib.bo;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.commons.chain.Command;
 import org.apache.commons.chain.Context;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
 
 /**
  * @author hd
@@ -15,21 +16,15 @@ import java.util.HashMap;
  */
 public class DispatchService implements Service, Command {
 
-
-    // ----------------------------------------------------- Instance Variables
-
-
     /**
      * The Class instance of this <code>DispatchAction</code> class.
      */
-    protected Class clazz = this.getClass();
-
+    protected Class<?> clazz = this.getClass();
 
     /**
      * Commons Logging instance.
      */
     protected static Log log = LogFactory.getLog(DispatchService.class);
-
 
     /**
      * The set of Method objects we have introspected for this class,
@@ -37,14 +32,13 @@ public class DispatchService implements Service, Command {
      * methods are called, so that introspection needs to occur only
      * once per method name.
      */
-    protected HashMap methods = new HashMap();
-
+    protected Map<String, Method> methods = new HashMap<String, Method>();
 
     /**
      * The set of argument type classes for the reflected method call.  These
      * are the same for all calls, so calculate them only once.
      */
-    protected Class[] types =
+    protected Class<?>[] types =
             {
                 Context.class,
 //                ActionForm.class,

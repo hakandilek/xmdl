@@ -96,7 +96,7 @@ public abstract class BaseActionTest<E extends Entity> extends MockStrutsTestCas
     protected E populate(E obj) throws Exception {
         // loop through all the beans methods and set its properties from
         // its .properties file
-        Map map = ConvertUtil.convertBundleToMap(rb);
+        Map<String, String> map = ConvertUtil.convertBundleToMap(rb);
 
         BeanUtils.copyProperties(obj, map);
         LOGGER.debug("obj = " + obj);

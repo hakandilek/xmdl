@@ -2,9 +2,7 @@
 	package="chrome.xmdl.core.templates.ui.web.webinf.impl" 
 	imports="java.util.* 
 			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+			chrome.xmdl.gen.util.*"
 	class="ValidationXMLImpl" 
 %><%
 	XProject project = (XProject) argument;	
@@ -32,12 +30,12 @@
         -->
 
     <formset>
-	<%for (Iterator i = project.getPackages().iterator(); i.hasNext();) {
+	<%for (Iterator<XPackage> i = project.getPackages().iterator(); i.hasNext();) {
 	    XPackage xPackage = (XPackage) i.next();
-		for (Iterator i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
+		for (Iterator<XClass> i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
 		    XClass xClass = (XClass) i2.next();%>
         <form name="<%=helper.uncapSafeName(xClass)%>Form">
-		    <%for (Iterator i3= xClass.getAttributes().iterator(); i3.hasNext();) {
+		    <%for (Iterator<XAttribute> i3= xClass.getAttributes().iterator(); i3.hasNext();) {
 	    		XAttribute attribute = (XAttribute) i3.next();
 	    		XType type = attribute.getType();
 	    		if (!(type instanceof XEnumeration 

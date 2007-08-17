@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -64,7 +65,8 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -88,7 +90,7 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XType_className_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_XType_className_feature", "_UI_XType_type"),
-				XmdlPackage.eINSTANCE.getXType_ClassName(), false,
+				XmdlPackage.Literals.XTYPE__CLASS_NAME, false, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -105,7 +107,7 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XClass_comparable_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_XClass_comparable_feature", "_UI_XClass_type"),
-				XmdlPackage.eINSTANCE.getXClass_Comparable(), true,
+				XmdlPackage.Literals.XCLASS__COMPARABLE, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -122,7 +124,7 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 				getString("_UI_XType_name_feature"), getString(
 						"_UI_PropertyDescriptor_description",
 						"_UI_XType_name_feature", "_UI_XType_type"),
-				XmdlPackage.eINSTANCE.getXType_Name(), true,
+				XmdlPackage.Literals.XTYPE__NAME, true, false, false,
 				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -134,12 +136,14 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(XmdlPackage.eINSTANCE.getXClass_SuperTypes());
-			childrenFeatures.add(XmdlPackage.eINSTANCE.getXClass_Attributes());
-			childrenFeatures.add(XmdlPackage.eINSTANCE.getXClass_Methods());
+			childrenFeatures.add(XmdlPackage.Literals.XCLASS__SUPER_TYPES);
+			childrenFeatures.add(XmdlPackage.Literals.XCLASS__ATTRIBUTES);
+			childrenFeatures.add(XmdlPackage.Literals.XCLASS__METHODS);
 		}
 		return childrenFeatures;
 	}
@@ -149,6 +153,7 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
@@ -162,8 +167,10 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/XClass");
+		return overlayImage(object, getResourceLocator().getImage(
+				"full/obj16/XClass"));
 	}
 
 	/**
@@ -179,21 +186,13 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
-	 * @generated
-	 */
-	public String getTextGen(Object object) {
-		String label = ((XClass) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_XClass_type")
-				: getString("_UI_XClass_type") + " " + label;
-	}
-
-	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -215,22 +214,24 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors,
-			Object object) {
+	@Override
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(XmdlPackage.eINSTANCE
-				.getXClass_Attributes(), XmdlFactory.eINSTANCE
-				.createXAttribute()));
+		newChildDescriptors.add(createChildParameter(
+				XmdlPackage.Literals.XCLASS__ATTRIBUTES, XmdlFactory.eINSTANCE
+						.createXAttribute()));
 
-		newChildDescriptors.add(createChildParameter(XmdlPackage.eINSTANCE
-				.getXClass_Methods(), XmdlFactory.eINSTANCE.createXMethod()));
+		newChildDescriptors.add(createChildParameter(
+				XmdlPackage.Literals.XCLASS__METHODS, XmdlFactory.eINSTANCE
+						.createXMethod()));
 	}
 
 	/**
@@ -239,6 +240,7 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XMDLUIPlugin.INSTANCE;
 	}

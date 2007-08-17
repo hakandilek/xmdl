@@ -55,7 +55,7 @@ public class RandomUtils {
         return random.nextBoolean();
     }
 
-	public Object randomObject(List<Object> choices) {
+	public Object randomObject(List<?> choices) {
 		int size = choices.size();
 		int rnd = randomInt(size);
 		Object object = choices.get(rnd);

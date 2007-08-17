@@ -1,11 +1,8 @@
 package chrome.xmdl.core.templates.ui.web.jsp.part.impl;
 
-import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
 import chrome.xmdl.core.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class FormFieldDoubleImpl
 {

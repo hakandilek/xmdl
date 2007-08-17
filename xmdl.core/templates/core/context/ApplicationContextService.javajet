@@ -2,9 +2,7 @@
 	package="chrome.xmdl.core.templates.context.impl" 
 	imports="java.util.* 
 			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			org.eclipse.emf.codegen.util.*
-			org.eclipse.emf.ecore.EObject"
+			chrome.xmdl.gen.util.*"
 	class="ApplicationContextServiceImpl" 
 %><%
 	XPackage xPackage = (XPackage) argument;	
@@ -33,7 +31,7 @@
         </property>
     </bean>
 
-<%for (Iterator it = xPackage.getClasses().iterator(); it.hasNext();) {
+<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
 		XClass xClass = (XClass) it.next();
 %>
     <bean id="<%=helper.uncapSafeName(xClass)%>Service" parent="txProxyTemplate">

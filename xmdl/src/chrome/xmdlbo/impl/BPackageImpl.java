@@ -6,31 +6,24 @@
  */
 package chrome.xmdlbo.impl;
 
-import chrome.xmdl.XPackage;
-
-import chrome.xmdlbo.BModel;
-import chrome.xmdlbo.BPackage;
-import chrome.xmdlbo.BService;
-import chrome.xmdlbo.XmdlboPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import chrome.xmdl.XPackage;
+import chrome.xmdlbo.BModel;
+import chrome.xmdlbo.BPackage;
+import chrome.xmdlbo.BService;
+import chrome.xmdlbo.XmdlboPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -77,7 +70,7 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * @generated
 	 * @ordered
 	 */
-	protected XPackage xPackage = null;
+	protected XPackage xPackage;
 
 	/**
 	 * The cached value of the '{@link #getServices() <em>Services</em>}' containment reference list.
@@ -87,7 +80,7 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList services = null;
+	protected EList<BService> services;
 
 
 	public BPackageImpl() {
@@ -99,8 +92,9 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlboPackage.eINSTANCE.getBPackage();
+		return XmdlboPackage.Literals.BPACKAGE;
 	}
 
 	/**
@@ -131,7 +125,17 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 */
 	public BModel getModel() {
 		if (eContainerFeatureID != XmdlboPackage.BPACKAGE__MODEL) return null;
-		return (BModel)eContainer;
+		return (BModel)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetModel(BModel newModel, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newModel, XmdlboPackage.BPACKAGE__MODEL, msgs);
+		return msgs;
 	}
 
 	/**
@@ -140,15 +144,15 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * @generated
 	 */
 	public void setModel(BModel newModel) {
-		if (newModel != eContainer || (eContainerFeatureID != XmdlboPackage.BPACKAGE__MODEL && newModel != null)) {
+		if (newModel != eInternalContainer() || (eContainerFeatureID != XmdlboPackage.BPACKAGE__MODEL && newModel != null)) {
 			if (EcoreUtil.isAncestor(this, newModel))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newModel != null)
 				msgs = ((InternalEObject)newModel).eInverseAdd(this, XmdlboPackage.BMODEL__BPACKAGES, BModel.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject)newModel, XmdlboPackage.BPACKAGE__MODEL, msgs);
+			msgs = basicSetModel(newModel, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
@@ -162,8 +166,8 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 */
 	public XPackage getXPackage() {
 		if (xPackage != null && xPackage.eIsProxy()) {
-			XPackage oldXPackage = xPackage;
-			xPackage = (XPackage)eResolveProxy((InternalEObject)xPackage);
+			InternalEObject oldXPackage = (InternalEObject)xPackage;
+			xPackage = (XPackage)eResolveProxy(oldXPackage);
 			if (xPackage != oldXPackage) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, XmdlboPackage.BPACKAGE__XPACKAGE, oldXPackage, xPackage));
@@ -198,9 +202,9 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getServices() {
+	public EList<BService> getServices() {
 		if (services == null) {
-			services = new EObjectContainmentWithInverseEList(BService.class, this, XmdlboPackage.BPACKAGE__SERVICES, XmdlboPackage.BSERVICE__BPACKAGE);
+			services = new EObjectContainmentWithInverseEList<BService>(BService.class, this, XmdlboPackage.BPACKAGE__SERVICES, XmdlboPackage.BSERVICE__BPACKAGE);
 		}
 		return services;
 	}
@@ -210,22 +214,18 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlboPackage.BPACKAGE__MODEL:
-					if (eContainer != null)
-						msgs = eBasicRemoveFromContainer(msgs);
-					return eBasicSetContainer(otherEnd, XmdlboPackage.BPACKAGE__MODEL, msgs);
-				case XmdlboPackage.BPACKAGE__SERVICES:
-					return ((InternalEList)getServices()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+		@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlboPackage.BPACKAGE__MODEL:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetModel((BModel)otherEnd, msgs);
+			case XmdlboPackage.BPACKAGE__SERVICES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getServices()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -233,18 +233,15 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlboPackage.BPACKAGE__MODEL:
-					return eBasicSetContainer(null, XmdlboPackage.BPACKAGE__MODEL, msgs);
-				case XmdlboPackage.BPACKAGE__SERVICES:
-					return ((InternalEList)getServices()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlboPackage.BPACKAGE__MODEL:
+				return basicSetModel(null, msgs);
+			case XmdlboPackage.BPACKAGE__SERVICES:
+				return ((InternalEList<?>)getServices()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -252,16 +249,13 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-				case XmdlboPackage.BPACKAGE__MODEL:
-					return eContainer.eInverseRemove(this, XmdlboPackage.BMODEL__BPACKAGES, BModel.class, msgs);
-				default:
-					return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+			case XmdlboPackage.BPACKAGE__MODEL:
+				return eInternalContainer().eInverseRemove(this, XmdlboPackage.BMODEL__BPACKAGES, BModel.class, msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -269,8 +263,9 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case XmdlboPackage.BPACKAGE__NAME:
 				return getName();
 			case XmdlboPackage.BPACKAGE__MODEL:
@@ -281,7 +276,7 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 			case XmdlboPackage.BPACKAGE__SERVICES:
 				return getServices();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -289,8 +284,10 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+		@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case XmdlboPackage.BPACKAGE__NAME:
 				setName((String)newValue);
 				return;
@@ -302,10 +299,10 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 				return;
 			case XmdlboPackage.BPACKAGE__SERVICES:
 				getServices().clear();
-				getServices().addAll((Collection)newValue);
+				getServices().addAll((Collection<? extends BService>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -313,8 +310,9 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case XmdlboPackage.BPACKAGE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -328,7 +326,7 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 				getServices().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -336,8 +334,9 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case XmdlboPackage.BPACKAGE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case XmdlboPackage.BPACKAGE__MODEL:
@@ -347,7 +346,7 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 			case XmdlboPackage.BPACKAGE__SERVICES:
 				return services != null && !services.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -355,6 +354,7 @@ public class BPackageImpl extends EObjectImpl implements BPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

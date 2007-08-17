@@ -76,7 +76,360 @@ public interface XmdlPackage extends EPackage {
 	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXAttribute()
 	 * @generated
 	 */
-	int XATTRIBUTE = 0;
+	int XATTRIBUTE = 5;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdl.XBase <em>XBase</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdl.XBase
+	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXBase()
+	 * @generated
+	 */
+	int XBASE = 8;
+
+	/**
+	 * The number of structural features of the '<em>XBase</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XBASE_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdl.impl.XClassImpl <em>XClass</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdl.impl.XClassImpl
+	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXClass()
+	 * @generated
+	 */
+	int XCLASS = 2;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdl.impl.XPackageImpl <em>XPackage</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdl.impl.XPackageImpl
+	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXPackage()
+	 * @generated
+	 */
+	int XPACKAGE = 1;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdl.impl.XProjectImpl <em>XProject</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdl.impl.XProjectImpl
+	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXProject()
+	 * @generated
+	 */
+	int XPROJECT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XPROJECT__NAME = XBASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Packages</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XPROJECT__PACKAGES = XBASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>XProject</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XPROJECT_FEATURE_COUNT = XBASE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XPACKAGE__NAME = XBASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Project</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XPACKAGE__PROJECT = XBASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Classes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XPACKAGE__CLASSES = XBASE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Enumerations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XPACKAGE__ENUMERATIONS = XBASE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>XPackage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XPACKAGE_FEATURE_COUNT = XBASE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCLASS__NAME = XBASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCLASS__CLASS_NAME = XBASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>XPackage</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCLASS__XPACKAGE = XBASE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Super Types</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCLASS__SUPER_TYPES = XBASE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCLASS__ATTRIBUTES = XBASE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Methods</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCLASS__METHODS = XBASE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Comparable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCLASS__COMPARABLE = XBASE_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of structural features of the '<em>XClass</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCLASS_FEATURE_COUNT = XBASE_FEATURE_COUNT + 7;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdl.impl.XMethodImpl <em>XMethod</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdl.impl.XMethodImpl
+	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXMethod()
+	 * @generated
+	 */
+	int XMETHOD = 6;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdl.impl.XParameterImpl <em>XParameter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdl.impl.XParameterImpl
+	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXParameter()
+	 * @generated
+	 */
+	int XPARAMETER = 7;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdl.impl.XExceptionImpl <em>XException</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdl.impl.XExceptionImpl
+	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXException()
+	 * @generated
+	 */
+	int XEXCEPTION = 10;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdl.XType <em>XType</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdl.XType
+	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXType()
+	 * @generated
+	 */
+	int XTYPE = 9;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdl.XModel <em>XModel</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdl.XModel
+	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXModel()
+	 * @generated
+	 */
+	int XMODEL = 11;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdl.impl.XEnumerationImpl <em>XEnumeration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdl.impl.XEnumerationImpl
+	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXEnumeration()
+	 * @generated
+	 */
+	int XENUMERATION = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XENUMERATION__NAME = XBASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XENUMERATION__CLASS_NAME = XBASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>XPackage</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XENUMERATION__XPACKAGE = XBASE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Literals</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XENUMERATION__LITERALS = XBASE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Default Literal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XENUMERATION__DEFAULT_LITERAL = XBASE_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>XEnumeration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XENUMERATION_FEATURE_COUNT = XBASE_FEATURE_COUNT + 5;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdl.impl.XEnumerationLiteralImpl <em>XEnumeration Literal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdl.impl.XEnumerationLiteralImpl
+	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXEnumerationLiteral()
+	 * @generated
+	 */
+	int XENUMERATION_LITERAL = 4;
+
+	/**
+	 * The feature id for the '<em><b>Enumeration</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XENUMERATION_LITERAL__ENUMERATION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XENUMERATION_LITERAL__NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XENUMERATION_LITERAL__VALUE = 2;
+
+	/**
+	 * The number of structural features of the '<em>XEnumeration Literal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XENUMERATION_LITERAL_FEATURE_COUNT = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -160,216 +513,13 @@ public interface XmdlPackage extends EPackage {
 	int XATTRIBUTE__NAVIGABLE = 8;
 
 	/**
-	 * The number of structural features of the the '<em>XAttribute</em>' class.
+	 * The number of structural features of the '<em>XAttribute</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int XATTRIBUTE_FEATURE_COUNT = 9;
-
-	/**
-	 * The meta object id for the '{@link chrome.xmdl.XBase <em>XBase</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see chrome.xmdl.XBase
-	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXBase()
-	 * @generated
-	 */
-	int XBASE = 4;
-
-	/**
-	 * The number of structural features of the the '<em>XBase</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XBASE_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link chrome.xmdl.impl.XClassImpl <em>XClass</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see chrome.xmdl.impl.XClassImpl
-	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXClass()
-	 * @generated
-	 */
-	int XCLASS = 1;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XCLASS__NAME = XBASE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XCLASS__CLASS_NAME = XBASE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>XPackage</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XCLASS__XPACKAGE = XBASE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Super Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XCLASS__SUPER_TYPES = XBASE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XCLASS__ATTRIBUTES = XBASE_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Methods</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XCLASS__METHODS = XBASE_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Comparable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XCLASS__COMPARABLE = XBASE_FEATURE_COUNT + 6;
-
-	/**
-	 * The number of structural features of the the '<em>XClass</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XCLASS_FEATURE_COUNT = XBASE_FEATURE_COUNT + 7;
-
-	/**
-	 * The meta object id for the '{@link chrome.xmdl.impl.XPackageImpl <em>XPackage</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see chrome.xmdl.impl.XPackageImpl
-	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXPackage()
-	 * @generated
-	 */
-	int XPACKAGE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPACKAGE__NAME = XBASE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Project</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPACKAGE__PROJECT = XBASE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Classes</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPACKAGE__CLASSES = XBASE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Enumerations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPACKAGE__ENUMERATIONS = XBASE_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the the '<em>XPackage</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPACKAGE_FEATURE_COUNT = XBASE_FEATURE_COUNT + 4;
-
-	/**
-	 * The meta object id for the '{@link chrome.xmdl.impl.XProjectImpl <em>XProject</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see chrome.xmdl.impl.XProjectImpl
-	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXProject()
-	 * @generated
-	 */
-	int XPROJECT = 3;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPROJECT__NAME = XBASE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Packages</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPROJECT__PACKAGES = XBASE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the the '<em>XProject</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XPROJECT_FEATURE_COUNT = XBASE_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link chrome.xmdl.impl.XMethodImpl <em>XMethod</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see chrome.xmdl.impl.XMethodImpl
-	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXMethod()
-	 * @generated
-	 */
-	int XMETHOD = 5;
 
 	/**
 	 * The feature id for the '<em><b>Index</b></em>' attribute.
@@ -426,23 +576,13 @@ public interface XmdlPackage extends EPackage {
 	int XMETHOD__EXCEPTIONS = 5;
 
 	/**
-	 * The number of structural features of the the '<em>XMethod</em>' class.
+	 * The number of structural features of the '<em>XMethod</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int XMETHOD_FEATURE_COUNT = 6;
-
-	/**
-	 * The meta object id for the '{@link chrome.xmdl.impl.XParameterImpl <em>XParameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see chrome.xmdl.impl.XParameterImpl
-	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXParameter()
-	 * @generated
-	 */
-	int XPARAMETER = 6;
 
 	/**
 	 * The feature id for the '<em><b>Method</b></em>' container reference.
@@ -472,51 +612,13 @@ public interface XmdlPackage extends EPackage {
 	int XPARAMETER__TYPE = 2;
 
 	/**
-	 * The number of structural features of the the '<em>XParameter</em>' class.
+	 * The number of structural features of the '<em>XParameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int XPARAMETER_FEATURE_COUNT = 3;
-
-	/**
-	 * The meta object id for the '{@link chrome.xmdl.impl.XExceptionImpl <em>XException</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see chrome.xmdl.impl.XExceptionImpl
-	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXException()
-	 * @generated
-	 */
-	int XEXCEPTION = 7;
-
-	/**
-	 * The feature id for the '<em><b>Java Class</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XEXCEPTION__JAVA_CLASS = 0;
-
-	/**
-	 * The number of structural features of the the '<em>XException</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XEXCEPTION_FEATURE_COUNT = 1;
-
-	/**
-	 * The meta object id for the '{@link chrome.xmdl.XType <em>XType</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see chrome.xmdl.XType
-	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXType()
-	 * @generated
-	 */
-	int XTYPE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -537,7 +639,7 @@ public interface XmdlPackage extends EPackage {
 	int XTYPE__CLASS_NAME = 1;
 
 	/**
-	 * The number of structural features of the the '<em>XType</em>' class.
+	 * The number of structural features of the '<em>XType</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -546,133 +648,31 @@ public interface XmdlPackage extends EPackage {
 	int XTYPE_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link chrome.xmdl.XModel <em>XModel</em>}' class.
+	 * The feature id for the '<em><b>Java Class</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see chrome.xmdl.XModel
-	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXModel()
 	 * @generated
+	 * @ordered
 	 */
-	int XMODEL = 9;
+	int XEXCEPTION__JAVA_CLASS = 0;
 
 	/**
-	 * The number of structural features of the the '<em>XModel</em>' class.
+	 * The number of structural features of the '<em>XException</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XEXCEPTION_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of structural features of the '<em>XModel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int XMODEL_FEATURE_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link chrome.xmdl.impl.XEnumerationImpl <em>XEnumeration</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see chrome.xmdl.impl.XEnumerationImpl
-	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXEnumeration()
-	 * @generated
-	 */
-	int XENUMERATION = 10;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XENUMERATION__NAME = XBASE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Class Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XENUMERATION__CLASS_NAME = XBASE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>XPackage</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XENUMERATION__XPACKAGE = XBASE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Literals</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XENUMERATION__LITERALS = XBASE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Default Literal</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XENUMERATION__DEFAULT_LITERAL = XBASE_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the the '<em>XEnumeration</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XENUMERATION_FEATURE_COUNT = XBASE_FEATURE_COUNT + 5;
-
-	/**
-	 * The meta object id for the '{@link chrome.xmdl.impl.XEnumerationLiteralImpl <em>XEnumeration Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see chrome.xmdl.impl.XEnumerationLiteralImpl
-	 * @see chrome.xmdl.impl.XmdlPackageImpl#getXEnumerationLiteral()
-	 * @generated
-	 */
-	int XENUMERATION_LITERAL = 11;
-
-	/**
-	 * The feature id for the '<em><b>Enumeration</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XENUMERATION_LITERAL__ENUMERATION = 0;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XENUMERATION_LITERAL__NAME = 1;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XENUMERATION_LITERAL__VALUE = 2;
-
-	/**
-	 * The number of structural features of the the '<em>XEnumeration Literal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XENUMERATION_LITERAL_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link chrome.xmdl.XAssociationType <em>XAssociation Type</em>}' enum.
@@ -865,10 +865,10 @@ public interface XmdlPackage extends EPackage {
 	EReference getXClass_XPackage();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link chrome.xmdl.XClass#getSuperTypes <em>Super Types</em>}'.
+	 * Returns the meta object for the reference list '{@link chrome.xmdl.XClass#getSuperTypes <em>Super Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Super Types</em>'.
+	 * @return the meta object for the reference list '<em>Super Types</em>'.
 	 * @see chrome.xmdl.XClass#getSuperTypes()
 	 * @see #getXClass()
 	 * @generated
@@ -1344,5 +1344,514 @@ public interface XmdlPackage extends EPackage {
 	 * @generated
 	 */
 	XmdlFactory getXmdlFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.impl.XProjectImpl <em>XProject</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.impl.XProjectImpl
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXProject()
+		 * @generated
+		 */
+		EClass XPROJECT = eINSTANCE.getXProject();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XPROJECT__NAME = eINSTANCE.getXProject_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Packages</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XPROJECT__PACKAGES = eINSTANCE.getXProject_Packages();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.impl.XPackageImpl <em>XPackage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.impl.XPackageImpl
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXPackage()
+		 * @generated
+		 */
+		EClass XPACKAGE = eINSTANCE.getXPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XPACKAGE__NAME = eINSTANCE.getXPackage_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Project</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XPACKAGE__PROJECT = eINSTANCE.getXPackage_Project();
+
+		/**
+		 * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XPACKAGE__CLASSES = eINSTANCE.getXPackage_Classes();
+
+		/**
+		 * The meta object literal for the '<em><b>Enumerations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XPACKAGE__ENUMERATIONS = eINSTANCE
+				.getXPackage_Enumerations();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.impl.XClassImpl <em>XClass</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.impl.XClassImpl
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXClass()
+		 * @generated
+		 */
+		EClass XCLASS = eINSTANCE.getXClass();
+
+		/**
+		 * The meta object literal for the '<em><b>XPackage</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XCLASS__XPACKAGE = eINSTANCE.getXClass_XPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Super Types</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XCLASS__SUPER_TYPES = eINSTANCE.getXClass_SuperTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XCLASS__ATTRIBUTES = eINSTANCE.getXClass_Attributes();
+
+		/**
+		 * The meta object literal for the '<em><b>Methods</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XCLASS__METHODS = eINSTANCE.getXClass_Methods();
+
+		/**
+		 * The meta object literal for the '<em><b>Comparable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XCLASS__COMPARABLE = eINSTANCE.getXClass_Comparable();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.impl.XEnumerationImpl <em>XEnumeration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.impl.XEnumerationImpl
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXEnumeration()
+		 * @generated
+		 */
+		EClass XENUMERATION = eINSTANCE.getXEnumeration();
+
+		/**
+		 * The meta object literal for the '<em><b>XPackage</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XENUMERATION__XPACKAGE = eINSTANCE
+				.getXEnumeration_XPackage();
+
+		/**
+		 * The meta object literal for the '<em><b>Literals</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XENUMERATION__LITERALS = eINSTANCE
+				.getXEnumeration_Literals();
+
+		/**
+		 * The meta object literal for the '<em><b>Default Literal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XENUMERATION__DEFAULT_LITERAL = eINSTANCE
+				.getXEnumeration_DefaultLiteral();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.impl.XEnumerationLiteralImpl <em>XEnumeration Literal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.impl.XEnumerationLiteralImpl
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXEnumerationLiteral()
+		 * @generated
+		 */
+		EClass XENUMERATION_LITERAL = eINSTANCE.getXEnumerationLiteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Enumeration</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XENUMERATION_LITERAL__ENUMERATION = eINSTANCE
+				.getXEnumerationLiteral_Enumeration();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XENUMERATION_LITERAL__NAME = eINSTANCE
+				.getXEnumerationLiteral_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XENUMERATION_LITERAL__VALUE = eINSTANCE
+				.getXEnumerationLiteral_Value();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.impl.XAttributeImpl <em>XAttribute</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.impl.XAttributeImpl
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXAttribute()
+		 * @generated
+		 */
+		EClass XATTRIBUTE = eINSTANCE.getXAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XATTRIBUTE__NAME = eINSTANCE.getXAttribute_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XATTRIBUTE__LENGTH = eINSTANCE.getXAttribute_Length();
+
+		/**
+		 * The meta object literal for the '<em><b>Default Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XATTRIBUTE__DEFAULT_VALUE = eINSTANCE
+				.getXAttribute_DefaultValue();
+
+		/**
+		 * The meta object literal for the '<em><b>XClass</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XATTRIBUTE__XCLASS = eINSTANCE.getXAttribute_XClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XATTRIBUTE__TYPE = eINSTANCE.getXAttribute_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Association Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XATTRIBUTE__ASSOCIATION_TYPE = eINSTANCE
+				.getXAttribute_AssociationType();
+
+		/**
+		 * The meta object literal for the '<em><b>Association Behaviour</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XATTRIBUTE__ASSOCIATION_BEHAVIOUR = eINSTANCE
+				.getXAttribute_AssociationBehaviour();
+
+		/**
+		 * The meta object literal for the '<em><b>Opposite</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XATTRIBUTE__OPPOSITE = eINSTANCE.getXAttribute_Opposite();
+
+		/**
+		 * The meta object literal for the '<em><b>Navigable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XATTRIBUTE__NAVIGABLE = eINSTANCE.getXAttribute_Navigable();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.impl.XMethodImpl <em>XMethod</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.impl.XMethodImpl
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXMethod()
+		 * @generated
+		 */
+		EClass XMETHOD = eINSTANCE.getXMethod();
+
+		/**
+		 * The meta object literal for the '<em><b>Index</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XMETHOD__INDEX = eINSTANCE.getXMethod_Index();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XMETHOD__NAME = eINSTANCE.getXMethod_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>XClass</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XMETHOD__XCLASS = eINSTANCE.getXMethod_XClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XMETHOD__TYPE = eINSTANCE.getXMethod_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XMETHOD__PARAMETERS = eINSTANCE.getXMethod_Parameters();
+
+		/**
+		 * The meta object literal for the '<em><b>Exceptions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XMETHOD__EXCEPTIONS = eINSTANCE.getXMethod_Exceptions();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.impl.XParameterImpl <em>XParameter</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.impl.XParameterImpl
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXParameter()
+		 * @generated
+		 */
+		EClass XPARAMETER = eINSTANCE.getXParameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Method</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XPARAMETER__METHOD = eINSTANCE.getXParameter_Method();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XPARAMETER__NAME = eINSTANCE.getXParameter_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference XPARAMETER__TYPE = eINSTANCE.getXParameter_Type();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.XBase <em>XBase</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.XBase
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXBase()
+		 * @generated
+		 */
+		EClass XBASE = eINSTANCE.getXBase();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.XType <em>XType</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.XType
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXType()
+		 * @generated
+		 */
+		EClass XTYPE = eINSTANCE.getXType();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XTYPE__NAME = eINSTANCE.getXType_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Class Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XTYPE__CLASS_NAME = eINSTANCE.getXType_ClassName();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.impl.XExceptionImpl <em>XException</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.impl.XExceptionImpl
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXException()
+		 * @generated
+		 */
+		EClass XEXCEPTION = eINSTANCE.getXException();
+
+		/**
+		 * The meta object literal for the '<em><b>Java Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XEXCEPTION__JAVA_CLASS = eINSTANCE.getXException_JavaClass();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.XModel <em>XModel</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.XModel
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXModel()
+		 * @generated
+		 */
+		EClass XMODEL = eINSTANCE.getXModel();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.XAssociationType <em>XAssociation Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.XAssociationType
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXAssociationType()
+		 * @generated
+		 */
+		EEnum XASSOCIATION_TYPE = eINSTANCE.getXAssociationType();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdl.XAssociationBehaviour <em>XAssociation Behaviour</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdl.XAssociationBehaviour
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getXAssociationBehaviour()
+		 * @generated
+		 */
+		EEnum XASSOCIATION_BEHAVIOUR = eINSTANCE.getXAssociationBehaviour();
+
+		/**
+		 * The meta object literal for the '<em>IPath</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.core.runtime.IPath
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getIPath()
+		 * @generated
+		 */
+		EDataType IPATH = eINSTANCE.getIPath();
+
+		/**
+		 * The meta object literal for the '<em>URI</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.common.util.URI
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getURI()
+		 * @generated
+		 */
+		EDataType URI = eINSTANCE.getURI();
+
+		/**
+		 * The meta object literal for the '<em>Resource</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.ecore.resource.Resource
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getResource()
+		 * @generated
+		 */
+		EDataType RESOURCE = eINSTANCE.getResource();
+
+		/**
+		 * The meta object literal for the '<em>Comparable</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Comparable
+		 * @see chrome.xmdl.impl.XmdlPackageImpl#getComparable()
+		 * @generated
+		 */
+		EDataType COMPARABLE = eINSTANCE.getComparable();
+
+	}
 
 } //XmdlPackage

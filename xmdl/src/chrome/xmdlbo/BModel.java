@@ -123,9 +123,9 @@ public interface BModel extends EObject{
 	 * @return the value of the '<em>BPackages</em>' containment reference list.
 	 * @see chrome.xmdlbo.XmdlboPackage#getBModel_BPackages()
 	 * @see chrome.xmdlbo.BPackage#getModel
-	 * @model type="chrome.xmdlbo.BPackage" opposite="model" containment="true"
+	 * @model opposite="model" containment="true"
 	 * @generated
 	 */
-	EList getBPackages();
+	EList<BPackage> getBPackages();
 
 } // BModel

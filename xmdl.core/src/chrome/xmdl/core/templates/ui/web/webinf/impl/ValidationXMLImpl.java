@@ -3,8 +3,6 @@ package chrome.xmdl.core.templates.ui.web.webinf.impl;
 import java.util.*;
 import chrome.xmdl.*;
 import chrome.xmdl.gen.util.*;
-import org.eclipse.emf.codegen.util.*;
-import org.eclipse.emf.ecore.EObject;
 
 public class ValidationXMLImpl
 {
@@ -38,14 +36,14 @@ public class ValidationXMLImpl
 	ClassHelper helper = XMDLClassHelper.INSTANCE;
 
     stringBuffer.append(TEXT_1);
-    for (Iterator i = project.getPackages().iterator(); i.hasNext();) {
+    for (Iterator<XPackage> i = project.getPackages().iterator(); i.hasNext();) {
 	    XPackage xPackage = (XPackage) i.next();
-		for (Iterator i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
+		for (Iterator<XClass> i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
 		    XClass xClass = (XClass) i2.next();
     stringBuffer.append(TEXT_2);
     stringBuffer.append(helper.uncapSafeName(xClass));
     stringBuffer.append(TEXT_3);
-    for (Iterator i3= xClass.getAttributes().iterator(); i3.hasNext();) {
+    for (Iterator<XAttribute> i3= xClass.getAttributes().iterator(); i3.hasNext();) {
 	    		XAttribute attribute = (XAttribute) i3.next();
 	    		XType type = attribute.getType();
 	    		if (!(type instanceof XEnumeration 

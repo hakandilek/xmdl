@@ -6,32 +6,22 @@
  */
 package chrome.xmdlbo.impl;
 
-import chrome.xmdl.XProject;
-
-import chrome.xmdlbo.BModel;
-import chrome.xmdlbo.BPackage;
-import chrome.xmdlbo.XmdlboPackage;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import chrome.xmdl.XProject;
+import chrome.xmdlbo.BModel;
+import chrome.xmdlbo.BPackage;
+import chrome.xmdlbo.XmdlboPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -58,7 +48,7 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 * @generated
 	 * @ordered
 	 */
-	protected XProject xProject = null;
+	protected XProject xProject;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -108,7 +98,7 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList bPackages = null;
+	protected EList<BPackage> bPackages;
 
 	public BModelImpl() {
 		super();
@@ -119,8 +109,9 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlboPackage.eINSTANCE.getBModel();
+		return XmdlboPackage.Literals.BMODEL;
 	}
 
 	/**
@@ -130,8 +121,8 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 */
 	public XProject getXProject() {
 		if (xProject != null && xProject.eIsProxy()) {
-			XProject oldXProject = xProject;
-			xProject = (XProject)eResolveProxy((InternalEObject)xProject);
+			InternalEObject oldXProject = (InternalEObject)xProject;
+			xProject = (XProject)eResolveProxy(oldXProject);
 			if (xProject != oldXProject) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, XmdlboPackage.BMODEL__XPROJECT, oldXProject, xProject));
@@ -208,9 +199,9 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getBPackages() {
+	public EList<BPackage> getBPackages() {
 		if (bPackages == null) {
-			bPackages = new EObjectContainmentWithInverseEList(BPackage.class, this, XmdlboPackage.BMODEL__BPACKAGES, XmdlboPackage.BPACKAGE__MODEL);
+			bPackages = new EObjectContainmentWithInverseEList<BPackage>(BPackage.class, this, XmdlboPackage.BMODEL__BPACKAGES, XmdlboPackage.BPACKAGE__MODEL);
 		}
 		return bPackages;
 	}
@@ -220,18 +211,14 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlboPackage.BMODEL__BPACKAGES:
-					return ((InternalEList)getBPackages()).basicAdd(otherEnd, msgs);
-				default:
-					return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+	@SuppressWarnings("unchecked")
+		@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlboPackage.BMODEL__BPACKAGES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getBPackages()).basicAdd(otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -239,16 +226,13 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-				case XmdlboPackage.BMODEL__BPACKAGES:
-					return ((InternalEList)getBPackages()).basicRemove(otherEnd, msgs);
-				default:
-					return eDynamicInverseRemove(otherEnd, featureID, baseClass, msgs);
-			}
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case XmdlboPackage.BMODEL__BPACKAGES:
+				return ((InternalEList<?>)getBPackages()).basicRemove(otherEnd, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -256,8 +240,9 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 			case XmdlboPackage.BMODEL__XPROJECT:
 				if (resolve) return getXProject();
 				return basicGetXProject();
@@ -268,7 +253,7 @@ public class BModelImpl extends EObjectImpl implements BModel {
 			case XmdlboPackage.BMODEL__BPACKAGES:
 				return getBPackages();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -276,8 +261,10 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@SuppressWarnings("unchecked")
+		@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 			case XmdlboPackage.BMODEL__XPROJECT:
 				setXProject((XProject)newValue);
 				return;
@@ -289,10 +276,10 @@ public class BModelImpl extends EObjectImpl implements BModel {
 				return;
 			case XmdlboPackage.BMODEL__BPACKAGES:
 				getBPackages().clear();
-				getBPackages().addAll((Collection)newValue);
+				getBPackages().addAll((Collection<? extends BPackage>)newValue);
 				return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -300,8 +287,9 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 			case XmdlboPackage.BMODEL__XPROJECT:
 				setXProject((XProject)null);
 				return;
@@ -315,7 +303,7 @@ public class BModelImpl extends EObjectImpl implements BModel {
 				getBPackages().clear();
 				return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -323,8 +311,9 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 			case XmdlboPackage.BMODEL__XPROJECT:
 				return xProject != null;
 			case XmdlboPackage.BMODEL__NAME:
@@ -334,7 +323,7 @@ public class BModelImpl extends EObjectImpl implements BModel {
 			case XmdlboPackage.BMODEL__BPACKAGES:
 				return bPackages != null && !bPackages.isEmpty();
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -342,6 +331,7 @@ public class BModelImpl extends EObjectImpl implements BModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

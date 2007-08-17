@@ -20,9 +20,11 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -67,7 +69,8 @@ public class GClassItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -97,7 +100,9 @@ public class GClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GClass_xClass_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GClass_xClass_feature", "_UI_GClass_type"),
-				 XmdlgenPackage.eINSTANCE.getGClass_XClass(),
+				 XmdlgenPackage.Literals.GCLASS__XCLASS,
+				 false,
+				 false,
 				 false,
 				 null,
 				 getString("_UI_BaseModelPropertyCategory"),
@@ -117,8 +122,10 @@ public class GClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GClass_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GClass_name_feature", "_UI_GClass_type"),
-				 XmdlgenPackage.eINSTANCE.getGClass_Name(),
+				 XmdlgenPackage.Literals.GCLASS__NAME,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 getString("_UI_GenerationModelPropertyCategory"),
 				 null));
@@ -137,8 +144,10 @@ public class GClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GClass_gPackage_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GClass_gPackage_feature", "_UI_GClass_type"),
-				 XmdlgenPackage.eINSTANCE.getGClass_GPackage(),
+				 XmdlgenPackage.Literals.GCLASS__GPACKAGE,
 				 true,
+				 false,
+				 false,
 				 null,
 				 getString("_UI_GenerationModelPropertyCategory"),
 				 null));
@@ -157,8 +166,10 @@ public class GClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GClass_gAttributes_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GClass_gAttributes_feature", "_UI_GClass_type"),
-				 XmdlgenPackage.eINSTANCE.getGClass_GAttributes(),
+				 XmdlgenPackage.Literals.GCLASS__GATTRIBUTES,
 				 true,
+				 false,
+				 false,
 				 null,
 				 getString("_UI_GenerationModelPropertyCategory"),
 				 null));
@@ -177,8 +188,10 @@ public class GClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GClass_persistent_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GClass_persistent_feature", "_UI_GClass_type"),
-				 XmdlgenPackage.eINSTANCE.getGClass_Persistent(),
+				 XmdlgenPackage.Literals.GCLASS__PERSISTENT,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 getString("_UI_PersistancePropertyCategory"),
 				 null));
@@ -197,8 +210,10 @@ public class GClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GClass_deleteServiceName_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GClass_deleteServiceName_feature", "_UI_GClass_type"),
-				 XmdlgenPackage.eINSTANCE.getGClass_DeleteServiceName(),
+				 XmdlgenPackage.Literals.GCLASS__DELETE_SERVICE_NAME,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
@@ -217,8 +232,10 @@ public class GClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GClass_editServiceName_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GClass_editServiceName_feature", "_UI_GClass_type"),
-				 XmdlgenPackage.eINSTANCE.getGClass_EditServiceName(),
+				 XmdlgenPackage.Literals.GCLASS__EDIT_SERVICE_NAME,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
@@ -237,8 +254,10 @@ public class GClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GClass_saveServiceName_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GClass_saveServiceName_feature", "_UI_GClass_type"),
-				 XmdlgenPackage.eINSTANCE.getGClass_SaveServiceName(),
+				 XmdlgenPackage.Literals.GCLASS__SAVE_SERVICE_NAME,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
@@ -257,8 +276,10 @@ public class GClassItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GClass_searchServiceName_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GClass_searchServiceName_feature", "_UI_GClass_type"),
-				 XmdlgenPackage.eINSTANCE.getGClass_SearchServiceName(),
+				 XmdlgenPackage.Literals.GCLASS__SEARCH_SERVICE_NAME,
 				 true,
+				 false,
+				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
@@ -272,12 +293,26 @@ public class GClassItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(XmdlgenPackage.eINSTANCE.getGClass_GAttributes());
+			childrenFeatures.add(XmdlgenPackage.Literals.GCLASS__GATTRIBUTES);
 		}
 		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -286,8 +321,9 @@ public class GClassItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return getResourceLocator().getImage("full/obj16/GClass");
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GClass"));
 	}
 
 	/**
@@ -296,6 +332,7 @@ public class GClassItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((GClass)object).getName();
 		return label == null || label.length() == 0 ?
@@ -310,6 +347,7 @@ public class GClassItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -330,18 +368,19 @@ public class GClassItemProvider
 	}
 
 	/**
-	 * This adds to the collection of {@link org.eclipse.emf.edit.command.CommandParameter}s
-	 * describing all of the children that can be created under this object.
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
 			(createChildParameter
-				(XmdlgenPackage.eINSTANCE.getGClass_GAttributes(),
+				(XmdlgenPackage.Literals.GCLASS__GATTRIBUTES,
 				 XmdlgenFactory.eINSTANCE.createGAttribute()));
 	}
 
@@ -351,6 +390,7 @@ public class GClassItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return XmdlgenEditPlugin.INSTANCE;
 	}

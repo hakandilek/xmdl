@@ -109,7 +109,7 @@ public interface GClass extends EObject{
 	 * @see #setGPackage(GPackage)
 	 * @see chrome.xmdlgen.XmdlgenPackage#getGClass_GPackage()
 	 * @see chrome.xmdlgen.GPackage#getGClasses
-	 * @model opposite="gClasses" required="true"
+	 * @model opposite="gClasses" required="true" transient="false"
 	 * @generated
 	 */
 	GPackage getGPackage();
@@ -137,10 +137,10 @@ public interface GClass extends EObject{
 	 * @return the value of the '<em>GAttributes</em>' containment reference list.
 	 * @see chrome.xmdlgen.XmdlgenPackage#getGClass_GAttributes()
 	 * @see chrome.xmdlgen.GAttribute#getGClass
-	 * @model type="chrome.xmdlgen.GAttribute" opposite="gClass" containment="true" required="true"
+	 * @model opposite="gClass" containment="true" required="true"
 	 * @generated
 	 */
-	EList getGAttributes();
+	EList<GAttribute> getGAttributes();
 
 	/**
 	 * Returns the value of the '<em><b>Persistent</b></em>' attribute.

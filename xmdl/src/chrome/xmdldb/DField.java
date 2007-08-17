@@ -6,11 +6,9 @@
  */
 package chrome.xmdldb;
 
-import chrome.xmdl.XAttribute;
-
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
+import chrome.xmdl.XAttribute;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,7 +104,7 @@ public interface DField extends Persistable {
 	 * @see #setDTable(DTable)
 	 * @see chrome.xmdldb.XmdldbPackage#getDField_DTable()
 	 * @see chrome.xmdldb.DTable#getDFields
-	 * @model opposite="dFields"
+	 * @model opposite="dFields" transient="false"
 	 * @generated
 	 */
 	DTable getDTable();
@@ -158,10 +156,10 @@ public interface DField extends Persistable {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Indices</em>' attribute list.
 	 * @see chrome.xmdldb.XmdldbPackage#getDField_Indices()
-	 * @model type="int" default="0"
+	 * @model default="0"
 	 * @generated
 	 */
-	EList getIndices();
+	EList<Integer> getIndices();
 
 	/**
 	 * Returns the value of the '<em><b>Foreign</b></em>' reference.

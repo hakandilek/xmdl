@@ -6,25 +6,18 @@
  */
 package chrome.xmdl.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import chrome.xmdl.XMethod;
 import chrome.xmdl.XParameter;
 import chrome.xmdl.XType;
 import chrome.xmdl.XmdlPackage;
-
-import chrome.xmdl.*;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -77,7 +70,7 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 * @generated
 	 * @ordered
 	 */
-	protected XType type = null;
+	protected XType type;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,8 +86,9 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
-		return XmdlPackage.eINSTANCE.getXParameter();
+		return XmdlPackage.Literals.XPARAMETER;
 	}
 
 	/**
@@ -105,7 +99,19 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	public XMethod getMethod() {
 		if (eContainerFeatureID != XmdlPackage.XPARAMETER__METHOD)
 			return null;
-		return (XMethod) eContainer;
+		return (XMethod) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMethod(XMethod newMethod,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newMethod,
+				XmdlPackage.XPARAMETER__METHOD, msgs);
+		return msgs;
 	}
 
 	/**
@@ -114,19 +120,18 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 * @generated
 	 */
 	public void setMethod(XMethod newMethod) {
-		if (newMethod != eContainer
+		if (newMethod != eInternalContainer()
 				|| (eContainerFeatureID != XmdlPackage.XPARAMETER__METHOD && newMethod != null)) {
 			if (EcoreUtil.isAncestor(this, newMethod))
 				throw new IllegalArgumentException(
 						"Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (eContainer != null)
+			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newMethod != null)
 				msgs = ((InternalEObject) newMethod).eInverseAdd(this,
 						XmdlPackage.XMETHOD__PARAMETERS, XMethod.class, msgs);
-			msgs = eBasicSetContainer((InternalEObject) newMethod,
-					XmdlPackage.XPARAMETER__METHOD, msgs);
+			msgs = basicSetMethod(newMethod, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
@@ -163,8 +168,8 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 */
 	public XType getType() {
 		if (type != null && type.eIsProxy()) {
-			XType oldType = type;
-			type = (XType) eResolveProxy((InternalEObject) type);
+			InternalEObject oldType = (InternalEObject) type;
+			type = (XType) eResolveProxy(oldType);
 			if (type != oldType) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
@@ -201,22 +206,16 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XPARAMETER__METHOD:
-				if (eContainer != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return eBasicSetContainer(otherEnd,
-						XmdlPackage.XPARAMETER__METHOD, msgs);
-			default:
-				return eDynamicInverseAdd(otherEnd, featureID, baseClass, msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XPARAMETER__METHOD:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetMethod((XMethod) otherEnd, msgs);
 		}
-		if (eContainer != null)
-			msgs = eBasicRemoveFromContainer(msgs);
-		return eBasicSetContainer(otherEnd, featureID, msgs);
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -224,19 +223,14 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, Class baseClass, NotificationChain msgs) {
-		if (featureID >= 0) {
-			switch (eDerivedStructuralFeatureID(featureID, baseClass)) {
-			case XmdlPackage.XPARAMETER__METHOD:
-				return eBasicSetContainer(null, XmdlPackage.XPARAMETER__METHOD,
-						msgs);
-			default:
-				return eDynamicInverseRemove(otherEnd, featureID, baseClass,
-						msgs);
-			}
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case XmdlPackage.XPARAMETER__METHOD:
+			return basicSetMethod(null, msgs);
 		}
-		return eBasicSetContainer(null, featureID, msgs);
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -244,18 +238,15 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainer(NotificationChain msgs) {
-		if (eContainerFeatureID >= 0) {
-			switch (eContainerFeatureID) {
-			case XmdlPackage.XPARAMETER__METHOD:
-				return eContainer.eInverseRemove(this,
-						XmdlPackage.XMETHOD__PARAMETERS, XMethod.class, msgs);
-			default:
-				return eDynamicBasicRemoveFromContainer(msgs);
-			}
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID) {
+		case XmdlPackage.XPARAMETER__METHOD:
+			return eInternalContainer().eInverseRemove(this,
+					XmdlPackage.XMETHOD__PARAMETERS, XMethod.class, msgs);
 		}
-		return eContainer.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-				- eContainerFeatureID, null, msgs);
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -263,8 +254,9 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object eGet(EStructuralFeature eFeature, boolean resolve) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
 		case XmdlPackage.XPARAMETER__METHOD:
 			return getMethod();
 		case XmdlPackage.XPARAMETER__NAME:
@@ -274,7 +266,7 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 				return getType();
 			return basicGetType();
 		}
-		return eDynamicGet(eFeature, resolve);
+		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
@@ -282,8 +274,9 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eSet(EStructuralFeature eFeature, Object newValue) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
 		case XmdlPackage.XPARAMETER__METHOD:
 			setMethod((XMethod) newValue);
 			return;
@@ -294,7 +287,7 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 			setType((XType) newValue);
 			return;
 		}
-		eDynamicSet(eFeature, newValue);
+		super.eSet(featureID, newValue);
 	}
 
 	/**
@@ -302,8 +295,9 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void eUnset(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XPARAMETER__METHOD:
 			setMethod((XMethod) null);
 			return;
@@ -314,7 +308,7 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 			setType((XType) null);
 			return;
 		}
-		eDynamicUnset(eFeature);
+		super.eUnset(featureID);
 	}
 
 	/**
@@ -322,8 +316,9 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean eIsSet(EStructuralFeature eFeature) {
-		switch (eDerivedStructuralFeatureID(eFeature)) {
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
 		case XmdlPackage.XPARAMETER__METHOD:
 			return getMethod() != null;
 		case XmdlPackage.XPARAMETER__NAME:
@@ -332,7 +327,7 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 		case XmdlPackage.XPARAMETER__TYPE:
 			return type != null;
 		}
-		return eDynamicIsSet(eFeature);
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -340,6 +335,7 @@ public class XParameterImpl extends EObjectImpl implements XParameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy())
 			return super.toString();

@@ -2,7 +2,6 @@
     package="chrome.xmdl.core.templates.test.bo.impl" 
     imports="java.util.* 
             chrome.xmdl.*
-			chrome.xmdl.core.util.*
             chrome.xmdl.gen.util.*
             org.eclipse.emf.codegen.util.*"
     class="BOTestTemplateImpl" %>    
@@ -10,7 +9,6 @@
 <%
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage(); 
-    DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
     ClassHelper helper = XMDLEntityHelper.INSTANCE;
     TestHelper testHelper = TestHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
@@ -125,7 +123,7 @@ public class <%=helper.getCapName(xClass)%>ServiceTest extends BaseServiceTest<<
         <%=helper.getCapName(xClass)%> <%=helper.uncapName(xClass.getName())%>2 = dao.newEntity();
         <%=helper.uncapName(xClass.getName())%>2 = populate(<%=helper.uncapName(xClass.getName())%>2);
 
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
         assertEquals(<%=helper.uncapName(xClass.getName())%>2.<%=helper.getGetAccessor(attribute)%>(), <%=helper.uncapName(xClass.getName())%>.<%=helper.getGetAccessor(attribute)%>());
@@ -189,7 +187,7 @@ public class <%=helper.getCapName(xClass)%>ServiceTest extends BaseServiceTest<<
         List<<%=helper.getCapName(xClass)%>> list = <%=helper.uncapName(xClass.getName())%>Service.getEntityList(ctx);
         assertNotNull(list);
         <%=helper.getCapName(xClass)%> <%=helper.uncapName(xClass.getName())%>2 = <%=helper.uncapName(xClass.getName())%>Service.getEntity(ctx);
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
         assertEquals(<%=helper.uncapName(xClass.getName())%>.<%=helper.getGetAccessor(attribute)%>(), <%=helper.uncapName(xClass.getName())%>2.<%=helper.getGetAccessor(attribute)%>());
@@ -209,7 +207,7 @@ public class <%=helper.getCapName(xClass)%>ServiceTest extends BaseServiceTest<<
         }
 
         <%=helper.getCapName(xClass)%>Search searchBean = new <%=helper.getCapName(xClass)%>SearchImpl();
-<%for (Iterator i= xClass.getAttributes().iterator(); i.hasNext();) {
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference() && !attribute.getType().isComparable()) {%>
         searchBean.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueStringTrimmed(attribute, 2)%>);

@@ -28,9 +28,10 @@ public class DateConverter implements Converter {
 
     public static final String TS_FORMAT = DateUtil.getDatePattern() + " HH:mm:ss.S";
 
-    public Object convert(Class type, Object value) {
-//        LOGGER.debug("type = " + type);
-//        LOGGER.debug("value = " + value);
+    @SuppressWarnings("unchecked")
+	public Object convert(Class type, Object value) {
+        LOGGER.debug("type = " + type);
+        LOGGER.debug("value = " + value);
         if (value == null) {
             return null;
         } else if (type == Timestamp.class) {
@@ -50,7 +51,7 @@ public class DateConverter implements Converter {
                                       type.getName());
     }
 
-    protected Object convertToDate(Class type, Object value, String pattern) {
+    protected Object convertToDate(Class<?> type, Object value, String pattern) {
         DateFormat df = new SimpleDateFormat(pattern);
         if (value instanceof String) {
             try {
@@ -77,7 +78,7 @@ public class DateConverter implements Converter {
                                       type.getName());
     }
 
-    protected Object convertToString(Class type, Object value) {        
+    protected Object convertToString(Class<?> type, Object value) {        
 
         if (value instanceof Date) {
             DateFormat df = new SimpleDateFormat(DateUtil.getDatePattern());
