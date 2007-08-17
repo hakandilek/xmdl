@@ -9,5 +9,5 @@ Export-Package: org.apache.commons.beanutils,
  org.apache.commons.beanutils.converters,
  org.apache.commons.beanutils.locale,
  org.apache.commons.beanutils.locale.converters
-Require-Bundle: xmdl.lib.commons-logging
+Require-Bundle: xmdl.lib.commons_logging
  
