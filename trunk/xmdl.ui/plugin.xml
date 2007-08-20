@@ -31,6 +31,18 @@
       </run>
     </application>
   </extension>
+  <extension
+        id="generator"
+        point="org.eclipse.core.runtime.products">
+     <product
+           application="org.eclipse.ui.ide.workbench"
+           name="XMDL Code Generator">
+        <property
+              name="appName"
+              value="XMDL Code Generator">
+        </property>
+     </product>
+  </extension>
 
    <extension
     point="org.eclipse.ui.perspectives">
@@ -121,17 +133,5 @@
         class = "chrome.xmdl.presentation.XmdlEditor" 
         contributorClass="chrome.xmdl.presentation.XmdlActionBarContributor" >
     </editor>
-  </extension>
-  <extension
-        id="generator"
-        point="org.eclipse.core.runtime.products">
-     <product
-           application="org.eclipse.ui.ide.workbench"
-           name="XMDL Code Generator">
-        <property
-              name="appName"
-              value="XMDL Code Generator">
-        </property>
-     </product>
   </extension>    
 </plugin>

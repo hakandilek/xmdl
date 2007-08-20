@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.1"?>
 
-<product name="XMDL Code Generator" id="org.eclipse.platform.ide" application="org.eclipse.ui.ide.workbench" useFeatures="false">
+<product name="XMDL Code Generator" id="xmdl.ui.generator" application="org.eclipse.ui.ide.workbench" useFeatures="false">
 
    <configIni use="default"/>
 
@@ -102,6 +102,7 @@
       <plugin id="xmdl"/>
       <plugin id="xmdl.core"/>
       <plugin id="xmdl.gen"/>
+      <plugin id="xmdl.lib"/>
       <plugin id="xmdl.lib.commons_beanutils"/>
       <plugin id="xmdl.lib.commons_logging"/>
       <plugin id="xmdl.lib.log4j"/>

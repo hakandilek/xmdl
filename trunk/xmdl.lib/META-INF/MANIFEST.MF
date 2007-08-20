@@ -5,6 +5,3 @@ Bundle-SymbolicName: xmdl.lib
 Bundle-Version: 0.4.7
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: xmdl.lib.log4j,
- xmdl.lib.commons_beanutils,
- xmdl.lib.commons_logging
