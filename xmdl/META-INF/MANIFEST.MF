@@ -5,13 +5,11 @@ Bundle-SymbolicName: xmdl; singleton:=true
 Bundle-Version: 0.4.7
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: org.eclipse.emf.ecore,
- org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.codegen.ecore,
  org.eclipse.emf.ecore.xmi,
  xmdl.lib.log4j,
  xmdl.lib.commons_beanutils,
- xmdl.lib.commons_logging,
  org.eclipse.emf.mapping
 Eclipse-LazyStart: true
 Export-Package: chrome.xmdl,

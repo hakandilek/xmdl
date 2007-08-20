@@ -10,7 +10,6 @@
       <import plugin="xmdl"/>
       <import plugin="xmdl.gen" export="false"/>
       <import plugin="xmdl.lib.log4j"/>
-      <import plugin="org.eclipse.emf.common"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.codegen"/>
       <import plugin="org.eclipse.core.runtime"/>
