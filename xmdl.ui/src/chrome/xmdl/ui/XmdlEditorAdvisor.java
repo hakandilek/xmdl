@@ -7,9 +7,12 @@ package chrome.xmdl.ui;
 
 import java.io.File;
 
+import org.eclipse.emf.common.ui.URIEditorInput;
+import org.eclipse.emf.common.ui.action.WorkbenchWindowActionDelegate;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
-
 import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
@@ -23,9 +26,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorDescriptor;
-import org.eclipse.ui.IFolderLayout;
-import org.eclipse.ui.IPageLayout;
-import org.eclipse.ui.IPerspectiveFactory;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPage;
@@ -41,12 +41,7 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
-import org.eclipse.emf.common.ui.URIEditorInput;
-import org.eclipse.emf.common.ui.action.WorkbenchWindowActionDelegate;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.edit.ui.action.LoadResourceAction;
-
-import chrome.xmdl.ui.XMDLUIPlugin;
+import chrome.xmdl.ui.perspective.XmdlModelingPerspective;
 
 /**
  * Customized {@link WorkbenchAdvisor} for the RCP application.
@@ -123,40 +118,6 @@ public final class XmdlEditorAdvisor extends WorkbenchAdvisor {
 		}
 	}
 
-	/**
-	 * RCP's perspective
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static class Perspective implements IPerspectiveFactory {
-		/**
-		 * Perspective ID
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final String ID_PERSPECTIVE = "chrome.xmdl.ui.XmdlEditorAdvisorPerspective";
-
-		/**
-		 * @see org.eclipse.ui.IPerspectiveFactory#createInitialLayout(org.eclipse.ui.IPageLayout)
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public void createInitialLayout(IPageLayout layout) {
-			layout.setEditorAreaVisible(true);
-			layout.addPerspectiveShortcut(ID_PERSPECTIVE);
-
-			IFolderLayout right = layout.createFolder("right",
-					IPageLayout.RIGHT, (float) 0.66, layout.getEditorArea());
-			right.addView(IPageLayout.ID_OUTLINE);
-
-			IFolderLayout bottonRight = layout.createFolder("bottonRight",
-					IPageLayout.BOTTOM, (float) 0.60, "right");
-			bottonRight.addView(IPageLayout.ID_PROP_SHEET);
-		}
-	}
 
 	/**
 	 * RCP's window advisor
@@ -482,11 +443,11 @@ public final class XmdlEditorAdvisor extends WorkbenchAdvisor {
 	 * @see org.eclipse.ui.application.WorkbenchAdvisor#getInitialWindowPerspectiveId()
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getInitialWindowPerspectiveId() {
-		return Perspective.ID_PERSPECTIVE;
+		return XmdlModelingPerspective.ID_PERSPECTIVE;
 	}
 
 	/**
