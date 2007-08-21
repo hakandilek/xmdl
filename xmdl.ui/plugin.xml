@@ -48,8 +48,8 @@
     point="org.eclipse.ui.perspectives">
     <perspective
       name="%_UI_Perspective_label"
-      class="chrome.xmdl.ui.XmdlEditorAdvisor$Perspective"
-      id="chrome.xmdl.ui.XmdlEditorAdvisorPerspective">
+      class="chrome.xmdl.ui.perspective.XmdlModelingPerspective"
+      id="chrome.xmdl.ui.XmdlModelingPerspective">
     </perspective>
   </extension>
 
@@ -133,5 +133,23 @@
         class = "chrome.xmdl.presentation.XmdlEditor" 
         contributorClass="chrome.xmdl.presentation.XmdlActionBarContributor" >
     </editor>
+  </extension>
+  <extension
+        point="org.eclipse.ui.newWizards">
+     <category
+           id="xmdl.ui"
+           name="%_UI_XMDL_Wizard_category">
+     </category>
+     <wizard
+           canFinishEarly="false"
+           category="xmdl.ui"
+           class="chrome.xmdl.ui.wizard.XMDLJavaProjectWizard"
+           finalPerspective="chrome.xmdl.ui.XmdlModelingPerspective"
+           hasPages="true"
+           icon="icons/full/ctool16/XProject.gif"
+           id="chrome.xmdl.ui.wizard.NewXmdlProjectWizard"
+           name="%_UI_XmdlProjectWizard_label"
+           project="true">
+     </wizard>
   </extension>    
 </plugin>

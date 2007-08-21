@@ -20,5 +20,7 @@ Require-Bundle: org.eclipse.core.runtime,
  xmdl.lib.log4j,
  org.eclipse.emf.codegen.ecore.ui,
  org.eclipse.jdt.core,
- org.eclipse.jdt.ui
+ org.eclipse.jdt.ui,
+ org.eclipse.ui,
+ org.eclipse.ui.ide
 Eclipse-LazyStart: true
