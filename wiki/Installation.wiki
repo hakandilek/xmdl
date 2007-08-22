@@ -1,0 +1,17 @@
+#summary XMDL Installation Guide
+
+= Introduction =
+
+This page is a step-by-step guide to XMDL installation. Please follow the steps below to perform a successful XMDL installation:
+
+
+ # == Eclipse Installation ==
+
+Latest version of XMDL runs on Eclipse Platform 3.3. If you have Eclipse 3.3 already installed on your system, you can simply skip this step.
+
+ # == EMF Runtime Installation ==
+
+Latest version of XMDL runs on EMF XXX3. If you have Eclipse 3.3 already installed on your system, you can simply skip this step.
+
+
+
