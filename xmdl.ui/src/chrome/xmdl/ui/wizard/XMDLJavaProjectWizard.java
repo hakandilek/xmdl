@@ -2,6 +2,7 @@ package chrome.xmdl.ui.wizard;
  
 import java.lang.reflect.InvocationTargetException;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExecutableExtension;
@@ -12,19 +13,27 @@ import org.eclipse.jdt.internal.ui.JavaPlugin;
 import org.eclipse.jdt.internal.ui.JavaPluginImages;
 import org.eclipse.jdt.internal.ui.util.ExceptionHandler;
 import org.eclipse.jdt.internal.ui.wizards.JavaProjectWizardFirstPage;
+import org.eclipse.jdt.internal.ui.wizards.JavaProjectWizardSecondPage;
 import org.eclipse.jdt.internal.ui.wizards.NewElementWizard;
 import org.eclipse.jdt.internal.ui.wizards.NewWizardMessages;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
 
+import chrome.xmdl.ui.XMDLUIPlugin;
+
 @SuppressWarnings("restriction")
 public class XMDLJavaProjectWizard extends NewElementWizard implements IExecutableExtension {
+
+	/** the logger */
+	private static final Logger LOGGER = Logger.getLogger(XMDLUIPlugin.class);
+
     private JavaProjectWizardFirstPage fFirstPage;
-    private XMDLJavaProjectWizardSecondPage fSecondPage;
+    private JavaProjectWizardSecondPage fSecondPage;
     
     private IConfigurationElement fConfigElement;
     
     public XMDLJavaProjectWizard() {
+    	LOGGER.debug("XMDLJavaProjectWizard()");
         setDefaultPageImageDescriptor(JavaPluginImages.DESC_WIZBAN_NEWJPRJ);
         setDialogSettings(JavaPlugin.getDefault().getDialogSettings());
         setWindowTitle(NewWizardMessages.JavaProjectWizard_title); 
