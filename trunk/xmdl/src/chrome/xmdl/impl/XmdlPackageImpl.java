@@ -7,7 +7,6 @@
 package chrome.xmdl.impl;
 
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -19,7 +18,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.mapping.MappingPackage;
 
 import chrome.xmdl.XAssociationBehaviour;
 import chrome.xmdl.XAssociationType;
@@ -240,8 +238,8 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 		isInited = true;
 
 		// Initialize simple dependencies
-		MappingPackage.eINSTANCE.eClass();
-		GenModelPackage.eINSTANCE.eClass();
+		// MappingPackage.eINSTANCE.eClass(); //is this necessary? causes a complete dep. to o.e.emf.mapping
+		// GenModelPackage.eINSTANCE.eClass(); //is this necessary? causes a complete dep. to org.eclipse.emf.codegen.ecore
 		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
