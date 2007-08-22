@@ -6,11 +6,9 @@ Bundle-Version: 0.4.7
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.codegen.ecore,
  org.eclipse.emf.ecore.xmi,
  xmdl.lib.log4j,
- xmdl.lib.commons_beanutils,
- org.eclipse.emf.mapping
+ xmdl.lib.commons_beanutils
 Eclipse-LazyStart: true
 Export-Package: chrome.xmdl,
  chrome.xmdl.impl,
