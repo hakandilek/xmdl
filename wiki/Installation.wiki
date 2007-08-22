@@ -5,13 +5,35 @@
 This page is a step-by-step guide to XMDL installation. Please follow the steps below to perform a successful XMDL installation:
 
 
- # == Eclipse Installation ==
+ == Eclipse Installation ==
 
 Latest version of XMDL runs on Eclipse Platform 3.3. If you have Eclipse 3.3 already installed on your system, you can simply skip this step.
 
- # == EMF Runtime Installation ==
+ * Go to [http://www.eclipse.org/downloads/ Eclipse download page]
+ * Select "Eclipse Ide for Java Developers" that suits your operating system configuration
+ * Save the zip file to your local drive.
+ * When download is complete extract the zip file.
+ * Run eclipse executable from /eclipse directory. e.g. eclipse.exe for MS Windows platform.
+ * Before opening Eclipse should ask you about a workspace location. This will be the place to store all data about your projects. Select a newly created folder, and mark the checkbox below denoting "Use this as default and do not ask again". This will save you confirming the same place for every eclipse startup. Later you can change it by menu item File -> Switch Workspace -> Other... if you wish.
 
-Latest version of XMDL runs on EMF XXX3. If you have Eclipse 3.3 already installed on your system, you can simply skip this step.
+Eclipse should be ready for further installation after this step.
+
+ == EMF Runtime Installation ==
+
+Latest version of XMDL runs on EMF 2.3.0. If you have EMF 2.3.0 already installed on your system, you can simply skip this step.
+
+ * *_proxy configuration here_*
+ * Initiate Eclipse Install/Update wizard using the menu item Help -> Software Updates -> Find and Install...
+ * Select "Search for new features to install" and click Next.
+ * Select the checkbox beside "Europa Discovery Site". This is the general update site for all eclipse features. Click Finish.
+ * On the dialog with the title "Search Results", Select "Models and Model Development -> Eclipse Modeling Framework (EMF) Runtime + End User Tools <some version number>" from the displayed tree. Click Next.
+ * Accept the displayed software license. Click Next.
+ * In the dialog with title "Installation" simply click Finish.
+ * Eclipse will start downloading. When the download is finished a dialog with title "Feature Verification" will show up. Simply click "Install All".
+ * After installation is complete you have to restart Eclipse to activate the newly installed plugins. But first XMDL plugin files should be installed, so simply click No on the confirmation dialog asking to restart Eclipse.
+ * Close Eclipse, we will re-run it after installation is complete.
+
+
 
 
 
