@@ -57,6 +57,7 @@ public final class XMDLUIPlugin extends EMFPlugin {
 	public XMDLUIPlugin() {
 		super(new ResourceLocator[] { GenModelEditPlugin.INSTANCE,
 				EcoreEditPlugin.INSTANCE, });
+		configureLogger();
 		LOGGER.info("XMDLUIPlugin()");
 	}
 
@@ -107,15 +108,8 @@ public final class XMDLUIPlugin extends EMFPlugin {
 		public void start(BundleContext context) throws Exception {
 			super.start(context);
 
-			try {
-				PropertyConfigurator.configure(Thread.currentThread()
-						.getContextClassLoader()
-						.getResource("log4j.properties"));
-			} catch (Throwable e) {
-				e.printStackTrace();
-				BasicConfigurator.configure();
-			}
-
+			configureLogger();
+			
 			LOGGER.info("Logger activated");
 
 			Platforms platforms = Platforms.INST;
@@ -151,6 +145,17 @@ public final class XMDLUIPlugin extends EMFPlugin {
 			log(throwable, message, IStatus.INFO);
 		}
 
+	}
+
+	private static void configureLogger() {
+		try {
+			PropertyConfigurator.configure(Thread.currentThread()
+					.getContextClassLoader()
+					.getResource("log4j.properties"));
+		} catch (Throwable e) {
+			e.printStackTrace();
+			BasicConfigurator.configure();
+		}
 	}
 
 }
