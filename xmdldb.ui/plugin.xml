@@ -11,7 +11,7 @@
 <plugin
    id="xmdldb.ui"
    name="%pluginName"
-   version="0.4.7"
+   version="0.5.0.20070823_alpha1"
    provider-name="%providerName"
    class="chrome.xmdldb.ui.XmdldbEditPlugin$Implementation">
 

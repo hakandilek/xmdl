@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: xmdl.lib.log4j
-Bundle-SymbolicName: xmdl.lib.log4j; singleton:=true
+Bundle-Name: org.apache.log4j
+Bundle-SymbolicName: org.apache.log4j; singleton:=true
 Bundle-Version: 1.2.11
 Bundle-Vendor: chrome
 Bundle-Localization: plugin
