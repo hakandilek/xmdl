@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: xmdl.gen;singleton:=true
-Bundle-Version: 0.4.7
+Bundle-Version: 0.5.0.20070823_alpha1
 Bundle-Activator: chrome.xmdl.gen.plugin.XMDLGenPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -13,7 +13,7 @@ Require-Bundle: xmdl,
  org.eclipse.core.resources,
  org.eclipse.jdt.core,
  org.junit,
- xmdl.lib.log4j
+ org.apache.log4j
 Eclipse-LazyStart: true
 Export-Package: chrome.xmdl.gen.plugin,
  chrome.xmdl.gen.util,

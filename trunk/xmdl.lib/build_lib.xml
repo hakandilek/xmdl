@@ -21,14 +21,15 @@
          = = = = = = = = = = = = = = = = = -->
 	<macrodef name="build_plugin">
 		<attribute name="source.jar" />
+        <attribute name="dest.jar" />
 		<attribute name="manifest.file" />
 
 		<sequential>
 			<mkdir dir="build/@{source.jar}" />
-			<copy file="plugin.xml" todir="build/@{source.jar}">
+			<copy file="plugin_template.xml" todir="build/@{source.jar}">
 			</copy>
 			<unjar src="lib/@{source.jar}" dest="build/@{source.jar}" overwrite="yes" />
-			<jar destfile="dist/plugins/xmdl.lib.@{source.jar}" manifest="@{manifest.file}">
+			<jar destfile="dist/plugins/@{dest.jar}" manifest="@{manifest.file}">
 				<fileset dir="build/@{source.jar}" />
 			</jar>
 		</sequential>
@@ -39,11 +40,10 @@
           target: build_external_plugins              
          ================================= -->
 	<target name="build_external_plugins" depends="clean, init" description="--> builds plugins out of external jar files">
-		
-		<build_plugin source.jar="commons-beanutils.jar" manifest.file="META-INF/MANIFEST.MF.commons-beanutils" />
-      <build_plugin source.jar="commons-logging.jar" manifest.file="META-INF/MANIFEST.MF.commons-logging" />
-		<build_plugin source.jar="log4j.jar" manifest.file="META-INF/MANIFEST.MF.log4j" />
-		
+
+		<build_plugin source.jar="commons-beanutils.jar"  dest.jar="org.apache.commons.beanutils.jar"  manifest.file="META-INF/MANIFEST.MF.commons-beanutils" />
+		<build_plugin source.jar="log4j.jar"              dest.jar="org.apache.log4j.jar"              manifest.file="META-INF/MANIFEST.MF.log4j" />
+
 	</target>
 
 

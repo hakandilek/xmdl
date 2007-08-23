@@ -3,16 +3,16 @@
 <plugin
    id="xmdl.core"
    name="%pluginName"
-   version="0.4.7"
+   version="0.5.0.20070823_alpha1"
    provider-name="%providerName">
    <runtime/>
    <requires>
       <import plugin="xmdl"/>
       <import plugin="xmdl.gen" export="false"/>
-      <import plugin="xmdl.lib.log4j"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.codegen"/>
       <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.apache.log4j"/>
    </requires>
    <extension
          id="xmdl.core"
