@@ -1,11 +1,12 @@
 #summary XMDL Installation Guide
+#labels Featured,Phase-Support
 
-= Introduction =
+== Introduction ==
 
 This page is a step-by-step guide to XMDL installation. Please follow the steps below to perform a successful XMDL installation:
 
 
- == Eclipse Installation ==
+== Eclipse Installation ==
 
 Latest version of XMDL runs on Eclipse Platform 3.3. If you have Eclipse 3.3 already installed on your system, you can simply skip this step.
 
@@ -18,11 +19,18 @@ Latest version of XMDL runs on Eclipse Platform 3.3. If you have Eclipse 3.3 alr
 
 Eclipse should be ready for further installation after this step.
 
- == EMF Runtime Installation ==
+== EMF Runtime Installation ==
 
 Latest version of XMDL runs on EMF 2.3.0. If you have EMF 2.3.0 already installed on your system, you can simply skip this step.
 
- * *_proxy configuration here_*
+ * If you would like to setup a proxy server for your Eclipse update system, you should follow the following steps. If you do not need or already have a proxy setup, simply skip this step.
+   * Open the Eclipse Preferences dialog using the menu item Window -> Preferences...
+   * Using the tree on the left, select General -> Network Connections
+   * Select "Manual proxy configuration" if not selected before
+   * Type your proxy host and port in "HTTP Proxy" and "Port" fields.
+   * Check "Use this proxy server for SSL" box.
+   * If your proxy requires authentication check "Enable proxy authentication" box, and type your username and password.
+   * Click Ok. All your updates will be performed on this proxy server you have just specified.
  * Initiate Eclipse Install/Update wizard using the menu item Help -> Software Updates -> Find and Install...
  * Select "Search for new features to install" and click Next.
  * Select the checkbox beside "Europa Discovery Site". This is the general update site for all eclipse features. Click Finish.
@@ -32,6 +40,25 @@ Latest version of XMDL runs on EMF 2.3.0. If you have EMF 2.3.0 already installe
  * Eclipse will start downloading. When the download is finished a dialog with title "Feature Verification" will show up. Simply click "Install All".
  * After installation is complete you have to restart Eclipse to activate the newly installed plugins. But first XMDL plugin files should be installed, so simply click No on the confirmation dialog asking to restart Eclipse.
  * Close Eclipse, we will re-run it after installation is complete.
+
+== XMDL Installation ==
+
+Since, an Eclipse update site has not yet been defined, XMDL has to be installed manually, by extracting necessary files.
+
+ * Go to [http://code.google.com/p/xmdl/downloads/list XMDL download page]. 
+ * Select and download the latest XMDL package
+ * When download is complete, extract the archive into your eclipse installarion directory. After extracting, jar files located in the archive should be in the plugins/ directory under your Eclipse installation. 
+
+== Verify installation ==
+
+ * Start Eclipse (again). You should have shut it down after EMF Runtime installation
+ * When Eclipse is stated, click menu item Help -> About XMDL... If you can not see this menu item, something might be wrong with your installation.
+ * If you see a copyright dialog about XMDL, this meens that you have successfully completed your installarion.
+
+If you have a problem during the installation do not hesitate to inform developers. You can fill an [http://code.google.com/p/xmdl/issues/entry issue form] on the project site with all necessary details about your problem, and your contact information.
+
+
+
 
 
 
