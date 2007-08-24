@@ -33,12 +33,28 @@ public class Initializer {
 		registry.addTask(clazz, wrapperTask);
 	}
 
+	public void addSetPropertyIfMissing(Class<?> clazz, String propertyName,
+			String referenceName) {
+		Assertion assertion = createPropertyMissing(referenceName, propertyName);
+		Task task = new SetPropertyTask(propertyName);
+		Task wrapperTask = new AssertionWrapperTask(task, assertion);
+		registry.addTask(clazz, wrapperTask);
+	}
+
 	private Assertion createReferenceDifferent(String referenceName) {
 		return new AssertReferenceDifferent(referenceName);
 	}
 
+	private Assertion createPropertyMissing(String referenceName, String propertyName) {
+		return new AssertDestinationMissing(propertyName);
+	}
+
 	public void addSetPropertyIfDifferent(Class<?> clazz, String propertyName) {
 		addSetPropertyIfDifferent(clazz, propertyName, clazz.getSimpleName());
+	}
+
+	public void addSetPropertyIfMissing(Class<?> clazz, String propertyName) {
+		addSetPropertyIfMissing(clazz, propertyName, clazz.getSimpleName());
 	}
 
 	public void addSetPropertyStringUppercaseWithPrefix(Class<?> clazz,

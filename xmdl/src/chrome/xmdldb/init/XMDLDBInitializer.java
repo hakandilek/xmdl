@@ -17,6 +17,7 @@ public class XMDLDBInitializer extends Initializer {
 		addSetReference(XProject.class, "XProject");
 		addCopyChildren(XProject.class, "packages", "DPackages", "XPackage", XmdldbFactory.eINSTANCE.createDPackage());
 
+		addSetPropertyIfMissing(XPackage.class, "name");
 		addSetPropertyIfDifferent(XPackage.class, "name");
 		addSetReference(XPackage.class, "XPackage");
 		addCopyChildren(XPackage.class, "classes", "DTables", "XClass", XmdldbFactory.eINSTANCE.createDTable());
