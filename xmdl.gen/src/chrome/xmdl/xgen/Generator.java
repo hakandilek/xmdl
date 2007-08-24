@@ -21,12 +21,13 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.codegen.jmerge.JControlModel;
-import org.eclipse.emf.codegen.jmerge.JMerger;
+import org.eclipse.emf.codegen.merge.java.JControlModel;
+import org.eclipse.emf.codegen.merge.java.JMerger;
+import org.eclipse.emf.codegen.merge.java.facade.JCompilationUnit;
+import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jdt.core.jdom.IDOMCompilationUnit;
 
 import chrome.xmdl.XModel;
 import chrome.xmdl.XProject;
@@ -40,7 +41,6 @@ import chrome.xmdlbo.XmdlboFactory;
 import chrome.xmdldb.XmdldbFactory;
 import chrome.xmdlgen.XmdlgenFactory;
 
-@SuppressWarnings("deprecation")
 public class Generator {
 
 	private static final Logger LOGGER = Logger.getLogger(Generator.class);
@@ -114,7 +114,7 @@ public class Generator {
 		
 		
 		// Create a merger
-		JMerger merger = getJMerger();
+		JMerger merger = createMerger();
 
 		int size = gTasks != null ? gTasks.size() : 0;
 		size += preTasks != null ? preTasks.size() : 0;
@@ -257,7 +257,7 @@ public class Generator {
 						merger.merge();
 
 						// extract merged contents
-						IDOMCompilationUnit target = merger
+						JCompilationUnit target = merger
 								.getTargetCompilationUnit();
 						String mergeResult = target.getContents();
 						result = new ByteArrayInputStream(mergeResult.getBytes());
@@ -367,22 +367,24 @@ public class Generator {
 	}
 
 
-	protected JMerger getJMerger() {
+	protected JMerger createMerger() {
 		// build URI for merge document
-		String uri = null;
+		String mergeXML = null;
 		try {
 			URI fileURI = mergeURI;
 			if (mergeURI == null) {
 				URL baseURL = XMDLGenPlugin.getPlugin().getBaseURL();
 				fileURI = URI.createURI(baseURL.toString() + "/res/merge.xml");
 			}
-			uri = fileURI.toString();
+			mergeXML = fileURI.toString();
 		} catch (Throwable e) {
 			LOGGER.warn("fatal res exc", e);
 		}
-		JMerger jmerger = new JMerger();
-		JControlModel controlModel = new JControlModel(uri);
-		jmerger.setControlModel(controlModel);
+
+		JControlModel controlModel = new JControlModel();
+	    String facadeHelperClass = JMerger.DEFAULT_FACADE_HELPER_CLASS;
+	    controlModel.initialize(CodeGenUtil.instantiateFacadeHelper(facadeHelperClass), mergeXML);
+		JMerger jmerger = new JMerger(controlModel);
 		return jmerger;
 	}
 
