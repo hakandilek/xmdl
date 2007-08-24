@@ -3,10 +3,9 @@ package chrome.xmdl.xgen.util;
 import java.io.IOException;
 import java.net.URL;
 
-import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.emf.common.util.URI;
 
-@SuppressWarnings("deprecation")
 public class URIHelper {
 
 	protected static URI fix(URL url, String fragment) throws IOException {
@@ -16,7 +15,8 @@ public class URIHelper {
 		// this will return
 		// an decoded URI.
 		//
-		URI result = "file".equalsIgnoreCase(url.getProtocol()) ? URI
+		String protocol = url.getProtocol();
+		URI result = "file".equalsIgnoreCase(protocol) ? URI
 				.createFileURI(URI.decode(url.getFile())) : URI.createURI(url
 				.toString());
 		if (fragment != null) {
@@ -35,24 +35,26 @@ public class URIHelper {
 
 		URL url = null;
 		try {
-			url = Platform.resolve(new URL(uriWithoutFragmentToString));
+			URL unresolvedURL = new URL(uriWithoutFragmentToString);
+			url = FileLocator.resolve(unresolvedURL);
 		} catch (IOException exception1) {
 			// Platform.resolve() doesn't work if the project is encoded.
 			//
 			try {
-				uriWithoutFragmentToString = URI
-						.decode(uriWithoutFragmentToString);
-				url = Platform.resolve(new URL(uriWithoutFragmentToString));
+				String decoded = URI.decode(uriWithoutFragmentToString);
+				URL decodedURL = new URL(decoded);
+				url = FileLocator.resolve(decodedURL);
 			} catch (IOException exception2) {
+				// ignore this
 			}
 		}
 		if (url != null) {
 			try {
 				return fix(url, fragment);
 			} catch (IOException exception) {
+				// ignore this
 			}
 		}
-
 		return uri;
 	}
 
@@ -62,10 +64,12 @@ public class URIHelper {
 	public static URI asLocalURI(URI uri) {
 		try {
 			String fragment = uri.fragment();
-			URL url = Platform
-					.asLocalURL(new URL(uri.trimFragment().toString()));
-			return fix(url, fragment);
+			URI trimmed = uri.trimFragment();
+			URL url = new URL(trimmed.toString());
+			URL localURL = FileLocator.toFileURL(url);
+			return fix(localURL, fragment);
 		} catch (IOException exception) {
+			//ignore this
 		}
 		return uri;
 	}
