@@ -1,0 +1,30 @@
+#summary XMDL Modeling Guide
+#labels Phase-Support,Draft
+
+== Introduction ==
+introduce this guide
+
+== Case Model ==
+introduce case model that will be modeled.
+
+== XMDL Modeling Perspective ==
+introduce perspective layout. Introduce each layout element. 
+
+== Creating Model ==
+ * Define package
+ * Define class
+ * Define attributes to the class
+ * Define an Enumeration
+   * Define Enumeration Literals
+ * Modeling Associations
+   * Define another (associated) class & attributes
+   * Define association references
+
+== Code Generation ==
+  * Initialization (optional), this step may be totally removed from the tutorial. Only makes sense for the advanced user.
+    * Introduce initialized models & XMDL.DB Model
+  * Code Generation
+  * Overview of the generated sources
+  * Making changes, and re-generating code. Introduce merge strategy.
+    * @generated tag
+    * @keep tag
