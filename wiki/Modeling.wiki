@@ -12,6 +12,17 @@ This guide aims to introduce XMDL Modeling basics using a sample model. This sam
  * Author class - Identifying author of a book. Author class has a many-to-many relation with Book class.
  * !BookType enumeration - Identifying the type of a book
 
+== Modeling Perspective ==
+
+After a successful installation following the [Installation installation guide], XMDL Modeling Perspective should be activated. By default, layout of the perspective should have the following components:
+
+ # Navigator Pane
+ # Editor Space
+ # Outline Pane
+ # Properties Editor
+
+http://xmdl.googlecode.com/svn/wiki/Installation/0100.JPG
+
 == Creating Model ==
 
 *TODO*
