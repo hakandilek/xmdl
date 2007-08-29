@@ -30,7 +30,12 @@ After a successful installation following the [Installation installation guide],
    http://xmdl.googlecode.com/svn/wiki/Installation/0110.png
  * Type name of the project and (if necessary) specify project location and JRE to use. It is recommended to use the "Create separate folders for sources and class files" for project layout. Click next.
    http://xmdl.googlecode.com/svn/wiki/Installation/0120.png
- * 
+ * On the next page, do not alter the source code location, since "src" is the default target location for the generated codes. Click Finish to finish the project creation wizard.
+   http://xmdl.googlecode.com/svn/wiki/Installation/0130.png
+ * When wizard is finished, you should have the following project layout automatically created.
+   http://xmdl.googlecode.com/svn/wiki/Installation/0140.png
+
+
 *TODO*
  * Define package
  * Define class
