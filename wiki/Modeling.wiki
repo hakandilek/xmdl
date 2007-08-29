@@ -23,7 +23,7 @@ After a successful installation following the [Installation installation guide],
 
    http://xmdl.googlecode.com/svn/wiki/Installation/0100.png
 
-== Creating Model ==
+== Creating Project ==
 
  * Using File -> New -> Project... menu item you can start the new project wizard.
  * Select XMDL -> XMDL Java Project from the tree and click next.
@@ -35,6 +35,7 @@ After a successful installation following the [Installation installation guide],
  * When wizard is finished, you should have the following project layout automatically created.
    http://xmdl.googlecode.com/svn/wiki/Installation/0140.png
 
+== Editing Model ==
 
 *TODO*
  * Define package
