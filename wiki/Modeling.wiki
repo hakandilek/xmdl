@@ -13,6 +13,7 @@ This guide aims to introduce XMDL Modeling basics using a sample model. This sam
  * !BookType enumeration - Identifying the type of a book
 
 == Creating Model ==
+
 *TODO*
  * Define package
  * Define class
@@ -24,6 +25,7 @@ This guide aims to introduce XMDL Modeling basics using a sample model. This sam
    * Define association references
 
 == Code Generation ==
+
 *TODO*
   * Initialization (optional), this step may be totally removed from the tutorial. Only makes sense for the advanced user.
     * Introduce initialized models & XMDL.DB Model
