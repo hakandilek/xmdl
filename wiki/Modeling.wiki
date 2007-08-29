@@ -2,15 +2,18 @@
 #labels Phase-Support,Draft
 
 == Introduction ==
-introduce this guide
 
-== Case Model ==
-introduce case model that will be modeled.
+This page is a step-by-step guide to modeling with XMDL. This guide does not intend to guide you through deep coding practice on the generated code. You can refer the specific platforms guide if you are interested in the platform details. Please follow the steps below to model and generate code for a sample application. 
 
-== XMDL Modeling Perspective ==
-introduce perspective layout. Introduce each layout element. 
+== Sample Model ==
+
+This guide aims to introduce XMDL Modeling basics using a sample model. This sample model consists of a simple library model that contains 
+ * Book class - Identifying books classified by their authors and types
+ * Author class - Identifying author of a book. Author class has a many-to-many relation with Book class.
+ * !BookType enumeration - Identifying the type of a book
 
 == Creating Model ==
+*TODO*
  * Define package
  * Define class
  * Define attributes to the class
@@ -21,6 +24,7 @@ introduce perspective layout. Introduce each layout element.
    * Define association references
 
 == Code Generation ==
+*TODO*
   * Initialization (optional), this step may be totally removed from the tutorial. Only makes sense for the advanced user.
     * Introduce initialized models & XMDL.DB Model
   * Code Generation
