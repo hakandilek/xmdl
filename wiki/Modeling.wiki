@@ -21,7 +21,7 @@ After a successful installation following the [Installation installation guide],
  # Outline Pane
  # Properties Editor
 
-http://xmdl.googlecode.com/svn/wiki/Installation/0100.JPG
+http://xmdl.googlecode.com/svn/wiki/Installation/0100.jpg
 
 == Creating Model ==
 
