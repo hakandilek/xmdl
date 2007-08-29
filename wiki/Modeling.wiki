@@ -21,10 +21,16 @@ After a successful installation following the [Installation installation guide],
  # Outline Pane
  # Properties Editor
 
-http://xmdl.googlecode.com/svn/wiki/Installation/0100.png
+   http://xmdl.googlecode.com/svn/wiki/Installation/0100.png
 
 == Creating Model ==
 
+ * Using File -> New -> Project... menu item you can start the new project wizard.
+ * Select XMDL -> XMDL Java Project from the tree and click next.
+   http://xmdl.googlecode.com/svn/wiki/Installation/0110.png
+ * Type name of the project and (if necessary) specify project location and JRE to use. It is recommended to use the "Create separate folders for sources and class files" for project layout. Click next.
+   http://xmdl.googlecode.com/svn/wiki/Installation/0120.png
+ * 
 *TODO*
  * Define package
  * Define class
