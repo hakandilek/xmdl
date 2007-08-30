@@ -106,3 +106,4 @@ With XMDL you can define simple enumerations and use these as your attribute typ
   * Making changes, and re-generating code. Introduce merge strategy.
     * @generated tag
     * @keep tag
+
