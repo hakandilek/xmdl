@@ -5,15 +5,16 @@ import chrome.xmdl.XProject;
 import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.service.impl.SampleListenerTemplateImpl;
 
-public class SampleListenerTemplate extends SampleListenerTemplateImpl 
+public class SampleListenerTemplate extends SampleListenerTemplateImpl
 		implements Template {
 
 	public String targetFile(Object object) {
-		XProject project =(XProject) object;
-		StringBuffer buffer=  new StringBuffer("src");
+		XProject project = (XProject) object;
+		StringBuffer buffer = new StringBuffer("src");
 		XPackage package1 = (XPackage) project.getPackages().get(0);
-		String t=package1.getName().replace(".","/");
-		if(!t.startsWith("/"))
+		String name = package1.getName();
+		String t = name == null ? "null" : name.replace(".", "/");
+		if (!t.startsWith("/"))
 			buffer.append("/");
 		buffer.append(t);
 		buffer.append("/bo/");
