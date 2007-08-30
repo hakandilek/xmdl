@@ -7,7 +7,7 @@ This page is a step-by-step guide to modeling with XMDL. This guide does not int
 
 == Sample Model ==
 
-This guide aims to introduce XMDL Modeling basics using a sample model. This sample model consists of a simple library model that contains 
+This guide aims to introduce XMDL Modeling basics using a sample model. This sample model consists of a trivial library model that contains 
  * Book class - Identifying books classified by their authors and types
  * Author class - Identifying author of a book. Author class has a many-to-many relation with Book class.
  * !BookType enumeration - Identifying the type of a book
@@ -37,12 +37,61 @@ After a successful installation following the [Installation installation guide],
 
 == Editing Model ==
 
+When a project is created, the initial model file is automatically created and placed under the "model" folder in project. 
+   http://xmdl.googlecode.com/svn/wiki/Installation/0150.png
+
+Follow the steps below to edit the model.
+
+=== Defining a package ===
+
+Just like Java packages, Packages in XMDL are used to denote seperate modules of your software model. 
+
+ * Create a new package using the context menu of the project. Select New Child -> Package as shown below:
+   http://xmdl.googlecode.com/svn/wiki/Installation/0160.png
+ * Edit the package using the Properties editor on the right bottom corner. Type "xmdl.library" as package name
+   http://xmdl.googlecode.com/svn/wiki/Installation/0170.png
+
+=== Defining a class ===
+
+Classes are the main building blocks of an XMDL model. You can create a new Class as a child of a package.
+ * Create a new class using the context menu of the package. Select New Child -> Class as shown below:
+   http://xmdl.googlecode.com/svn/wiki/Installation/0180.png
+ * Edit name of the class, and specify "Book" as name
+   http://xmdl.googlecode.com/svn/wiki/Installation/0190.png
+
+=== Defining attributes ===
+
+Attributes are defined as child elements for classes. 
+
+ * You can define a new attribute using the context menu item New Child -> Attribute of a class.
+   http://xmdl.googlecode.com/svn/wiki/Installation/0200.png
+ * Using the properties editor, name the attribute as "name", specify type as "String" and  and length as 50 using the properties editor
+   http://xmdl.googlecode.com/svn/wiki/Installation/0210.png
+ * Define further attributes for the Book class as introduced with the picture below
+   http://xmdl.googlecode.com/svn/wiki/Installation/0220.png
+
+=== Defining an enumeration ===
+
+With XMDL you can define simple enumerations and use these as your attribute types. 
+
+ * Create a new Enumeration using the context menu item of package New Child -> Enumeration
+   http://xmdl.googlecode.com/svn/wiki/Installation/0230.png
+ * Name the enumeration as BookType using the properties editor.
+   http://xmdl.googlecode.com/svn/wiki/Installation/0240.png
+ * Enumeration Literals are choices/values an enumeration can take. Create an enumeration literal using the context menu item of the "BookType" enumeration New Child -> Enumeration Literal
+   http://xmdl.googlecode.com/svn/wiki/Installation/0250.png
+ * Name the literal "NOVEL", and give the value 1 using the properties editor.
+   http://xmdl.googlecode.com/svn/wiki/Installation/0260.png
+ * Introduce further literals as shown below
+   http://xmdl.googlecode.com/svn/wiki/Installation/0270.png
+ * Specify default Literal for BookType Enumeration as shown below. This means that, an attribute specifying this enumeration as its own type, will have the default value set here.
+   http://xmdl.googlecode.com/svn/wiki/Installation/0280.png
+ * Define an attribute for Book class and name it type. This attribute will have BookType enumeration as it’s type. Finally, project should look like the following below.
+   http://xmdl.googlecode.com/svn/wiki/Installation/0290.png
+
+
+
 *TODO*
- * Define package
- * Define class
- * Define attributes to the class
- * Define an Enumeration
-   * Define Enumeration Literals
  * Modeling Associations
    * Define another (associated) class & attributes
    * Define association references
