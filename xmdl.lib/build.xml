@@ -13,9 +13,7 @@
           target: build_plugins              
          ================================= -->
 	<target name="dist_all" description="--> builds the jar files in the eclipse plugin format">
-		<!--
 		<antcall target="dist_lib" />
-		-->
 		<antcall target="dist_xmdl" />
 	</target>
 
@@ -64,15 +62,25 @@
 	<!-- ================================= 
           target: dist_xmdl              
          ================================= -->
-	<target name="dist_xmdl" depends="clean, init" description="--> builds plugins out of xmdl jar files">
+	<target name="dist_xmdl" depends="init" description="--> builds plugins out of xmdl jar files">
 
 		<dist_plugin plugin.name="xmdl" />
+		<dist_plugin plugin.name="xmdl.gen" />
 		<dist_plugin plugin.name="xmdl.ui" />
 		<dist_plugin plugin.name="xmdlbo.ui" />
 		<dist_plugin plugin.name="xmdldb.ui" />
 		<dist_plugin plugin.name="xmdlgen.ui" />
 		<dist_plugin plugin.name="xmdl.gen" />
 		<dist_plugin plugin.name="xmdl.core" />
+
+		<zip destfile="dist/xmdl_${version.pattern}.zip">
+			<fileset dir="dist">
+				<include name="*.jar" />
+			</fileset>
+         <fileset dir="dist" includes="plugins/*" />
+         <fileset dir="." includes="licenses/*" />
+         <fileset dir="varfiles" includes="*" />
+		</zip>
 
 	</target>
 
