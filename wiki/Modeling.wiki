@@ -14,7 +14,13 @@ This guide aims to introduce XMDL Modeling basics using a sample model. This sam
 
 == Modeling Perspective ==
 
-After a successful installation following the [Installation installation guide], XMDL Modeling Perspective should be activated. By default, layout of the perspective should have the following components:
+After a successful installation following the [Installation installation guide], now when you click the menu item "Window" -->  "Open Perspective" --> "Other", you should see the following following dialog. 
+
+   http://xmdl.googlecode.com/svn/wiki/Installation/0010.png
+
+Choose "XMDL Modeling" and click "OK".
+
+Now, XMDL Modeling Perspective should be activated. By default, layout of the perspective should have the following components:
 
  # Navigator Pane
  # Editor Space
@@ -106,4 +112,6 @@ With XMDL you can define simple enumerations and use these as your attribute typ
   * Making changes, and re-generating code. Introduce merge strategy.
     * @generated tag
     * @keep tag
+
+
 
