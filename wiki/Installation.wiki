@@ -19,7 +19,7 @@ Latest version of XMDL runs on Eclipse Platform 3.3. If you have Eclipse 3.3 alr
 
 Eclipse should be ready for further installation after this step.
 
-== EMF Runtime Installation ==
+== [http://www.eclipse.org/modeling/emf/ EMF (Eclipse Modeling Framework)] Runtime Installation ==
 
 Latest version of XMDL runs on EMF 2.3.0. If you have EMF 2.3.0 already installed on your system, you can simply skip this step.
 
