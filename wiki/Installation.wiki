@@ -13,7 +13,7 @@ Latest version of XMDL runs on Eclipse Platform 3.3. If you have Eclipse 3.3 alr
  * Go to [http://www.eclipse.org/downloads/ Eclipse download page]
  * Select "Eclipse Ide for Java Developers" that suits your operating system configuration
  * Save the zip file to your local drive.
- * When download is complete extract the zip file.
+ * When download is complete extract the zip file. (e.g. d:/eclipse)
  * Run eclipse executable from /eclipse directory. e.g. eclipse.exe for MS Windows platform.
  * Before opening Eclipse should ask you about a workspace location. This will be the place to store all data about your projects. Select a newly created folder, and mark the checkbox below denoting "Use this as default and do not ask again". This will save you confirming the same place for every eclipse startup. Later you can change it by menu item File -> Switch Workspace -> Other... if you wish.
 
@@ -56,7 +56,6 @@ Since, an Eclipse update site has not yet been defined, XMDL has to be installed
  * If you see a copyright dialog about XMDL, this meens that you have successfully completed your installarion.
 
 If you have a problem during the installation do not hesitate to inform developers. You can fill an [http://code.google.com/p/xmdl/issues/entry issue form] on the project site with all necessary details about your problem, and your contact information.
-
 
 
 
