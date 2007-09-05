@@ -1,21 +1,21 @@
 <project default="dist_all">
 
-    <property file="${user.home}/xmdl.build.properties" /> 
+	<property file="${user.home}/xmdl.build.properties" />
 	<loadproperties srcFile="build.properties" />
 
 	<tstamp>
 		<format property="TODAY" pattern="yyyyMMdd" />
 	</tstamp>
-	<property name="version.pattern" value="${dist.version.prefix}.${TODAY}_${dist.version.suffix}"/>
+	<property name="version.pattern" value="${dist.version.prefix}.${TODAY}_${dist.version.suffix}" />
 
-    <path id="total.classpath">
-        <fileset dir="${eclipse.plugin.dir}" includes="**/*.jar" />
-        <fileset dir="${eclipse.plugin.dir2}" includes="**/*.jar" />
-        <fileset dir="${eclipse.plugin.dir3}" includes="**/*.jar" />
-        <fileset dir="dist/plugins/">
-            <include name="**/*.jar" />
-        </fileset>
-    </path>
+	<path id="total.classpath">
+		<fileset dir="${eclipse.plugin.dir}" includes="**/*.jar" />
+		<fileset dir="${eclipse.plugin.dir2}" includes="**/*.jar" />
+		<fileset dir="${eclipse.plugin.dir3}" includes="**/*.jar" />
+		<fileset dir="dist/plugins/">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
 
 	<!-- ================================= 
           target: build_plugins              
@@ -49,8 +49,8 @@
 				<classpath refid="total.classpath" />
 			</javac>
 			<manifest file="../@{plugin.name}/META-INF/MANIFEST.MF" mode="update">
-				<attribute name="Built-By" value="${dist.build.user}"/>
-				<attribute name="Bundle-Version" value="${version.pattern}"/>
+				<attribute name="Built-By" value="${dist.build.user}" />
+				<attribute name="Bundle-Version" value="${version.pattern}" />
 			</manifest>
 			<jar destfile="dist/plugins/@{plugin.name}_${version.pattern}.jar" manifest="../@{plugin.name}/META-INF/MANIFEST.MF">
 				<fileset dir="build/@{plugin.name}" excludes="**/Test.class" />
@@ -77,12 +77,9 @@
 		<dist_plugin plugin.name="xmdl.core" />
 
 		<zip destfile="dist/xmdl_${version.pattern}.zip">
-			<fileset dir="dist">
-				<include name="*.jar" />
-			</fileset>
-         <fileset dir="dist" includes="plugins/*" />
-         <fileset dir="." includes="licenses/*" />
-         <fileset dir="varfiles" includes="*" />
+			<fileset dir="dist" includes="plugins/*" />
+			<zipfileset dir="licenses" includes="*" prefix="xmdl" />
+			<zipfileset dir="varfiles" includes="*" prefix="xmdl" />
 		</zip>
 
 	</target>
