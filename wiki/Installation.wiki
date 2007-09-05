@@ -3,15 +3,19 @@
 
 == Introduction ==
 
-This page is a step-by-step guide to XMDL installation. Please follow the steps below to perform a successful XMDL installation:
+This is a step-by-step guide to XMDL installation. Please follow the steps below to perform a successful XMDL installation.
 
+This guide is intended to be functional with the following configuration of software versions:
+ * [http://www.eclipse.org/ Eclipse] 3.3
+ * [http://www.eclipse.org/modeling/emf/ EMF] 2.3.0
+ * [http://xmdl.code.google.com/ XMDL] 0.5.0
 
 == Eclipse Installation ==
 
 Latest version of XMDL runs on Eclipse Platform 3.3. If you have Eclipse 3.3 already installed on your system, you can simply skip this step.
 
  * Go to [http://www.eclipse.org/downloads/ Eclipse download page]
- * Select "Eclipse Ide for Java Developers" that suits your operating system configuration
+ * Select "Eclipse IDE for Java Developers" that suits your operating system configuration
  * Save the zip file to your local drive.
  * When download is complete extract the zip file. (e.g. d:/eclipse)
  * Run eclipse executable from /eclipse directory. e.g. eclipse.exe for MS Windows platform.
