@@ -57,6 +57,8 @@
 				<fileset dir="../@{plugin.name}">
 					<include name="plugin.*" />
 					<include name="model/*" />
+                    <include name="res/*" />
+                    <include name="icons/**" />
 				</fileset>
 			</jar>
 		</sequential>
