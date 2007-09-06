@@ -1,0 +1,12 @@
+#summary A Quick overview how to get started.
+#labels Phase-Support,Draft
+
+== For Users ==
+
+*TODO* for XMDL Users (Modeling, Code Generation)
+
+= For Developers =
+
+If you would like to make contributions to the project, this is the best place to have a look at.
+
+ * [DevelopersMailGroup Developers' mail group]
