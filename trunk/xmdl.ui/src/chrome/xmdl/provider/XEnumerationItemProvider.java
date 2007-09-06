@@ -282,16 +282,24 @@ public class XEnumerationItemProvider extends ItemProviderAdapter implements
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				XmdlPackage.Literals.XENUMERATION__LITERALS,
-				XmdlFactory.eINSTANCE.createXEnumerationLiteral()));
+		XEnumeration enm = (XEnumeration) object;
+        XEnumerationLiteral lit = XmdlFactory.eINSTANCE
+                .createXEnumerationLiteral();
+        int l = enm.getLiterals().size() + 1;
+        String name = "VALUE" + l;
+        while(enm.hasLiteral(name)){
+            name = "VALUE" + ++l;
+        }
+        lit.setName(name);
+        newChildDescriptors.add(createChildParameter(
+                XmdlPackage.Literals.XENUMERATION__LITERALS, lit));
 	}
 
 	/**

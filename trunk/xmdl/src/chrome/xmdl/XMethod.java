@@ -179,4 +179,6 @@ public interface XMethod extends EObject {
 	 */
 	EList<XException> getExceptions();
 
+    boolean hasParameter(String name);
+
 } // XMethod

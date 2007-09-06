@@ -136,8 +136,9 @@ public class XParameterItemProvider extends ItemProviderAdapter implements
 	public String getText(Object object) {
 		String label = ((XParameter) object).getName();
 		XType type = ((XParameter) object).getType();
+		if (type == null) type = XmdlTypes.VOID;
 		return label == null || label.length() == 0 ? getString("_UI_XParameter_type")
-				: type + " " + label;
+				: type.getName() + " " + label;
 	}
 
 	/**

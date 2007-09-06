@@ -85,4 +85,8 @@ public interface XPackage extends XBase {
 	 */
 	EList<XEnumeration> getEnumerations();
 
+    boolean hasClass(String name);
+
+    boolean hasEnumeration(String name);
+
 } // XPackage

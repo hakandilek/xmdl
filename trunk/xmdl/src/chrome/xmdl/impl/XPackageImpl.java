@@ -398,4 +398,30 @@ public class XPackageImpl extends EObjectImpl implements XPackage {
 		return super.equals(obj);
 	}
 
+    @Override
+    public boolean hasClass(String name) {
+        return getClass(name) != null;
+    }
+
+    private XClass getClass(String name) {
+        for (XClass cls : getClasses()) {
+            if(name.equals(cls.getName()))
+                return cls;
+        }
+        return null;
+    }
+
+    @Override
+    public boolean hasEnumeration(String name) {
+        return getEnumeration(name) != null;
+    }
+
+    private XEnumeration getEnumeration(String name) {
+        for (XEnumeration enm : getEnumerations()) {
+            if(name.equals(enm.getName()))
+                return enm;
+        }
+        return null;
+    }
+
 } //XPackageImpl

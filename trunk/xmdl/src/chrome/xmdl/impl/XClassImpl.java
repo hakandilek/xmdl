@@ -558,4 +558,32 @@ public class XClassImpl extends EObjectImpl implements XClass {
 		return simples;
 	}
 
+    @Override
+    public boolean hasAttibute(String name) {
+        return getAttribute(name) != null;
+    }
+
+    private XAttribute getAttribute(String name) {
+        for (XAttribute att : getAttributes()) {
+            if (name.equals(att.getName()))
+                return att;
+        }
+        return null;
+    }
+
+    @Override
+    public boolean hasMethod(String name) {
+        List<XMethod> mets = getMethods(name);
+        return mets != null && mets.size() > 0;
+    }
+
+    private List<XMethod> getMethods(String name) {
+        List<XMethod> list = new ArrayList<XMethod>();
+        for (XMethod met : getMethods()) {
+            if (name.equals(met.getName()))
+                list.add(met);
+        }
+        return list;
+    }
+
 } // XClassImpl
