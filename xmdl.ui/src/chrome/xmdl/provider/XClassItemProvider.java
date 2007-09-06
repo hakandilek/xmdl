@@ -6,9 +6,12 @@
  */
 package chrome.xmdl.provider;
 
+import chrome.xmdl.XAttribute;
 import chrome.xmdl.XClass;
+import chrome.xmdl.XMethod;
 import chrome.xmdl.XmdlFactory;
 import chrome.xmdl.XmdlPackage;
+import chrome.xmdl.XmdlTypes;
 
 import chrome.xmdl.ui.XMDLUIPlugin;
 
@@ -218,20 +221,34 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				XmdlPackage.Literals.XCLASS__ATTRIBUTES, XmdlFactory.eINSTANCE
-						.createXAttribute()));
+        XClass cls = (XClass) object;
+        XAttribute att = XmdlFactory.eINSTANCE.createXAttribute();
+        int a = cls.getAttributes().size() + 1;
+        String name = "attribute" + a;
+        while(cls.hasAttibute(name)){
+            name = "attribute" + ++a;
+        }
+        att.setName(name);
+        att.setType(XmdlTypes.JAVA_STRING);
+        newChildDescriptors.add(createChildParameter(
+                XmdlPackage.Literals.XCLASS__ATTRIBUTES, att));
 
-		newChildDescriptors.add(createChildParameter(
-				XmdlPackage.Literals.XCLASS__METHODS, XmdlFactory.eINSTANCE
-						.createXMethod()));
+        XMethod met = XmdlFactory.eINSTANCE.createXMethod();
+        int m = cls.getMethods().size() + 1;
+        name = "method" + m;
+        while(cls.hasMethod(name)){
+            name = "method" + ++m;
+        }
+        met.setName(name);
+        newChildDescriptors.add(createChildParameter(
+                XmdlPackage.Literals.XCLASS__METHODS, met));
 	}
 
 	/**

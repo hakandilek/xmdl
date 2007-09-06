@@ -6,9 +6,12 @@
  */
 package chrome.xmdl.provider;
 
+import chrome.xmdl.XException;
 import chrome.xmdl.XMethod;
+import chrome.xmdl.XParameter;
 import chrome.xmdl.XmdlFactory;
 import chrome.xmdl.XmdlPackage;
+import chrome.xmdl.XmdlTypes;
 
 import chrome.xmdl.*;
 
@@ -190,6 +193,8 @@ public class XMethodItemProvider extends ItemProviderAdapter implements
 		XMethod method = ((XMethod) object);
 		String label = method.getName();
 		XType type = method.getType();
+		if (type == null) 
+		    type = XmdlTypes.VOID;
 		List<XParameter> parameters = method.getParameters();
 		StringBuffer sb = new StringBuffer("(");
 		for (int i = 0; i < parameters.size(); i++) {
@@ -198,10 +203,8 @@ public class XMethodItemProvider extends ItemProviderAdapter implements
 			sb.append(pType.getName()).append(" ").append(param.getName());
 			if (i != parameters.size() - 1)
 				sb.append(", ");
-			else
-				//last parameter
-				sb.append(")");
 		}
+        sb.append(")");
 		String params = sb.toString();
 		return label == null || label.length() == 0 ? getString("_UI_XMethod_type")
 				+ params
@@ -240,20 +243,29 @@ public class XMethodItemProvider extends ItemProviderAdapter implements
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				XmdlPackage.Literals.XMETHOD__PARAMETERS, XmdlFactory.eINSTANCE
-						.createXParameter()));
+		XMethod met = (XMethod) object;
+        XParameter par = XmdlFactory.eINSTANCE.createXParameter();
+        int p = met.getParameters().size() + 1;
+        String name = "param" + p;
+        while(met.hasParameter(name)){
+            name = "param" + ++p;
+        }
+        par.setName(name);
+        par.setType(XmdlTypes.JAVA_STRING);
+        newChildDescriptors.add(createChildParameter(
+                XmdlPackage.Literals.XMETHOD__PARAMETERS, par));
 
-		newChildDescriptors.add(createChildParameter(
-				XmdlPackage.Literals.XMETHOD__EXCEPTIONS, XmdlFactory.eINSTANCE
-						.createXException()));
+        XException exc = XmdlFactory.eINSTANCE.createXException();
+        exc.setJavaClass(Exception.class);
+        newChildDescriptors.add(createChildParameter(
+                XmdlPackage.Literals.XMETHOD__EXCEPTIONS, exc));
 	}
 
 	/**

@@ -95,4 +95,6 @@ public interface XEnumeration extends XBase, XType {
 	 */
 	void setDefaultLiteral(XEnumerationLiteral value);
 
+    boolean hasLiteral(String name);
+
 } // XEnumeration

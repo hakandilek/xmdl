@@ -6,6 +6,8 @@
  */
 package chrome.xmdl.provider;
 
+import chrome.xmdl.XClass;
+import chrome.xmdl.XEnumeration;
 import chrome.xmdl.XPackage;
 import chrome.xmdl.XmdlFactory;
 import chrome.xmdl.XmdlPackage;
@@ -195,20 +197,33 @@ public class XPackageItemProvider extends ItemProviderAdapter implements
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				XmdlPackage.Literals.XPACKAGE__CLASSES, XmdlFactory.eINSTANCE
-						.createXClass()));
+        XPackage pkg = (XPackage) object;
+        XClass cls = XmdlFactory.eINSTANCE.createXClass();
+        int c = pkg.getClasses().size() + 1;
+        String name = "Class" + c;
+        while(pkg.hasClass(name)){
+            name = "Class" + ++c;
+        }
+        cls.setName(name);
+        newChildDescriptors.add(createChildParameter(
+                XmdlPackage.Literals.XPACKAGE__CLASSES, cls));
 
-		newChildDescriptors.add(createChildParameter(
-				XmdlPackage.Literals.XPACKAGE__ENUMERATIONS,
-				XmdlFactory.eINSTANCE.createXEnumeration()));
+        XEnumeration enm = XmdlFactory.eINSTANCE.createXEnumeration();
+        int e = pkg.getEnumerations().size() + 1;
+        name = "Enumeration" + e;
+        while(pkg.hasEnumeration(name)){
+            name = "Enumeration" + ++e;
+        }
+        enm.setName(name);
+        newChildDescriptors.add(createChildParameter(
+                XmdlPackage.Literals.XPACKAGE__ENUMERATIONS, enm));
 	}
 
 	/**

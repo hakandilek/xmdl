@@ -493,4 +493,17 @@ public class XMethodImpl extends EObjectImpl implements XMethod {
 		return result.toString();
 	}
 
+    @Override
+    public boolean hasParameter(String name) {
+        return getParameter(name) != null;
+    }
+
+    private XParameter getParameter(String name) {
+        for (XParameter par : getParameters()) {
+            if (name.equals(par.getName()))
+                return par;
+        }
+        return null;
+    }
+
 } //XMethodImpl

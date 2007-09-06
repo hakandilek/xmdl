@@ -6,6 +6,7 @@
  */
 package chrome.xmdl.provider;
 
+import chrome.xmdl.XPackage;
 import chrome.xmdl.XProject;
 import chrome.xmdl.XmdlFactory;
 import chrome.xmdl.XmdlPackage;
@@ -176,16 +177,23 @@ public class XProjectItemProvider extends ItemProviderAdapter implements
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
 			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				XmdlPackage.Literals.XPROJECT__PACKAGES, XmdlFactory.eINSTANCE
-						.createXPackage()));
+		XProject prj = (XProject) object;
+        XPackage pkg = XmdlFactory.eINSTANCE.createXPackage();
+        int p = prj.getPackages().size() + 1;
+        String name = "package" + p;
+        while(pkg.hasEnumeration(name)){
+            name = "package" + ++p;
+        }
+        pkg.setName(name);
+        newChildDescriptors.add(createChildParameter(
+                XmdlPackage.Literals.XPROJECT__PACKAGES, pkg));
 	}
 
 	/**

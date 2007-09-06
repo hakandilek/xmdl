@@ -16,4 +16,5 @@ Export-Package: chrome.xmdl,chrome.xmdl.impl,chrome.xmdl.init,chrome.x
  .xmdldb.util,chrome.xmdlgen,chrome.xmdlgen.impl,chrome.xmdlgen.init,c
  hrome.xmdlgen.util
 Built-By: Hakan Dilek
+Bundle-Activator: chrome.xmdl.plugin.XMDLModelPlugin
 

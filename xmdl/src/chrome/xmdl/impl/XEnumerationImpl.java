@@ -496,4 +496,17 @@ public class XEnumerationImpl extends EObjectImpl implements XEnumeration {
 		return result.toString();
 	}
 
+    @Override
+    public boolean hasLiteral(String name) {
+        return getLiteral(name) != null;
+    }
+
+    private XEnumerationLiteral getLiteral(String name) {
+        for (XEnumerationLiteral lit : getLiterals()) {
+            if (name.equals(lit.getName()))
+                return lit;
+        }
+        return null;
+    }
+
 } //XEnumerationImpl
