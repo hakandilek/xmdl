@@ -4,7 +4,7 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: xmdl.gen;singleton:=true
-Bundle-Version: 0.5.0.20070905_beta3
+Bundle-Version: 0.5.0.20070906_beta4
 Bundle-Activator: chrome.xmdl.gen.plugin.XMDLGenPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -12,8 +12,7 @@ Require-Bundle: xmdl,org.eclipse.emf.ecore.xmi,org.eclipse.emf.codegen
  ,org.eclipse.core.runtime.compatibility,org.eclipse.core.resources,or
  g.eclipse.jdt.core,org.junit,org.apache.log4j
 Eclipse-LazyStart: true
-Export-Package: chrome.xmdl.gen.plugin,chrome.xmdl.gen.util,chrome.xmd
- l.util,chrome.xmdl.xgen,chrome.xmdl.xgen.util,chrome.xmdlbo.init,chro
- me.xmdldb.init,chrome.xmdlgen.init
+Export-Package: chrome.xmdl.gen.plugin,chrome.xmdl.gen.util,
+ chrome.xmdl.xgen,chrome.xmdl.xgen.util
 Built-By: Hakan Dilek
 
