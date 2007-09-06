@@ -9,4 +9,4 @@
 
 If you would like to make contributions to the project, this is the best place to have a look at.
 
- * [DevelopersMailGroup Developers' mail group]
+ * [DiscussionGroups Developers' mail group]
