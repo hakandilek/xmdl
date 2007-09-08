@@ -1,11 +1,11 @@
 #summary Development using the Core "Cekirdek" Platform
-#labels xmdl.core,Phase-Support
+#labels xmdl.core,Phase-Support,Draft
 
 == Introduction ==
 
 This guide is an introduction to development new projects using the xmdl.core platform.
 
-== Setting project environment ==
+== Setting project libraries ==
 
 You should have finished creating a project, modeling and generation of source code, following the [Modeling Modeling Guideline]. Then, you can follow these steps to set up your development environment.
 
