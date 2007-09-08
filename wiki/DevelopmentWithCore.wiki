@@ -31,5 +31,14 @@ You should have finished creating a project, modeling and generation of source c
  * When clean build is complete, project should not have any error mark icons on.
  * You can view compilation errors by activating the Problems view using the menu item Window -> Show View -> Problems
 
-If you have a problem during the project setup do not hesitate to inform developers. You can fill an issue form on the project site with all necessary details about your problem, and your contact information.
+*TODO following are in draft form* 
 
+== Installing neessary Eclipse plugins ==
+ * Preparing Web Development environment. Install following:
+   * (Europa Discovery Site) Web and JEE Development
+   * Web Tools Platform (WTP) Updates
+   * Click "Select Required" to resolve dependencies
+   * Accept license
+
+
+If you have a problem during the project setup do not hesitate to inform developers. You can fill an issue form on the project site with all necessary details about your problem, and your contact information.
