@@ -3,6 +3,10 @@
 
 == For Users ==
 
+ * [Installation XMDL Installation Guide]
+ * [Modeling XMDL Modeling Guide]
+ * [DevelopmentWithCore Development using the Core "Cekirdek" Platform]
+
 *TODO* for XMDL Users (Modeling, Code Generation)
 
 == For Developers ==
