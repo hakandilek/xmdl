@@ -80,7 +80,7 @@ You should have finished creating a project, modeling and generation of source c
  * Select 
    * Dynamic Web Module
    * Java, Next
- * Web Content Directory : web
+ * Content Directory : web
  * Finish, Ok
 
  * Open Project Properties
@@ -95,5 +95,4 @@ You should have finished creating a project, modeling and generation of source c
 
 
 If you have a problem during the project setup do not hesitate to inform developers. You can fill an issue form on the project site with all necessary details about your problem, and your contact information.
-
 
