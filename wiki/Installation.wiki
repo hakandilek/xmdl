@@ -57,10 +57,9 @@ Since, an Eclipse update site has not yet been defined, XMDL has to be installed
 
  * Start Eclipse (again). You should have shut it down after EMF Runtime installation
  * When Eclipse is stated, click menu item Help -> About XMDL... If you can not see this menu item, something might be wrong with your installation.
- * If you see a copyright dialog about XMDL, this meens that you have successfully completed your installarion.
+ * If you see a copyright dialog about XMDL, this means that you have successfully completed your installation.
 
 If you have a problem during the installation do not hesitate to inform developers. You can fill an [http://code.google.com/p/xmdl/issues/entry issue form] on the project site with all necessary details about your problem, and your contact information.
-
 
 
 
