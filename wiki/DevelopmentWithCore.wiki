@@ -33,7 +33,7 @@ You should have finished creating a project, modeling and generation of source c
 
 *TODO following are in draft form* 
 
-== Installing neessary Eclipse plugins ==
+== Installing necessary Eclipse plugins ==
  * Preparing Web Development environment. Install following:
    * (Europa Discovery Site) Web and JEE Development
    * Web Tools Platform (WTP) Updates
@@ -95,4 +95,3 @@ You should have finished creating a project, modeling and generation of source c
 
 
 If you have a problem during the project setup do not hesitate to inform developers. You can fill an issue form on the project site with all necessary details about your problem, and your contact information.
-
