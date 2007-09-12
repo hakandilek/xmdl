@@ -125,7 +125,7 @@ Initialization is the first step that builds up sub models and initializes them 
 XMDL Initialization is run with the context menu item that is visible with the right click on a project, package or a class element.
    http://xmdl.googlecode.com/svn/wiki/Modeling/0330.png
 
-After initialization, [XMDLSubModel sub-models] are created and stored under model directory. This appears to be the same folder where XMDL model (*.xmdl) file resides.
+After initialization, [XMDLSubModel sub-models] are created and stored under model directory. This appears to be the same folder where XMDL model (!*.xmdl) file resides.
    http://xmdl.googlecode.com/svn/wiki/Modeling/0340.png
 
 Those [XMDLSubModel sub-model] files are
