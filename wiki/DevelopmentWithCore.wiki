@@ -81,7 +81,9 @@ You should have finished creating a project, modeling and generation of source c
    * Dynamic Web Module
    * Java, Next
  * Content Directory : web
- * Finish, Ok
+ * Finish, 
+ * J2EE Module Dependencies, Select XMDL_CORELIB from the list
+ * Ok
 
  * Open Project Properties
  * Java Build Path -> Add Folder -> rsc/ 
