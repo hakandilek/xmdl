@@ -33,18 +33,15 @@ You should have finished creating a project, modeling and generation of source c
 
 *TODO following are in draft form* 
 
+_Following steps should be performed in order to have success._
+
+
 == Installing necessary Eclipse plugins ==
  * Preparing Web Development environment. Install following:
    * (Europa Discovery Site) Web and JEE Development
    * Web Tools Platform (WTP) Updates
    * Click "Select Required" to resolve dependencies
    * Accept license
-
-== Add Server (Tomcat) Runtime Configuration ==
- * File->New->Other
- * Server/Server, Next
- * Apache/Tomcat v5.5 Server, 
- * Select server (tomcat 5.5) installation location, Finish
 
 == Convert to Dynamic Web Project ==
  * Open .project file (Ctrl+Shift+R)
@@ -88,6 +85,15 @@ You should have finished creating a project, modeling and generation of source c
  * Open Project Properties
  * Java Build Path -> Add Folder -> rsc/ 
  * Ok, Ok
+
+== Add Server (Tomcat) Runtime Configuration ==
+
+ * File->New->Other
+ * Server/Server, Next
+ * Apache/Tomcat v5.5 Server, 
+ * Select server (tomcat 5.5) installation location 
+ * Add your project to the list of configured servers
+ * Finish
 
 == Running Project on Server ==
  * Run -> Open Run Dialog
