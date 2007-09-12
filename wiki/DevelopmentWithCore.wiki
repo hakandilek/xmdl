@@ -96,9 +96,9 @@ _Following steps should be performed in order to have success._
  * Finish
 
 == Running Project on Server ==
- * Run -> Open Run Dialog
- * Apache Tomcat, right-click -> New
- * Name : <project name>.Tomcat
+ * Right-click project, Run As -> Run on Server...
+ * Select Tomcat, check "Always use this server...", Next, Next
+ * check "Update context root...", Finish
 
 
 
