@@ -14,7 +14,7 @@ Main theme of this release is integration of the platform "IDA" and XMDL code ge
 
 == Details ==
 
-In this part, ideas will be detailed referring to the related [http://code.google.com/p/xmdl/issues/list issues] when necessary.
+In this part, ideas will be detailed referring to the related [http://code.google.com/p/xmdl/issues/list issues] when necessary. All open issues in this release can be followed [http://code.google.com/p/xmdl/issues/list?can=2&q=Milestone-Release0.6&cells=tiles here]. 
  
 === Appfuse 2.x ===
  
