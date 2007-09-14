@@ -1,0 +1,20 @@
+#summary Release plan for version 0.6
+#labels Draft,Phase-Requirements
+
+== Introduction ==
+
+This document lists the features and ideas that will be included with version 0.6 of the software. 
+
+Main theme of this release is integration of the platform "IDA" and XMDL code generator. IDA platform focuses on the following principles:
+
+ * User friendliness. - One-click code generation & deployment
+ * Clean framework. - Minimizing development effort. 
+ * Stay shiny. - Keeping up-to-date with new tools/technologies. 
+ * _Any other?_
+
+== Details ==
+
+In this part, ideas will be detailed referring to the related [http://code.google.com/p/xmdl/issues/list issues] when necessary.
+ 
+ 
+ 
