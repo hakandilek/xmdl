@@ -68,6 +68,7 @@ public class UnzipTask implements Task {
 
 				// write the files to the disk
 				String filename = destination + entry.getName();
+				filename.replaceAll("\\\\", "/");
 				if (replacement != null) {
 					Set<String> keys = replacement.keySet();
 					for (String key : keys) {
@@ -96,11 +97,16 @@ public class UnzipTask implements Task {
 					outFile.setContents(content, true, true, null);
 				} else {
 					LOGGER.debug("creating : " + filename);
-					int lastIndex = filename.lastIndexOf(".");
-					if (lastIndex >0){
-						filename = filename.substring(0, lastIndex);
+					int dotIndex = filename.lastIndexOf(".");
+					if (dotIndex >0){
+						filename = filename.substring(0, dotIndex);
 					}
-					IFileUtils.INST.createFolder(filename);
+					String foldername = filename;
+                    int slashIndex = filename.lastIndexOf("/");
+                    if (slashIndex > 0){
+                        foldername = filename.substring(0, slashIndex);
+                    }
+					IFileUtils.INST.createFolder(foldername);
 					outFile.create(content, true, null);
 				}
 			}
