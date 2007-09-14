@@ -207,6 +207,8 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	// private GenerateAction generateAction;
 
 	private InitializeAction initializeAction;
+	
+	private XMDLValidateAction xmdlValidateAction;
 
 	/**
 	 * This creates an instance of the contributor. <!-- begin-user-doc --> <!--
@@ -219,7 +221,8 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 		LOGGER.debug(" new instance");
 		// init();
 		loadResourceAction = new LoadResourceAction();
-		validateAction = new ValidateAction();
+		validateAction = null;
+		xmdlValidateAction = new XMDLValidateAction();
 		// generateAction = new GenerateAction();
 		// generateAction = new GenerateAction();
 		initializeAction = new InitializeAction();
@@ -556,57 +559,121 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 	}
 
 	/**
-	 * This populates the pop-up menu before it appears. 
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	public void menuAboutToShow(IMenuManager menuManager) {
-		super.menuAboutToShow(menuManager);
-		MenuManager submenuManager = null;
+     * This populates the pop-up menu before it appears. 
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated NOT
+     */
+    public void menuAboutToShow(IMenuManager menuManager) {
+        super.menuAboutToShow(menuManager);
+        MenuManager submenuManager = null;
 
-		submenuManager = new MenuManager(XMDLUIPlugin.INSTANCE
-				.getString("_UI_CreateChild_menu_item"));
-		populateManager(submenuManager, createChildActions, null);
-		menuManager.insertBefore("additions", submenuManager);
+        submenuManager = new MenuManager(XMDLUIPlugin.INSTANCE
+                .getString("_UI_CreateChild_menu_item"));
+        populateManager(submenuManager, createChildActions, null);
+        menuManager.insertBefore("additions", submenuManager);
 
-		MenuManager generateSubmenuManager = new MenuManager(
-				XMDLUIPlugin.INSTANCE.getString("_UI_Generate_menu_item"));
-		populateManager(generateSubmenuManager, generateActions, null);
-		menuManager.insertBefore("additions", generateSubmenuManager);
+        MenuManager generateSubmenuManager = new MenuManager(
+                XMDLUIPlugin.INSTANCE.getString("_UI_Generate_menu_item"));
+        populateManager(generateSubmenuManager, generateActions, null);
+        menuManager.insertBefore("additions", generateSubmenuManager);
 
-		ISelection s = ((XmdlEditor) activeEditorPart).getSelection();
-		if ((s instanceof IStructuredSelection)) {
-			IStructuredSelection ss = (IStructuredSelection) s;
-			if (ss.size() == 1) {
-				Object selected = ss.getFirstElement();
-				// menuManager.insertAfter("additions", generateXMDLAction);
+        ISelection s = ((XmdlEditor) activeEditorPart).getSelection();
+        if ((s instanceof IStructuredSelection)) {
+            IStructuredSelection ss = (IStructuredSelection) s;
+            if (ss.size() == 1) {
+                Object selected = ss.getFirstElement();
+                // menuManager.insertAfter("additions", generateXMDLAction);
 
-				if (selected instanceof XBase) {
-					menuManager.insertBefore("additions", initializeAction);
-					initializeAction.setEnabled(initializeAction.isEnabled());
-					Collection<Platform> platforms = Platforms.INST.values();
-					for (Platform platform : platforms) {
-						IAction generateAction = new GenerateAction(platform);
-						generateAction.setText(platform.name() + " "
-								+ platform.version());
-						generateSubmenuManager.add(generateAction);
-						generateAction.setEnabled(generateAction.isEnabled());
+                if (selected instanceof XBase) {
+                    menuManager.insertBefore("additions", initializeAction);
+                    initializeAction.setEnabled(initializeAction.isEnabled());
+                    Collection<Platform> platforms = Platforms.INST.values();
+                    for (Platform platform : platforms) {
+                        IAction generateAction = new GenerateAction(platform);
+                        generateAction.setText(platform.name() + " "
+                                + platform.version());
+                        generateSubmenuManager.add(generateAction);
+                        generateAction.setEnabled(generateAction.isEnabled());
 
-					}
-				}
-			}
-		}
+                    }
+                }
+            }
+        }
 
-	}
+        if (xmdlValidateAction != null) {
+            menuManager.insertBefore("additions", new ActionContributionItem(
+                    xmdlValidateAction));
+        }
+    }
+	
+	@Override
+    public void activate() {
+        super.activate();
 
-	/**
-	 * This inserts global actions before the "additions-end" separator. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+        if (xmdlValidateAction != null)
+        {
+            xmdlValidateAction.setActiveWorkbenchPart(activeEditor);
+        }
+
+        ISelectionProvider selectionProvider = activeEditor instanceof ISelectionProvider ? (ISelectionProvider) activeEditor
+                : activeEditor.getEditorSite().getSelectionProvider();
+
+        if (selectionProvider != null) {
+            if (xmdlValidateAction != null) {
+                selectionProvider
+                        .addSelectionChangedListener(xmdlValidateAction);
+            }
+        }
+    }
+
+    @Override
+    public void deactivate() {
+        super.deactivate();
+        if (xmdlValidateAction != null) {
+            xmdlValidateAction.setActiveWorkbenchPart(null);
+        }
+        
+        ISelectionProvider selectionProvider = 
+            activeEditor instanceof ISelectionProvider ?
+              (ISelectionProvider)activeEditor :
+              activeEditor.getEditorSite().getSelectionProvider();
+
+          if (selectionProvider != null)
+          {
+            if (xmdlValidateAction != null)
+            {
+              selectionProvider.removeSelectionChangedListener(xmdlValidateAction);
+            }
+          }
+
+    }
+
+    @Override
+    public void update() {
+        super.update();
+
+        ISelectionProvider selectionProvider = activeEditor instanceof ISelectionProvider ? (ISelectionProvider) activeEditor
+                : activeEditor.getEditorSite().getSelectionProvider();
+
+        if (selectionProvider != null) {
+            ISelection selection = selectionProvider.getSelection();
+            IStructuredSelection structuredSelection = selection instanceof IStructuredSelection ? (IStructuredSelection) selection
+                    : StructuredSelection.EMPTY;
+
+            if (xmdlValidateAction != null) {
+                xmdlValidateAction.updateSelection(structuredSelection);
+            }
+        }
+    }
+
+    /**
+     * This inserts global actions before the "additions-end" separator. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
 	@Override
 	protected void addGlobalActions(IMenuManager menuManager) {
 		menuManager.insertAfter("additions-end", new Separator("ui-actions"));
