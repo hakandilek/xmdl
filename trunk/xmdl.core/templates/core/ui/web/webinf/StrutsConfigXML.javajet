@@ -44,14 +44,13 @@
 
     <!-- ========== Global Forward Definitions =================================== -->
     <global-forwards>
-        <forward name="mainMenu" path="/mainMenu.do" redirect="true"/>
 
+        <forward name="home" path="/include/home.jsp"/>
+        
         <!-- Logout by forward to a JSP, I do this b/c if I forward to an
              an action, and the users session is expired - they'll be prompted
              to login - just to logout!  Seems silly to me.
         -->
-        <forward name="home" path="/include/home.jsp"/>
-        
         <forward name="logout" path="/logout.jsp"/>        
         
 <%for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
@@ -123,13 +122,9 @@
 	<%}%>
 <%}%>
 
-        <!-- Forwards to the mainMenu tile definition -->
-        <action path="/mainMenu" type="org.apache.struts.actions.ForwardAction"
-            parameter="/WEB-INF/common/mainMenu.jsp"/>
-
-        <!-- Action to flush cache -->
-        <action path="/flush" type="org.apache.struts.actions.ForwardAction"
-            parameter="/WEB-INF/common/flushCache.jsp" roles="admin"/>
+        <!-- Forwards to the home -->
+        <action path="/home" type="org.apache.struts.actions.ForwardAction"
+            parameter="/include/home.jsp"/>
 
     </action-mappings>
 
