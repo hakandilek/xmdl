@@ -74,14 +74,20 @@ public class <%=helper.getCapName(xClass)%>Impl extends AbstractEntity implement
      * @generated
      */
     public String toString() {
-        return getClass() + "(" + getID() + ")" +
+        StringBuffer sb = new StringBuffer();
+        sb.append(getClass().toString());
+        sb.append("(");
+        sb.append(getID());
+        sb.append(")");
 <%for (Iterator<XAttribute> i= xClass.getSimpleAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
-"[<%=attribute.getName()%>:" + <%=helper.getGetAccessor(attribute)%>() + "]" <%=i.hasNext() ? "+" : ";"%>
+        sb.append("[<%=attribute.getName()%>:");
+        sb.append(<%=helper.getGetAccessor(attribute)%>());
+        sb.append("]");
 <%}//if (attribute.getType() !=null%>
 <%}//for%>
-
+        return sb.toString();
     }
 
 } //<%=helper.getCapName(xClass)%>

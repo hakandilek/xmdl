@@ -40,11 +40,11 @@ public class EntityImplTemplateImpl
   protected final String TEXT_21 = ")    {" + NL + "        this.";
   protected final String TEXT_22 = " = new";
   protected final String TEXT_23 = ";" + NL + "    }";
-  protected final String TEXT_24 = NL + NL + "    /**" + NL + "     * @generated" + NL + "     */" + NL + "    public String toString() {" + NL + "        return getClass() + \"(\" + getID() + \")\" +";
-  protected final String TEXT_25 = NL + "\"[";
-  protected final String TEXT_26 = ":\" + ";
-  protected final String TEXT_27 = "() + \"]\" ";
-  protected final String TEXT_28 = NL + NL + "    }" + NL + "" + NL + "} //";
+  protected final String TEXT_24 = NL + NL + "    /**" + NL + "     * @generated" + NL + "     */" + NL + "    public String toString() {" + NL + "        StringBuffer sb = new StringBuffer();" + NL + "        sb.append(getClass().toString());" + NL + "        sb.append(\"(\");" + NL + "        sb.append(getID());" + NL + "        sb.append(\")\");";
+  protected final String TEXT_25 = NL + "        sb.append(\"[";
+  protected final String TEXT_26 = ":\");" + NL + "        sb.append(";
+  protected final String TEXT_27 = "());" + NL + "        sb.append(\"]\");";
+  protected final String TEXT_28 = NL + "        return sb.toString();" + NL + "    }" + NL + "" + NL + "} //";
 
   public String generate(Object argument)
   {
@@ -127,7 +127,6 @@ public class EntityImplTemplateImpl
     stringBuffer.append(TEXT_26);
     stringBuffer.append(helper.getGetAccessor(attribute));
     stringBuffer.append(TEXT_27);
-    stringBuffer.append(i.hasNext() ? "+" : ";");
     }//if (attribute.getType() !=null
     }//for
     stringBuffer.append(TEXT_28);
