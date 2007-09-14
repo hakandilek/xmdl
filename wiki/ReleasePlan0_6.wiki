@@ -16,5 +16,24 @@ Main theme of this release is integration of the platform "IDA" and XMDL code ge
 
 In this part, ideas will be detailed referring to the related [http://code.google.com/p/xmdl/issues/list issues] when necessary.
  
+=== Appfuse 2.x ===
  
+[http://appfuse.org/display/APF/Home Appfuse 2.x] project structure will be used as the backbone. Following libraries/frameworks will be integrated accordingly. Those will be detailed below if necessary.
+ * [http://maven.apache.org/ Maven 2]
+ * [http://struts.apache.org/ Struts 2]
+ * [http://www.acegisecurity.org/ Acegi Security Framework]
+ 
+=== Maven ===
+
+Directory layout of the generated project will be compatible with Maven project layout.
+
+=== Acegi Security ===
+ 
+Acegi will be integrated with the following concerns.
+
+ * USER, ROLE, and USER_ROLE (names may change) tables will be automatically added to the DB model.
+   * This feature will be optional. Using an internal database structure for the security will be selected on the model (.xmdl) level with a flag on the project. When an external security scheme is selected, those tables will not remain in the target application.   
+   * Those tables will be set to be "read-only" on the DB model (.xmdldb). and will not be changed. This feature will be supported by [http://code.google.com/p/xmdl/issues/detail?id=33 this issue].
+   * Special prefixes may be assigned for those table names.
+
  
