@@ -10,22 +10,25 @@ This guide is an introduction to development new projects using the xmdl.core pl
 You should have finished creating a project, modeling and generation of source code, following the [Modeling Modeling Guideline]. Then, you can follow these steps to set up your development environment.
 
  * Checkout the latest version of core library (xmdl.corelib) from [http://xmdl.googlecode.com/svn/trunk/xmdl.corelib/ source repository] following the [http://code.google.com/p/xmdl/source instructions].
- * Create a user library called *XMDL_CORELIB*
+ * Create a user library called *JAVA_SERVLET*
    * Open the preferences page using Window -> Preferences menu item
    * Select user libraries configuration page from the tree using path Java -> Build Path -> User Libraries
    * Click New... button on the right
-   * Type "XMDL_CORELIB" as library name, click OK
-   * Click "Add JARs" button on the right, when nwly created library is selected.
-   * Browse to the sub-directory "lib" of xmdl.corelib directory where you have checked out from source library. Select all the jar files under this directory, and add them by clicking OK. Repeat this step recursively for all subdirectories of the "lib" directory.
-   * When finished adding jar files, click OK button of the Preferences dialog
- * Adding user library as project library
+   * Type "JAVA_SERVLET" as library name, click OK
+   * Click "Add JARs" button on the right, when newly created library is selected.
+   * Browse to the sub-directory "lib" of xmdl.corelib directory where you have checked out from source library. Select the following jar files and add them by clicking OK. 
+     * servlet-api.jar
+     * jsp-api.jar
+ * Repeat the last step for a second user library called *XMDL_CORELIB*. This time add all jar files recursively under "lib" directory except the ones used in the last step.
+ * When finished adding jar files, click OK button of the Preferences dialog
+ * Adding user libraries as project library
    * Right-click your project.
    * Select Properties from the context menu
    * Select Java Build Path from the tree on the left
    * Click on Libraries tab on the right
    * Click Add Library... button
    * Select User Library from the list, and click Next.
-   * Select your newly created user library "XMDL_CORELIB", and click Finish
+   * Select your newly created user libraries "JAVA_SERVLET" and "XMDL_CORELIB", and click Finish
    * Click OK to close project properties dialog.
  * Make a clean build to your project by selecting Project -> Clean... menu item from Eclipse Menu
  * When clean build is complete, project should not have any error mark icons on.
@@ -103,3 +106,4 @@ _Following steps should be performed in order to have success._
 
 
 If you have a problem during the project setup do not hesitate to inform developers. You can fill an issue form on the project site with all necessary details about your problem, and your contact information.
+ 
