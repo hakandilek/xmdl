@@ -13,4 +13,5 @@
 
 If you would like to make contributions to the project, this is the best place to have a look at.
 
+ * [DevelopersGuide Developers' Guide]
  * [DiscussionGroups Developers' discussion group]
