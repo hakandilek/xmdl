@@ -12,7 +12,7 @@ You would need to install the following software components for XMDL development
  * [http://www.eclipse.org/ Eclipse] 3.3, including the following plugins,
    * [http://www.eclipse.org/modeling/emf/ Eclipse Modeling Framework Extender SDK] 2.3.0, via update site
    * [http://www.eclipse.org/emft/projects/jet Eclipse Modeling Framework Technologies - JET] 0.8, via update site
-   * [http://archive.eclipse.org/modeling/m2t/jet/downloads/drops/0.8.0/I200703030036/ JET Editor] 0.8.0, emft-jeteditor-runtime-*.zip file via manual installation
+   * [http://archive.eclipse.org/modeling/m2t/jet/downloads/drops/0.8.0/I200703030036/ JET Editor] 0.8.0, emft-jeteditor-runtime-~.zip file via manual installation
  * Latest version of [http://subclipse.tigris.org/ Subclipse] (SVN client for Eclipse), via [http://subclipse.tigris.org/update_1.2.x/ update site]
 
 When installation is complete, add XMDL project components into your workspace. 
@@ -53,7 +53,9 @@ When installation is complete, add XMDL project components into your workspace.
  * *xmdl.core* is the default platform implementation, with the code name "Cekirdek". Please refer to [CorePlatform Platform Guide] to have more information about implementation details. 
  * *xmdl.corelib* libraries referenced by *xmdl.core* component. It also provides the base framework library (xmdl.corelib.jar). 
  
- XMDL Components have the following dependency structure on the plugin level.
+=== Inter-Component Dependencies ===
+
+ XMDL Components have the following dependency structure on the plugin level. Third party depencencies are marked with _italic_ letters.
 
   * xmdl ->
     * _org.eclipse.core.runtime,_
@@ -114,10 +116,15 @@ When installation is complete, add XMDL project components into your workspace.
     
 == Platform Development ==
 
+{{{
 TODO: Plugin Extension Point
 TODO: Adding Templates
 TODO: Defining Tasks
 TODO: Init structure
+}}}
 
-
+ 
+ 
+ 
+ 
  
