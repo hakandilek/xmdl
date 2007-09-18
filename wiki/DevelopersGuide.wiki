@@ -1,0 +1,15 @@
+#summary XMDL Developer's Guide
+#labels Draft,Phase-Implementation
+
+== Introduction ==
+
+This guide intends to contain brief information for XMDL developers. 
+
+== Development Environment Setup ==
+
+== XMDL [Metamodel Meta-models] and Editors ==
+
+== Platform Development ==
+
+
+ 
