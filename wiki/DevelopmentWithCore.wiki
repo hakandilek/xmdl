@@ -85,10 +85,6 @@ _Following steps should be performed in order to have success._
  * J2EE Module Dependencies, Select XMDL_CORELIB from the list
  * Ok
 
- * Open Project Properties
- * Java Build Path -> Add Folder -> rsc/ 
- * Ok, Ok
-
 == Adding resource folder ==
 
 Make sure that rsc/ folder under project is marked as a source folder.
@@ -115,5 +111,6 @@ Make sure that rsc/ folder under project is marked as a source folder.
 
 
 If you have a problem during the project setup do not hesitate to inform developers. You can fill an issue form on the project site with all necessary details about your problem, and your contact information.
+ 
  
  
