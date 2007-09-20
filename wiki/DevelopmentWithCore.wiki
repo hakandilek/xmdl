@@ -89,6 +89,15 @@ _Following steps should be performed in order to have success._
  * Java Build Path -> Add Folder -> rsc/ 
  * Ok, Ok
 
+== Adding resource folder ==
+
+Make sure that rsc/ folder under project is marked as a source folder.
+
+ * Open Project Properties
+ * Open Java Build Path
+ * On Source tab, add rsc/folder as a source folder.
+
+
 == Add Server (Tomcat) Runtime Configuration ==
 
  * File->New->Other
@@ -106,4 +115,5 @@ _Following steps should be performed in order to have success._
 
 
 If you have a problem during the project setup do not hesitate to inform developers. You can fill an issue form on the project site with all necessary details about your problem, and your contact information.
+ 
  
