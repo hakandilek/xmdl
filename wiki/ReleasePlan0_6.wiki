@@ -15,6 +15,8 @@ Main theme of this release is integration of the platform "IDA" and XMDL code ge
 == Details ==
 
 In this part, ideas will be detailed referring to the related [http://code.google.com/p/xmdl/issues/list issues] when necessary. All open issues in this release can be followed [http://code.google.com/p/xmdl/issues/list?can=2&q=Milestone-Release0.6&cells=tiles here]. 
+
+A draft project called [http://code.google.com/p/taslak/ taslak] is created to shape the new platform implementation.
  
 === Appfuse 2.x ===
  
@@ -36,4 +38,5 @@ Acegi will be integrated with the following concerns.
    * Those tables will be set to be "read-only" on the DB model (.xmdldb). and will not be changed. This feature will be supported by [http://code.google.com/p/xmdl/issues/detail?id=33 this issue].
    * Special prefixes may be assigned for those table names.
 
+ 
  
