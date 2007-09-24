@@ -1,0 +1,172 @@
+<%@ jet 
+    package="chrome.xmdl.core.templates.dao.impl" 
+    imports="java.util.* 
+            chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*"
+    class="EntityDAOImplTemplateImpl" %>    
+    
+<%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage(); 
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");
+    ClassHelper helper = XMDLEntityHelper.INSTANCE;    
+    %>
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.dao.impl;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%
+importManager.addImport("java.util.*");
+
+importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");
+importManager.addImport(helper.getQualifiedName(xPackage)+".model.impl.*");
+importManager.addImport(helper.getQualifiedName(xPackage)+".dao.*");
+
+importManager.addImport("chrome.xmdl.lib.dao.*");
+importManager.addImport("chrome.xmdl.lib.dao.hib.*");
+importManager.addImport("org.apache.commons.logging.*");
+importManager.addImport("org.hibernate.*");
+importManager.addImport("org.hibernate.criterion.*");
+%>
+
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+/**
+ * @generated
+ */
+public class <%=helper.getCapName(xClass)%>DAOImpl extends HibernateDAO<<%=helper.getCapName(xClass)%>> implements <%=helper.getCapName(xClass)%>DAO {
+
+    /**
+     * @generated
+     */
+	private static final Log LOGGER = LogFactory.getLog(<%=helper.getCapName(xClass)%>DAOImpl.class);
+
+    /**
+     * @generated
+     */
+    public static final <%=helper.getCapName(xClass)%>DAO INSTANCE = new  <%=helper.getCapName(xClass)%>DAOImpl();
+
+    /**
+     * @generated
+     */
+    protected void <%=helper.getCapName(xClass)%>() { }
+    
+    /**
+     * @generated
+     */
+    protected Class getEntityClass(){
+        return <%=helper.getCapName(xClass)%>Impl.class;
+    }
+    
+    /**
+     * @generated
+     */
+    public <%=helper.getCapName(xClass)%> newEntity(){
+        return  new  <%=helper.getCapName(xClass)%>Impl();
+        
+    }
+    
+    /**
+     * @generated
+     */
+    public List<<%=helper.getCapName(xClass)%>> search(SearchBean<<%=helper.getCapName(xClass)%>> searchBean, Identifier identifier) {
+        LOGGER.debug("<%=helper.getCapName(xClass)%>DAOImpl.search");
+        Criteria _criteria = getSession().createCriteria(<%=helper.getCapName(xClass)%>.class);
+
+        <%=helper.getCapName(xClass)%>Search _search =  (<%=helper.getCapName(xClass)%>Search) searchBean;
+
+        int _firstResult = _search.getFirstResult_();
+        int _maxResults = _search.getMaxResults_();
+        String _orderProperty = _search.getOrderProperty_();
+        boolean _ascending = _search.isAscending_();
+
+
+        if (_orderProperty != null) {
+            if (_ascending) _criteria.addOrder(Order.asc(_orderProperty));
+            else _criteria.addOrder(Order.desc(_orderProperty));
+        }
+
+        if (_firstResult > 0) _criteria.setFirstResult(_firstResult);
+        if (_maxResults > 0) _criteria.setMaxResults(_maxResults);
+
+
+        long ID = _search.getID();
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {
+		XType type = attribute.getType();
+		boolean comparable = type.isComparable();%>
+		<%if (comparable){%>
+	<%=helper.getImportedAttributeType(attribute)%> <%=helper.uncapSafeName(attribute)%>Min = _search.<%=helper.getGetAccessor(attribute)%>Min();
+	<%=helper.getImportedAttributeType(attribute)%> <%=helper.uncapSafeName(attribute)%>Max = _search.<%=helper.getGetAccessor(attribute)%>Max();
+		<%} else {%>
+	<%=helper.getImportedAttributeType(attribute)%> <%=helper.uncapSafeName(attribute)%> = _search.<%=helper.getGetAccessor(attribute)%>();
+		<%}%>
+	<%}%>
+<%}//for%>
+
+        if (ID != 0) {
+            _criteria.add(Expression.eq("ID", ID));
+        }
+
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {
+		XType type = attribute.getType();
+		boolean comparable = type.isComparable();%>
+		<%if (comparable){%>
+        if (<%=helper.uncapSafeName(attribute)%>Min != <%=helper.getDefaultValue(attribute)%>) {
+            _criteria.add(Expression.ge("<%=attribute.getName()%>", <%=helper.uncapSafeName(attribute)%>Min ));
+        }
+
+        if (<%=helper.uncapSafeName(attribute)%>Max != <%=helper.getDefaultValue(attribute)%>) {
+            _criteria.add(Expression.le("<%=attribute.getName()%>", <%=helper.uncapSafeName(attribute)%>Max ));
+        }
+		<%} else  if(type.equals(XmdlTypes.BOOLEAN)||type.equals(XmdlTypes.JAVA_BOOLEAN)) {%>
+		if (<%=helper.uncapSafeName(attribute)%> != <%=helper.getDefaultValue(attribute)%>) {
+            _criteria.add(Expression.eq("<%=attribute.getName()%>", <%=helper.uncapSafeName(attribute)%> ));
+        }		
+		
+		<%}else{%>
+        if (<%=helper.uncapSafeName(attribute)%> != <%=helper.getDefaultValue(attribute)%>) {
+            _criteria.add(Expression.like("<%=attribute.getName()%>", "%" + <%=helper.uncapSafeName(attribute)%> + "%"));
+        }
+		<%}%>
+	<%}%>		
+<%}//for%>
+
+        List list = _criteria.list();
+        return list;
+    }
+    
+<%			XClass master = null;
+			if (MasterChildHelper.INST.isChild(xClass)) { 
+			   master = MasterChildHelper.INST.getMaster(xClass);
+			   if (master != null) { %>
+	/**
+	 * Find by certain master entity
+	 * @generated
+	 */
+    public List<<%=helper.getCapName(xClass)%>> findBy(<%=helper.getCapName(master)%> <%=helper.uncapName(master.getName())%>, Identifier identifier) {
+        LOGGER.debug("<%=helper.getCapName(xClass)%>DAOImpl.findBy");
+        Class entityClass = getEntityClass();
+        String className = entityClass.getName();
+        Query query = getSession()
+                .createQuery("from " + className + " as o where o.<%=helper.uncapName(master.getName())%> = :<%=helper.uncapName(master.getName())%> ");
+        query.setParameter("<%=helper.uncapName(master.getName())%>", <%=helper.uncapName(master.getName())%>.getID(), Hibernate.LONG);
+        return (List<<%=helper.getCapName(xClass)%>>) query.list();    	
+    }
+	
+<%             }
+		    } %>    
+
+} //<%=helper.getCapName(xClass)%>DAO
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

@@ -1,0 +1,17 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.ui.web.webinf.impl" 
+	imports="" 
+	class="DecoratorsXMLImpl" 
+%>
+<decorators defaultdir="/decorators">
+    <excludes>
+        <pattern>/include/*</pattern>
+        <pattern>/common/*</pattern>
+        <pattern>/config/*</pattern>
+        <pattern>/decorators/*</pattern>
+        <pattern>/images/*</pattern>
+    </excludes> 
+    <decorator name="default" page="application01.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+</decorators>
