@@ -1,0 +1,35 @@
+#summary Tips about release management
+#labels Phase-QA
+
+== Building a distribution ==
+
+For building a distribution, simply run [http://xmdl.googlecode.com/svn/trunk/xmdl.lib/build.xml this ant build] script.
+
+Distribution files will be created in *xmdl.lib/dist/* folder.
+
+== Tagging Source Repository ==
+
+When a distribution (not valid for alpha and beta distributions) is delivered, the source repository is tagged using the SVN tag command.
+
+Following command can be used for this purpose.
+
+{{{
+>svn copy https://xmdl.googlecode.com/svn/trunk/ \
+          https://xmdl.googlecode.com/svn/tags/<tag_name> \
+          -m "Tagging the <version_number> release" \
+          --username <your_SVN_username>
+}}}
+where <tagname> can be something like release-x.y.z considering the version number.
+
+Sample:
+
+{{{
+>svn copy https://xmdl.googlecode.com/svn/trunk/ \
+          https://xmdl.googlecode.com/svn/tags/release-0.5 \
+          -m "Tagging the 0.5.0 release" \
+          --username hakandilek
+}}}
+ 
+ 
+ 
+ 
