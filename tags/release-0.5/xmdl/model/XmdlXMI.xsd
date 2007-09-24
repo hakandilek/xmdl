@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:chrome.xmdl="http://chrome/xmdl.ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://chrome/xmdl.ecore">
+  <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="XMI.xsd"/>
+  <xsd:simpleType name="XAssociationType">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="OneToOne"/>
+      <xsd:enumeration value="OneToMany"/>
+      <xsd:enumeration value="ManyToOne"/>
+      <xsd:enumeration value="ManyToMany"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="XAssociationBehaviour">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="aggregation"/>
+      <xsd:enumeration value="composition"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="XProject">
+    <xsd:complexContent>
+      <xsd:extension base="chrome.xmdl:XBase">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="packages" type="chrome.xmdl:XPackage"/>
+        </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="XProject" type="chrome.xmdl:XProject"/>
+  <xsd:complexType name="XPackage">
+    <xsd:complexContent>
+      <xsd:extension base="chrome.xmdl:XBase">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="classes" type="chrome.xmdl:XClass"/>
+          <xsd:element name="enumerations" type="chrome.xmdl:XEnumeration"/>
+        </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="XPackage" type="chrome.xmdl:XPackage"/>
+  <xsd:complexType name="XClass">
+    <xsd:complexContent>
+      <xsd:extension base="chrome.xmdl:XBase">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="superTypes" type="chrome.xmdl:XClass"/>
+          <xsd:element name="attributes" type="chrome.xmdl:XAttribute"/>
+          <xsd:element name="methods" type="chrome.xmdl:XMethod"/>
+        </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="className" type="xsd:string"/>
+        <xsd:attribute name="comparable" type="xsd:boolean"/>
+        <xsd:attribute name="superTypes" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="XClass" type="chrome.xmdl:XClass"/>
+  <xsd:complexType name="XEnumeration">
+    <xsd:complexContent>
+      <xsd:extension base="chrome.xmdl:XBase">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="literals" type="chrome.xmdl:XEnumerationLiteral"/>
+          <xsd:element name="defaultLiteral" type="chrome.xmdl:XEnumerationLiteral"/>
+        </xsd:choice>
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="className" type="xsd:string"/>
+        <xsd:attribute name="defaultLiteral" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="XEnumeration" type="chrome.xmdl:XEnumeration"/>
+  <xsd:complexType name="XEnumerationLiteral">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="enumeration" type="chrome.xmdl:XEnumeration"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="value" type="xsd:int" use="required"/>
+    <xsd:attribute name="enumeration" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="XEnumerationLiteral" type="chrome.xmdl:XEnumerationLiteral"/>
+  <xsd:complexType name="XAttribute">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="type" type="chrome.xmdl:XType"/>
+      <xsd:element name="opposite" type="chrome.xmdl:XAttribute"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string"/>
+    <xsd:attribute name="length" type="xsd:int"/>
+    <xsd:attribute name="defaultValue" type="xsd:string"/>
+    <xsd:attribute name="associationType" type="chrome.xmdl:XAssociationType"/>
+    <xsd:attribute name="associationBehaviour" type="chrome.xmdl:XAssociationBehaviour"/>
+    <xsd:attribute name="navigable" type="xsd:boolean"/>
+    <xsd:attribute name="type" type="xsd:string"/>
+    <xsd:attribute name="opposite" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="XAttribute" type="chrome.xmdl:XAttribute"/>
+  <xsd:complexType name="XMethod">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="type" type="chrome.xmdl:XType"/>
+      <xsd:element name="parameters" type="chrome.xmdl:XParameter"/>
+      <xsd:element name="exceptions" type="chrome.xmdl:XException"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="index" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string"/>
+    <xsd:attribute name="type" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="XMethod" type="chrome.xmdl:XMethod"/>
+  <xsd:complexType name="XParameter">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="type" type="chrome.xmdl:XType"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string"/>
+    <xsd:attribute name="type" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="XParameter" type="chrome.xmdl:XParameter"/>
+  <xsd:complexType abstract="true" name="XBase">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="XBase" type="chrome.xmdl:XBase"/>
+  <xsd:complexType abstract="true" name="XType">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string"/>
+    <xsd:attribute name="className" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="XType" type="chrome.xmdl:XType"/>
+  <xsd:complexType name="XException">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="javaClass" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:element name="XException" type="chrome.xmdl:XException"/>
+  <xsd:complexType abstract="true" name="XModel">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="XModel" type="chrome.xmdl:XModel"/>
+</xsd:schema>
