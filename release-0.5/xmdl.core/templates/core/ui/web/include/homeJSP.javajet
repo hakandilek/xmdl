@@ -1,0 +1,10 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.ui.web.include.impl" 
+	imports="
+			chrome.xmdl.*
+			"
+	class="HomeJSPImpl"
+	startTag="<$" endTag="$>" 
+%><$ 
+	XProject project = (XProject) argument;	
+$>Welcome to <$=project.getName()$>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+    <extension
+         id="xmdl.core"
+         name="XMDL Core Platform"
+         point="xmdl.gen.register">
+      <platform
+            class="chrome.xmdl.core.platform.XmdlCorePlatform"
+            name="Cekirdek"
+            version="0.5.0"/>
+   </extension>
+
+
+</plugin>

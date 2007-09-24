@@ -1,0 +1,53 @@
+<%@ jet 
+    package="chrome.xmdl.core.templates.model.impl" 
+    imports="java.util.* 
+            chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*"
+    class="EntityTemplateImpl" 
+%><%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage(); 
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+    %>
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.model;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport("java.util.*");%>
+<%importManager.addImport("chrome.xmdl.lib.dao.*");%>
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+/** 
+ * $Id$
+ *
+ * @generated
+ */ 
+public interface <%=helper.getCapName(xClass)%> extends Entity { 
+
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+    XAttribute attribute = (XAttribute) i.next();%>
+<%if (attribute.getType() != null) {%>
+    /** 
+     * @generated
+     */
+    <%=helper.getImportedAttributeType(attribute)%> <%=helper.getGetAccessor(attribute)%>();
+
+    /**
+     * @generated
+     */
+    void set<%=helper.getAccessorName(attribute)%>(<%=helper.getImportedAttributeType(attribute)%> new<%=helper.getCapName(attribute)%>);
+
+<%}//if (attribute.getType() !=null%>
+<%}//for%>
+
+} //<%=helper.getCapName(xClass)%>
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

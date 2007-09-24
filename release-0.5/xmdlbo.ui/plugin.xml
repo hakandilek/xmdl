@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http:///chrome/xmdl.bo.ecore" 
+       class = "chrome.xmdlbo.provider.XmdlboItemProviderAdapterFactory"
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+  
+
+
+  <extension point = "org.eclipse.ui.editors">
+    <editor
+        id = "chrome.xmdlbo.presentation.XmdlboEditorID"
+        name = "%_UI_XmdlboEditor_label"
+        icon = "icons/full/obj16/XmdlboModelFile.gif"
+        extensions = "xmdlbo"
+        class = "chrome.xmdlbo.presentation.XmdlboEditor" 
+        contributorClass="chrome.xmdlbo.presentation.XmdlboActionBarContributor" >
+    </editor>
+  </extension>    
+  
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http:///chrome/xmdl.bo.ecore" 
+       class = "chrome.xmdlbo.XmdlboPackage"
+       genModel = "model/xmdlbo.genmodel" /> 
+  </extension>
+  
+</plugin>

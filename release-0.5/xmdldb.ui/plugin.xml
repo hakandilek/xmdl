@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http:///chrome/xmdl.db.ecore" 
+       class = "chrome.xmdldb.provider.XmdldbItemProviderAdapterFactory"
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+  
+
+
+  <extension point = "org.eclipse.ui.editors">
+    <editor
+        id = "chrome.xmdldb.presentation.XmdldbEditorID"
+        name = "%_UI_XmdldbEditor_label"
+        icon = "icons/full/obj16/XmdldbModelFile.gif"
+        extensions = "xmdldb"
+        class = "chrome.xmdldb.presentation.XmdldbEditor" 
+        contributorClass="chrome.xmdldb.presentation.XmdldbActionBarContributor" >
+    </editor>
+  </extension>    
+  
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http:///chrome/xmdl.db.ecore" 
+       class = "chrome.xmdldb.XmdldbPackage"
+       genModel = "model/xmdl.db.genmodel" /> 
+  </extension>
+  
+</plugin>
