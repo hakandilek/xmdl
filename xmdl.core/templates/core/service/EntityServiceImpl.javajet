@@ -8,6 +8,7 @@
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage();
     ClassHelper helper = XMDLClassHelper.INSTANCE;
+    MasterChildHelper mcHelper = MasterChildHelper.INST;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     %>
     
@@ -168,9 +169,11 @@ public class <%=xClass.getName()%>ServiceImpl extends AbstractEntityService<<%=x
      */	
 
 	<%	XClass master = null;
+		XAttribute masterAttribute = null;
 		if (MasterChildHelper.INST.isChild(xClass)) { 
 		   master = MasterChildHelper.INST.getMaster(xClass);
-		   if (master != null) { %>
+		   masterAttribute = MasterChildHelper.INST.getMasterPointerAttribute(xClass);
+		   if (master != null && masterAttribute != null) { %>
 		   
     /** 
      * @generated
@@ -208,7 +211,7 @@ public class <%=xClass.getName()%>ServiceImpl extends AbstractEntityService<<%=x
 
         Serializable masterID = (Serializable) context.get(<%=master.getName()%>Service.<%=helper.capAllName(master.getName())%>_ID_KEY);
         <%=master.getName()%> <%=helper.uncapName(master.getName())%> =(<%=master.getName()%>) get<%=master.getName()%>DAO().load(masterID, identifier);
-        entity.set<%=master.getName()%>(<%=helper.uncapName(master.getName())%>);
+        entity.set<%=helper.getAccessorName(masterAttribute)%>(<%=helper.uncapName(master.getName())%>);
         context.put(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_KEY, <%=helper.uncapName(master.getName())%>);
 
         if (list == null) {
@@ -216,7 +219,7 @@ public class <%=xClass.getName()%>ServiceImpl extends AbstractEntityService<<%=x
             putEntityList(context, all);
         }
 
-        LOGGER.debug("entity.get<%=master.getName()%>() = " + entity.get<%=master.getName()%>());
+        LOGGER.debug("entity.<%=helper.getGetAccessor(masterAttribute)%>() = " + entity.<%=helper.getGetAccessor(masterAttribute)%>());
 
         Boolean copy = (Boolean) context.get(COPY_KEY);
         if (copy == null) copy = Boolean.FALSE;
@@ -251,7 +254,7 @@ public class <%=xClass.getName()%>ServiceImpl extends AbstractEntityService<<%=x
 
         Serializable masterID = (Serializable) context.get(<%=master.getName()%>Service.<%=helper.capAllName(master.getName())%>_ID_KEY);
         <%=master.getName()%> <%=helper.uncapName(master.getName())%> = ( <%=master.getName()%> )get<%=master.getName()%>DAO().load(masterID, identifier);
-        entity.set<%=master.getName()%>(<%=helper.uncapName(master.getName())%>);
+        entity.set<%=helper.getAccessorName(masterAttribute)%>(<%=helper.uncapName(master.getName())%>);
         context.put(<%=xClass.getName()%>Service.<%=helper.capAllName(master.getName())%>_KEY, <%=helper.uncapName(master.getName())%>);
 
         getDAO().dbModify(entity, identifier);

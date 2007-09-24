@@ -95,7 +95,7 @@ public class MasterChildHelper {
 	 * @param xClass
 	 *            child class
 	 * @return master class
-	 * @see isChild();
+	 * @see #isChild(XClass);
 	 */
 	public XClass getMaster(XClass xClass) {
 		LOGGER.debug("getMaster(xClass)");
@@ -121,7 +121,39 @@ public class MasterChildHelper {
 		return null;
 	}
 
-	/**
+    /**
+     * Returns the pointing out attribute to master class of the given class if that class is a child class
+     * 
+     * @param xClass
+     *            child class
+     * @return the pointing out attribute to master class
+     * @see #getMaster(XClass);
+     */
+    public XAttribute getMasterPointerAttribute(XClass xClass) {
+        LOGGER.debug("getMaster(xClass)");
+        if (isChild(xClass)) {
+            
+            List<XAttribute> attributes = xClass.getAttributes();
+            for (Iterator<XAttribute> it = attributes.iterator(); it.hasNext();) {
+                XAttribute attribute = (XAttribute) it.next();
+                XAssociationType associationType = attribute.getAssociationType();
+                if (XAssociationType.MANY_TO_ONE_LITERAL == associationType) {
+                    XAttribute opposite = attribute.getOpposite();
+                    if (opposite != null) {
+                        XAssociationBehaviour oppositeBehaviour = opposite
+                                .getAssociationBehaviour();
+                        XAssociationType oppositeType = opposite
+                                .getAssociationType();
+                        if( (XAssociationBehaviour.COMPOSITION_LITERAL == oppositeBehaviour && XAssociationType.ONE_TO_MANY_LITERAL == oppositeType))
+                            return attribute;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
 	 * Returns children of a master class
 	 * 
 	 * @param xClass
