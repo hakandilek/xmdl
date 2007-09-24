@@ -94,8 +94,8 @@ public class EntityServiceImplTemplateImpl
   protected final String TEXT_76 = ");" + NL + "" + NL + "        if (list == null) {" + NL + "            List<";
   protected final String TEXT_77 = "> all = get";
   protected final String TEXT_78 = "DAO().findBy(";
-  protected final String TEXT_79 = ", identifier);" + NL + "            putEntityList(context, all);" + NL + "        }" + NL + "" + NL + "        LOGGER.debug(\"entity.get";
-  protected final String TEXT_80 = "() = \" + entity.get";
+  protected final String TEXT_79 = ", identifier);" + NL + "            putEntityList(context, all);" + NL + "        }" + NL + "" + NL + "        LOGGER.debug(\"entity.";
+  protected final String TEXT_80 = "() = \" + entity.";
   protected final String TEXT_81 = "());" + NL + "" + NL + "        Boolean copy = (Boolean) context.get(COPY_KEY);" + NL + "        if (copy == null) copy = Boolean.FALSE;" + NL + "        LOGGER.debug(\"copy = \" + copy);" + NL + "        Long id = (Long) entity.getID();" + NL + "        LOGGER.debug(\"masterID = \" + id);" + NL + "        if (id > 0) {";
   protected final String TEXT_82 = NL + "            ";
   protected final String TEXT_83 = " dbEntity = getDAO().load(id, identifier);" + NL + "            if (copy) {";
@@ -144,6 +144,7 @@ public class EntityServiceImplTemplateImpl
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage();
     ClassHelper helper = XMDLClassHelper.INSTANCE;
+    MasterChildHelper mcHelper = MasterChildHelper.INST;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     
     stringBuffer.append(TEXT_1);
@@ -272,9 +273,11 @@ importManager.addImport(helper.getQualifiedName(xPackage) + ".model.*");
     stringBuffer.append(helper.capAllName(xClass.getName()));
     stringBuffer.append(TEXT_52);
     	XClass master = null;
+		XAttribute masterAttribute = null;
 		if (MasterChildHelper.INST.isChild(xClass)) { 
 		   master = MasterChildHelper.INST.getMaster(xClass);
-		   if (master != null) { 
+		   masterAttribute = MasterChildHelper.INST.getMasterPointerAttribute(xClass);
+		   if (master != null && masterAttribute != null) { 
     stringBuffer.append(TEXT_53);
     stringBuffer.append(master.getName());
     stringBuffer.append(TEXT_54);
@@ -310,7 +313,7 @@ importManager.addImport(helper.getQualifiedName(xPackage) + ".model.*");
     stringBuffer.append(TEXT_70);
     stringBuffer.append(master.getName());
     stringBuffer.append(TEXT_71);
-    stringBuffer.append(master.getName());
+    stringBuffer.append(helper.getAccessorName(masterAttribute));
     stringBuffer.append(TEXT_72);
     stringBuffer.append(helper.uncapName(master.getName()));
     stringBuffer.append(TEXT_73);
@@ -326,9 +329,9 @@ importManager.addImport(helper.getQualifiedName(xPackage) + ".model.*");
     stringBuffer.append(TEXT_78);
     stringBuffer.append(helper.uncapName(master.getName()));
     stringBuffer.append(TEXT_79);
-    stringBuffer.append(master.getName());
+    stringBuffer.append(helper.getGetAccessor(masterAttribute));
     stringBuffer.append(TEXT_80);
-    stringBuffer.append(master.getName());
+    stringBuffer.append(helper.getGetAccessor(masterAttribute));
     stringBuffer.append(TEXT_81);
     stringBuffer.append(TEXT_82);
     stringBuffer.append(xClass.getName());
@@ -355,7 +358,7 @@ importManager.addImport(helper.getQualifiedName(xPackage) + ".model.*");
     stringBuffer.append(TEXT_95);
     stringBuffer.append(master.getName());
     stringBuffer.append(TEXT_96);
-    stringBuffer.append(master.getName());
+    stringBuffer.append(helper.getAccessorName(masterAttribute));
     stringBuffer.append(TEXT_97);
     stringBuffer.append(helper.uncapName(master.getName()));
     stringBuffer.append(TEXT_98);
