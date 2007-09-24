@@ -36,7 +36,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XPackage/classes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference xmdl.ecore#//XPackage/enumerations"/>
     </genClasses>
-    <genClasses ecoreClass="xmdl.ecore#//XClass">
+    <genClasses ecoreClass="xmdl.ecore#//XClass" labelFeature="#//xmdl/XType/className">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XClass/xPackage"/>
       <genFeatures property="None" children="true" createChild="false" propertyDescription=""
           ecoreFeature="ecore:EReference xmdl.ecore#//XClass/superTypes"/>
