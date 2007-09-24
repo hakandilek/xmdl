@@ -1,0 +1,40 @@
+<%@ jet 
+    package="chrome.xmdl.core.templates.service.impl" 
+    imports="chrome.xmdl.*
+             chrome.xmdl.gen.util.*
+             org.eclipse.emf.codegen.util.*"
+    class="SampleListenerTemplateImpl" 
+%><%
+    XProject xProject = (XProject) argument;
+    XPackage xPackage = (XPackage) xProject.getPackages().get(0);
+     
+    //DBHelper dbHelper = XMDLDBHelper.INSTANCE;    
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+    %>
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.bo;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport("java.util.*");%>
+<%importManager.addImport("chrome.xmdl.lib.dao.*");%>
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+
+/**
+ * SampleListener.
+ *
+ * @author tr1a3571
+ * @version 1.0
+ * @generated
+ */
+public interface SampleListener {
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

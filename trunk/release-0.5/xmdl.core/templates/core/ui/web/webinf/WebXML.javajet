@@ -1,0 +1,192 @@
+<%@ jet 
+	package="chrome.xmdl.core.templates.ui.web.webinf.impl" 
+	imports="java.util.* 
+			chrome.xmdl.*
+			chrome.xmdl.gen.util.*"
+	class="WebXMLImpl" 
+%><%
+	XProject project = (XProject) argument;	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+%><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+    <display-name>xmdl.tmp</display-name>
+
+    <!-- Define the basename for a resource bundle for I18N -->
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>
+<%for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
+		XPackage xPackage = (XPackage ) itp.next();%>
+        	<%=XMDLClassHelper.INSTANCE.getQualifiedName(xPackage)%>.ApplicationResources<%=itp.hasNext()? ",": ""%>
+<%}%>
+    	</param-value>
+    </context-param>
+    <!-- Fallback locale if no bundles found for browser's preferred locale -->
+    <!-- Force a single locale using param-name 'javax.servlet.jsp.jstl.fmt.locale' -->
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+        <param-value>en</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+<%for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
+		XPackage xPackage = (XPackage ) itp.next();%>
+            classpath*:/**/<%=XMDLClassHelper.INSTANCE.getQualifiedPath(xPackage)%>/applicationContext-*.xml
+<%}%>
+        </param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>menuConfigLocation</param-name>
+        <param-value> /WEB-INF/menu-config.xml </param-value>
+    </context-param>
+
+
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>CharacterEncoding</filter-name>
+        <filter-class>chrome.xmdl.lib.ui.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>ISO-8859-9</param-value>
+        </init-param>
+        <init-param>
+            <param-name>locale</param-name>
+            <param-value>tr</param-value>
+        </init-param>
+    </filter>
+
+    <filter>
+        <filter-name>requestLogger</filter-name>
+        <filter-class>chrome.xmdl.lib.ui.web.filter.RequestLogFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>/*</url-pattern>
+        <!--dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher-->
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>CharacterEncoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+<!--    <filter-mapping>-->
+<!--        <filter-name>requestLogger</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>net.sf.navigator.menu.MenuContextListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <init-param>
+            <param-name>detail</param-name>
+            <param-value>2</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/common/error.jsp</location>
+    </error-page>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>no_access</web-resource-name>
+			<url-pattern>*.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint/>
+	</security-constraint>
+
+   <!-- Restrict access to all resources -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Default</web-resource-name>
+            <url-pattern>/</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Grant public access (for non-authenticated users) -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Public Access</web-resource-name>
+            <url-pattern>/common/*</url-pattern>
+            <url-pattern>/images/*</url-pattern>
+            <url-pattern>/config/*</url-pattern>
+            <url-pattern>/scripts/*</url-pattern>
+            <url-pattern>/styles/*</url-pattern>
+            <url-pattern>/home.do</url-pattern>
+            <url-pattern>/index.jsp</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Moderator</web-resource-name>
+
+	<%for (Iterator<XPackage> i = project.getPackages().iterator(); i.hasNext();) {
+	    XPackage xPackage = (XPackage) i.next();%>
+		<%for (Iterator<XClass> i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
+		    XClass xClass = (XClass) i2.next();%>
+            <url-pattern>/edit<%=helper.getCapName(xClass)%>.do</url-pattern>
+            <url-pattern>/search<%=helper.getCapName(xClass)%>.do</url-pattern>
+		<%  } %> 
+	<%}%>
+        </web-resource-collection>
+
+<!-- Moderator security constraint. Uncomment this block to secure pages.
+        <auth-constraint>
+            <role-name>Moderator</role-name>
+        </auth-constraint>
+ -->
+    </security-constraint>
+ 
+    <login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+
+    <security-role>
+        <role-name>Moderator</role-name>
+    </security-role>
+	
+</web-app>

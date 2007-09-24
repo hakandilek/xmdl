@@ -1,0 +1,10 @@
+bin
+target
+xmdl.lib.iml
+xmdl.lib.ipr
+xmdl.lib.iws
+lib.iml
+lib.ipr
+lib.iws
+xmdl.corelib.iml
+project.properties

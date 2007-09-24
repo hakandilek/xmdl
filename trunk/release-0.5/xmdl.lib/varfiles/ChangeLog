@@ -1,0 +1,20 @@
+This file list changes in XMDL project. See http://code.google.com/p/xmdl/issues/list for the full 
+list of open/fixed issues. 
+
+0.5.0 - beta1
+
+   In this version various missing files and global building script added to the project
+
+   ~ Issue #2 - Automatic building - ant build script for the whole project
+   ~ Issue #11 - GNU Standard files
+   ~ Issue #12 - Licenses of 3rd party tools
+
+0.5.0 - alpha1
+
+   This version mainly aims to fix Eclipse 3. and Java 1.5 (5.0) compatibility.
+
+   ~ Issue #1 - Eclipse 3.3 compatibility
+   ~ Issue #3 - Fix Java 5.0 Generics warning in source code
+   ~ Issue #4 - JMerger Deprecated
+   ~ Issue #5 - Platform.resolve Deprecated
+   

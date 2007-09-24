@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates:JETTemplateContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:templates="http://www.metys.com/merlin/generation/templates.ecore" javaJETSource="xmdl.gen">
+  <jetTemplates xsi:type="templates:TextJETTemplate" templateFilePath="/xmdl.gen/templates/xmdl/dao/Entity.hbm.xml.jet" outputDirectoryPath="/xmdl.xmp/src" outputFileName="" fileSuffix=".hbm.xml"/>
+  <jetTemplates xsi:type="templates:JavaJETTemplate" templateFilePath="/xmdl.gen/templates/xmdl/dao/Entity.javajet" outputDirectoryPath="/xmdl.xmp/src"/>
+  <jetTemplates xsi:type="templates:JavaJETTemplate" templateFilePath="/xmdl.gen/templates/xmdl/dao/EntityDAO.javajet" outputDirectoryPath="/xmdl.xmp/src"/>
+  <jetTemplates xsi:type="templates:JavaJETTemplate" templateFilePath="/xmdl.gen/templates/xmdl/dao/EntityImpl.javajet" outputDirectoryPath="/xmdl.xmp/src"/>
+  <jetTemplates xsi:type="templates:JavaJETTemplate" templateFilePath="/xmdl.gen/templates/xmdl/model/Class.javajet" outputDirectoryPath="/xmdl.xmp/src"/>
+  <jetTemplates xsi:type="templates:JavaJETTemplate" templateFilePath="/xmdl.gen/templates/xmdl/model/Interface.javajet" outputDirectoryPath="/xmdl.xmp/src"/>
+</templates:JETTemplateContainer>

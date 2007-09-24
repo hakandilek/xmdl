@@ -1,0 +1,96 @@
+<project default="dist_all">
+
+	<property file="${user.home}/xmdl.build.properties" />
+	<loadproperties srcFile="build.properties" />
+
+	<tstamp>
+		<format property="TODAY" pattern="yyyyMMdd" />
+	</tstamp>
+	<property name="version.pattern" value="${dist.version.prefix}.${TODAY}_${dist.version.suffix}" />
+
+	<path id="total.classpath">
+        <fileset dir="dist/plugins/">
+            <include name="**/*.jar" />
+        </fileset>
+		<fileset dir="${eclipse.plugin.dir}" includes="**/*.jar" />
+		<fileset dir="${eclipse.plugin.dir2}" includes="**/*.jar" />
+		<fileset dir="${eclipse.plugin.dir3}" includes="**/*.jar" />
+	</path>
+
+	<!-- ================================= 
+          target: build_plugins              
+         ================================= -->
+	<target name="dist_all" description="--> builds the jar files in the eclipse plugin format">
+		<antcall target="dist_lib" />
+		<antcall target="dist_xmdl" />
+	</target>
+
+	<!-- ================================= 
+          target: clean              
+         ================================= -->
+	<target name="clean" description="--> cleans the build target">
+		<delete dir="dist" />
+		<delete dir="build" />
+	</target>
+
+	<!-- ================================= 
+          target: dist_lib              
+         ================================= -->
+	<target name="dist_lib">
+		<ant antfile="build_lib.xml" target="build_plugins" />
+	</target>
+
+	<macrodef name="dist_plugin">
+		<attribute name="plugin.name" />
+
+		<sequential>
+			<mkdir dir="build/@{plugin.name}" />
+			<javac srcdir="../@{plugin.name}/src" destdir="build/@{plugin.name}" debug="on">
+				<classpath refid="total.classpath" />
+			</javac>
+			<manifest file="../@{plugin.name}/META-INF/MANIFEST.MF" mode="update">
+				<attribute name="Built-By" value="${dist.build.user}" />
+				<attribute name="Bundle-Version" value="${version.pattern}" />
+			</manifest>
+			<jar destfile="dist/plugins/@{plugin.name}_${version.pattern}.jar" manifest="../@{plugin.name}/META-INF/MANIFEST.MF">
+				<fileset dir="build/@{plugin.name}" excludes="**/Test.class" />
+				<fileset dir="../@{plugin.name}">
+					<include name="plugin.*" />
+					<include name="model/*" />
+                    <include name="res/*" />
+                    <include name="icons/**" />
+				</fileset>
+			</jar>
+		</sequential>
+	</macrodef>
+
+	<!-- ================================= 
+          target: dist_xmdl              
+         ================================= -->
+	<target name="dist_xmdl" depends="init" description="--> builds plugins out of xmdl jar files">
+
+		<dist_plugin plugin.name="xmdl" />
+		<dist_plugin plugin.name="xmdl.gen" />
+		<dist_plugin plugin.name="xmdl.ui" />
+		<dist_plugin plugin.name="xmdlbo.ui" />
+		<dist_plugin plugin.name="xmdldb.ui" />
+		<dist_plugin plugin.name="xmdlgen.ui" />
+		<dist_plugin plugin.name="xmdl.gen" />
+		<dist_plugin plugin.name="xmdl.core" />
+
+		<zip destfile="dist/xmdl_${version.pattern}.zip">
+			<fileset dir="dist" includes="plugins/*" />
+			<zipfileset dir="licenses" includes="*" prefix="xmdl" />
+			<zipfileset dir="varfiles" includes="*" prefix="xmdl" />
+		</zip>
+
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<mkdir dir="build" />
+		<mkdir dir="dist/plugins" />
+	</target>
+</project>
