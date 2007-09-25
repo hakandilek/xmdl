@@ -123,7 +123,7 @@ This chapter explains details for introducing a new target platform, or changing
 Each platform is defined as an Eclipse plugin. A platform plugin uses the "xmdl.gen.registry" extension point to register itself as a plugin. Thus, code generation can be performed for this plugin via the editors context menu.
 
 *xmdl.gen.registry* extension point has the following configuration markup:
-{{
+{{{
 <!ELEMENT extension (platform+)>
 <!ATTLIST extension
     point CDATA #IMPLIED
@@ -147,7 +147,7 @@ Each platform is defined as an Eclipse plugin. A platform plugin uses the "xmdl.
     version - Platform version 
     class - Implementation class name 
  -->
-}}
+}}}
  
 An [http://help.eclipse.org/help32/index.jsp?topic=/org.eclipse.pde.doc.user/guide/tools/editors/manifest_editor/extension_points.htm extension point] must be defined in the platform's plugin.xml file. You can use a simple text editor or the [http://help.eclipse.org/help32/topic/org.eclipse.pde.doc.user/guide/tools/editors/manifest_editor/editor.htm Plug-in manifest editor] to add a platform definition.
 
