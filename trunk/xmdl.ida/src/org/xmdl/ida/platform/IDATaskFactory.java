@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
+import org.xmdl.ida.templates.model.Entity;
+import org.xmdl.ida.templates.project.Constants;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.xgen.AbstractTaskFactory;
@@ -63,9 +65,14 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
             if (templates == null) {
                 templates = new ArrayList<Template>();
                 templates.clear();
+
+                //Project General
+                templates.add(new Constants());
+
                 //build
 
                 // model
+                templates.add(new Entity());
 
                 // dao
 
