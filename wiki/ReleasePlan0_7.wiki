@@ -1,0 +1,21 @@
+#summary ORelease plan for version 0.7
+#labels Draft,Phase-Requirements
+
+== Introduction ==
+
+This document lists the features and ideas that will be included with version 0.7 of the software.
+
+Structural changes on the metamodel are the main topic of this release
+
+== Details ==
+
+The following past conversations might be useful:
+
+  * [http://groups.google.com/group/xmdl/browse_thread/thread/aa5920eeced53387# Ideas about Model Structure]
+  * [http://groups.google.com/group/xmdl/browse_thread/thread/a94ae9173b8ee348# Metamodel planing conversation]
+  * [http://groups.google.com/group/xmdl/browse_thread/thread/7d621455b5a9847d# Code Generation and Metamodel General]
+  * [http://groups.google.com/group/xmdl/browse_thread/thread/8e007099e09dcdbf# Menu Structure]
+  * [http://groups.google.com/group/xmdl/browse_thread/thread/a34d1f0324dcb777/968e8ff888e0ec23#968e8ff888e0ec23 Menu Structure Again]
+  * [http://groups.google.com/group/xmdl/browse_thread/thread/81c2495ace683f08# MVC structure in PHP]
+  * [Entity Based security model (SID) http://groups.google.com/group/xmdl/browse_thread/thread/fd30fd3e0aacc3cf#]
+  * [Entity Logs http://groups.google.com/group/xmdl/browse_thread/thread/91dedd8770fa6926#]
