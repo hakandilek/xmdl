@@ -1,0 +1,30 @@
+<%@ jet 
+	package="org.xmdl.ida.templates.core.res" 
+	class="HibernateCFGImpl" 
+    imports="java.util.*
+    		chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+			"
+	%><%
+    XProject prj = (XProject) argument;
+    List<XPackage> packages = prj.getPackages();
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%><!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+<%for (Iterator<XPackage> iter = packages.iterator(); iter.hasNext();) {
+	XPackage pack = iter.next();
+	List<XClass> classes = pack.getClasses();
+	for (Iterator<XClass> iter2 = classes.iterator(); iter.hasNext();) {
+		XClass xClass = iter2.next();
+		if (xClass != null){
+			%><mapping class="<%=helper.getQualifiedName(pack)%>.model.<%=helper.getQualifiedName(xClass)%>"/><%
+		}
+	}
+} 
+%>
+    </session-factory>
+</hibernate-configuration>

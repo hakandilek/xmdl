@@ -1,0 +1,47 @@
+<%@ jet 
+	package="org.xmdl.ida.templates.dao" 
+	class="EntityDAOImpl" 
+    imports="chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*
+			"
+	%><%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage(); 
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <%=helper.getQualifiedName(xPackage)%>.dao;
+
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.dao;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport("org.xmdl.ida.lib.dao.GenericDao");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.search.*");%>
+<%importManager.addImport("java.util.*");%>
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+/**
+ *
+ * <%=helper.getCapName(xClass)%> DAO interface
+ *  
+ * $Id$
+ *
+ * @generated
+ */ 
+public interface <%=helper.getCapName(xClass)%>DAO extends GenericDao<<%=helper.getCapName(xClass)%>, Long> {
+
+    Collection<<%=helper.getCapName(xClass)%>> search(String name, Double fromPrice, Double toPrice, ProductType productType);
+    Collection<<%=helper.getCapName(xClass)%>> search(<%=helper.getCapName(xClass)%>Search searchBean);
+
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

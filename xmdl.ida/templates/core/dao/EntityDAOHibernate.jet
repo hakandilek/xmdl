@@ -1,0 +1,108 @@
+<%@jet 
+	package="org.xmdl.ida.templates.dao" 
+	class="EntityDAOHibernateImpl" 
+    imports="chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*
+			"
+	%><%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage(); 
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <%=helper.getQualifiedName(xPackage)%>.dao;
+
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.dao.hibernate;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport("org.xmdl.ida.lib.dao.hibernate.GenericDaoHibernate");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".dao.*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.search.*");%>
+
+<%importManager.addImport("org.hibernate.*");%>
+<%importManager.addImport("org.hibernate.criterion.*");%>
+
+<%importManager.addImport("java.util.*");%>
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+/**
+ *
+ * <%=helper.getCapName(xClass)%> DAO Hibernate implementation
+ *  
+ * $Id$
+ *
+ * @generated
+ */ 
+public class <%=helper.getCapName(xClass)%>DAOHibernate extends GenericDaoHibernate<<%=helper.getCapName(xClass)%>, Long> implements <%=helper.getCapName(xClass)%>Dao {
+
+    public <%=helper.getCapName(xClass)%>DAOHibernate() {
+        super(<%=helper.getCapName(xClass)%>.class);
+    }
+
+    public Collection<<%=helper.getCapName(xClass)%>> search(<%=helper.getCapName(xClass)%>Search <%=helper.uncapSafeName(xClass)%>Search) {
+    	if (log.isDebugEnabled()) {
+    		log.debug("search(<%=helper.getCapName(xClass)%>Search <%=helper.uncapSafeName(xClass)%>Search) <-");
+        	log.debug("<%=helper.uncapSafeName(xClass)%>Search: " + <%=helper.uncapSafeName(xClass)%>Search);
+    	}
+    	
+		Collection<<%=helper.getCapName(xClass)%>> list = null;
+		if (<%=helper.uncapSafeName(xClass)%>Search == null) {
+			list = new ArrayList<<%=helper.getCapName(xClass)%>>();
+		} else {
+		//TODO:iterate fields
+			String name = <%=helper.uncapSafeName(xClass)%>Search.getName();
+			Double fromPrice = <%=helper.uncapSafeName(xClass)%>Search.getFromPrice();
+			Double toPrice = <%=helper.uncapSafeName(xClass)%>Search.getToPrice();
+			ProductType productType = <%=helper.uncapSafeName(xClass)%>Search.getProductType();
+
+			list = search(name, fromPrice, toPrice, productType);
+		}
+
+		if (log.isDebugEnabled())
+			log.debug("search(<%=helper.getCapName(xClass)%>Search <%=helper.uncapSafeName(xClass)%>Search) ->");
+    	return list;
+    }
+
+    public Collection<<%=helper.getCapName(xClass)%>> search(String name, Double fromPrice, Double toPrice, ProductType productType) {
+    	if (log.isDebugEnabled()) {
+		//TODO:iterate fields
+    		log.debug("search(String name, Double fromPrice, Double toPrice) <-");
+		//TODO:iterate fields
+        	log.debug("name       : " + name);
+        	log.debug("fromPrice  : " + fromPrice);
+        	log.debug("toPrice    : " + toPrice);
+            log.debug("productType: " + productType);
+    	}
+    	
+        Criteria criteria = getSession().createCriteria(<%=helper.getCapName(xClass)%>.class);
+
+		//TODO:iterate fields
+        if (name != null && !name.equals(""))
+            criteria.add(Restrictions.like("name", "%" + name + "%"));
+        if (fromPrice != null)
+            criteria.add(Restrictions.ge("price", fromPrice));
+        if (toPrice != null)
+            criteria.add(Restrictions.le("price", toPrice));
+        if (productType != null){
+            criteria.add(Restrictions.eq("productType", productType));
+        }
+
+        List<<%=helper.getCapName(xClass)%>> list = criteria.list();
+        
+		//TODO:iterate fields
+        if (log.isDebugEnabled()) log.debug("search(String name, Double fromPrice, Double toPrice, ProductType productType) <-");
+		return list;
+    }
+
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

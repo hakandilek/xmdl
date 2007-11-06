@@ -5,8 +5,13 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
+import org.xmdl.ida.templates.core.res.HibernateCFG;
+import org.xmdl.ida.templates.dao.EntityDAO;
+import org.xmdl.ida.templates.dao.EntityDAOHibernate;
 import org.xmdl.ida.templates.model.Entity;
 import org.xmdl.ida.templates.project.Constants;
+import org.xmdl.ida.templates.service.EntityService;
+import org.xmdl.ida.templates.service.EntityServiceIMPL;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.xgen.AbstractTaskFactory;
@@ -69,18 +74,21 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 //Project General
                 templates.add(new Constants());
 
-                //build
+                // build
 
                 // model
                 templates.add(new Entity());
 
                 // dao
+                templates.add(new EntityDAO());
+                templates.add(new EntityDAOHibernate());
 
-                // CONTEXT
+                // service
+                templates.add(new EntityService());
+                templates.add(new EntityServiceIMPL());
 
-                // bo
-
-                // ui.web
+                // core.resources
+                templates.add(new HibernateCFG());
 
                 //jsp
 
