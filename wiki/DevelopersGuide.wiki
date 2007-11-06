@@ -70,6 +70,13 @@ When installation is complete, add XMDL project components into your workspace.
     * _org.eclipse.emf.codegen,_
     * _org.eclipse.core.runtime,_
     * _org.apache.log4j_
+  * xmdl.ida -> 
+    * xmdl,
+    * xmdl.gen,
+    * _org.eclipse.emf.ecore,_
+    * _org.eclipse.emf.codegen,_
+    * _org.eclipse.core.runtime,_
+    * _org.apache.log4j_
   * xmdl.gen -> 
     * xmdl,
     * _org.eclipse.emf.ecore.xmi,_
