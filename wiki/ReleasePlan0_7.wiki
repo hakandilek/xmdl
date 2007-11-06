@@ -1,4 +1,4 @@
-#summary ORelease plan for version 0.7
+#summary Release plan for version 0.7
 #labels Draft,Phase-Requirements
 
 == Introduction ==
