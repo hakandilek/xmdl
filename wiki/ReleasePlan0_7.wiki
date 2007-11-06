@@ -17,5 +17,5 @@ The following past conversations might be useful:
   * [http://groups.google.com/group/xmdl/browse_thread/thread/8e007099e09dcdbf# Menu Structure]
   * [http://groups.google.com/group/xmdl/browse_thread/thread/a34d1f0324dcb777/968e8ff888e0ec23#968e8ff888e0ec23 Menu Structure Again]
   * [http://groups.google.com/group/xmdl/browse_thread/thread/81c2495ace683f08# MVC structure in PHP]
-  * [Entity Based security model (SID) http://groups.google.com/group/xmdl/browse_thread/thread/fd30fd3e0aacc3cf#]
-  * [Entity Logs http://groups.google.com/group/xmdl/browse_thread/thread/91dedd8770fa6926#]
+  * [http://groups.google.com/group/xmdl/browse_thread/thread/fd30fd3e0aacc3cf Entity Based security model (SID)]
+  * [http://groups.google.com/group/xmdl/browse_thread/thread/91dedd8770fa6926 Entity Logs]
