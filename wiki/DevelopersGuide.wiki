@@ -27,6 +27,7 @@ When installation is complete, add XMDL project components into your workspace.
    * xmdl.corelib/
    * xmdl.gen/
    * xmdl.lib/
+   * xmdl.ida/
    * xmdl.ui/
    * xmdlbo.ui/
    * xmdldb.ui/
