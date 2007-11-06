@@ -1,0 +1,46 @@
+<%@ jet 
+	package="org.xmdl.ida.templates.service" 
+	class="EntityServiceImpl" 
+    imports="chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*
+			"
+	%><%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage(); 
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <%=helper.getQualifiedName(xPackage)%>.service;
+
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.service;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport("org.xmdl.ida.lib.service.GenericManager");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.search.*");%>
+<%importManager.addImport("java.util.*");%>
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+/**
+ *
+ * <%=helper.getCapName(xClass)%> Service interface
+ *  
+ * $Id$
+ *
+ * @generated
+ */ 
+public interface <%=helper.getCapName(xClass)%>Manager extends GenericManager<<%=helper.getCapName(xClass)%>, Long>{
+
+    Collection<<%=helper.getCapName(xClass)%>> search(<%=helper.getCapName(xClass)%>Search <%=helper.uncapSafeName(xClass)%>Search);
+
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>
