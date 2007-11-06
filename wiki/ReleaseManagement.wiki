@@ -1,6 +1,19 @@
 #summary Tips about release management
 #labels Phase-QA
 
+== Release checklist ==
+
+*_This checklist should be applied, on each release._*
+
+  # Update local copy to final version from source repository
+  # Run unit tests without any problems
+  # Error free build of binary packages
+  # Deploy binary packages (plugins) on Eclipse, and check for any visible problems
+  # Tag source repository
+  # Upload released package on site, and specify necessary labels
+  # Clear labels for old packages.
+  # Make changes on [Roadmap Roadmap page] if necessary. (e.g. link to download URL)
+
 == Building a distribution ==
 
 For building a distribution, simply run [http://xmdl.googlecode.com/svn/trunk/xmdl.lib/build.xml this ant build] script.
