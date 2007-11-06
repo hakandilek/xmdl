@@ -1,0 +1,30 @@
+#summary Project Roadmap
+#labels Featured
+
+This page contains both brief history and future plans of XMDL Project. Planned items and date are due to change, so it would be good to track changes on this page.
+
+_Current version under development: *0.6*_
+
+=== Release 0.7 ===
+
+This is the next future release of XMDL, planned with the extended [Metamodel] structure. Check [ReleasePlan0_7 detailed planning page] for this release. 
+
+=== Release 0.6 ===
+
+IDA platform, defined with the draft project [http://taslak.googlecode.com/ Taslak] will be integrated in this release. Check [ReleasePlan0_6 detailed planning page] for this release. 
+
+|| *Version*        ||  *Release Date* || * Notes * ||
+||  v0.6.0 - alpha1 ||  _24.11.2007_?  || First code generation for IDA platform, with successful unit tests ||
+
+=== Release 0.5 ===
+
+In the first public release of XMDL Eclipse 3.3 integration is covered, and lots of bug fixes done after highly testing.
+
+|| *Version*        ||  *Release Date* || * Notes * ||
+|| *[http://xmdl.googlecode.com/files/xmdl_0.5.0.20070924_final.zip v0.5.0 - final]* ||  *24.09.2007*   || Final Version ||
+||  v0.5.0 - beta5  ||   15.09.2007    || Bug fixes ||
+||  v0.5.0 - beta4  ||   06.09.2007    || Bug fixes ||
+||  v0.5.0 - beta3  ||   05.09.2007    || Bug fixes ||
+||  v0.5.0 - beta2  ||   05.09.2007    || Bug fixes ||
+||  v0.5.0 - beta1  ||   02.09.2007    || Bug fixes ||
+||  v0.5.0 - alpha1 ||   23.09.2007    || First test release ||
