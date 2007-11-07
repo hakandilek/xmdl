@@ -4,20 +4,23 @@ import chrome.xmdl.XProject;
 import chrome.xmdl.xgen.Template;
 
 /**
- * Hibernate configuration template file
+ * Default data template file
  * 
  * @author Hakan Dilek
  *
  */
-public class HibernateCFG extends HibernateCFGImpl implements Template {
+public class DefaultDataXML extends DefaultDataXMLImpl implements Template {
 
+	@Override
     public String targetFile(Object object) {
-        StringBuffer buffer = new StringBuffer("core/src/main/resources/hibernate.cfg.xml");
+        StringBuffer buffer = new StringBuffer("core/src/main/resources/default-data.xml");
         return buffer.toString();
     }
 
+	@Override
     public boolean accept(Object object) {
         return (object instanceof XProject);
     }
+
 
 }

@@ -1,0 +1,8 @@
+<%@ jet 
+	package="org.xmdl.ida.templates.core.res" 
+	class="DefaultDataXMLImpl" 
+	%><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%><?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+</dataset>

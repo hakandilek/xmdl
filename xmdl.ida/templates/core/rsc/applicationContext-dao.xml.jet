@@ -1,0 +1,91 @@
+<%@ jet 
+	package="org.xmdl.ida.templates.core.res" 
+	class="ApplicationContextDAOXMLImpl" 
+    imports="java.util.*
+    		chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+			"
+	%><%
+    XPackage pack = (XPackage) argument;
+    List<XClass> classes = pack.getClasses();
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%><?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+       default-lazy-init="true">
+
+    <!-- Hibernate SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="annotatedClasses">
+            <list>
+<%for (Iterator<XClass> iter = classes.iterator(); iter.hasNext();) {
+	XClass cls = iter.next();
+%>                <value><%=helper.getQualifiedName(pack)%>.model.<%=helper.getCapName(cls)%></value>
+<%}%>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <value>
+                hibernate.dialect=${hibernate.dialect}
+                hibernate.query.substitutions=true 'Y', false 'N'
+                hibernate.cache.use_second_level_cache=true
+                hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
+            </value>
+            <!-- Turn batching off for better error messages under PostgreSQL -->
+            <!-- hibernate.jdbc.batch_size=0 -->
+        </property>
+    </bean>
+
+    <!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- UniversalDao - can be used when doing standard CRUD - made available 
+        for those who don't mind casting.  If you don't want to cast, look at 
+        'fooDao' below. -->
+    <bean id="universalDao" class="org.xmdl.ida.lib.dao.hibernate.UniversalDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+<%for (Iterator<XClass> iter = classes.iterator(); iter.hasNext();) {
+	XClass cls = iter.next();
+%>    <bean id="<%=helper.uncapSafeName(cls)%>Dao" class="<%=helper.getQualifiedName(pack)%>.dao.hibernate.<%=helper.getCapName(cls)%>DaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+<%}%>
+
+
+    <bean id="productDao" class="org.xmdl.taslak.dao.hibernate.ProductDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="orderDao" class="org.xmdl.taslak.dao.hibernate.OrderDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="orderElementDao" class="org.xmdl.taslak.dao.hibernate.OrderElementDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- If you want to be able to do simple CRUD for new domain objects without 
+        having to cast, you don't have create a Dao interface and implementation 
+        for that domain object, you simply have to do the following.  
+        
+        eg... 'fooDao'
+    
+    <bean id="fooDao" class="org.xmdl.taslak.dao.hibernate.GenericDaoHibernate">
+        <constructor-arg value="org.xmdl.taslak.model.Foo"/>
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    You will need to create a Dao interface and implementation for that 
+        domain object if you need more than simple CRUD to occur.  
+        (finders, bulk update/delete, etc.)
+    -->
+
+    <!-- Add new DAOs here -->
+
+</beans>
