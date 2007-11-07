@@ -29,7 +29,7 @@ public class EntityServiceIMPLImpl
   protected final String TEXT_11 = "Manager {" + NL;
   protected final String TEXT_12 = NL + "    ";
   protected final String TEXT_13 = "DAO ";
-  protected final String TEXT_14 = "Dao;" + NL + "" + NL + "    public ";
+  protected final String TEXT_14 = "DAO;" + NL + "" + NL + "    public ";
   protected final String TEXT_15 = "ManagerImpl(";
   protected final String TEXT_16 = "DAO ";
   protected final String TEXT_17 = "DAO) {" + NL + "        super(";
