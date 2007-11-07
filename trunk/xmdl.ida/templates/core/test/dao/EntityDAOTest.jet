@@ -1,0 +1,96 @@
+<%@ jet 
+	package="org.xmdl.ida.templates.core.test" 
+	class="EntityDAOTestImpl" 
+    imports="chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*
+			"
+	%><%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage(); 
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <%=helper.getQualifiedName(xPackage)%>.dao;
+
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.dao;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport("org.springframework.dao.DataAccessException");%>
+<%importManager.addImport("org.xmdl.ida.lib.test.BaseDaoTestCase");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
+<%importManager.addImport("java.util.*");%>
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+/**
+ *
+ * <%=helper.getCapName(xClass)%> DAO Test Case
+ *  
+ * $Id$
+ *
+ * @generated
+ */ 
+public class <%=helper.getCapName(xClass)%>DAOTest extends BaseDaoTestCase {
+
+    private <%=helper.getCapName(xClass)%>DAO <%=helper.uncapSafeName(xClass)%>DAO = null;
+
+    public void set<%=helper.getCapName(xClass)%>DAO(<%=helper.getCapName(xClass)%>DAO <%=helper.uncapSafeName(xClass)%>DAO) {
+        this.<%=helper.uncapSafeName(xClass)%>DAO = <%=helper.uncapSafeName(xClass)%>DAO;
+    }
+
+    public void testAddAndRemove<%=helper.getCapName(xClass)%>() throws Exception {
+        <%=helper.getCapName(xClass)%> <%=helper.uncapSafeName(xClass)%> = new <%=helper.getCapName(xClass)%>();
+        //TODO: iterate attributes
+        //<%=helper.uncapSafeName(xClass)%>.setName("abcd");
+        //<%=helper.uncapSafeName(xClass)%>.setPrice(10d);
+        //<%=helper.uncapSafeName(xClass)%>.setProductType(ProductType.PRODUCT);
+
+        <%=helper.uncapSafeName(xClass)%> = <%=helper.uncapSafeName(xClass)%>DAO.save(<%=helper.uncapSafeName(xClass)%>);
+        flush();
+
+        <%=helper.uncapSafeName(xClass)%> = <%=helper.uncapSafeName(xClass)%>DAO.get(<%=helper.uncapSafeName(xClass)%>.getId());
+
+        //TODO: iterate attributes
+        //assertEquals("abcd", <%=helper.uncapSafeName(xClass)%>.getName());
+        //assertEquals(ProductType.PRODUCT, <%=helper.uncapSafeName(xClass)%>.getProductType());
+        assertNotNull(<%=helper.uncapSafeName(xClass)%>.getId());
+
+        log.debug("removing <%=helper.uncapSafeName(xClass)%>...");
+
+        <%=helper.uncapSafeName(xClass)%>DAO.remove(<%=helper.uncapSafeName(xClass)%>.getId());
+        flush();
+
+        try {
+            <%=helper.uncapSafeName(xClass)%>DAO.get(<%=helper.uncapSafeName(xClass)%>.getId());
+            fail("<%=helper.getCapName(xClass)%> found in database");
+        } catch (DataAccessException dae) {
+            log.debug("Expected exception: " + dae.getMessage());
+            assertNotNull(dae);
+        }
+    }
+
+    public void testSearch() throws Exception {
+        Collection<<%=helper.getCapName(xClass)%>> <%=helper.uncapSafeName(xClass)%>s = <%=helper.uncapSafeName(xClass)%>DAO.search("abcd",9d,11d,null);
+        assertTrue(<%=helper.uncapSafeName(xClass)%>s.size() > 0);
+    }
+
+    protected void onSetUpBeforeTransaction() throws Exception {
+        super.onSetUpBeforeTransaction();
+
+        <%=helper.getCapName(xClass)%> <%=helper.uncapSafeName(xClass)%> = new <%=helper.getCapName(xClass)%>();
+        //TODO: iterate attributes
+        //<%=helper.uncapSafeName(xClass)%>.setName("abcd");
+        //<%=helper.uncapSafeName(xClass)%>.setPrice(10d);
+        <%=helper.uncapSafeName(xClass)%>DAO.save(<%=helper.uncapSafeName(xClass)%>);
+    }
+
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

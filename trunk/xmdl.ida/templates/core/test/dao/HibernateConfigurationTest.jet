@@ -1,0 +1,64 @@
+<%@ jet 
+	package="org.xmdl.ida.templates.core.test" 
+	class="HibernateConfigurationTestImpl" 
+    imports="chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*
+			"
+	%><%
+    XPackage xPackage = (XPackage) argument;
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <%=helper.getQualifiedName(xPackage)%>.dao.hibernate;
+
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.dao.hibernate;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport("org.xmdl.ida.lib.test.BaseDaoTestCase");%>
+<%importManager.addImport("org.hibernate.*");%>
+<%importManager.addImport("org.hibernate.persister.entity.EntityPersister");%>
+<%importManager.addImport("java.util.*");%>
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+/**
+ *
+ * '<%=helper.getCapName(xPackage)%>' package Hibernate Configuration Test Case
+ *  
+ * $Id$
+ *
+ * @generated
+ */ 
+public class HibernateConfigurationTest extends BaseDaoTestCase {
+    private SessionFactory sessionFactory;
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    public void testColumnMapping() throws Exception {
+        Session session = sessionFactory.openSession();
+        try {
+            Map<?, ?> metadata = sessionFactory.getAllClassMetadata();
+            for (Object o : metadata.values()) {
+                EntityPersister persister = (EntityPersister) o;
+                String className = persister.getEntityName();
+                log.debug("Trying select * from: " + className);
+                Query q = session.createQuery("from " + className + " c");
+                q.iterate();
+                log.debug("ok: " + className);
+            }
+        } finally {
+            session.close();
+        }
+    }
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>
