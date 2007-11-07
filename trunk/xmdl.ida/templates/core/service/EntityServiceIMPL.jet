@@ -43,7 +43,7 @@ package <%=helper.getQualifiedName(xPackage)%>.service.impl;
  */ 
 public class <%=helper.getCapName(xClass)%>ManagerImpl extends GenericManagerImpl<<%=helper.getCapName(xClass)%>, Long> implements <%=helper.getCapName(xClass)%>Manager {
 
-    <%=helper.getCapName(xClass)%>DAO <%=helper.uncapSafeName(xClass)%>Dao;
+    <%=helper.getCapName(xClass)%>DAO <%=helper.uncapSafeName(xClass)%>DAO;
 
     public <%=helper.getCapName(xClass)%>ManagerImpl(<%=helper.getCapName(xClass)%>DAO <%=helper.uncapSafeName(xClass)%>DAO) {
         super(<%=helper.uncapSafeName(xClass)%>DAO);
