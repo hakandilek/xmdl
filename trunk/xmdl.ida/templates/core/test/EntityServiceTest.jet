@@ -1,0 +1,133 @@
+<%@ jet 
+	package="org.xmdl.ida.templates.core.test" 
+	class="EntityServiceTestImpl" 
+    imports="chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*
+			"
+	%><%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage(); 
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <%=helper.getQualifiedName(xPackage)%>.service.impl;
+
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.service.impl;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>
+
+<%importManager.addImport("java.util.ArrayList");%>
+<%importManager.addImport("java.util.List");%>
+<%importManager.addImport("java.util.Collection");%>
+<%importManager.addImport("org.jmock.Mock");%>
+<%importManager.addImport("org.springframework.dao.DataAccessException");%>
+<%importManager.addImport("org.xmdl.ida.lib.test.BaseManagerMockTestCase");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.search.*");%>
+<%importManager.addImport(helper.getQualifiedName(xPackage)+".dao.*");%>
+<%
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+/**
+ *
+ * <%=helper.getCapName(xClass)%> Service Implementation Test
+ *  
+ * $Id$
+ *
+ * @generated
+ */ 
+//TODO:from here
+public class <%=helper.getCapName(xClass)%>ManagerImplTest extends BaseManagerMockTestCase {
+
+    private <%=helper.getCapName(xClass)%>ManagerImpl manager = null;
+    private Mock dao = null;
+    private <%=helper.getCapName(xClass)%> <%=helper.uncapSafeName(xClass)%> = null;
+
+    protected void setUp() throws Exception {
+        dao = new Mock(<%=helper.getCapName(xClass)%>Dao.class);
+        manager = new <%=helper.getCapName(xClass)%>ManagerImpl((<%=helper.getCapName(xClass)%>Dao) dao.proxy());
+    }
+
+    protected void tearDown() throws Exception {
+        manager = null;
+    }
+
+    public void testGet() {
+        log.debug("testing get");
+
+        Long id = 7L;
+        <%=helper.uncapSafeName(xClass)%> = new <%=helper.getCapName(xClass)%>();
+
+        // set expected behavior on dao
+        dao.expects(once()).method("get")
+                .with(eq(id))
+                .will(returnValue(<%=helper.uncapSafeName(xClass)%>));
+
+        <%=helper.getCapName(xClass)%> result = manager.get(id);
+        assertSame(<%=helper.uncapSafeName(xClass)%>, result);
+    }
+
+    public void testGetAll() {
+        log.debug("testing getAll");
+
+        List<<%=helper.getCapName(xClass)%>> list = new ArrayList<<%=helper.getCapName(xClass)%>>();
+
+        // set expected behavior on dao
+        dao.expects(once()).method("getAll")
+                .will(returnValue(list));
+
+        List<<%=helper.getCapName(xClass)%>> result = manager.getAll();
+        assertSame(list, result);
+    }
+
+    public void testSearch() {
+        log.debug("testing search");
+
+        List<<%=helper.getCapName(xClass)%>> list = new ArrayList<<%=helper.getCapName(xClass)%>>();
+        <%=helper.getCapName(xClass)%>Search searchBean=new <%=helper.getCapName(xClass)%>Search();
+
+        // set expected behavior on dao
+        dao.expects(once()).method("search")
+                .with(eq(searchBean))
+                .will(returnValue(list));
+
+        Collection<<%=helper.getCapName(xClass)%>> result = manager.search(searchBean);
+        assertSame(list, result);
+    }
+
+    public void testSave() {
+        log.debug("testing save");
+
+        <%=helper.uncapSafeName(xClass)%> = new <%=helper.getCapName(xClass)%>();
+
+        // set expected behavior on dao
+        dao.expects(once()).method("save")
+                .with(same(<%=helper.uncapSafeName(xClass)%>))
+                .will(returnValue(<%=helper.uncapSafeName(xClass)%>));
+
+        manager.save(<%=helper.uncapSafeName(xClass)%>);
+    }
+
+    public void testRemove() {
+        log.debug("testing remove");
+
+        Long id = 11L;
+        <%=helper.uncapSafeName(xClass)%> = new <%=helper.getCapName(xClass)%>();
+
+        // set expected behavior on dao
+        dao.expects(once()).method("remove")
+                .with(eq(id))
+                .isVoid();
+
+        manager.remove(id);
+    }
+
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>
