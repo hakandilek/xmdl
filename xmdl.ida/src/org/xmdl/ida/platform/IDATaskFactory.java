@@ -10,6 +10,7 @@ import org.xmdl.ida.templates.core.res.ApplicationContextServiceXML;
 import org.xmdl.ida.templates.core.res.DefaultDataXML;
 import org.xmdl.ida.templates.core.res.HibernateCFG;
 import org.xmdl.ida.templates.core.test.EntityDAOTest;
+import org.xmdl.ida.templates.core.test.EntityServiceTest;
 import org.xmdl.ida.templates.core.test.HibernateConfigurationTest;
 import org.xmdl.ida.templates.dao.EntityDAO;
 import org.xmdl.ida.templates.dao.EntityDAOHibernate;
@@ -103,6 +104,7 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 //tests.core
                 templates.add(new HibernateConfigurationTest());
                 templates.add(new EntityDAOTest());
+                templates.add(new EntityServiceTest());
                 
             }
         } catch (Throwable e) {
