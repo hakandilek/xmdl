@@ -16,6 +16,7 @@ You would need to install the following software components for XMDL development
  * Latest version of [http://subclipse.tigris.org/ Subclipse] (SVN client for Eclipse), via [http://subclipse.tigris.org/update_1.2.x/ update site]
 
 When installation is complete, add XMDL project components into your workspace. 
+_It is recommended to setup a separate workspace in Eclipse containing the following XMDL components_
 
  * Click menu item File -> Project,
  * Select SVN -> Checkout Projects from SVN, click Next,
