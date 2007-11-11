@@ -22,6 +22,7 @@ import org.xmdl.ida.templates.core.test.res.SampleDataXML;
 import org.xmdl.ida.templates.dao.EntityDAO;
 import org.xmdl.ida.templates.dao.EntityDAOHibernate;
 import org.xmdl.ida.templates.maven.CorePomXML;
+import org.xmdl.ida.templates.maven.RootPomXML;
 import org.xmdl.ida.templates.model.Entity;
 import org.xmdl.ida.templates.project.Constants;
 import org.xmdl.ida.templates.service.EntityService;
@@ -86,7 +87,8 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 templates.clear();
 
                 // build
-                templates.add(new CorePomXML());
+                templates.add(new RootPomXML());//project pom.xmo
+                templates.add(new CorePomXML());//core module pom.xml
 
                 //Project General
                 templates.add(new Constants());

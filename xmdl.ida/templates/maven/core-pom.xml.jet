@@ -14,15 +14,15 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>name</groupId>
-        <artifactId>name</artifactId>
+        <groupId>org.xmdl.projects.<%=name%></groupId>
+        <artifactId><%=name%></artifactId>
         <version>0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <artifactId>name-core</artifactId>
+    <artifactId><%=name%>-core</artifactId>
     <packaging>jar</packaging>
-    <name>name - Core</name>
+    <name><%=name%> - Core</name>
     
     <build>
         <plugins>
