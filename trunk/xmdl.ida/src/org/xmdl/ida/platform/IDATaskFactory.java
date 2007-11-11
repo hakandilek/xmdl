@@ -12,8 +12,16 @@ import org.xmdl.ida.templates.core.res.HibernateCFG;
 import org.xmdl.ida.templates.core.test.EntityDAOTest;
 import org.xmdl.ida.templates.core.test.EntityServiceTest;
 import org.xmdl.ida.templates.core.test.HibernateConfigurationTest;
+import org.xmdl.ida.templates.core.test.res.ApplicationContextResourcesXML;
+import org.xmdl.ida.templates.core.test.res.ApplicationContextTestXML;
+import org.xmdl.ida.templates.core.test.res.JDBCProperties;
+import org.xmdl.ida.templates.core.test.res.Log4jXML;
+import org.xmdl.ida.templates.core.test.res.MailProperties;
+import org.xmdl.ida.templates.core.test.res.PersistenceXML;
+import org.xmdl.ida.templates.core.test.res.SampleDataXML;
 import org.xmdl.ida.templates.dao.EntityDAO;
 import org.xmdl.ida.templates.dao.EntityDAOHibernate;
+import org.xmdl.ida.templates.maven.CorePomXML;
 import org.xmdl.ida.templates.model.Entity;
 import org.xmdl.ida.templates.project.Constants;
 import org.xmdl.ida.templates.service.EntityService;
@@ -77,10 +85,11 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 templates = new ArrayList<Template>();
                 templates.clear();
 
+                // build
+                templates.add(new CorePomXML());
+
                 //Project General
                 templates.add(new Constants());
-
-                // build
 
                 // model
                 templates.add(new Entity());
@@ -101,10 +110,20 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
 
                 //jsp
 
-                //tests.core
+                //core tests
                 templates.add(new HibernateConfigurationTest());
                 templates.add(new EntityDAOTest());
                 templates.add(new EntityServiceTest());
+                
+                //core test resources
+                templates.add(new ApplicationContextResourcesXML());
+                templates.add(new ApplicationContextTestXML());
+                templates.add(new JDBCProperties());
+                templates.add(new Log4jXML());
+                templates.add(new MailProperties());
+                templates.add(new PersistenceXML());
+                templates.add(new SampleDataXML());
+                
                 
             }
         } catch (Throwable e) {
