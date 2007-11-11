@@ -21,7 +21,7 @@ public class EntityDAOTest extends EntityDAOTestImpl
 		StringBuffer buffer = new StringBuffer("core/src/test/java/");
 		String path = XMDLClassHelper.INSTANCE.getQualifiedPath(p);
 		buffer.append(path);
-		buffer.append("/");
+		buffer.append("/dao/");
 		buffer.append(XMDLClassHelper.INSTANCE.getCapName(c));
 		buffer.append("DAOTest.java");
 		return buffer.toString();

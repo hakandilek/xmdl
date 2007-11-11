@@ -19,7 +19,7 @@ public class HibernateConfigurationTest extends HibernateConfigurationTestImpl
 		StringBuffer buffer = new StringBuffer("core/src/test/java/");
 		String path = XMDLClassHelper.INSTANCE.getQualifiedPath(p);
 		buffer.append(path);
-		buffer.append("/HibernateConfigurationTest.java");
+		buffer.append("/hibernate/HibernateConfigurationTest.java");
 		return buffer.toString();
 	}
 
