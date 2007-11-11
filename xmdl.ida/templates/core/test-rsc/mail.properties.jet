@@ -1,0 +1,18 @@
+<%@ jet 
+	package="org.xmdl.ida.templates.core.test.res" 
+	class="MailPropertiesImpl" 
+    imports="chrome.xmdl.*
+			"
+	%><%
+    XProject prj = (XProject) argument;
+    String name = prj.getName();
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%># This properties file is used to configure mail settings in 
+# /WEB-INF/applicationContext-service.xml.
+
+mail.default.from=<%=name%> <xmdl@googlegroups.com>
+mail.debug=false
+mail.transport.protocol=smtp
+mail.host=localhost
+mail.username=
+mail.password=

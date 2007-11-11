@@ -1,0 +1,33 @@
+<%@ jet 
+	package="org.xmdl.ida.templates.core.test.res" 
+	class="PersistenceXMLImpl" 
+    imports="java.util.*
+    		chrome.xmdl.*
+            chrome.xmdl.gen.util.*
+			"
+	%><%
+    XProject prj = (XProject) argument;
+    List<XPackage> packages = prj.getPackages();
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%><?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+
+    <persistence-unit name="ApplicationEntityManager" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>org.xmdl.mesken.model.User</class>
+        <class>org.xmdl.mesken.model.Role</class>
+<%for (Iterator<XPackage> iter = packages.iterator(); iter.hasNext();) {
+	XPackage pack = iter.next();
+	List<XClass> classes = pack.getClasses();
+	for (Iterator<XClass> iter2 = classes.iterator(); iter.hasNext();) {
+		XClass xClass = iter2.next();
+		if (xClass != null){
+			%>        <class><%=helper.getQualifiedName(pack)%>.model.<%=helper.getQualifiedName(xClass)%></class><%
+		}
+	}
+} 
+%>
+    </persistence-unit>
+
+</persistence>

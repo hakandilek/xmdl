@@ -1,0 +1,14 @@
+<%@ jet 
+	package="org.xmdl.ida.templates.core.test.res" 
+	class="ApplicationContextTestXMLImpl" 
+    imports="chrome.xmdl.*
+			"
+	%><%
+    XProject prj = (XProject) argument;
+    prj.getName();
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%><?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+</beans>    
