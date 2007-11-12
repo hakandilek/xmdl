@@ -1,7 +1,7 @@
 package org.xmdl.ida.templates.core.test.rsc;
 
-import chrome.xmdl.XProject;
 import chrome.xmdl.xgen.Template;
+import chrome.xmdldb.DModel;
 
 /**
  * Sample data configuration template file
@@ -17,7 +17,7 @@ public class SampleDataXML extends SampleDataXMLImpl implements Template {
     }
 
     public boolean accept(Object object) {
-        return (object instanceof XProject);
+        return (object instanceof DModel);
     }
 
 }
