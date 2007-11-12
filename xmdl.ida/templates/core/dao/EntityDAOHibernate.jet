@@ -1,7 +1,8 @@
 <%@jet 
 	package="org.xmdl.ida.templates.core.dao" 
 	class="EntityDAOHibernateImpl" 
-    imports="chrome.xmdl.*
+    imports="java.util.*
+    		chrome.xmdl.*
             chrome.xmdl.gen.util.*
             org.eclipse.emf.codegen.util.*
 			"
@@ -59,11 +60,19 @@ public class <%=helper.getCapName(xClass)%>DAOHibernate extends GenericDaoHibern
 		if (<%=helper.uncapSafeName(xClass)%>Search == null) {
 			list = new ArrayList<<%=helper.getCapName(xClass)%>>();
 		} else {
-		//TODO:iterate fields
-			String name = <%=helper.uncapSafeName(xClass)%>Search.getName();
-			Double fromPrice = <%=helper.uncapSafeName(xClass)%>Search.getFromPrice();
-			Double toPrice = <%=helper.uncapSafeName(xClass)%>Search.getToPrice();
-			ProductType productType = <%=helper.uncapSafeName(xClass)%>Search.getProductType();
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {
+		XType type = attribute.getType();
+		boolean comparable = type.isComparable();%>
+		<%if (comparable){%>
+	<%=helper.getImportedAttributeType(attribute)%> min<%=helper.getCapName(attribute)%> = <%=helper.uncapSafeName(xClass)%>Search.<%=helper.getGetAccessor(attribute)%>Min();
+	<%=helper.getImportedAttributeType(attribute)%> max<%=helper.getCapName(attribute)%> = <%=helper.uncapSafeName(xClass)%>Search.<%=helper.getGetAccessor(attribute)%>Max();
+		<%} else {%>
+	<%=helper.getImportedAttributeType(attribute)%> <%=helper.uncapSafeName(attribute)%> = <%=helper.uncapSafeName(xClass)%>Search.<%=helper.getGetAccessor(attribute)%>();
+		<%}%>
+	<%}%>
+<%}//for%>
 
 			list = search(name, fromPrice, toPrice, productType);
 		}
@@ -73,34 +82,74 @@ public class <%=helper.getCapName(xClass)%>DAOHibernate extends GenericDaoHibern
     	return list;
     }
 
-    public Collection<<%=helper.getCapName(xClass)%>> search(String name, Double fromPrice, Double toPrice, ProductType productType) {
+<%
+	StringBuffer params = new StringBuffer();
+   	for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+		XAttribute attribute = (XAttribute) i.next();
+		if (!attribute.isReference()) {
+			XType type = attribute.getType();
+			boolean comparable = type.isComparable();
+			if (comparable){
+				params.append(helper.getImportedAttributeType(attribute));
+				params.append(" min");
+				params.append(helper.getCapName(attribute));
+				params.append(", ");
+				params.append(helper.getImportedAttributeType(attribute));
+				params.append(" max");
+				params.append(helper.getCapName(attribute));
+			} else {
+				params.append(helper.getImportedAttributeType(attribute));
+				params.append(" ");
+				params.append(helper.uncapSafeName(attribute));
+			}
+			if (i.hasNext()) params.append(", ");
+		}
+	}//for
+%>
+
+    public Collection<<%=helper.getCapName(xClass)%>> search(<%=params%>) {
     	if (log.isDebugEnabled()) {
-		//TODO:iterate fields
-    		log.debug("search(String name, Double fromPrice, Double toPrice) <-");
-		//TODO:iterate fields
-        	log.debug("name       : " + name);
-        	log.debug("fromPrice  : " + fromPrice);
-        	log.debug("toPrice    : " + toPrice);
-            log.debug("productType: " + productType);
+    		log.debug("search(<%=params%>) <-");
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {
+		XType type = attribute.getType();
+		boolean comparable = type.isComparable();%>
+		<%if (comparable){%>
+        	log.debug("min<%=helper.getCapName(attribute)%>       : " + min<%=helper.getCapName(attribute)%>);
+        	log.debug("max<%=helper.getCapName(attribute)%>       : " + max<%=helper.getCapName(attribute)%>);
+		<%} else {%>
+        	log.debug("<%=helper.uncapSafeName(attribute)%>       : " + <%=helper.uncapSafeName(attribute)%>);
+		<%}%>
+	<%}%>
+<%}//for%>
     	}
     	
         Criteria criteria = getSession().createCriteria(<%=helper.getCapName(xClass)%>.class);
-
-		//TODO:iterate fields
-        if (name != null && !name.equals(""))
-            criteria.add(Restrictions.like("name", "%" + name + "%"));
-        if (fromPrice != null)
-            criteria.add(Restrictions.ge("price", fromPrice));
-        if (toPrice != null)
-            criteria.add(Restrictions.le("price", toPrice));
-        if (productType != null){
-            criteria.add(Restrictions.eq("productType", productType));
-        }
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {
+		XType type = attribute.getType();
+		boolean comparable = type.isComparable();
+		boolean string = type.getClassName() == "java.lang.String";%>
+		<%if (string){%>
+        if (<%=helper.uncapSafeName(attribute)%> != null && !<%=helper.uncapSafeName(attribute)%>.equals(""))
+            criteria.add(Restrictions.like("<%=helper.uncapSafeName(attribute)%>", "%" + <%=helper.uncapSafeName(attribute)%> + "%"));
+		<%} else if (comparable){%>
+        if (min<%=helper.getCapName(attribute)%> != null)
+            criteria.add(Restrictions.ge("<%=helper.uncapSafeName(attribute)%>", min<%=helper.getCapName(attribute)%>));
+        if (max<%=helper.getCapName(attribute)%> != null)
+            criteria.add(Restrictions.le("<%=helper.uncapSafeName(attribute)%>", max<%=helper.getCapName(attribute)%>));
+		<%} else {%>
+        if (<%=helper.uncapSafeName(attribute)%> != null)
+            criteria.add(Restrictions.eq("<%=helper.uncapSafeName(attribute)%>", <%=helper.uncapSafeName(attribute)%>));
+		<%}%>
+	<%}%>
+<%}//for%>
 
         List<<%=helper.getCapName(xClass)%>> list = criteria.list();
         
-		//TODO:iterate fields
-        if (log.isDebugEnabled()) log.debug("search(String name, Double fromPrice, Double toPrice, ProductType productType) <-");
+        if (log.isDebugEnabled()) log.debug("search(<%=params%>) <-");
 		return list;
     }
 

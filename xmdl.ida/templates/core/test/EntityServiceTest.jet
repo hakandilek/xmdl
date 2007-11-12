@@ -43,7 +43,6 @@ package <%=helper.getQualifiedName(xPackage)%>.service.impl;
  *
  * @generated
  */ 
-//TODO:from here
 public class <%=helper.getCapName(xClass)%>ManagerImplTest extends BaseManagerMockTestCase {
 
     private <%=helper.getCapName(xClass)%>ManagerImpl manager = null;

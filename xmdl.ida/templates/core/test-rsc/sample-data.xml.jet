@@ -3,135 +3,66 @@
 	class="SampleDataXMLImpl" 
     imports="java.util.*
     		chrome.xmdl.*
+    		chrome.xmdldb.*
             chrome.xmdl.gen.util.*
 			"
 	%><%
-    XProject prj = (XProject) argument;
-    List<XPackage> packages = prj.getPackages();
+    DModel model = (DModel) argument;
+    List<DPackage> dPackages = model.getDPackages();
+    TestHelper testHelper = TestHelper.INSTANCE;
     ClassHelper helper = XMDLClassHelper.INSTANCE;
-    prj.getName();
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %><?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-<%for (Iterator<XPackage> iter = packages.iterator(); iter.hasNext();) {
-	XPackage pack = iter.next();
-	List<XClass> classes = pack.getClasses();
-	for (Iterator<XClass> iter2 = classes.iterator(); iter.hasNext();) {
-		XClass xClass = iter2.next();
+<%for (Iterator<DPackage> iter = dPackages.iterator(); iter.hasNext();) {
+	DPackage pack = iter.next();
+	List<DTable> tables = pack.getDTables();
+	for (Iterator<DTable> iter2 = tables.iterator(); iter.hasNext();) {
+		DTable table = iter2.next();
+		XClass xClass = table.getXClass();
 		if (xClass != null){
 			%>
     <!--<%=helper.getQualifiedName(xClass)%>-START-->
-    <table name="TODO:TABLE name_">
+    <table name="<%=table.getName()%>">
         <column>id</column>
-        <!--
-        <column>name</column>
-        <column>price</column>
-        <column>productType</column>
-        -->
-        <!--
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {%>
+        <column><%=helper.uncapSafeName(xClass)%></column>
+	<%}%>
+<%}//for%>
 	    <row>
 	        <value description="id">1</value>
-	        <value description="name">FjKvDlNpDw</value>
-	        <value description="price">10.5</value>
-	        <value description="productType">1</value>
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {%>
+        <value description="<%=helper.uncapSafeName(xClass)%>"><%=testHelper.randomValuePlain(attribute)%></value>
+	<%}%>
+<%}//for%>
 	    </row>
 	    <row>
 	        <value description="id">2</value>
-	        <value description="name">MxLwBxUfKd</value>
-	        <value description="price">20.5</value>
-	        <value description="productType">2</value>
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {%>
+        <value description="<%=helper.uncapSafeName(xClass)%>"><%=testHelper.randomValuePlain(attribute)%></value>
+	<%}%>
+<%}//for%>
 	    </row>
 	    <row>
 	        <value description="id">3</value>
-	        <value description="name">WuLfBwKnWa</value>
-	        <value description="price">30.6</value>
-	        <value description="productType">3</value>
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {%>
+        <value description="<%=helper.uncapSafeName(xClass)%>"><%=testHelper.randomValuePlain(attribute)%></value>
+	<%}%>
+<%}//for%>
 	    </row>
-        -->
     </table>
     <!--<%=helper.getQualifiedName(xClass)%>-END-->
 			<%
 		}
 	}
-} 
+}
 %>
-
-    <!--Product-START-->
-    <table name="t_product">
-        <column>id</column>
-        <column>name</column>
-        <column>price</column>
-        <column>productType</column>
-    <row>
-        <value description="id">1</value>
-        <value description="name">FjKvDlNpDw</value>
-        <value description="price">10.5</value>
-        <value description="productType">1</value>
-    </row>
-    <row>
-        <value description="id">2</value>
-        <value description="name">MxLwBxUfKd</value>
-        <value description="price">20.5</value>
-        <value description="productType">2</value>
-    </row>
-    <row>
-        <value description="id">3</value>
-        <value description="name">WuLfBwKnWa</value>
-        <value description="price">30.6</value>
-        <value description="productType">3</value>
-    </row>
-    </table>
-    <!--Product-END-->
-    <!--Order-START-->
-    <table name="t_order">
-        <column>id</column>
-        <column>name</column>
-        <column>pricetotals</column>
-        <column>createdate</column>
-    <row>
-        <value description="id">1</value>
-        <value description="name">BqDaDtJzCf</value>
-        <value description="pricetotals">100.3</value>
-        <value description="createdate">2007-09-20</value>
-    </row>
-    <row>
-        <value description="id">2</value>
-        <value description="name">VwTdCpEfKe</value>
-        <value description="pricetotals">200.3</value>
-        <value description="createdate">2007-09-20</value>
-    </row>
-    <row>
-        <value description="id">3</value>
-        <value description="name">GxPxUrDjLf</value>
-        <value description="pricetotals">300.4</value>
-        <value description="createdate">2007-09-20</value>
-    </row>
-    </table>
-    <!--Order-END-->
-    <!--OrderElement-START-->
-    <table name="t_orderElement">
-        <column>id</column>
-        <column>quantity</column>
-        <column>orderId</column>    
-        <column>productId</column>    
-    <row>
-        <value description="id">1</value>
-        <value description="quantity">6024683510166235136</value>
-        <value description="orderId">1</value>
-        <value description="productId">1</value>
-    </row>
-    <row>
-        <value description="id">2</value>
-        <value description="quantity">10</value>
-        <value description="orderId">2</value>
-        <value description="productId">2</value>
-    </row>
-    <row>
-        <value description="id">3</value>
-        <value description="quantity">20</value>
-        <value description="orderId">3</value>
-        <value description="productId">3</value>
-    </row>
-    </table>
-    <!--OrderElement-END-->
 </dataset>

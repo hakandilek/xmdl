@@ -1,7 +1,8 @@
 <%@ jet 
 	package="org.xmdl.ida.templates.core.test" 
 	class="EntityDAOTestImpl" 
-    imports="chrome.xmdl.*
+    imports="java.util.*
+    		chrome.xmdl.*
             chrome.xmdl.gen.util.*
             org.eclipse.emf.codegen.util.*
 			"
@@ -9,6 +10,7 @@
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage(); 
     ClassHelper helper = XMDLClassHelper.INSTANCE;
+    TestHelper testHelper = TestHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
 package <%=helper.getQualifiedName(xPackage)%>.dao;
@@ -48,23 +50,28 @@ public class <%=helper.getCapName(xClass)%>DAOTest extends BaseDaoTestCase {
 
     public void testAddAndRemove<%=helper.getCapName(xClass)%>() throws Exception {
         <%=helper.getCapName(xClass)%> <%=helper.uncapSafeName(xClass)%> = new <%=helper.getCapName(xClass)%>();
-        //TODO: iterate attributes
-        //<%=helper.uncapSafeName(xClass)%>.setName("abcd");
-        //<%=helper.uncapSafeName(xClass)%>.setPrice(10d);
-        //<%=helper.uncapSafeName(xClass)%>.setProductType(ProductType.PRODUCT);
+
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {%>
+        <%=helper.uncapSafeName(xClass)%>.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueString(attribute)%>);
+	<%}%>
+<%}//for%>
 
         <%=helper.uncapSafeName(xClass)%> = <%=helper.uncapSafeName(xClass)%>DAO.save(<%=helper.uncapSafeName(xClass)%>);
         flush();
 
         <%=helper.uncapSafeName(xClass)%> = <%=helper.uncapSafeName(xClass)%>DAO.get(<%=helper.uncapSafeName(xClass)%>.getId());
 
-        //TODO: iterate attributes
-        //assertEquals("abcd", <%=helper.uncapSafeName(xClass)%>.getName());
-        //assertEquals(ProductType.PRODUCT, <%=helper.uncapSafeName(xClass)%>.getProductType());
         assertNotNull(<%=helper.uncapSafeName(xClass)%>.getId());
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {%>
+		assertEquals(<%=testHelper.randomValueString(attribute)%>, <%=helper.uncapSafeName(xClass)%>.<%=helper.getGetAccessor(attribute)%>());
+	<%}%>
+<%}//for%>
 
         log.debug("removing <%=helper.uncapSafeName(xClass)%>...");
-
         <%=helper.uncapSafeName(xClass)%>DAO.remove(<%=helper.uncapSafeName(xClass)%>.getId());
         flush();
 
@@ -86,9 +93,12 @@ public class <%=helper.getCapName(xClass)%>DAOTest extends BaseDaoTestCase {
         super.onSetUpBeforeTransaction();
 
         <%=helper.getCapName(xClass)%> <%=helper.uncapSafeName(xClass)%> = new <%=helper.getCapName(xClass)%>();
-        //TODO: iterate attributes
-        //<%=helper.uncapSafeName(xClass)%>.setName("abcd");
-        //<%=helper.uncapSafeName(xClass)%>.setPrice(10d);
+<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
+	XAttribute attribute = (XAttribute) i.next();
+	if (!attribute.isReference()) {%>
+        <%=helper.uncapSafeName(xClass)%>.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueString(attribute)%>);
+	<%}%>
+<%}//for%>
         <%=helper.uncapSafeName(xClass)%>DAO.save(<%=helper.uncapSafeName(xClass)%>);
     }
 
