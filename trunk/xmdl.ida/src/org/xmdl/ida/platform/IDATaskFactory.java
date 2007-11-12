@@ -5,28 +5,28 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.xmdl.ida.templates.core.res.ApplicationContextDAOXML;
-import org.xmdl.ida.templates.core.res.ApplicationContextServiceXML;
-import org.xmdl.ida.templates.core.res.DefaultDataXML;
-import org.xmdl.ida.templates.core.res.HibernateCFG;
+import org.xmdl.ida.templates.core.dao.EntityDAO;
+import org.xmdl.ida.templates.core.dao.EntityDAOHibernate;
+import org.xmdl.ida.templates.core.model.Entity;
+import org.xmdl.ida.templates.core.project.Constants;
+import org.xmdl.ida.templates.core.rsc.ApplicationContextDAOXML;
+import org.xmdl.ida.templates.core.rsc.ApplicationContextServiceXML;
+import org.xmdl.ida.templates.core.rsc.DefaultDataXML;
+import org.xmdl.ida.templates.core.rsc.HibernateCFG;
+import org.xmdl.ida.templates.core.service.EntityService;
+import org.xmdl.ida.templates.core.service.EntityServiceImplementation;
 import org.xmdl.ida.templates.core.test.EntityDAOTest;
 import org.xmdl.ida.templates.core.test.EntityServiceTest;
 import org.xmdl.ida.templates.core.test.HibernateConfigurationTest;
-import org.xmdl.ida.templates.core.test.res.ApplicationContextResourcesXML;
-import org.xmdl.ida.templates.core.test.res.ApplicationContextTestXML;
-import org.xmdl.ida.templates.core.test.res.JDBCProperties;
-import org.xmdl.ida.templates.core.test.res.Log4jXML;
-import org.xmdl.ida.templates.core.test.res.MailProperties;
-import org.xmdl.ida.templates.core.test.res.PersistenceXML;
-import org.xmdl.ida.templates.core.test.res.SampleDataXML;
-import org.xmdl.ida.templates.dao.EntityDAO;
-import org.xmdl.ida.templates.dao.EntityDAOHibernate;
+import org.xmdl.ida.templates.core.test.rsc.ApplicationContextResourcesXML;
+import org.xmdl.ida.templates.core.test.rsc.ApplicationContextTestXML;
+import org.xmdl.ida.templates.core.test.rsc.JDBCProperties;
+import org.xmdl.ida.templates.core.test.rsc.Log4jXML;
+import org.xmdl.ida.templates.core.test.rsc.MailProperties;
+import org.xmdl.ida.templates.core.test.rsc.PersistenceXML;
+import org.xmdl.ida.templates.core.test.rsc.SampleDataXML;
 import org.xmdl.ida.templates.maven.CorePomXML;
 import org.xmdl.ida.templates.maven.RootPomXML;
-import org.xmdl.ida.templates.model.Entity;
-import org.xmdl.ida.templates.project.Constants;
-import org.xmdl.ida.templates.service.EntityService;
-import org.xmdl.ida.templates.service.EntityServiceIMPL;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.xgen.AbstractTaskFactory;
@@ -102,7 +102,7 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
 
                 // service
                 templates.add(new EntityService());
-                templates.add(new EntityServiceIMPL());
+                templates.add(new EntityServiceImplementation());
 
                 // core.resources
                 templates.add(new HibernateCFG());

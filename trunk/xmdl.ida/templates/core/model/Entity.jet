@@ -1,5 +1,5 @@
 <%@ jet 
-	package="org.xmdl.ida.templates.model" 
+	package="org.xmdl.ida.templates.core.model" 
 	class="EntityImpl" 
     imports="
     		java.util.*

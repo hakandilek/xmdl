@@ -1,5 +1,5 @@
 <%@ jet 
-	package="org.xmdl.ida.templates.core.test.res" 
+	package="org.xmdl.ida.templates.core.test.rsc" 
 	class="Log4jXMLImpl" 
     imports="java.util.*
     		chrome.xmdl.*
