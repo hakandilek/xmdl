@@ -1,5 +1,5 @@
 <%@ jet 
-	package="org.xmdl.ida.templates.core.res" 
+	package="org.xmdl.ida.templates.core.rsc" 
 	class="DefaultDataXMLImpl" 
 	%><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    

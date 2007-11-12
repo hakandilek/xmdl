@@ -1,5 +1,5 @@
 <%@ jet 
-	package="org.xmdl.ida.templates.dao" 
+	package="org.xmdl.ida.templates.core.dao" 
 	class="EntityDAOImpl" 
     imports="chrome.xmdl.*
             chrome.xmdl.gen.util.*

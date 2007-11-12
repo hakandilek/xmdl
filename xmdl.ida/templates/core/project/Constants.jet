@@ -1,5 +1,5 @@
 <%@ jet 
-	package="org.xmdl.ida.templates.project" 
+	package="org.xmdl.ida.templates.core.project" 
 	class="ConstantsImpl" 
     imports="
             chrome.xmdl.*

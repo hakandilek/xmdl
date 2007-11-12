@@ -1,5 +1,5 @@
 <%@ jet 
-	package="org.xmdl.ida.templates.core.res" 
+	package="org.xmdl.ida.templates.core.rsc" 
 	class="ApplicationContextServiceXMLImpl" 
     imports="java.util.*
     		chrome.xmdl.*

@@ -1,5 +1,5 @@
 <%@ jet 
-	package="org.xmdl.ida.templates.service" 
+	package="org.xmdl.ida.templates.core.service" 
 	class="EntityServiceImpl" 
     imports="chrome.xmdl.*
             chrome.xmdl.gen.util.*
