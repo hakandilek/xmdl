@@ -1,4 +1,8 @@
-<%@ jet 
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@jet 
 	package="org.xmdl.ida.templates.core.model" 
 	class="EntityImpl" 
     imports="java.util.*
@@ -7,27 +11,15 @@
             org.eclipse.emf.codegen.util.*
 			"
 	%><%
-    XClass xClass = (XClass) argument;
+    XClass xClass = (XClass) context.getVariable("argument");
     XPackage xPackage = xClass.getXPackage(); 
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
 package <%=helper.getQualifiedName(xPackage)%>.model;
 
-<%ImportManager importManager=null;%>
-<%if (helper.getQualifiedName(xPackage) != null) {%>
-<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
-package <%=helper.getQualifiedName(xPackage)%>.model;
-<%} else {%>
-<%importManager = helper.makeImportManager("");%>
-<%}%>
+<j:importsLocation package="org.example"/>
 
-<%importManager.addImport("org.xmdl.ida.lib.BaseConstants");%>
-<%
-    StringBuffer importStringBuffer = stringBuffer;
-    int importInsertionPoint = stringBuffer.length();
-    importManager.addCompilationUnitImports(stringBuffer.toString());
-%>
 /**
  *
  * <%=helper.getCapName(xClass)%> entity bean
@@ -37,7 +29,18 @@ package <%=helper.getQualifiedName(xPackage)%>.model;
  * @generated
  */ 
 @Entity (name=("TODO"))
-public interface <%=helper.getCapName(xClass)%> extends BaseObject implements Serializable {
+public class <%=helper.getCapName(xClass)%> extends BaseObject implements Serializable {
+
+<c:iterate select="$xClass/attributes" var="attribute">
+<c:addElement select="$attribute" name="attribute"/>
+    /** 
+     * @generated
+     */
+    private <%=helper.getImportedAttributeType(@attribute)%> <%=helper.uncapSafeName(attribute)%> = <%=helper.getDefaultValue(attribute)%>;
+	
+    content to be repeated for each iteration
+    Value of name: <c:get select="$curA/@name"/>
+</c:iterate> 
 
 <%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
@@ -57,4 +60,3 @@ public interface <%=helper.getCapName(xClass)%> extends BaseObject implements Se
 
 
 }
-<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>
