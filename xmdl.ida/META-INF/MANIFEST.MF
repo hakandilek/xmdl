@@ -4,6 +4,11 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.xmdl.ida;singleton:=true
 Bundle-Version: 0.1.0
 Bundle-Vendor: %providerName
-Require-Bundle: xmdl,xmdl.gen,org.eclipse.emf.ecore,org.eclipse.emf.co
- degen,org.eclipse.core.runtime,org.apache.log4j
+Require-Bundle: xmdl,
+ xmdl.gen,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.codegen,
+ org.eclipse.core.runtime,
+ org.apache.log4j,
+ org.eclipse.jet
 Eclipse-LazyStart: true

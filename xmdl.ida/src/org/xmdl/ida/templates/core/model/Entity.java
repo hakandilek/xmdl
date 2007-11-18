@@ -11,7 +11,7 @@ import chrome.xmdl.xgen.Template;
  * @author Hakan Dilek
  *
  */
-public class Entity extends EntityImpl implements Template {
+public class Entity extends EntityImpl implements Template2 {
 
     public String targetFile(Object object) {
         XClass cls = (XClass) object;
