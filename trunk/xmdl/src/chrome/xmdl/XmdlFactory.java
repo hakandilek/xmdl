@@ -96,6 +96,15 @@ public interface XmdlFactory extends EFactory {
     XException createXException();
 
     /**
+     * Returns a new object of class '<em>XVisitor Base</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>XVisitor Base</em>'.
+     * @generated
+     */
+    XVisitorBase createXVisitorBase();
+
+    /**
      * Returns a new object of class '<em>XEnumeration</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

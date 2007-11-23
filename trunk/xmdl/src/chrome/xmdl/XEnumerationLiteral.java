@@ -26,93 +26,93 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated NOT
  */
-public interface XEnumerationLiteral extends EObject,
-		Comparable<XEnumerationLiteral> {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "hd";
+public interface XEnumerationLiteral extends EObject, XBase,
+        Comparable<XEnumerationLiteral> {
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    String copyright = "hd";
 
-	/**
-	 * Returns the value of the '<em><b>Enumeration</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link chrome.xmdl.XEnumeration#getLiterals <em>Literals</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Enumeration</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Enumeration</em>' container reference.
-	 * @see #setEnumeration(XEnumeration)
-	 * @see chrome.xmdl.XmdlPackage#getXEnumerationLiteral_Enumeration()
-	 * @see chrome.xmdl.XEnumeration#getLiterals
-	 * @model opposite="literals" required="true" transient="false"
-	 * @generated
-	 */
-	XEnumeration getEnumeration();
+    /**
+     * Returns the value of the '<em><b>Enumeration</b></em>' container reference.
+     * It is bidirectional and its opposite is '{@link chrome.xmdl.XEnumeration#getLiterals <em>Literals</em>}'.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Enumeration</em>' container reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Enumeration</em>' container reference.
+     * @see #setEnumeration(XEnumeration)
+     * @see chrome.xmdl.XmdlPackage#getXEnumerationLiteral_Enumeration()
+     * @see chrome.xmdl.XEnumeration#getLiterals
+     * @model opposite="literals" required="true" transient="false"
+     * @generated
+     */
+    XEnumeration getEnumeration();
 
-	/**
-	 * Sets the value of the '{@link chrome.xmdl.XEnumerationLiteral#getEnumeration <em>Enumeration</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Enumeration</em>' container reference.
-	 * @see #getEnumeration()
-	 * @generated
-	 */
-	void setEnumeration(XEnumeration value);
+    /**
+     * Sets the value of the '{@link chrome.xmdl.XEnumerationLiteral#getEnumeration <em>Enumeration</em>}' container reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Enumeration</em>' container reference.
+     * @see #getEnumeration()
+     * @generated
+     */
+    void setEnumeration(XEnumeration value);
 
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see chrome.xmdl.XmdlPackage#getXEnumerationLiteral_Name()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getName();
+    /**
+     * Returns the value of the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Name</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Name</em>' attribute.
+     * @see #setName(String)
+     * @see chrome.xmdl.XmdlPackage#getXEnumerationLiteral_Name()
+     * @model required="true"
+     * @generated
+     */
+    String getName();
 
-	/**
-	 * Sets the value of the '{@link chrome.xmdl.XEnumerationLiteral#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
+    /**
+     * Sets the value of the '{@link chrome.xmdl.XEnumerationLiteral#getName <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Name</em>' attribute.
+     * @see #getName()
+     * @generated
+     */
+    void setName(String value);
 
-	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(int)
-	 * @see chrome.xmdl.XmdlPackage#getXEnumerationLiteral_Value()
-	 * @model required="true"
-	 * @generated
-	 */
-	int getValue();
+    /**
+     * Returns the value of the '<em><b>Value</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Value</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Value</em>' attribute.
+     * @see #setValue(int)
+     * @see chrome.xmdl.XmdlPackage#getXEnumerationLiteral_Value()
+     * @model required="true"
+     * @generated
+     */
+    int getValue();
 
-	/**
-	 * Sets the value of the '{@link chrome.xmdl.XEnumerationLiteral#getValue <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #getValue()
-	 * @generated
-	 */
-	void setValue(int value);
+    /**
+     * Sets the value of the '{@link chrome.xmdl.XEnumerationLiteral#getValue <em>Value</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Value</em>' attribute.
+     * @see #getValue()
+     * @generated
+     */
+    void setValue(int value);
 
 } // XEnumerationLiteral

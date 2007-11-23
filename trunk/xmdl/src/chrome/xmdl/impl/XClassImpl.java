@@ -23,10 +23,12 @@ import org.eclipse.emf.ecore.util.EObjectEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import chrome.xmdl.XAttribute;
+import chrome.xmdl.XBase;
 import chrome.xmdl.XClass;
 import chrome.xmdl.XMethod;
 import chrome.xmdl.XPackage;
 import chrome.xmdl.XType;
+import chrome.xmdl.XVisitor;
 import chrome.xmdl.XmdlPackage;
 
 /**
@@ -133,7 +135,7 @@ public class XClassImpl extends EObjectImpl implements XClass {
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
-    protected XClassImpl() {
+    public XClassImpl() {
         super();
     }
 
@@ -364,6 +366,28 @@ public class XClassImpl extends EObjectImpl implements XClass {
 
     public int compareTo(XType o) {
         return XTypeHelper.INST.compareTo(this, o);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated NOT
+     */
+    public boolean accept(XVisitor visitor) {
+        if (visitor.visitEnter(this)) {
+            final List<XAttribute> children1 = getAttributes();
+            for (XBase child : children1) {
+                if (!child.accept(visitor))
+                    break;
+            }
+            final List<XMethod> children2 = getMethods();
+            for (XBase child : children2) {
+                if (!child.accept(visitor))
+                    break;
+            }
+        }
+        final boolean result = visitor.visitLeave(this);
+        return result;
     }
 
     /**

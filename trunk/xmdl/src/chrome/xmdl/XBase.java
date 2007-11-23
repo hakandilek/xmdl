@@ -19,11 +19,19 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface XBase extends EObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "hd";
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    String copyright = "hd";
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @model
+     * @generated
+     */
+    boolean accept(XVisitor visitor);
 
 } // XBase

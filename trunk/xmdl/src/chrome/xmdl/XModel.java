@@ -24,35 +24,35 @@ import chrome.xmdl.init.Initializer;
  */
 public interface XModel extends EObject {
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	String copyright = "hd";
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    String copyright = "hd";
 
-	/**
-	 * @model
-	 * @generated
-	 */
-	URI path(URI modelURI);
+    /**
+     * @model
+     * @generated
+     */
+    URI path(URI modelURI);
 
-	/**
-	 * @model
-	 * @generated
-	 */
-	EObject createRoot(XProject project, URI uri);
+    /**
+     * @model
+     * @generated
+     */
+    EObject createRoot(XProject project, URI uri);
 
-	EObject loadRoot(XProject project, Resource resource);
+    EObject loadRoot(XProject project, Resource resource);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model required="true"
-	 * @generated
-	 */
-	String name();
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @model required="true"
+     * @generated
+     */
+    String name();
 
-	Initializer getInitializer();
+    Initializer getInitializer();
 
 } // XModel
