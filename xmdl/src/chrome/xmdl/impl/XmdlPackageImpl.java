@@ -33,6 +33,8 @@ import chrome.xmdl.XPackage;
 import chrome.xmdl.XParameter;
 import chrome.xmdl.XProject;
 import chrome.xmdl.XType;
+import chrome.xmdl.XVisitor;
+import chrome.xmdl.XVisitorBase;
 import chrome.xmdl.XmdlFactory;
 import chrome.xmdl.XmdlPackage;
 
@@ -119,6 +121,20 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
      * @generated
      */
     private EClass xModelEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass xVisitorEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass xVisitorBaseEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -637,6 +653,24 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getXVisitor() {
+        return xVisitorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getXVisitorBase() {
+        return xVisitorBaseEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getXEnumeration() {
         return xEnumerationEClass;
     }
@@ -853,6 +887,10 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 
         xModelEClass = createEClass(XMODEL);
 
+        xVisitorEClass = createEClass(XVISITOR);
+
+        xVisitorBaseEClass = createEClass(XVISITOR_BASE);
+
         // Create enums
         xAssociationTypeEEnum = createEEnum(XASSOCIATION_TYPE);
         xAssociationBehaviourEEnum = createEEnum(XASSOCIATION_BEHAVIOUR);
@@ -899,6 +937,12 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
         xClassEClass.getESuperTypes().add(this.getXType());
         xEnumerationEClass.getESuperTypes().add(this.getXBase());
         xEnumerationEClass.getESuperTypes().add(this.getXType());
+        xEnumerationLiteralEClass.getESuperTypes().add(this.getXBase());
+        xAttributeEClass.getESuperTypes().add(this.getXBase());
+        xMethodEClass.getESuperTypes().add(this.getXBase());
+        xParameterEClass.getESuperTypes().add(this.getXBase());
+        xExceptionEClass.getESuperTypes().add(this.getXBase());
+        xVisitorBaseEClass.getESuperTypes().add(this.getXVisitor());
 
         // Initialize classes and features; add operations and parameters
         initEClass(xProjectEClass, XProject.class, "XProject", !IS_ABSTRACT,
@@ -1092,6 +1136,11 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
         initEClass(xBaseEClass, XBase.class, "XBase", IS_ABSTRACT,
                 IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+        EOperation op = addEOperation(xBaseEClass, ecorePackage.getEBoolean(),
+                "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXVisitor(), "visitor", 0, 1, IS_UNIQUE,
+                IS_ORDERED);
+
         initEClass(xTypeEClass, XType.class, "XType", IS_ABSTRACT,
                 IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getXType_Name(), ecorePackage.getEString(), "name",
@@ -1109,8 +1158,8 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
         addEOperation(xTypeEClass, ecorePackage.getEBoolean(), "isBasic", 1, 1,
                 IS_UNIQUE, IS_ORDERED);
 
-        EOperation op = addEOperation(xTypeEClass, ecorePackage.getEInt(),
-                "compareTo", 1, 1, IS_UNIQUE, IS_ORDERED);
+        op = addEOperation(xTypeEClass, ecorePackage.getEInt(), "compareTo", 1,
+                1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, this.getXType(), "o", 1, 1, IS_UNIQUE, IS_ORDERED);
 
         addEOperation(xTypeEClass, ecorePackage.getEBoolean(), "isComparable",
@@ -1149,6 +1198,74 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 
         addEOperation(xModelEClass, ecorePackage.getEString(), "name", 1, 1,
                 IS_UNIQUE, IS_ORDERED);
+
+        initEClass(xVisitorEClass, XVisitor.class, "XVisitor", IS_ABSTRACT,
+                IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(),
+                "visitEnter", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXProject(), "x", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(),
+                "visitLeave", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXProject(), "x", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(),
+                "visitEnter", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXPackage(), "x", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(),
+                "visitLeave", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXPackage(), "x", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(),
+                "visitEnter", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXClass(), "x", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(),
+                "visitLeave", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXClass(), "x", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(),
+                "visitEnter", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXEnumeration(), "x", 0, 1, IS_UNIQUE,
+                IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(),
+                "visitLeave", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXEnumeration(), "x", 0, 1, IS_UNIQUE,
+                IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(),
+                "visitEnter", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXMethod(), "x", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(),
+                "visitLeave", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXMethod(), "x", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(), "visit",
+                0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXAttribute(), "x", 0, 1, IS_UNIQUE,
+                IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(), "visit",
+                0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXParameter(), "x", 0, 1, IS_UNIQUE,
+                IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(), "visit",
+                0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXException(), "x", 0, 1, IS_UNIQUE,
+                IS_ORDERED);
+
+        op = addEOperation(xVisitorEClass, ecorePackage.getEBoolean(), "visit",
+                0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, this.getXEnumerationLiteral(), "x", 0, 1, IS_UNIQUE,
+                IS_ORDERED);
+
+        initEClass(xVisitorBaseEClass, XVisitorBase.class, "XVisitorBase",
+                !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         // Initialize enums and add enum literals
         initEEnum(xAssociationTypeEEnum, XAssociationType.class,

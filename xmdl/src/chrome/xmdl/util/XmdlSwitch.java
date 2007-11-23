@@ -135,12 +135,16 @@ public class XmdlSwitch<T> {
             XEnumerationLiteral xEnumerationLiteral = (XEnumerationLiteral) theEObject;
             T result = caseXEnumerationLiteral(xEnumerationLiteral);
             if (result == null)
+                result = caseXBase(xEnumerationLiteral);
+            if (result == null)
                 result = defaultCase(theEObject);
             return result;
         }
         case XmdlPackage.XATTRIBUTE: {
             XAttribute xAttribute = (XAttribute) theEObject;
             T result = caseXAttribute(xAttribute);
+            if (result == null)
+                result = caseXBase(xAttribute);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -149,12 +153,16 @@ public class XmdlSwitch<T> {
             XMethod xMethod = (XMethod) theEObject;
             T result = caseXMethod(xMethod);
             if (result == null)
+                result = caseXBase(xMethod);
+            if (result == null)
                 result = defaultCase(theEObject);
             return result;
         }
         case XmdlPackage.XPARAMETER: {
             XParameter xParameter = (XParameter) theEObject;
             T result = caseXParameter(xParameter);
+            if (result == null)
+                result = caseXBase(xParameter);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -177,12 +185,30 @@ public class XmdlSwitch<T> {
             XException xException = (XException) theEObject;
             T result = caseXException(xException);
             if (result == null)
+                result = caseXBase(xException);
+            if (result == null)
                 result = defaultCase(theEObject);
             return result;
         }
         case XmdlPackage.XMODEL: {
             XModel xModel = (XModel) theEObject;
             T result = caseXModel(xModel);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case XmdlPackage.XVISITOR: {
+            XVisitor xVisitor = (XVisitor) theEObject;
+            T result = caseXVisitor(xVisitor);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case XmdlPackage.XVISITOR_BASE: {
+            XVisitorBase xVisitorBase = (XVisitorBase) theEObject;
+            T result = caseXVisitorBase(xVisitorBase);
+            if (result == null)
+                result = caseXVisitor(xVisitorBase);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -339,6 +365,36 @@ public class XmdlSwitch<T> {
      * @generated
      */
     public T caseXModel(XModel object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>XVisitor</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>XVisitor</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseXVisitor(XVisitor object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>XVisitor Base</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>XVisitor Base</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseXVisitorBase(XVisitorBase object) {
         return null;
     }
 

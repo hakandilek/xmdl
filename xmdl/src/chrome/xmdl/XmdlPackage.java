@@ -402,7 +402,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XENUMERATION_LITERAL__ENUMERATION = 0;
+    int XENUMERATION_LITERAL__ENUMERATION = XBASE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -411,7 +411,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XENUMERATION_LITERAL__NAME = 1;
+    int XENUMERATION_LITERAL__NAME = XBASE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -420,7 +420,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XENUMERATION_LITERAL__VALUE = 2;
+    int XENUMERATION_LITERAL__VALUE = XBASE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>XEnumeration Literal</em>' class.
@@ -429,7 +429,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XENUMERATION_LITERAL_FEATURE_COUNT = 3;
+    int XENUMERATION_LITERAL_FEATURE_COUNT = XBASE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -438,7 +438,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XATTRIBUTE__NAME = 0;
+    int XATTRIBUTE__NAME = XBASE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Length</b></em>' attribute.
@@ -447,7 +447,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XATTRIBUTE__LENGTH = 1;
+    int XATTRIBUTE__LENGTH = XBASE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Default Value</b></em>' attribute.
@@ -456,7 +456,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XATTRIBUTE__DEFAULT_VALUE = 2;
+    int XATTRIBUTE__DEFAULT_VALUE = XBASE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>XClass</b></em>' container reference.
@@ -465,7 +465,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XATTRIBUTE__XCLASS = 3;
+    int XATTRIBUTE__XCLASS = XBASE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Type</b></em>' reference.
@@ -474,7 +474,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XATTRIBUTE__TYPE = 4;
+    int XATTRIBUTE__TYPE = XBASE_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Association Type</b></em>' attribute.
@@ -483,7 +483,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XATTRIBUTE__ASSOCIATION_TYPE = 5;
+    int XATTRIBUTE__ASSOCIATION_TYPE = XBASE_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Association Behaviour</b></em>' attribute.
@@ -492,7 +492,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XATTRIBUTE__ASSOCIATION_BEHAVIOUR = 6;
+    int XATTRIBUTE__ASSOCIATION_BEHAVIOUR = XBASE_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Opposite</b></em>' reference.
@@ -501,7 +501,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XATTRIBUTE__OPPOSITE = 7;
+    int XATTRIBUTE__OPPOSITE = XBASE_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Navigable</b></em>' attribute.
@@ -510,7 +510,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XATTRIBUTE__NAVIGABLE = 8;
+    int XATTRIBUTE__NAVIGABLE = XBASE_FEATURE_COUNT + 8;
 
     /**
      * The number of structural features of the '<em>XAttribute</em>' class.
@@ -519,7 +519,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XATTRIBUTE_FEATURE_COUNT = 9;
+    int XATTRIBUTE_FEATURE_COUNT = XBASE_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Index</b></em>' attribute.
@@ -528,7 +528,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XMETHOD__INDEX = 0;
+    int XMETHOD__INDEX = XBASE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -537,7 +537,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XMETHOD__NAME = 1;
+    int XMETHOD__NAME = XBASE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>XClass</b></em>' container reference.
@@ -546,7 +546,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XMETHOD__XCLASS = 2;
+    int XMETHOD__XCLASS = XBASE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Type</b></em>' reference.
@@ -555,7 +555,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XMETHOD__TYPE = 3;
+    int XMETHOD__TYPE = XBASE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -564,7 +564,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XMETHOD__PARAMETERS = 4;
+    int XMETHOD__PARAMETERS = XBASE_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Exceptions</b></em>' containment reference list.
@@ -573,7 +573,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XMETHOD__EXCEPTIONS = 5;
+    int XMETHOD__EXCEPTIONS = XBASE_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>XMethod</em>' class.
@@ -582,7 +582,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XMETHOD_FEATURE_COUNT = 6;
+    int XMETHOD_FEATURE_COUNT = XBASE_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Method</b></em>' container reference.
@@ -591,7 +591,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XPARAMETER__METHOD = 0;
+    int XPARAMETER__METHOD = XBASE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -600,7 +600,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XPARAMETER__NAME = 1;
+    int XPARAMETER__NAME = XBASE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Type</b></em>' reference.
@@ -609,7 +609,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XPARAMETER__TYPE = 2;
+    int XPARAMETER__TYPE = XBASE_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>XParameter</em>' class.
@@ -618,7 +618,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XPARAMETER_FEATURE_COUNT = 3;
+    int XPARAMETER_FEATURE_COUNT = XBASE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -654,7 +654,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XEXCEPTION__JAVA_CLASS = 0;
+    int XEXCEPTION__JAVA_CLASS = XBASE_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>XException</em>' class.
@@ -663,7 +663,7 @@ public interface XmdlPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int XEXCEPTION_FEATURE_COUNT = 1;
+    int XEXCEPTION_FEATURE_COUNT = XBASE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>XModel</em>' class.
@@ -675,6 +675,44 @@ public interface XmdlPackage extends EPackage {
     int XMODEL_FEATURE_COUNT = 0;
 
     /**
+     * The meta object id for the '{@link chrome.xmdl.XVisitor <em>XVisitor</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see chrome.xmdl.XVisitor
+     * @see chrome.xmdl.impl.XmdlPackageImpl#getXVisitor()
+     * @generated
+     */
+    int XVISITOR = 12;
+
+    /**
+     * The number of structural features of the '<em>XVisitor</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int XVISITOR_FEATURE_COUNT = 0;
+
+    /**
+     * The meta object id for the '{@link chrome.xmdl.impl.XVisitorBaseImpl <em>XVisitor Base</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see chrome.xmdl.impl.XVisitorBaseImpl
+     * @see chrome.xmdl.impl.XmdlPackageImpl#getXVisitorBase()
+     * @generated
+     */
+    int XVISITOR_BASE = 13;
+
+    /**
+     * The number of structural features of the '<em>XVisitor Base</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int XVISITOR_BASE_FEATURE_COUNT = XVISITOR_FEATURE_COUNT + 0;
+
+    /**
      * The meta object id for the '{@link chrome.xmdl.XAssociationType <em>XAssociation Type</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -682,7 +720,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getXAssociationType()
      * @generated
      */
-    int XASSOCIATION_TYPE = 12;
+    int XASSOCIATION_TYPE = 14;
 
     /**
      * The meta object id for the '{@link chrome.xmdl.XAssociationBehaviour <em>XAssociation Behaviour</em>}' enum.
@@ -692,7 +730,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getXAssociationBehaviour()
      * @generated
      */
-    int XASSOCIATION_BEHAVIOUR = 13;
+    int XASSOCIATION_BEHAVIOUR = 15;
 
     /**
      * The meta object id for the '<em>IPath</em>' data type.
@@ -702,7 +740,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getIPath()
      * @generated
      */
-    int IPATH = 14;
+    int IPATH = 16;
 
     /**
      * The meta object id for the '<em>URI</em>' data type.
@@ -712,7 +750,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getURI()
      * @generated
      */
-    int URI = 15;
+    int URI = 17;
 
     /**
      * The meta object id for the '<em>Resource</em>' data type.
@@ -722,7 +760,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getResource()
      * @generated
      */
-    int RESOURCE = 16;
+    int RESOURCE = 18;
 
     /**
      * The meta object id for the '<em>Comparable</em>' data type.
@@ -732,7 +770,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getComparable()
      * @generated
      */
-    int COMPARABLE = 17;
+    int COMPARABLE = 19;
 
     /**
      * Returns the meta object for class '{@link chrome.xmdl.XAttribute <em>XAttribute</em>}'.
@@ -1185,6 +1223,26 @@ public interface XmdlPackage extends EPackage {
      * @generated
      */
     EClass getXModel();
+
+    /**
+     * Returns the meta object for class '{@link chrome.xmdl.XVisitor <em>XVisitor</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>XVisitor</em>'.
+     * @see chrome.xmdl.XVisitor
+     * @generated
+     */
+    EClass getXVisitor();
+
+    /**
+     * Returns the meta object for class '{@link chrome.xmdl.XVisitorBase <em>XVisitor Base</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>XVisitor Base</em>'.
+     * @see chrome.xmdl.XVisitorBase
+     * @generated
+     */
+    EClass getXVisitorBase();
 
     /**
      * Returns the meta object for class '{@link chrome.xmdl.XEnumeration <em>XEnumeration</em>}'.
@@ -1791,6 +1849,26 @@ public interface XmdlPackage extends EPackage {
          * @generated
          */
         EClass XMODEL = eINSTANCE.getXModel();
+
+        /**
+         * The meta object literal for the '{@link chrome.xmdl.XVisitor <em>XVisitor</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see chrome.xmdl.XVisitor
+         * @see chrome.xmdl.impl.XmdlPackageImpl#getXVisitor()
+         * @generated
+         */
+        EClass XVISITOR = eINSTANCE.getXVisitor();
+
+        /**
+         * The meta object literal for the '{@link chrome.xmdl.impl.XVisitorBaseImpl <em>XVisitor Base</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see chrome.xmdl.impl.XVisitorBaseImpl
+         * @see chrome.xmdl.impl.XmdlPackageImpl#getXVisitorBase()
+         * @generated
+         */
+        EClass XVISITOR_BASE = eINSTANCE.getXVisitorBase();
 
         /**
          * The meta object literal for the '{@link chrome.xmdl.XAssociationType <em>XAssociation Type</em>}' enum.

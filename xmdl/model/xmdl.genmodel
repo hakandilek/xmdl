@@ -8,7 +8,7 @@
     generateSchema="true" rootImplementsInterface="java.lang.Comparable" featureMapWrapperInterface=""
     featureMapWrapperInternalInterface="" featureMapWrapperClass="" runtimeCompatibility="true"
     codeFormatting="true" booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" providerRootExtendsClass="" usedGenPackages="platform:/plugin/org.eclipse.emf.mapping/model/Mapping.genmodel#//mapping platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    complianceLevel="5.0" publicConstructors="true" providerRootExtendsClass="" usedGenPackages="platform:/plugin/org.eclipse.emf.mapping/model/Mapping.genmodel#//mapping platform:/plugin/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel#//genmodel platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>xmdl.ecore</foreignModel>
   <genPackages prefix="Xmdl" basePackage="chrome" disposableProviderFactory="true"
       ecorePackage="xmdl.ecore#/">
@@ -81,7 +81,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XParameter/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EReference xmdl.ecore#//XParameter/type"/>
     </genClasses>
-    <genClasses ecoreClass="xmdl.ecore#//XBase"/>
+    <genClasses ecoreClass="xmdl.ecore#//XBase">
+      <genOperations ecoreOperation="xmdl.ecore#//XBase/accept">
+        <genParameters ecoreParameter="xmdl.ecore#//XBase/accept/visitor"/>
+      </genOperations>
+    </genClasses>
     <genClasses image="false" ecoreClass="xmdl.ecore#//XType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XType/name"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute xmdl.ecore#//XType/className"/>
@@ -109,5 +113,50 @@
       </genOperations>
       <genOperations ecoreOperation="xmdl.ecore#//XModel/name"/>
     </genClasses>
+    <genClasses image="false" ecoreClass="xmdl.ecore#//XVisitor">
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visitEnter">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visitEnter/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visitLeave">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visitLeave/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visitEnter.1">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visitEnter.1/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visitLeave.1">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visitLeave.1/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visitEnter.2">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visitEnter.2/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visitLeave.2">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visitLeave.2/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visitEnter.3">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visitEnter.3/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visitLeave.3">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visitLeave.3/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visitEnter.4">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visitEnter.4/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visitLeave.4">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visitLeave.4/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visit">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visit/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visit.1">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visit.1/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visit.2">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visit.2/x"/>
+      </genOperations>
+      <genOperations ecoreOperation="xmdl.ecore#//XVisitor/visit.3">
+        <genParameters ecoreParameter="xmdl.ecore#//XVisitor/visit.3/x"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="xmdl.ecore#//XVisitorBase"/>
   </genPackages>
 </genmodel:GenModel>
