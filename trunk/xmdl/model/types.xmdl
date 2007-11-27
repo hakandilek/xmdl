@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chrome.xmdl:XProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:chrome.xmdl="http://chrome/xmdl.ecore" name="xmdl.types">
+<org.xmdl:XProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.xmdl="http://www.xmdl.org/xmdl.ecore" name="xmdl.types">
   <packages name="java.lang">
     <classes name="String" className="java.lang.String"/>
     <classes name="Integer" className="java.lang.Integer" comparable="true"/>
@@ -11,7 +11,7 @@
     <classes name="Short" className="java.lang.Short" comparable="true"/>
     <classes name="Long" className="java.lang.Long" comparable="true"/>
   </packages>
-  <packages name="&lt;defaultPackage>">
+  <packages name="&lt;defaultPackage&gt;">
     <classes name="int" className="int" comparable="true"/>
     <classes name="void" className="void"/>
     <classes name="boolean" className="boolean"/>
@@ -26,4 +26,4 @@
     <classes name="Date" className="java.util.Date" comparable="true"/>
     <classes name="DateTime" className="java.util.DateTime" comparable="true"/>
   </packages>
-</chrome.xmdl:XProject>
+</org.xmdl:XProject>

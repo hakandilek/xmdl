@@ -11,9 +11,16 @@
 <plugin>
      <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http:///chrome/xmdl.ecore" 
+       uri = "http://www.xmdl.org/xmdl.ecore" 
        class = "chrome.xmdl.XmdlPackage"
        genModel = "model/xmdl.genmodel" /> 
   </extension>
+     <extension
+           point="org.eclipse.emf.ecore.factory_override">
+        <factory
+              class="chrome.xmdl.impl.XmdlFactoryImpl"
+              uri="http://www.xmdl.org/xmdl.ecore">
+        </factory>
+     </extension>
 
 </plugin>

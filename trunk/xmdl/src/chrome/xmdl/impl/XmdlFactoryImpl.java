@@ -45,7 +45,7 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
     public static XmdlFactory init() {
         try {
             XmdlFactory theXmdlFactory = (XmdlFactory) EPackage.Registry.INSTANCE
-                    .getEFactory("http://chrome/xmdl.ecore");
+                    .getEFactory("http://www.xmdl.org/xmdl.ecore");
             if (theXmdlFactory != null) {
                 return theXmdlFactory;
             }
