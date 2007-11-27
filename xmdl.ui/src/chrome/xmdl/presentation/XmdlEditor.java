@@ -38,6 +38,8 @@ import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -1329,16 +1331,22 @@ public class XmdlEditor extends MultiPageEditorPart implements
 	 * This is for implementing {@link IEditorPart} and simply saves the model file.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
 		// Save only resources that have actually changed.
 		//
 		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
-		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
-				Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
-
+        saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED,
+                Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+        /*
+         * this part is added to save type references in the form of
+         * href="platform:/plugin/xmdl/model/types.xmdl#java.lang.String"
+         */
+        saveOptions.put(XMLResource.OPTION_URI_HANDLER,
+                new URIHandlerImpl.PlatformSchemeAware());
+		
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
 		IRunnableWithProgress operation = new IRunnableWithProgress() {
