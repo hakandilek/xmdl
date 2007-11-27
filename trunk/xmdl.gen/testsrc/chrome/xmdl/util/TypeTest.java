@@ -1,13 +1,9 @@
 package chrome.xmdl.util;
 
 import junit.framework.TestCase;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.XProject;
 import chrome.xmdl.XType;
-import chrome.xmdl.XmdlTypes;
 import chrome.xmdl.gen.util.Locator;
 import chrome.xmdl.xgen.util.ResourceHelper;
 
@@ -32,7 +28,6 @@ public class TypeTest extends TestCase {
 	public void testType() {
 		XType type = attribute.getType();
 		assertNotNull(type);
-		EcoreUtil.resolve(type, XmdlTypes.JAVA_STRING);
 		String name = type.getName();
 		assertNotNull(name);
 		assertTrue(name.indexOf("String") >= 0);

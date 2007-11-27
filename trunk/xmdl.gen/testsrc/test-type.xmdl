@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chrome.xmdl:XProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:chrome.xmdl="http://chrome/xmdl.ecore" name="xmdl.xmp">
+<org.xmdl:XProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.xmdl="http://www.xmdl.org/xmdl.ecore" name="xmdl.xmp">
   <packages name="org.xmdl.test">
     <classes name="Class1" className="org.xmdl.test.Class1">
       <attributes name="attribute1">
-        <type xsi:type="chrome.xmdl:XClass" href="../../../plugin/xmdl/model/types.xmdl#java.lang.String"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.String"/>
       </attributes>
     </classes>
   </packages>
-</chrome.xmdl:XProject>
+</org.xmdl:XProject>
