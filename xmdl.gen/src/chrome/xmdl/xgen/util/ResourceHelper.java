@@ -37,6 +37,11 @@ public class ResourceHelper {
 			XmdlboPackage.eINSTANCE.eClass();
 			XmdlgenPackage.eINSTANCE.eClass();
 			
+	        XmdlPackage.eINSTANCE.getEFactoryInstance();
+            XmdldbPackage.eINSTANCE.getEFactoryInstance();
+            XmdlboPackage.eINSTANCE.getEFactoryInstance();
+            XmdlgenPackage.eINSTANCE.getEFactoryInstance();
+
 			initialized = true;
 		}
 	}
