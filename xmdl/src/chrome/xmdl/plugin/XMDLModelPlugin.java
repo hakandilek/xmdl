@@ -16,7 +16,7 @@ public class XMDLModelPlugin extends Plugin {
     @Override
     public void start(BundleContext context) throws Exception {
         super.start(context);
-        XmdlTypes.init("");
+        XmdlTypes.getInstance();
     }
 
     @Override
