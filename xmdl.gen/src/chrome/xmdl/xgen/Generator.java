@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import chrome.xmdl.XModel;
 import chrome.xmdl.XProject;
-import chrome.xmdl.XmdlTypes;
 import chrome.xmdl.gen.plugin.XMDLGenPlugin;
 import chrome.xmdl.init.Initializer;
 import chrome.xmdl.xgen.util.IFileUtils;
@@ -54,8 +53,6 @@ public class Generator {
 	private List<GeneratorListener> listeners = new ArrayList<GeneratorListener>();
 
 	private List<XModel> subModels = new ArrayList<XModel>();
-
-	private URI typesURI;
 
 	private URI mergeURI;
 
@@ -101,8 +98,6 @@ public class Generator {
 	public void generate(Platform platform) {
 		fireGenerationInitialized();
 		LOGGER.info("Generating project : " + project);
-
-		XmdlTypes.init(typesURI);
 
 		XProject prj = getProject();
 
@@ -151,8 +146,6 @@ public class Generator {
 		}
 		URI uri = resource.getURI();
 
-		XmdlTypes.init("../xmdl/model/types.xmdl");
-		
 		List list = new ArrayList<EObject>();
 		
 		for (int i = 0; i < subModels.size(); i++) {
@@ -443,10 +436,6 @@ public class Generator {
 	 */
 	public List<XModel> getSubModels() {
 		return subModels;
-	}
-
-	public void setTypesURI(URI typesURI) {
-		this.typesURI = typesURI;
 	}
 
 	public void setMergeURI(URI mergeURI) {
