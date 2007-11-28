@@ -7,13 +7,8 @@ Bundle-Vendor: %providerName
 Require-Bundle: xmdl,
  xmdl.gen,
  xmdl.genext,
- org.eclipse.core.runtime,
- org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.codegen,
+ org.eclipse.emf.ecore,
  org.eclipse.core.runtime.compatibility,
- org.eclipse.core.resources,
- org.eclipse.jdt.core,
  org.junit,
  org.apache.log4j,
- org.eclipse.jet,
- org.eclipse.jet.core
+ org.eclipse.jet
