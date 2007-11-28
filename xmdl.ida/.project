@@ -5,11 +5,11 @@
 	<projects>
 	</projects>
 	<buildSpec>
-      <buildCommand>
-         <name>org.eclipse.jet.builder</name>
-         <arguments>
-         </arguments>
-      </buildCommand>
+        <buildCommand>
+            <name>org.eclipse.jet.builder</name>
+            <arguments>
+            </arguments>
+        </buildCommand>
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
@@ -29,6 +29,6 @@
 	<natures>
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-      <nature>org.eclipse.jet.jet2Nature</nature>
+        <nature>org.eclipse.jet.jet2Nature</nature>
 	</natures>
 </projectDescription>
