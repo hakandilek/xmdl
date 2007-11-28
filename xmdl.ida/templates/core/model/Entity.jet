@@ -2,13 +2,13 @@
 <%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
 <%@jet 
 	package="org.xmdl.ida.templates.core.model" 
-	class="EntityImpl" 
+	class="EntityImpl"  
     imports="java.util.*
             chrome.xmdl.*
             chrome.xmdl.gen.util.*
-            org.eclipse.emf.codegen.util.*
 			"
 	%><%
     XClass xClass = (XClass) context.getVariable("argument");
@@ -36,10 +36,8 @@ public class <%=helper.getCapName(xClass)%> extends BaseObject implements Serial
     /** 
      * @generated
      */
-    private <%=helper.getImportedAttributeType(@attribute)%> <%=helper.uncapSafeName(attribute)%> = <%=helper.getDefaultValue(attribute)%>;
+    private <xc:attributeType />;
 	
-    content to be repeated for each iteration
-    Value of name: <c:get select="$curA/@name"/>
 </c:iterate> 
 
 <%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
