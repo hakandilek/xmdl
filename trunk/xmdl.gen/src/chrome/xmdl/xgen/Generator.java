@@ -28,6 +28,10 @@ import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.jet.BodyContentWriter;
+import org.eclipse.jet.BufferedJET2Writer;
+import org.eclipse.jet.JET2Context;
+import org.eclipse.jet.transform.TransformContextExtender;
 
 import chrome.xmdl.XModel;
 import chrome.xmdl.XProject;
@@ -194,7 +198,9 @@ public class Generator {
 		for (Iterator<GenerationTask> iter = tasks.iterator(); iter.hasNext();) {
 			GenerationTask task = iter.next();
 
-			String targetFile = task.getTemplate().targetFile(task.getSource());
+			Template template = task.getTemplate();
+            Object source = task.getSource();
+            String targetFile = template.targetFile(source);
 
 			LOGGER.debug("Generation File:" + targetFile);
 			String targetDirectory ="";
@@ -220,7 +226,7 @@ public class Generator {
 
 			// Perform generation
 			try {
-				String gen = task.getTemplate().generate(task.getSource());
+				String gen = runTemplate(template, source);
 				InputStream generated = new ByteArrayInputStream(gen.getBytes());
 				LOGGER.debug("file:" + file.toString() + "?" + file.exists());
 				
@@ -297,15 +303,26 @@ public class Generator {
 		}
 	}
 
-	/**
-	 * Writes contents of source into destination
-	 * 
-	 * @param reader
-	 *            source
-	 * @param file
-	 *            destination
-	 * @throws IOException
-	 */
+	public static String runTemplate(Template template, Object argument) {
+        final BufferedJET2Writer out = new BodyContentWriter();
+
+        JET2Context context = new JET2Context(null);
+        TransformContextExtender.getInstance(context);
+        template.generate(context, out);
+
+        String output = out.getContent();
+        return output;
+    }
+
+    /**
+     * Writes contents of source into destination
+     * 
+     * @param reader
+     *            source
+     * @param file
+     *            destination
+     * @throws IOException
+     */
 	protected void writeTo(Reader reader, File file) throws IOException {
 		Writer w = new FileWriter(file);
 		writeTo(reader, w);

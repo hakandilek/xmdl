@@ -1,18 +1,15 @@
 package chrome.xmdl.xgen;
 
+import org.eclipse.jet.JET2Template;
+
 /**
- * generator common interface
- * @author tr1a3571 
+ * Common template interface
+ * @author Hakan Dilek 
  *
  */
-public interface Template {
-	/**
-	 * generate target file  from fiven source 
-	 * @param object argument
-	 * @return file content
-	 */
-	public String generate(Object object);
-	/**
+public interface Template extends TemplateConfiguration, JET2Template {
+
+    /**
 	 * target file name
 	 * @param object geneartion argument
 	 * @return file name
