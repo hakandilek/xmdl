@@ -7,7 +7,7 @@
             org.eclipse.emf.codegen.util.*
 			"
 	%><%
-    XClass xClass = (XClass) argument;
+    XClass xClass = (XClass) context.getVariable("argument");
     XPackage xPackage = xClass.getXPackage(); 
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
@@ -31,11 +31,6 @@ package <%=helper.getQualifiedName(xPackage)%>.dao.hibernate;
 <%importManager.addImport("org.hibernate.criterion.*");%>
 
 <%importManager.addImport("java.util.*");%>
-<%
-    StringBuffer importStringBuffer = stringBuffer;
-    int importInsertionPoint = stringBuffer.length();
-    importManager.addCompilationUnitImports(stringBuffer.toString());
-%>
 /**
  *
  * <%=helper.getCapName(xClass)%> DAO Hibernate implementation
@@ -154,4 +149,3 @@ public class <%=helper.getCapName(xClass)%>DAOHibernate extends GenericDaoHibern
     }
 
 }
-<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

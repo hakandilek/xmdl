@@ -7,7 +7,7 @@
             chrome.xmdl.gen.util.*
 			"
 	%><%
-    DModel model = (DModel) argument;
+    DModel model = (DModel) context.getVariable("argument");;
     List<DPackage> dPackages = model.getDPackages();
     TestHelper testHelper = TestHelper.INSTANCE;
     ClassHelper helper = XMDLClassHelper.INSTANCE;

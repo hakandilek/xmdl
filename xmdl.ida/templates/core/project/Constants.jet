@@ -7,7 +7,7 @@
 			org.eclipse.emf.common.util.*
 			"
 	%><%
-    XProject prj = (XProject) argument;
+    XProject prj = (XProject) context.getVariable("argument");
     EList<XPackage> packages = prj.getPackages();
     XPackage xPackage = packages.get(0);
     ClassHelper helper = XMDLClassHelper.INSTANCE;
@@ -24,11 +24,6 @@ package <%=helper.getQualifiedName(xPackage)%>.model;
 <%}%>
 
 <%importManager.addImport("org.xmdl.ida.lib.BaseConstants");%>
-<%
-    StringBuffer importStringBuffer = stringBuffer;
-    int importInsertionPoint = stringBuffer.length();
-    importManager.addCompilationUnitImports(stringBuffer.toString());
-%>
 /**
  *
  * Constant values used throughout the application.
@@ -41,4 +36,3 @@ public interface ApplicationConstants extends BaseConstants {
 
 
 }
-<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

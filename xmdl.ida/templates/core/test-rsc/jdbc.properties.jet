@@ -4,7 +4,7 @@
     imports="chrome.xmdl.*
 			"
 	%><%
-    XProject prj = (XProject) argument;
+    XProject prj = (XProject) context.getVariable("argument");;
     prj.getName();
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>jdbc.driverClassName=${jdbc.driverClassName}
