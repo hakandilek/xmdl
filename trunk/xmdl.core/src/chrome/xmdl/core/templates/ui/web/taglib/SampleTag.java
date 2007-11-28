@@ -5,7 +5,7 @@ import chrome.xmdl.XProject;
 import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.ui.web.taglib.impl.SampleTagImpl;
 
-public class SampleTag extends SampleTagImpl implements Template {
+public class SampleTag extends SampleTagImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		XProject project = (XProject) object;

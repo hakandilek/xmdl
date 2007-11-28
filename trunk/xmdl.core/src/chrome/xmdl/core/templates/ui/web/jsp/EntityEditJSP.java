@@ -2,9 +2,9 @@ package chrome.xmdl.core.templates.ui.web.jsp;
 
 import chrome.xmdl.XClass;
 import chrome.xmdl.core.templates.ui.web.jsp.impl.EntityEditJSPImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
-public class EntityEditJSP extends EntityEditJSPImpl implements Template {
+public class EntityEditJSP extends EntityEditJSPImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		StringBuffer buffer = new StringBuffer("web/");		

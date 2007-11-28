@@ -6,7 +6,7 @@ import chrome.xmdl.core.templates.ui.web.webinf.impl.ValidationXMLImpl;
 
 public class ValidationXML 
 		extends ValidationXMLImpl 
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		

@@ -5,11 +5,11 @@ import org.apache.log4j.Logger;
 import chrome.xmdl.XClass;
 import chrome.xmdl.XPackage;
 import chrome.xmdl.core.templates.dao.impl.EntityDAOImplTemplateImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
 public class EntityDAOImplTemplate 
 			extends EntityDAOImplTemplateImpl 
-			implements Template{
+			implements TemplateConfiguration{
 	public static final Logger LOGGER=Logger.getLogger(EntityDAOImplTemplate.class);
 	
 	public String targetFile(Object object) {

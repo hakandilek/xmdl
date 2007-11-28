@@ -5,7 +5,7 @@ import chrome.xmdl.XPackage;
 import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.test.ui.web.form.impl.EntityFormTestImpl;
 
-public class EntityFormTest extends EntityFormTestImpl implements Template {
+public class EntityFormTest extends EntityFormTestImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		XClass class1 = (XClass) object;

@@ -54,7 +54,7 @@
 			AttributePair pair = new AttributePair(attribute, field, dTable);
 			Template t = dbHelper.getTemplate(attribute);
 			%>
-			<%=t.generate(pair)%>
+			<%=Generator.runTemplate(t, pair)%>
 			<%} //if%>
 		<%} //if-else%>
 	<%}//for%>			 

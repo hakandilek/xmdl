@@ -2,9 +2,9 @@ package chrome.xmdl.core.templates.context;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.core.templates.context.impl.Log4JPropImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
-public class Log4JProp extends Log4JPropImpl implements Template{
+public class Log4JProp extends Log4JPropImpl implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		StringBuffer buffer= new StringBuffer("rsc/");

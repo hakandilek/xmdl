@@ -5,7 +5,7 @@ import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.ui.web.jsp.part.impl.FormFieldDefaultImpl;
 
 public class FormFieldDefault extends FormFieldDefaultImpl  
-		implements Template {
+		implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		// TODO Auto-generated method stub

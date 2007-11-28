@@ -103,7 +103,7 @@ public class EntityEditJSPImpl
 		Template t = UIHelper.getEditFormFieldTemplate(attribute);
 		
     stringBuffer.append(TEXT_10);
-    stringBuffer.append(t.generate(attribute));
+    stringBuffer.append(Generator.runTemplate(t, attribute));
     stringBuffer.append(TEXT_11);
       } 
     stringBuffer.append(TEXT_12);

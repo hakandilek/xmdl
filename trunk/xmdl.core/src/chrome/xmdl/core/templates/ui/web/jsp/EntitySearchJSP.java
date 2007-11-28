@@ -2,9 +2,9 @@ package chrome.xmdl.core.templates.ui.web.jsp;
 
 import chrome.xmdl.XClass;
 import chrome.xmdl.core.templates.ui.web.jsp.impl.EntitySearchJSPImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
-public class EntitySearchJSP extends EntitySearchJSPImpl implements Template {
+public class EntitySearchJSP extends EntitySearchJSPImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		StringBuffer buffer = new StringBuffer("web/");		

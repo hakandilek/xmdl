@@ -5,7 +5,7 @@ import chrome.xmdl.XPackage;
 import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.test.dao.impl.DAOTestPropertiesTemplateImpl;
 
-public class DAOTestPropertiesTemplate extends DAOTestPropertiesTemplateImpl implements Template {
+public class DAOTestPropertiesTemplate extends DAOTestPropertiesTemplateImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		XClass class1 = (XClass) object;

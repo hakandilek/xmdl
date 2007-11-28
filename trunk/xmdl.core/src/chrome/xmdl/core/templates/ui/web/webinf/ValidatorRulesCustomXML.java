@@ -6,7 +6,7 @@ import chrome.xmdl.core.templates.ui.web.webinf.impl.ValidatorRulesCustomXMLImpl
 
 public class ValidatorRulesCustomXML 
 		extends ValidatorRulesCustomXMLImpl 
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		

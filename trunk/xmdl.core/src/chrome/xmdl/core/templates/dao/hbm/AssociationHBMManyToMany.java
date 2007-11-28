@@ -3,11 +3,11 @@ package chrome.xmdl.core.templates.dao.hbm;
 import chrome.xmdl.XAssociationType;
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.core.templates.dao.hbm.impl.AssociationHBMManyToManyImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 import chrome.xmdldb.DField;
 
 public class AssociationHBMManyToMany extends AssociationHBMManyToManyImpl
-		implements Template {
+		implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		// TODO Auto-generated method stub

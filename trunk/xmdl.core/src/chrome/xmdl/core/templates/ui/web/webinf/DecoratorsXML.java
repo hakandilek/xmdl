@@ -2,9 +2,9 @@ package chrome.xmdl.core.templates.ui.web.webinf;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.core.templates.ui.web.webinf.impl.DecoratorsXMLImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
-public class DecoratorsXML extends DecoratorsXMLImpl implements Template {
+public class DecoratorsXML extends DecoratorsXMLImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 

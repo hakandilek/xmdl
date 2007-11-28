@@ -2,9 +2,9 @@ package chrome.xmdl.core.templates.ui.web.include;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.core.templates.ui.web.include.impl.TaglibsJSPImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
-public class TaglibsJSP extends TaglibsJSPImpl implements Template {
+public class TaglibsJSP extends TaglibsJSPImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		StringBuffer buffer = new StringBuffer("web/");		

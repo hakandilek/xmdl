@@ -5,7 +5,7 @@ import chrome.xmdl.xgen.TaskFactory;
 
 public class XmdlCorePlatform extends AbstractPlatform {
 
-	private TaskFactory taskFactory = new XmdlTaskFactory();
+	private TaskFactory taskFactory = new CoreTaskFactory();
 
 	public TaskFactory taskFactory() {
 		return taskFactory;

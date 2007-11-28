@@ -7,7 +7,7 @@ import chrome.xmdl.core.templates.ui.web.form.impl.EntityFormImpl;
 
 public class EntityForm 
 		extends EntityFormImpl 
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		XClass class1=(XClass) object;

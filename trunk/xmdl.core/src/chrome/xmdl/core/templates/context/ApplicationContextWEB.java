@@ -3,10 +3,10 @@ package chrome.xmdl.core.templates.context;
 import chrome.xmdl.XPackage;
 import chrome.xmdl.core.templates.context.impl.ApplicationContextWEBImpl;
 import chrome.xmdl.gen.util.XMDLClassHelper;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
 public class ApplicationContextWEB extends ApplicationContextWEBImpl implements
-		Template {
+		TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		XPackage p = (XPackage) object;

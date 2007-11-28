@@ -6,7 +6,7 @@ import chrome.xmdl.core.templates.ui.web.impl.MessageKeysImpl;
 
 public class MessageKeys 
 		extends MessageKeysImpl 
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		

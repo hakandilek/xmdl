@@ -1,6 +1,5 @@
 <%@ jet 
 	package="chrome.xmdl.core.templates.ui.web.impl" 
-	imports="java.util.*" 
 	class="IndexJSPImpl"
 	startTag="<$" endTag="$>" 
 %><%@ include file="/include/taglibs.jsp"%>

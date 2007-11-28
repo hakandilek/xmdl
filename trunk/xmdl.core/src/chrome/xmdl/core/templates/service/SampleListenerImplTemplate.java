@@ -6,7 +6,7 @@ import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.service.impl.SampleListenerImplTemplateImpl;
 
 public class SampleListenerImplTemplate extends SampleListenerImplTemplateImpl 
-		implements Template {
+		implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		XProject project =(XProject) object;

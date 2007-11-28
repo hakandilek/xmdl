@@ -2,11 +2,11 @@ package chrome.xmdl.core.templates.ui.web.webinf;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.core.templates.ui.web.webinf.impl.StrutsConfigXMLImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
 public class StrutsConfigXML 
 		extends StrutsConfigXMLImpl 
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		

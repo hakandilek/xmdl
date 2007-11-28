@@ -6,7 +6,7 @@ import chrome.xmdl.core.templates.ui.web.impl.ParameterKeysImpl;
 
 public class ParameterKeys 
 		extends ParameterKeysImpl 
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		

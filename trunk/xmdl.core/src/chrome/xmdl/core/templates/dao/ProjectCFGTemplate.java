@@ -2,9 +2,9 @@ package chrome.xmdl.core.templates.dao;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.core.templates.dao.hbm.impl.ProjectCFGTemplateImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
-public class ProjectCFGTemplate extends ProjectCFGTemplateImpl implements Template{
+public class ProjectCFGTemplate extends ProjectCFGTemplateImpl implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		//XProject p=(XProject) object;

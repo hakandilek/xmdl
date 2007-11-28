@@ -7,7 +7,7 @@ import chrome.xmdl.core.templates.model.impl.EntitySearchTemplateImpl;
 
 public class EntitySearchTemplate 
 		extends EntitySearchTemplateImpl 
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		XClass class1=(XClass) object;

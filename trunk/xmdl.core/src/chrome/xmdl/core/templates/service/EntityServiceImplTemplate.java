@@ -3,9 +3,9 @@ package chrome.xmdl.core.templates.service;
 import chrome.xmdl.XClass;
 import chrome.xmdl.XPackage;
 import chrome.xmdl.core.templates.service.impl.EntityServiceImplTemplateImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
-public class EntityServiceImplTemplate extends EntityServiceImplTemplateImpl implements Template {
+public class EntityServiceImplTemplate extends EntityServiceImplTemplateImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		XClass class1=(XClass) object;

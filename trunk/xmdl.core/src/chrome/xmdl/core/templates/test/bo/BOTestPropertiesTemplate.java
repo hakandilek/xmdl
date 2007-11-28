@@ -5,7 +5,7 @@ import chrome.xmdl.XPackage;
 import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.test.bo.impl.BOTestPropertiesTemplateImpl;
 
-public class BOTestPropertiesTemplate extends BOTestPropertiesTemplateImpl implements Template {
+public class BOTestPropertiesTemplate extends BOTestPropertiesTemplateImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		XClass class1 = (XClass) object;

@@ -1,11 +1,11 @@
 package chrome.xmdl.core.templates.dao.hbm;
 
 import chrome.xmdl.core.templates.dao.hbm.impl.PackageHBMTemplateImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 import chrome.xmdldb.DPackage;
 
 public class PackageHBMTemplate extends PackageHBMTemplateImpl implements
-		Template {
+		TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		StringBuffer buffer = new StringBuffer("rsc/");

@@ -6,7 +6,7 @@ import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.model.impl.EnumerationTemplateImpl;
 
 public class EnumerationTemplate extends EnumerationTemplateImpl implements
-		Template {
+		TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		XEnumeration enumeration = (XEnumeration) object;

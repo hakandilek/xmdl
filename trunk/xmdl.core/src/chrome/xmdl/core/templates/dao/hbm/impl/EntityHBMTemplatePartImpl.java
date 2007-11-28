@@ -89,7 +89,7 @@ public class EntityHBMTemplatePartImpl
 			Template t = dbHelper.getTemplate(attribute);
 			
     stringBuffer.append(TEXT_14);
-    stringBuffer.append(t.generate(pair));
+    stringBuffer.append(Generator.runTemplate(t, pair));
     stringBuffer.append(TEXT_15);
     } //if
     stringBuffer.append(TEXT_16);
