@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.xmdl:XProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.xmdl="http://www.xmdl.org/xmdl.ecore" name="xmdl.test">
+  <packages name="org.xmdl.genext.test">
+    <classes name="Class1" className="org.xmdl.genext.test.Class1">
+      <attributes name="attribute1">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.String"/>
+      </attributes>
+    </classes>
+    <classes name="AnotherClass" className="org.xmdl.genext.test.AnotherClass"/>
+    <enumerations name="Enumeration1" className="org.xmdl.genext.test.Enumeration1"/>
+  </packages>
+</org.xmdl:XProject>
