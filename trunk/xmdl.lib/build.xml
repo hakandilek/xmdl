@@ -44,8 +44,10 @@
 		<attribute name="plugin.name" />
 
 		<sequential>
+			<echo message=" --- Building plugin : @{plugin.name}"/>
 			<mkdir dir="build/@{plugin.name}" />
 			<javac srcdir="../@{plugin.name}/src" destdir="build/@{plugin.name}" debug="on">
+                <src path="../@{plugin.name}/src"/>
 				<classpath refid="total.classpath" />
 			</javac>
 			<manifest file="../@{plugin.name}/META-INF/MANIFEST.MF" mode="update">
@@ -64,6 +66,33 @@
 		</sequential>
 	</macrodef>
 
+    <macrodef name="dist_template_plugin">
+        <attribute name="plugin.name" />
+
+        <sequential>
+            <echo message=" --- Building plugin : @{plugin.name}"/>
+            <mkdir dir="build/@{plugin.name}" />
+            <javac srcdir="../@{plugin.name}/src" destdir="build/@{plugin.name}" debug="on">
+                <src path="../@{plugin.name}/src"/>
+                <src path="../@{plugin.name}/tmp-src"/>
+                <classpath refid="total.classpath" />
+            </javac>
+            <manifest file="../@{plugin.name}/META-INF/MANIFEST.MF" mode="update">
+                <attribute name="Built-By" value="${dist.build.user}" />
+                <attribute name="Bundle-Version" value="${version.pattern}" />
+            </manifest>
+            <jar destfile="dist/plugins/@{plugin.name}_${version.pattern}.jar" manifest="../@{plugin.name}/META-INF/MANIFEST.MF">
+                <fileset dir="build/@{plugin.name}" excludes="**/Test.class" />
+                <fileset dir="../@{plugin.name}">
+                    <include name="plugin.*" />
+                    <include name="model/*" />
+                    <include name="res/*" />
+                    <include name="icons/**" />
+                </fileset>
+            </jar>
+        </sequential>
+    </macrodef>
+
 	<!-- ================================= 
           target: dist_xmdl              
          ================================= -->
@@ -71,12 +100,14 @@
 
 		<dist_plugin plugin.name="xmdl" />
 		<dist_plugin plugin.name="xmdl.gen" />
+        <dist_plugin plugin.name="xmdl.genext" />
 		<dist_plugin plugin.name="xmdl.ui" />
 		<dist_plugin plugin.name="xmdlbo.ui" />
 		<dist_plugin plugin.name="xmdldb.ui" />
 		<dist_plugin plugin.name="xmdlgen.ui" />
 		<dist_plugin plugin.name="xmdl.gen" />
 		<dist_plugin plugin.name="xmdl.core" />
+        <dist_template_plugin plugin.name="xmdl.ida" />
 
 		<zip destfile="dist/xmdl_${version.pattern}.zip">
 			<fileset dir="dist" includes="plugins/*" />
