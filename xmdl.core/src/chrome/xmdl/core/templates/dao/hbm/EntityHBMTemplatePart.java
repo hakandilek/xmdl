@@ -7,7 +7,7 @@ import chrome.xmdl.core.templates.dao.hbm.impl.EntityHBMTemplatePartImpl;
 
 public class EntityHBMTemplatePart 
 			extends EntityHBMTemplatePartImpl 
-			implements Template{
+			implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		XClass class1=(XClass) object;

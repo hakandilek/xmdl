@@ -6,9 +6,13 @@ import chrome.xmdl.XAssociationType;
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.XClass;
 import chrome.xmdl.XPackage;
-import chrome.xmdl.core.templates.dao.hbm.*;
+import chrome.xmdl.core.templates.dao.hbm.AssociationHBMManyToMany;
+import chrome.xmdl.core.templates.dao.hbm.AssociationHBMManyToOne;
+import chrome.xmdl.core.templates.dao.hbm.AssociationHBMOneToMany;
+import chrome.xmdl.core.templates.dao.hbm.AssociationHBMOneToOne;
 import chrome.xmdl.gen.util.DBHelper;
 import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateAdapter;
 
 public class XMDLDBHelper extends DBHelper {
 	public static final DBHelper INSTANCE = new XMDLDBHelper();
@@ -59,16 +63,16 @@ public class XMDLDBHelper extends DBHelper {
 		XAssociationType type = attribute.getAssociationType();
 		switch (type.getValue()) {
 		case XAssociationType.ONE_TO_ONE:
-			return new AssociationHBMOneToOne();
+			return new TemplateAdapter(new AssociationHBMOneToOne());
 
 		case XAssociationType.ONE_TO_MANY:
-			return new AssociationHBMOneToMany();
+			return new TemplateAdapter(new AssociationHBMOneToMany());
 
 		case XAssociationType.MANY_TO_ONE:
-			return new AssociationHBMManyToOne();
+			return new TemplateAdapter(new AssociationHBMManyToOne());
 
 		case XAssociationType.MANY_TO_MANY:
-			return new AssociationHBMManyToMany();
+			return new TemplateAdapter(new AssociationHBMManyToMany());
 
 		default:
 			return null;

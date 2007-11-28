@@ -11,7 +11,7 @@ import chrome.xmdl.core.templates.service.impl.AbstractEntityServiceTemplateImpl
  */
 public class AbstractEntityService
 		extends AbstractEntityServiceTemplateImpl
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		XClass class1=(XClass) object;

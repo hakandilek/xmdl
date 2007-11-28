@@ -1,7 +1,5 @@
 package chrome.xmdl.core.templates.ui.web.impl;
 
-import java.util.*;
-
 public class IndexJSPImpl
 {
   protected static String nl;

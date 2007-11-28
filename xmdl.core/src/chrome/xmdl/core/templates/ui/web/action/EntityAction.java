@@ -7,7 +7,7 @@ import chrome.xmdl.core.templates.ui.web.action.impl.EntityActionImpl;
 
 public class EntityAction 
 		extends EntityActionImpl 
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		XClass class1=(XClass) object;

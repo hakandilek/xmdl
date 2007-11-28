@@ -144,7 +144,6 @@ public class EntityServiceImplTemplateImpl
     XClass xClass = (XClass) argument;
     XPackage xPackage = xClass.getXPackage();
     ClassHelper helper = XMDLClassHelper.INSTANCE;
-    MasterChildHelper mcHelper = MasterChildHelper.INST;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
     
     stringBuffer.append(TEXT_1);

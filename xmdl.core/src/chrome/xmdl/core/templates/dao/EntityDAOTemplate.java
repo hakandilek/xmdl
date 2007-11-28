@@ -3,11 +3,11 @@ package chrome.xmdl.core.templates.dao;
 import chrome.xmdl.XClass;
 import chrome.xmdl.XPackage;
 import chrome.xmdl.core.templates.dao.impl.EntityDAOTemplateImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
 public class EntityDAOTemplate 
 		extends EntityDAOTemplateImpl
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		XClass class1=(XClass) object;

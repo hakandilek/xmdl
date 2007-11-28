@@ -6,7 +6,7 @@ import chrome.xmdl.core.templates.ui.web.decorator.impl.Application01Impl;
 
 public class Application01 
 		extends Application01Impl 
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		StringBuffer buffer = new StringBuffer("web/");		

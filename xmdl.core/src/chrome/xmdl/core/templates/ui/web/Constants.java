@@ -6,7 +6,7 @@ import chrome.xmdl.core.templates.ui.web.impl.ConstantsImpl;
 
 public class Constants 
 		extends ConstantsImpl 
-		implements Template{
+		implements TemplateConfiguration{
 
 	public String targetFile(Object object) {
 		

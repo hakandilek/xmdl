@@ -69,9 +69,10 @@ import chrome.xmdl.core.templates.ui.web.webinf.WebXML;
 import chrome.xmdl.xgen.AbstractTaskFactory;
 import chrome.xmdl.xgen.Task;
 import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateAdapter;
 import chrome.xmdl.xgen.UnzipTask;
 
-public class XmdlTaskFactory extends AbstractTaskFactory {
+public class CoreTaskFactory extends AbstractTaskFactory {
 	protected List<Template> templates;
 
 	private List<Task> successorTasks;
@@ -79,9 +80,9 @@ public class XmdlTaskFactory extends AbstractTaskFactory {
 	private List<Task> predecessorTasks;
 
 	private static final Logger LOGGER = Logger
-			.getLogger(XmdlTaskFactory.class);
+			.getLogger(CoreTaskFactory.class);
 
-	public XmdlTaskFactory() {
+	public CoreTaskFactory() {
 		super();
 		LOGGER.debug(" new instance");
 		init();
@@ -101,76 +102,76 @@ public class XmdlTaskFactory extends AbstractTaskFactory {
 				templates = new ArrayList<Template>();
 				templates.clear();
 				//build
-				templates.add(new POM());
+				templates.add(new TemplateAdapter(new POM()));
 
 				// model
-				templates.add(new EnumerationTemplate());
-				templates.add(new EntityTemplate());
-				templates.add(new EntityImplTemplate());
-				templates.add(new EntitySearchTemplate());
-				templates.add(new EntitySearchImplTemplate());
+				templates.add(new TemplateAdapter(new EnumerationTemplate()));
+				templates.add(new TemplateAdapter(new EntityTemplate()));
+				templates.add(new TemplateAdapter(new EntityImplTemplate()));
+				templates.add(new TemplateAdapter(new EntitySearchTemplate()));
+				templates.add(new TemplateAdapter(new EntitySearchImplTemplate()));
 
 				// dao
-				templates.add(new PackageHBMTemplate());
-				templates.add(new EntityDAOTemplate());
-				templates.add(new EntityDAOImplTemplate());
-				//templates.add(new ProjectCFGTemplate()); no need for this
+				templates.add(new TemplateAdapter(new PackageHBMTemplate()));
+				templates.add(new TemplateAdapter(new EntityDAOTemplate()));
+				templates.add(new TemplateAdapter(new EntityDAOImplTemplate()));
+				//templates.add(new TemplateAdapter(new ProjectCFGTemplate())); no need for this
 
 				// CONTEXT
-				templates.add(new ApplicationContextDB());
-				templates.add(new ApplicationContextDAO());
-				templates.add(new ApplicationContextWEB());
-				templates.add(new ApplicationContextService());
+				templates.add(new TemplateAdapter(new ApplicationContextDB()));
+				templates.add(new TemplateAdapter(new ApplicationContextDAO()));
+				templates.add(new TemplateAdapter(new ApplicationContextWEB()));
+				templates.add(new TemplateAdapter(new ApplicationContextService()));
 
-				templates.add(new ApplicationResourcesProp());
-				//templates.add(new CommonResourcesProp());
+				templates.add(new TemplateAdapter(new ApplicationResourcesProp()));
+				//templates.add(new TemplateAdapter(new CommonResourcesProp()));
 
-				templates.add(new EhCache());
-				templates.add(new Log4JProp());
+				templates.add(new TemplateAdapter(new EhCache()));
+				templates.add(new TemplateAdapter(new Log4JProp()));
 
 				// bo
-				templates.add(new EntityServiceTemplate());
-				templates.add(new AbstractEntityService());
-				templates.add(new EntityServiceImplTemplate());
-				templates.add(new SampleListenerTemplate());
-				templates.add(new SampleListenerImplTemplate());
+				templates.add(new TemplateAdapter(new EntityServiceTemplate()));
+				templates.add(new TemplateAdapter(new AbstractEntityService()));
+				templates.add(new TemplateAdapter(new EntityServiceImplTemplate()));
+				templates.add(new TemplateAdapter(new SampleListenerTemplate()));
+				templates.add(new TemplateAdapter(new SampleListenerImplTemplate()));
 
 				// ui.web
-				templates.add(new StrutsLayout());
-				templates.add(new CustomTLD());
-				templates.add(new DecoratorsXML());
-				templates.add(new MenuConfigXML());
-				templates.add(new SitemeshXML());
-				templates.add(new WebXML());
-				templates.add(new ValidationXML());
-				templates.add(new ValidatorRulesXML());
-				templates.add(new ValidatorRulesCustomXML());
-				templates.add(new StrutsConfigXML());						
-				templates.add(new Constants());
-				templates.add(new MessageKeys());
-				templates.add(new ParameterKeys());
-				templates.add(new EntityAction());
-				templates.add(new EntityForm());
-				templates.add(new SampleTag());
+				templates.add(new TemplateAdapter(new StrutsLayout()));
+				templates.add(new TemplateAdapter(new CustomTLD()));
+				templates.add(new TemplateAdapter(new DecoratorsXML()));
+				templates.add(new TemplateAdapter(new MenuConfigXML()));
+				templates.add(new TemplateAdapter(new SitemeshXML()));
+				templates.add(new TemplateAdapter(new WebXML()));
+				templates.add(new TemplateAdapter(new ValidationXML()));
+				templates.add(new TemplateAdapter(new ValidatorRulesXML()));
+				templates.add(new TemplateAdapter(new ValidatorRulesCustomXML()));
+				templates.add(new TemplateAdapter(new StrutsConfigXML()));						
+				templates.add(new TemplateAdapter(new Constants()));
+				templates.add(new TemplateAdapter(new MessageKeys()));
+				templates.add(new TemplateAdapter(new ParameterKeys()));
+				templates.add(new TemplateAdapter(new EntityAction()));
+				templates.add(new TemplateAdapter(new EntityForm()));
+				templates.add(new TemplateAdapter(new SampleTag()));
 				//jsp
-				templates.add(new EntityEditJSP());
-				templates.add(new EntitySearchJSP());
-				templates.add(new Application01());
-				templates.add(new FooterJSP());
-				templates.add(new HeaderJSP());
-				templates.add(new HomeJSP());
-				templates.add(new MenuJSP());
-				templates.add(new MetaJSP());
-				templates.add(new TaglibsJSP());
+				templates.add(new TemplateAdapter(new EntityEditJSP()));
+				templates.add(new TemplateAdapter(new EntitySearchJSP()));
+				templates.add(new TemplateAdapter(new Application01()));
+				templates.add(new TemplateAdapter(new FooterJSP()));
+				templates.add(new TemplateAdapter(new HeaderJSP()));
+				templates.add(new TemplateAdapter(new HomeJSP()));
+				templates.add(new TemplateAdapter(new MenuJSP()));
+				templates.add(new TemplateAdapter(new MetaJSP()));
+				templates.add(new TemplateAdapter(new TaglibsJSP()));
 
 				//tests
-				templates.add(new DatabaseProperties());
-				templates.add(new DAOTestTemplate());
-				templates.add(new DAOTestPropertiesTemplate());
-				templates.add(new BOTestTemplate());
-				templates.add(new BOTestPropertiesTemplate());
-				templates.add(new EntityActionTest());
-				templates.add(new EntityFormTest());
+				templates.add(new TemplateAdapter(new DatabaseProperties()));
+				templates.add(new TemplateAdapter(new DAOTestTemplate()));
+				templates.add(new TemplateAdapter(new DAOTestPropertiesTemplate()));
+				templates.add(new TemplateAdapter(new BOTestTemplate()));
+				templates.add(new TemplateAdapter(new BOTestPropertiesTemplate()));
+				templates.add(new TemplateAdapter(new EntityActionTest()));
+				templates.add(new TemplateAdapter(new EntityFormTest()));
 			}
 
 		} catch (Throwable e) {

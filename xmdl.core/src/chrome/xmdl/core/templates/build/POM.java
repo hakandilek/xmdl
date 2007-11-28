@@ -2,9 +2,9 @@ package chrome.xmdl.core.templates.build;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.core.templates.build.impl.POMImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
-public class POM extends POMImpl implements Template {
+public class POM extends POMImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		

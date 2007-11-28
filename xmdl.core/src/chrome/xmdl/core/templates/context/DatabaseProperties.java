@@ -4,9 +4,9 @@ import chrome.xmdl.XPackage;
 import chrome.xmdl.XProject;
 import chrome.xmdl.core.templates.context.impl.DatabasePropertiesImpl;
 import chrome.xmdl.gen.util.XMDLClassHelper;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
-public class DatabaseProperties extends DatabasePropertiesImpl implements Template {
+public class DatabaseProperties extends DatabasePropertiesImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		XProject project =(XProject) object;

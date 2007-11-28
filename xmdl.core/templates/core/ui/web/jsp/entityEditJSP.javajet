@@ -33,7 +33,7 @@ $>
 	<$  if (!attribute.isReference()) {  
 		Template t = UIHelper.getEditFormFieldTemplate(attribute);
 		$>
-		<$=t.generate(attribute)$>
+		<$=Generator.runTemplate(t, attribute)$>
 	<$  } $> 
 	<$}$>
 

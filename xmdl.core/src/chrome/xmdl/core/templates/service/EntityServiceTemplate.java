@@ -5,7 +5,7 @@ import chrome.xmdl.XPackage;
 import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.service.impl.EntityServiceTemplateImpl;
 
-public class EntityServiceTemplate extends EntityServiceTemplateImpl implements Template {
+public class EntityServiceTemplate extends EntityServiceTemplateImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		XClass class1=(XClass) object;

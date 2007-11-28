@@ -5,7 +5,7 @@ import chrome.xmdl.xgen.*;
 import chrome.xmdl.core.templates.ui.web.jsp.part.impl.FormFieldDoubleImpl;
 
 public class FormFieldDouble extends FormFieldDoubleImpl
-		implements Template {
+		implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		// TODO Auto-generated method stub

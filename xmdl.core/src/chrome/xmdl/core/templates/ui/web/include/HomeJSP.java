@@ -2,9 +2,9 @@ package chrome.xmdl.core.templates.ui.web.include;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.core.templates.ui.web.include.impl.HomeJSPImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
-public class HomeJSP extends HomeJSPImpl implements Template {
+public class HomeJSP extends HomeJSPImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		StringBuffer buffer = new StringBuffer("web/");		

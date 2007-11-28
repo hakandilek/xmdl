@@ -3,9 +3,9 @@ package chrome.xmdl.core.templates.test.ui.web.action;
 import chrome.xmdl.XClass;
 import chrome.xmdl.XPackage;
 import chrome.xmdl.core.templates.test.ui.web.action.impl.EntityActionTestImpl;
-import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.TemplateConfiguration;
 
-public class EntityActionTest extends EntityActionTestImpl implements Template {
+public class EntityActionTest extends EntityActionTestImpl implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		XClass class1 = (XClass) object;

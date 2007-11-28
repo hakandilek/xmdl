@@ -35,7 +35,7 @@ $>
 	<$  if (!attribute.isReference()) {  
 		Template t = UIHelper.getSearchFormFieldTemplate(attribute);
 		$>
-		<$=t.generate(attribute)$>
+		<$=Generator.runTemplate(t, attribute)$>
 	<$  } $> 
 	<$}$>    
     <tr>

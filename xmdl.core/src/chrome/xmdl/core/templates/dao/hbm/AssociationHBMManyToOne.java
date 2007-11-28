@@ -7,7 +7,7 @@ import chrome.xmdl.core.templates.dao.hbm.impl.AssociationHBMManyToOneImpl;
 import chrome.xmdldb.DField;
 
 public class AssociationHBMManyToOne extends AssociationHBMManyToOneImpl 
-		implements Template {
+		implements TemplateConfiguration {
 
 	public String targetFile(Object object) {
 		// TODO Auto-generated method stub
