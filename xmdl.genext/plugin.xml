@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.jet.tagLibraries">
+      <tagLibrary
+            deprecated="false"
+            id="xmdlClass"
+            name="XMDL Class Tag Library"
+            standardPrefix="xc">
+         <emptyTag
+               class="org.xmdl.genext.taglib.xc.AttributeTypeTag"
+               deprecated="false"
+               name="attributeType">
+            <description>
+               Output the imported attribute type for the given attribute.
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="attribute"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
+         <emptyTag
+               class="org.xmdl.genext.taglib.xc.CapitalizeTag"
+               deprecated="false"
+               name="cap">
+            <attribute
+                  deprecated="false"
+                  name="element"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
+         <emptyTag
+               class="org.xmdl.genext.taglib.xc.UncapitalizeTag"
+               deprecated="false"
+               name="uncap">
+            <attribute
+                  deprecated="false"
+                  name="element"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
+      </tagLibrary>
+   </extension>
+
+</plugin>
