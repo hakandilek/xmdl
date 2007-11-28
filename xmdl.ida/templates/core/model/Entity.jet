@@ -2,59 +2,95 @@
 <%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
-<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@jet 
 	package="org.xmdl.ida.templates.core.model" 
 	class="EntityImpl"  
-    imports="java.util.*
-            chrome.xmdl.*
-            chrome.xmdl.gen.util.*
-			"
 	%><%
-    XClass xClass = (XClass) context.getVariable("argument");
-    XPackage xPackage = xClass.getXPackage(); 
-    ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
-package <%=helper.getQualifiedName(xPackage)%>.model;
+package .model;
 
 <j:importsLocation package="org.example"/>
 
 /**
  *
- * <%=helper.getCapName(xClass)%> entity bean
+ * <xc:cap element="$xClass"/> entity bean
  *  
  * $Id$
  *
  * @generated
  */ 
 @Entity (name=("TODO"))
-public class <%=helper.getCapName(xClass)%> extends BaseObject implements Serializable {
+public class <xc:cap element="$xClass"/> extends BaseObject implements Serializable {
+
+    /** 
+     * Unique identifier
+     * 
+     * @generated
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = ("ID"))
+    private Long id;
 
 <c:iterate select="$xClass/attributes" var="attribute">
-<c:addElement select="$attribute" name="attribute"/>
     /** 
      * @generated
      */
-    private <xc:attributeType />;
+    @Column(name = ("TODO"), length = 63, nullable = false)//TODO:length
+    private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>;
 	
 </c:iterate> 
 
-<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-    XAttribute attribute = (XAttribute) i.next();%>
-<%if (attribute.getType() != null) {%>
     /** 
      * @generated
      */
-    <%=helper.getImportedAttributeType(attribute)%> <%=helper.getGetAccessor(attribute)%>();
+    public <xc:cap element="$xClass"/>() {
+    }
 
-    /**
+<c:iterate select="$xClass/attributes" var="attribute">
+    /** 
      * @generated
      */
-    void set<%=helper.getAccessorName(attribute)%>(<%=helper.getImportedAttributeType(attribute)%> new<%=helper.getCapName(attribute)%>);
+    public <xc:attributeType attribute="$attribute"/> get<xc:cap element="$attribute"/>() {
+        return <xc:uncap element="$attribute"/>;
+    }
 
-<%}//if (attribute.getType() !=null%>
-<%}//for%>
+    /** 
+     * @generated
+     */
+    public void set<xc:cap element="$attribute"/>(<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>) {
+        this.<xc:uncap element="$attribute"/> = <xc:uncap element="$attribute"/>;
+    }
+
+</c:iterate> 
+
+    /** 
+     * @generated
+     */
+    public String toString() {
+        return MessageFormat.format("<xc:cap element="$xClass"/> [id={0}]<%int i=0;%><c:iterate select="$xClass/attributes" var="attribute">[<xc:uncap element="$attribute"/>={<%=++i%>}]</c:iterate>", id<c:iterate select="$xClass/attributes" var="attribute">, <xc:uncap element="$attribute"/></c:iterate>);
+    }
+
+    /** 
+     * @generated
+     */
+    public boolean equals(Object o) {
+        return o instanceof <xc:cap element="$xClass"/> && ((<xc:cap element="$xClass"/>) o).getId() == this.getId();
+    }
+
+    /** 
+     * @generated
+     */
+    public int hashCode() {
+        int result;
+        result = id.hashCode();
+<c:iterate select="$xClass/attributes" var="attribute">
+        result = 31 * result + <xc:uncap element="$attribute"/>.hashCode();
+</c:iterate> 
+        return result;
+    }
 
 
 }
