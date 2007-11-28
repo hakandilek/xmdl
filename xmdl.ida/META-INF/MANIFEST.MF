@@ -1,15 +1,14 @@
 Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.0
+Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.xmdl.ida;singleton:=true
-Bundle-Version: 0.1.0
+Bundle-Version: 0.6.0.20071128_SNAPSHOT
 Bundle-Vendor: %providerName
-Require-Bundle: xmdl,
- xmdl.gen,
- xmdl.genext,
- org.eclipse.emf.ecore,
- org.eclipse.emf.codegen,
- org.eclipse.core.runtime,
- org.apache.log4j,
- org.eclipse.jet
+Require-Bundle: xmdl,xmdl.gen,xmdl.genext,org.eclipse.emf.ecore,org.ec
+ lipse.emf.codegen,org.eclipse.core.runtime,org.apache.log4j,org.eclip
+ se.jet
 Eclipse-LazyStart: true
+Built-By: Hakan Dilek
+
