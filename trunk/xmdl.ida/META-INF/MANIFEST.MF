@@ -6,6 +6,7 @@ Bundle-Version: 0.1.0
 Bundle-Vendor: %providerName
 Require-Bundle: xmdl,
  xmdl.gen,
+ xmdl.genext,
  org.eclipse.emf.ecore,
  org.eclipse.emf.codegen,
  org.eclipse.core.runtime,

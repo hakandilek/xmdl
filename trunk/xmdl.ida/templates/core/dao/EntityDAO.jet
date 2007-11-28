@@ -10,7 +10,7 @@
     XPackage xPackage = xClass.getXPackage(); 
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
-%>
+%> 
 package <%=helper.getQualifiedName(xPackage)%>.dao;
 
 <%ImportManager importManager=null;%>

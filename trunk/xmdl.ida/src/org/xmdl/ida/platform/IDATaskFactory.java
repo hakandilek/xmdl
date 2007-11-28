@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.xmdl.ida.templates.core.dao.EntityDAO;
 import org.xmdl.ida.templates.core.dao.EntityDAOHibernate;
-import org.xmdl.ida.templates.core.model.Entity;
 import org.xmdl.ida.templates.core.project.Constants;
 import org.xmdl.ida.templates.core.rsc.ApplicationContextDAOXML;
 import org.xmdl.ida.templates.core.rsc.ApplicationContextServiceXML;
@@ -94,7 +93,7 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 templates.add(new Constants());
 
                 // model
-                templates.add(new Entity());
+//                templates.add(new Entity());
 
                 // dao
                 templates.add(new EntityDAO());
