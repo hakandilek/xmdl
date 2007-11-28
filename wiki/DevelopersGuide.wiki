@@ -27,6 +27,8 @@ _It is recommended to setup a separate workspace in Eclipse containing the follo
    * xmdl.core/
    * xmdl.corelib/
    * xmdl.gen/
+   * xmdl.genext/
+   * xmdl.genext.test/
    * xmdl.lib/
    * xmdl.ida/
    * xmdl.ui/
@@ -40,6 +42,8 @@ _It is recommended to setup a separate workspace in Eclipse containing the follo
 
  * *xmdl* is the component where main metamodel and sub-metamodel components are defined. checkout model directory under xmdl component for metamodel (.ecore) definitions. Most of the code used in this component is auto-generated using the EMF code generation support. 
  * *xmdl.gen* is the code generation engine. Further platforms can be added as [http://wiki.eclipse.org/index.php/FAQ_What_are_extensions_and_extension_points%3F extension points] for this component using an [http://wiki.eclipse.org/FAQ_What_is_a_plug-in%3F Eclipse Plugin definition]. This component also contains [http://java.sun.com/blueprints/corej2eepatterns/Patterns/ViewHelper.html helper classes] to support templates during code generation.
+ * *xmdl.genext* is the code generator extension module. JET2 tag libraries are defined in this module. 
+ * *xmdl.genext.test* is the unit test module for the *xmdl.genext* module. 
  * *xmdl.ui* is the component that provides UI editor support for the XMDL Base Metamodel (.xmdl).
  * *xmdlbo.ui* is the component that provides UI editor support for the XMDL Business (Service) Layer Metamodel (.xmdlbo).
  * *xmdldb.ui* is the component that provides UI editor support for the XMDL Database Metamodel (.xmdldb).
@@ -60,67 +64,85 @@ _It is recommended to setup a separate workspace in Eclipse containing the follo
  XMDL Components have the following dependency structure on the plugin level. Third party depencencies are marked with _italic_ letters.
 
   * xmdl ->
-    * _org.eclipse.core.runtime,_
-    * _org.eclipse.emf.ecore.xmi,_
-    * _org.apache.log4j,_
+    * _org.eclipse.core.runtime_
+    * _org.eclipse.emf.ecore.xmi_
+    * _org.apache.log4j_
     * _org.apache.commons.beanutils_
   * xmdl.core -> 
-    * xmdl,
-    * xmdl.gen,
-    * _org.eclipse.emf.ecore,_
-    * _org.eclipse.emf.codegen,_
-    * _org.eclipse.core.runtime,_
+    * xmdl
+    * xmdl.gen
+    * _org.eclipse.emf.ecore_
+    * _org.eclipse.emf.codegen_
+    * _org.eclipse.core.runtime_
     * _org.apache.log4j_
+    * _org.eclipse.jet_
   * xmdl.ida -> 
-    * xmdl,
-    * xmdl.gen,
-    * _org.eclipse.emf.ecore,_
-    * _org.eclipse.emf.codegen,_
-    * _org.eclipse.core.runtime,_
+    * xmdl
+    * xmdl.gen
+    * xmdl.genext
+    * _org.eclipse.emf.ecore_
+    * _org.eclipse.emf.codegen_
+    * _org.eclipse.core.runtime_
     * _org.apache.log4j_
+    * _org.eclipse.jet_
   * xmdl.gen -> 
-    * xmdl,
-    * _org.eclipse.emf.ecore.xmi,_
-    * _org.eclipse.emf.codegen,_
-    * _org.eclipse.core.runtime.compatibility,_
-    * _org.eclipse.core.resources,_
-    * _org.eclipse.jdt.core,_
-    * _org.junit,_
+    * xmdl
+    * _org.eclipse.emf.ecore.xmi_
+    * _org.eclipse.emf.codegen_
+    * _org.eclipse.core.runtime.compatibility_
+    * _org.eclipse.core.resources_
+    * _org.eclipse.jdt.core_
+    * _org.junit_
     * _org.apache.log4j_
+    * _org.eclipse.jet_
+  * xmdl.genext -> 
+    * xmdl
+    * _org.eclipse.jet_
+    * _org.eclipse.core.runtime.compatibility_
+    * _org.eclipse.emf.ecore_
+  * xmdl.genext.test -> 
+    * xmdl
+    * xmdl.gen
+    * xmdl.genext
+    * _org.eclipse.emf.ecore_
+    * _org.eclipse.core.runtime.compatibility_
+    * _org.junit_
+    * _org.apache.log4j_
+    * _org.eclipse.jet_
   * xmdl.ui -> 
-    * xmdl,
-    * xmdl.gen,
-    * _org.eclipse.core.runtime,_
-    * _org.eclipse.core.resources,_
-    * _org.eclipse.emf.mapping,_
-    * _org.eclipse.emf.ecore.xmi,_
-    * _org.eclipse.emf.codegen.ecore.ui,_
-    * _org.eclipse.jdt.core,_
-    * _org.eclipse.jdt.ui,_
+    * xmdl
+    * xmdl.gen
+    * _org.eclipse.core.runtime_
+    * _org.eclipse.core.resources_
+    * _org.eclipse.emf.mapping_
+    * _org.eclipse.emf.ecore.xmi_
+    * _org.eclipse.emf.codegen.ecore.ui_
+    * _org.eclipse.jdt.core_
+    * _org.eclipse.jdt.ui_
     * _org.apache.log4j_
   * xmdlbo.ui -> 
-    * xmdl,
-    * xmdl.ui,
-    * _org.eclipse.core.runtime,_
-    * _org.eclipse.emf.edit.ui,_
-    * _org.eclipse.core.resources,_
-    * _org.eclipse.ui.ide,_
+    * xmdl
+    * xmdl.ui
+    * _org.eclipse.core.runtime_
+    * _org.eclipse.emf.edit.ui_
+    * _org.eclipse.core.resources_
+    * _org.eclipse.ui.ide_
     * _org.eclipse.emf.ecore.xmi_
   * xmdldb.ui -> 
-    * xmdl.ui,
-    * xmdl,
-    * _org.eclipse.core.runtime,_
-    * _org.eclipse.emf.edit.ui,_
-    * _org.eclipse.core.resources,_
-    * _org.eclipse.ui.ide,_
+    * xmdl.ui
+    * xmdl
+    * _org.eclipse.core.runtime_
+    * _org.eclipse.emf.edit.ui_
+    * _org.eclipse.core.resources_
+    * _org.eclipse.ui.ide_
     * _org.eclipse.emf.ecore.xmi_
   * xmdlgen.ui -> 
-    * xmdl,
-    * xmdl.ui,
-    * _org.eclipse.core.runtime,_
-    * _org.eclipse.emf.edit.ui,_
-    * _org.eclipse.core.resources,_
-    * _org.eclipse.ui.ide,_
+    * xmdl
+    * xmdl.ui
+    * _org.eclipse.core.runtime_
+    * _org.eclipse.emf.edit.ui_
+    * _org.eclipse.core.resources_
+    * _org.eclipse.ui.ide_
     * _org.eclipse.emf.ecore.xmi_ 
     
 == Platform Development ==
