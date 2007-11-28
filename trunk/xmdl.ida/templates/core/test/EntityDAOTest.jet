@@ -7,7 +7,7 @@
             org.eclipse.emf.codegen.util.*
 			"
 	%><%
-    XClass xClass = (XClass) argument;
+    XClass xClass = (XClass) context.getVariable("argument");;
     XPackage xPackage = xClass.getXPackage(); 
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     TestHelper testHelper = TestHelper.INSTANCE;
@@ -27,11 +27,6 @@ package <%=helper.getQualifiedName(xPackage)%>.dao;
 <%importManager.addImport("org.xmdl.ida.lib.test.BaseDaoTestCase");%>
 <%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
 <%importManager.addImport("java.util.*");%>
-<%
-    StringBuffer importStringBuffer = stringBuffer;
-    int importInsertionPoint = stringBuffer.length();
-    importManager.addCompilationUnitImports(stringBuffer.toString());
-%>
 /**
  *
  * <%=helper.getCapName(xClass)%> DAO Test Case
@@ -103,4 +98,3 @@ public class <%=helper.getCapName(xClass)%>DAOTest extends BaseDaoTestCase {
     }
 
 }
-<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

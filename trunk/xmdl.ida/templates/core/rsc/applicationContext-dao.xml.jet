@@ -6,7 +6,7 @@
             chrome.xmdl.gen.util.*
 			"
 	%><%
-    XPackage pack = (XPackage) argument;
+    XPackage pack = (XPackage) context.getVariable("argument");;
     List<XClass> classes = pack.getClasses();
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    

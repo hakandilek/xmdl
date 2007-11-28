@@ -6,7 +6,7 @@
             org.eclipse.emf.codegen.util.*
 			"
 	%><%
-    XClass xClass = (XClass) argument;
+    XClass xClass = (XClass) context.getVariable("argument");;
     XPackage xPackage = xClass.getXPackage(); 
     ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
@@ -30,11 +30,6 @@ package <%=helper.getQualifiedName(xPackage)%>.service.impl;
 <%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
 <%importManager.addImport(helper.getQualifiedName(xPackage)+".model.search.*");%>
 <%importManager.addImport(helper.getQualifiedName(xPackage)+".dao.*");%>
-<%
-    StringBuffer importStringBuffer = stringBuffer;
-    int importInsertionPoint = stringBuffer.length();
-    importManager.addCompilationUnitImports(stringBuffer.toString());
-%>
 /**
  *
  * <%=helper.getCapName(xClass)%> Service Implementation Test
@@ -129,4 +124,3 @@ public class <%=helper.getCapName(xClass)%>ManagerImplTest extends BaseManagerMo
     }
 
 }
-<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>
