@@ -186,6 +186,13 @@ public class Locator extends XVisitorBaseImpl {
         return visitLeave(name, x);
     }
 
+    public static XBase locate(XProject project, String path) {
+        Locator l = new Locator(path);
+        project.accept(l);
+        XBase f = l.getFound();
+        return f;
+    }
+
     public static XAttribute locateAttribute(XProject project, String path) {
         return (XAttribute) locate(project, path);
     }
@@ -194,11 +201,8 @@ public class Locator extends XVisitorBaseImpl {
         return (XClass) locate(project, path);
     }
 
-    public static XBase locate(XProject project, String path) {
-        Locator l = new Locator(path);
-        project.accept(l);
-        XBase f = l.getFound();
-        return f;
+    public static XEnumeration locateEnumeration(XProject project, String path) {
+        return (XEnumeration) locate(project, path);
     }
 
 }
