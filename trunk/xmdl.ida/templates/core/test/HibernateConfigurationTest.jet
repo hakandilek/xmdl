@@ -1,32 +1,19 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
 	package="org.xmdl.ida.templates.core.test" 
 	class="HibernateConfigurationTestImpl" 
-    imports="chrome.xmdl.*
-            chrome.xmdl.gen.util.*
-            org.eclipse.emf.codegen.util.*
-			"
 	%><%
-    XPackage xPackage = (XPackage) context.getVariable("argument");;
-    ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
-package <%=helper.getQualifiedName(xPackage)%>.dao.hibernate;
+package <xc:qualifiedName element="$package"/>.dao.hibernate;
 
-<%ImportManager importManager=null;%>
-<%if (helper.getQualifiedName(xPackage) != null) {%>
-<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
-package <%=helper.getQualifiedName(xPackage)%>.dao.hibernate;
-<%} else {%>
-<%importManager = helper.makeImportManager("");%>
-<%}%>
-
-<%importManager.addImport("org.xmdl.ida.lib.test.BaseDaoTestCase");%>
-<%importManager.addImport("org.hibernate.*");%>
-<%importManager.addImport("org.hibernate.persister.entity.EntityPersister");%>
-<%importManager.addImport("java.util.*");%>
 /**
  *
- * '<%=helper.getCapName(xPackage)%>' package Hibernate Configuration Test Case
+ * '<xc:cap element="$package"/>' package Hibernate Configuration Test Case
  *  
  * $Id$
  *
