@@ -1,14 +1,9 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
 	package="org.xmdl.ida.templates.core.rsc" 
 	class="ApplicationContextServiceXMLImpl" 
-    imports="java.util.*
-    		chrome.xmdl.*
-            chrome.xmdl.gen.util.*
-			"
 	%><%
-    XPackage pack = (XPackage) context.getVariable("argument");;
-    List<XClass> classes = pack.getClasses();
-    ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %><?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -53,14 +48,11 @@
         <property name="dao" ref="universalDao"/>
     </bean>
 
-<%for (Iterator<XClass> iter = classes.iterator(); iter.hasNext();) {
-	XClass cls = iter.next();
-%>    <bean id="<%=helper.uncapSafeName(cls)%>Manager" class="<%=helper.getQualifiedName(pack)%>.service.impl.<%=helper.getCapName(cls)%>ManagerImpl">
-        <constructor-arg ref="<%=helper.uncapSafeName(cls)%>DAO"/>
+<c:iterate select="$package/classes" var="class">
+    <bean id="<xc:uncap element="$class"/>Manager" class="<xc:qualifiedName element="$package"/>.service.impl.<xc:cap element="$class"/>ManagerImpl">
+        <constructor-arg ref="<xc:uncap element="$class"/>DAO"/>
     </bean>
-<%
-} 
-%>
+</c:iterate> 
 
 </beans>
 

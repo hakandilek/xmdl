@@ -1,78 +1,61 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
 	package="org.xmdl.ida.templates.core.test" 
 	class="EntityDAOTestImpl" 
-    imports="java.util.*
-    		chrome.xmdl.*
-            chrome.xmdl.gen.util.*
-            org.eclipse.emf.codegen.util.*
-			"
 	%><%
-    XClass xClass = (XClass) context.getVariable("argument");;
-    XPackage xPackage = xClass.getXPackage(); 
-    ClassHelper helper = XMDLClassHelper.INSTANCE;
-    TestHelper testHelper = TestHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
-package <%=helper.getQualifiedName(xPackage)%>.dao;
+package <xc:qualifiedName element="$class/xPackage"/>.dao;
 
-<%ImportManager importManager=null;%>
-<%if (helper.getQualifiedName(xPackage) != null) {%>
-<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
-package <%=helper.getQualifiedName(xPackage)%>.dao;
-<%} else {%>
-<%importManager = helper.makeImportManager("");%>
-<%}%>
-
-<%importManager.addImport("org.springframework.dao.DataAccessException");%>
-<%importManager.addImport("org.xmdl.ida.lib.test.BaseDaoTestCase");%>
-<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
-<%importManager.addImport("java.util.*");%>
 /**
  *
- * <%=helper.getCapName(xClass)%> DAO Test Case
+ * <xc:cap element="$class"/> DAO Test Case
  *  
  * $Id$
  *
  * @generated
  */ 
-public class <%=helper.getCapName(xClass)%>DAOTest extends BaseDaoTestCase {
+public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 
-    private <%=helper.getCapName(xClass)%>DAO <%=helper.uncapSafeName(xClass)%>DAO = null;
+    private <xc:cap element="$class"/>DAO <xc:uncap element="$class"/>DAO = null;
 
-    public void set<%=helper.getCapName(xClass)%>DAO(<%=helper.getCapName(xClass)%>DAO <%=helper.uncapSafeName(xClass)%>DAO) {
-        this.<%=helper.uncapSafeName(xClass)%>DAO = <%=helper.uncapSafeName(xClass)%>DAO;
+    public void set<xc:cap element="$class"/>DAO(<xc:cap element="$class"/>DAO <xc:uncap element="$class"/>DAO) {
+        this.<xc:uncap element="$class"/>DAO = <xc:uncap element="$class"/>DAO;
     }
 
-    public void testAddAndRemove<%=helper.getCapName(xClass)%>() throws Exception {
-        <%=helper.getCapName(xClass)%> <%=helper.uncapSafeName(xClass)%> = new <%=helper.getCapName(xClass)%>();
+    public void testAddAndRemove<xc:cap element="$class"/>() throws Exception {
+        <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 
-<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-	XAttribute attribute = (XAttribute) i.next();
-	if (!attribute.isReference()) {%>
-        <%=helper.uncapSafeName(xClass)%>.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueString(attribute)%>);
-	<%}%>
-<%}//for%>
+<c:iterate select="$class/attributes" var="attribute">
+	<c:if test="!$attribute/reference">
+        <xc:uncap element="$class"/>.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueString(attribute)%>);
+	</c:if>
+</c:iterate> 
 
-        <%=helper.uncapSafeName(xClass)%> = <%=helper.uncapSafeName(xClass)%>DAO.save(<%=helper.uncapSafeName(xClass)%>);
+        <xc:uncap element="$class"/> = <xc:uncap element="$class"/>DAO.save(<xc:uncap element="$class"/>);
         flush();
 
-        <%=helper.uncapSafeName(xClass)%> = <%=helper.uncapSafeName(xClass)%>DAO.get(<%=helper.uncapSafeName(xClass)%>.getId());
+        <xc:uncap element="$class"/> = <xc:uncap element="$class"/>DAO.get(<xc:uncap element="$class"/>.getId());
 
-        assertNotNull(<%=helper.uncapSafeName(xClass)%>.getId());
-<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-	XAttribute attribute = (XAttribute) i.next();
+        assertNotNull(<xc:uncap element="$class"/>.getId());
+<c:iterate select="$class/attributes" var="attribute">
+	<c:if test="!$attribute/reference">
 	if (!attribute.isReference()) {%>
-		assertEquals(<%=testHelper.randomValueString(attribute)%>, <%=helper.uncapSafeName(xClass)%>.<%=helper.getGetAccessor(attribute)%>());
-	<%}%>
-<%}//for%>
+		assertEquals(<%=testHelper.randomValueString(attribute)%>, <xc:uncap element="$class"/>.<%=helper.getGetAccessor(attribute)%>());
+	</c:if>
+</c:iterate> 
 
-        log.debug("removing <%=helper.uncapSafeName(xClass)%>...");
-        <%=helper.uncapSafeName(xClass)%>DAO.remove(<%=helper.uncapSafeName(xClass)%>.getId());
+        log.debug("removing <xc:uncap element="$class"/>...");
+        <xc:uncap element="$class"/>DAO.remove(<xc:uncap element="$class"/>.getId());
         flush();
 
         try {
-            <%=helper.uncapSafeName(xClass)%>DAO.get(<%=helper.uncapSafeName(xClass)%>.getId());
-            fail("<%=helper.getCapName(xClass)%> found in database");
+            <xc:uncap element="$class"/>DAO.get(<xc:uncap element="$class"/>.getId());
+            fail("<xc:cap element="$class"/> found in database");
         } catch (DataAccessException dae) {
             log.debug("Expected exception: " + dae.getMessage());
             assertNotNull(dae);
@@ -80,21 +63,20 @@ public class <%=helper.getCapName(xClass)%>DAOTest extends BaseDaoTestCase {
     }
 
     public void testSearch() throws Exception {
-        Collection<<%=helper.getCapName(xClass)%>> <%=helper.uncapSafeName(xClass)%>s = <%=helper.uncapSafeName(xClass)%>DAO.search("abcd",9d,11d,null);
-        assertTrue(<%=helper.uncapSafeName(xClass)%>s.size() > 0);
+        Collection<<xc:cap element="$class"/>> <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>DAO.search("abcd",9d,11d,null);
+        assertTrue(<xc:uncap element="$class"/>s.size() > 0);
     }
 
     protected void onSetUpBeforeTransaction() throws Exception {
         super.onSetUpBeforeTransaction();
 
-        <%=helper.getCapName(xClass)%> <%=helper.uncapSafeName(xClass)%> = new <%=helper.getCapName(xClass)%>();
-<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-	XAttribute attribute = (XAttribute) i.next();
-	if (!attribute.isReference()) {%>
-        <%=helper.uncapSafeName(xClass)%>.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueString(attribute)%>);
-	<%}%>
-<%}//for%>
-        <%=helper.uncapSafeName(xClass)%>DAO.save(<%=helper.uncapSafeName(xClass)%>);
+        <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
+<c:iterate select="$class/attributes" var="attribute">
+	<c:if test="!$attribute/reference">
+        <xc:uncap element="$class"/>.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueString(attribute)%>);
+	</c:if>
+</c:iterate> 
+        <xc:uncap element="$class"/>DAO.save(<xc:uncap element="$class"/>);
     }
 
 }

@@ -1,14 +1,9 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
 	package="org.xmdl.ida.templates.core.rsc" 
 	class="ApplicationContextDAOXMLImpl" 
-    imports="java.util.*
-    		chrome.xmdl.*
-            chrome.xmdl.gen.util.*
-			"
 	%><%
-    XPackage pack = (XPackage) context.getVariable("argument");;
-    List<XClass> classes = pack.getClasses();
-    ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %><?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -20,10 +15,9 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
-<%for (Iterator<XClass> iter = classes.iterator(); iter.hasNext();) {
-	XClass cls = iter.next();
-%>                <value><%=helper.getQualifiedName(pack)%>.model.<%=helper.getCapName(cls)%></value>
-<%}%>
+<c:iterate select="$package/classes" var="class">
+                <value><xc:qualifiedName element="$package"/>.model.<xc:cap element="$class"/></value>
+</c:iterate> 
             </list>
         </property>
         <property name="hibernateProperties">
@@ -50,12 +44,11 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-<%for (Iterator<XClass> iter = classes.iterator(); iter.hasNext();) {
-	XClass cls = iter.next();
-%>    <bean id="<%=helper.uncapSafeName(cls)%>Dao" class="<%=helper.getQualifiedName(pack)%>.dao.hibernate.<%=helper.getCapName(cls)%>DaoHibernate">
+<c:iterate select="$package/classes" var="class">
+    <bean id="<xc:uncap element="$class"/>Dao" class="<xc:qualifiedName element="$package"/>.dao.hibernate.<xc:cap element="$class"/>DaoHibernate">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-<%}%>
+</c:iterate> 
 
 
     <bean id="productDao" class="org.xmdl.taslak.dao.hibernate.ProductDaoHibernate">
