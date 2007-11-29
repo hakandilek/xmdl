@@ -9,7 +9,7 @@
 	%><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
-package .model;
+package <xc:qualifiedName element="$xClass/xPackage"/>.model;
 
 <j:importsLocation package="org.example"/>
 
