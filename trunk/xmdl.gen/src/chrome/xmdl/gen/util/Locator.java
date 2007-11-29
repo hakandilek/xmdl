@@ -205,4 +205,8 @@ public class Locator extends XVisitorBaseImpl {
         return (XEnumeration) locate(project, path);
     }
 
+    public static XPackage locatePackage(XProject project, String path) {
+        return (XPackage) locate(project, path);
+    }
+
 }
