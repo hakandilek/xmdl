@@ -44,6 +44,17 @@
                   use="required">
             </attribute>
          </emptyTag>
+         <emptyTag
+               class="org.xmdl.genext.taglib.xc.QualifiedNameTag"
+               deprecated="false"
+               name="qualifiedName">
+            <attribute
+                  deprecated="false"
+                  name="element"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
       </tagLibrary>
    </extension>
 

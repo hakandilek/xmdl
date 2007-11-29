@@ -11,6 +11,7 @@ public class AllTagTests {
         suite.addTestSuite(AttributeTypeTagTest.class);
         suite.addTestSuite(UncapitalizeTagTest.class);
         suite.addTestSuite(CapitalizeTagTest.class);
+        suite.addTestSuite(QualifiedNameTagTest.class);
         //$JUnit-END$
         return suite;
     }
