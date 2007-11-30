@@ -68,7 +68,7 @@ public class TestHelper {
 	public Object randomValue(XAttribute attrib) {
 		XType type = attrib.getType();
 		int length = attrib.getLength();
-		if (XmdlTypes.BOOLEAN.equals(type)) {
+		if (XmdlTypes.BOOLEAN.equals(type) || XmdlTypes.JAVA_BOOLEAN.equals(type)) {
 			return utils.randomBoolean();
 		}
 		if (XmdlTypes.DOUBLE.equals(type) || XmdlTypes.FLOAT.equals(type)
@@ -79,6 +79,9 @@ public class TestHelper {
 		if (XmdlTypes.INT.equals(type) || XmdlTypes.JAVA_INTEGER.equals(type)) {
 			return utils.randomInt((int) Math.pow(10, length));
 		}
+        if (XmdlTypes.LONG.equals(type) || XmdlTypes.JAVA_LONG.equals(type)) {
+            return utils.randomInt((int) Math.pow(30, length));
+        }
 		if (XmdlTypes.JAVA_STRING.equals(type)) {
 			return utils.randomString(length);
 		}
