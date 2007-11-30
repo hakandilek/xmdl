@@ -74,7 +74,21 @@
                deprecated="false"
                name="mutator">
             <description>
-               Output the mutator (e.g. setSafe) according  
+               Output the mutator (e.g. setSafe) for the attribute
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="attribute"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
+         <emptyTag
+               class="org.xmdl.genext.taglib.xc.DefaultValueTag"
+               deprecated="false"
+               name="defaultValue">
+            <description>
+               Output the default value of the attribute  
             </description>
             <attribute
                   deprecated="false"

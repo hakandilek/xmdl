@@ -17,6 +17,39 @@
         <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.Boolean"/>
       </attributes>
     </classes>
-    <enumerations name="Enumeration1" className="org.xmdl.genext.test.Enumeration1"/>
+    <classes name="Class3" className="org.xmdl.genext.test.Class3">
+      <attributes name="attribute1">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.String"/>
+      </attributes>
+      <attributes name="attribute2">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#long"/>
+      </attributes>
+      <attributes name="attribute3">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.Long"/>
+      </attributes>
+      <attributes name="attribute4">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#int"/>
+      </attributes>
+      <attributes name="attribute5">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.Integer"/>
+      </attributes>
+      <attributes name="attribute6">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#double"/>
+      </attributes>
+      <attributes name="attribute7">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.Double"/>
+      </attributes>
+      <attributes name="attribute8">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#boolean"/>
+      </attributes>
+      <attributes name="attribute9">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.Boolean"/>
+      </attributes>
+      <attributes name="attribute10" type="org.xmdl.genext.test.Enumeration1"/>
+    </classes>
+    <enumerations name="Enumeration1" className="org.xmdl.genext.test.Enumeration1" defaultLiteral="//@packages.0/@enumerations.0/@literals.0">
+      <literals name="VALUE1" value="1"/>
+      <literals name="VALUE2" value="2"/>
+    </enumerations>
   </packages>
 </org.xmdl:XProject>
