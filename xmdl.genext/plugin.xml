@@ -55,6 +55,34 @@
                   use="required">
             </attribute>
          </emptyTag>
+         <emptyTag
+               class="org.xmdl.genext.taglib.xc.AccessorTag"
+               deprecated="false"
+               name="accessor">
+            <description>
+               Output the accessor (e.g. isSafe or getSafe) according to the accessor type 
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="attribute"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
+         <emptyTag
+               class="org.xmdl.genext.taglib.xc.MutatorTag"
+               deprecated="false"
+               name="mutator">
+            <description>
+               Output the mutator (e.g. setSafe) according  
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="attribute"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
       </tagLibrary>
    </extension>
 

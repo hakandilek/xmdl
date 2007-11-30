@@ -1,6 +1,5 @@
 package org.xmdl.genext.taglib.xc;
 
-import java.util.Locale;
 
 import org.eclipse.jet.JET2Context;
 import org.eclipse.jet.JET2Writer;
@@ -31,40 +30,20 @@ public class CapitalizeTag extends BaseEmptyTag {
         String s = "";
         if (object instanceof XClass) {
             XClass xClass = (XClass) object;
-            s = getCapName(xClass);
+            s = TagUtils.capName(xClass);
         }
 
         if (object instanceof XAttribute) {
             XAttribute xAttribute = (XAttribute) object;
-            s = getCapName(xAttribute);
+            s = TagUtils.capName(xAttribute);
         }
 
         if (object instanceof XEnumeration) {
             XEnumeration enumeration = (XEnumeration) object;
-            s = getCapName(enumeration);
+            s = TagUtils.capName(enumeration);
         }
 
         out.write(s);
-    }
-
-    public String getCapName(XEnumeration xClass) {
-        return capName(xClass.getName());
-    }
-
-    public String getCapName(XClass xClass) {
-        return capName(xClass.getName());
-    }
-
-    public String getCapName(XAttribute attribute) {
-        return capName(attribute.getName());
-    }
-
-    public String capName(String name) {
-        if (name.length() == 0)
-            return name;
-        else
-            return name.substring(0, 1).toUpperCase(Locale.US)
-                    + name.substring(1);
     }
 
 }

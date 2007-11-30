@@ -1,7 +1,5 @@
 package org.xmdl.genext.taglib.xc;
 
-import java.util.Locale;
-
 import org.eclipse.jet.JET2Context;
 import org.eclipse.jet.JET2Writer;
 import org.eclipse.jet.taglib.JET2TagException;
@@ -13,7 +11,8 @@ import chrome.xmdl.XClass;
 import chrome.xmdl.XEnumeration;
 
 /**
- * This tag capitalizes the first character in the name of the given element.
+ * This tag makes lower-case the first character in the name of the given
+ * element.
  * 
  * @author Hakan Dilek
  * 
@@ -31,40 +30,20 @@ public class UncapitalizeTag extends BaseEmptyTag {
         String s = "";
         if (object instanceof XClass) {
             XClass xClass = (XClass) object;
-            s = getUncapName(xClass);
+            s = TagUtils.uncapName(xClass);
         }
 
         if (object instanceof XAttribute) {
             XAttribute xAttribute = (XAttribute) object;
-            s = getUncapName(xAttribute);
+            s = TagUtils.uncapName(xAttribute);
         }
 
         if (object instanceof XEnumeration) {
             XEnumeration enumeration = (XEnumeration) object;
-            s = getUncapName(enumeration);
+            s = TagUtils.uncapName(enumeration);
         }
 
         out.write(s);
-    }
-
-    public String getUncapName(XEnumeration xClass) {
-        return uncapName(xClass.getName());
-    }
-
-    public String getUncapName(XClass xClass) {
-        return uncapName(xClass.getName());
-    }
-
-    public String getUncapName(XAttribute attribute) {
-        return uncapName(attribute.getName());
-    }
-
-    public String uncapName(String name) {
-        if (name.length() == 0)
-            return name;
-        else
-            return name.substring(0, 1).toLowerCase(Locale.US)
-                    + name.substring(1);
     }
 
 }
