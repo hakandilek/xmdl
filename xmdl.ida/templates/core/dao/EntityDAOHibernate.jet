@@ -1,79 +1,59 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@jet 
 	package="org.xmdl.ida.templates.core.dao" 
 	class="EntityDAOHibernateImpl" 
-    imports="java.util.*
-    		chrome.xmdl.*
-            chrome.xmdl.gen.util.*
-            org.eclipse.emf.codegen.util.*
-			"
 	%><%
-    XClass xClass = (XClass) context.getVariable("argument");
-    XPackage xPackage = xClass.getXPackage(); 
-    ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
-package <%=helper.getQualifiedName(xPackage)%>.dao;
+package <xc:qualifiedName element="$xClass/xPackage"/>.dao.hibernate;
 
-<%ImportManager importManager=null;%>
-<%if (helper.getQualifiedName(xPackage) != null) {%>
-<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
-package <%=helper.getQualifiedName(xPackage)%>.dao.hibernate;
-<%} else {%>
-<%importManager = helper.makeImportManager("");%>
-<%}%>
-
-<%importManager.addImport("org.xmdl.ida.lib.dao.hibernate.GenericDaoHibernate");%>
-<%importManager.addImport(helper.getQualifiedName(xPackage)+".dao.*");%>
-<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
-<%importManager.addImport(helper.getQualifiedName(xPackage)+".model.search.*");%>
-
-<%importManager.addImport("org.hibernate.*");%>
-<%importManager.addImport("org.hibernate.criterion.*");%>
-
-<%importManager.addImport("java.util.*");%>
 /**
  *
- * <%=helper.getCapName(xClass)%> DAO Hibernate implementation
+ * <xc:cap element="$xClass"/> DAO Hibernate implementation
  *  
  * $Id$
  *
  * @generated
  */ 
-public class <%=helper.getCapName(xClass)%>DAOHibernate extends GenericDaoHibernate<<%=helper.getCapName(xClass)%>, Long> implements <%=helper.getCapName(xClass)%>Dao {
+public class <xc:cap element="$xClass"/>DAOHibernate extends GenericDaoHibernate<<xc:cap element="$xClass"/>, Long> implements <xc:cap element="$xClass"/>Dao {
 
-    public <%=helper.getCapName(xClass)%>DAOHibernate() {
-        super(<%=helper.getCapName(xClass)%>.class);
+    public <xc:cap element="$xClass"/>DAOHibernate() {
+        super(<xc:cap element="$xClass"/>.class);
     }
 
-    public Collection<<%=helper.getCapName(xClass)%>> search(<%=helper.getCapName(xClass)%>Search <%=helper.uncapSafeName(xClass)%>Search) {
+    public Collection<<xc:cap element="$xClass"/>> search(<xc:cap element="$xClass"/>Search <xc:uncap element="$xClass"/>Search) {
     	if (log.isDebugEnabled()) {
-    		log.debug("search(<%=helper.getCapName(xClass)%>Search <%=helper.uncapSafeName(xClass)%>Search) <-");
-        	log.debug("<%=helper.uncapSafeName(xClass)%>Search: " + <%=helper.uncapSafeName(xClass)%>Search);
+    		log.debug("search(<xc:cap element="$xClass"/>Search <xc:uncap element="$xClass"/>Search) <-");
+        	log.debug("<xc:uncap element="$xClass"/>Search: " + <xc:uncap element="$xClass"/>Search);
     	}
     	
-		Collection<<%=helper.getCapName(xClass)%>> list = null;
-		if (<%=helper.uncapSafeName(xClass)%>Search == null) {
-			list = new ArrayList<<%=helper.getCapName(xClass)%>>();
+		Collection<<xc:cap element="$xClass"/>> list = null;
+		if (<xc:uncap element="$xClass"/>Search == null) {
+			list = new ArrayList<<xc:cap element="$xClass"/>>();
 		} else {
-<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-	XAttribute attribute = (XAttribute) i.next();
-	if (!attribute.isReference()) {
-		XType type = attribute.getType();
-		boolean comparable = type.isComparable();%>
-		<%if (comparable){%>
-	<%=helper.getImportedAttributeType(attribute)%> min<%=helper.getCapName(attribute)%> = <%=helper.uncapSafeName(xClass)%>Search.<%=helper.getGetAccessor(attribute)%>Min();
-	<%=helper.getImportedAttributeType(attribute)%> max<%=helper.getCapName(attribute)%> = <%=helper.uncapSafeName(xClass)%>Search.<%=helper.getGetAccessor(attribute)%>Max();
-		<%} else {%>
-	<%=helper.getImportedAttributeType(attribute)%> <%=helper.uncapSafeName(attribute)%> = <%=helper.uncapSafeName(xClass)%>Search.<%=helper.getGetAccessor(attribute)%>();
-		<%}%>
-	<%}%>
-<%}//for%>
+<c:iterate select="$xClass/attributes" var="attribute">
+	<c:if test="!$attribute/reference">
+		<c:choose>
+		<c:when test="$attribute/type/comparable">
+			<xc:attributeType attribute="$attribute"/> min<xc:cap element="$attribute"/> = <xc:uncap element="$xClass"/>Search.<xc:accessor attribute="$attribute"/>Min();
+			<xc:attributeType attribute="$attribute"/> max<xc:cap element="$attribute"/> = <xc:uncap element="$xClass"/>Search.<xc:accessor attribute="$attribute"/>Max();
+		</c:when>
+		<c:otherwise>
+			<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/> = <xc:uncap element="$xClass"/>Search.<xc:accessor attribute="$attribute"/>();
+		</c:otherwise>
+		</c:choose>
+	</c:if>
+</c:iterate> 
 
 			list = search(name, fromPrice, toPrice, productType);
 		}
 
 		if (log.isDebugEnabled())
-			log.debug("search(<%=helper.getCapName(xClass)%>Search <%=helper.uncapSafeName(xClass)%>Search) ->");
+			log.debug("search(<xc:cap element="$xClass"/>Search <xc:uncap element="$xClass"/>Search) ->");
     	return list;
     }
 
@@ -102,47 +82,43 @@ public class <%=helper.getCapName(xClass)%>DAOHibernate extends GenericDaoHibern
 	}//for
 %>
 
-    public Collection<<%=helper.getCapName(xClass)%>> search(<%=params%>) {
+    public Collection<<xc:cap element="$xClass"/>> search(<%=params%>) {
     	if (log.isDebugEnabled()) {
     		log.debug("search(<%=params%>) <-");
-<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-	XAttribute attribute = (XAttribute) i.next();
-	if (!attribute.isReference()) {
-		XType type = attribute.getType();
-		boolean comparable = type.isComparable();%>
-		<%if (comparable){%>
-        	log.debug("min<%=helper.getCapName(attribute)%>       : " + min<%=helper.getCapName(attribute)%>);
-        	log.debug("max<%=helper.getCapName(attribute)%>       : " + max<%=helper.getCapName(attribute)%>);
-		<%} else {%>
-        	log.debug("<%=helper.uncapSafeName(attribute)%>       : " + <%=helper.uncapSafeName(attribute)%>);
-		<%}%>
-	<%}%>
-<%}//for%>
-    	}
-    	
-        Criteria criteria = getSession().createCriteria(<%=helper.getCapName(xClass)%>.class);
-<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-	XAttribute attribute = (XAttribute) i.next();
-	if (!attribute.isReference()) {
-		XType type = attribute.getType();
-		boolean comparable = type.isComparable();
-		boolean string = type.getClassName() == "java.lang.String";%>
-		<%if (string){%>
-        if (<%=helper.uncapSafeName(attribute)%> != null && !<%=helper.uncapSafeName(attribute)%>.equals(""))
-            criteria.add(Restrictions.like("<%=helper.uncapSafeName(attribute)%>", "%" + <%=helper.uncapSafeName(attribute)%> + "%"));
-		<%} else if (comparable){%>
-        if (min<%=helper.getCapName(attribute)%> != null)
-            criteria.add(Restrictions.ge("<%=helper.uncapSafeName(attribute)%>", min<%=helper.getCapName(attribute)%>));
-        if (max<%=helper.getCapName(attribute)%> != null)
-            criteria.add(Restrictions.le("<%=helper.uncapSafeName(attribute)%>", max<%=helper.getCapName(attribute)%>));
-		<%} else {%>
-        if (<%=helper.uncapSafeName(attribute)%> != null)
-            criteria.add(Restrictions.eq("<%=helper.uncapSafeName(attribute)%>", <%=helper.uncapSafeName(attribute)%>));
-		<%}%>
-	<%}%>
-<%}//for%>
-
-        List<<%=helper.getCapName(xClass)%>> list = criteria.list();
+<c:iterate select="$xClass/attributes" var="attribute">
+	<c:if test="!$attribute/reference">
+		<c:choose>
+		<c:when test="$attribute/type/comparable">
+        	log.debug("min<xc:cap element="$attribute"/>       : " + min<xc:cap element="$attribute"/>);
+        	log.debug("max<xc:cap element="$attribute"/>       : " + max<xc:cap element="$attribute"/>);
+		</c:when>
+		<c:otherwise>
+        	log.debug("<xc:uncap element="$attribute"/>       : " + <xc:uncap element="$attribute"/>);
+		</c:otherwise>
+		</c:choose>
+	</c:if>
+</c:iterate> 
+    		
+        Criteria criteria = getSession().createCriteria(<xc:cap element="$xClass"/>.class);
+<c:iterate select="$xClass/attributes" var="attribute">
+	<c:if test="!$attribute/reference">
+		<c:choose>
+		<c:when test="$attribute/type/className == 'java.lang.String'">
+            criteria.add(Restrictions.like("<xc:uncap element="$attribute"/>", "%" + <xc:uncap element="$attribute"/> + "%"));
+		</c:when>
+		<c:when test="$attribute/type/comparable">
+        if (min<xc:cap element="$attribute"/> != null)
+            criteria.add(Restrictions.ge("<xc:uncap element="$attribute"/>", min<xc:cap element="$attribute"/>));
+        if (max<xc:cap element="$attribute"/> != null)
+            criteria.add(Restrictions.le("<xc:uncap element="$attribute"/>", max<xc:cap element="$attribute"/>));
+		</c:when>
+		<c:otherwise>
+            criteria.add(Restrictions.eq("<xc:uncap element="$attribute"/>", <xc:uncap element="$attribute"/>));
+		</c:otherwise>
+		</c:choose>
+	</c:if>
+</c:iterate> 
+        List<<xc:cap element="$xClass"/>> list = criteria.list();
         
         if (log.isDebugEnabled()) log.debug("search(<%=params%>) <-");
 		return list;
