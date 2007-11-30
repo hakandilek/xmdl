@@ -98,6 +98,38 @@
             </attribute>
          </emptyTag>
       </tagLibrary>
+      <tagLibrary
+            deprecated="false"
+            id="testUtils"
+            name="Test Utils Tag Library"
+            standardPrefix="tu">
+         <emptyTag
+               class="org.xmdl.genext.taglib.tu.RandomTag"
+               deprecated="false"
+               name="random">
+            <description>
+               Outputs a random value for the given attribute
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="attribute"
+                  type="xpath"
+                  use="required">
+            </attribute>
+            <attribute
+                  deprecated="false"
+                  name="wrapString"
+                  type="boolean"
+                  use="optional">
+            </attribute>
+            <attribute
+                  deprecated="false"
+                  name="trim"
+                  type="string"
+                  use="optional">
+            </attribute>
+         </emptyTag>
+      </tagLibrary>
    </extension>
 
 </plugin>
