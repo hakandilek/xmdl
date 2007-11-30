@@ -14,6 +14,7 @@ public class AllTagTests {
         suite.addTestSuite(QualifiedNameTagTest.class);
         suite.addTestSuite(AccessorTagTest.class);
         suite.addTestSuite(MutatorTagTest.class);
+        suite.addTestSuite(DefaultValueTagTest.class);
         //$JUnit-END$
         return suite;
     }
