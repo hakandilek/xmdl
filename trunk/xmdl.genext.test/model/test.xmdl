@@ -6,7 +6,17 @@
         <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.String"/>
       </attributes>
     </classes>
-    <classes name="AnotherClass" className="org.xmdl.genext.test.AnotherClass"/>
+    <classes name="AnotherClass" className="org.xmdl.genext.test.AnotherClass">
+      <attributes name="attribute1">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.String"/>
+      </attributes>
+      <attributes name="attribute2">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#boolean"/>
+      </attributes>
+      <attributes name="attribute3">
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.Boolean"/>
+      </attributes>
+    </classes>
     <enumerations name="Enumeration1" className="org.xmdl.genext.test.Enumeration1"/>
   </packages>
 </org.xmdl:XProject>
