@@ -5,6 +5,7 @@ import org.eclipse.jet.JET2Writer;
 import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
+import org.xmdl.genext.taglib.ClassTagUtils;
 
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.XEnumeration;
@@ -53,7 +54,7 @@ public class DefaultValueTag extends BaseEmptyTag {
                 XEnumeration xenum = (XEnumeration) type;
                 XEnumerationLiteral defaultLiteral = xenum.getDefaultLiteral();
                 if (defaultLiteral != null) {
-                    result = TagUtils.capName(xenum) + "."
+                    result = ClassTagUtils.capName(xenum) + "."
                             + defaultLiteral.getName();
                 }
             } else

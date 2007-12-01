@@ -5,6 +5,7 @@ import org.eclipse.jet.JET2Writer;
 import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
+import org.xmdl.genext.taglib.ClassTagUtils;
 
 import chrome.xmdl.XClass;
 import chrome.xmdl.XEnumeration;
@@ -23,17 +24,17 @@ public class QualifiedNameTag extends BaseEmptyTag {
         String s = "";
         if (object instanceof XClass) {
             XClass xClass = (XClass) object;
-            s = TagUtils.qualifiedName(xClass);
+            s = ClassTagUtils.qualifiedName(xClass);
         }
 
         if (object instanceof XPackage) {
             XPackage xPackage = (XPackage) object;
-            s = TagUtils.qualifiedName(xPackage);
+            s = ClassTagUtils.qualifiedName(xPackage);
         }
 
         if (object instanceof XEnumeration) {
             XEnumeration enumeration = (XEnumeration) object;
-            s = TagUtils.qualifiedName(enumeration);
+            s = ClassTagUtils.qualifiedName(enumeration);
         }
 
         out.write(s);

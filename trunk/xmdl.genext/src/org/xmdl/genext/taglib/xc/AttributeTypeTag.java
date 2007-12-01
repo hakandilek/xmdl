@@ -5,10 +5,9 @@ import org.eclipse.jet.JET2Writer;
 import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
+import org.xmdl.genext.taglib.ClassTagUtils;
 
-import chrome.xmdl.XAssociationType;
 import chrome.xmdl.XAttribute;
-import chrome.xmdl.XType;
 
 /**
  * This tag returns the type of the given attribute. *-to-many associations
@@ -19,29 +18,20 @@ import chrome.xmdl.XType;
  */
 public class AttributeTypeTag extends BaseEmptyTag {
 
-    public AttributeTypeTag() {
-    }
+	public AttributeTypeTag() {
+	}
 
-    @Override
-    public void doAction(TagInfo td, JET2Context context, JET2Writer out)
-            throws JET2TagException {
-        Object object = fetchObject(context, "attribute");
+	@Override
+	public void doAction(TagInfo td, JET2Context context, JET2Writer out)
+			throws JET2TagException {
+		Object object = fetchObject(context, "attribute");
 
-        if (object instanceof XAttribute) {
-            XAttribute xAttribute = (XAttribute) object;
-            XAssociationType associationType = xAttribute.getAssociationType();
-            boolean association = (XAssociationType.ONE_TO_MANY_LITERAL == associationType || XAssociationType.MANY_TO_MANY_LITERAL == associationType);
-            if (association) {
-                out.write("Set<");
-            }
-            XType type = xAttribute.getType();
-            String name = type.getName();
-            out.write(name);
-            if (association) {
-                out.write(">");
-            }
-        }
-
-    }
+		String result = "";
+		if (object instanceof XAttribute) {
+			XAttribute attribute = (XAttribute) object;
+			result = ClassTagUtils.importType(attribute);
+		}
+		out.write(result);
+	}
 
 }

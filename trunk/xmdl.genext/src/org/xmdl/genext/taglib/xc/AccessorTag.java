@@ -5,6 +5,7 @@ import org.eclipse.jet.JET2Writer;
 import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
+import org.xmdl.genext.taglib.ClassTagUtils;
 
 import chrome.xmdl.XAttribute;
 
@@ -27,8 +28,8 @@ public class AccessorTag extends BaseEmptyTag {
 
         if (object instanceof XAttribute) {
             XAttribute attribute = (XAttribute) object;
-            String capName = TagUtils.capName(attribute);
-            String result = TagUtils.isBooleanType(attribute.getType()) ? "is"
+            String capName = ClassTagUtils.capName(attribute);
+            String result = ClassTagUtils.isBooleanType(attribute.getType()) ? "is"
                     + capName : "get"
                     + ("Class".equals(capName) ? "Class_" : capName);
             out.write(result);

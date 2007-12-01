@@ -1,4 +1,4 @@
-package org.xmdl.genext.taglib.tu;
+package org.xmdl.genext.taglib;
 
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.gen.util.TestHelper;
