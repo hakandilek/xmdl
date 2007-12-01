@@ -3,47 +3,48 @@
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@jet 
 	package="org.xmdl.ida.templates.core.dao" 
 	class="EntityDAOHibernateImpl" 
 	%><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
-package <xc:qualifiedName element="$xClass/xPackage"/>.dao.hibernate;
+package <xc:qualifiedName element="$class/xPackage"/>.dao.hibernate;
 
 /**
  *
- * <xc:cap element="$xClass"/> DAO Hibernate implementation
+ * <xc:cap element="$class"/> DAO Hibernate implementation
  *  
  * $Id$
  *
  * @generated
  */ 
-public class <xc:cap element="$xClass"/>DAOHibernate extends GenericDaoHibernate<<xc:cap element="$xClass"/>, Long> implements <xc:cap element="$xClass"/>Dao {
+public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<<xc:cap element="$class"/>, Long> implements <xc:cap element="$class"/>Dao {
 
-    public <xc:cap element="$xClass"/>DAOHibernate() {
-        super(<xc:cap element="$xClass"/>.class);
+    public <xc:cap element="$class"/>DAOHibernate() {
+        super(<xc:cap element="$class"/>.class);
     }
 
-    public Collection<<xc:cap element="$xClass"/>> search(<xc:cap element="$xClass"/>Search <xc:uncap element="$xClass"/>Search) {
+    public Collection<<xc:cap element="$class"/>> search(<xc:cap element="$class"/>Search <xc:uncap element="$class"/>Search) {
     	if (log.isDebugEnabled()) {
-    		log.debug("search(<xc:cap element="$xClass"/>Search <xc:uncap element="$xClass"/>Search) <-");
-        	log.debug("<xc:uncap element="$xClass"/>Search: " + <xc:uncap element="$xClass"/>Search);
+    		log.debug("search(<xc:cap element="$class"/>Search <xc:uncap element="$class"/>Search) <-");
+        	log.debug("<xc:uncap element="$class"/>Search: " + <xc:uncap element="$class"/>Search);
     	}
     	
-		Collection<<xc:cap element="$xClass"/>> list = null;
-		if (<xc:uncap element="$xClass"/>Search == null) {
-			list = new ArrayList<<xc:cap element="$xClass"/>>();
+		Collection<<xc:cap element="$class"/>> list = null;
+		if (<xc:uncap element="$class"/>Search == null) {
+			list = new ArrayList<<xc:cap element="$class"/>>();
 		} else {
-<c:iterate select="$xClass/attributes" var="attribute">
+<c:iterate select="$class/attributes" var="attribute">
 	<c:if test="!$attribute/reference">
 		<c:choose>
 		<c:when test="$attribute/type/comparable">
-			<xc:attributeType attribute="$attribute"/> min<xc:cap element="$attribute"/> = <xc:uncap element="$xClass"/>Search.<xc:accessor attribute="$attribute"/>Min();
-			<xc:attributeType attribute="$attribute"/> max<xc:cap element="$attribute"/> = <xc:uncap element="$xClass"/>Search.<xc:accessor attribute="$attribute"/>Max();
+			<xc:attributeType attribute="$attribute"/> min<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Min();
+			<xc:attributeType attribute="$attribute"/> max<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Max();
 		</c:when>
 		<c:otherwise>
-			<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/> = <xc:uncap element="$xClass"/>Search.<xc:accessor attribute="$attribute"/>();
+			<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>();
 		</c:otherwise>
 		</c:choose>
 	</c:if>
@@ -53,39 +54,14 @@ public class <xc:cap element="$xClass"/>DAOHibernate extends GenericDaoHibernate
 		}
 
 		if (log.isDebugEnabled())
-			log.debug("search(<xc:cap element="$xClass"/>Search <xc:uncap element="$xClass"/>Search) ->");
+			log.debug("search(<xc:cap element="$class"/>Search <xc:uncap element="$class"/>Search) ->");
     	return list;
     }
 
-<%
-	StringBuffer params = new StringBuffer();
-   	for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-		XAttribute attribute = (XAttribute) i.next();
-		if (!attribute.isReference()) {
-			XType type = attribute.getType();
-			boolean comparable = type.isComparable();
-			if (comparable){
-				params.append(helper.getImportedAttributeType(attribute));
-				params.append(" min");
-				params.append(helper.getCapName(attribute));
-				params.append(", ");
-				params.append(helper.getImportedAttributeType(attribute));
-				params.append(" max");
-				params.append(helper.getCapName(attribute));
-			} else {
-				params.append(helper.getImportedAttributeType(attribute));
-				params.append(" ");
-				params.append(helper.uncapSafeName(attribute));
-			}
-			if (i.hasNext()) params.append(", ");
-		}
-	}//for
-%>
-
-    public Collection<<xc:cap element="$xClass"/>> search(<%=params%>) {
+    public Collection<<xc:cap element="$class"/>> search(<ida:searchParameters class="$class"/>) {
     	if (log.isDebugEnabled()) {
-    		log.debug("search(<%=params%>) <-");
-<c:iterate select="$xClass/attributes" var="attribute">
+    		log.debug("search(<ida:searchParameters class="$class"/> <-");
+<c:iterate select="$class/attributes" var="attribute">
 	<c:if test="!$attribute/reference">
 		<c:choose>
 		<c:when test="$attribute/type/comparable">
@@ -99,8 +75,8 @@ public class <xc:cap element="$xClass"/>DAOHibernate extends GenericDaoHibernate
 	</c:if>
 </c:iterate> 
     		
-        Criteria criteria = getSession().createCriteria(<xc:cap element="$xClass"/>.class);
-<c:iterate select="$xClass/attributes" var="attribute">
+        Criteria criteria = getSession().createCriteria(<xc:cap element="$class"/>.class);
+<c:iterate select="$class/attributes" var="attribute">
 	<c:if test="!$attribute/reference">
 		<c:choose>
 		<c:when test="$attribute/type/className == 'java.lang.String'">
@@ -118,9 +94,9 @@ public class <xc:cap element="$xClass"/>DAOHibernate extends GenericDaoHibernate
 		</c:choose>
 	</c:if>
 </c:iterate> 
-        List<<xc:cap element="$xClass"/>> list = criteria.list();
+        List<<xc:cap element="$class"/>> list = criteria.list();
         
-        if (log.isDebugEnabled()) log.debug("search(<%=params%>) <-");
+        if (log.isDebugEnabled()) log.debug("search(<ida:searchParameters class="$class"/>) <-");
 		return list;
     }
 
