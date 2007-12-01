@@ -10,5 +10,29 @@
             name="IDA"
             version="0.1.0"/>
    </extension>
+   <extension
+            point="org.eclipse.jet.tagLibraries">
+   
+      <tagLibrary
+            deprecated="false"
+            id="idaUtils"
+            name="IDA Tag Library"
+            standardPrefix="ida">
+         <emptyTag
+               class="org.xmdl.ida.taglib.SearchParametersTag"
+               deprecated="false"
+               name="searchParameters">
+            <description>
+               Outputs search parameters for the given class 
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="class"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
+      </tagLibrary>
+   </extension>
 
 </plugin>
