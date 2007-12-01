@@ -13,4 +13,5 @@ Require-Bundle: xmdl,
  org.eclipse.emf.ecore
 Eclipse-LazyStart: true
 Built-By: Hakan Dilek
+Export-Package: org.xmdl.genext.taglib
 
