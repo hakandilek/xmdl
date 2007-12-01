@@ -1,15 +1,9 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
 	package="org.xmdl.ida.templates.core.test.rsc" 
 	class="Log4jXMLImpl" 
-    imports="java.util.*
-    		chrome.xmdl.*
-            chrome.xmdl.gen.util.*
-			"
 	%><%
-    XProject prj = (XProject) context.getVariable("argument");;
-    List<XPackage> packages = prj.getPackages();
-    ClassHelper helper = XMDLClassHelper.INSTANCE;
-    prj.getName();
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %><?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
@@ -48,13 +42,12 @@
         <level value="WARN"/>
     </logger>
    
-<%for (Iterator<XPackage> iter = packages.iterator(); iter.hasNext();) {
-	XPackage pack = iter.next();%>%>
-    <logger name="<%=helper.getQualifiedName(pack)%>">
+<c:iterate select="$project/packages" var="package">
+    <logger name="<xc:cap element="$package"/>">
         <level value="DEBUG"/>
     </logger>
 
-<%}%>
+</c:iterate>
     <root>
         <level value="WARN"/>
         <appender-ref ref="CONSOLE"/>

@@ -1,68 +1,45 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@taglib prefix="tu" id="xmdl.genext.testUtils" %>
 <%@ jet 
 	package="org.xmdl.ida.templates.core.test.rsc" 
 	class="SampleDataXMLImpl" 
-    imports="java.util.*
-    		chrome.xmdl.*
-    		chrome.xmdldb.*
-            chrome.xmdl.gen.util.*
-			"
 	%><%
-    DModel model = (DModel) context.getVariable("argument");;
-    List<DPackage> dPackages = model.getDPackages();
-    TestHelper testHelper = TestHelper.INSTANCE;
-    ClassHelper helper = XMDLClassHelper.INSTANCE;
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %><?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-<%for (Iterator<DPackage> iter = dPackages.iterator(); iter.hasNext();) {
-	DPackage pack = iter.next();
-	List<DTable> tables = pack.getDTables();
-	for (Iterator<DTable> iter2 = tables.iterator(); iter.hasNext();) {
-		DTable table = iter2.next();
-		XClass xClass = table.getXClass();
-		if (xClass != null){
-			%>
-    <!--<%=helper.getQualifiedName(xClass)%>-START-->
-    <table name="<%=table.getName()%>">
+<c:iterate select="$model/dPackages" var="dPackage">
+	<c:iterate select="$dPackage/dTables" var="dTable">
+    <!--<xc:qualifiedName element="$dTable/xClass"/>-START-->
+    <table name="<c:get select="$dTable/name"/>">
         <column>id</column>
-<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-	XAttribute attribute = (XAttribute) i.next();
-	if (!attribute.isReference()) {%>
-        <column><%=helper.uncapSafeName(xClass)%></column>
-	<%}%>
-<%}//for%>
+		<c:iterate select="$dTables/dFields" var="field">
+        <column><c:get select="$field/name"/></column>
+		</c:iterate>
+
 	    <row>
 	        <value description="id">1</value>
-<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-	XAttribute attribute = (XAttribute) i.next();
-	if (!attribute.isReference()) {%>
-        <value description="<%=helper.uncapSafeName(xClass)%>"><%=testHelper.randomValuePlain(attribute)%></value>
-	<%}%>
-<%}//for%>
+		<c:iterate select="$dTables/dFields" var="field">
+        	<value description="Value for <xc:uncap element="$dTable/xClass"/>"><tu:random attribute="$field/xAttribute"/></value>
+		</c:iterate>
 	    </row>
+
 	    <row>
 	        <value description="id">2</value>
-<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-	XAttribute attribute = (XAttribute) i.next();
-	if (!attribute.isReference()) {%>
-        <value description="<%=helper.uncapSafeName(xClass)%>"><%=testHelper.randomValuePlain(attribute)%></value>
-	<%}%>
-<%}//for%>
+		<c:iterate select="$dTables/dFields" var="field">
+        	<value description="Value for <xc:uncap element="$dTable/xClass"/>"><tu:random attribute="$field/xAttribute"/></value>
+		</c:iterate>
 	    </row>
+
 	    <row>
 	        <value description="id">3</value>
-<%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
-	XAttribute attribute = (XAttribute) i.next();
-	if (!attribute.isReference()) {%>
-        <value description="<%=helper.uncapSafeName(xClass)%>"><%=testHelper.randomValuePlain(attribute)%></value>
-	<%}%>
-<%}//for%>
+		<c:iterate select="$dTables/dFields" var="field">
+        	<value description="Value for <xc:uncap element="$dTable/xClass"/>"><tu:random attribute="$field/xAttribute"/></value>
+		</c:iterate>
 	    </row>
+
     </table>
-    <!--<%=helper.getQualifiedName(xClass)%>-END-->
-			<%
-		}
-	}
-}
-%>
+    <!--<xc:qualifiedName element="$dTable/xClass"/>-END-->
+	</c:iterate>
+</c:iterate>
 </dataset>

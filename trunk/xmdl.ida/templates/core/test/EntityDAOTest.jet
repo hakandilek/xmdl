@@ -3,6 +3,7 @@
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@taglib prefix="tu" id="xmdl.genext.testUtils" %>
 <%@ jet 
 	package="org.xmdl.ida.templates.core.test" 
 	class="EntityDAOTestImpl" 
@@ -32,7 +33,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 
 <c:iterate select="$class/attributes" var="attribute">
 	<c:if test="!$attribute/reference">
-        <xc:uncap element="$class"/>.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueString(attribute)%>);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
 	</c:if>
 </c:iterate> 
 
@@ -45,7 +46,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 <c:iterate select="$class/attributes" var="attribute">
 	<c:if test="!$attribute/reference">
 	if (!attribute.isReference()) {%>
-		assertEquals(<%=testHelper.randomValueString(attribute)%>, <xc:uncap element="$class"/>.<%=helper.getGetAccessor(attribute)%>());
+		assertEquals(<tu:random  attribute="$attribute" wrapString="true" />, <xc:uncap element="$class"/>.<xc:accessor attribute="$attribute"/>());
 	</c:if>
 </c:iterate> 
 
@@ -73,7 +74,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 <c:iterate select="$class/attributes" var="attribute">
 	<c:if test="!$attribute/reference">
-        <xc:uncap element="$class"/>.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueString(attribute)%>);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
 	</c:if>
 </c:iterate> 
         <xc:uncap element="$class"/>DAO.save(<xc:uncap element="$class"/>);
