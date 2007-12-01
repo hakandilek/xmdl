@@ -57,4 +57,9 @@ public class TemplateAdapter implements Template {
         
     }
 
+	@Override
+	public String parameterName() {
+		return JET1_ARGUMENT_CONTEXT_VAR;
+	}
+
 }

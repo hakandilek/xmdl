@@ -4,22 +4,32 @@ import org.eclipse.jet.JET2Template;
 
 /**
  * Common template interface
- * @author Hakan Dilek 
- *
+ * 
+ * @author Hakan Dilek
+ * 
  */
 public interface Template extends TemplateConfiguration, JET2Template {
 
-    /**
+	/**
 	 * target file name
-	 * @param object geneartion argument
+	 * 
+	 * @param object
+	 *            geneartion argument
 	 * @return file name
 	 */
-	public String targetFile(Object object);
-	
+	String targetFile(Object object);
+
 	/**
 	 * accept object
+	 * 
 	 * @param object
 	 */
-	public boolean accept(Object object);
+	boolean accept(Object object);
+
+	/**
+	 * @return the default parameter name that will be called as the default
+	 *         element from the template context on code generation
+	 */
+	String parameterName();
 
 }

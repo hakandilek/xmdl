@@ -303,11 +303,13 @@ public class Generator {
 		}
 	}
 
-	public static String runTemplate(Template template, Object argument) {
+	public static String runTemplate(Template template, Object parameter) {
         final BufferedJET2Writer out = new BodyContentWriter();
 
         JET2Context context = new JET2Context(null);
         TransformContextExtender.getInstance(context);
+        String parameterName = template.parameterName();
+        context.setVariable(parameterName, parameter);
         template.generate(context, out);
 
         String output = out.getContent();
