@@ -23,4 +23,9 @@ public class Log4jXML extends Log4jXMLImpl
 		return (object instanceof XProject);
 	}
 
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
 }

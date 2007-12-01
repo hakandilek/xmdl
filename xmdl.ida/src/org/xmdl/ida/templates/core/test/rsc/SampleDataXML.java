@@ -20,4 +20,9 @@ public class SampleDataXML extends SampleDataXMLImpl implements Template {
         return (object instanceof DModel);
     }
 
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
 }

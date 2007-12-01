@@ -28,4 +28,10 @@ public class ApplicationContextServiceXML extends
 		return (object instanceof XPackage);
 	}
 
+	@Override
+	public String parameterName() {
+		return "package";
+	}
+
+
 }

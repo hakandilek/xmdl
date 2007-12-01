@@ -28,4 +28,9 @@ public class ApplicationContextDAOXML extends ApplicationContextDAOXMLImpl
 		return (object instanceof XPackage);
 	}
 
+	@Override
+	public String parameterName() {
+		return "package";
+	}
+
 }

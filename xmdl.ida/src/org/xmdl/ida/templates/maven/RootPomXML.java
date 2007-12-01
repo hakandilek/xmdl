@@ -23,4 +23,9 @@ public class RootPomXML extends RootPomXMLImpl
 		return (object instanceof XProject);
 	}
 
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
 }

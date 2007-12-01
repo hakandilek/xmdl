@@ -1,11 +1,9 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
 	package="org.xmdl.ida.templates.maven" 
 	class="CorePomXMLImpl" 
-    imports="chrome.xmdl.*
-			"
 	%><%
-    XProject prj = (XProject) context.getVariable("argument");;
-    String name = prj.getName();
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %><?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -14,15 +12,15 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.xmdl.projects.<%=name%></groupId>
-        <artifactId><%=name%></artifactId>
+        <groupId>org.xmdl.projects.<c:get select="$project/name"/></groupId>
+        <artifactId><c:get select="$project/name"/></artifactId>
         <version>0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <artifactId><%=name%>-core</artifactId>
+    <artifactId><c:get select="$project/name"/>-core</artifactId>
     <packaging>jar</packaging>
-    <name><%=name%> - Core</name>
+    <name><c:get select="$project/name"/> - Core</name>
     
     <build>
         <plugins>

@@ -20,4 +20,9 @@ public class PersistenceXML extends PersistenceXMLImpl implements Template {
         return (object instanceof XProject);
     }
 
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
 }

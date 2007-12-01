@@ -20,12 +20,17 @@ public class EntityService extends EntityServiceImpl implements Template {
         buffer.append(XMDLClassHelper.INSTANCE.getQualifiedPath(pkg));
         buffer.append("/service/");
         buffer.append(cls.getName());
-        buffer.append(".java");
+        buffer.append("Manager.java");
         return buffer.toString();
     }
 
     public boolean accept(Object object) {
         return (object instanceof XClass);
     }
+
+	@Override
+	public String parameterName() {
+		return "class";
+	}
 
 }

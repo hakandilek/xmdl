@@ -28,4 +28,10 @@ public class HibernateConfigurationTest extends HibernateConfigurationTestImpl
 		return (object instanceof XPackage);
 	}
 
+	@Override
+	public String parameterName() {
+		return "package";
+	}
+
+
 }

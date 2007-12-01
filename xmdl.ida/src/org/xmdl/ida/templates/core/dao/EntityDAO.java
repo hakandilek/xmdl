@@ -28,4 +28,9 @@ public class EntityDAO extends EntityDAOImpl implements Template {
         return (object instanceof XClass);
     }
 
+	@Override
+	public String parameterName() {
+		return "class";
+	}
+
 }

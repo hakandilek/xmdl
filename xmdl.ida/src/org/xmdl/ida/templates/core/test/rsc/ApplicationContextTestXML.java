@@ -23,4 +23,10 @@ public class ApplicationContextTestXML extends ApplicationContextTestXMLImpl
 		return (object instanceof XProject);
 	}
 
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
+
 }

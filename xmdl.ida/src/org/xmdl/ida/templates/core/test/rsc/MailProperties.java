@@ -23,4 +23,9 @@ public class MailProperties extends MailPropertiesImpl
 		return (object instanceof XProject);
 	}
 
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
 }

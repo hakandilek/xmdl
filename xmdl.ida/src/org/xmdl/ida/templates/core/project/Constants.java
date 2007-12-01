@@ -22,12 +22,18 @@ public class Constants extends ConstantsImpl implements Template {
         StringBuffer buffer = new StringBuffer("core/src/main/java/");
         buffer.append(XMDLClassHelper.INSTANCE.getQualifiedPath(package1));
 
-        buffer.append("ApplicationConstants.java");
+        buffer.append("/ApplicationConstants.java");
         return buffer.toString();
     }
 
     public boolean accept(Object object) {
         return (object instanceof XProject);
     }
+
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
 
 }

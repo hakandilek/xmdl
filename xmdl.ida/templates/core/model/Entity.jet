@@ -9,20 +9,20 @@
 	%><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
-package <xc:qualifiedName element="$xClass/xPackage"/>.model;
+package <xc:qualifiedName element="$class/xPackage"/>.model;
 
 <j:importsLocation package="org.example"/>
 
 /**
  *
- * <xc:cap element="$xClass"/> entity bean
+ * <xc:cap element="$class"/> entity bean
  *  
  * $Id$
  *
  * @generated
  */ 
 @Entity (name=("TODO"))
-public class <xc:cap element="$xClass"/> extends BaseObject implements Serializable {
+public class <xc:cap element="$class"/> extends BaseObject implements Serializable {
 
     /** 
      * Unique identifier
@@ -34,7 +34,7 @@ public class <xc:cap element="$xClass"/> extends BaseObject implements Serializa
     @Column(name = ("ID"))
     private Long id;
 
-<c:iterate select="$xClass/attributes" var="attribute">
+<c:iterate select="$class/attributes" var="attribute">
     /** 
      * @generated
      */
@@ -46,10 +46,10 @@ public class <xc:cap element="$xClass"/> extends BaseObject implements Serializa
     /** 
      * @generated
      */
-    public <xc:cap element="$xClass"/>() {
+    public <xc:cap element="$class"/>() {
     }
 
-<c:iterate select="$xClass/attributes" var="attribute">
+<c:iterate select="$class/attributes" var="attribute">
     /** 
      * @generated
      */
@@ -70,14 +70,14 @@ public class <xc:cap element="$xClass"/> extends BaseObject implements Serializa
      * @generated
      */
     public String toString() {
-        return MessageFormat.format("<xc:cap element="$xClass"/> [id={0}]<%int i=0;%><c:iterate select="$xClass/attributes" var="attribute">[<xc:uncap element="$attribute"/>={<%=++i%>}]</c:iterate>", id<c:iterate select="$xClass/attributes" var="attribute">, <xc:uncap element="$attribute"/></c:iterate>);
+        return MessageFormat.format("<xc:cap element="$class"/> [id={0}]<%int i=0;%><c:iterate select="$class/attributes" var="attribute">[<xc:uncap element="$attribute"/>={<%=++i%>}]</c:iterate>", id<c:iterate select="$class/attributes" var="attribute">, <xc:uncap element="$attribute"/></c:iterate>);
     }
 
     /** 
      * @generated
      */
     public boolean equals(Object o) {
-        return o instanceof <xc:cap element="$xClass"/> && ((<xc:cap element="$xClass"/>) o).getId() == this.getId();
+        return o instanceof <xc:cap element="$class"/> && ((<xc:cap element="$class"/>) o).getId() == this.getId();
     }
 
     /** 
@@ -86,7 +86,7 @@ public class <xc:cap element="$xClass"/> extends BaseObject implements Serializa
     public int hashCode() {
         int result;
         result = id.hashCode();
-<c:iterate select="$xClass/attributes" var="attribute">
+<c:iterate select="$class/attributes" var="attribute">
         result = 31 * result + <xc:uncap element="$attribute"/>.hashCode();
 </c:iterate> 
         return result;

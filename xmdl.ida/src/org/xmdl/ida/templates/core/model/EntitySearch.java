@@ -11,7 +11,7 @@ import chrome.xmdl.xgen.Template;
  * @author Hakan Dilek
  *
  */
-public class EntitySearch extends EntityImpl implements Template {
+public class EntitySearch extends EntitySearchImpl implements Template {
 
     public String targetFile(Object object) {
         XClass cls = (XClass) object;
@@ -27,5 +27,10 @@ public class EntitySearch extends EntityImpl implements Template {
     public boolean accept(Object object) {
         return (object instanceof XClass);
     }
+
+	@Override
+	public String parameterName() {
+		return "class";
+	}
 
 }

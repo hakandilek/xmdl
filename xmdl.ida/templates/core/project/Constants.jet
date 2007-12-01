@@ -3,13 +3,14 @@
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@ jet 
 	package="org.xmdl.ida.templates.core.project" 
 	class="ConstantsImpl" 
 	%><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
-package <xc:qualifiedName element="$package"/>;
+package <xc:qualifiedName element="$project/packages[1]"/>;
 
 <j:importsLocation package="org.example"/>
 
@@ -21,7 +22,7 @@ package <xc:qualifiedName element="$package"/>;
  *
  * @generated
  */ 
-public interface ApplicationConstants extends BaseConstants {
+public interface ApplicationConstants extends  <j:import>org.xmdl.ida.lib.BaseConstants</j:import> {
 
 
 }

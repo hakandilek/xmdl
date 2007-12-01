@@ -23,4 +23,9 @@ public class CorePomXML extends CorePomXMLImpl
 		return (object instanceof XProject);
 	}
 
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
 }

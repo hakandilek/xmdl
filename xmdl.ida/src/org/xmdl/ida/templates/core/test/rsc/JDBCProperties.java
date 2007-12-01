@@ -23,4 +23,9 @@ public class JDBCProperties extends JDBCPropertiesImpl
 		return (object instanceof XProject);
 	}
 
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
 }

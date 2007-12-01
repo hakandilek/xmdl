@@ -20,12 +20,17 @@ public class EntityServiceImplementation extends EntityServiceImplementationImpl
         buffer.append(XMDLClassHelper.INSTANCE.getQualifiedPath(pkg));
         buffer.append("/service/impl/");
         buffer.append(cls.getName());
-        buffer.append(".java");
+        buffer.append("ManagerImpl.java");
         return buffer.toString();
     }
 
     public boolean accept(Object object) {
         return (object instanceof XClass);
     }
+
+	@Override
+	public String parameterName() {
+		return "class";
+	}
 
 }
