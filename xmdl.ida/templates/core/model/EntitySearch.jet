@@ -1,0 +1,85 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@jet 
+	package="org.xmdl.ida.templates.core.model" 
+	class="EntitySearchImpl"  
+	%><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <xc:qualifiedName element="$class/xPackage"/>.model.search;
+
+<j:importsLocation package="org.example"/>
+
+/**
+ *
+ * <xc:cap element="$class"/> entity search bean
+ *  
+ * $Id$
+ *
+ * @generated
+ */ 
+public class <xc:cap element="$class"/>Search implements Serializable {
+
+
+<c:iterate select="$class/attributes" var="attribute">
+    /** 
+     * @generated
+     */
+    private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>;
+	
+</c:iterate> 
+
+    /** 
+     * @generated
+     */
+    public <xc:cap element="$class"/>Search() {
+    }
+
+<c:iterate select="$class/attributes" var="attribute">
+    /** 
+     * @generated
+     */
+    public <xc:attributeType attribute="$attribute"/> get<xc:cap element="$attribute"/>() {
+        return <xc:uncap element="$attribute"/>;
+    }
+
+    /** 
+     * @generated
+     */
+    public void set<xc:cap element="$attribute"/>(<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>) {
+        this.<xc:uncap element="$attribute"/> = <xc:uncap element="$attribute"/>;
+    }
+
+</c:iterate> 
+
+    /** 
+     * @generated
+     */
+    public String toString() {
+        return MessageFormat.format("<xc:cap element="$class"/>Search [id={0}]<%int i=0;%><c:iterate select="$class/attributes" var="attribute">[<xc:uncap element="$attribute"/>={<%=++i%>}]</c:iterate>", id<c:iterate select="$class/attributes" var="attribute">, <xc:uncap element="$attribute"/></c:iterate>);
+    }
+
+    /** 
+     * @generated
+     */
+    public boolean equals(Object o) {
+        return o instanceof <xc:cap element="$class"/>Search && ((<xc:cap element="$class"/>Search) o).getId() == this.getId();
+    }
+
+    /** 
+     * @generated
+     */
+    public int hashCode() {
+        int result;
+        result = id.hashCode();
+<c:iterate select="$class/attributes" var="attribute">
+        result = 31 * result + <xc:uncap element="$attribute"/>.hashCode();
+</c:iterate> 
+        return result;
+    }
+
+
+}
