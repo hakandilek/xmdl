@@ -5,6 +5,7 @@ import org.eclipse.jet.JET2Writer;
 import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
+import org.xmdl.genext.taglib.ClassTagUtils;
 
 import chrome.xmdl.XAttribute;
 
@@ -26,7 +27,7 @@ public class MutatorTag extends BaseEmptyTag {
 
         if (object instanceof XAttribute) {
             XAttribute attribute = (XAttribute) object;
-            String capName = TagUtils.capName(attribute);
+            String capName = ClassTagUtils.capName(attribute);
             String result = "set"
                     + ("Class".equals(capName) ? "Class_" : capName);
             out.write(result);

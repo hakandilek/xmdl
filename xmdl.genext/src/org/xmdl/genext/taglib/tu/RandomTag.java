@@ -6,6 +6,7 @@ import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
 import org.xmdl.genext.taglib.MissingAttributeException;
+import org.xmdl.genext.taglib.TestTagUtils;
 
 import chrome.xmdl.XAttribute;
 

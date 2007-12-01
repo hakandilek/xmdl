@@ -5,6 +5,7 @@ import org.eclipse.jet.JET2Writer;
 import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
+import org.xmdl.genext.taglib.ClassTagUtils;
 
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.XClass;
@@ -30,17 +31,17 @@ public class UncapitalizeTag extends BaseEmptyTag {
         String s = "";
         if (object instanceof XClass) {
             XClass xClass = (XClass) object;
-            s = TagUtils.uncapName(xClass);
+            s = ClassTagUtils.uncapName(xClass);
         }
 
         if (object instanceof XAttribute) {
             XAttribute xAttribute = (XAttribute) object;
-            s = TagUtils.uncapName(xAttribute);
+            s = ClassTagUtils.uncapName(xAttribute);
         }
 
         if (object instanceof XEnumeration) {
             XEnumeration enumeration = (XEnumeration) object;
-            s = TagUtils.uncapName(enumeration);
+            s = ClassTagUtils.uncapName(enumeration);
         }
 
         out.write(s);

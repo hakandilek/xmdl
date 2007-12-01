@@ -1,8 +1,9 @@
-package org.xmdl.genext.taglib.xc;
+package org.xmdl.genext.taglib;
 
 import java.lang.annotation.ElementType;
 import java.util.Locale;
 
+import chrome.xmdl.XAssociationType;
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.XClass;
 import chrome.xmdl.XEnumeration;
@@ -15,7 +16,7 @@ import chrome.xmdl.XmdlTypes;
  * 
  * @author Hakan Dilek
  */
-public class TagUtils {
+public class ClassTagUtils {
 
     /**
      * Capitalize first character in the name of the attribute
@@ -180,5 +181,22 @@ public class TagUtils {
         return XmdlTypes.BOOLEAN.equals(type)
                 || XmdlTypes.JAVA_BOOLEAN.equals(type);
     }
+
+	public static String importType(XAttribute attribute) {
+		StringBuffer out = new StringBuffer();
+		XAssociationType associationType = attribute.getAssociationType();
+		boolean association = (XAssociationType.ONE_TO_MANY_LITERAL == associationType || XAssociationType.MANY_TO_MANY_LITERAL == associationType);
+		if (association) {
+			out.append("Set<");
+		}
+		XType type = attribute.getType();
+		String name = type.getName();
+		out.append(name);
+		if (association) {
+			out.append(">");
+		}
+		// TODO Auto-generated method stub
+		return out.toString();
+	}
 
 }
