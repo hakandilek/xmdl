@@ -1,11 +1,8 @@
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
 	package="org.xmdl.ida.templates.core.test.rsc" 
 	class="JDBCPropertiesImpl" 
-    imports="chrome.xmdl.*
-			"
 	%><%
-    XProject prj = (XProject) context.getVariable("argument");;
-    prj.getName();
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>jdbc.driverClassName=${jdbc.driverClassName}
 jdbc.url=${jdbc.url}
