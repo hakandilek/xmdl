@@ -23,4 +23,10 @@ public class ApplicationContextResourcesXML extends ApplicationContextResourcesX
 		return (object instanceof XProject);
 	}
 
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
+
 }

@@ -20,4 +20,9 @@ public class HibernateCFG extends HibernateCFGImpl implements Template {
         return (object instanceof XProject);
     }
 
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
 }

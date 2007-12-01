@@ -32,4 +32,9 @@ public class EntityDAOTest extends EntityDAOTestImpl
 		return (object instanceof XClass);
 	}
 
+	@Override
+	public String parameterName() {
+		return "class";
+	}
+
 }

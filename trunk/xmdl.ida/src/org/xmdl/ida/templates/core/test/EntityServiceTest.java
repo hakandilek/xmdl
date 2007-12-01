@@ -32,4 +32,9 @@ public class EntityServiceTest extends EntityServiceTestImpl
 		return (object instanceof XClass);
 	}
 
+	@Override
+	public String parameterName() {
+		return "class";
+	}
+
 }

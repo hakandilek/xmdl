@@ -9,19 +9,19 @@
 	%><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %> 
-package <xc:qualifiedName element="$xClass/xPackage"/>.dao;
+package <xc:qualifiedName element="$class/xPackage"/>.dao;
 
 /**
  *
- * <xc:cap element="$xClass"/> DAO interface
+ * <xc:cap element="$class"/> DAO interface
  *  
  * $Id$
  *
  * @generated
  */ 
-public interface <xc:cap element="$xClass"/>DAO extends GenericDao<<xc:cap element="$xClass"/>, Long> {
+public interface <xc:cap element="$class"/>DAO extends GenericDao<<xc:cap element="$class"/>, Long> {
 
-    Collection<<xc:cap element="$xClass"/>> search(String name, Double fromPrice, Double toPrice, ProductType productType);
-    Collection<<xc:cap element="$xClass"/>> search(<xc:cap element="$xClass"/>Search searchBean);
+    Collection<<xc:cap element="$class"/>> search(String name, Double fromPrice, Double toPrice, ProductType productType);
+    Collection<<xc:cap element="$class"/>> search(<xc:cap element="$class"/>Search searchBean);
 
 }

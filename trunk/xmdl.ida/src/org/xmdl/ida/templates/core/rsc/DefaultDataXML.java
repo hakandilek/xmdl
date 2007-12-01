@@ -22,5 +22,10 @@ public class DefaultDataXML extends DefaultDataXMLImpl implements Template {
         return (object instanceof XProject);
     }
 
+	@Override
+	public String parameterName() {
+		return "project";
+	}
+
 
 }
