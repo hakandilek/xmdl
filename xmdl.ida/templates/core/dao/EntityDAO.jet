@@ -1,8 +1,6 @@
-<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
-<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
-<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@ jet 
 	package="org.xmdl.ida.templates.core.dao" 
 	class="EntityDAOImpl" 
@@ -29,7 +27,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.dao;
  */ 
 public interface <xc:cap element="$class"/>DAO extends GenericDao<<xc:cap element="$class"/>, Long> {
 
-    Collection<<xc:cap element="$class"/>> search(String name, Double fromPrice, Double toPrice, ProductType productType);
+    Collection<<xc:cap element="$class"/>> search(<ida:searchParameters class="$class"/>);
     Collection<<xc:cap element="$class"/>> search(<xc:cap element="$class"/>Search searchBean);
 
 }

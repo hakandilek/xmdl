@@ -87,7 +87,8 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
 		</c:otherwise>
 		</c:choose>
 	</c:if>
-</c:iterate> 
+</c:iterate>
+		}
     		
         Criteria criteria = getSession().createCriteria(<xc:cap element="$class"/>.class);
 <c:iterate select="$class/attributes" var="attribute">

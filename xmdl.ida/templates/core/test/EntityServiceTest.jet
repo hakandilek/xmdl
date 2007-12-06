@@ -39,8 +39,8 @@ public class <xc:cap element="$class"/>ManagerImplTest extends BaseManagerMockTe
     private <xc:cap element="$class"/> <xc:uncap element="$class"/> = null;
 
     protected void setUp() throws Exception {
-        dao = new Mock(<xc:cap element="$class"/>Dao.class);
-        manager = new <xc:cap element="$class"/>ManagerImpl((<xc:cap element="$class"/>Dao) dao.proxy());
+        dao = new Mock(<xc:cap element="$class"/>DAO.class);
+        manager = new <xc:cap element="$class"/>ManagerImpl((<xc:cap element="$class"/>DAO) dao.proxy());
     }
 
     protected void tearDown() throws Exception {
@@ -53,7 +53,7 @@ public class <xc:cap element="$class"/>ManagerImplTest extends BaseManagerMockTe
         Long id = 7L;
         <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 
-        // set expected behavior on dao
+        // set expected behavior on DAO
         dao.expects(once()).method("get")
                 .with(eq(id))
                 .will(returnValue(<xc:uncap element="$class"/>));
@@ -81,7 +81,7 @@ public class <xc:cap element="$class"/>ManagerImplTest extends BaseManagerMockTe
         List<<xc:cap element="$class"/>> list = new ArrayList<<xc:cap element="$class"/>>();
         <xc:cap element="$class"/>Search searchBean=new <xc:cap element="$class"/>Search();
 
-        // set expected behavior on dao
+        // set expected behavior on DAO
         dao.expects(once()).method("search")
                 .with(eq(searchBean))
                 .will(returnValue(list));
@@ -95,7 +95,7 @@ public class <xc:cap element="$class"/>ManagerImplTest extends BaseManagerMockTe
 
         <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 
-        // set expected behavior on dao
+        // set expected behavior on DAO
         dao.expects(once()).method("save")
                 .with(same(<xc:uncap element="$class"/>))
                 .will(returnValue(<xc:uncap element="$class"/>));
@@ -109,7 +109,7 @@ public class <xc:cap element="$class"/>ManagerImplTest extends BaseManagerMockTe
         Long id = 11L;
         <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 
-        // set expected behavior on dao
+        // set expected behavior on DAO
         dao.expects(once()).method("remove")
                 .with(eq(id))
                 .isVoid();
