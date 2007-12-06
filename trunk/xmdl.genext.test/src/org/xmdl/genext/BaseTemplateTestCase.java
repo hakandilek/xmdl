@@ -2,11 +2,11 @@ package org.xmdl.genext;
 
 import org.eclipse.jet.BodyContentWriter;
 import org.eclipse.jet.BufferedJET2Writer;
+import org.eclipse.jet.IWriterListener;
 import org.eclipse.jet.JET2Context;
 import org.eclipse.jet.JET2TemplateManager.ITemplateRunner;
 import org.eclipse.jet.transform.TransformContextExtender;
 
-import chrome.xmdl.xgen.TemplateRunner;
 
 import junit.framework.TestCase;
 
@@ -41,9 +41,23 @@ public class BaseTemplateTestCase extends TestCase {
         JET2Context context = getContext();
 
         ITemplateRunner templateRunner = new TemplateRunner(pluginID);
-        templateRunner.generate(templateClass, context, out);
         
+        
+        templateRunner.generate(templateClass, context, out);
+
+        final IWriterListener[] eventListeners = out.getEventListeners();
+        for (int i = 0; i < eventListeners.length; i++)
+        {
+          eventListeners[i].finalizeContent(out, null);
+        }
+
         String output = out.getContent();
+        
+        for (int i = 0; i < eventListeners.length; i++)
+        {
+          eventListeners[i].postCommitContent(out, output);
+        }
+
         return output;
     }
 
