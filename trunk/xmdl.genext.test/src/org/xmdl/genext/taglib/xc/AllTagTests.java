@@ -15,6 +15,7 @@ public class AllTagTests {
         suite.addTestSuite(AccessorTagTest.class);
         suite.addTestSuite(MutatorTagTest.class);
         suite.addTestSuite(DefaultValueTagTest.class);
+        suite.addTestSuite(ImportTagTest.class);
         //$JUnit-END$
         return suite;
     }

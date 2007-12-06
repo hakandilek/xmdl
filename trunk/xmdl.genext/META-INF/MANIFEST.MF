@@ -10,7 +10,8 @@ Require-Bundle: xmdl,
  xmdl.gen,
  org.eclipse.jet,
  org.eclipse.core.runtime.compatibility,
- org.eclipse.emf.ecore
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.codegen
 Eclipse-LazyStart: true
 Built-By: Hakan Dilek
 Export-Package: org.xmdl.genext.taglib
