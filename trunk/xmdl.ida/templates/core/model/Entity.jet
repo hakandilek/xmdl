@@ -11,7 +11,17 @@
 %>
 package <xc:qualifiedName element="$class/xPackage"/>.model;
 
-<j:importsLocation package="org.example"/>
+<j:importsLocation package=""/>
+
+<xc:import pattern="javax.persistence.*"/>
+<xc:import pattern="org.xmdl.ida.lib.model.BaseObject"/>
+<xc:import pattern="org.hibernate.annotations.Type"/>
+<xc:import pattern="org.hibernate.annotations.Parameter"/>
+<xc:import pattern="java.io.Serializable"/>
+<xc:import pattern="java.text.MessageFormat"/>
+<xc:import pattern="java.util.HashSet"/>
+<xc:import pattern="java.util.Set"/>
+
 
 /**
  *
@@ -47,6 +57,20 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
      * @generated
      */
     public <xc:cap element="$class"/>() {
+    }
+
+    /** 
+     * @generated
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /** 
+     * @generated
+     */
+    public void setId(Long id) {
+        this.id = id;
     }
 
 <c:iterate select="$class/attributes" var="attribute">

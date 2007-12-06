@@ -12,7 +12,7 @@
 %>
 package <xc:qualifiedName element="$project/packages[1]"/>;
 
-<j:importsLocation package="org.example"/>
+<j:importsLocation package=""/>
 
 /**
  *

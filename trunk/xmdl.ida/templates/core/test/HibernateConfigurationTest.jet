@@ -11,6 +11,15 @@
 %>
 package <xc:qualifiedName element="$package"/>.dao.hibernate;
 
+<j:importsLocation package=""/>
+
+<xc:import pattern="org.xmdl.ida.lib.test.BaseDaoTestCase"/>
+<xc:import pattern="org.hibernate.SessionFactory"/>
+<xc:import pattern="org.hibernate.Query"/>
+<xc:import pattern="org.hibernate.Session"/>
+<xc:import pattern="org.hibernate.persister.entity.EntityPersister"/>
+<xc:import pattern="java.util.Map"/>
+
 /**
  *
  * '<xc:cap element="$package"/>' package Hibernate Configuration Test Case

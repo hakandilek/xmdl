@@ -11,7 +11,11 @@
 %>
 package <xc:qualifiedName element="$class/xPackage"/>.model.search;
 
-<j:importsLocation package="org.example"/>
+<j:importsLocation package=""/>
+
+<xc:import pattern="java.io.Serializable" />
+<xc:import pattern="java.text.MessageFormat" />
+<xc:import pattern="$element.model.*" element="$class/xPackage"/>
 
 /**
  *
@@ -59,22 +63,14 @@ public class <xc:cap element="$class"/>Search implements Serializable {
      * @generated
      */
     public String toString() {
-        return MessageFormat.format("<xc:cap element="$class"/>Search [id={0}]<%int i=0;%><c:iterate select="$class/attributes" var="attribute">[<xc:uncap element="$attribute"/>={<%=++i%>}]</c:iterate>", id<c:iterate select="$class/attributes" var="attribute">, <xc:uncap element="$attribute"/></c:iterate>);
-    }
-
-    /** 
-     * @generated
-     */
-    public boolean equals(Object o) {
-        return o instanceof <xc:cap element="$class"/>Search && ((<xc:cap element="$class"/>Search) o).getId() == this.getId();
+        return MessageFormat.format("<xc:cap element="$class"/>Search <%int i=0;%><c:iterate select="$class/attributes" var="attribute">[<xc:uncap element="$attribute"/>={<%=i++%>}]</c:iterate>" <c:iterate select="$class/attributes" var="attribute">, <xc:uncap element="$attribute"/></c:iterate>);
     }
 
     /** 
      * @generated
      */
     public int hashCode() {
-        int result;
-        result = id.hashCode();
+        int result = 1;
 <c:iterate select="$class/attributes" var="attribute">
         result = 31 * result + <xc:uncap element="$attribute"/>.hashCode();
 </c:iterate> 
