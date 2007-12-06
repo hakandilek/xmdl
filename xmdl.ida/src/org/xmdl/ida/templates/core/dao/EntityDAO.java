@@ -20,7 +20,7 @@ public class EntityDAO extends EntityDAOImpl implements Template {
         buffer.append(XMDLClassHelper.INSTANCE.getQualifiedPath(pkg));
         buffer.append("/dao/");
         buffer.append(cls.getName());
-        buffer.append(".java");
+        buffer.append("DAO.java");
         return buffer.toString();
     }
 

@@ -20,7 +20,7 @@ public class EntityDAOHibernate extends EntityDAOHibernateImpl implements Templa
         buffer.append(XMDLClassHelper.INSTANCE.getQualifiedPath(pkg));
         buffer.append("/dao/hibernate/");
         buffer.append(cls.getName());
-        buffer.append(".java");
+        buffer.append("DAOHibernate.java");
         return buffer.toString();
     }
 
