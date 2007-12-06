@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jet.BodyContentWriter;
 import org.eclipse.jet.BufferedJET2Writer;
+import org.eclipse.jet.IWriterListener;
 import org.eclipse.jet.JET2Context;
 import org.eclipse.jet.transform.TransformContextExtender;
 
@@ -312,7 +313,19 @@ public class Generator {
         context.setVariable(parameterName, parameter);
         template.generate(context, out);
 
+        final IWriterListener[] eventListeners = out.getEventListeners();
+        for (int i = 0; i < eventListeners.length; i++)
+        {
+          eventListeners[i].finalizeContent(out, null);
+        }
+
         String output = out.getContent();
+        
+        for (int i = 0; i < eventListeners.length; i++)
+        {
+          eventListeners[i].postCommitContent(out, output);
+        }
+
         return output;
     }
 
