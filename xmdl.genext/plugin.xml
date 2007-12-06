@@ -97,6 +97,28 @@
                   use="required">
             </attribute>
          </emptyTag>
+         <emptyTag
+               class="org.xmdl.genext.taglib.xc.ImportTag"
+               deprecated="false"
+               name="import">
+            <description>
+              This tag replaces the given elements qualified name in the given pattern. If
+              the pattern does not contain an $element variable, then pattern is directly
+              imported.
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="pattern"
+                  type="string"
+                  use="required">
+            </attribute>
+            <attribute
+                  deprecated="false"
+                  name="element"
+                  type="xpath"
+                  use="optional">
+            </attribute>
+         </emptyTag>
       </tagLibrary>
       <tagLibrary
             deprecated="false"
