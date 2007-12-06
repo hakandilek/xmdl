@@ -9,6 +9,7 @@ import org.xmdl.ida.templates.core.dao.EntityDAO;
 import org.xmdl.ida.templates.core.dao.EntityDAOHibernate;
 import org.xmdl.ida.templates.core.model.Entity;
 import org.xmdl.ida.templates.core.model.EntitySearch;
+import org.xmdl.ida.templates.core.model.Enumeration;
 import org.xmdl.ida.templates.core.project.Constants;
 import org.xmdl.ida.templates.core.rsc.ApplicationContextDAOXML;
 import org.xmdl.ida.templates.core.rsc.ApplicationContextServiceXML;
@@ -97,6 +98,7 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 // model
                 templates.add(new Entity());
                 templates.add(new EntitySearch());
+                templates.add(new Enumeration());
 
                 // dao
                 templates.add(new EntityDAO());
