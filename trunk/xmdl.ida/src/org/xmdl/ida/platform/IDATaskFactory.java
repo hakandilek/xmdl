@@ -27,6 +27,7 @@ import org.xmdl.ida.templates.core.test.rsc.Log4jXML;
 import org.xmdl.ida.templates.core.test.rsc.MailProperties;
 import org.xmdl.ida.templates.core.test.rsc.PersistenceXML;
 import org.xmdl.ida.templates.core.test.rsc.SampleDataXML;
+import org.xmdl.ida.templates.eclipse.Classpath;
 import org.xmdl.ida.templates.maven.CorePomXML;
 import org.xmdl.ida.templates.maven.RootPomXML;
 
@@ -88,8 +89,11 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 templates = new ArrayList<Template>();
                 templates.clear();
 
+                //eclipse project files
+                templates.add(new Classpath());//project .classpath
+                
                 // build
-                templates.add(new RootPomXML());//project pom.xmo
+                templates.add(new RootPomXML());//project pom.xml
                 templates.add(new CorePomXML());//core module pom.xml
 
                 //Project General
