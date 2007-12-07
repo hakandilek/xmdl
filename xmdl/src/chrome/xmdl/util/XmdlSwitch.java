@@ -213,6 +213,15 @@ public class XmdlSwitch<T> {
                 result = defaultCase(theEObject);
             return result;
         }
+        case XmdlPackage.XMDL_MODEL: {
+            XMDLModel xmdlModel = (XMDLModel) theEObject;
+            T result = caseXMDLModel(xmdlModel);
+            if (result == null)
+                result = caseXModel(xmdlModel);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
         default:
             return defaultCase(theEObject);
         }
@@ -395,6 +404,21 @@ public class XmdlSwitch<T> {
      * @generated
      */
     public T caseXVisitorBase(XVisitorBase object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>XMDL Model</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>XMDL Model</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseXMDLModel(XMDLModel object) {
         return null;
     }
 
