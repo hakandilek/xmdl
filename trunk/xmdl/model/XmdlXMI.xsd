@@ -175,4 +175,10 @@
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="XVisitorBase" type="org.xmdl:XVisitorBase"/>
+  <xsd:complexType name="XMDLModel">
+    <xsd:complexContent>
+      <xsd:extension base="org.xmdl:XModel"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="XMDLModel" type="org.xmdl:XMDLModel"/>
 </xsd:schema>

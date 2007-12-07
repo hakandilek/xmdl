@@ -713,6 +713,25 @@ public interface XmdlPackage extends EPackage {
     int XVISITOR_BASE_FEATURE_COUNT = XVISITOR_FEATURE_COUNT + 0;
 
     /**
+     * The meta object id for the '{@link chrome.xmdl.impl.XMDLModelImpl <em>XMDL Model</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see chrome.xmdl.impl.XMDLModelImpl
+     * @see chrome.xmdl.impl.XmdlPackageImpl#getXMDLModel()
+     * @generated
+     */
+    int XMDL_MODEL = 14;
+
+    /**
+     * The number of structural features of the '<em>XMDL Model</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int XMDL_MODEL_FEATURE_COUNT = XMODEL_FEATURE_COUNT + 0;
+
+    /**
      * The meta object id for the '{@link chrome.xmdl.XAssociationType <em>XAssociation Type</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -720,7 +739,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getXAssociationType()
      * @generated
      */
-    int XASSOCIATION_TYPE = 14;
+    int XASSOCIATION_TYPE = 15;
 
     /**
      * The meta object id for the '{@link chrome.xmdl.XAssociationBehaviour <em>XAssociation Behaviour</em>}' enum.
@@ -730,7 +749,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getXAssociationBehaviour()
      * @generated
      */
-    int XASSOCIATION_BEHAVIOUR = 15;
+    int XASSOCIATION_BEHAVIOUR = 16;
 
     /**
      * The meta object id for the '<em>IPath</em>' data type.
@@ -740,7 +759,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getIPath()
      * @generated
      */
-    int IPATH = 16;
+    int IPATH = 17;
 
     /**
      * The meta object id for the '<em>URI</em>' data type.
@@ -750,7 +769,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getURI()
      * @generated
      */
-    int URI = 17;
+    int URI = 18;
 
     /**
      * The meta object id for the '<em>Resource</em>' data type.
@@ -760,7 +779,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getResource()
      * @generated
      */
-    int RESOURCE = 18;
+    int RESOURCE = 19;
 
     /**
      * The meta object id for the '<em>Comparable</em>' data type.
@@ -770,7 +789,7 @@ public interface XmdlPackage extends EPackage {
      * @see chrome.xmdl.impl.XmdlPackageImpl#getComparable()
      * @generated
      */
-    int COMPARABLE = 19;
+    int COMPARABLE = 20;
 
     /**
      * Returns the meta object for class '{@link chrome.xmdl.XAttribute <em>XAttribute</em>}'.
@@ -1243,6 +1262,16 @@ public interface XmdlPackage extends EPackage {
      * @generated
      */
     EClass getXVisitorBase();
+
+    /**
+     * Returns the meta object for class '{@link chrome.xmdl.XMDLModel <em>XMDL Model</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>XMDL Model</em>'.
+     * @see chrome.xmdl.XMDLModel
+     * @generated
+     */
+    EClass getXMDLModel();
 
     /**
      * Returns the meta object for class '{@link chrome.xmdl.XEnumeration <em>XEnumeration</em>}'.
@@ -1869,6 +1898,16 @@ public interface XmdlPackage extends EPackage {
          * @generated
          */
         EClass XVISITOR_BASE = eINSTANCE.getXVisitorBase();
+
+        /**
+         * The meta object literal for the '{@link chrome.xmdl.impl.XMDLModelImpl <em>XMDL Model</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see chrome.xmdl.impl.XMDLModelImpl
+         * @see chrome.xmdl.impl.XmdlPackageImpl#getXMDLModel()
+         * @generated
+         */
+        EClass XMDL_MODEL = eINSTANCE.getXMDLModel();
 
         /**
          * The meta object literal for the '{@link chrome.xmdl.XAssociationType <em>XAssociation Type</em>}' enum.

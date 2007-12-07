@@ -175,4 +175,5 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XVisitorBase" eSuperTypes="#//XVisitor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="XMDLModel" eSuperTypes="#//XModel"/>
 </ecore:EPackage>

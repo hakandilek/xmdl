@@ -93,6 +93,8 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
             return createXException();
         case XmdlPackage.XVISITOR_BASE:
             return createXVisitorBase();
+        case XmdlPackage.XMDL_MODEL:
+            return createXMDLModel();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName()
                     + "' is not a valid classifier");
@@ -231,6 +233,16 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
     public XVisitorBase createXVisitorBase() {
         XVisitorBaseImpl xVisitorBase = new XVisitorBaseImpl();
         return xVisitorBase;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public XMDLModel createXMDLModel() {
+        XMDLModelImpl xmdlModel = new XMDLModelImpl();
+        return xmdlModel;
     }
 
     /**

@@ -27,6 +27,7 @@ import chrome.xmdl.XClass;
 import chrome.xmdl.XEnumeration;
 import chrome.xmdl.XEnumerationLiteral;
 import chrome.xmdl.XException;
+import chrome.xmdl.XMDLModel;
 import chrome.xmdl.XMethod;
 import chrome.xmdl.XModel;
 import chrome.xmdl.XPackage;
@@ -135,6 +136,13 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
      * @generated
      */
     private EClass xVisitorBaseEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass xmdlModelEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -671,6 +679,15 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getXMDLModel() {
+        return xmdlModelEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getXEnumeration() {
         return xEnumerationEClass;
     }
@@ -891,6 +908,8 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 
         xVisitorBaseEClass = createEClass(XVISITOR_BASE);
 
+        xmdlModelEClass = createEClass(XMDL_MODEL);
+
         // Create enums
         xAssociationTypeEEnum = createEEnum(XASSOCIATION_TYPE);
         xAssociationBehaviourEEnum = createEEnum(XASSOCIATION_BEHAVIOUR);
@@ -943,6 +962,7 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
         xParameterEClass.getESuperTypes().add(this.getXBase());
         xExceptionEClass.getESuperTypes().add(this.getXBase());
         xVisitorBaseEClass.getESuperTypes().add(this.getXVisitor());
+        xmdlModelEClass.getESuperTypes().add(this.getXModel());
 
         // Initialize classes and features; add operations and parameters
         initEClass(xProjectEClass, XProject.class, "XProject", !IS_ABSTRACT,
@@ -1266,6 +1286,9 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 
         initEClass(xVisitorBaseEClass, XVisitorBase.class, "XVisitorBase",
                 !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(xmdlModelEClass, XMDLModel.class, "XMDLModel", !IS_ABSTRACT,
+                !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         // Initialize enums and add enum literals
         initEEnum(xAssociationTypeEEnum, XAssociationType.class,

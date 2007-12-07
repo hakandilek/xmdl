@@ -105,6 +105,15 @@ public interface XmdlFactory extends EFactory {
     XVisitorBase createXVisitorBase();
 
     /**
+     * Returns a new object of class '<em>XMDL Model</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>XMDL Model</em>'.
+     * @generated
+     */
+    XMDLModel createXMDLModel();
+
+    /**
      * Returns a new object of class '<em>XEnumeration</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
