@@ -14,46 +14,59 @@ import chrome.xmdl.XClass;
 import chrome.xmdl.XType;
 
 /**
- * Outpus the search method parameters for the given class
+ * Outputs the search method parameters for the given class
  * 
  * @author Hakan Dilek
  * 
  */
 public class SearchParametersTag extends BaseEmptyTag {
 
-	public SearchParametersTag() {
-	}
+    public SearchParametersTag() {
+    }
 
-	@Override
-	public void doAction(TagInfo info, JET2Context context, JET2Writer out)
-			throws JET2TagException {
-		Object object = fetchObject(context, "attribute");
-		if (object instanceof XClass) {
-			XClass clazz = (XClass) object;
-			StringBuffer params = new StringBuffer();
-		   	for (Iterator<XAttribute> i= clazz.getAttributes().iterator(); i.hasNext();) {
-				XAttribute attribute = i.next();
-				if (!attribute.isReference()) {
-					XType type = attribute.getType();
-					boolean comparable = type.isComparable();
-					if (comparable){
-						params.append(ClassTagUtils.importType(attribute));
-						params.append(" min");
-						params.append(ClassTagUtils.capName(attribute));
-						params.append(", ");
-						params.append(ClassTagUtils.importType(attribute));
-						params.append(" max");
-						params.append(ClassTagUtils.capName(attribute));
-					} else {
-						params.append(ClassTagUtils.importType(attribute));
-						params.append(" ");
-						params.append(ClassTagUtils.uncapName(attribute));
-					}
-					if (i.hasNext()) params.append(", ");
-				}
-			}//for
-			out.write(params);
-		}
-	}
+    @Override
+    public void doAction(TagInfo info, JET2Context context, JET2Writer out)
+            throws JET2TagException {
+        Object object = fetchObject(context, "class");
+        boolean omitType = false;
+        try {
+            String omitTypeStr = fetchAttribute("omitType");
+            omitType = Boolean.parseBoolean(omitTypeStr);
+        } catch (Exception e) {
+            // simply ignore
+        }
+
+        if (object instanceof XClass) {
+            XClass clazz = (XClass) object;
+            StringBuffer params = new StringBuffer();
+            for (Iterator<XAttribute> i = clazz.getAttributes().iterator(); i
+                    .hasNext();) {
+                XAttribute attribute = i.next();
+                if (!attribute.isReference()) {
+                    XType type = attribute.getType();
+                    boolean comparable = type.isComparable();
+                    if (comparable) {
+                        if (!omitType)
+                            params.append(ClassTagUtils.importType(attribute));
+                        params.append(" min");
+                        params.append(ClassTagUtils.capName(attribute));
+                        params.append(", ");
+                        if (!omitType)
+                            params.append(ClassTagUtils.importType(attribute));
+                        params.append(" max");
+                        params.append(ClassTagUtils.capName(attribute));
+                    } else {
+                        if (!omitType)
+                            params.append(ClassTagUtils.importType(attribute));
+                        params.append(" ");
+                        params.append(ClassTagUtils.uncapName(attribute));
+                    }
+                    if (i.hasNext())
+                        params.append(", ");
+                }
+            }// for
+            out.write(params);
+        }
+    }
 
 }

@@ -19,6 +19,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.dao;
 <xc:import pattern="org.xmdl.ida.lib.test.BaseDaoTestCase"/>
 
 <xc:import pattern="$element.model.*" element="$class/xPackage"/>
+<xc:import pattern="$element.model.search.*" element="$class/xPackage"/>
 
 /**
  *
@@ -40,7 +41,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="!$attribute/reference">
+	<c:if test="not($attribute/reference)">
         <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
 	</c:if>
 </c:iterate> 
@@ -52,8 +53,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 
         assertNotNull(<xc:uncap element="$class"/>.getId());
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="!$attribute/reference">
-	if (!attribute.isReference()) {%>
+	<c:if test="not($attribute/reference)">
 		assertEquals(<tu:random  attribute="$attribute" wrapString="true" />, <xc:uncap element="$class"/>.<xc:accessor attribute="$attribute"/>());
 	</c:if>
 </c:iterate> 
@@ -72,7 +72,13 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
     }
 
     public void testSearch() throws Exception {
-        Collection<<xc:cap element="$class"/>> <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>DAO.search("abcd",9d,11d,null);
+        ProductSearch search = new ProductSearch();
+    <c:iterate select="$class/attributes" var="attribute">
+	<c:if test="not($attribute/reference)">
+        search.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
+	</c:if>
+	</c:iterate>
+        Collection<<xc:cap element="$class"/>> <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>DAO.search(search);
         assertTrue(<xc:uncap element="$class"/>s.size() > 0);
     }
 
@@ -81,7 +87,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 
         <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="!$attribute/reference">
+	<c:if test="not($attribute/reference)">
         <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
 	</c:if>
 </c:iterate> 

@@ -19,7 +19,6 @@ package <xc:qualifiedName element="$class/xPackage"/>.service.impl;
 <xc:import pattern="org.jmock.Mock"/>
 <xc:import pattern="org.xmdl.ida.lib.test.BaseManagerMockTestCase"/>
 
-<xc:import pattern="$element.service.impl.*" element="$class/xPackage"/>
 <xc:import pattern="$element.model.*" element="$class/xPackage"/>
 <xc:import pattern="$element.model.search.*" element="$class/xPackage"/>
 <xc:import pattern="$element.dao.*" element="$class/xPackage"/>

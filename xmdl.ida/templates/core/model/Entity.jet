@@ -19,8 +19,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.model;
 <xc:import pattern="org.hibernate.annotations.Parameter"/>
 <xc:import pattern="java.io.Serializable"/>
 <xc:import pattern="java.text.MessageFormat"/>
-<xc:import pattern="java.util.HashSet"/>
-<xc:import pattern="java.util.Set"/>
+<xc:import pattern="java.util.*"/>
 
 
 /**

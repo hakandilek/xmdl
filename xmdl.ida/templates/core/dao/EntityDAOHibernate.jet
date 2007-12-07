@@ -17,10 +17,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.dao.hibernate;
 <xc:import pattern="org.xmdl.ida.lib.dao.hibernate.GenericDaoHibernate"/>
 <xc:import pattern="org.hibernate.Criteria"/>
 <xc:import pattern="org.hibernate.criterion.Restrictions"/>
-<xc:import pattern="java.util.Collection"/>
-<xc:import pattern="java.util.Date"/>
-<xc:import pattern="java.util.ArrayList"/>
-<xc:import pattern="java.util.List"/>
+<xc:import pattern="java.util.*"/>
 
 <xc:import pattern="$element.model.*" element="$class/xPackage"/>
 <xc:import pattern="$element.model.search.*" element="$class/xPackage"/>
@@ -51,7 +48,7 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
 			list = new ArrayList<<xc:cap element="$class"/>>();
 		} else {
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="!$attribute/reference">
+	<c:if test="not($attribute/reference)">
 		<c:choose>
 		<c:when test="$attribute/type/comparable">
 			<xc:attributeType attribute="$attribute"/> min<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Min();
@@ -64,7 +61,7 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
 	</c:if>
 </c:iterate> 
 
-			list = search(name, fromPrice, toPrice, productType);
+			list = search(<ida:searchParameters class="$class" omitType="true"/>);
 		}
 
 		if (log.isDebugEnabled())
@@ -76,7 +73,7 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
     	if (log.isDebugEnabled()) {
     		log.debug("search(<ida:searchParameters class="$class"/> <-");
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="!$attribute/reference">
+	<c:if test="not($attribute/reference)">
 		<c:choose>
 		<c:when test="$attribute/type/comparable">
         	log.debug("min<xc:cap element="$attribute"/>       : " + min<xc:cap element="$attribute"/>);
@@ -92,10 +89,10 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
     		
         Criteria criteria = getSession().createCriteria(<xc:cap element="$class"/>.class);
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="!$attribute/reference">
+	<c:if test="not($attribute/reference)">
 		<c:choose>
-		<c:when test="$attribute/type/className == 'java.lang.String'">
-            criteria.add(Restrictions.like("<xc:uncap element="$attribute"/>", "%" + <xc:uncap element="$attribute"/> + "%"));
+		<c:when test="$attribute/type/className = 'java.lang.String'">
+        criteria.add(Restrictions.like("<xc:uncap element="$attribute"/>", "%" + <xc:uncap element="$attribute"/> + "%"));
 		</c:when>
 		<c:when test="$attribute/type/comparable">
         if (min<xc:cap element="$attribute"/> != null)
