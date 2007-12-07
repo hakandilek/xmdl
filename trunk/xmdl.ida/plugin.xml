@@ -31,6 +31,12 @@
                   type="xpath"
                   use="required">
             </attribute>
+            <attribute
+                  deprecated="false"
+                  name="omitType"
+                  type="boolean"
+                  use="optional">
+            </attribute>
          </emptyTag>
       </tagLibrary>
    </extension>

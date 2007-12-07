@@ -13,6 +13,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.model.search;
 
 <j:importsLocation package=""/>
 
+<xc:import pattern="java.util.*"/>
 <xc:import pattern="java.io.Serializable" />
 <xc:import pattern="java.text.MessageFormat" />
 <xc:import pattern="$element.model.*" element="$class/xPackage"/>
