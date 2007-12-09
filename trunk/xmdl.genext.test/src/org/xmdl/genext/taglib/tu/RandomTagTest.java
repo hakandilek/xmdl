@@ -25,25 +25,25 @@ public class RandomTagTest extends BaseTemplateTestCase {
         super.setUp();
         XProject project = ResourceHelper.loadProject("model/test.xmdl");
         attribute1 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/Class3/attribute1");
+                "xmdl.genext.test/org.xmdl.genext.test/Class3/attribute1");
         attribute2 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/Class3/attribute2");
+                "xmdl.genext.test/org.xmdl.genext.test/Class3/attribute2");
         attribute3 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/Class3/attribute3");
+                "xmdl.genext.test/org.xmdl.genext.test/Class3/attribute3");
         attribute4 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/Class3/attribute4");
+                "xmdl.genext.test/org.xmdl.genext.test/Class3/attribute4");
         attribute5 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/Class3/attribute5");
+                "xmdl.genext.test/org.xmdl.genext.test/Class3/attribute5");
         attribute6 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/Class3/attribute6");
+                "xmdl.genext.test/org.xmdl.genext.test/Class3/attribute6");
         attribute7 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/Class3/attribute7");
+                "xmdl.genext.test/org.xmdl.genext.test/Class3/attribute7");
         attribute8 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/Class3/attribute8");
+                "xmdl.genext.test/org.xmdl.genext.test/Class3/attribute8");
         attribute9 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/Class3/attribute9");
+                "xmdl.genext.test/org.xmdl.genext.test/Class3/attribute9");
         attribute10 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/Class3/attribute10");
+                "xmdl.genext.test/org.xmdl.genext.test/Class3/attribute10");
     }
 
     protected void tearDown() throws Exception {

@@ -20,11 +20,11 @@ public class QualifiedNameTagTest extends BaseTemplateTestCase {
         super.setUp();
         XProject project = ResourceHelper.loadProject("model/test.xmdl");
         clazz = Locator.locateClass(project,
-                "xmdl.test/org.xmdl.genext.test/Class1");
+                "xmdl.genext.test/org.xmdl.genext.test/Class1");
         pack = Locator.locatePackage(project,
-                "xmdl.test/org.xmdl.genext.test");
+                "xmdl.genext.test/org.xmdl.genext.test");
         enumeration = Locator.locateEnumeration(project,
-                "xmdl.test/org.xmdl.genext.test/Enumeration1");
+                "xmdl.genext.test/org.xmdl.genext.test/Enumeration1");
     }
 
     protected void tearDown() throws Exception {
