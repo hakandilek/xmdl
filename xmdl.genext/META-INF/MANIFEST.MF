@@ -5,14 +5,10 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-SymbolicName: xmdl.genext;singleton:=true
-Bundle-Version: 0.6.0.20071128_SNAPSHOT
-Require-Bundle: xmdl,
- xmdl.gen,
- org.eclipse.jet,
- org.eclipse.core.runtime.compatibility,
- org.eclipse.emf.ecore,
- org.eclipse.emf.codegen
+Bundle-Version: 0.6.0.20071209_SNAPSHOT
+Require-Bundle: xmdl,xmdl.gen,org.eclipse.jet,org.eclipse.core.runtime
+ .compatibility,org.eclipse.emf.ecore,org.eclipse.emf.codegen
 Eclipse-LazyStart: true
-Built-By: Hakan Dilek
+Built-By: hakan
 Export-Package: org.xmdl.genext.taglib
 

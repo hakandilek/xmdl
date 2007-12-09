@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<org.xmdl:XProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.xmdl="http://www.xmdl.org/xmdl.ecore" name="xmdl.test">
+<?xml version="1.0" encoding="ASCII"?>
+<org.xmdl:XProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.xmdl="http://www.xmdl.org/xmdl.ecore" name="xmdl.genext.test">
   <packages name="org.xmdl.genext.test">
     <classes name="Class1" className="org.xmdl.genext.test.Class1">
       <attributes name="attribute1">

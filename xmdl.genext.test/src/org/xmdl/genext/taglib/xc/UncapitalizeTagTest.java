@@ -20,11 +20,11 @@ public class UncapitalizeTagTest extends BaseTemplateTestCase {
         super.setUp();
         XProject project = ResourceHelper.loadProject("model/test.xmdl");
         clazz = Locator.locateClass(project,
-                "xmdl.test/org.xmdl.genext.test/Class1");
+                "xmdl.genext.test/org.xmdl.genext.test/Class1");
         attribute = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/Class1/attribute1");
+                "xmdl.genext.test/org.xmdl.genext.test/Class1/attribute1");
         enumeration = Locator.locateEnumeration(project,
-                "xmdl.test/org.xmdl.genext.test/Enumeration1");
+                "xmdl.genext.test/org.xmdl.genext.test/Enumeration1");
     }
 
     protected void tearDown() throws Exception {

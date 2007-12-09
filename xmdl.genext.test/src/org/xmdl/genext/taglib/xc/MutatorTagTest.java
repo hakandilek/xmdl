@@ -18,11 +18,11 @@ public class MutatorTagTest extends BaseTemplateTestCase {
         super.setUp();
         XProject project = ResourceHelper.loadProject("model/test.xmdl");
         attribute1 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/AnotherClass/attribute1");
+                "xmdl.genext.test/org.xmdl.genext.test/AnotherClass/attribute1");
         attribute2 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/AnotherClass/attribute2");
+                "xmdl.genext.test/org.xmdl.genext.test/AnotherClass/attribute2");
         attribute3 = Locator.locateAttribute(project,
-                "xmdl.test/org.xmdl.genext.test/AnotherClass/attribute3");
+                "xmdl.genext.test/org.xmdl.genext.test/AnotherClass/attribute3");
     }
 
     protected void tearDown() throws Exception {

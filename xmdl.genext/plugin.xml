@@ -152,6 +152,26 @@
             </attribute>
          </emptyTag>
       </tagLibrary>
+      <tagLibrary
+            deprecated="false"
+            id="xmdlDB"
+            name="XMDL DB Tag Library"
+            standardPrefix="xd">
+         <emptyTag
+               class="org.xmdl.genext.taglib.xd.TableNameTag"
+               deprecated="false"
+               name="tableName">
+            <description>
+               Output the name of the table from the DB model corresponding to the given class
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="class"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
+      </tagLibrary>
    </extension>
 
 </plugin>
