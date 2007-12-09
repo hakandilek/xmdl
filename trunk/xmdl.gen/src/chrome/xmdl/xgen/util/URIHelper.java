@@ -64,8 +64,10 @@ public class URIHelper {
 	public static URI asLocalURI(URI uri) {
 		try {
 			String fragment = uri.fragment();
+			uri = resolve(uri);
 			URI trimmed = uri.trimFragment();
 			URL url = new URL(trimmed.toString());
+			url = FileLocator.resolve(url);
 			URL localURL = FileLocator.toFileURL(url);
 			return fix(localURL, fragment);
 		} catch (IOException exception) {

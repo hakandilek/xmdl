@@ -27,23 +27,16 @@ import org.eclipse.emf.codegen.merge.java.facade.JCompilationUnit;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jet.BodyContentWriter;
 import org.eclipse.jet.BufferedJET2Writer;
 import org.eclipse.jet.IWriterListener;
 import org.eclipse.jet.JET2Context;
 import org.eclipse.jet.transform.TransformContextExtender;
 
-import chrome.xmdl.XModel;
 import chrome.xmdl.XProject;
 import chrome.xmdl.gen.plugin.XMDLGenPlugin;
-import chrome.xmdl.init.Initializer;
+import chrome.xmdl.meta.MetaModelHolder;
 import chrome.xmdl.xgen.util.IFileUtils;
-import chrome.xmdl.xgen.util.ResourceHelper;
-import chrome.xmdl.xgen.util.URIHelper;
-import chrome.xmdlbo.XmdlboFactory;
-import chrome.xmdldb.XmdldbFactory;
-import chrome.xmdlgen.XmdlgenFactory;
 
 public class Generator {
 
@@ -57,8 +50,6 @@ public class Generator {
 
 	private List<GeneratorListener> listeners = new ArrayList<GeneratorListener>();
 
-	private List<XModel> subModels = new ArrayList<XModel>();
-
 	private URI mergeURI;
 
 	public Generator() {
@@ -68,9 +59,6 @@ public class Generator {
 	public Generator(XProject project) {
 		this();
 		setProject(project);
-		subModels.add(XmdlgenFactory.eINSTANCE.createXMDLGenModel());
-		subModels.add(XmdldbFactory.eINSTANCE.createXMDLDBModel());
-		subModels.add(XmdlboFactory.eINSTANCE.createXMDLBOModel());
 	}
 
 	/**
@@ -107,7 +95,8 @@ public class Generator {
 		XProject prj = getProject();
 
 		TaskFactory tf = platform.taskFactory();
-		List<EObject> roots = initialize();
+		MetaModelHolder.initialize(project);
+		List<EObject> roots = MetaModelHolder.getRoots(); 
 		List<GenerationTask> gTasks = tf.createTasks(prj, roots);
 		List<Task> preTasks = tf.createPredecessorTasks(prj, roots);
 		List<Task> postTasks = tf.createSuccessorTasks(prj, roots);
@@ -139,59 +128,6 @@ public class Generator {
 				task.run();
 			}
 		}		
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<EObject> initialize() {
-
-		Resource resource = project.eResource();
-		if (resource == null){
-			LOGGER.error("Project has no resource");
-			return null;			
-		}
-		URI uri = resource.getURI();
-
-		List list = new ArrayList<EObject>();
-		
-		for (int i = 0; i < subModels.size(); i++) {
-			XModel subModel = subModels.get(i);
-			EObject subRoot = null;
-
-			URI subURI = subModel.path(uri);
-
-			File subFile = new File(URIHelper.asLocalURI(subURI).toFileString());
-			LOGGER.debug("subFile.canRead() = " + subFile.canRead());
-
-			if (subFile.exists()) {
-				LOGGER.info("Sub Model resource exists, loading " + subURI);
-				subRoot = ResourceHelper.loadResource(subURI);
-			} else {
-				LOGGER.info("Sub Model resource does not exist, creating "
-						+ subURI);
-				subRoot = subModel.createRoot(project, uri);
-			}
-
-			if (subRoot == null) {
-				LOGGER.error("Sub Model is null");
-				return null;
-			}
-
-			list.add(subRoot);
-			LOGGER.debug("Initializing Sub Model : " + subModel.name());
-			Initializer init = subModel.getInitializer();
-			init.initialize(project, subRoot);
-			LOGGER.debug("Sub Model initialized.");
-
-			LOGGER.debug("Saving Sub model...");
-			try {
-				ResourceHelper.saveResource(subURI, subRoot);
-			} catch (IOException e) {
-				LOGGER.error("Error Saving resource", e);
-			}
-			// subResource.save(saveOptions);
-			LOGGER.info("Sub Model saved : " + subModel.name());
-		}
-		return list;
 	}
 
 	private void generate(List<GenerationTask> tasks, JMerger merger) {
@@ -461,13 +397,6 @@ public class Generator {
 			GeneratorListener l = listeners.get(i);
 			l.generationFinished(new GeneratorEvent());
 		}
-	}
-
-	/**
-	 * @return Returns the subModels.
-	 */
-	public List<XModel> getSubModels() {
-		return subModels;
 	}
 
 	public void setMergeURI(URI mergeURI) {
