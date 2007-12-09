@@ -50,7 +50,7 @@ public interface XmdldbPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://chrome/xmdl.db.ecore";
+	String eNS_URI = "http://www.xmdl.org/xmdldb.ecore";
 
 	/**
 	 * The package namespace name.
@@ -58,7 +58,7 @@ public interface XmdldbPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "chrome.xmdl.db";
+	String eNS_PREFIX = "org.xmdl.db";
 
 	/**
 	 * The singleton instance of the package.

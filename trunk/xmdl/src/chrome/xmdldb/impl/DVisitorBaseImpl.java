@@ -38,7 +38,7 @@ public class DVisitorBaseImpl extends EObjectImpl implements DVisitorBase {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DVisitorBaseImpl() {
+	public DVisitorBaseImpl() {
 		super();
 	}
 
