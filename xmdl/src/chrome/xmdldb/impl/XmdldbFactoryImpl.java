@@ -38,7 +38,7 @@ public class XmdldbFactoryImpl extends EFactoryImpl implements XmdldbFactory {
 	public static XmdldbFactory init() {
 		try {
 			XmdldbFactory theXmdldbFactory = (XmdldbFactory) EPackage.Registry.INSTANCE
-					.getEFactory("http://chrome/xmdl.db.ecore");
+					.getEFactory("http://www.xmdl.org/xmdldb.ecore");
 			if (theXmdldbFactory != null) {
 				return theXmdldbFactory;
 			}

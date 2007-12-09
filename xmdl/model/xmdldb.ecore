@@ -2,9 +2,10 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="xmdldb"
-    nsURI="http://chrome/xmdl.db.ecore" nsPrefix="chrome.xmdl.db">
+    nsURI="http://www.xmdl.org/xmdldb.ecore" nsPrefix="org.xmdl.db">
   <eClassifiers xsi:type="ecore:EClass" name="DModel" eSuperTypes="#//DBase">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="xProject" eType="ecore:EClass xmdl.ecore#//XProject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xProject" lowerBound="1"
+        eType="ecore:EClass xmdl.ecore#//XProject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="xModel" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

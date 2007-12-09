@@ -9,17 +9,25 @@
 -->
 
 <plugin>
-     <extension point="org.eclipse.emf.ecore.generated_package">
-    <package 
-       uri = "http://www.xmdl.org/xmdl.ecore" 
-       class = "chrome.xmdl.XmdlPackage"
-       genModel = "model/xmdl.genmodel" /> 
-  </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package 
+         uri = "http://www.xmdl.org/xmdl.ecore" 
+         class = "chrome.xmdl.XmdlPackage"
+         genModel = "model/xmdl.genmodel" />
+      <package 
+         uri = "http://www.xmdl.org/xmdldb.ecore" 
+         class = "chrome.xmdldb.XmdldbPackage"
+         genModel = "model/xmdldb.genmodel" /> 
+   </extension>
      <extension
            point="org.eclipse.emf.ecore.factory_override">
         <factory
               class="chrome.xmdl.impl.XmdlFactoryImpl"
               uri="http://www.xmdl.org/xmdl.ecore">
+        </factory>
+        <factory
+              class="chrome.xmdldb.impl.XmdldbFactoryImpl"
+              uri="http://www.xmdl.org/xmdldb.ecore">
         </factory>
      </extension>
 

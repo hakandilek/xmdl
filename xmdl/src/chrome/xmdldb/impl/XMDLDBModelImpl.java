@@ -46,7 +46,7 @@ public class XMDLDBModelImpl extends EObjectImpl implements XMDLDBModel {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected XMDLDBModelImpl() {
+	public XMDLDBModelImpl() {
 		super();
 	}
 

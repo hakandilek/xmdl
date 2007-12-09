@@ -603,7 +603,7 @@ public class XmdldbPackageImpl extends EPackageImpl implements XmdldbPackage {
 		initEClass(dModelEClass, DModel.class, "DModel", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDModel_XProject(), theXmdlPackage.getXProject(),
-				null, "xProject", null, 0, 1, DModel.class, !IS_TRANSIENT,
+				null, "xProject", null, 1, 1, DModel.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDModel_Name(), ecorePackage.getEString(), "name",

@@ -118,7 +118,7 @@ public interface DModel extends DBase {
 	 * @return the value of the '<em>XProject</em>' reference.
 	 * @see #setXProject(XProject)
 	 * @see chrome.xmdldb.XmdldbPackage#getDModel_XProject()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	XProject getXProject();

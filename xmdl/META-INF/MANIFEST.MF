@@ -4,7 +4,7 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: xmdl; singleton:=true
-Bundle-Version: 0.6.0.20071128_SNAPSHOT
+Bundle-Version: 0.6.0.20071209_SNAPSHOT
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-Activator: chrome.xmdl.plugin.XMDLModelPlugin
@@ -16,5 +16,5 @@ Export-Package: chrome.xmdl,chrome.xmdl.impl,chrome.xmdl.init,chrome.x
  mdlbo.util,chrome.xmdldb,chrome.xmdldb.impl,chrome.xmdldb.init,chrome
  .xmdldb.util,chrome.xmdlgen,chrome.xmdlgen.impl,chrome.xmdlgen.init,c
  hrome.xmdlgen.util
-Built-By: Hakan Dilek
+Built-By: hakan
 
