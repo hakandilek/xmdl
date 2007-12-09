@@ -6,11 +6,9 @@
  */
 package chrome.xmdldb;
 
-import chrome.xmdl.XPackage;
-
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
+import chrome.xmdl.XPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DPackage extends EObject {
+public interface DPackage extends DBase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

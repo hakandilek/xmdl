@@ -29,7 +29,7 @@ import chrome.xmdl.XClass;
  * @model
  * @generated
  */
-public interface DTable extends Persistable {
+public interface DTable extends Persistable, DBase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

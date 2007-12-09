@@ -31,7 +31,7 @@ import chrome.xmdl.XAttribute;
  * @model
  * @generated
  */
-public interface DField extends Persistable {
+public interface DField extends Persistable, DBase {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -69,6 +69,25 @@ public interface XmdldbPackage extends EPackage {
 	XmdldbPackage eINSTANCE = chrome.xmdldb.impl.XmdldbPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link chrome.xmdldb.DBase <em>DBase</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdldb.DBase
+	 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getDBase()
+	 * @generated
+	 */
+	int DBASE = 7;
+
+	/**
+	 * The number of structural features of the '<em>DBase</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DBASE_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link chrome.xmdldb.impl.DModelImpl <em>DModel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -85,7 +104,7 @@ public interface XmdldbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DMODEL__XPROJECT = 0;
+	int DMODEL__XPROJECT = DBASE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -94,7 +113,7 @@ public interface XmdldbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DMODEL__NAME = 1;
+	int DMODEL__NAME = DBASE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>XModel</b></em>' attribute.
@@ -103,7 +122,7 @@ public interface XmdldbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DMODEL__XMODEL = 2;
+	int DMODEL__XMODEL = DBASE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>DPackages</b></em>' containment reference list.
@@ -112,7 +131,7 @@ public interface XmdldbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DMODEL__DPACKAGES = 3;
+	int DMODEL__DPACKAGES = DBASE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>DModel</em>' class.
@@ -121,7 +140,7 @@ public interface XmdldbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DMODEL_FEATURE_COUNT = 4;
+	int DMODEL_FEATURE_COUNT = DBASE_FEATURE_COUNT + 4;
 
 	/**
 	 * Returns the meta object for class '{@link chrome.xmdldb.DModel <em>DModel</em>}'.
@@ -170,7 +189,7 @@ public interface XmdldbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DPACKAGE__NAME = 0;
+	int DPACKAGE__NAME = DBASE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>XPackage</b></em>' reference.
@@ -179,7 +198,7 @@ public interface XmdldbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DPACKAGE__XPACKAGE = 1;
+	int DPACKAGE__XPACKAGE = DBASE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Model</b></em>' container reference.
@@ -188,7 +207,7 @@ public interface XmdldbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DPACKAGE__MODEL = 2;
+	int DPACKAGE__MODEL = DBASE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>DTables</b></em>' containment reference list.
@@ -197,7 +216,7 @@ public interface XmdldbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DPACKAGE__DTABLES = 3;
+	int DPACKAGE__DTABLES = DBASE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>DPackage</em>' class.
@@ -206,7 +225,7 @@ public interface XmdldbPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DPACKAGE_FEATURE_COUNT = 4;
+	int DPACKAGE_FEATURE_COUNT = DBASE_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link chrome.xmdldb.Persistable <em>Persistable</em>}' class.
@@ -435,6 +454,44 @@ public interface XmdldbPackage extends EPackage {
 	 * @ordered
 	 */
 	int DINDEX_FEATURE_COUNT = 4;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdldb.DVisitor <em>DVisitor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdldb.DVisitor
+	 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getDVisitor()
+	 * @generated
+	 */
+	int DVISITOR = 8;
+
+	/**
+	 * The number of structural features of the '<em>DVisitor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DVISITOR_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link chrome.xmdldb.impl.DVisitorBaseImpl <em>DVisitor Base</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see chrome.xmdldb.impl.DVisitorBaseImpl
+	 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getDVisitorBase()
+	 * @generated
+	 */
+	int DVISITOR_BASE = 9;
+
+	/**
+	 * The number of structural features of the '<em>DVisitor Base</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DVISITOR_BASE_FEATURE_COUNT = DVISITOR_FEATURE_COUNT + 0;
 
 	/**
 	 * Returns the meta object for the attribute '{@link chrome.xmdldb.DModel#getName <em>Name</em>}'.
@@ -750,6 +807,36 @@ public interface XmdldbPackage extends EPackage {
 	EAttribute getPersistable_Persistent();
 
 	/**
+	 * Returns the meta object for class '{@link chrome.xmdldb.DVisitor <em>DVisitor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>DVisitor</em>'.
+	 * @see chrome.xmdldb.DVisitor
+	 * @generated
+	 */
+	EClass getDVisitor();
+
+	/**
+	 * Returns the meta object for class '{@link chrome.xmdldb.DVisitorBase <em>DVisitor Base</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>DVisitor Base</em>'.
+	 * @see chrome.xmdldb.DVisitorBase
+	 * @generated
+	 */
+	EClass getDVisitorBase();
+
+	/**
+	 * Returns the meta object for class '{@link chrome.xmdldb.DBase <em>DBase</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>DBase</em>'.
+	 * @see chrome.xmdldb.DBase
+	 * @generated
+	 */
+	EClass getDBase();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1025,6 +1112,36 @@ public interface XmdldbPackage extends EPackage {
 		 */
 		EAttribute PERSISTABLE__PERSISTENT = eINSTANCE
 				.getPersistable_Persistent();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdldb.DVisitor <em>DVisitor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdldb.DVisitor
+		 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getDVisitor()
+		 * @generated
+		 */
+		EClass DVISITOR = eINSTANCE.getDVisitor();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdldb.impl.DVisitorBaseImpl <em>DVisitor Base</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdldb.impl.DVisitorBaseImpl
+		 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getDVisitorBase()
+		 * @generated
+		 */
+		EClass DVISITOR_BASE = eINSTANCE.getDVisitorBase();
+
+		/**
+		 * The meta object literal for the '{@link chrome.xmdldb.DBase <em>DBase</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see chrome.xmdldb.DBase
+		 * @see chrome.xmdldb.impl.XmdldbPackageImpl#getDBase()
+		 * @generated
+		 */
+		EClass DBASE = eINSTANCE.getDBase();
 
 	}
 

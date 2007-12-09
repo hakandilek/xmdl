@@ -78,6 +78,8 @@ public class XmdldbFactoryImpl extends EFactoryImpl implements XmdldbFactory {
 			return createXMDLDBModel();
 		case XmdldbPackage.DINDEX:
 			return createDIndex();
+		case XmdldbPackage.DVISITOR_BASE:
+			return createDVisitorBase();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");
@@ -142,6 +144,16 @@ public class XmdldbFactoryImpl extends EFactoryImpl implements XmdldbFactory {
 	public DIndex createDIndex() {
 		DIndexImpl dIndex = new DIndexImpl();
 		return dIndex;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DVisitorBase createDVisitorBase() {
+		DVisitorBaseImpl dVisitorBase = new DVisitorBaseImpl();
+		return dVisitorBase;
 	}
 
 	/**

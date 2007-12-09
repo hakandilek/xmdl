@@ -115,6 +115,21 @@ public class XmdldbAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseDBase(DBase object) {
+			return createDBaseAdapter();
+		}
+
+		@Override
+		public Adapter caseDVisitor(DVisitor object) {
+			return createDVisitorAdapter();
+		}
+
+		@Override
+		public Adapter caseDVisitorBase(DVisitorBase object) {
+			return createDVisitorBaseAdapter();
+		}
+
+		@Override
 		public Adapter caseXModel(XModel object) {
 			return createXModelAdapter();
 		}
@@ -233,6 +248,48 @@ public class XmdldbAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPersistableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link chrome.xmdldb.DVisitor <em>DVisitor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see chrome.xmdldb.DVisitor
+	 * @generated
+	 */
+	public Adapter createDVisitorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link chrome.xmdldb.DVisitorBase <em>DVisitor Base</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see chrome.xmdldb.DVisitorBase
+	 * @generated
+	 */
+	public Adapter createDVisitorBaseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link chrome.xmdldb.DBase <em>DBase</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see chrome.xmdldb.DBase
+	 * @generated
+	 */
+	public Adapter createDBaseAdapter() {
 		return null;
 	}
 

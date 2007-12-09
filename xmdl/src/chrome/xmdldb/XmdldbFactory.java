@@ -87,6 +87,15 @@ public interface XmdldbFactory extends EFactory {
 	DIndex createDIndex();
 
 	/**
+	 * Returns a new object of class '<em>DVisitor Base</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>DVisitor Base</em>'.
+	 * @generated
+	 */
+	DVisitorBase createDVisitorBase();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

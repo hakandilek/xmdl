@@ -7,6 +7,7 @@
 package chrome.xmdldb.impl;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -20,9 +21,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import chrome.xmdl.XPackage;
+import chrome.xmdldb.DBase;
 import chrome.xmdldb.DModel;
 import chrome.xmdldb.DPackage;
 import chrome.xmdldb.DTable;
+import chrome.xmdldb.DVisitor;
 import chrome.xmdldb.XmdldbPackage;
 
 /**
@@ -142,6 +145,23 @@ public class DPackageImpl extends EObjectImpl implements DPackage {
 					XmdldbPackage.DTABLE__DPACKAGE);
 		}
 		return dTables;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean accept(DVisitor visitor) {
+		if (visitor.visitEnter(this)) {
+			final List<DTable> children1 = getDTables();
+			for (DBase child : children1) {
+				if (!child.accept(visitor))
+					break;
+			}
+		}
+		final boolean result = visitor.visitLeave(this);
+		return result;
 	}
 
 	/**
