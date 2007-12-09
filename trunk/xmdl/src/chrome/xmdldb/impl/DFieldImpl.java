@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import chrome.xmdl.XAttribute;
 import chrome.xmdldb.DField;
 import chrome.xmdldb.DTable;
+import chrome.xmdldb.DVisitor;
 import chrome.xmdldb.XmdldbPackage;
 
 /**
@@ -366,6 +367,16 @@ public class DFieldImpl extends EObjectImpl implements DField {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					XmdldbPackage.DFIELD__FOREIGN, oldForeign, foreign));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean accept(DVisitor visitor) {
+		final boolean result = visitor.visit(this);
+		return result;
 	}
 
 	/**

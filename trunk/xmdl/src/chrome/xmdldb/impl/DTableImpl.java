@@ -29,10 +29,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.XClass;
+import chrome.xmdldb.DBase;
 import chrome.xmdldb.DField;
 import chrome.xmdldb.DIndex;
 import chrome.xmdldb.DPackage;
 import chrome.xmdldb.DTable;
+import chrome.xmdldb.DVisitor;
 import chrome.xmdldb.XmdldbFactory;
 import chrome.xmdldb.XmdldbPackage;
 
@@ -305,6 +307,23 @@ public class DTableImpl extends EObjectImpl implements DTable {
 			list.add(index);
 		}
 		return list;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean accept(DVisitor visitor) {
+		if (visitor.visitEnter(this)) {
+			final List<DField> children1 = getDFields();
+			for (DBase child : children1) {
+				if (!child.accept(visitor))
+					break;
+			}
+		}
+		final boolean result = visitor.visitLeave(this);
+		return result;
 	}
 
 	/**

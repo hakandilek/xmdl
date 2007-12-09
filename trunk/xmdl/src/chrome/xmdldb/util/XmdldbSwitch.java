@@ -97,12 +97,16 @@ public class XmdldbSwitch<T> {
 			DModel dModel = (DModel) theEObject;
 			T result = caseDModel(dModel);
 			if (result == null)
+				result = caseDBase(dModel);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		case XmdldbPackage.DPACKAGE: {
 			DPackage dPackage = (DPackage) theEObject;
 			T result = caseDPackage(dPackage);
+			if (result == null)
+				result = caseDBase(dPackage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -113,6 +117,8 @@ public class XmdldbSwitch<T> {
 			if (result == null)
 				result = casePersistable(dTable);
 			if (result == null)
+				result = caseDBase(dTable);
+			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
@@ -121,6 +127,8 @@ public class XmdldbSwitch<T> {
 			T result = caseDField(dField);
 			if (result == null)
 				result = casePersistable(dField);
+			if (result == null)
+				result = caseDBase(dField);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -144,6 +152,29 @@ public class XmdldbSwitch<T> {
 		case XmdldbPackage.PERSISTABLE: {
 			Persistable persistable = (Persistable) theEObject;
 			T result = casePersistable(persistable);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case XmdldbPackage.DBASE: {
+			DBase dBase = (DBase) theEObject;
+			T result = caseDBase(dBase);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case XmdldbPackage.DVISITOR: {
+			DVisitor dVisitor = (DVisitor) theEObject;
+			T result = caseDVisitor(dVisitor);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case XmdldbPackage.DVISITOR_BASE: {
+			DVisitorBase dVisitorBase = (DVisitorBase) theEObject;
+			T result = caseDVisitorBase(dVisitorBase);
+			if (result == null)
+				result = caseDVisitor(dVisitorBase);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -255,6 +286,51 @@ public class XmdldbSwitch<T> {
 	 * @generated
 	 */
 	public T casePersistable(Persistable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>DVisitor</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>DVisitor</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDVisitor(DVisitor object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>DVisitor Base</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>DVisitor Base</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDVisitorBase(DVisitorBase object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>DBase</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>DBase</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDBase(DBase object) {
 		return null;
 	}
 

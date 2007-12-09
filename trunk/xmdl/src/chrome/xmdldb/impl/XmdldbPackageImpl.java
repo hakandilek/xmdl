@@ -8,16 +8,20 @@ package chrome.xmdldb.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import chrome.xmdl.XmdlPackage;
+import chrome.xmdldb.DBase;
 import chrome.xmdldb.DField;
 import chrome.xmdldb.DIndex;
 import chrome.xmdldb.DModel;
 import chrome.xmdldb.DPackage;
 import chrome.xmdldb.DTable;
+import chrome.xmdldb.DVisitor;
+import chrome.xmdldb.DVisitorBase;
 import chrome.xmdldb.Persistable;
 import chrome.xmdldb.XMDLDBModel;
 import chrome.xmdldb.XmdldbFactory;
@@ -85,6 +89,27 @@ public class XmdldbPackageImpl extends EPackageImpl implements XmdldbPackage {
 	 * @generated
 	 */
 	private EClass persistableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dVisitorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dVisitorBaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dBaseEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -437,6 +462,33 @@ public class XmdldbPackageImpl extends EPackageImpl implements XmdldbPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDVisitor() {
+		return dVisitorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDVisitorBase() {
+		return dVisitorBaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDBase() {
+		return dBaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public XmdldbFactory getXmdldbFactory() {
 		return (XmdldbFactory) getEFactoryInstance();
 	}
@@ -497,6 +549,12 @@ public class XmdldbPackageImpl extends EPackageImpl implements XmdldbPackage {
 
 		persistableEClass = createEClass(PERSISTABLE);
 		createEAttribute(persistableEClass, PERSISTABLE__PERSISTENT);
+
+		dBaseEClass = createEClass(DBASE);
+
+		dVisitorEClass = createEClass(DVISITOR);
+
+		dVisitorBaseEClass = createEClass(DVISITOR_BASE);
 	}
 
 	/**
@@ -532,9 +590,14 @@ public class XmdldbPackageImpl extends EPackageImpl implements XmdldbPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		dModelEClass.getESuperTypes().add(this.getDBase());
+		dPackageEClass.getESuperTypes().add(this.getDBase());
 		dTableEClass.getESuperTypes().add(this.getPersistable());
+		dTableEClass.getESuperTypes().add(this.getDBase());
 		dFieldEClass.getESuperTypes().add(this.getPersistable());
+		dFieldEClass.getESuperTypes().add(this.getDBase());
 		xmdldbModelEClass.getESuperTypes().add(theXmdlPackage.getXModel());
+		dVisitorBaseEClass.getESuperTypes().add(this.getDVisitor());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dModelEClass, DModel.class, "DModel", !IS_ABSTRACT,
@@ -658,6 +721,48 @@ public class XmdldbPackageImpl extends EPackageImpl implements XmdldbPackage {
 				"persistent", "true", 1, 1, Persistable.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(dBaseEClass, DBase.class, "DBase", IS_ABSTRACT,
+				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		EOperation op = addEOperation(dBaseEClass, ecorePackage.getEBoolean(),
+				"accept", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDVisitor(), "visitor", 0, 1, IS_UNIQUE,
+				IS_ORDERED);
+
+		initEClass(dVisitorEClass, DVisitor.class, "DVisitor", IS_ABSTRACT,
+				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = addEOperation(dVisitorEClass, ecorePackage.getEBoolean(),
+				"visitEnter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDModel(), "d", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dVisitorEClass, ecorePackage.getEBoolean(),
+				"visitLeave", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDModel(), "d", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dVisitorEClass, ecorePackage.getEBoolean(),
+				"visitEnter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDPackage(), "d", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dVisitorEClass, ecorePackage.getEBoolean(),
+				"visitLeave", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDPackage(), "d", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dVisitorEClass, ecorePackage.getEBoolean(),
+				"visitEnter", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDTable(), "d", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dVisitorEClass, ecorePackage.getEBoolean(),
+				"visitLeave", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDTable(), "d", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(dVisitorEClass, ecorePackage.getEBoolean(), "visit",
+				0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getDField(), "d", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(dVisitorBaseEClass, DVisitorBase.class, "DVisitorBase",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
