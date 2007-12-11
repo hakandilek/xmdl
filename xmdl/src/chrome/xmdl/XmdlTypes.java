@@ -15,6 +15,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import chrome.xmdlbo.XmdlboPackage;
+import chrome.xmdldb.XmdldbPackage;
+
 /**
  * The central registry for all standard types used in XMDL.
  * 
@@ -50,10 +53,16 @@ public class XmdlTypes {
      */
     private void initialize() {
 
+        Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmdl",
+                new XMIResourceFactoryImpl());
+        Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmdldb",
+                new XMIResourceFactoryImpl());
         Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*",
                 new XMIResourceFactoryImpl());
 
         XmdlPackage.eINSTANCE.eClass();
+        XmdldbPackage.eINSTANCE.eClass();
+        XmdlboPackage.eINSTANCE.eClass();
 
         ResourceSet rs = new ResourceSetImpl();
         URI defaultURI = URI
