@@ -50,6 +50,7 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import chrome.xmdl.XBase;
 import chrome.xmdl.XProject;
+import chrome.xmdl.meta.MetaModelHolder;
 import chrome.xmdl.ui.Platforms;
 import chrome.xmdl.ui.XMDLUIPlugin;
 import chrome.xmdl.xgen.Generator;
@@ -287,7 +288,8 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 						throws CoreException {
 					Generator generator = createGenerator(editor,
 							progressMonitor);
-					generator.initialize();
+					XProject project = generator.getProject();
+					MetaModelHolder.initialize(project);
 				}
 			};
 			return operation;
