@@ -65,12 +65,13 @@ public class MetaModelHolder {
 			LOGGER.error("Project has no resource");
 			return;
 		}
+        final String projectName = project.getName();
 
+        Map<URI, EObject> toSave = new HashMap<URI, EObject>();
 		URI uri = resource.getURI();
 		MetaModel[] metamodels = MetaModel.values();
 		for (MetaModel metaModel : metamodels) {
 			XModel model = metaModel.createInstance();
-			String projectName = project.getName();
 			URI subURI = metaModel.resolveURI(projectName, uri);
 
 			boolean fileExists = false;
@@ -106,18 +107,18 @@ public class MetaModelHolder {
 				init.initialize(project, root);
 				LOGGER.debug("Meta Model initialized.");
 
-				LOGGER.debug("Saving Meta Model...");
-				try {
-					ResourceHelper.saveResource(subURI, root);
-				} catch (IOException e) {
-					LOGGER.error("Error Saving resource", e);
-				}
-
-				LOGGER.info("Meta Model saved : " + model.name());
+				toSave.put(subURI, root);
 			}
 
 			instance.putRoot(metaModel, root);
 		}
+
+        LOGGER.debug("Saving Meta Model...");
+        try {
+            ResourceHelper.saveResources(toSave);
+        } catch (IOException e) {
+            LOGGER.error("Error Saving resource", e);
+        }
 
 	}
 
