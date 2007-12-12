@@ -10,12 +10,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.xmdl.projects.<c:get select="$project/name"/></groupId>
-    <artifactId><c:get select="$project/name"/></artifactId>
+    <groupId>org.xmdl.projects.<xc:qualifiedName element="$project"/></groupId>
+    <artifactId><xc:qualifiedName element="$project"/></artifactId>
     <packaging>pom</packaging>
     <version>0.1-SNAPSHOT</version>
-    <name><c:get select="$project/name"/> Application</name>
-    <url>http://xmdl.org/<c:get select="$project/name"/></url>
+    <name><xc:qualifiedName element="$project"/> Application</name>
+    <url>http://xmdl.org/<xc:qualifiedName element="$project"/></url>
 
     <prerequisites>
         <maven>2.0.6</maven>
@@ -299,7 +299,7 @@
                 <jdbc.artifactId>derbyclient</jdbc.artifactId>
                 <jdbc.version>10.2.2.0</jdbc.version>
                 <jdbc.driverClassName>org.apache.derby.jdbc.ClientDriver</jdbc.driverClassName>
-                <jdbc.url><![CDATA[jdbc:derby://localhost/<c:get select="$project/name"/>;create=true]]></jdbc.url>
+                <jdbc.url><![CDATA[jdbc:derby://localhost/<xc:qualifiedName element="$project"/>;create=true]]></jdbc.url>
                 <jdbc.username>any</jdbc.username>
                 <jdbc.password>value</jdbc.password>
             </properties>
@@ -313,7 +313,7 @@
                 <jdbc.artifactId>h2</jdbc.artifactId>
                 <jdbc.version>1.0.20061217</jdbc.version>
                 <jdbc.driverClassName>org.h2.Driver</jdbc.driverClassName>
-                <jdbc.url><![CDATA[jdbc:h2:<c:get select="$project/name"/>]]></jdbc.url>
+                <jdbc.url><![CDATA[jdbc:h2:<xc:qualifiedName element="$project"/>]]></jdbc.url>
                 <jdbc.username>sa</jdbc.username>
                 <jdbc.password></jdbc.password>
             </properties>
@@ -327,7 +327,7 @@
                 <jdbc.artifactId>hsqldb</jdbc.artifactId>
                 <jdbc.version>1.8.0.7</jdbc.version>
                 <jdbc.driverClassName>org.hsqldb.jdbcDriver</jdbc.driverClassName>
-                <jdbc.url><![CDATA[jdbc:hsqldb:<c:get select="$project/name"/>;shutdown=true]]></jdbc.url>
+                <jdbc.url><![CDATA[jdbc:hsqldb:<xc:qualifiedName element="$project"/>;shutdown=true]]></jdbc.url>
                 <jdbc.username>sa</jdbc.username>
                 <jdbc.password></jdbc.password>
             </properties>
@@ -355,7 +355,7 @@
                 <jdbc.artifactId>postgresql</jdbc.artifactId>
                 <jdbc.version>8.1-407.jdbc3</jdbc.version>
                 <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-                <jdbc.url><![CDATA[jdbc:postgresql://localhost/<c:get select="$project/name"/>]]></jdbc.url>
+                <jdbc.url><![CDATA[jdbc:postgresql://localhost/<xc:qualifiedName element="$project"/>]]></jdbc.url>
                 <jdbc.username>postgres</jdbc.username>
                 <jdbc.password>postgres</jdbc.password>
             </properties>
@@ -372,7 +372,7 @@
                 <jdbc.artifactId>jtds</jdbc.artifactId>
                 <jdbc.version>1.2</jdbc.version>
                 <jdbc.driverClassName>net.sourceforge.jtds.jdbc.Driver</jdbc.driverClassName>
-                <jdbc.url><![CDATA[jdbc:jtds:sqlserver://localhost:3683/<c:get select="$project/name"/>]]></jdbc.url>
+                <jdbc.url><![CDATA[jdbc:jtds:sqlserver://localhost:3683/<xc:qualifiedName element="$project"/>]]></jdbc.url>
                 <jdbc.username>sa</jdbc.username>
                 <jdbc.password>appfuse</jdbc.password>
             </properties>
@@ -420,8 +420,8 @@
         <cargo.wait>false</cargo.wait>
                 
         <!-- Database settings -->
-        <hsql.dbname><c:get select="$project/name"/></hsql.dbname>
-        <hsql.dbfile>${user.home}/<c:get select="$project/name"/>db</hsql.dbfile>
+        <hsql.dbname><xc:qualifiedName element="$project"/></hsql.dbname>
+        <hsql.dbfile>${user.home}/<xc:qualifiedName element="$project"/>db</hsql.dbfile>
         <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
         <dbunit.dataTypeFactoryName>org.dbunit.ext.hsqldb.HsqldbDataTypeFactory</dbunit.dataTypeFactoryName>
         <hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
