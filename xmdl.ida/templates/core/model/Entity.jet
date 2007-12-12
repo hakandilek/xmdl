@@ -48,7 +48,7 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
     /** 
      * @generated
      */
-    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = 63, nullable = false)//TODO:length
+    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/>, nullable = false)
     private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>;
 	
 </c:iterate> 

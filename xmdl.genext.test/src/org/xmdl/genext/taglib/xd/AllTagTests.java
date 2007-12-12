@@ -10,6 +10,7 @@ public class AllTagTests {
         //$JUnit-BEGIN$
         suite.addTestSuite(TableNameTagTest.class);
         suite.addTestSuite(ColumnNameTagTest.class);
+        suite.addTestSuite(ColumnLengthTagTest.class);
         //$JUnit-END$
         return suite;
     }

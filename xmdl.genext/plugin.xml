@@ -185,6 +185,20 @@
                   use="required">
             </attribute>
          </emptyTag>
+         <emptyTag
+               class="org.xmdl.genext.taglib.xd.ColumnLengthTag"
+               deprecated="false"
+               name="columnLength">
+            <description>
+               Output the length of the column/field from the DB model corresponding to the given attribute
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="attribute"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
       </tagLibrary>
    </extension>
 
