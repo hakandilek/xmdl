@@ -179,24 +179,30 @@ public class Generator {
 						LOGGER.fatal("File " + file + " must be present", e);
 					}
 					if (targetFile.endsWith(".java")) {
-						// use merging
+						try {
+							// use merging
 
-						// set source
-						merger.setSourceCompilationUnit(merger.createCompilationUnitForInputStream(generated));
+							// set source
+							merger.setSourceCompilationUnit(merger.createCompilationUnitForInputStream(generated));
 
-						// set target
-						merger.setTargetCompilationUnit(merger
-								.createCompilationUnitForInputStream(targetIn));
+							// set target
+							merger.setTargetCompilationUnit(merger
+									.createCompilationUnitForInputStream(targetIn));
 
-						LOGGER.debug("Merging file" + targetFile);
-						// merge source and target
-						merger.merge();
+							LOGGER.debug("Merging file" + targetFile);
+							// merge source and target
+							merger.merge();
 
-						// extract merged contents
-						JCompilationUnit target = merger
-								.getTargetCompilationUnit();
-						String mergeResult = target.getContents();
-						result = new ByteArrayInputStream(mergeResult.getBytes());
+							// extract merged contents
+							JCompilationUnit target = merger
+									.getTargetCompilationUnit();
+							String mergeResult = target.getContents();
+							result = new ByteArrayInputStream(mergeResult.getBytes());
+						} catch (RuntimeException e) {
+							//problem occurred while merging, don't merge directly write result
+							LOGGER.debug("Cannot merge directly writing result. Problem occured:" + e);
+							result = generated;
+						}
 
 						// LOGGER.debug(targetContents);
 					} else {
