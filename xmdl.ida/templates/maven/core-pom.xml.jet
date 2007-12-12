@@ -12,15 +12,15 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.xmdl.projects.<c:get select="$project/name"/></groupId>
-        <artifactId><c:get select="$project/name"/></artifactId>
+        <groupId>org.xmdl.projects.<xc:qualifiedName element="$project"/></groupId>
+        <artifactId><xc:qualifiedName element="$project"/></artifactId>
         <version>0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <artifactId><c:get select="$project/name"/>-core</artifactId>
+    <artifactId><xc:qualifiedName element="$project"/>-core</artifactId>
     <packaging>jar</packaging>
-    <name><c:get select="$project/name"/> - Core</name>
+    <name><xc:qualifiedName element="$project"/> - Core</name>
     
     <build>
         <plugins>
