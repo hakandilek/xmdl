@@ -28,7 +28,9 @@ public abstract class AbstractLocator<X, D> extends DVisitorBaseImpl {
 
     public abstract boolean visitLeave(D d);
 
-	protected abstract boolean matches(D d);
+    public abstract boolean visit(D d);
+
+    protected abstract boolean matches(D d);
 
 	public D getFound() {
 		return found;

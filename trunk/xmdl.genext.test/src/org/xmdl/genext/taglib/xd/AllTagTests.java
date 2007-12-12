@@ -9,6 +9,7 @@ public class AllTagTests {
         TestSuite suite = new TestSuite("Test for org.xmdl.genext.taglib.xd");
         //$JUnit-BEGIN$
         suite.addTestSuite(TableNameTagTest.class);
+        suite.addTestSuite(ColumnNameTagTest.class);
         //$JUnit-END$
         return suite;
     }
