@@ -32,5 +32,10 @@ class LocateTableFromClass extends AbstractLocator<XClass, DTable> {
         return leave(d);
     }
 
+    @Override
+    public boolean visit(DTable d) {
+        return true;
+    }
+
     
 }

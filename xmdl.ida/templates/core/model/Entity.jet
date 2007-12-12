@@ -3,6 +3,7 @@
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@taglib prefix="xd" id="xmdl.genext.xmdlDB" %>
 <%@jet 
 	package="org.xmdl.ida.templates.core.model" 
 	class="EntityImpl"  
@@ -30,7 +31,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.model;
  *
  * @generated
  */ 
-@Entity (name=("TODO"))
+@Entity (name=("<xd:tableName class="$class"/>"))
 public class <xc:cap element="$class"/> extends BaseObject implements Serializable {
 
     /** 
@@ -47,7 +48,7 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
     /** 
      * @generated
      */
-    @Column(name = ("TODO"), length = 63, nullable = false)//TODO:length
+    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = 63, nullable = false)//TODO:length
     private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>;
 	
 </c:iterate> 

@@ -2,7 +2,9 @@ package chrome.xmdl.meta;
 
 import org.eclipse.emf.ecore.EObject;
 
+import chrome.xmdl.XAttribute;
 import chrome.xmdl.XClass;
+import chrome.xmdldb.DField;
 import chrome.xmdldb.DModel;
 import chrome.xmdldb.DTable;
 
@@ -14,19 +16,34 @@ import chrome.xmdldb.DTable;
  */
 public class MetaModelFinder {
 
-	/**
-	 * Find the corresponding table of the given class
-	 * 
-	 * @param clazz
-	 *            the class
-	 * @return corresponding table
-	 */
-	public static final DTable findTable(XClass clazz) {
-		EObject root = MetaModelHolder.getRoot(MetaModel.XMDL_DB);
-		DModel model = (DModel) root;
-		LocateTableFromClass visitor = new LocateTableFromClass(clazz);
-		model.accept(visitor);
-		return visitor.getFound();
-	}
+    /**
+     * Find the corresponding table of the given class
+     * 
+     * @param clazz
+     *            the class
+     * @return corresponding table
+     */
+    public static final DTable findTable(XClass clazz) {
+        EObject root = MetaModelHolder.getRoot(MetaModel.XMDL_DB);
+        DModel model = (DModel) root;
+        LocateTableFromClass visitor = new LocateTableFromClass(clazz);
+        model.accept(visitor);
+        return visitor.getFound();
+    }
+
+    /**
+     * Find the corresponding column of the given attribute
+     * 
+     * @param attribute
+     *            the attribute
+     * @return corresponding column
+     */
+    public static DField findColumn(XAttribute attribute) {
+        EObject root = MetaModelHolder.getRoot(MetaModel.XMDL_DB);
+        DModel model = (DModel) root;
+        LocateColumnFromAttribute visitor = new LocateColumnFromAttribute(attribute);
+        model.accept(visitor);
+        return visitor.getFound();
+    }
 
 }
