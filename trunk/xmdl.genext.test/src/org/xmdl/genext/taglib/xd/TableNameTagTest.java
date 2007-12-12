@@ -34,7 +34,7 @@ public class TableNameTagTest extends BaseTemplateTestCase {
         String output = runTemplate(templateClass);
         
         assertNotNull(output);
-        assertEquals(":String;", output.trim());
+        assertEquals(":TBL_CLASS1;", output.trim());
     }
 
 
