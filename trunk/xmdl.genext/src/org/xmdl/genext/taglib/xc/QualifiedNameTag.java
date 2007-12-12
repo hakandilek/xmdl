@@ -10,6 +10,7 @@ import org.xmdl.genext.taglib.ClassTagUtils;
 import chrome.xmdl.XClass;
 import chrome.xmdl.XEnumeration;
 import chrome.xmdl.XPackage;
+import chrome.xmdl.XProject;
 
 public class QualifiedNameTag extends BaseEmptyTag {
 
@@ -22,6 +23,11 @@ public class QualifiedNameTag extends BaseEmptyTag {
         Object object = fetchObject(context, "element");
 
         String s = "";
+        if (object instanceof XProject) {
+            XProject project = (XProject) object;
+            s = project.getName();
+        }
+
         if (object instanceof XClass) {
             XClass xClass = (XClass) object;
             s = ClassTagUtils.qualifiedName(xClass);
