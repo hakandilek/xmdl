@@ -29,12 +29,22 @@ package <xc:qualifiedName element="$package"/>.dao.hibernate;
  * @generated
  */ 
 public class HibernateConfigurationTest extends BaseDaoTestCase {
+
+	/**
+	 * @generated
+	 */ 
     private SessionFactory sessionFactory;
 
+	/**
+	 * @generated
+	 */ 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
+	/**
+	 * @generated
+	 */ 
     public void testColumnMapping() throws Exception {
         Session session = sessionFactory.openSession();
         try {

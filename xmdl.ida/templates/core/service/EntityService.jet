@@ -29,6 +29,9 @@ package <xc:qualifiedName element="$class/xPackage"/>.service;
  */ 
 public interface <xc:cap element="$class"/>Manager extends GenericManager<<xc:cap element="$class"/>, Long>{
 
+	/**
+	 * @generated
+	 */ 
     Collection<<xc:cap element="$class"/>> search(<xc:cap element="$class"/>Search <xc:uncap element="$class"/>Search);
 
 }

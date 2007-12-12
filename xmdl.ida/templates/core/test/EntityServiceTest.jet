@@ -33,19 +33,39 @@ package <xc:qualifiedName element="$class/xPackage"/>.service.impl;
  */ 
 public class <xc:cap element="$class"/>ManagerImplTest extends BaseManagerMockTestCase {
 
+	/**
+	 * @generated
+	 */ 
     private <xc:cap element="$class"/>ManagerImpl manager = null;
+
+	/**
+	 * @generated
+	 */ 
     private Mock dao = null;
+
+	/**
+	 * @generated
+	 */ 
     private <xc:cap element="$class"/> <xc:uncap element="$class"/> = null;
 
+	/**
+	 * @generated
+	 */ 
     protected void setUp() throws Exception {
         dao = new Mock(<xc:cap element="$class"/>DAO.class);
         manager = new <xc:cap element="$class"/>ManagerImpl((<xc:cap element="$class"/>DAO) dao.proxy());
     }
 
+	/**
+	 * @generated
+	 */ 
     protected void tearDown() throws Exception {
         manager = null;
     }
 
+	/**
+	 * @generated
+	 */ 
     public void testGet() {
         log.debug("testing get");
 
@@ -61,6 +81,9 @@ public class <xc:cap element="$class"/>ManagerImplTest extends BaseManagerMockTe
         assertSame(<xc:uncap element="$class"/>, result);
     }
 
+	/**
+	 * @generated
+	 */ 
     public void testGetAll() {
         log.debug("testing getAll");
 
@@ -74,6 +97,9 @@ public class <xc:cap element="$class"/>ManagerImplTest extends BaseManagerMockTe
         assertSame(list, result);
     }
 
+	/**
+	 * @generated
+	 */ 
     public void testSearch() {
         log.debug("testing search");
 
@@ -89,6 +115,9 @@ public class <xc:cap element="$class"/>ManagerImplTest extends BaseManagerMockTe
         assertSame(list, result);
     }
 
+	/**
+	 * @generated
+	 */ 
     public void testSave() {
         log.debug("testing save");
 
@@ -102,6 +131,9 @@ public class <xc:cap element="$class"/>ManagerImplTest extends BaseManagerMockTe
         manager.save(<xc:uncap element="$class"/>);
     }
 
+	/**
+	 * @generated
+	 */ 
     public void testRemove() {
         log.debug("testing remove");
 
