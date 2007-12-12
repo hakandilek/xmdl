@@ -1,13 +1,9 @@
 /**
- * <copyright>
- * </copyright>
+ * hd
  *
  * $Id$
  */
 package chrome.xmdl.provider;
-
-import chrome.xmdl.XException;
-import chrome.xmdl.XmdlPackage;
 
 import chrome.xmdl.ui.XMDLUIPlugin;
 
@@ -19,24 +15,21 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link chrome.xmdl.XException} object.
+ * This is the item provider adapter for a {@link chrome.xmdl.XMDLModel} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class XExceptionItemProvider extends ItemProviderAdapter implements
+public class XMDLModelItemProvider extends ItemProviderAdapter implements
         IEditingDomainItemProvider, IStructuredItemContentProvider,
         ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
@@ -52,7 +45,7 @@ public class XExceptionItemProvider extends ItemProviderAdapter implements
      * <!-- end-user-doc -->
      * @generated
      */
-    public XExceptionItemProvider(AdapterFactory adapterFactory) {
+    public XMDLModelItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -67,31 +60,12 @@ public class XExceptionItemProvider extends ItemProviderAdapter implements
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addJavaClassPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Java Class feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addJavaClassPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) adapterFactory)
-                        .getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_XException_javaClass_feature"), getString(
-                        "_UI_PropertyDescriptor_description",
-                        "_UI_XException_javaClass_feature",
-                        "_UI_XException_type"),
-                XmdlPackage.Literals.XEXCEPTION__JAVA_CLASS, true, false,
-                false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-    }
-
-    /**
-     * This returns XException.gif.
+     * This returns XMDLModel.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -99,7 +73,7 @@ public class XExceptionItemProvider extends ItemProviderAdapter implements
     @Override
     public Object getImage(Object object) {
         return overlayImage(object, getResourceLocator().getImage(
-                "full/obj16/XException"));
+                "full/obj16/XMDLModel"));
     }
 
     /**
@@ -108,13 +82,9 @@ public class XExceptionItemProvider extends ItemProviderAdapter implements
      * <!-- end-user-doc -->
      * @generated
      */
-    @SuppressWarnings("unchecked")
     @Override
     public String getText(Object object) {
-        Class labelValue = ((XException) object).getJavaClass();
-        String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_XException_type")
-                : getString("_UI_XException_type") + " " + label;
+        return getString("_UI_XMDLModel_type");
     }
 
     /**
@@ -127,13 +97,6 @@ public class XExceptionItemProvider extends ItemProviderAdapter implements
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-
-        switch (notification.getFeatureID(XException.class)) {
-        case XmdlPackage.XEXCEPTION__JAVA_CLASS:
-            fireNotifyChanged(new ViewerNotification(notification, notification
-                    .getNotifier(), false, true));
-            return;
-        }
         super.notifyChanged(notification);
     }
 

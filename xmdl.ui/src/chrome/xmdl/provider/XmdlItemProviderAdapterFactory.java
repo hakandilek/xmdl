@@ -245,6 +245,52 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link chrome.xmdl.XVisitorBase} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected XVisitorBaseItemProvider xVisitorBaseItemProvider;
+
+    /**
+     * This creates an adapter for a {@link chrome.xmdl.XVisitorBase}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createXVisitorBaseAdapter() {
+        if (xVisitorBaseItemProvider == null) {
+            xVisitorBaseItemProvider = new XVisitorBaseItemProvider(this);
+        }
+
+        return xVisitorBaseItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link chrome.xmdl.XMDLModel} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected XMDLModelItemProvider xmdlModelItemProvider;
+
+    /**
+     * This creates an adapter for a {@link chrome.xmdl.XMDLModel}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createXMDLModelAdapter() {
+        if (xmdlModelItemProvider == null) {
+            xmdlModelItemProvider = new XMDLModelItemProvider(this);
+        }
+
+        return xmdlModelItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link chrome.xmdl.XEnumeration} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -411,6 +457,10 @@ public class XmdlItemProviderAdapterFactory extends XmdlAdapterFactory
             xParameterItemProvider.dispose();
         if (xExceptionItemProvider != null)
             xExceptionItemProvider.dispose();
+        if (xVisitorBaseItemProvider != null)
+            xVisitorBaseItemProvider.dispose();
+        if (xmdlModelItemProvider != null)
+            xmdlModelItemProvider.dispose();
     }
 
 }

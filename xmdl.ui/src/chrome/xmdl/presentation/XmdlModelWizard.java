@@ -6,7 +6,6 @@
  */
 package chrome.xmdl.presentation;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -15,7 +14,14 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -25,29 +31,33 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
+import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.part.ISetSelectionTarget;
 
 import chrome.xmdl.XmdlFactory;
 import chrome.xmdl.XmdlPackage;
 import chrome.xmdl.ui.XMDLUIPlugin;
-import chrome.xmdl.ui.XmdlEditorAdvisor;
 
 /**
  * This is a simple wizard for creating a new model file.
@@ -56,521 +66,566 @@ import chrome.xmdl.ui.XmdlEditorAdvisor;
  * @generated
  */
 public class XmdlModelWizard extends Wizard implements INewWizard {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "hd";
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public static final String copyright = "hd";
 
-	/**
-	 * This caches an instance of the model package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+    /**
+     * This caches an instance of the model package.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
 
-	protected XmdlPackage xmdlPackage = XmdlPackage.eINSTANCE;
+    protected XmdlPackage xmdlPackage = XmdlPackage.eINSTANCE;
 
-	/**
-	 * This caches an instance of the model factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected XmdlFactory xmdlFactory = xmdlPackage.getXmdlFactory();
+    /**
+     * This caches an instance of the model factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected XmdlFactory xmdlFactory = xmdlPackage.getXmdlFactory();
 
-	/**
-	 * This is the initial object creation page.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected XmdlModelWizardInitialObjectCreationPage initialObjectCreationPage;
+    /**
+     * This is the file creation page.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected XmdlModelWizardNewFileCreationPage newFileCreationPage;
 
-	/**
-	 * Remember the selection during initialization for populating the default container.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IStructuredSelection selection;
+    /**
+     * This is the initial object creation page.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected XmdlModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
-	/**
-	 * Remember the workbench during initialization.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IWorkbench workbench;
+    /**
+     * Remember the selection during initialization for populating the default container.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected IStructuredSelection selection;
 
-	/**
-	 * Caches the names of the types that can be created as the root object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected List<String> initialObjectNames;
+    /**
+     * Remember the workbench during initialization.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected IWorkbench workbench;
 
-	/**
-	 * This just records the information.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		this.workbench = workbench;
-		this.selection = selection;
-		setWindowTitle(XMDLUIPlugin.INSTANCE.getString("_UI_Wizard_label"));
-		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE
-				.getImageDescriptor(XMDLUIPlugin.INSTANCE
-						.getImage("full/wizban/NewXmdl")));
-	}
+    /**
+     * Caches the names of the types that can be created as the root object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected List<String> initialObjectNames;
 
-	/**
-	 * Returns the names of the types that can be created as the root object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * 
-	 */
-	protected Collection<String> getInitialObjectNames() {
-		if (initialObjectNames == null) {
-			initialObjectNames = new ArrayList<String>();
-			initialObjectNames.add(xmdlPackage.getXProject().getName());
-			//			for (Iterator classifiers = xmdlPackage.getEClassifiers().iterator(); classifiers.hasNext(); ) {
-			//				EClassifier eClassifier = (EClassifier)classifiers.next();
-			//				if (eClassifier instanceof EClass) {
-			//					EClass eClass = (EClass)eClassifier;
-			//					if (!eClass.isAbstract()) {
-			//						initialObjectNames.add(eClass.getName());
-			//					}
-			//				}
-			//			}
-			//			Collections.sort(initialObjectNames, java.text.Collator.getInstance());
-		}
-		return initialObjectNames;
-	}
+    /**
+     * This just records the information.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void init(IWorkbench workbench, IStructuredSelection selection) {
+        this.workbench = workbench;
+        this.selection = selection;
+        setWindowTitle(XMDLUIPlugin.INSTANCE.getString("_UI_Wizard_label"));
+        setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE
+                .getImageDescriptor(XMDLUIPlugin.INSTANCE
+                        .getImage("full/wizban/NewXmdl")));
+    }
 
-	/**
-	 * Create a new model.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EObject createInitialModel() {
-		EClass eClass = (EClass) xmdlPackage
-				.getEClassifier(initialObjectCreationPage
-						.getInitialObjectName());
-		EObject rootObject = xmdlFactory.create(eClass);
-		return rootObject;
-	}
+    /**
+     * Returns the names of the types that can be created as the root object.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     */
+    protected Collection<String> getInitialObjectNames() {
+        if (initialObjectNames == null) {
+            initialObjectNames = new ArrayList<String>();
+            initialObjectNames.add(xmdlPackage.getXProject().getName());
+            //			for (Iterator classifiers = xmdlPackage.getEClassifiers().iterator(); classifiers.hasNext(); ) {
+            //				EClassifier eClassifier = (EClassifier)classifiers.next();
+            //				if (eClassifier instanceof EClass) {
+            //					EClass eClass = (EClass)eClassifier;
+            //					if (!eClass.isAbstract()) {
+            //						initialObjectNames.add(eClass.getName());
+            //					}
+            //				}
+            //			}
+            //			Collections.sort(initialObjectNames, java.text.Collator.getInstance());
+        }
+        return initialObjectNames;
+    }
 
-	/**
-	 * Do the work after everything is specified.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean performFinish() {
-		try {
-			// Get the URI of the model file.
-			//
-			final URI fileURI = getModelURI();
-			if (new File(fileURI.toFileString()).exists()) {
-				if (!MessageDialog.openQuestion(getShell(),
-						XMDLUIPlugin.INSTANCE.getString("_UI_Question_title"),
-						XMDLUIPlugin.INSTANCE.getString("_WARN_FileConflict",
-								new String[] { fileURI.toFileString() }))) {
-					initialObjectCreationPage.selectFileField();
-					return false;
-				}
-			}
+    /**
+     * Create a new model.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected EObject createInitialModel() {
+        EClass eClass = (EClass) xmdlPackage
+                .getEClassifier(initialObjectCreationPage
+                        .getInitialObjectName());
+        EObject rootObject = xmdlFactory.create(eClass);
+        return rootObject;
+    }
 
-			// Do the work within an operation.
-			//
-			IRunnableWithProgress operation = new IRunnableWithProgress() {
-				public void run(IProgressMonitor progressMonitor) {
-					try {
-						// Create a resource set
-						//
-						ResourceSet resourceSet = new ResourceSetImpl();
+    /**
+     * Do the work after everything is specified.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public boolean performFinish() {
+        try {
+            // Remember the file.
+            //
+            final IFile modelFile = getModelFile();
 
-						// Create a resource for this file.
-						//
-						Resource resource = resourceSet.createResource(fileURI);
+            // Do the work within an operation.
+            //
+            WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+                @Override
+                protected void execute(IProgressMonitor progressMonitor) {
+                    try {
+                        // Create a resource set
+                        //
+                        ResourceSet resourceSet = new ResourceSetImpl();
 
-						// Add the initial model object to the contents.
-						//
-						EObject rootObject = createInitialModel();
-						if (rootObject != null) {
-							resource.getContents().add(rootObject);
-						}
+                        // Get the URI of the model file.
+                        //
+                        URI fileURI = URI.createPlatformResourceURI(modelFile
+                                .getFullPath().toString(), true);
 
-						// Save the contents of the resource to the file system.
-						//
-						Map<Object, Object> options = new HashMap<Object, Object>();
-						options.put(XMLResource.OPTION_ENCODING,
-								initialObjectCreationPage.getEncoding());
-						resource.save(options);
-					} catch (Exception exception) {
-						XMDLUIPlugin.INSTANCE.log(exception);
-					} finally {
-						progressMonitor.done();
-					}
-				}
-			};
+                        // Create a resource for this file.
+                        //
+                        Resource resource = resourceSet.createResource(fileURI);
 
-			getContainer().run(false, false, operation);
+                        // Add the initial model object to the contents.
+                        //
+                        EObject rootObject = createInitialModel();
+                        if (rootObject != null) {
+                            resource.getContents().add(rootObject);
+                        }
 
-			return XmdlEditorAdvisor.openEditor(workbench, fileURI);
-		} catch (Exception exception) {
-			XMDLUIPlugin.INSTANCE.log(exception);
-			return false;
-		}
-	}
+                        // Save the contents of the resource to the file system.
+                        //
+                        Map<Object, Object> options = new HashMap<Object, Object>();
+                        options.put(XMLResource.OPTION_ENCODING,
+                                initialObjectCreationPage.getEncoding());
+                        resource.save(options);
+                    } catch (Exception exception) {
+                        XMDLUIPlugin.INSTANCE.log(exception);
+                    } finally {
+                        progressMonitor.done();
+                    }
+                }
+            };
 
-	/**
-	 * This is the page where the type of object to create is selected.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public class XmdlModelWizardInitialObjectCreationPage extends WizardPage {
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected Text fileField;
+            getContainer().run(false, false, operation);
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected Combo initialObjectField;
+            // Select the new file resource in the current view.
+            //
+            IWorkbenchWindow workbenchWindow = workbench
+                    .getActiveWorkbenchWindow();
+            IWorkbenchPage page = workbenchWindow.getActivePage();
+            final IWorkbenchPart activePart = page.getActivePart();
+            if (activePart instanceof ISetSelectionTarget) {
+                final ISelection targetSelection = new StructuredSelection(
+                        modelFile);
+                getShell().getDisplay().asyncExec(new Runnable() {
+                    public void run() {
+                        ((ISetSelectionTarget) activePart)
+                                .selectReveal(targetSelection);
+                    }
+                });
+            }
 
-		/**
-		 * @generated
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 */
-		protected List<String> encodings;
+            // Open an editor on the new file.
+            //
+            try {
+                page.openEditor(new FileEditorInput(modelFile), workbench
+                        .getEditorRegistry().getDefaultEditor(
+                                modelFile.getFullPath().toString()).getId());
+            } catch (PartInitException exception) {
+                MessageDialog.openError(workbenchWindow.getShell(),
+                        XMDLUIPlugin.INSTANCE
+                                .getString("_UI_OpenEditorError_label"),
+                        exception.getMessage());
+                return false;
+            }
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected Combo encodingField;
+            return true;
+        } catch (Exception exception) {
+            XMDLUIPlugin.INSTANCE.log(exception);
+            return false;
+        }
+    }
 
-		/**
-		 * Pass in the selection.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public XmdlModelWizardInitialObjectCreationPage(String pageId) {
-			super(pageId);
-		}
+    /**
+     * This is the one page of the wizard.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public class XmdlModelWizardNewFileCreationPage extends
+            WizardNewFileCreationPage {
+        /**
+         * Pass in the selection.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public XmdlModelWizardNewFileCreationPage(String pageId,
+                IStructuredSelection selection) {
+            super(pageId, selection);
+        }
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public void createControl(Composite parent) {
-			Composite composite = new Composite(parent, SWT.NONE);
-			{
-				GridLayout layout = new GridLayout();
-				layout.numColumns = 1;
-				layout.verticalSpacing = 12;
-				composite.setLayout(layout);
+        /**
+         * The framework calls this to see if the file is correct.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        protected boolean validatePage() {
+            if (super.validatePage()) {
+                // Make sure the file ends in ".xmdl".
+                //
+                String requiredExt = XMDLUIPlugin.INSTANCE
+                        .getString("_UI_XmdlEditorFilenameExtension");
+                String enteredExt = new Path(getFileName()).getFileExtension();
+                if (enteredExt == null || !enteredExt.equals(requiredExt)) {
+                    setErrorMessage(XMDLUIPlugin.INSTANCE.getString(
+                            "_WARN_FilenameExtension",
+                            new Object[] { requiredExt }));
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        }
 
-				GridData data = new GridData();
-				data.verticalAlignment = GridData.FILL;
-				data.grabExcessVerticalSpace = true;
-				data.horizontalAlignment = GridData.FILL;
-				composite.setLayoutData(data);
-			}
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public IFile getModelFile() {
+            return ResourcesPlugin.getWorkspace().getRoot().getFile(
+                    getContainerFullPath().append(getFileName()));
+        }
+    }
 
-			Label resourceURILabel = new Label(composite, SWT.LEFT);
-			{
-				resourceURILabel.setText(XMDLUIPlugin.INSTANCE
-						.getString("_UI_File_label"));
+    /**
+     * This is the page where the type of object to create is selected.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public class XmdlModelWizardInitialObjectCreationPage extends WizardPage {
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected Combo initialObjectField;
 
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				resourceURILabel.setLayoutData(data);
-			}
+        /**
+         * @generated
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         */
+        protected List<String> encodings;
 
-			Composite fileComposite = new Composite(composite, SWT.NONE);
-			{
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.END;
-				fileComposite.setLayoutData(data);
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected Combo encodingField;
 
-				GridLayout layout = new GridLayout();
-				data.horizontalAlignment = GridData.FILL;
-				layout.marginHeight = 0;
-				layout.marginWidth = 0;
-				layout.numColumns = 2;
-				fileComposite.setLayout(layout);
-			}
+        /**
+         * Pass in the selection.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public XmdlModelWizardInitialObjectCreationPage(String pageId) {
+            super(pageId);
+        }
 
-			fileField = new Text(fileComposite, SWT.BORDER);
-			{
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				data.grabExcessHorizontalSpace = true;
-				data.horizontalSpan = 1;
-				fileField.setLayoutData(data);
-			}
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public void createControl(Composite parent) {
+            Composite composite = new Composite(parent, SWT.NONE);
+            {
+                GridLayout layout = new GridLayout();
+                layout.numColumns = 1;
+                layout.verticalSpacing = 12;
+                composite.setLayout(layout);
 
-			fileField.addModifyListener(validator);
+                GridData data = new GridData();
+                data.verticalAlignment = GridData.FILL;
+                data.grabExcessVerticalSpace = true;
+                data.horizontalAlignment = GridData.FILL;
+                composite.setLayoutData(data);
+            }
 
-			Button resourceURIBrowseFileSystemButton = new Button(
-					fileComposite, SWT.PUSH);
-			resourceURIBrowseFileSystemButton.setText(XMDLUIPlugin.INSTANCE
-					.getString("_UI_Browse_label"));
+            Label containerLabel = new Label(composite, SWT.LEFT);
+            {
+                containerLabel.setText(XMDLUIPlugin.INSTANCE
+                        .getString("_UI_ModelObject"));
 
-			resourceURIBrowseFileSystemButton
-					.addSelectionListener(new SelectionAdapter() {
-						@Override
-						public void widgetSelected(SelectionEvent event) {
-							String fileExtension = XMDLUIPlugin.INSTANCE
-									.getString("_UI_XmdlEditorFilenameExtension");
-							String filePath = XmdlEditorAdvisor
-									.openFilePathDialog(getShell(), "*."
-											+ fileExtension, SWT.OPEN);
-							if (filePath != null) {
-								if (!filePath.endsWith("." + fileExtension)) {
-									filePath = filePath + "." + fileExtension;
-								}
-								fileField.setText(filePath);
-							}
-						}
-					});
-			Label containerLabel = new Label(composite, SWT.LEFT);
-			{
-				containerLabel.setText(XMDLUIPlugin.INSTANCE
-						.getString("_UI_ModelObject"));
+                GridData data = new GridData();
+                data.horizontalAlignment = GridData.FILL;
+                containerLabel.setLayoutData(data);
+            }
 
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				containerLabel.setLayoutData(data);
-			}
+            initialObjectField = new Combo(composite, SWT.BORDER);
+            {
+                GridData data = new GridData();
+                data.horizontalAlignment = GridData.FILL;
+                data.grabExcessHorizontalSpace = true;
+                initialObjectField.setLayoutData(data);
+            }
 
-			initialObjectField = new Combo(composite, SWT.BORDER);
-			{
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				data.grabExcessHorizontalSpace = true;
-				initialObjectField.setLayoutData(data);
-			}
+            for (String objectName : getInitialObjectNames()) {
+                initialObjectField.add(getLabel(objectName));
+            }
 
-			for (String objectName : getInitialObjectNames()) {
-				initialObjectField.add(getLabel(objectName));
-			}
+            if (initialObjectField.getItemCount() == 1) {
+                initialObjectField.select(0);
+            }
+            initialObjectField.addModifyListener(validator);
 
-			if (initialObjectField.getItemCount() == 1) {
-				initialObjectField.select(0);
-			}
-			initialObjectField.addModifyListener(validator);
+            Label encodingLabel = new Label(composite, SWT.LEFT);
+            {
+                encodingLabel.setText(XMDLUIPlugin.INSTANCE
+                        .getString("_UI_XMLEncoding"));
 
-			Label encodingLabel = new Label(composite, SWT.LEFT);
-			{
-				encodingLabel.setText(XMDLUIPlugin.INSTANCE
-						.getString("_UI_XMLEncoding"));
+                GridData data = new GridData();
+                data.horizontalAlignment = GridData.FILL;
+                encodingLabel.setLayoutData(data);
+            }
+            encodingField = new Combo(composite, SWT.BORDER);
+            {
+                GridData data = new GridData();
+                data.horizontalAlignment = GridData.FILL;
+                data.grabExcessHorizontalSpace = true;
+                encodingField.setLayoutData(data);
+            }
 
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				encodingLabel.setLayoutData(data);
-			}
-			encodingField = new Combo(composite, SWT.BORDER);
-			{
-				GridData data = new GridData();
-				data.horizontalAlignment = GridData.FILL;
-				data.grabExcessHorizontalSpace = true;
-				encodingField.setLayoutData(data);
-			}
+            for (String encoding : getEncodings()) {
+                encodingField.add(encoding);
+            }
 
-			for (String encoding : getEncodings()) {
-				encodingField.add(encoding);
-			}
+            encodingField.select(0);
+            encodingField.addModifyListener(validator);
 
-			encodingField.select(0);
-			encodingField.addModifyListener(validator);
+            setPageComplete(validatePage());
+            setControl(composite);
+        }
 
-			setPageComplete(validatePage());
-			setControl(composite);
-		}
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected ModifyListener validator = new ModifyListener() {
+            public void modifyText(ModifyEvent e) {
+                setPageComplete(validatePage());
+            }
+        };
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected ModifyListener validator = new ModifyListener() {
-			public void modifyText(ModifyEvent e) {
-				setPageComplete(validatePage());
-			}
-		};
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected boolean validatePage() {
+            return getInitialObjectName() != null
+                    && getEncodings().contains(encodingField.getText());
+        }
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected boolean validatePage() {
-			URI fileURI = getFileURI();
-			if (fileURI == null || fileURI.isEmpty()) {
-				setErrorMessage(null);
-				return false;
-			}
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        @Override
+        public void setVisible(boolean visible) {
+            super.setVisible(visible);
+            if (visible) {
+                if (initialObjectField.getItemCount() == 1) {
+                    initialObjectField.clearSelection();
+                    encodingField.setFocus();
+                } else {
+                    encodingField.clearSelection();
+                    initialObjectField.setFocus();
+                }
+            }
+        }
 
-			String requiredExt = XMDLUIPlugin.INSTANCE
-					.getString("_UI_XmdlEditorFilenameExtension");
-			String enteredExt = fileURI.fileExtension();
-			if (enteredExt == null || !enteredExt.equals(requiredExt)) {
-				setErrorMessage(XMDLUIPlugin.INSTANCE
-						.getString("_WARN_FilenameExtension",
-								new Object[] { requiredExt }));
-				return false;
-			}
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public String getInitialObjectName() {
+            String label = initialObjectField.getText();
 
-			setErrorMessage(null);
-			return getInitialObjectName() != null
-					&& getEncodings().contains(encodingField.getText());
-		}
+            for (String name : getInitialObjectNames()) {
+                if (getLabel(name).equals(label)) {
+                    return name;
+                }
+            }
+            return null;
+        }
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		@Override
-		public void setVisible(boolean visible) {
-			super.setVisible(visible);
-			if (visible) {
-				initialObjectField.clearSelection();
-				encodingField.clearSelection();
-				fileField.setFocus();
-			}
-		}
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public String getEncoding() {
+            return encodingField.getText();
+        }
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public String getInitialObjectName() {
-			String label = initialObjectField.getText();
+        /**
+         * Returns the label for the specified type name.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected String getLabel(String typeName) {
+            try {
+                return XMDLUIPlugin.INSTANCE.getString("_UI_" + typeName
+                        + "_type");
+            } catch (MissingResourceException mre) {
+                XMDLUIPlugin.INSTANCE.log(mre);
+            }
+            return typeName;
+        }
 
-			for (String name : getInitialObjectNames()) {
-				if (getLabel(name).equals(label)) {
-					return name;
-				}
-			}
-			return null;
-		}
+        /**
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        protected Collection<String> getEncodings() {
+            if (encodings == null) {
+                encodings = new ArrayList<String>();
+                for (StringTokenizer stringTokenizer = new StringTokenizer(
+                        XMDLUIPlugin.INSTANCE
+                                .getString("_UI_XMLEncodingChoices")); stringTokenizer
+                        .hasMoreTokens();) {
+                    encodings.add(stringTokenizer.nextToken());
+                }
+            }
+            return encodings;
+        }
+    }
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public String getEncoding() {
-			return encodingField.getText();
-		}
+    /**
+     * The framework calls this to create the contents of the wizard.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public void addPages() {
+        // Create a page, set the title, and the initial model file name.
+        //
+        newFileCreationPage = new XmdlModelWizardNewFileCreationPage(
+                "Whatever", selection);
+        newFileCreationPage.setTitle(XMDLUIPlugin.INSTANCE
+                .getString("_UI_XmdlModelWizard_label"));
+        newFileCreationPage.setDescription(XMDLUIPlugin.INSTANCE
+                .getString("_UI_XmdlModelWizard_description"));
+        newFileCreationPage.setFileName(XMDLUIPlugin.INSTANCE
+                .getString("_UI_XmdlEditorFilenameDefaultBase")
+                + "."
+                + XMDLUIPlugin.INSTANCE
+                        .getString("_UI_XmdlEditorFilenameExtension"));
+        addPage(newFileCreationPage);
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public URI getFileURI() {
-			try {
-				return URI.createFileURI(fileField.getText());
-			} catch (Exception exception) {
-				// Ignore
-			}
-			return null;
-		}
+        // Try and get the resource selection to determine a current directory for the file dialog.
+        //
+        if (selection != null && !selection.isEmpty()) {
+            // Get the resource...
+            //
+            Object selectedElement = selection.iterator().next();
+            if (selectedElement instanceof IResource) {
+                // Get the resource parent, if its a file.
+                //
+                IResource selectedResource = (IResource) selectedElement;
+                if (selectedResource.getType() == IResource.FILE) {
+                    selectedResource = selectedResource.getParent();
+                }
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public void selectFileField() {
-			initialObjectField.clearSelection();
-			encodingField.clearSelection();
-			fileField.selectAll();
-			fileField.setFocus();
-		}
+                // This gives us a directory...
+                //
+                if (selectedResource instanceof IFolder
+                        || selectedResource instanceof IProject) {
+                    // Set this for the container.
+                    //
+                    newFileCreationPage.setContainerFullPath(selectedResource
+                            .getFullPath());
 
-		/**
-		 * Returns the label for the specified type name.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected String getLabel(String typeName) {
-			try {
-				return XMDLUIPlugin.INSTANCE.getString("_UI_" + typeName
-						+ "_type");
-			} catch (MissingResourceException mre) {
-				XMDLUIPlugin.INSTANCE.log(mre);
-			}
-			return typeName;
-		}
+                    // Make up a unique new name here.
+                    //
+                    String defaultModelBaseFilename = XMDLUIPlugin.INSTANCE
+                            .getString("_UI_XmdlEditorFilenameDefaultBase");
+                    String defaultModelFilenameExtension = XMDLUIPlugin.INSTANCE
+                            .getString("_UI_XmdlEditorFilenameExtension");
+                    String modelFilename = defaultModelBaseFilename + "."
+                            + defaultModelFilenameExtension;
+                    for (int i = 1; ((IContainer) selectedResource)
+                            .findMember(modelFilename) != null; ++i) {
+                        modelFilename = defaultModelBaseFilename + i + "."
+                                + defaultModelFilenameExtension;
+                    }
+                    newFileCreationPage.setFileName(modelFilename);
+                }
+            }
+        }
+        initialObjectCreationPage = new XmdlModelWizardInitialObjectCreationPage(
+                "Whatever2");
+        initialObjectCreationPage.setTitle(XMDLUIPlugin.INSTANCE
+                .getString("_UI_XmdlModelWizard_label"));
+        initialObjectCreationPage.setDescription(XMDLUIPlugin.INSTANCE
+                .getString("_UI_Wizard_initial_object_description"));
+        addPage(initialObjectCreationPage);
+    }
 
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected Collection<String> getEncodings() {
-			if (encodings == null) {
-				encodings = new ArrayList<String>();
-				for (StringTokenizer stringTokenizer = new StringTokenizer(
-						XMDLUIPlugin.INSTANCE
-								.getString("_UI_XMLEncodingChoices")); stringTokenizer
-						.hasMoreTokens();) {
-					encodings.add(stringTokenizer.nextToken());
-				}
-			}
-			return encodings;
-		}
-	}
-
-	/**
-	 * The framework calls this to create the contents of the wizard.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void addPages() {
-		initialObjectCreationPage = new XmdlModelWizardInitialObjectCreationPage(
-				"Whatever2");
-		initialObjectCreationPage.setTitle(XMDLUIPlugin.INSTANCE
-				.getString("_UI_XmdlModelWizard_label"));
-		initialObjectCreationPage.setDescription(XMDLUIPlugin.INSTANCE
-				.getString("_UI_Wizard_initial_object_description"));
-		addPage(initialObjectCreationPage);
-	}
-
-	/**
-	 * Get the URI from the page.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public URI getModelURI() {
-		return initialObjectCreationPage.getFileURI();
-	}
+    /**
+     * Get the file from the page.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public IFile getModelFile() {
+        return newFileCreationPage.getModelFile();
+    }
 
 }
