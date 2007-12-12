@@ -74,7 +74,7 @@ public interface XMethod extends XBase {
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
      * @see chrome.xmdl.XmdlPackage#getXMethod_Name()
-     * @model id="true"
+     * @model
      * @generated
      */
     String getName();

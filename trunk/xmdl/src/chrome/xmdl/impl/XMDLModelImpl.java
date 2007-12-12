@@ -32,7 +32,7 @@ public class XMDLModelImpl extends EObjectImpl implements XMDLModel {
      * @generated
      */
     public static final String copyright = "hd";
-    
+
     /** the initializer */
     private Initializer initializer = new XMDLInitializer();
 
@@ -96,7 +96,7 @@ public class XMDLModelImpl extends EObjectImpl implements XMDLModel {
 
     @Override
     public Initializer getInitializer() {
-        return initializer ;
+        return initializer;
     }
 
     class XMDLInitializer extends Initializer {

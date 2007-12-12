@@ -43,7 +43,7 @@ public interface XModel extends EObject {
      */
     EObject createRoot(XProject project, URI uri);
 
-    EObject loadRoot(XProject project, Resource resource);
+    Object loadRoot(XProject project, Resource resource);
 
     /**
      * <!-- begin-user-doc -->
