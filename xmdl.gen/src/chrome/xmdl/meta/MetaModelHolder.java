@@ -65,14 +65,13 @@ public class MetaModelHolder {
 			LOGGER.error("Project has no resource");
 			return;
 		}
-        final String projectName = project.getName();
 
-        Map<URI, EObject> toSave = new HashMap<URI, EObject>();
+		Map<URI, EObject> toSave = new HashMap<URI, EObject>();
 		URI uri = resource.getURI();
 		MetaModel[] metamodels = MetaModel.values();
 		for (MetaModel metaModel : metamodels) {
 			XModel model = metaModel.createInstance();
-			URI subURI = metaModel.resolveURI(projectName, uri);
+			URI subURI = metaModel.resolveURI(uri);
 
 			boolean fileExists = false;
 			File subFile;
@@ -145,4 +144,5 @@ public class MetaModelHolder {
 		return Collections.unmodifiableList(list);
 	}
 
+	
 }
