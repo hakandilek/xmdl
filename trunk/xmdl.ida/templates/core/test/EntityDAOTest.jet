@@ -31,12 +31,21 @@ package <xc:qualifiedName element="$class/xPackage"/>.dao;
  */ 
 public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 
+	/**
+	 * @generated
+	 */ 
     private <xc:cap element="$class"/>DAO <xc:uncap element="$class"/>DAO = null;
 
+	/**
+	 * @generated
+	 */ 
     public void set<xc:cap element="$class"/>DAO(<xc:cap element="$class"/>DAO <xc:uncap element="$class"/>DAO) {
         this.<xc:uncap element="$class"/>DAO = <xc:uncap element="$class"/>DAO;
     }
 
+	/**
+	 * @generated
+	 */ 
     public void testAddAndRemove<xc:cap element="$class"/>() throws Exception {
         <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 
@@ -71,6 +80,9 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         }
     }
 
+	/**
+	 * @generated
+	 */ 
     public void testSearch() throws Exception {
         ProductSearch search = new ProductSearch();
     <c:iterate select="$class/attributes" var="attribute">
@@ -82,6 +94,9 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         assertTrue(<xc:uncap element="$class"/>s.size() > 0);
     }
 
+	/**
+	 * @generated
+	 */ 
     protected void onSetUpBeforeTransaction() throws Exception {
         super.onSetUpBeforeTransaction();
 

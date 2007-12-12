@@ -29,22 +29,34 @@ public enum <xc:cap element="$enumeration"/> {
 </c:iterate> 
     ;
 
+	/**
+	 * @generated
+	 */ 
     private int value;
 
     <xc:cap element="$enumeration"/>(int value) {
         this.value = value;
     }
 
-    // the identifierMethod
+	/**
+     * The identifier method
+	 * @generated
+	 */ 
     public int toInt() {
         return value;
     }
 
+	/**
+	 * @generated
+	 */ 
     public int getValue(){
         return value;
     }
 
-    // the valueOfMethod
+	/**
+	 * the value Of Method
+	 * @generated
+	 */ 
     public static <xc:cap element="$enumeration"/> fromInt(int value) {
         switch (value) {
 <c:iterate select="$enumeration/literals" var="literal">
@@ -56,6 +68,9 @@ public enum <xc:cap element="$enumeration"/> {
         }
     }
 
+	/**
+	 * @generated
+	 */ 
     public String toString() {
         switch (this) {
 <c:iterate select="$enumeration/literals" var="literal">
