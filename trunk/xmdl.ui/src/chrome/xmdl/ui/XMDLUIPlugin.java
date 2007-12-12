@@ -25,137 +25,136 @@ import org.osgi.framework.BundleContext;
  * @generated
  */
 public final class XMDLUIPlugin extends EMFPlugin {
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String copyright = "hd";
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @generated
+     */
+    public static final String copyright = "hd";
 
-	private static final Logger LOGGER = Logger.getLogger(XMDLUIPlugin.class);
+    private static final Logger LOGGER = Logger.getLogger(XMDLUIPlugin.class);
 
-	/**
-	 * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 */
-	public static final XMDLUIPlugin INSTANCE = new XMDLUIPlugin();
+    /**
+     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     */
+    public static final XMDLUIPlugin INSTANCE = new XMDLUIPlugin();
 
-	/**
-	 * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
-	 * -->
-	 * 
-	 * @generated
-	 */
-	private static Implementation plugin;
+    /**
+     * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     */
+    private static Implementation plugin;
 
-	/**
-	 * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	public XMDLUIPlugin() {
-		super(new ResourceLocator[] { GenModelEditPlugin.INSTANCE,
-				EcoreEditPlugin.INSTANCE, });
-		configureLogger();
-		LOGGER.info("XMDLUIPlugin()");
-	}
+    /**
+     * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated NOT
+     */
+    public XMDLUIPlugin() {
+        super(new ResourceLocator[] { GenModelEditPlugin.INSTANCE,
+                EcoreEditPlugin.INSTANCE, });
+        configureLogger();
+        LOGGER.info("XMDLUIPlugin()");
+    }
 
-	/**
-	 * Returns the singleton instance of the Eclipse plugin.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * @return the singleton instance.
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getPluginResourceLocator() {
-		return plugin;
-	}
+    /**
+     * Returns the singleton instance of the Eclipse plugin.
+     * <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * @return the singleton instance.
+     * @generated
+     */
+    @Override
+    public ResourceLocator getPluginResourceLocator() {
+        return plugin;
+    }
 
-	/**
-	 * Returns the singleton instance of the Eclipse plugin.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * @return the singleton instance.
-	 * @generated
-	 */
-	public static Implementation getPlugin() {
-		return plugin;
-	}
+    /**
+     * Returns the singleton instance of the Eclipse plugin.
+     * <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * @return the singleton instance.
+     * @generated
+     */
+    public static Implementation getPlugin() {
+        return plugin;
+    }
 
-	/**
-	 * The actual implementation of the Eclipse <b>Plugin</b>. <!--
-	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public static class Implementation extends EclipseUIPlugin {
-		/**
-		 * Creates an instance.
-		 * <!-- begin-user-doc --> <!-- end-user-doc -->
-		 * @generated
-		 */
-		public Implementation() {
-			super();
+    /**
+     * The actual implementation of the Eclipse <b>Plugin</b>. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public static class Implementation extends EclipseUIPlugin {
+        /**
+         * Creates an instance.
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * @generated
+         */
+        public Implementation() {
+            super();
 
-			// Remember the static instance.
-			//
-			plugin = this;
-		}
+            // Remember the static instance.
+            //
+            plugin = this;
+        }
 
-		@Override
-		public void start(BundleContext context) throws Exception {
-			super.start(context);
+        @Override
+        public void start(BundleContext context) throws Exception {
+            super.start(context);
 
-			configureLogger();
-			
-			LOGGER.info("Logger activated");
+            configureLogger();
 
-			Platforms platforms = Platforms.INST;
-			LOGGER.info("Platforms = " + platforms);
+            LOGGER.info("Logger activated");
 
-		}
+            Platforms platforms = Platforms.INST;
+            LOGGER.info("Platforms = " + platforms);
 
-		protected void log(Throwable error, String message, int level) {
-			String throwableMessage = error.getLocalizedMessage();
-			if (throwableMessage != null) {
-				if (message != null)
-					message += " : " + throwableMessage;
-				else
-					message = throwableMessage;
-			}
-			if (message == null)
-				message = error.getClass().getName();
-			Status status = new Status(level, getBundle().getSymbolicName(), 0,
-					message, error);
-			log(status);
-			LOGGER.warn(message, error);
-		}
+        }
 
-		public void logError(Throwable throwable, String message) {
-			log(throwable, message, IStatus.ERROR);
-		}
+        protected void log(Throwable error, String message, int level) {
+            String throwableMessage = error.getLocalizedMessage();
+            if (throwableMessage != null) {
+                if (message != null)
+                    message += " : " + throwableMessage;
+                else
+                    message = throwableMessage;
+            }
+            if (message == null)
+                message = error.getClass().getName();
+            Status status = new Status(level, getBundle().getSymbolicName(), 0,
+                    message, error);
+            log(status);
+            LOGGER.warn(message, error);
+        }
 
-		public void logWarning(Throwable throwable, String message) {
-			log(throwable, message, IStatus.WARNING);
-		}
+        public void logError(Throwable throwable, String message) {
+            log(throwable, message, IStatus.ERROR);
+        }
 
-		public void logInfo(Throwable throwable, String message) {
-			log(throwable, message, IStatus.INFO);
-		}
+        public void logWarning(Throwable throwable, String message) {
+            log(throwable, message, IStatus.WARNING);
+        }
 
-	}
+        public void logInfo(Throwable throwable, String message) {
+            log(throwable, message, IStatus.INFO);
+        }
 
-	private static void configureLogger() {
-		try {
-			PropertyConfigurator.configure(Thread.currentThread()
-					.getContextClassLoader()
-					.getResource("log4j.properties"));
-		} catch (Throwable e) {
-			e.printStackTrace();
-			BasicConfigurator.configure();
-		}
-	}
+    }
+
+    private static void configureLogger() {
+        try {
+            PropertyConfigurator.configure(Thread.currentThread()
+                    .getContextClassLoader().getResource("log4j.properties"));
+        } catch (Throwable e) {
+            e.printStackTrace();
+            BasicConfigurator.configure();
+        }
+    }
 
 }
