@@ -3,49 +3,49 @@
   <packages name="org.xmdl.genext.test">
     <classes name="Class1" className="org.xmdl.genext.test.Class1">
       <attributes name="attribute1">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.String"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.0/@classes.0"/>
       </attributes>
     </classes>
     <classes name="AnotherClass" className="org.xmdl.genext.test.AnotherClass">
       <attributes name="attribute1">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.String"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.0/@classes.0"/>
       </attributes>
       <attributes name="attribute2">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#boolean"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.1/@classes.2"/>
       </attributes>
       <attributes name="attribute3">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.Boolean"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.0/@classes.2"/>
       </attributes>
     </classes>
     <classes name="Class3" className="org.xmdl.genext.test.Class3">
       <attributes name="attribute1">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.String"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.0/@classes.0"/>
       </attributes>
       <attributes name="attribute2">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#long"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.1/@classes.8"/>
       </attributes>
       <attributes name="attribute3">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.Long"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.0/@classes.8"/>
       </attributes>
       <attributes name="attribute4">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#int"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.1/@classes.0"/>
       </attributes>
       <attributes name="attribute5">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.Integer"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.0/@classes.1"/>
       </attributes>
       <attributes name="attribute6">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#double"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.1/@classes.3"/>
       </attributes>
       <attributes name="attribute7">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.Double"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.0/@classes.3"/>
       </attributes>
       <attributes name="attribute8">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#boolean"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.1/@classes.2"/>
       </attributes>
       <attributes name="attribute9">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.Boolean"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#//@packages.0/@classes.2"/>
       </attributes>
-      <attributes name="attribute10" type="org.xmdl.genext.test.Enumeration1"/>
+      <attributes name="attribute10" type="//@packages.0/@enumerations.0"/>
     </classes>
     <enumerations name="Enumeration1" className="org.xmdl.genext.test.Enumeration1" defaultLiteral="//@packages.0/@enumerations.0/@literals.0">
       <literals name="VALUE1" value="1"/>

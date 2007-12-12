@@ -1116,7 +1116,7 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
                 IS_ORDERED);
         initEAttribute(getXMethod_Name(), ecorePackage.getEString(), "name",
                 null, 0, 1, XMethod.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
                 IS_ORDERED);
         initEReference(getXMethod_XClass(), this.getXClass(), this
                 .getXClass_Methods(), "xClass", null, 1, 1, XMethod.class,
@@ -1169,7 +1169,7 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
                 IS_ORDERED);
         initEAttribute(getXType_ClassName(), ecorePackage.getEString(),
                 "className", null, 0, 1, XType.class, !IS_TRANSIENT,
-                IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, IS_ID, IS_UNIQUE,
+                IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
 
         addEOperation(xTypeEClass, ecorePackage.getEBoolean(), "isPrimitive",

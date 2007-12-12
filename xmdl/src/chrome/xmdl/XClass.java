@@ -6,9 +6,8 @@
  */
 package chrome.xmdl;
 
-import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
+import java.util.List;
 
 /**
  * @model
