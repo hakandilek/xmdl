@@ -235,7 +235,6 @@
     
     <modules>
         <module>core</module>
-        <module>web</module>
     </modules>
 
     <reporting>
@@ -459,5 +458,7 @@
         <urlrewrite.version>3.0.4</urlrewrite.version>
         <velocity.version>1.4</velocity.version>
         <xfire.version>1.2.6</xfire.version>
+        
+        <ida-corelib.version>0.1-SNAPSHOT</ida-corelib.version>
     </properties>
 </project>
