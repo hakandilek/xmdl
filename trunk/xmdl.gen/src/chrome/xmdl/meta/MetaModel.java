@@ -73,8 +73,7 @@ public enum MetaModel {
 		return initialized;
 	}
 
-	//TODO:still have problems while resolving local project resources on test runs 
-	public URI resolveURI(String projectName, URI relURI) {
+	public URI resolveURI(URI relURI) {
 		URI withoutExtension = relURI.trimFileExtension();
 		URI theURI = withoutExtension.appendFileExtension(extension);
 		return theURI;
