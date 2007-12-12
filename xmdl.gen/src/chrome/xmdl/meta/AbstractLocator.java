@@ -12,7 +12,7 @@ public abstract class AbstractLocator<X, D> extends DVisitorBaseImpl {
 		this.match = x;
 	}
 	
-	public boolean visitEnter(D d) {
+	public boolean enter(D d) {
 		if (matches(d)) {
 			found = d;
 			return false;
@@ -20,9 +20,13 @@ public abstract class AbstractLocator<X, D> extends DVisitorBaseImpl {
 		return true;
 	}
 
-	public boolean visitLeave(D d) {
+	public boolean leave(D d) {
 		return found == null;
 	}
+	
+    public abstract boolean visitEnter(D d);
+
+    public abstract boolean visitLeave(D d);
 
 	protected abstract boolean matches(D d);
 

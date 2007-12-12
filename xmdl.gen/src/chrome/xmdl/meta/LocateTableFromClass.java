@@ -22,4 +22,15 @@ class LocateTableFromClass extends AbstractLocator<XClass, DTable> {
 		return c.equals(getMatch());
 	}
 
+    @Override
+    public boolean visitEnter(DTable d) {
+        return enter(d);
+    }
+
+    @Override
+    public boolean visitLeave(DTable d) {
+        return leave(d);
+    }
+
+    
 }
