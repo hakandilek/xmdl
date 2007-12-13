@@ -19,7 +19,7 @@ public class ApplicationContextDAOXML extends ApplicationContextDAOXMLImpl
 		StringBuffer buffer = new StringBuffer("core/src/main/resources/");
 		String path = XMDLClassHelper.INSTANCE.getQualifiedPath(p);
 		buffer.append(path);
-		buffer.append("applicationContext-dao.xml");
+		buffer.append("/applicationContext-dao.xml");
 		return buffer.toString();
 	}
 
