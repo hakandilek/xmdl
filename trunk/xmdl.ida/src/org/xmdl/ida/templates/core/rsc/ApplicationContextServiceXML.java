@@ -19,7 +19,7 @@ public class ApplicationContextServiceXML extends
 		StringBuffer buffer = new StringBuffer("core/src/main/resources/");
 		String path = XMDLClassHelper.INSTANCE.getQualifiedPath(p);
 		buffer.append(path);
-		buffer.append("applicationContext-service.xml");
+		buffer.append("/applicationContext-service.xml");
 		return buffer.toString();
 	}
 
