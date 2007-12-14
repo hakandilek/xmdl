@@ -47,17 +47,17 @@ public class SearchParametersTag extends BaseEmptyTag {
                     boolean comparable = type.isComparable();
                     if (comparable) {
                         if (!omitType)
-                            params.append(ClassTagUtils.importType(attribute));
+                            params.append(ClassTagUtils.importType(attribute, true));
                         params.append(" min");
                         params.append(ClassTagUtils.capName(attribute));
                         params.append(", ");
                         if (!omitType)
-                            params.append(ClassTagUtils.importType(attribute));
+                            params.append(ClassTagUtils.importType(attribute, true));
                         params.append(" max");
                         params.append(ClassTagUtils.capName(attribute));
                     } else {
                         if (!omitType)
-                            params.append(ClassTagUtils.importType(attribute));
+                            params.append(ClassTagUtils.importType(attribute, true));
                         params.append(" ");
                         params.append(ClassTagUtils.uncapName(attribute));
                     }
