@@ -31,6 +31,8 @@ import org.eclipse.jet.BodyContentWriter;
 import org.eclipse.jet.BufferedJET2Writer;
 import org.eclipse.jet.IWriterListener;
 import org.eclipse.jet.JET2Context;
+import org.eclipse.jet.JET2Platform;
+import org.eclipse.jet.XPathContextExtender;
 import org.eclipse.jet.transform.TransformContextExtender;
 
 import chrome.xmdl.XProject;
@@ -131,7 +133,6 @@ public class Generator {
 	}
 
 	private void generate(List<GenerationTask> tasks, JMerger merger) {
-		// IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		for (Iterator<GenerationTask> iter = tasks.iterator(); iter.hasNext();) {
 			GenerationTask task = iter.next();
 
@@ -250,6 +251,10 @@ public class Generator {
         final BufferedJET2Writer out = new BodyContentWriter();
 
         JET2Context context = new JET2Context(null);
+
+        XPathContextExtender xpe = XPathContextExtender.getInstance(context);
+        xpe.addCustomFunctions(JET2Platform.getInstalledXPathFunctions());
+
         TransformContextExtender.getInstance(context);
         String parameterName = template.parameterName();
         context.setVariable(parameterName, parameter);
