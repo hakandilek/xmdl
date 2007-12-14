@@ -183,6 +183,10 @@ public class ClassTagUtils {
     }
 
 	public static String importType(XAttribute attribute) {
+		return importType(attribute, false);
+	}
+	
+	public static String importType(XAttribute attribute, boolean advance) {
 		StringBuffer out = new StringBuffer();
 		XAssociationType associationType = attribute.getAssociationType();
 		boolean association = (XAssociationType.ONE_TO_MANY_LITERAL == associationType || XAssociationType.MANY_TO_MANY_LITERAL == associationType);
@@ -190,12 +194,14 @@ public class ClassTagUtils {
 			out.append("Set<");
 		}
 		XType type = attribute.getType();
+		if (advance) {
+			type = XmdlTypes.advance(type); 
+		}
 		String name = type.getName();
 		out.append(name);
 		if (association) {
 			out.append(">");
 		}
-		// TODO Auto-generated method stub
 		return out.toString();
 	}
 
