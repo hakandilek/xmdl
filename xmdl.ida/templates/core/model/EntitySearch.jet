@@ -27,13 +27,30 @@ package <xc:qualifiedName element="$class/xPackage"/>.model.search;
  * @generated
  */ 
 public class <xc:cap element="$class"/>Search implements Serializable {
-
-
 <c:iterate select="$class/attributes" var="attribute">
+	<c:if test="not($attribute/reference)">
+		<c:choose>
+		<c:when test="call($attribute/type, 'isComparable')">
+
+    /** 
+     * @generated
+     */
+    private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>Min;
+
+    /** 
+     * @generated
+     */
+    private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>Max;
+		</c:when>
+		<c:otherwise>
+
     /** 
      * @generated
      */
     private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>;
+		</c:otherwise>
+		</c:choose>
+	</c:if>
 	
 </c:iterate> 
 
@@ -44,6 +61,40 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     }
 
 <c:iterate select="$class/attributes" var="attribute">
+	<c:if test="not($attribute/reference)">
+		<c:choose>
+		<c:when test="call($attribute/type, 'isComparable')">
+
+    /** 
+     * @generated
+     */
+    public <xc:attributeType attribute="$attribute"/> get<xc:cap element="$attribute"/>Min() {
+        return <xc:uncap element="$attribute"/>Min;
+    }
+
+    /** 
+     * @generated
+     */
+    public void set<xc:cap element="$attribute"/>Min(<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>Min) {
+        this.<xc:uncap element="$attribute"/>Min = <xc:uncap element="$attribute"/>Min;
+    }
+
+    /** 
+     * @generated
+     */
+    public <xc:attributeType attribute="$attribute"/> get<xc:cap element="$attribute"/>Max() {
+        return <xc:uncap element="$attribute"/>Max;
+    }
+
+    /** 
+     * @generated
+     */
+    public void set<xc:cap element="$attribute"/>Max(<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>Max) {
+        this.<xc:uncap element="$attribute"/>Max = <xc:uncap element="$attribute"/>Max;
+    }
+		</c:when>
+		<c:otherwise>
+
     /** 
      * @generated
      */
@@ -57,6 +108,9 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     public void set<xc:cap element="$attribute"/>(<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>) {
         this.<xc:uncap element="$attribute"/> = <xc:uncap element="$attribute"/>;
     }
+		</c:otherwise>
+		</c:choose>
+	</c:if>
 
 </c:iterate> 
 
@@ -64,7 +118,34 @@ public class <xc:cap element="$class"/>Search implements Serializable {
      * @generated
      */
     public String toString() {
-        return MessageFormat.format("<xc:cap element="$class"/>Search <%int i=0;%><c:iterate select="$class/attributes" var="attribute">[<xc:uncap element="$attribute"/>={<%=i++%>}]</c:iterate>" <c:iterate select="$class/attributes" var="attribute">, <xc:uncap element="$attribute"/></c:iterate>);
+        return MessageFormat.format("<xc:cap element="$class"/>Search "<%int i=0;%>
+        <c:iterate select="$class/attributes" var="attribute">
+			<c:if test="not($attribute/reference)">
+				<c:choose>
+				<c:when test="call($attribute/type, 'isComparable')">
+        		+ "[<xc:uncap element="$attribute"/>Min={<%=i++%>}]"
+        		+ "[<xc:uncap element="$attribute"/>Max={<%=i++%>}]"
+				</c:when>
+				<c:otherwise>
+        		+ "[<xc:uncap element="$attribute"/>={<%=i++%>}]"
+				</c:otherwise>
+				</c:choose>
+			</c:if>
+		</c:iterate> 
+		<c:iterate select="$class/attributes" var="attribute">
+			<c:if test="not($attribute/reference)">
+				<c:choose>
+				<c:when test="call($attribute/type, 'isComparable')">
+				, <xc:uncap element="$attribute"/>Min
+				, <xc:uncap element="$attribute"/>Max
+				</c:when>
+				<c:otherwise>
+				, <xc:uncap element="$attribute"/>
+				</c:otherwise>
+				</c:choose>
+			</c:if>
+		</c:iterate>
+		);
     }
 
     /** 
@@ -73,8 +154,33 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     public int hashCode() {
         int result = 1;
 <c:iterate select="$class/attributes" var="attribute">
-        result = 31 * result + <xc:uncap element="$attribute"/>.hashCode();
-</c:iterate> 
+	<c:if test="not($attribute/reference)">
+		<c:choose>
+		<c:when test="call($attribute/type, 'isComparable')">
+			<c:choose>
+			<c:when test="call($attribute/type, 'isPrimitive')">
+		        result = 31 * result + ("" + <xc:uncap element="$attribute"/>Min).hashCode();
+		        result = 31 * result + ("" + <xc:uncap element="$attribute"/>Max).hashCode();
+			</c:when>
+			<c:otherwise>
+		        result = 31 * result + <xc:uncap element="$attribute"/>Min.hashCode();
+		        result = 31 * result + <xc:uncap element="$attribute"/>Max.hashCode();
+			</c:otherwise>
+			</c:choose>
+		</c:when>
+		<c:otherwise>
+			<c:choose>
+			<c:when test="call($attribute/type, 'isPrimitive')">
+		        result = 31 * result + ("" + <xc:uncap element="$attribute"/>).hashCode();
+			</c:when>
+			<c:otherwise>
+		        result = 31 * result + <xc:uncap element="$attribute"/>.hashCode();
+			</c:otherwise>
+			</c:choose>
+		</c:otherwise>
+		</c:choose>
+	</c:if>
+</c:iterate>
         return result;
     }
 
