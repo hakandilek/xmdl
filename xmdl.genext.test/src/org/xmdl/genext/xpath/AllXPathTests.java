@@ -8,7 +8,7 @@ public class AllXPathTests {
     public static Test suite() {
         TestSuite suite = new TestSuite("Test for org.xmdl.genext.xpath");
         //$JUnit-BEGIN$
-        suite.addTestSuite(MethodCallFunctionTest.class);
+        suite.addTestSuite(CallFunctionTest.class);
         //$JUnit-END$
         return suite;
     }

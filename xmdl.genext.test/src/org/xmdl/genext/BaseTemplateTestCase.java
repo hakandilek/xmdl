@@ -4,6 +4,8 @@ import org.eclipse.jet.BodyContentWriter;
 import org.eclipse.jet.BufferedJET2Writer;
 import org.eclipse.jet.IWriterListener;
 import org.eclipse.jet.JET2Context;
+import org.eclipse.jet.JET2Platform;
+import org.eclipse.jet.XPathContextExtender;
 import org.eclipse.jet.JET2TemplateManager.ITemplateRunner;
 import org.eclipse.jet.transform.TransformContextExtender;
 
@@ -42,7 +44,9 @@ public class BaseTemplateTestCase extends TestCase {
 
         ITemplateRunner templateRunner = new TemplateRunner(pluginID);
         
-        
+        XPathContextExtender xpe = XPathContextExtender.getInstance(context);
+        xpe.addCustomFunctions(JET2Platform.getInstalledXPathFunctions());
+
         templateRunner.generate(templateClass, context, out);
 
         final IWriterListener[] eventListeners = out.getEventListeners();

@@ -7,7 +7,7 @@ import chrome.xmdl.XProject;
 import chrome.xmdl.gen.util.Locator;
 import chrome.xmdl.xgen.util.ResourceHelper;
 
-public class MethodCallFunctionTest extends BaseTemplateTestCase {
+public class CallFunctionTest extends BaseTemplateTestCase {
 
     private XAttribute attribute1;
     private XAttribute attribute2;
