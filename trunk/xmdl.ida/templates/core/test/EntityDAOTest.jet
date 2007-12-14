@@ -87,7 +87,15 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         ProductSearch search = new ProductSearch();
     <c:iterate select="$class/attributes" var="attribute">
 	<c:if test="not($attribute/reference)">
+		<c:choose>
+		<c:when test="call($attribute/type, 'isComparable')">
+        search.<xc:mutator attribute="$attribute"/>Min(<tu:random attribute="$attribute" wrapString="true" />);
+        search.<xc:mutator attribute="$attribute"/>Max(<tu:random attribute="$attribute" wrapString="true" />);
+		</c:when>
+		<c:otherwise>
         search.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
+		</c:otherwise>
+		</c:choose>
 	</c:if>
 	</c:iterate>
         Collection<<xc:cap element="$class"/>> <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>DAO.search(search);
