@@ -57,7 +57,7 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
 <c:iterate select="$class/attributes" var="attribute">
 	<c:if test="not($attribute/reference)">
 		<c:choose>
-		<c:when test="$attribute/type/comparable">
+		<c:when test="call($attribute/type, 'isComparable')">
 			<xc:attributeType attribute="$attribute"/> min<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Min();
 			<xc:attributeType attribute="$attribute"/> max<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Max();
 		</c:when>
@@ -85,7 +85,7 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
 <c:iterate select="$class/attributes" var="attribute">
 	<c:if test="not($attribute/reference)">
 		<c:choose>
-		<c:when test="$attribute/type/comparable">
+		<c:when test="call($attribute/type, 'isComparable')">
         	log.debug("min<xc:cap element="$attribute"/>       : " + min<xc:cap element="$attribute"/>);
         	log.debug("max<xc:cap element="$attribute"/>       : " + max<xc:cap element="$attribute"/>);
 		</c:when>
@@ -104,7 +104,7 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
 		<c:when test="$attribute/type/className = 'java.lang.String'">
         criteria.add(Restrictions.like("<xc:uncap element="$attribute"/>", "%" + <xc:uncap element="$attribute"/> + "%"));
 		</c:when>
-		<c:when test="$attribute/type/comparable">
+		<c:when test="call($attribute/type, 'isComparable')">
         if (min<xc:cap element="$attribute"/> != null)
             criteria.add(Restrictions.ge("<xc:uncap element="$attribute"/>", min<xc:cap element="$attribute"/>));
         if (max<xc:cap element="$attribute"/> != null)
