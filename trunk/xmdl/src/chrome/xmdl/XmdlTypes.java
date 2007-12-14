@@ -31,6 +31,9 @@ public class XmdlTypes {
     /** internal type registry map */
     private final Map<String, XType> registry = new HashMap<String, XType>();
 
+	/** primitive -> advance type mapping */
+	private Map<String, String> primitiveToAdvance;
+
     /** singleton instance */
     private static final XmdlTypes INSTANCE = new XmdlTypes();
 
@@ -86,6 +89,16 @@ public class XmdlTypes {
             }
         }
 
+        primitiveToAdvance = new HashMap<String, String>();
+        primitiveToAdvance.put("int", "java.lang.Integer");
+        primitiveToAdvance.put("boolean", "java.lang.Boolean");
+        primitiveToAdvance.put("double", "java.lang.Double");
+        primitiveToAdvance.put("byte", "java.lang.Byte");
+        primitiveToAdvance.put("short", "java.lang.Character");
+        primitiveToAdvance.put("float", "java.lang.Float");
+        primitiveToAdvance.put("short", "java.lang.Short");
+        primitiveToAdvance.put("long", "java.lang.Long");
+
     }
 
     /**
@@ -136,8 +149,27 @@ public class XmdlTypes {
     public static boolean contains(XType type) {
         return getInstance().containsType(type);
     }
+    
+	public static XType advance(XType t) {
+		if (t != null && t.isPrimitive()) {
+			Map<String, String> map = getInstance().getPrimitiveToAdvance();
+			String className = t.getClassName();
+			String adv = map.get(className);
+			if (adv != null) {
+				XType a = getInstance().getType(adv);
+				if (a != null) return a;
+			}
+		}
+		return t;
+	}
 
-    public static final XType VOID = getInstance().getType("void");
+
+    private Map<String, String> getPrimitiveToAdvance() {
+		return primitiveToAdvance;
+	}
+
+
+	public static final XType VOID = getInstance().getType("void");
     public static final XType INT = getInstance().getType("int");
     public static final XType BOOLEAN = getInstance().getType("boolean");
     public static final XType DOUBLE = getInstance().getType("double");
