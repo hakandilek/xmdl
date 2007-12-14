@@ -112,7 +112,7 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
         result = id.hashCode();
 <c:iterate select="$class/attributes" var="attribute">
 	<c:choose>
-	<c:when test="$attribute/type/isPrimitive">
+	<c:when test="call($attribute/type, 'isPrimitive')">
         result = 31 * result + ("" + <xc:uncap element="$attribute"/>).hashCode();
 	</c:when>
 	<c:otherwise>
