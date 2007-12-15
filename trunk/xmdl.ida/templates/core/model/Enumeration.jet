@@ -25,7 +25,7 @@ package <xc:qualifiedName element="$enumeration/xPackage"/>.model;
 public enum <xc:cap element="$enumeration"/> {
 
 <c:iterate select="$enumeration/literals" var="literal">
-    <c:get select="$literal/name"/>(<c:get select="$literal/value"/>),
+    <c:get select="$literal/@name"/>(<c:get select="$literal/@value"/>),
 </c:iterate> 
     ;
 
@@ -60,8 +60,8 @@ public enum <xc:cap element="$enumeration"/> {
     public static <xc:cap element="$enumeration"/> fromInt(int value) {
         switch (value) {
 <c:iterate select="$enumeration/literals" var="literal">
-            case <c:get select="$literal/value"/>:
-                return <c:get select="$literal/name"/>;
+            case <c:get select="$literal/@value"/>:
+                return <c:get select="$literal/@name"/>;
 </c:iterate> 
             default:
                 return null;
@@ -74,8 +74,8 @@ public enum <xc:cap element="$enumeration"/> {
     public String toString() {
         switch (this) {
 <c:iterate select="$enumeration/literals" var="literal">
-            case <c:get select="$literal/name"/>:
-                return "<c:get select="$literal/name"/>";
+            case <c:get select="$literal/@name"/>:
+                return "<c:get select="$literal/@name"/>";
 </c:iterate> 
             default:
                 return null;
