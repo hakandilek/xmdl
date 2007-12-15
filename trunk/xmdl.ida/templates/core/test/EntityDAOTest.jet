@@ -84,7 +84,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 	 * @generated
 	 */ 
     public void testSearch() throws Exception {
-        ProductSearch search = new ProductSearch();
+        <xc:cap element="$class"/>Search search = new <xc:cap element="$class"/>Search();
     <c:iterate select="$class/attributes" var="attribute">
 	<c:if test="not($attribute/reference)">
 		<c:choose>
