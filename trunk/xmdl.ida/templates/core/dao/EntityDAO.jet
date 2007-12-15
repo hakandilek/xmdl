@@ -11,7 +11,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.dao;
 
 <j:importsLocation package=""/>
 
-<xc:import pattern="java.util.Collection"/>
+<xc:import pattern="java.util.*"/>
 <xc:import pattern="org.xmdl.ida.lib.dao.GenericDao"/>
 
 <xc:import pattern="$element.model.*" element="$class/xPackage"/>
