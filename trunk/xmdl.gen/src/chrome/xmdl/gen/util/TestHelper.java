@@ -68,27 +68,41 @@ public class TestHelper {
 	public Object randomValue(XAttribute attrib) {
 		XType type = attrib.getType();
 		int length = attrib.getLength();
-		if (XmdlTypes.BOOLEAN.equals(type) || XmdlTypes.JAVA_BOOLEAN.equals(type)) {
+		if (XmdlTypes.BOOLEAN.equals(type)
+				|| XmdlTypes.JAVA_BOOLEAN.equals(type)) {
 			return utils.randomBoolean();
 		}
-		if (XmdlTypes.DOUBLE.equals(type) || XmdlTypes.FLOAT.equals(type)
-				|| XmdlTypes.JAVA_DOUBLE.equals(type)
-				|| XmdlTypes.JAVA_FLOAT.equals(type)) {
+		if (XmdlTypes.DOUBLE.equals(type) || XmdlTypes.FLOAT.equals(type)) {
 			return utils.randomDouble(Math.pow(10, length));
 		}
-		if (XmdlTypes.INT.equals(type) || XmdlTypes.JAVA_INTEGER.equals(type)) {
+		if (XmdlTypes.JAVA_DOUBLE.equals(type)) {
+			return "new Long(" + utils.randomDouble(Math.pow(10, length)) + ")";
+		}
+		if (XmdlTypes.JAVA_FLOAT.equals(type)) {
+			return "new Long(" + utils.randomDouble(Math.pow(10, length)) + ")";
+		}
+		if (XmdlTypes.INT.equals(type)) {
 			return utils.randomInt((int) Math.pow(10, length));
 		}
-        if (XmdlTypes.LONG.equals(type) || XmdlTypes.JAVA_LONG.equals(type)) {
-            return utils.randomInt((int) Math.pow(30, length));
-        }
+		if (XmdlTypes.JAVA_INTEGER.equals(type)) {
+			return "new Integer(" + utils.randomInt((int) Math.pow(10, length))
+					+ ")";
+		}
+		if (XmdlTypes.LONG.equals(type)) {
+			return utils.randomInt((int) Math.pow(10, length)) + "L";
+		}
+		if (XmdlTypes.JAVA_LONG.equals(type)) {
+			return "new Long(" + utils.randomInt((int) Math.pow(10, length))
+					+ "L)";
+		}
 		if (XmdlTypes.JAVA_STRING.equals(type)) {
 			return utils.randomString(length);
 		}
 		if (type instanceof XEnumeration) {
 			XEnumeration enumer = (XEnumeration) type;
 			List<XEnumerationLiteral> literals = enumer.getLiterals();
-			XEnumerationLiteral literal = (XEnumerationLiteral) utils.randomObject(literals);
+			XEnumerationLiteral literal = (XEnumerationLiteral) utils
+					.randomObject(literals);
 			return literal.getName();
 		}
 		return null;

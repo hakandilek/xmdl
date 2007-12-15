@@ -50,6 +50,11 @@ public class RandomUtils {
         return random.nextInt(limit);
     }
 
+    public long randomLong(){
+        seed();
+        return random.nextLong();
+    }
+
     public boolean randomBoolean(){
         seed();
         return random.nextBoolean();
