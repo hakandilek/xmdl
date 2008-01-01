@@ -1,9 +1,8 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
-<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
-<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@taglib prefix="xd" id="xmdl.genext.xmdlDB" %>
+<%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@jet 
 	package="org.xmdl.ida.templates.core.model" 
 	class="EntityImpl"  
@@ -48,7 +47,12 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
     /** 
      * @generated
      */
-    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/>, nullable = false)
+	<c:if test="not(call($attribute, 'isReference'))">
+    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/>)
+	</c:if>
+	<c:if test="call($attribute, 'isReference')">
+	<ida:association attribute="$attribute" />
+	</c:if>
     private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>;
 	
 </c:iterate> 

@@ -55,7 +55,7 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
 			list = new ArrayList<<xc:cap element="$class"/>>();
 		} else {
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="not($attribute/reference)">
+	<c:if test="not(call($attribute, 'isReference'))">
 		<c:choose>
 		<c:when test="call($attribute/type, 'isComparable')">
 			<xc:attributeType attribute="$attribute"/> min<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Min();
@@ -83,7 +83,7 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
     	if (log.isDebugEnabled()) {
     		log.debug("search(<ida:searchParameters class="$class"/> <-");
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="not($attribute/reference)">
+	<c:if test="not(call($attribute, 'isReference'))">
 		<c:choose>
 		<c:when test="call($attribute/type, 'isComparable')">
         	log.debug("min<xc:cap element="$attribute"/>       : " + min<xc:cap element="$attribute"/>);
@@ -99,7 +99,7 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
     		
         Criteria criteria = getSession().createCriteria(<xc:cap element="$class"/>.class);
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="not($attribute/reference)">
+	<c:if test="not(call($attribute, 'isReference'))">
 		<c:choose>
 		<c:when test="$attribute/type/className = 'java.lang.String'">
         criteria.add(Restrictions.like("<xc:uncap element="$attribute"/>", "%" + <xc:uncap element="$attribute"/> + "%"));

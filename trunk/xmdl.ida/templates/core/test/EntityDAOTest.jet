@@ -14,7 +14,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.dao;
 
 <j:importsLocation package=""/>
 
-<xc:import pattern="java.util.Collection"/>
+<xc:import pattern="java.util.*"/>
 <xc:import pattern="org.springframework.dao.DataAccessException"/>
 <xc:import pattern="org.xmdl.ida.lib.test.BaseDaoTestCase"/>
 
@@ -50,7 +50,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="not($attribute/reference)">
+	<c:if test="not(call($attribute, 'isReference'))">
         <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
 	</c:if>
 </c:iterate> 
@@ -62,7 +62,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 
         assertNotNull(<xc:uncap element="$class"/>.getId());
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="not($attribute/reference)">
+	<c:if test="not(call($attribute, 'isReference'))">
 		assertEquals(<tu:random  attribute="$attribute" wrapString="true" />, <xc:uncap element="$class"/>.<xc:accessor attribute="$attribute"/>());
 	</c:if>
 </c:iterate> 
@@ -86,7 +86,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
     public void testSearch() throws Exception {
         <xc:cap element="$class"/>Search search = new <xc:cap element="$class"/>Search();
     <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="not($attribute/reference)">
+	<c:if test="not(call($attribute, 'isReference'))">
 		<c:choose>
 		<c:when test="call($attribute/type, 'isComparable')">
         search.<xc:mutator attribute="$attribute"/>Min(<tu:random attribute="$attribute" wrapString="true" />);
@@ -110,7 +110,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 
         <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="not($attribute/reference)">
+	<c:if test="not(call($attribute, 'isReference'))">
         <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
 	</c:if>
 </c:iterate> 
