@@ -38,6 +38,20 @@
                   use="optional">
             </attribute>
          </emptyTag>
+         <emptyTag
+               class="org.xmdl.ida.taglib.AssociationTag"
+               deprecated="false"
+               name="association">
+            <description>
+               Outputs association annotations for the given reference attribute 
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="attribute"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
       </tagLibrary>
    </extension>
 

@@ -39,9 +39,16 @@ public class SearchParametersTag extends BaseEmptyTag {
 		if (object instanceof XClass) {
 			XClass clazz = (XClass) object;
 			StringBuffer params = new StringBuffer();
+			int idx = 0;
 			for (Iterator<XAttribute> i = clazz.getAttributes().iterator(); i
-					.hasNext();) {
+					.hasNext(); ) {
 				XAttribute attribute = i.next();
+				if (attribute.isReference())
+					continue;
+				
+				if (idx++ > 0)
+					params.append(", ");
+				
 				XType type = attribute.getType();
 				boolean comparable = type.isComparable();
 				if (comparable) {
@@ -66,8 +73,6 @@ public class SearchParametersTag extends BaseEmptyTag {
 					params.append(" ");
 					params.append(ClassTagUtils.uncapName(attribute));
 				}
-				if (i.hasNext())
-					params.append(", ");
 			}// for
 			out.write(params);
 		}
