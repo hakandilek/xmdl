@@ -98,6 +98,9 @@ public class TestHelper {
 		if (XmdlTypes.JAVA_STRING.equals(type)) {
 			return utils.randomString(length);
 		}
+		if (XmdlTypes.JAVA_DATE.equals(type) || XmdlTypes.JAVA_DATETIME.equals(type)) {
+			return "new Date(" + utils.randomLong() + "L)";
+		}
 		if (type instanceof XEnumeration) {
 			XEnumeration enumer = (XEnumeration) type;
 			List<XEnumerationLiteral> literals = enumer.getLiterals();
