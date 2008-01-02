@@ -22,7 +22,7 @@ package <xc:qualifiedName element="$package"/>.dao.hibernate;
 
 /**
  *
- * '<xc:cap element="$package"/>' package Hibernate Configuration Test Case
+ * '<xc:qualifiedName element="$package"/>' package Hibernate Configuration Test Case
  *  
  * $Id$
  *
