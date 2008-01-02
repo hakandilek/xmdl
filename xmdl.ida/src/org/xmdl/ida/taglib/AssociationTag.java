@@ -70,8 +70,7 @@ public class AssociationTag extends BaseEmptyTag {
 					sb.append("\t@JoinColumn(");
 					sb.append("name = (\"");
 					sb.append(columnName);
-					sb.append("\"), ");
-					sb.append("nullable = false)");
+					sb.append("\"))");
 
 					break;
 				case XAssociationType.MANY_TO_MANY:
