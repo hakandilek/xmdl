@@ -1,0 +1,16 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@ jet 
+	package="org.xmdl.ida.templates.web.rsc" 
+	class="MailPropertiesWebImpl" 
+	%><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%># This properties file is used to configure mail settings in 
+# /WEB-INF/applicationContext-service.xml.
+
+mail.default.from=<xc:qualifiedName element="$project"/> <xmdl@googlegroups.com>
+mail.debug=false
+mail.transport.protocol=smtp
+mail.host=localhost
+mail.username=
+mail.password=
