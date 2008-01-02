@@ -1,0 +1,21 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@ jet 
+	package="org.xmdl.ida.templates.web.rsc" 
+	class="HibernateCfgXMLImpl" 
+	%><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%><!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <mapping class="org.xmdl.mesken.model.User"/>
+        <mapping class="org.xmdl.mesken.model.Role"/>
+<c:iterate select="$project/packages" var="package">
+	<c:iterate select="$package/classes" var="class">
+        <mapping class="<xc:qualifiedName element="$package"/>.model.<xc:cap element="$class"/>"/>
+	</c:iterate>
+</c:iterate>
+    </session-factory>
+</hibernate-configuration>
