@@ -76,10 +76,10 @@ public class TestHelper {
 			return utils.randomDouble(Math.pow(10, length));
 		}
 		if (XmdlTypes.JAVA_DOUBLE.equals(type)) {
-			return "new Long(" + utils.randomDouble(Math.pow(10, length)) + ")";
+			return "new Double(" + utils.randomDouble(Math.pow(10, length)) + ")";
 		}
 		if (XmdlTypes.JAVA_FLOAT.equals(type)) {
-			return "new Long(" + utils.randomDouble(Math.pow(10, length)) + ")";
+			return "new Float(" + utils.randomDouble(Math.pow(10, length)) + ")";
 		}
 		if (XmdlTypes.INT.equals(type)) {
 			return utils.randomInt((int) Math.pow(10, length));
