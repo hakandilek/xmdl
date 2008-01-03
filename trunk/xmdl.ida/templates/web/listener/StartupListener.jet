@@ -91,12 +91,12 @@ public class StartupListener implements ServletContextListener {
 
             if (ctx.containsBean("passwordEncoder")) {
                 encryptPassword = true;
-                config.put(TaslakConstants.ENCRYPT_PASSWORD, Boolean.TRUE);
+                config.put(ApplicationConstants.ENCRYPT_PASSWORD, Boolean.TRUE);
                 String algorithm = "SHA";
                 if (ctx.getBean("passwordEncoder") instanceof Md5PasswordEncoder) {
                     algorithm = "MD5";
                 }
-                config.put(TaslakConstants.ENC_ALGORITHM, algorithm);
+                config.put(ApplicationConstants.ENC_ALGORITHM, algorithm);
             }
         } catch (NoSuchBeanDefinitionException n) {
             log.debug("authenticationManager bean not found, assuming test and ignoring...");
@@ -110,7 +110,7 @@ public class StartupListener implements ServletContextListener {
             log.debug("Remember Me Enabled? " + config.get("rememberMeEnabled"));
             log.debug("Encrypt Passwords? " + encryptPassword);
             if (encryptPassword) {
-                log.debug("Encryption Algorithm: " + config.get(TaslakConstants.ENC_ALGORITHM));
+                log.debug("Encryption Algorithm: " + config.get(ApplicationConstants.ENC_ALGORITHM));
             }
             log.debug("Populating drop-downs...");
         }
@@ -128,7 +128,7 @@ public class StartupListener implements ServletContextListener {
         LookupManager mgr = (LookupManager) ctx.getBean("lookupManager");
 
         // get list of possible roles
-        context.setAttribute(TaslakConstants.AVAILABLE_ROLES, mgr.getAllRoles());
+        context.setAttribute(ApplicationConstants.AVAILABLE_ROLES, mgr.getAllRoles());
         log.debug("Drop-down initialization complete [OK]");
     }
 

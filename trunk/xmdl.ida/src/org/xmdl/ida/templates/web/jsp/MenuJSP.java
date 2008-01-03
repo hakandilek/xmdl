@@ -1,30 +1,26 @@
-package org.xmdl.ida.templates.web.rsc;
+package org.xmdl.ida.templates.web.jsp;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.xgen.Template;
 
 /**
- * log4j.xml file for web module template file
+ * menu.jsp file for web module template file
  * 
  * @author Hakan Dilek
  * 
  */
-public class Log4jXML extends Log4jXMLImpl implements Template {
+public class MenuJSP extends MenuJSPImpl implements Template {
 
     @Override
     public String targetFile(Object object) {
         StringBuffer buffer = new StringBuffer(
-                "web/src/main/resources/log4j.xml");
+                "web/src/main/webapp/common/menu.jsp");
         return buffer.toString();
     }
 
     @Override
     public boolean accept(Object object) {
-        if (object instanceof XProject) {
-            XProject project = (XProject) object;
-            return (project.getPackages().size() > 0);
-        }
-        return false;
+        return object instanceof XProject;
     }
 
     @Override

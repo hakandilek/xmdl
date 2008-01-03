@@ -1,0 +1,23 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@ jet 
+    package="org.xmdl.ida.templates.web.rsc" 
+    class="EntityValidationXMLImpl" 
+    %><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%><!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+    "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+
+<c:iterate select="$class/attributes" var="attribute">
+	<c:if test="not(call($attribute, 'isReference'))">
+    <field name="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>">
+        <field-validator type="required<c:if test="$attribute/type/className = 'java.lang.String'">string</c:if>">
+            <message key="errors.required"/>
+        </field-validator>
+    </field>
+
+	</c:if>
+</c:iterate> 
+
+</validators> 

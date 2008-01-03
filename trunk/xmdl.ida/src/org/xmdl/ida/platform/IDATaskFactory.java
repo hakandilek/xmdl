@@ -23,24 +23,41 @@ import org.xmdl.ida.templates.core.test.HibernateConfigurationTest;
 import org.xmdl.ida.templates.core.test.rsc.ApplicationContextResourcesXML;
 import org.xmdl.ida.templates.core.test.rsc.ApplicationContextTestXML;
 import org.xmdl.ida.templates.core.test.rsc.JDBCProperties;
-import org.xmdl.ida.templates.core.test.rsc.Log4jXML;
 import org.xmdl.ida.templates.core.test.rsc.MailProperties;
 import org.xmdl.ida.templates.core.test.rsc.PersistenceXML;
-import org.xmdl.ida.templates.core.test.rsc.SampleDataXML;
+import org.xmdl.ida.templates.core.test.rsc.CoreTestSampleDataXML;
+import org.xmdl.ida.templates.core.test.rsc.CoreTestLog4jXML;
 import org.xmdl.ida.templates.eclipse.Classpath;
 import org.xmdl.ida.templates.maven.CorePomXML;
 import org.xmdl.ida.templates.maven.RootPomXML;
 import org.xmdl.ida.templates.maven.WebPomXML;
 import org.xmdl.ida.templates.web.action.ReloadAction;
+import org.xmdl.ida.templates.web.jsp.EntityFormJSP;
+import org.xmdl.ida.templates.web.jsp.EntityListJSP;
+import org.xmdl.ida.templates.web.jsp.MenuJSP;
+import org.xmdl.ida.templates.web.jsp.TaglibsJSP;
 import org.xmdl.ida.templates.web.listener.StartupListener;
+import org.xmdl.ida.templates.web.rsc.ActionValidationXML;
 import org.xmdl.ida.templates.web.rsc.ApplicationContextResourcesXMLWeb;
 import org.xmdl.ida.templates.web.rsc.ApplicationResourcesProperties;
+import org.xmdl.ida.templates.web.rsc.EntityValidationXML;
 import org.xmdl.ida.templates.web.rsc.HibernateCfgXML;
+import org.xmdl.ida.templates.web.rsc.WebMainLog4jXML;
 import org.xmdl.ida.templates.web.rsc.MailPropertiesWeb;
 import org.xmdl.ida.templates.web.rsc.StrutsEntityXML;
 import org.xmdl.ida.templates.web.rsc.StrutsXML;
+import org.xmdl.ida.templates.web.site.SiteXML;
 import org.xmdl.ida.templates.web.taglib.ConstantsTag;
 import org.xmdl.ida.templates.web.taglib.ConstantsTei;
+import org.xmdl.ida.templates.web.test.StartupListenerTest;
+import org.xmdl.ida.templates.web.test.rsc.WebSampleDataXML;
+import org.xmdl.ida.templates.web.test.rsc.WebTestLog4jXML;
+import org.xmdl.ida.templates.web.test.rsc.WebTestsXML;
+import org.xmdl.ida.templates.web.webinf.ApplicationContextHibernateXML;
+import org.xmdl.ida.templates.web.webinf.MenuConfigXML;
+import org.xmdl.ida.templates.web.webinf.ResinWebXML;
+import org.xmdl.ida.templates.web.webinf.TaglibTLD;
+import org.xmdl.ida.templates.web.webinf.WebXML;
 
 import chrome.xmdl.XProject;
 import chrome.xmdl.xgen.AbstractTaskFactory;
@@ -63,8 +80,7 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
 
     private List<Task> predecessorTasks;
 
-    private static final Logger LOGGER = Logger
-            .getLogger(IDATaskFactory.class);
+    private static final Logger LOGGER = Logger.getLogger(IDATaskFactory.class);
 
     public IDATaskFactory() {
         super();
@@ -80,7 +96,7 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
     @Override
     public List<Task> createPredecessorTasks(XProject project,
             List<EObject> list) {
-        if (predecessorTasks == null){
+        if (predecessorTasks == null) {
             predecessorTasks = new ArrayList<Task>();
         }
         return predecessorTasks;
@@ -88,7 +104,7 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
 
     @Override
     public List<Task> createSuccessorTasks(XProject project, List<EObject> list) {
-        if (successorTasks == null){
+        if (successorTasks == null) {
             successorTasks = new ArrayList<Task>();
         }
         return successorTasks;
@@ -100,15 +116,15 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 templates = new ArrayList<Template>();
                 templates.clear();
 
-                //eclipse project files
-                templates.add(new Classpath());//project .classpath
-                
-                // build
-                templates.add(new RootPomXML());//project pom.xml
-                templates.add(new CorePomXML());//core module pom.xml
-                templates.add(new WebPomXML());//web module pom.xml
+                // eclipse project files
+                templates.add(new Classpath());// project .classpath
 
-                //Project General
+                // build
+                templates.add(new RootPomXML());// project pom.xml
+                templates.add(new CorePomXML());// core module pom.xml
+                templates.add(new WebPomXML());// web module pom.xml
+
+                // Project General
                 templates.add(new Constants());
 
                 // model
@@ -130,35 +146,60 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 templates.add(new ApplicationContextServiceXML());
                 templates.add(new ApplicationContextDAOXML());
 
-                //core tests
+                // core tests
                 templates.add(new HibernateConfigurationTest());
                 templates.add(new EntityDAOTest());
                 templates.add(new EntityServiceTest());
-                
-                //core test resources
+
+                // core test resources
                 templates.add(new ApplicationContextResourcesXML());
                 templates.add(new ApplicationContextTestXML());
                 templates.add(new JDBCProperties());
-                templates.add(new Log4jXML());
+                templates.add(new CoreTestLog4jXML());
                 templates.add(new MailProperties());
                 templates.add(new PersistenceXML());
-                templates.add(new SampleDataXML());
+                templates.add(new CoreTestSampleDataXML());
 
-                //web module sources
+                //tapestry resources
+                templates.add(new SiteXML());
+                
+                // web module sources
                 templates.add(new ReloadAction());
                 templates.add(new StartupListener());
                 templates.add(new ConstantsTag());
                 templates.add(new ConstantsTei());
 
-                //web module resources
+                // web module resources
                 templates.add(new ApplicationContextResourcesXMLWeb());
                 templates.add(new ApplicationResourcesProperties());
                 templates.add(new HibernateCfgXML());
-                templates.add(new Log4jXML());
+                templates.add(new WebMainLog4jXML());
                 templates.add(new MailPropertiesWeb());
                 templates.add(new StrutsEntityXML());
                 templates.add(new StrutsXML());
+                templates.add(new ActionValidationXML());
+                templates.add(new EntityValidationXML());
 
+                // WEB-INF resources
+                templates.add(new ApplicationContextHibernateXML());
+                templates.add(new MenuConfigXML());
+                templates.add(new ResinWebXML());
+                templates.add(new TaglibTLD());
+                templates.add(new WebXML());
+
+                // jsp files
+                templates.add(new EntityFormJSP());
+                templates.add(new EntityListJSP());
+                templates.add(new MenuJSP());
+                templates.add(new TaglibsJSP());
+                
+                //web tests
+                templates.add(new StartupListenerTest());
+                templates.add(new ApplicationContextDAOXML());
+                templates.add(new ApplicationContextServiceXML());
+                templates.add(new WebTestLog4jXML());
+                templates.add(new WebSampleDataXML());
+                templates.add(new WebTestsXML());
             }
         } catch (Throwable e) {
             LOGGER.warn("FATAL ", e);

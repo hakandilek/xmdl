@@ -9,7 +9,7 @@ import chrome.xmdldb.DModel;
  * @author Hakan Dilek
  *
  */
-public class SampleDataXML extends SampleDataXMLImpl implements Template {
+public class CoreTestSampleDataXML extends SampleDataXMLImpl implements Template {
 
     public String targetFile(Object object) {
         StringBuffer buffer = new StringBuffer("core/src/test/resources/sample-data.xml");

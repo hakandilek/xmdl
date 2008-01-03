@@ -1,0 +1,55 @@
+<%@ jet 
+    package="org.xmdl.ida.templates.web.jsp" 
+    class="EntityFormJSPImpl" 
+    startTag="<$"
+    endTag="$>"
+    %><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+<$@taglib prefix="ct" id="org.eclipse.jet.controlTags" $>
+<$@taglib prefix="xc" id="xmdl.genext.xmdlClass" $>
+<%@ include file="/common/taglibs.jsp"%>
+
+<head>
+    <title><fmt:message key="<xc:uncap element="$class"/>Detail.title"/></title>
+    <meta name="heading" content="<fmt:message key='<xc:uncap element="$class"/>Detail.heading'/>"/>
+</head>
+
+<!--copy URL-->
+<s:url id="copyUrl" namespace="/<xc:cap element="$class"/>" action="copy<xc:cap element="$class"/>.html" includeParams="false">
+    <s:param name="idToCopy">
+        <s:property value="<xc:uncap element="$class"/>.id"/>
+    </s:param>
+</s:url>
+
+<s:form id="<xc:uncap element="$class"/>Form" namespace="/<xc:cap element="$class"/>" action="save<xc:cap element="$class"/>" method="post" validate="true">
+    <li style="display: none">
+        <s:hidden key="<xc:uncap element="$class"/>.id"/>
+    </li>
+<ct:iterate select="$class/attributes" var="attribute">
+	<ct:if test="not(isEnumeration($attribute))">
+    <s:textfield key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" required="false" cssClass="text medium" labelposition="left"/>
+	</ct:if>
+	<ct:if test="isEnumeration($attribute)">
+    <s:select name="<xc:uncap element="$attribute"/>Ids" value="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>.value" listKey="value" key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>"
+              list="<xc:uncap element="$attribute"/>s" labelposition="left"/>
+	</ct:if>
+</ct:iterate> 
+
+    <li class="buttonBar bottom">
+        <c:if test="${empty <xc:uncap element="$class"/>.id}">
+            <s:submit cssClass="button" method="save" key="button.add" theme="simple"/>
+        </c:if>
+        <c:if test="${not empty <xc:uncap element="$class"/>.id}">
+            <s:submit cssClass="button" method="save" key="button.update" theme="simple"/>
+            <s:submit cssClass="button" method="delete" key="button.delete"
+                onclick="return confirmDelete('<xc:cap element="$class"/>')" theme="simple"/>
+            <s:a href="%{copyUrl}"><fmt:message key="button.copy"/></s:a>
+        </c:if>
+        <s:submit cssClass="button" method="cancel" key="button.cancel" theme="simple"/>
+    </li>
+</s:form>
+
+<script type="text/javascript">
+    Form.focusFirstElement($("<xc:uncap element="$class"/>Form"));
+</script>
