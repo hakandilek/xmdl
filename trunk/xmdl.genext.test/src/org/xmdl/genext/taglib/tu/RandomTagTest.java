@@ -107,8 +107,14 @@ public class RandomTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            Long.parseLong(a);
-            Long.parseLong(b);
+            assertTrue(a.startsWith("new Long("));
+            assertTrue(b.startsWith("new Long("));
+            assertTrue(a.endsWith("L)"));
+            assertTrue(b.endsWith("L)"));
+            String a1 = a.substring(9, a.length() - 2);
+            String b1 = b.substring(9, b.length() - 2);
+            Long.parseLong(a1);
+            Long.parseLong(b1);
             assertEquals(a, b);
         } catch (Exception e) {
             fail("parsing failed");
@@ -137,8 +143,14 @@ public class RandomTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            Integer.parseInt(a);
-            Integer.parseInt(b);
+            assertTrue(a.startsWith("new Integer("));
+            assertTrue(b.startsWith("new Integer("));
+            assertTrue(a.endsWith(")"));
+            assertTrue(b.endsWith(")"));
+            String a1 = a.substring(12, a.length() - 2);
+            String b1 = b.substring(12, b.length() - 2);
+            Integer.parseInt(a1);
+            Integer.parseInt(b1);
             assertEquals(a, b);
         } catch (Exception e) {
             fail("parsing failed");
@@ -167,8 +179,14 @@ public class RandomTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            Double.parseDouble(a);
-            Double.parseDouble(b);
+            assertTrue(a.startsWith("new Double("));
+            assertTrue(b.startsWith("new Double("));
+            assertTrue(a.endsWith(")"));
+            assertTrue(b.endsWith(")"));
+            String a1 = a.substring(11, a.length() - 1);
+            String b1 = b.substring(11, b.length() - 1);
+            Double.parseDouble(a1);
+            Double.parseDouble(b1);
             assertEquals(a, b);
         } catch (Exception e) {
             fail("parsing failed");
@@ -272,8 +290,14 @@ public class RandomTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            Long.parseLong(a);
-            Long.parseLong(b);
+            assertTrue(a.startsWith("new Long("));
+            assertTrue(b.startsWith("new Long("));
+            assertTrue(a.endsWith("L)"));
+            assertTrue(b.endsWith("L)"));
+            String a1 = a.substring(9, a.length() - 2);
+            String b1 = b.substring(9, b.length() - 2);
+            Long.parseLong(a1);
+            Long.parseLong(b1);
             assertEquals(a, b);
         } catch (Exception e) {
             fail("parsing failed");
@@ -302,8 +326,14 @@ public class RandomTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            Integer.parseInt(a);
-            Integer.parseInt(b);
+            assertTrue(a.startsWith("new Integer("));
+            assertTrue(b.startsWith("new Integer("));
+            assertTrue(a.endsWith(")"));
+            assertTrue(b.endsWith(")"));
+            String a1 = a.substring(12, a.length() - 2);
+            String b1 = b.substring(12, b.length() - 2);
+            Integer.parseInt(a1);
+            Integer.parseInt(b1);
             assertEquals(a, b);
         } catch (Exception e) {
             fail("parsing failed");
@@ -332,8 +362,14 @@ public class RandomTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            Double.parseDouble(a);
-            Double.parseDouble(b);
+            assertTrue(a.startsWith("new Double("));
+            assertTrue(b.startsWith("new Double("));
+            assertTrue(a.endsWith(")"));
+            assertTrue(b.endsWith(")"));
+            String a1 = a.substring(11, a.length() - 1);
+            String b1 = b.substring(11, b.length() - 1);
+            Double.parseDouble(a1);
+            Double.parseDouble(b1);
             assertEquals(a, b);
         } catch (Exception e) {
             fail("parsing failed");
@@ -437,8 +473,14 @@ public class RandomTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            Long.parseLong(a);
-            Long.parseLong(b);
+            assertTrue(a.startsWith("new Long("));
+            assertTrue(b.startsWith("new Long("));
+            assertTrue(a.endsWith("L)"));
+            assertTrue(b.endsWith("L)"));
+            String a1 = a.substring(9, a.length() - 2);
+            String b1 = b.substring(9, b.length() - 2);
+            Long.parseLong(a1);
+            Long.parseLong(b1);
             assertEquals(a, b);
         } catch (Exception e) {
             fail("parsing failed");
@@ -467,8 +509,14 @@ public class RandomTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            Integer.parseInt(a);
-            Integer.parseInt(b);
+            assertTrue(a.startsWith("new Integer("));
+            assertTrue(b.startsWith("new Integer("));
+            assertTrue(a.endsWith(")"));
+            assertTrue(b.endsWith(")"));
+            String a1 = a.substring(12, a.length() - 2);
+            String b1 = b.substring(12, b.length() - 2);
+            Integer.parseInt(a1);
+            Integer.parseInt(b1);
             assertEquals(a, b);
         } catch (Exception e) {
             fail("parsing failed");
@@ -497,8 +545,14 @@ public class RandomTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            Double.parseDouble(a);
-            Double.parseDouble(b);
+            assertTrue(a.startsWith("new Double("));
+            assertTrue(b.startsWith("new Double("));
+            assertTrue(a.endsWith(")"));
+            assertTrue(b.endsWith(")"));
+            String a1 = a.substring(11, a.length() - 1);
+            String b1 = b.substring(11, b.length() - 1);
+            Double.parseDouble(a1);
+            Double.parseDouble(b1);
             assertEquals(a, b);
         } catch (Exception e) {
             fail("parsing failed");
