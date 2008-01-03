@@ -88,6 +88,25 @@ public class ClassTagUtils {
     }
 
     /**
+     * Return the fully qualified path of the given class. e.g. if the Class is
+     * {@link String} then, the returned string will be "java/lang/String"
+     * 
+     * @param clazz
+     *            the class
+     * @return the fully qualified path
+     */
+    public static String qualifiedPath(XClass clazz) {
+        String name = capName(clazz.getName());
+        XPackage package1 = clazz.getXPackage();
+        if (package1 != null) {
+            String pn = qualifiedPath(package1);
+            if (!"".equals(pn))
+                name = pn + "/" + name;
+        }
+        return name;
+    }
+
+    /**
      * Return the fully qualified name of the given package e.g. if the package
      * is java.lang then, the returned string will be "java.lang"
      * 
@@ -99,6 +118,21 @@ public class ClassTagUtils {
         String name = package1.getName();
         name = uncapName(name);
         name = name.replaceAll("/", ".");
+        return name;
+    }
+
+    /**
+     * Return the fully qualified path of the given package e.g. if the package
+     * is java.lang then, the returned string will be "java/lang"
+     * 
+     * @param package1
+     *            the package
+     * @return the fully qualified path
+     */
+    public static String qualifiedPath(XPackage package1) {
+        String name = package1.getName();
+        name = uncapName(name);
+        name = name.replaceAll("\\.", "/");
         return name;
     }
 
@@ -118,6 +152,26 @@ public class ClassTagUtils {
             String pn = qualifiedName(package1);
             if (!"".equals(pn))
                 name = pn + "." + name;
+        }
+        return name;
+    }
+
+    /**
+     * Return the fully qualified path of the given enumeration. e.g. if the
+     * enumeration is {@link ElementType} then, the returned string will be
+     * "java.lang.annotation.ElementType"
+     * 
+     * @param enumeration
+     *            the enumeration
+     * @return the fully qualified path
+     */
+    public static String qualifiedPath(XEnumeration enumeration) {
+        String name = capName(enumeration.getName());
+        XPackage package1 = enumeration.getXPackage();
+        if (package1 != null) {
+            String pn = qualifiedPath(package1);
+            if (!"".equals(pn))
+                name = pn + "/" + name;
         }
         return name;
     }

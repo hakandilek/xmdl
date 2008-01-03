@@ -12,6 +12,7 @@ public class AllTagTests {
         suite.addTestSuite(UncapitalizeTagTest.class);
         suite.addTestSuite(CapitalizeTagTest.class);
         suite.addTestSuite(QualifiedNameTagTest.class);
+        suite.addTestSuite(QualifiedPathTagTest.class);
         suite.addTestSuite(AccessorTagTest.class);
         suite.addTestSuite(MutatorTagTest.class);
         suite.addTestSuite(DefaultValueTagTest.class);
