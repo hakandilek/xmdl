@@ -89,12 +89,11 @@ public class TestHelper {
 					+ ")";
 		}
 		if (XmdlTypes.LONG.equals(type)) {
-			return utils.randomInt((int) Math.pow(10, length)) + "L";
+			return utils.randomLong();
 		}
 		if (XmdlTypes.JAVA_LONG.equals(type)) {
-			return "new Long(" + utils.randomInt((int) Math.pow(10, length))
-					+ "L)";
-		}
+            return "new Long(" + utils.randomLong() + "L)";
+        }
 		if (XmdlTypes.JAVA_STRING.equals(type)) {
 			return utils.randomString(length);
 		}
