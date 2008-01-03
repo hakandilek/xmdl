@@ -9,7 +9,7 @@ import chrome.xmdl.xgen.Template;
  * @author Hakan Dilek
  * 
  */
-public class Log4jXML extends Log4jXMLImpl
+public class CoreTestLog4jXML extends Log4jXMLImpl
 		implements Template {
 
 	@Override
