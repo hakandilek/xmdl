@@ -56,6 +56,17 @@
             </attribute>
          </emptyTag>
          <emptyTag
+               class="org.xmdl.genext.taglib.xc.QualifiedPathTag"
+               deprecated="false"
+               name="qualifiedPath">
+            <attribute
+                  deprecated="false"
+                  name="element"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
+         <emptyTag
                class="org.xmdl.genext.taglib.xc.AccessorTag"
                deprecated="false"
                name="accessor">
