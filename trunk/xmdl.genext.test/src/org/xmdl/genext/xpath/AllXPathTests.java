@@ -9,6 +9,7 @@ public class AllXPathTests {
         TestSuite suite = new TestSuite("Test for org.xmdl.genext.xpath");
         //$JUnit-BEGIN$
         suite.addTestSuite(CallFunctionTest.class);
+        suite.addTestSuite(IsEnumerationFunctionTest.class);
         //$JUnit-END$
         return suite;
     }

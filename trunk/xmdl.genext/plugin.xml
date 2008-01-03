@@ -209,6 +209,12 @@
             minArgs="2"
             name="call">
       </function>
+      <function
+            implementation="org.xmdl.genext.xpath.IsEnumerationFunction"
+            maxArgs="1"
+            minArgs="1"
+            name="isEnumeration">
+      </function>
    </extension>
 
 </plugin>
