@@ -82,4 +82,8 @@
 	<classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4.jar" sourcepath="M2_REPO/javax/servlet/servlet-api/2.4/servlet-api-2.4-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/javax/servlet/jsp-api/2.0/jsp-api-2.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/opensymphony/xwork/2.0.4/xwork-2.0.4.jar" sourcepath="M2_REPO/com/opensymphony/xwork/2.0.4/xwork-2.0.4-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/struts/struts2-core/2.0.9/struts2-core-2.0.9.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/struts/struts2-spring-plugin/2.0.9/struts2-spring-plugin-2.0.9.jar"/>
+	<classpathentry kind="var" path="M2_REPO/struts-menu/struts-menu/2.4.3/struts-menu-2.4.3.jar" sourcepath="M2_REPO/struts-menu/struts-menu/2.4.3/struts-menu-2.4.3-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/struts/struts2-codebehind-plugin/2.0.9/struts2-codebehind-plugin-2.0.9.jar"/>
 </classpath>
