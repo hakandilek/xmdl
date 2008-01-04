@@ -1,0 +1,343 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@ jet 
+    package="org.xmdl.ida.templates.web.action" 
+    class="EntityActionImpl" 
+    %><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <xc:qualifiedName element="$class/XPackage"/>.webapp.action;
+
+<j:importsLocation package=""/>
+
+<xc:import pattern="$element.service.*" element="$class/XPackage"/>
+<xc:import pattern="$element.model.*" element="$class/XPackage"/>
+<xc:import pattern="$element.model.search.*" element="$class/XPackage"/>
+<xc:import pattern="java.util.*"/>
+<xc:import pattern="org.apache.struts2.interceptor.validation.SkipValidation"/>
+<xc:import pattern="org.springframework.dao.DataIntegrityViolationException"/>
+<xc:import pattern="org.xmdl.ida.lib.web.action.BaseAction"/>
+<xc:import pattern="com.opensymphony.xwork2.Preparable"/>
+
+/**
+ * @generated
+ */
+public class <xc:cap element="$class"/>Action extends BaseAction implements Preparable {
+
+    /**
+     * @generated
+     */
+    private <xc:cap element="$class"/>Manager <xc:uncap element="$class"/>Manager;
+
+    /**
+     * @generated
+     */
+    private Collection<<xc:cap element="$class"/>> <xc:uncap element="$class"/>s;
+
+    /**
+     * @generated
+     */
+    private <xc:cap element="$class"/> <xc:uncap element="$class"/>;
+    
+    /**
+     * @generated
+     */
+    private Long id;
+
+    /**
+     * @generated
+     */
+    private Long idToCopy;
+
+<ct:iterate select="$class/attributes" var="attribute">
+    <ct:if test="isEnumeration($attribute)">
+    /**
+     * @generated
+     */
+    private <xc:cap element="$attribute/type"/>[] <xc:uncap element="$attribute"/>s;
+
+    /**
+     * @generated
+     */
+    private Integer[] <xc:uncap element="$attribute"/>Ids;
+    </ct:if>
+</ct:iterate> 
+
+    /**
+     * @generated
+     */
+    private <xc:cap element="$class"/>Search <xc:uncap element="$class"/>Search = new <xc:cap element="$class"/>Search();
+
+    /**
+     * @generated
+     */
+    public void set<xc:cap element="$class"/>Manager(<xc:cap element="$class"/>Manager <xc:uncap element="$class"/>Manager) {
+        this.<xc:uncap element="$class"/>Manager = <xc:uncap element="$class"/>Manager;
+    }
+
+    /**
+     * @generated
+     */
+    public Collection get<xc:cap element="$class"/>s() {
+        return <xc:uncap element="$class"/>s;
+    }
+
+    /**
+     * @generated
+     */
+    public void prepare() {
+        if (getRequest().getMethod().equalsIgnoreCase("post")) {
+            // prevent failures on new
+            if (id != null) {
+                <xc:uncap element="$class"/> = <xc:uncap element="$class"/>Manager.get((long) id);
+            }else{
+                <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
+            }
+        }
+
+    <ct:iterate select="$class/attributes" var="attribute">
+        <ct:if test="isEnumeration($attribute)">
+        <xc:uncap element="$attribute"/>s = <xc:cap element="$attribute/type"/>.values();
+        </ct:if>
+    </ct:iterate> 
+
+    }
+
+    /**
+     * @generated
+     */
+    @SkipValidation
+    public String list() {
+        if (log.isDebugEnabled()) log.debug("list() <-");
+
+    <ct:iterate select="$class/attributes" var="attribute">
+        <ct:if test="isEnumeration($attribute)">
+        if(<xc:uncap element="$attribute"/>Ids!=null){
+            <xc:uncap element="$class"/>Search.set<xc:cap element="$attribute"/>(<xc:cap element="$attribute/type"/>.fromInt(<xc:uncap element="$attribute"/>Ids[0]));
+        }
+        </ct:if>
+    </ct:iterate> 
+        <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>Manager.search(<xc:uncap element="$class"/>Search);
+
+        if (log.isDebugEnabled()) log.debug("listing items:" + <xc:uncap element="$class"/>s.size());
+        if (log.isDebugEnabled()) log.debug("list() ->");
+        return SUCCESS;
+    }
+
+    /**
+     * @generated
+     */
+    public void setId(Long id) {
+        this. id = id;
+    }
+
+    /**
+     * @generated
+     */
+    public <xc:cap element="$class"/> get<xc:cap element="$class"/>() {
+        return <xc:uncap element="$class"/>;
+    }
+
+    /**
+     * @generated
+     */
+    public void set<xc:cap element="$class"/>(<xc:cap element="$class"/> <xc:uncap element="$class"/>) {
+        this.<xc:uncap element="$class"/> = <xc:uncap element="$class"/>;
+    }
+
+    /**
+     * @generated
+     */
+    @SkipValidation
+    public String delete() {
+        if (log.isDebugEnabled()) log.debug("delete() <-");
+
+        <xc:uncap element="$class"/>Manager.remove(<xc:uncap element="$class"/>.getId());
+        saveMessage(getText("<xc:uncap element="$class"/>.deleted"));
+
+        if (log.isDebugEnabled()) log.debug("deleting <xc:uncap element="$class"/>: " + <xc:uncap element="$class"/>);
+        if (log.isDebugEnabled()) log.debug("delete() ->");
+
+        return SUCCESS;
+    }
+
+    /**
+     * @generated
+     */
+    public String copy() {
+        if (log.isDebugEnabled()) log.debug("copy() <-");
+
+        if (idToCopy != null) {
+            <xc:uncap element="$class"/> = <xc:uncap element="$class"/>Manager.get(idToCopy);
+        }
+
+        <xc:uncap element="$class"/>.setId(null);
+
+        if (log.isDebugEnabled()) log.debug("copying <xc:uncap element="$class"/>: " + <xc:uncap element="$class"/>);
+        if (log.isDebugEnabled()) log.debug("copy() ->");
+
+        return SUCCESS;
+    }
+
+    /**
+     * @generated
+     */
+    public String edit() {
+        if (log.isDebugEnabled()) log.debug("edit() <-");
+
+        if (id != null) {
+            <xc:uncap element="$class"/> = <xc:uncap element="$class"/>Manager.get(id);
+        } else {
+            <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
+        }
+
+        if (log.isDebugEnabled()) log.debug("editing <xc:uncap element="$class"/>: " + <xc:uncap element="$class"/>);
+        if (log.isDebugEnabled()) log.debug("edit() ->");
+
+        return SUCCESS;
+    }
+
+    /**
+     * @generated
+     */
+    @SkipValidation
+    public String deleteMass() throws Exception {
+        if (log.isDebugEnabled()) log.debug("deleteMass() <-");
+
+        boolean cannotDeleted = false;
+        boolean anyDeleted = false;
+        if (getDeleteId() != null) {
+            for (String idStr : getDeleteId()) {
+                try {
+                    <xc:uncap element="$class"/>Manager.remove(new Long(idStr));
+                    anyDeleted = true;
+
+                    if (log.isDebugEnabled()) log.debug("deleting <xc:uncap element="$class"/> with id: " + idStr);
+                } catch (DataIntegrityViolationException e) {
+                    e.printStackTrace();
+                    cannotDeleted = true;
+
+                    if (log.isDebugEnabled()) log.debug("could not delete <xc:uncap element="$class"/> with id: " + idStr);
+                }
+            }
+        }
+        if (cannotDeleted) saveMessage(getText("<xc:cap element="$class"/>.cannotBeDeleted"));
+        if (anyDeleted) saveMessage(getText("<xc:cap element="$class"/>.deleted"));
+
+        <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>Manager.search(<xc:uncap element="$class"/>Search);
+
+        if (log.isDebugEnabled()) log.debug("deleteMass() ->");
+
+        return SUCCESS;
+    }
+
+
+    /**
+     * @generated
+     */
+    public String save() throws Exception {
+        if (log.isDebugEnabled()) log.debug("save() <-");
+
+        if (cancel != null) {
+            if (log.isDebugEnabled()) log.debug("save() ->");
+            return "cancel";
+        }
+
+        if (delete != null) {
+            if (log.isDebugEnabled()) log.debug("save() ->");
+            return delete();
+        }
+
+        boolean isNew = (<xc:uncap element="$class"/>.getId() == null);
+
+    <ct:iterate select="$class/attributes" var="attribute">
+        <ct:if test="isEnumeration($attribute)">
+        <xc:uncap element="$class"/>.set<xc:cap element="$attribute"/>(<xc:cap element="$attribute/type"/>.fromInt(Integer.valueOf(<xc:uncap element="$attribute"/>Ids[0])));
+        </ct:if>
+    </ct:iterate> 
+
+        <xc:uncap element="$class"/>Manager.save(<xc:uncap element="$class"/>);
+
+        String key = (isNew) ? "<xc:uncap element="$class"/>.added" : "<xc:uncap element="$class"/>.updated";
+        saveMessage(getText(key));
+
+        String logMessage = (isNew) ? "adding <xc:uncap element="$class"/>: " + <xc:uncap element="$class"/> : "updating <xc:uncap element="$class"/>: " + <xc:uncap element="$class"/>;
+        if (log.isDebugEnabled()) log.debug(logMessage);
+        if (log.isDebugEnabled()) log.debug("save() ->");
+
+        if (!isNew) {
+            return INPUT;
+        } else {
+            return SUCCESS;
+        }
+    }
+
+    /**
+     * @generated
+     */
+    public <xc:cap element="$class"/>Search get<xc:cap element="$class"/>Search() {
+        return <xc:uncap element="$class"/>Search;
+    }
+
+    /**
+     * @generated
+     */
+    public void set<xc:cap element="$class"/>Search(<xc:cap element="$class"/>Search <xc:uncap element="$class"/>Search) {
+        this.<xc:uncap element="$class"/>Search = <xc:uncap element="$class"/>Search;
+    }
+
+    /**
+     * @generated
+     */
+    public Long getIdToCopy() {
+        return idToCopy;
+    }
+
+    /**
+     * @generated
+     */
+    public void setIdToCopy(Long idToCopy) {
+        this.idToCopy = idToCopy;
+    }
+
+    /**
+     * @generated
+     */
+    public <xc:cap element="$class"/>Manager get<xc:cap element="$class"/>Manager() {
+        return <xc:uncap element="$class"/>Manager;
+    }
+
+<ct:iterate select="$class/attributes" var="attribute">
+    <ct:if test="isEnumeration($attribute)">
+    /**
+     * @generated
+     */
+    public <xc:cap element="$attribute/type"/>[] get<xc:cap element="$attribute"/>s() {
+        return <xc:uncap element="$attribute"/>s;
+    }
+
+    /**
+     * @generated
+     */
+    public void set<xc:cap element="$attribute"/>s(<xc:cap element="$attribute/type"/>[] <xc:uncap element="$attribute"/>s) {
+        this.<xc:uncap element="$attribute"/>s = <xc:uncap element="$attribute"/>s;
+    }
+
+    /**
+     * @generated
+     */
+    public Integer[] get<xc:uncap element="$attribute"/>Ids() {
+        return <xc:uncap element="$attribute"/>Ids;
+    }
+
+    /**
+     * @generated
+     */
+    public void set<xc:uncap element="$attribute"/>Ids(Integer[] <xc:uncap element="$attribute"/>Ids) {
+        this.<xc:uncap element="$attribute"/>Ids = <xc:uncap element="$attribute"/>Ids;
+    }
+    
+    </ct:if>
+</ct:iterate> 
+
+}

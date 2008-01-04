@@ -31,6 +31,7 @@ import org.xmdl.ida.templates.eclipse.Classpath;
 import org.xmdl.ida.templates.maven.CorePomXML;
 import org.xmdl.ida.templates.maven.RootPomXML;
 import org.xmdl.ida.templates.maven.WebPomXML;
+import org.xmdl.ida.templates.web.action.EntityAction;
 import org.xmdl.ida.templates.web.action.ReloadAction;
 import org.xmdl.ida.templates.web.jsp.EntityFormJSP;
 import org.xmdl.ida.templates.web.jsp.EntityListJSP;
@@ -49,6 +50,7 @@ import org.xmdl.ida.templates.web.rsc.StrutsXML;
 import org.xmdl.ida.templates.web.site.SiteXML;
 import org.xmdl.ida.templates.web.taglib.ConstantsTag;
 import org.xmdl.ida.templates.web.taglib.ConstantsTei;
+import org.xmdl.ida.templates.web.test.EntityActionTest;
 import org.xmdl.ida.templates.web.test.StartupListenerTest;
 import org.xmdl.ida.templates.web.test.rsc.WebSampleDataXML;
 import org.xmdl.ida.templates.web.test.rsc.WebTestLog4jXML;
@@ -164,6 +166,7 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 templates.add(new SiteXML());
                 
                 // web module sources
+                templates.add(new EntityAction());
                 templates.add(new ReloadAction());
                 templates.add(new StartupListener());
                 templates.add(new ConstantsTag());
@@ -194,6 +197,7 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 templates.add(new TaglibsJSP());
                 
                 //web tests
+                templates.add(new EntityActionTest());
                 templates.add(new StartupListenerTest());
                 templates.add(new ApplicationContextDAOXML());
                 templates.add(new ApplicationContextServiceXML());

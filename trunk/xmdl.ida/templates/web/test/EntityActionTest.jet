@@ -1,0 +1,146 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@ jet 
+    package="org.xmdl.ida.templates.web.test" 
+    class="EntityActionTestImpl" 
+    %><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>package <xc:qualifiedName element="$class/XPackage"/>.webapp.action;
+
+<j:importsLocation package=""/>
+
+<xc:import pattern="$element.service.*" element="$class/XPackage"/>
+<xc:import pattern="$element.model.*" element="$class/XPackage"/>
+<xc:import pattern="$element.model.search.*" element="$class/XPackage"/>
+<xc:import pattern="com.opensymphony.xwork2.ActionSupport"/>
+<xc:import pattern="org.apache.struts2.ServletActionContext"/>
+<xc:import pattern="org.xmdl.ida.lib.web.test.BaseActionTestCase"/>
+<xc:import pattern="org.springframework.mock.web.MockHttpServletRequest"/>
+<xc:import pattern="org.springframework.dao.DataIntegrityViolationException"/>
+<xc:import pattern="org.hibernate.exception.ConstraintViolationException"/>
+<xc:import pattern="java.util.List"/>
+<xc:import pattern="java.util.ArrayList"/>
+
+/**
+ * 
+ * @author Hakan Dilek
+ * 
+ * @generated
+ */
+public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
+    private <xc:cap element="$class"/>Action action;
+
+    <ct:iterate select="$class/attributes" var="attribute">
+        <ct:if test="isEnumeration($attribute)">
+    private Integer[] <xc:uncap element="$attribute"/>Ids = new Integer[]{
+            <ct:iterate select="$attribute/type/literals" var="literal">
+            <xc:cap element="$attribute/type"/>.<xc:cap element="$literal"/>.getValue(),
+            </ct:iterate> 
+    };
+        </ct:if>
+    </ct:iterate> 
+
+    @Override
+    @SuppressWarnings("unchecked")
+    protected void onSetUpBeforeTransaction() throws Exception {
+        super.onSetUpBeforeTransaction();
+        action = new <xc:cap element="$class"/>Action();
+        <xc:cap element="$class"/>Manager <xc:uncap element="$class"/>Manager = (<xc:cap element="$class"/>Manager) applicationContext.getBean("<xc:uncap element="$class"/>Manager");
+        action.set<xc:cap element="$class"/>Manager(<xc:uncap element="$class"/>Manager);
+
+        // add a test <xc:uncap element="$class"/> to the database
+        <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
+
+        // enter all required fields
+    <ct:iterate select="$class/attributes" var="attribute">
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
+    </ct:iterate> 
+
+        <xc:cap element="$class"/>Search search = new <xc:cap element="$class"/>Search();
+        action.set<xc:cap element="$class"/>Search(search);
+
+    <ct:iterate select="$class/attributes" var="attribute">
+        <ct:if test="isEnumeration($attribute)">
+        action.set<xc:cap element="$attribute"/>Ids(<xc:uncap element="$attribute"/>Ids);
+        </ct:if>
+    </ct:iterate> 
+
+        <xc:uncap element="$class"/>Manager.save(<xc:uncap element="$class"/>);
+    }
+
+    public void testSearch() throws Exception {
+    <ct:iterate select="$class/attributes" var="attribute">
+        <ct:if test="isEnumeration($attribute)">
+        action.set<xc:cap element="$attribute"/>Ids(null);
+        </ct:if>
+    </ct:iterate> 
+        assertEquals(action.list(), ActionSupport.SUCCESS);
+        assertTrue(action.get<xc:cap element="$class"/>s().size() >= 1);
+    <ct:iterate select="$class/attributes" var="attribute">
+        <ct:if test="isEnumeration($attribute)">
+        action.set<xc:cap element="$attribute"/>Ids(<xc:uncap element="$attribute"/>Ids);
+        </ct:if>
+    </ct:iterate> 
+    }
+
+    public void testCopy() throws Exception {
+        action.setIdToCopy(1L);
+        assertEquals("success", action.copy());
+        assertNotNull(action.get<xc:cap element="$class"/>());
+        assertNull(action.get<xc:cap element="$class"/>().getId());
+    }
+
+    public void testEdit() throws Exception {
+        log.debug("testing edit...");
+        action.setId(1L);
+        assertNull(action.get<xc:cap element="$class"/>());
+        assertEquals("success", action.edit());
+        assertNotNull(action.get<xc:cap element="$class"/>());
+        assertFalse(action.hasActionErrors());
+    }
+
+    public void testSave() throws Exception {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        ServletActionContext.setRequest(request);
+        action.setId(1L);
+        assertEquals("success", action.edit());
+        assertNotNull(action.get<xc:cap element="$class"/>());
+
+        <xc:cap element="$class"/> <xc:uncap element="$class"/> = action.get<xc:cap element="$class"/>();
+        // update required fields
+
+        action.set<xc:cap element="$class"/>(<xc:uncap element="$class"/>);
+
+        assertEquals("input", action.save());
+        assertFalse(action.hasActionErrors());
+        assertFalse(action.hasFieldErrors());
+        assertNotNull(request.getSession().getAttribute("messages"));
+    }
+
+    public void testRemove() throws Exception {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        ServletActionContext.setRequest(request);
+        action.setDelete("");
+        <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
+        <xc:uncap element="$class"/>.setId(2L);
+        action.set<xc:cap element="$class"/>(<xc:uncap element="$class"/>);
+        assertEquals("success", action.delete());
+        assertNotNull(request.getSession().getAttribute("messages"));
+    }
+
+    public void testMassDelete() throws Exception {
+        <xc:cap element="$class"/> p = action.get<xc:cap element="$class"/>Manager().getAll().get(0);
+
+        List<String> deleteIds = new ArrayList<String>();
+        deleteIds.add(p.getId() + "");
+
+        action.setDeleteId(deleteIds);
+        try {
+            assertEquals("success", action.deleteMass());
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+        } catch (ConstraintViolationException e) {
+            e.printStackTrace();
+        }
+    }
+}
