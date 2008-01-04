@@ -1,10 +1,15 @@
 package org.xmdl.ida.platform;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
+import org.xmdl.ida.plugin.XMDLIDAPlugin;
 import org.xmdl.ida.templates.core.dao.EntityDAO;
 import org.xmdl.ida.templates.core.dao.EntityDAOHibernate;
 import org.xmdl.ida.templates.core.model.Entity;
@@ -22,11 +27,11 @@ import org.xmdl.ida.templates.core.test.EntityServiceTest;
 import org.xmdl.ida.templates.core.test.HibernateConfigurationTest;
 import org.xmdl.ida.templates.core.test.rsc.ApplicationContextResourcesXML;
 import org.xmdl.ida.templates.core.test.rsc.ApplicationContextTestXML;
+import org.xmdl.ida.templates.core.test.rsc.CoreTestLog4jXML;
+import org.xmdl.ida.templates.core.test.rsc.CoreTestSampleDataXML;
 import org.xmdl.ida.templates.core.test.rsc.JDBCProperties;
 import org.xmdl.ida.templates.core.test.rsc.MailProperties;
 import org.xmdl.ida.templates.core.test.rsc.PersistenceXML;
-import org.xmdl.ida.templates.core.test.rsc.CoreTestSampleDataXML;
-import org.xmdl.ida.templates.core.test.rsc.CoreTestLog4jXML;
 import org.xmdl.ida.templates.eclipse.Classpath;
 import org.xmdl.ida.templates.maven.CorePomXML;
 import org.xmdl.ida.templates.maven.RootPomXML;
@@ -44,10 +49,10 @@ import org.xmdl.ida.templates.web.rsc.ApplicationResourcesProperties;
 import org.xmdl.ida.templates.web.rsc.Dummy;
 import org.xmdl.ida.templates.web.rsc.EntityValidationXML;
 import org.xmdl.ida.templates.web.rsc.HibernateCfgXML;
-import org.xmdl.ida.templates.web.rsc.WebMainLog4jXML;
 import org.xmdl.ida.templates.web.rsc.MailPropertiesWeb;
 import org.xmdl.ida.templates.web.rsc.StrutsEntityXML;
 import org.xmdl.ida.templates.web.rsc.StrutsXML;
+import org.xmdl.ida.templates.web.rsc.WebMainLog4jXML;
 import org.xmdl.ida.templates.web.site.SiteXML;
 import org.xmdl.ida.templates.web.taglib.ConstantsTag;
 import org.xmdl.ida.templates.web.taglib.ConstantsTei;
@@ -67,6 +72,7 @@ import chrome.xmdl.xgen.AbstractTaskFactory;
 import chrome.xmdl.xgen.Task;
 import chrome.xmdl.xgen.TaskFactory;
 import chrome.xmdl.xgen.Template;
+import chrome.xmdl.xgen.UnzipTask;
 
 /**
  * The Task Factory class for the IDA platform. All Code Generation tasks are
@@ -101,6 +107,27 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
             List<EObject> list) {
         if (predecessorTasks == null) {
             predecessorTasks = new ArrayList<Task>();
+            String projectName = project.getName();
+            String targetBase = "/" + projectName + "/";
+
+            Map<String, String> filenameReplacement = new HashMap<String, String>();
+            filenameReplacement.put("project.name", projectName);
+
+            //IFolder target = null;
+            InputStream input = null;
+            try {
+                URL baseURL = XMDLIDAPlugin.INSTANCE.getBaseURL();
+                
+                URL file = new URL(baseURL, "/extras/extras.zip");
+                
+                input = file.openStream();
+            } catch (Exception e) {
+                LOGGER.debug("Exception :" + targetBase, e);
+            }
+            
+            UnzipTask unzipTask = new UnzipTask(input, targetBase);
+            unzipTask.setFilenameReplacement(filenameReplacement);
+            predecessorTasks.add(unzipTask);
         }
         return predecessorTasks;
     }
