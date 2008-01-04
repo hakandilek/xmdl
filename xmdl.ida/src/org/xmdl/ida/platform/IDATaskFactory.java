@@ -41,6 +41,7 @@ import org.xmdl.ida.templates.web.listener.StartupListener;
 import org.xmdl.ida.templates.web.rsc.ActionValidationXML;
 import org.xmdl.ida.templates.web.rsc.ApplicationContextResourcesXMLWeb;
 import org.xmdl.ida.templates.web.rsc.ApplicationResourcesProperties;
+import org.xmdl.ida.templates.web.rsc.Dummy;
 import org.xmdl.ida.templates.web.rsc.EntityValidationXML;
 import org.xmdl.ida.templates.web.rsc.HibernateCfgXML;
 import org.xmdl.ida.templates.web.rsc.WebMainLog4jXML;
@@ -182,6 +183,7 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 templates.add(new StrutsXML());
                 templates.add(new ActionValidationXML());
                 templates.add(new EntityValidationXML());
+                templates.add(new Dummy());
 
                 // WEB-INF resources
                 templates.add(new ApplicationContextHibernateXML());
