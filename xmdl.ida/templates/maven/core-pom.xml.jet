@@ -125,7 +125,7 @@
     <!-- Dependencies calculated when running full-source plugin -->
     <dependencies>
         <dependency>
-            <groupId>org.xmdl.taslak</groupId>
+            <groupId>org.xmdl.ida</groupId>
             <artifactId>ida-corelib</artifactId>
             <version>${ida-corelib.version}</version>
         </dependency>

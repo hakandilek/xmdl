@@ -187,12 +187,12 @@
             <version>${jdbc.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.xmdl.taslak</groupId>
+            <groupId>org.xmdl.ida</groupId>
             <artifactId>ida-corelib</artifactId>
             <version>${ida-corelib.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.xmdl.taslak</groupId>
+            <groupId>org.xmdl.ida</groupId>
             <artifactId>ida-weblib</artifactId>
             <version>${ida-corelib.version}</version>
         </dependency>
@@ -202,12 +202,12 @@
             <version>${pom.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.xmdl.taslak</groupId>
+            <groupId>org.xmdl.ida</groupId>
             <artifactId>mesken-core</artifactId>
             <version>${ida-corelib.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.xmdl.taslak</groupId>
+            <groupId>org.xmdl.ida</groupId>
             <artifactId>mesken-weblib</artifactId>
             <version>${ida-corelib.version}</version>
         </dependency>
