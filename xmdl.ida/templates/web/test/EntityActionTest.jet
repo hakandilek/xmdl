@@ -1,25 +1,26 @@
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@taglib prefix="tu" id="xmdl.genext.testUtils" %>
 <%@ jet 
     package="org.xmdl.ida.templates.web.test" 
     class="EntityActionTestImpl" 
     %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
-%>package <xc:qualifiedName element="$class/XPackage"/>.webapp.action;
+%>package <xc:qualifiedName element="$class/xPackage"/>.webapp.action;
 
 <j:importsLocation package=""/>
 
-<xc:import pattern="$element.service.*" element="$class/XPackage"/>
-<xc:import pattern="$element.model.*" element="$class/XPackage"/>
-<xc:import pattern="$element.model.search.*" element="$class/XPackage"/>
+<xc:import pattern="$element.service.*" element="$class/xPackage"/>
+<xc:import pattern="$element.model.*" element="$class/xPackage"/>
+<xc:import pattern="$element.model.search.*" element="$class/xPackage"/>
 <xc:import pattern="com.opensymphony.xwork2.ActionSupport"/>
 <xc:import pattern="org.apache.struts2.ServletActionContext"/>
 <xc:import pattern="org.xmdl.ida.lib.web.test.BaseActionTestCase"/>
 <xc:import pattern="org.springframework.mock.web.MockHttpServletRequest"/>
 <xc:import pattern="org.springframework.dao.DataIntegrityViolationException"/>
 <xc:import pattern="org.hibernate.exception.ConstraintViolationException"/>
-<xc:import pattern="java.util.List"/>
-<xc:import pattern="java.util.ArrayList"/>
+<xc:import pattern="java.util.*"/>
 
 /**
  * 
@@ -30,15 +31,15 @@
 public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
     private <xc:cap element="$class"/>Action action;
 
-    <ct:iterate select="$class/attributes" var="attribute">
-        <ct:if test="isEnumeration($attribute)">
+    <c:iterate select="$class/attributes" var="attribute">
+        <c:if test="isEnumeration($attribute)">
     private Integer[] <xc:uncap element="$attribute"/>Ids = new Integer[]{
-            <ct:iterate select="$attribute/type/literals" var="literal">
+            <c:iterate select="$attribute/type/literals" var="literal">
             <xc:cap element="$attribute/type"/>.<xc:cap element="$literal"/>.getValue(),
-            </ct:iterate> 
+            </c:iterate> 
     };
-        </ct:if>
-    </ct:iterate> 
+        </c:if>
+    </c:iterate> 
 
     @Override
     @SuppressWarnings("unchecked")
@@ -52,35 +53,37 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 
         // enter all required fields
-    <ct:iterate select="$class/attributes" var="attribute">
-        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
-    </ct:iterate> 
+    <c:iterate select="$class/attributes" var="attribute">
+		<c:if test="not(call($attribute, 'isReference'))">
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random attribute="$attribute" wrapString="true" />);
+		</c:if>
+    </c:iterate> 
 
         <xc:cap element="$class"/>Search search = new <xc:cap element="$class"/>Search();
         action.set<xc:cap element="$class"/>Search(search);
 
-    <ct:iterate select="$class/attributes" var="attribute">
-        <ct:if test="isEnumeration($attribute)">
+    <c:iterate select="$class/attributes" var="attribute">
+        <c:if test="isEnumeration($attribute)">
         action.set<xc:cap element="$attribute"/>Ids(<xc:uncap element="$attribute"/>Ids);
-        </ct:if>
-    </ct:iterate> 
+        </c:if>
+    </c:iterate> 
 
         <xc:uncap element="$class"/>Manager.save(<xc:uncap element="$class"/>);
     }
 
     public void testSearch() throws Exception {
-    <ct:iterate select="$class/attributes" var="attribute">
-        <ct:if test="isEnumeration($attribute)">
+    <c:iterate select="$class/attributes" var="attribute">
+        <c:if test="isEnumeration($attribute)">
         action.set<xc:cap element="$attribute"/>Ids(null);
-        </ct:if>
-    </ct:iterate> 
+        </c:if>
+    </c:iterate> 
         assertEquals(action.list(), ActionSupport.SUCCESS);
         assertTrue(action.get<xc:cap element="$class"/>s().size() >= 1);
-    <ct:iterate select="$class/attributes" var="attribute">
-        <ct:if test="isEnumeration($attribute)">
+    <c:iterate select="$class/attributes" var="attribute">
+        <c:if test="isEnumeration($attribute)">
         action.set<xc:cap element="$attribute"/>Ids(<xc:uncap element="$attribute"/>Ids);
-        </ct:if>
-    </ct:iterate> 
+        </c:if>
+    </c:iterate> 
     }
 
     public void testCopy() throws Exception {

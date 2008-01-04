@@ -1,3 +1,4 @@
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
@@ -5,13 +6,13 @@
     class="EntityActionImpl" 
     %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
-%>package <xc:qualifiedName element="$class/XPackage"/>.webapp.action;
+%>package <xc:qualifiedName element="$class/xPackage"/>.webapp.action;
 
 <j:importsLocation package=""/>
 
-<xc:import pattern="$element.service.*" element="$class/XPackage"/>
-<xc:import pattern="$element.model.*" element="$class/XPackage"/>
-<xc:import pattern="$element.model.search.*" element="$class/XPackage"/>
+<xc:import pattern="$element.service.*" element="$class/xPackage"/>
+<xc:import pattern="$element.model.*" element="$class/xPackage"/>
+<xc:import pattern="$element.model.search.*" element="$class/xPackage"/>
 <xc:import pattern="java.util.*"/>
 <xc:import pattern="org.apache.struts2.interceptor.validation.SkipValidation"/>
 <xc:import pattern="org.springframework.dao.DataIntegrityViolationException"/>
@@ -48,8 +49,8 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
      */
     private Long idToCopy;
 
-<ct:iterate select="$class/attributes" var="attribute">
-    <ct:if test="isEnumeration($attribute)">
+<c:iterate select="$class/attributes" var="attribute">
+    <c:if test="isEnumeration($attribute)">
     /**
      * @generated
      */
@@ -59,8 +60,8 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
      * @generated
      */
     private Integer[] <xc:uncap element="$attribute"/>Ids;
-    </ct:if>
-</ct:iterate> 
+    </c:if>
+</c:iterate> 
 
     /**
      * @generated
@@ -94,11 +95,11 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
             }
         }
 
-    <ct:iterate select="$class/attributes" var="attribute">
-        <ct:if test="isEnumeration($attribute)">
+    <c:iterate select="$class/attributes" var="attribute">
+        <c:if test="isEnumeration($attribute)">
         <xc:uncap element="$attribute"/>s = <xc:cap element="$attribute/type"/>.values();
-        </ct:if>
-    </ct:iterate> 
+        </c:if>
+    </c:iterate> 
 
     }
 
@@ -109,13 +110,14 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
     public String list() {
         if (log.isDebugEnabled()) log.debug("list() <-");
 
-    <ct:iterate select="$class/attributes" var="attribute">
-        <ct:if test="isEnumeration($attribute)">
+    <c:iterate select="$class/attributes" var="attribute">
+        <c:if test="isEnumeration($attribute)">
         if(<xc:uncap element="$attribute"/>Ids!=null){
-            <xc:uncap element="$class"/>Search.set<xc:cap element="$attribute"/>(<xc:cap element="$attribute/type"/>.fromInt(<xc:uncap element="$attribute"/>Ids[0]));
+            <xc:uncap element="$class"/>Search.set<xc:cap element="$attribute"/>Min(<xc:cap element="$attribute/type"/>.fromInt(<xc:uncap element="$attribute"/>Ids[0]));
+            <xc:uncap element="$class"/>Search.set<xc:cap element="$attribute"/>Max(<xc:cap element="$attribute/type"/>.fromInt(<xc:uncap element="$attribute"/>Ids[0]));
         }
-        </ct:if>
-    </ct:iterate> 
+        </c:if>
+    </c:iterate> 
         <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>Manager.search(<xc:uncap element="$class"/>Search);
 
         if (log.isDebugEnabled()) log.debug("listing items:" + <xc:uncap element="$class"/>s.size());
@@ -249,11 +251,11 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
 
         boolean isNew = (<xc:uncap element="$class"/>.getId() == null);
 
-    <ct:iterate select="$class/attributes" var="attribute">
-        <ct:if test="isEnumeration($attribute)">
+    <c:iterate select="$class/attributes" var="attribute">
+        <c:if test="isEnumeration($attribute)">
         <xc:uncap element="$class"/>.set<xc:cap element="$attribute"/>(<xc:cap element="$attribute/type"/>.fromInt(Integer.valueOf(<xc:uncap element="$attribute"/>Ids[0])));
-        </ct:if>
-    </ct:iterate> 
+        </c:if>
+    </c:iterate> 
 
         <xc:uncap element="$class"/>Manager.save(<xc:uncap element="$class"/>);
 
@@ -306,8 +308,8 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
         return <xc:uncap element="$class"/>Manager;
     }
 
-<ct:iterate select="$class/attributes" var="attribute">
-    <ct:if test="isEnumeration($attribute)">
+<c:iterate select="$class/attributes" var="attribute">
+    <c:if test="isEnumeration($attribute)">
     /**
      * @generated
      */
@@ -325,18 +327,18 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
     /**
      * @generated
      */
-    public Integer[] get<xc:uncap element="$attribute"/>Ids() {
+    public Integer[] get<xc:cap element="$attribute"/>Ids() {
         return <xc:uncap element="$attribute"/>Ids;
     }
 
     /**
      * @generated
      */
-    public void set<xc:uncap element="$attribute"/>Ids(Integer[] <xc:uncap element="$attribute"/>Ids) {
+    public void set<xc:cap element="$attribute"/>Ids(Integer[] <xc:uncap element="$attribute"/>Ids) {
         this.<xc:uncap element="$attribute"/>Ids = <xc:uncap element="$attribute"/>Ids;
     }
     
-    </ct:if>
-</ct:iterate> 
+    </c:if>
+</c:iterate> 
 
 }
