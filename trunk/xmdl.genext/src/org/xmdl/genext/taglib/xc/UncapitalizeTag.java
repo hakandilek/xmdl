@@ -10,6 +10,7 @@ import org.xmdl.genext.taglib.ClassTagUtils;
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.XClass;
 import chrome.xmdl.XEnumeration;
+import chrome.xmdl.XEnumerationLiteral;
 
 /**
  * This tag makes lower-case the first character in the name of the given
@@ -44,6 +45,10 @@ public class UncapitalizeTag extends BaseEmptyTag {
             s = ClassTagUtils.uncapName(enumeration);
         }
 
+        if (object instanceof XEnumerationLiteral) {
+            XEnumerationLiteral literal = (XEnumerationLiteral) object;
+            s = ClassTagUtils.uncapName(literal);
+        }
         out.write(s);
     }
 
