@@ -5,8 +5,7 @@
     class="EntityActionImpl" 
     %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
-%>
-package <xc:qualifiedName element="$class/XPackage"/>.webapp.action;
+%>package <xc:qualifiedName element="$class/XPackage"/>.webapp.action;
 
 <j:importsLocation package=""/>
 

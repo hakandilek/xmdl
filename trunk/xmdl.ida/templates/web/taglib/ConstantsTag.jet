@@ -168,7 +168,7 @@ public class ConstantsTag extends TagSupport {
     public void release() {
         super.release();
         clazz = null;
-        scope = TaslakConstants.class.getName();
+        scope = ApplicationConstants.class.getName();
     }
 
     /**

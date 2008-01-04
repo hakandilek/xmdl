@@ -17,7 +17,7 @@ public class EntityAction extends EntityActionImpl implements Template {
     public String targetFile(Object object) {
         XClass c = (XClass) object;
         XPackage pkg = c.getXPackage();
-        StringBuffer buffer = new StringBuffer("web/src/ma'n/java/");
+        StringBuffer buffer = new StringBuffer("web/src/main/java/");
         buffer.append(XMDLClassHelper.INSTANCE.getQualifiedPath(pkg));
         buffer.append("/webapp/action/");
         buffer.append(XMDLClassHelper.INSTANCE.getCapName(c));

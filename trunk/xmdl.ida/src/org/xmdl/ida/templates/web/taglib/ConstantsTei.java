@@ -13,7 +13,7 @@ import chrome.xmdl.xgen.Template;
  * @author Hakan Dilek
  * 
  */
-public class ConstantsTei extends ConstantsTagImpl implements Template {
+public class ConstantsTei extends ConstantsTeiImpl implements Template {
 
     @Override
     public String targetFile(Object object) {
