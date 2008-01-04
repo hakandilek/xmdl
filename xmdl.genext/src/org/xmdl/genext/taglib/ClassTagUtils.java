@@ -7,6 +7,7 @@ import chrome.xmdl.XAssociationType;
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.XClass;
 import chrome.xmdl.XEnumeration;
+import chrome.xmdl.XEnumerationLiteral;
 import chrome.xmdl.XPackage;
 import chrome.xmdl.XType;
 import chrome.xmdl.XmdlTypes;
@@ -49,6 +50,18 @@ public class ClassTagUtils {
      */
     public static String capName(XEnumeration enumeration) {
         return capName(enumeration.getName());
+    }
+
+    /**
+     * Capitalize the name of the enumeration literal
+     * 
+     * @param literal
+     *            the enumeration literal
+     * @return the capitalized name
+     */
+    public static String capName(XEnumerationLiteral literal) {
+        String name = literal.getName();
+        return name == null ? "" : name.toUpperCase(Locale.US);
     }
 
     /**
@@ -224,6 +237,18 @@ public class ClassTagUtils {
      */
     public static String uncapName(XAttribute attribute) {
         return uncapName(attribute.getName());
+    }
+
+    /**
+     * Make lower-case the name of the enumeration literal
+     * 
+     * @param literal
+     *            the enumeration literal
+     * @return the capitalized name
+     */
+    public static String uncapName(XEnumerationLiteral literal) {
+        String name = literal.getName();
+        return name == null ? "" : name.toLowerCase(Locale.US);
     }
 
     /**

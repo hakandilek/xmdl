@@ -11,6 +11,7 @@ import org.xmdl.genext.taglib.ClassTagUtils;
 import chrome.xmdl.XAttribute;
 import chrome.xmdl.XClass;
 import chrome.xmdl.XEnumeration;
+import chrome.xmdl.XEnumerationLiteral;
 
 /**
  * This tag capitalizes the first character in the name of the given element.
@@ -44,6 +45,10 @@ public class CapitalizeTag extends BaseEmptyTag {
             s = ClassTagUtils.capName(enumeration);
         }
 
+        if (object instanceof XEnumerationLiteral) {
+            XEnumerationLiteral literal = (XEnumerationLiteral) object;
+            s = ClassTagUtils.capName(literal);
+        }
         out.write(s);
     }
 
