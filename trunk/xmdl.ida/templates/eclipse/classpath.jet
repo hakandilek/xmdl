@@ -20,8 +20,8 @@
 	
 	<classpathentry kind="output" path="target/classes"/>
 
-	<classpathentry kind="var" path="M2_REPO/org/xmdl/taslak/ida-corelib/0.1-SNAPSHOT/ida-corelib-0.1-SNAPSHOT.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/xmdl/taslak/ida-weblib/0.1-SNAPSHOT/ida-weblib-0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/xmdl/ida/ida-corelib/0.1-SNAPSHOT/ida-corelib-0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/xmdl/ida/ida-weblib/0.1-SNAPSHOT/ida-weblib-0.1-SNAPSHOT.jar"/>
 
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring/2.0.6/spring-2.0.6.jar" sourcepath="M2_REPO/org/springframework/spring/2.0.6/spring-2.0.6-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/codehaus/xfire/xfire-core/1.2.6/xfire-core-1.2.6.jar" sourcepath="M2_REPO/org/codehaus/xfire/xfire-core/1.2.6/xfire-core-1.2.6-sources.jar"/>

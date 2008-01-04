@@ -9,7 +9,7 @@ import chrome.xmdl.xgen.Template;
  * @author Hakan Dilek
  * 
  */
-public class WebPomXML extends CorePomXMLImpl
+public class WebPomXML extends WebPomXMLImpl
 		implements Template {
 
 	@Override
