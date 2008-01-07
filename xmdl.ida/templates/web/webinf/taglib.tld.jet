@@ -17,7 +17,7 @@
     <tag>
         <name>constants</name>
         <tag-class><xc:qualifiedName element="$project/packages[1]"/>.webapp.taglib.ConstantsTag</tag-class>
-        <tei-class><xc:qualifiedName element="$project/packages[1]"/>.ConstantsTei</tei-class>
+        <tei-class><xc:qualifiedName element="$project/packages[1]"/>.webapp.taglib.ConstantsTei</tei-class>
         <attribute>
             <name>className</name>
         </attribute>

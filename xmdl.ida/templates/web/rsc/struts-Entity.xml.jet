@@ -11,21 +11,21 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <package name="<xc:cap element="$class"/>" namespace="/<xc:cap element="$class"/>" extends="struts-default">
-        <action name="<xc:uncap element="$class"/>s" class="<xc:qualifiedName element="$class/xPackage"/>.action.<xc:cap element="$class"/>Action" method="list">
+        <action name="<xc:uncap element="$class"/>s" class="<xc:qualifiedName element="$class/xPackage"/>.webapp.action.<xc:cap element="$class"/>Action" method="list">
             <result name="input">/WEB-INF/pages/<xc:uncap element="$class"/>List.jsp</result>
             <result>/WEB-INF/pages/<xc:uncap element="$class"/>List.jsp</result>
         </action>
-        <action name="edit<xc:cap element="$class"/>" class="<xc:qualifiedName element="$class/xPackage"/>.action.<xc:cap element="$class"/>Action" method="edit">
+        <action name="edit<xc:cap element="$class"/>" class="<xc:qualifiedName element="$class/xPackage"/>.webapp.action.<xc:cap element="$class"/>Action" method="edit">
             <result>/WEB-INF/pages/<xc:uncap element="$class"/>Form.jsp</result>
             <result name="error">/WEB-INF/pages/<xc:uncap element="$class"/>List.jsp</result>
         </action>
-        <action name="save<xc:cap element="$class"/>" class="<xc:qualifiedName element="$class/xPackage"/>.action.<xc:cap element="$class"/>Action" method="save">
+        <action name="save<xc:cap element="$class"/>" class="<xc:qualifiedName element="$class/xPackage"/>.webapp.action.<xc:cap element="$class"/>Action" method="save">
             <result name="input">/WEB-INF/pages/<xc:uncap element="$class"/>Form.jsp</result>
             <result name="cancel" type="redirect"><xc:uncap element="$class"/>s.html</result>
             <result name="delete" type="redirect"><xc:uncap element="$class"/>s.html</result>
             <result name="success" type="redirect"><xc:uncap element="$class"/>s.html</result>
         </action>
-        <action name="copy<xc:cap element="$class"/>" class="<xc:qualifiedName element="$class/xPackage"/>.action.<xc:cap element="$class"/>Action" method="copy">
+        <action name="copy<xc:cap element="$class"/>" class="<xc:qualifiedName element="$class/xPackage"/>.webapp.action.<xc:cap element="$class"/>Action" method="copy">
             <result name="success">/WEB-INF/pages/<xc:uncap element="$class"/>Form.jsp</result>
         </action>
     </package>

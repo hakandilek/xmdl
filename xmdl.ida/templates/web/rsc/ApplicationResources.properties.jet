@@ -258,5 +258,10 @@ productSearch.<xc:uncap element="$attribute"/> = <xc:cap element="$attribute"/>
 # -- Modules and/or Packages
 <c:iterate select="$project/packages" var="package">
 menu.title.<xc:qualifiedName element="$package"/> = <xc:qualifiedName element="$package"/>
+    <c:iterate select="$package/classes" var="class">
+menu.title.<xc:cap element="$class"/> = <xc:cap element="$class"/>s 
+menu.edit.<xc:cap element="$class"/> = Edit <xc:cap element="$class"/>s
+menu.search.<xc:cap element="$class"/> = Search <xc:cap element="$class"/>s
+	</c:iterate>
 </c:iterate>
 # -- Modules-END

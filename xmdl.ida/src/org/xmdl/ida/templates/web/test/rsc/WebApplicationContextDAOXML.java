@@ -9,7 +9,7 @@ import chrome.xmdl.xgen.Template;
  * @author Hakan Dilek
  * 
  */
-public class ApplicationContextDAOXML extends ApplicationContextDAOXMLImpl implements Template {
+public class WebApplicationContextDAOXML extends ApplicationContextDAOXMLImpl implements Template {
 
     @Override
     public String targetFile(Object object) {

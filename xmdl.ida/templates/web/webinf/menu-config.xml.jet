@@ -24,13 +24,12 @@
         </Menu>
 
 <c:iterate select="$project/packages" var="package">
-        <Menu name="<xc:qualifiedName element="$package"/>Menu" title="Sales.menu.title" description="Sales" roles="ROLE_ADMIN,ROLE_USER"  page="/<xc:cap element="$class"/>/<xc:uncap element="$class"/>s.html">
+        <Menu name="<xc:qualifiedName element="$package"/>Menu" title="menu.title.<xc:qualifiedName element="$package"/>" description="<xc:qualifiedName element="$package"/>" roles="ROLE_ADMIN,ROLE_USER">
     <c:iterate select="$package/classes" var="class">
-            <Item name="<xc:cap element="$class"/>Menu" title="<xc:cap element="$class"/>.menu.title" page="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html">
-                <Item name="<xc:cap element="$class"/>Edit" title="<xc:cap element="$class"/>.menu.edit" page="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html"/>
-                <Item name="<xc:cap element="$class"/>Search"  title="<xc:cap element="$class"/>.menu.search" page="/<xc:cap element="$class"/>/<xc:uncap element="$class"/>s.html"/>
+            <Item name="<xc:cap element="$class"/>Menu"       title="menu.title.<xc:cap element="$class"/>"  page="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html">
+                <Item name="<xc:cap element="$class"/>Edit"   title="menu.edit.<xc:cap element="$class"/>"   page="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html"/>
+                <Item name="<xc:cap element="$class"/>Search" title="menu.search.<xc:cap element="$class"/>" page="/<xc:cap element="$class"/>/<xc:uncap element="$class"/>s.html"/>
             </Item>
-                <value>.model.<xc:cap element="$class"/></value>
     </c:iterate>
         </Menu>
 </c:iterate>

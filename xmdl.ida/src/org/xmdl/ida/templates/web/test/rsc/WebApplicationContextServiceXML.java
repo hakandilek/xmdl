@@ -9,7 +9,7 @@ import chrome.xmdl.xgen.Template;
  * @author Hakan Dilek
  * 
  */
-public class ApplicationContextServiceXML extends ApplicationContextServiceXMLImpl implements Template {
+public class WebApplicationContextServiceXML extends ApplicationContextServiceXMLImpl implements Template {
 
     @Override
     public String targetFile(Object object) {

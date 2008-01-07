@@ -20,7 +20,7 @@
     <menu:displayMenu name="Logout"/>
 
 <ct:iterate select="$project/packages" var="package">
-    <menu:displayMenu name="<xc:qualifiedName element="$package"/>"/>
+    <menu:displayMenu name="<xc:qualifiedName element="$package"/>Menu"/>
 </ct:iterate>
 
 </ul>
