@@ -43,7 +43,7 @@
     </logger>
    
 <c:iterate select="$project/packages" var="package">
-    <logger name="<xc:cap element="$package"/>.webapp">
+    <logger name="<xc:qualifiedName element="$package"/>.webapp">
         <level value="DEBUG"/>
     </logger>
 

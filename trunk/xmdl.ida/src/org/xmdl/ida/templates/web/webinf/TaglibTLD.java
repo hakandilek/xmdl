@@ -16,7 +16,7 @@ public class TaglibTLD extends TaglibTLDImpl implements Template {
         XProject prj = (XProject) object;
         StringBuffer buffer = new StringBuffer("web/src/main/webapp/WEB-INF/");
         buffer.append(prj.getName());
-        buffer.append(".xml");
+        buffer.append(".tld");
         return buffer.toString();
     }
 

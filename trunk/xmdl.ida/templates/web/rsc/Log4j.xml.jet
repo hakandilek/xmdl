@@ -55,6 +55,7 @@
     <logger name="<xc:qualifiedName element="$package"/>">
         <level value="DEBUG"/>
     </logger>
+    
 </c:iterate>
 
     <root>

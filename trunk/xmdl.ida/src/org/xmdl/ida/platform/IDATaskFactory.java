@@ -58,6 +58,8 @@ import org.xmdl.ida.templates.web.taglib.ConstantsTag;
 import org.xmdl.ida.templates.web.taglib.ConstantsTei;
 import org.xmdl.ida.templates.web.test.EntityActionTest;
 import org.xmdl.ida.templates.web.test.StartupListenerTest;
+import org.xmdl.ida.templates.web.test.rsc.WebApplicationContextDAOXML;
+import org.xmdl.ida.templates.web.test.rsc.WebApplicationContextServiceXML;
 import org.xmdl.ida.templates.web.test.rsc.WebSampleDataXML;
 import org.xmdl.ida.templates.web.test.rsc.WebTestLog4jXML;
 import org.xmdl.ida.templates.web.test.rsc.WebTestsXML;
@@ -228,8 +230,8 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
                 //web tests
                 templates.add(new EntityActionTest());
                 templates.add(new StartupListenerTest());
-                templates.add(new ApplicationContextDAOXML());
-                templates.add(new ApplicationContextServiceXML());
+                templates.add(new WebApplicationContextDAOXML());
+                templates.add(new WebApplicationContextServiceXML());
                 templates.add(new WebTestLog4jXML());
                 templates.add(new WebSampleDataXML());
                 templates.add(new WebTestsXML());
