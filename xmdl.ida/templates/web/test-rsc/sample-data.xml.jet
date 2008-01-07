@@ -6,35 +6,43 @@
 	class="WebSampleDataXMLImpl" 
 	%><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
-%><?xml version="1.0" encoding="UTF-8"?>
+%><?xml version="1.0" encoding="UTF-8" ?>
 <dataset>
 <c:iterate select="$model/dPackages" var="dPackage">
 	<c:iterate select="$dPackage/dTables" var="dTable">
     <!--<xc:qualifiedName element="$dTable/xClass"/>-START-->
-    <table name="<c:get select="$dTable/name"/>">
+    <table name="<c:get select="$dTable/@name"/>">
         <column>id</column>
-		<c:iterate select="$dTables/dFields" var="field">
-        <column><c:get select="$field/name"/></column>
+		<c:iterate select="$dTable/dFields" var="field">
+			<c:if test="not(call($attribute, 'isReference'))">
+        <column><c:get select="$field/@name"/></column>
+        	</c:if>
 		</c:iterate>
 
 	    <row>
 	        <value description="id">1</value>
-		<c:iterate select="$dTables/dFields" var="field">
-        	<value description="Value for <xc:uncap element="$dTable/xClass"/>"><tu:random attribute="$field/xAttribute"/></value>
+		<c:iterate select="$dTable/dFields" var="field">
+			<c:if test="not(call($field/xAttribute, 'isReference'))">
+        	<value description="Value for <c:get select="$field/@name"/>"><tu:random attribute="$field/xAttribute"/></value>
+        	</c:if>
 		</c:iterate>
 	    </row>
 
 	    <row>
 	        <value description="id">2</value>
-		<c:iterate select="$dTables/dFields" var="field">
-        	<value description="Value for <xc:uncap element="$dTable/xClass"/>"><tu:random attribute="$field/xAttribute"/></value>
+		<c:iterate select="$dTable/dFields" var="field">
+			<c:if test="not(call($field/xAttribute, 'isReference'))">
+        	<value description="Value for <c:get select="$field/@name"/>"><tu:random attribute="$field/xAttribute"/></value>
+        	</c:if>
 		</c:iterate>
 	    </row>
 
 	    <row>
 	        <value description="id">3</value>
-		<c:iterate select="$dTables/dFields" var="field">
-        	<value description="Value for <xc:uncap element="$dTable/xClass"/>"><tu:random attribute="$field/xAttribute"/></value>
+		<c:iterate select="$dTables/dField" var="field">
+			<c:if test="not(call($field/xAttribute, 'isReference'))">
+        	<value description="Value for <c:get select="$field/@name"/>"><tu:random attribute="$field/xAttribute"/></value>
+        	</c:if>
 		</c:iterate>
 	    </row>
 

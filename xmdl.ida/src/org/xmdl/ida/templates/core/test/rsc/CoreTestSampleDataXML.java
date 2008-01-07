@@ -22,7 +22,7 @@ public class CoreTestSampleDataXML extends SampleDataXMLImpl implements Template
 
 	@Override
 	public String parameterName() {
-		return "project";
+		return "model";
 	}
 
 }
