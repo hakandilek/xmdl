@@ -1,7 +1,7 @@
 package org.xmdl.ida.templates.web.test.rsc;
 
-import chrome.xmdl.XProject;
 import chrome.xmdl.xgen.Template;
+import chrome.xmdldb.DModel;
 
 /**
  * sample-data.xml file for web tests template file
@@ -20,12 +20,12 @@ public class WebSampleDataXML extends WebSampleDataXMLImpl implements Template {
 
     @Override
     public boolean accept(Object object) {
-        return object instanceof XProject;
+        return (object instanceof DModel);
     }
 
     @Override
     public String parameterName() {
-        return "project";
+        return "model";
     }
 
 }

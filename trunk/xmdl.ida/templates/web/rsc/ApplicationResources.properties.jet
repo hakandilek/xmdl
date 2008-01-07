@@ -209,46 +209,46 @@ List.Edit = Edit
 
 <c:iterate select="$project/packages" var="package">
 	<c:iterate select="$package/classes" var="class">
-# -- Product-START
-Product.menu.title=Products
-Product.menu.edit=Product Entry
-Product.menu.search=Product Search
+# -- <xc:cap element="$class"/>-START
+<xc:cap element="$class"/>.menu.title=<xc:cap element="$class"/>s
+<xc:cap element="$class"/>.menu.edit=<xc:cap element="$class"/> Entry
+<xc:cap element="$class"/>.menu.search=<xc:cap element="$class"/> Search
 
-product.added=Product has been added successfully.
-product.updated=Product has been updated successfully.
-product.deleted=Product has been deleted successfully.
+<xc:uncap element="$class"/>.added=<xc:cap element="$class"/> has been added successfully.
+<xc:uncap element="$class"/>.updated=<xc:cap element="$class"/> has been updated successfully.
+<xc:uncap element="$class"/>.deleted=<xc:cap element="$class"/> has been deleted successfully.
 
-# -- product list page --
-productList.title=Product List
-productList.heading=Products
-productList.product=product
-productList.products=products
+# -- <xc:uncap element="$class"/> list page --
+<xc:uncap element="$class"/>List.title=<xc:cap element="$class"/> List
+<xc:uncap element="$class"/>List.heading=<xc:cap element="$class"/>s
+<xc:uncap element="$class"/>List.<xc:uncap element="$class"/>=<xc:uncap element="$class"/>
+<xc:uncap element="$class"/>List.<xc:uncap element="$class"/>s=<xc:uncap element="$class"/>s
 
-# -- product detail page --
-productDetail.title=Product Detail
-productDetail.heading=Product Information
+# -- <xc:uncap element="$class"/> detail page --
+<xc:uncap element="$class"/>Detail.title=<xc:cap element="$class"/> Detail
+<xc:uncap element="$class"/>Detail.heading=<xc:cap element="$class"/> Information
 
-Product.deleted = Product(s) deleted successfully.
-Product.cannotBeDeleted = Some products cannot be deleted.(They have constraints on other records.)
+<xc:cap element="$class"/>.deleted = <xc:cap element="$class"/>(s) deleted successfully.
+<xc:cap element="$class"/>.cannotBeDeleted = Some <xc:uncap element="$class"/>s cannot be deleted.(They have constraints on other records.)
 
-# -- product attributes --
-product.id=Id
+# -- <xc:uncap element="$class"/> attributes --
+<xc:uncap element="$class"/>.id=Id
 		<c:iterate select="$class/attributes" var="attribute">
-product.<xc:uncap element="$attribute"/> = <xc:cap element="$attribute"/> 
+<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/> = <xc:cap element="$attribute"/> 
 			<c:if test="not(call($attribute, 'isReference'))">
 				<c:choose>
 				<c:when test="call($attribute/type, 'isComparable')">
-productSearch.<xc:uncap element="$attribute"/>Min = Minimum <xc:cap element="$attribute"/> 
-productSearch.<xc:uncap element="$attribute"/>Max = Maximum <xc:cap element="$attribute"/> 
+<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>Min = Minimum <xc:cap element="$attribute"/> 
+<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>Max = Maximum <xc:cap element="$attribute"/> 
 				</c:when>
 				<c:otherwise>
-productSearch.<xc:uncap element="$attribute"/> = <xc:cap element="$attribute"/> 
+<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/> = <xc:cap element="$attribute"/> 
 				</c:otherwise>
 				</c:choose>
 			</c:if>
 
 		</c:iterate>
-# -- Product-END
+# -- <xc:cap element="$class"/>-END
 
 	</c:iterate>
 </c:iterate>
