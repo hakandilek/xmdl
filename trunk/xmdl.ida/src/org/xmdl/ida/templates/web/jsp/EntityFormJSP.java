@@ -1,5 +1,7 @@
 package org.xmdl.ida.templates.web.jsp;
 
+import org.xmdl.genext.taglib.ClassTagUtils;
+
 import chrome.xmdl.XClass;
 import chrome.xmdl.xgen.Template;
 
@@ -16,7 +18,7 @@ public class EntityFormJSP extends EntityFormJSPImpl implements Template {
         XClass cls = (XClass) object;
         StringBuffer buffer = new StringBuffer(
         "web/src/main/webapp/WEB-INF/pages/");
-        buffer.append(cls.getName());
+        buffer.append(ClassTagUtils.uncapName(cls));
         buffer.append("Form.jsp");
         return buffer.toString();
     }

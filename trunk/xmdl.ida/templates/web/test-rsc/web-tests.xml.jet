@@ -1,5 +1,6 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@taglib prefix="tu" id="xmdl.genext.testUtils" %>
 <%@ jet 
     package="org.xmdl.ida.templates.web.test.rsc" 
     class="WebTestsXMLImpl" 
@@ -19,15 +20,12 @@
         depends="ApplicationTests"
         description="Call and executes all test cases (targets)"/>
 
-	<!-- application specific tests grouped by each entity -->
-	<target name="ApplicationTests"
-        depends="<c:iterate select="$project/packages" var="package">
-    <c:iterate select="$package/classes" var="class">
-                 <xc:cap element="$class"/>Tests,
-    </c:iterate>
-</c:iterate>"
-		description="Calls all application tests">
-	</target>
+    <!-- application specific tests grouped by each entity -->
+    <target name="ApplicationTests"
+<%int i=0;%>
+        depends="<c:iterate select="$project/packages" var="package"><c:iterate select="$package/classes" var="class"><%=i>0?",":""%><xc:cap element="$class"/>Tests<%i++;%></c:iterate></c:iterate>"
+        description="Calls all application tests">
+    </target>
 
 <c:iterate select="$project/packages" var="package">
     <c:iterate select="$package/classes" var="class">
@@ -76,11 +74,13 @@
                              text=".*${<xc:uncap element="$class"/>Detail.title}.*" regex="true"/>
 
                 <!-- update some of the required fields -->
-		<c:iterate select="$class/attributes" var="attribute">
-			<c:if test="not(call($attribute, 'isReference'))">
+        <c:iterate select="$class/attributes" var="attribute">
+            <c:if test="not(call($attribute, 'isReference'))">
+    			<c:if test="not(isEnumeration($attribute))">
                 <setInputField description="set <xc:uncap element="$attribute"/>" name="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" value="<tu:random  attribute="$attribute" wrapString="false" />"/>
-			</c:if>
-		</c:iterate> 
+            	</c:if>
+            </c:if>
+        </c:iterate> 
 
                 <clickbutton label="${button.update}" description="Click Update"/>
                 <verifytitle description="Page re-appears if save successful"
@@ -101,11 +101,13 @@
                              text=".*${<xc:uncap element="$class"/>Detail.title}.*" regex="true"/>
 
                 <!-- enter required fields -->
-		<c:iterate select="$class/attributes" var="attribute">
-			<c:if test="not(call($attribute, 'isReference'))">
+        <c:iterate select="$class/attributes" var="attribute">
+            <c:if test="not(call($attribute, 'isReference'))">
+    			<c:if test="not(isEnumeration($attribute))">
                 <setInputField description="set <xc:uncap element="$attribute"/>" name="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" value="<tu:random  attribute="$attribute" wrapString="false" />"/>
-			</c:if>
-		</c:iterate> 
+            	</c:if>
+            </c:if>
+        </c:iterate> 
 
                 <clickbutton label="${button.add}" description="Click button 'Add'"/>
                 <verifytitle description="<xc:cap element="$class"/> List appears if save successful"

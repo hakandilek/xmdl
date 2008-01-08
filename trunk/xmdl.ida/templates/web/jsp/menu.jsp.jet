@@ -3,9 +3,7 @@
     class="MenuJSPImpl" 
     startTag="<$"
     endTag="$>"
-    %><%
-    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
-%>
+    %>
 <$@taglib prefix="ct" id="org.eclipse.jet.controlTags" $>
 <$@taglib prefix="xc" id="xmdl.genext.xmdlClass" $>
 <%@ include file="/common/taglibs.jsp"%>

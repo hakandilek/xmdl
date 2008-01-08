@@ -11,12 +11,13 @@
 
 <c:iterate select="$class/attributes" var="attribute">
     <c:if test="not(call($attribute, 'isReference'))">
+    	<c:if test="not(isEnumeration($attribute))">
     <field name="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>">
         <field-validator type="required<c:if test="$attribute/type/@className = 'java.lang.String'">string</c:if>">
             <message key="errors.required"/>
         </field-validator>
     </field>
-
+    	</c:if>
     </c:if>
 </c:iterate> 
 
