@@ -53,7 +53,7 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
 	<c:if test="call($attribute, 'isReference')">
 	<ida:association attribute="$attribute" />
 	</c:if>
-    private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>;
+    private <xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/>;
 	
 </c:iterate> 
 
@@ -81,14 +81,14 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
     /** 
      * @generated
      */
-    public <xc:attributeType attribute="$attribute"/> get<xc:cap element="$attribute"/>() {
+    public <xc:attributeType attribute="$attribute" wrapType="true"/> get<xc:cap element="$attribute"/>() {
         return <xc:uncap element="$attribute"/>;
     }
 
     /** 
      * @generated
      */
-    public void set<xc:cap element="$attribute"/>(<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>) {
+    public void set<xc:cap element="$attribute"/>(<xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/>) {
         this.<xc:uncap element="$attribute"/> = <xc:uncap element="$attribute"/>;
     }
 

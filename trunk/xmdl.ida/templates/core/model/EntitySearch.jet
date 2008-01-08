@@ -35,19 +35,19 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     /** 
      * @generated
      */
-    private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>Min;
+    private <xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/>Min;
 
     /** 
      * @generated
      */
-    private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>Max;
+    private <xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/>Max;
 		</c:when>
 		<c:otherwise>
 
     /** 
      * @generated
      */
-    private <xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>;
+    private <xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/>;
 		</c:otherwise>
 		</c:choose>
 	</c:if>
@@ -68,28 +68,28 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     /** 
      * @generated
      */
-    public <xc:attributeType attribute="$attribute"/> get<xc:cap element="$attribute"/>Min() {
+    public <xc:attributeType attribute="$attribute" wrapType="true"/> get<xc:cap element="$attribute"/>Min() {
         return <xc:uncap element="$attribute"/>Min;
     }
 
     /** 
      * @generated
      */
-    public void set<xc:cap element="$attribute"/>Min(<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>Min) {
+    public void set<xc:cap element="$attribute"/>Min(<xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/>Min) {
         this.<xc:uncap element="$attribute"/>Min = <xc:uncap element="$attribute"/>Min;
     }
 
     /** 
      * @generated
      */
-    public <xc:attributeType attribute="$attribute"/> get<xc:cap element="$attribute"/>Max() {
+    public <xc:attributeType attribute="$attribute" wrapType="true"/> get<xc:cap element="$attribute"/>Max() {
         return <xc:uncap element="$attribute"/>Max;
     }
 
     /** 
      * @generated
      */
-    public void set<xc:cap element="$attribute"/>Max(<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>Max) {
+    public void set<xc:cap element="$attribute"/>Max(<xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/>Max) {
         this.<xc:uncap element="$attribute"/>Max = <xc:uncap element="$attribute"/>Max;
     }
 		</c:when>
@@ -98,14 +98,14 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     /** 
      * @generated
      */
-    public <xc:attributeType attribute="$attribute"/> get<xc:cap element="$attribute"/>() {
+    public <xc:attributeType attribute="$attribute" wrapType="true"/> get<xc:cap element="$attribute"/>() {
         return <xc:uncap element="$attribute"/>;
     }
 
     /** 
      * @generated
      */
-    public void set<xc:cap element="$attribute"/>(<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/>) {
+    public void set<xc:cap element="$attribute"/>(<xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/>) {
         this.<xc:uncap element="$attribute"/> = <xc:uncap element="$attribute"/>;
     }
 		</c:otherwise>
