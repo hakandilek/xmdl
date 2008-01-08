@@ -143,9 +143,9 @@
     </package>
 
 <c:iterate select="$project/packages" var="package">
-	<c:iterate select="$package/classes" var="class">
+    <c:iterate select="$package/classes" var="class">
     <include file="struts-<xc:cap element="$class"/>.xml"/>
-	</c:iterate>
+    </c:iterate>
 </c:iterate>
 
 </struts>

@@ -1,9 +1,9 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
-	package="org.xmdl.ida.templates.core.test.rsc" 
-	class="Log4jXMLImpl" 
-	%><%
+    package="org.xmdl.ida.templates.core.test.rsc" 
+    class="Log4jXMLImpl" 
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %><?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">

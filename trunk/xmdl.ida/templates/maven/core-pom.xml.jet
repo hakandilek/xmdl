@@ -1,9 +1,9 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
-	package="org.xmdl.ida.templates.maven" 
-	class="CorePomXMLImpl" 
-	%><%
+    package="org.xmdl.ida.templates.maven" 
+    class="CorePomXMLImpl" 
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %><?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

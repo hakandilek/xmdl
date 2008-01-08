@@ -1,9 +1,9 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
-	package="org.xmdl.ida.templates.core.test.rsc" 
-	class="PersistenceXMLImpl" 
-	%><%
+    package="org.xmdl.ida.templates.core.test.rsc" 
+    class="PersistenceXMLImpl" 
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %><?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
@@ -13,9 +13,9 @@
         <class>org.xmdl.mesken.model.User</class>
         <class>org.xmdl.mesken.model.Role</class>
 <c:iterate select="$project/packages" var="package">
-	<c:iterate select="$package/classes" var="class">
-		<class><xc:qualifiedName element="$package"/>.model.<xc:cap element="$class"/></class>
-	</c:iterate>
+    <c:iterate select="$package/classes" var="class">
+        <class><xc:qualifiedName element="$package"/>.model.<xc:cap element="$class"/></class>
+    </c:iterate>
 </c:iterate>
     </persistence-unit>
 

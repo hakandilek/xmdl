@@ -1,8 +1,8 @@
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
-	package="org.xmdl.ida.templates.core.test.rsc" 
-	class="JDBCPropertiesImpl" 
-	%><%
+    package="org.xmdl.ida.templates.core.test.rsc" 
+    class="JDBCPropertiesImpl" 
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>jdbc.driverClassName=${jdbc.driverClassName}
 jdbc.url=${jdbc.url}

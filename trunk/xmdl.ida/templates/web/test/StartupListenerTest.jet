@@ -57,8 +57,8 @@ public class StartupListenerTest extends TestCase {
         
         // initialize Spring
         sc.addInitParameter(ContextLoader.CONFIG_LOCATION_PARAM,
-        		"classpath*:/**/applicationContext*.xml, " +
-        		"classpath*:**/applicationContext*.xml, " +
+                "classpath*:/**/applicationContext*.xml, " +
+                "classpath*:**/applicationContext*.xml, " +
                 "/WEB-INF/applicationContext*.xml"
                 );
 

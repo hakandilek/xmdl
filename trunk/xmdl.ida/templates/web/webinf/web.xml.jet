@@ -40,11 +40,11 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-        	classpath*:applicationContext*.xml
+            classpath*:applicationContext*.xml
             classpath*:org/xmdl/ida/lib/applicationContext*.xml
             classpath*:org/xmdl/mesken/applicationContext*.xml
 <c:iterate select="$project/packages" var="package">
-        	classpath*:<xc:qualifiedPath element="$package"/>/applicationContext*.xml
+            classpath*:<xc:qualifiedPath element="$package"/>/applicationContext*.xml
 </c:iterate>
             /WEB-INF/applicationContext*.xml
             /WEB-INF/xfire-servlet.xml

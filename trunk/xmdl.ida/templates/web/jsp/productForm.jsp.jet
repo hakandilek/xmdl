@@ -27,15 +27,15 @@
         <s:hidden key="<xc:uncap element="$class"/>.id"/>
     </li>
 <ct:iterate select="$class/attributes" var="attribute">
-	<ct:if test="not(call($attribute, 'isReference'))">
-		<ct:if test="not(isEnumeration($attribute))">
-	    <s:textfield key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" required="false" cssClass="text medium" labelposition="left"/>
-		</ct:if>
-		<ct:if test="isEnumeration($attribute)">
-	    <s:select name="<xc:uncap element="$attribute"/>Ids" value="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>.value" listKey="value" key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>"
-	              list="<xc:uncap element="$attribute"/>s" labelposition="left"/>
-		</ct:if>
-	</ct:if>
+    <ct:if test="not(call($attribute, 'isReference'))">
+        <ct:if test="not(isEnumeration($attribute))">
+        <s:textfield key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" required="false" cssClass="text medium" labelposition="left"/>
+        </ct:if>
+        <ct:if test="isEnumeration($attribute)">
+        <s:select name="<xc:uncap element="$attribute"/>Ids" value="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>.value" listKey="value" key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>"
+                  list="<xc:uncap element="$attribute"/>s" labelposition="left"/>
+        </ct:if>
+    </ct:if>
 </ct:iterate> 
 
     <li class="buttonBar bottom">

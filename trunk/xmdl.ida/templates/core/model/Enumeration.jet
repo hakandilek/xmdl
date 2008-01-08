@@ -4,9 +4,9 @@
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@jet 
-	package="org.xmdl.ida.templates.core.model" 
-	class="EnumerationImpl"  
-	%><%
+    package="org.xmdl.ida.templates.core.model" 
+    class="EnumerationImpl"  
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
 package <xc:qualifiedName element="$enumeration/xPackage"/>.model;
@@ -29,34 +29,34 @@ public enum <xc:cap element="$enumeration"/> {
 </c:iterate> 
     ;
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     private int value;
 
     <xc:cap element="$enumeration"/>(int value) {
         this.value = value;
     }
 
-	/**
+    /**
      * The identifier method
-	 * @generated
-	 */ 
+     * @generated
+     */ 
     public int toInt() {
         return value;
     }
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     public int getValue(){
         return value;
     }
 
-	/**
-	 * the value Of Method
-	 * @generated
-	 */ 
+    /**
+     * the value Of Method
+     * @generated
+     */ 
     public static <xc:cap element="$enumeration"/> fromInt(int value) {
         switch (value) {
 <c:iterate select="$enumeration/literals" var="literal">
@@ -68,9 +68,9 @@ public enum <xc:cap element="$enumeration"/> {
         }
     }
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     public String toString() {
         switch (this) {
 <c:iterate select="$enumeration/literals" var="literal">

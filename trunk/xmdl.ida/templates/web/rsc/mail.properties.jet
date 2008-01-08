@@ -1,9 +1,9 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
-	package="org.xmdl.ida.templates.web.rsc" 
-	class="MailPropertiesWebImpl" 
-	%><%
+    package="org.xmdl.ida.templates.web.rsc" 
+    class="MailPropertiesWebImpl" 
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %># This properties file is used to configure mail settings in 
 # /WEB-INF/applicationContext-service.xml.

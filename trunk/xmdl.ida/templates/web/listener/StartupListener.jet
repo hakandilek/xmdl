@@ -4,9 +4,9 @@
 <%@taglib prefix="xd" id="xmdl.genext.xmdlDB" %>
 <%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@jet 
-	package="org.xmdl.ida.templates.web.listener" 
-	class="StartupListenerImpl"  
-	%><%
+    package="org.xmdl.ida.templates.web.listener" 
+    class="StartupListenerImpl"  
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
 package <xc:qualifiedName element="$project/packages[1]"/>.webapp.listener;
@@ -50,14 +50,14 @@ package <xc:qualifiedName element="$project/packages[1]"/>.webapp.listener;
  * @generated
  */ 
 public class StartupListener implements ServletContextListener {
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     private static final Log log = LogFactory.getLog(StartupListener.class);
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     @SuppressWarnings({"unchecked"})
     public void contextInitialized(ServletContextEvent event) {
         log.debug("initializing context...");
@@ -121,7 +121,7 @@ public class StartupListener implements ServletContextListener {
     /**
      * This method uses the LookupManager to lookup available roles from the data layer.
      * @param context The servlet context
-	 * @generated
+     * @generated
      */
     public static void setupContext(ServletContext context) {
         ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(context);
@@ -136,7 +136,7 @@ public class StartupListener implements ServletContextListener {
      * Shutdown servlet context (currently a no-op method).
      *
      * @param servletContextEvent The servlet context event
-	 * @generated
+     * @generated
      */
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         //LogFactory.release(Thread.currentThread().getContextClassLoader());

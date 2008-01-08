@@ -1,9 +1,9 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
-	package="org.xmdl.ida.templates.maven" 
-	class="RootPomXMLImpl" 
-	%><%
+    package="org.xmdl.ida.templates.maven" 
+    class="RootPomXMLImpl" 
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %><?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -102,15 +102,15 @@
                     <useFullNames>false</useFullNames>
                 </configuration>
             </plugin>
-	    <plugin>
-		    <groupId>org.javagen.revgen</groupId>
-		    <artifactId>maven-hsql-plugin</artifactId>
-		    <version>1.0-beta3-SNAPSHOT</version>
-		    <configuration>
-			    <database>${hsql.dbfile}</database>
-			    <dbname>${hsql.dbname}</dbname>
-		    </configuration>
-	    </plugin>
+        <plugin>
+            <groupId>org.javagen.revgen</groupId>
+            <artifactId>maven-hsql-plugin</artifactId>
+            <version>1.0-beta3-SNAPSHOT</version>
+            <configuration>
+                <database>${hsql.dbfile}</database>
+                <dbname>${hsql.dbname}</dbname>
+            </configuration>
+        </plugin>
         </plugins>
     </build>
 
@@ -130,11 +130,11 @@
             <id>appfuse</id>
             <url>http://static.appfuse.org/repository</url>
         </pluginRepository>
-	<pluginRepository>
-		<id>javagen</id>
-		<url>http://www.javagen.com/maven</url>
-	</pluginRepository>
-	
+    <pluginRepository>
+        <id>javagen</id>
+        <url>http://www.javagen.com/maven</url>
+    </pluginRepository>
+    
     </pluginRepositories>
 
     <!-- Dependencies calculated by AppFuse when running full-source plugin -->
@@ -432,7 +432,7 @@
         <jdbc.url><![CDATA[jdbc:hsqldb:hsql://localhost/${hsql.dbname}]]></jdbc.url>
         <jdbc.username>sa</jdbc.username>
         <jdbc.password></jdbc.password>
-	
+    
         <!-- Properties calculated by AppFuse when running full-source plugin -->
         <acegi.version>1.0.5</acegi.version>
         <aspectj.version>1.5.3</aspectj.version>

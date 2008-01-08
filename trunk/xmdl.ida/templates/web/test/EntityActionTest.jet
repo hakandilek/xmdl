@@ -29,16 +29,16 @@
  * @generated
  */
 public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
-	/**
-	 * @generated
-	 */
+    /**
+     * @generated
+     */
     private <xc:cap element="$class"/>Action action;
 
     <c:iterate select="$class/attributes" var="attribute">
         <c:if test="isEnumeration($attribute)">
-	/**
-	 * @generated
-	 */
+    /**
+     * @generated
+     */
     private Integer[] <xc:uncap element="$attribute"/>Ids = new Integer[]{
             <c:iterate select="$attribute/type/literals" var="literal">
             <xc:cap element="$attribute/type"/>.<xc:cap element="$literal"/>.getValue(),
@@ -48,9 +48,9 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         </c:if>
     </c:iterate> 
 
-	/**
-	 * @generated
-	 */
+    /**
+     * @generated
+     */
     @Override
     @SuppressWarnings("unchecked")
     protected void onSetUpBeforeTransaction() throws Exception {
@@ -64,9 +64,9 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
 
         // enter all required fields
     <c:iterate select="$class/attributes" var="attribute">
-		<c:if test="not(call($attribute, 'isReference'))">
+        <c:if test="not(call($attribute, 'isReference'))">
         <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random attribute="$attribute" wrapString="true" />);
-		</c:if>
+        </c:if>
     </c:iterate> 
 
     <c:iterate select="$class/attributes" var="attribute">
@@ -78,9 +78,9 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         <xc:uncap element="$class"/>Manager.save(<xc:uncap element="$class"/>);
     }
 
-	/**
-	 * @generated
-	 */
+    /**
+     * @generated
+     */
     public void testSearch() throws Exception {
     <c:iterate select="$class/attributes" var="attribute">
         <c:if test="isEnumeration($attribute)">
@@ -99,9 +99,9 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
     </c:iterate> 
     }
 
-	/**
-	 * @generated
-	 */
+    /**
+     * @generated
+     */
     public void testCopy() throws Exception {
         action.setIdToCopy(1L);
         assertEquals("success", action.copy());
@@ -109,9 +109,9 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         assertNull(action.get<xc:cap element="$class"/>().getId());
     }
 
-	/**
-	 * @generated
-	 */
+    /**
+     * @generated
+     */
     public void testEdit() throws Exception {
         log.debug("testing edit...");
         action.setId(1L);
@@ -121,9 +121,9 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         assertFalse(action.hasActionErrors());
     }
 
-	/**
-	 * @generated
-	 */
+    /**
+     * @generated
+     */
     public void testSave() throws Exception {
         MockHttpServletRequest request = new MockHttpServletRequest();
         ServletActionContext.setRequest(request);
@@ -142,9 +142,9 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         assertNotNull(request.getSession().getAttribute("messages"));
     }
 
-	/**
-	 * @generated
-	 */
+    /**
+     * @generated
+     */
     public void testRemove() throws Exception {
         MockHttpServletRequest request = new MockHttpServletRequest();
         ServletActionContext.setRequest(request);
@@ -156,9 +156,9 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         assertNotNull(request.getSession().getAttribute("messages"));
     }
 
-	/**
-	 * @generated
-	 */
+    /**
+     * @generated
+     */
     public void testMassDelete() throws Exception {
         <xc:cap element="$class"/> p = action.get<xc:cap element="$class"/>Manager().getAll().get(0);
 
