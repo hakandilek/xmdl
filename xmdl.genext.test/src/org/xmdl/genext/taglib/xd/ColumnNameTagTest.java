@@ -27,7 +27,7 @@ public class ColumnNameTagTest extends BaseTemplateTestCase {
         attribute = null;
     }
 
-    public void testAttributeTypeTag() throws BundleException {
+    public void testColumnNameTag() throws BundleException {
 
         final String templateClass = ColumnNameTagTestTemplate.class.getName();
         setVariable("attribute", attribute);

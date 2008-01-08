@@ -21,6 +21,15 @@
                   type="xpath"
                   use="required">
             </attribute>
+            <attribute
+                  deprecated="false"
+                  name="wrapType"
+                  type="boolean"
+                  use="optional">
+               <description>
+                  Wraps the type with its corresponding object type if the given attribute has a primitive type.
+               </description>
+            </attribute>
          </emptyTag>
          <emptyTag
                class="org.xmdl.genext.taglib.xc.CapitalizeTag"

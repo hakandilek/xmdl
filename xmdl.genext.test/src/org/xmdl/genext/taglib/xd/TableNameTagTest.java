@@ -27,7 +27,7 @@ public class TableNameTagTest extends BaseTemplateTestCase {
         clazz = null;
     }
 
-    public void testAttributeTypeTag() throws BundleException {
+    public void testTableNameTag() throws BundleException {
 
         final String templateClass = TableNameTagTestTemplate.class.getName();
         setVariable("class", clazz);

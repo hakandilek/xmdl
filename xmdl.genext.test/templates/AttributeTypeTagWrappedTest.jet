@@ -1,0 +1,16 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@ jet package="org.xmdl.genext.taglib.xc" class="AttributeTypeTagWrappedTestTemplate"%>
+:<xc:attributeType attribute="$attribute1" wrapType="true"/>;
+:<xc:attributeType attribute="$attribute2" wrapType="true"/>;
+:<xc:attributeType attribute="$attribute3" wrapType="true"/>;
+:<xc:attributeType attribute="$attribute4" wrapType="true"/>;
+:<xc:attributeType attribute="$attribute5" wrapType="true"/>;
+:<xc:attributeType attribute="$attribute6" wrapType="true"/>;
+:<xc:attributeType attribute="$attribute7" wrapType="true"/>;
+:<xc:attributeType attribute="$attribute8" wrapType="true"/>;
+:<xc:attributeType attribute="$attribute9" wrapType="true"/>;
+:<xc:attributeType attribute="$attribute10" wrapType="true"/>;

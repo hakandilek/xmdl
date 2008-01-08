@@ -9,6 +9,7 @@ public class AllTagTests {
         TestSuite suite = new TestSuite("Test for org.xmdl.genext.taglib.xc");
         //$JUnit-BEGIN$
         suite.addTestSuite(AttributeTypeTagTest.class);
+        suite.addTestSuite(AttributeTypeTagWrappedTest.class);
         suite.addTestSuite(UncapitalizeTagTest.class);
         suite.addTestSuite(CapitalizeTagTest.class);
         suite.addTestSuite(QualifiedNameTagTest.class);
