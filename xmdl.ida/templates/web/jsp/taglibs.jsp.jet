@@ -3,9 +3,7 @@
     class="TaglibsJSPImpl" 
     startTag="<$"
     endTag="$>"
-    %><%
-    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
-%>
+    %>
 <$@taglib prefix="ct" id="org.eclipse.jet.controlTags" $>
 <$@taglib prefix="xc" id="xmdl.genext.xmdlClass" $><%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib uri="http://acegisecurity.org/authz" prefix="authz" %>

@@ -3,9 +3,7 @@
     class="EntityListJSPImpl" 
     startTag="<$"
     endTag="$>"
-    %><%
-    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
-%>
+    %>
 <$@taglib prefix="ct" id="org.eclipse.jet.controlTags" $>
 <$@taglib prefix="xc" id="xmdl.genext.xmdlClass" $>
 <%@ include file="/common/taglibs.jsp" %>
@@ -32,21 +30,23 @@
 
 <s:form id="<xc:uncap element="$class"/>sForm" namespace="/<xc:cap element="$class"/>" action="<xc:uncap element="$class"/>s">
 <ct:iterate select="$class/attributes" var="attribute">
-    <ct:if test="not(call($attribute, 'isReference'))">
-        <ct:choose>
-            <ct:when test="call($attribute/type, 'isComparable')">
-    <s:textfield key="<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>Min" cssClass="text medium" labelposition="left"/>
-    <s:textfield key="<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>Max" cssClass="text medium" labelposition="left"/>
-            </ct:when>
-            <ct:when test="isEnumeration($attribute)">
+    <ct:if test="isEnumeration($attribute)">
     <s:select name="<xc:uncap element="$attribute"/>Ids" value="<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>.value" 
               listKey="value" key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>"
               list="<xc:uncap element="$attribute"/>s" labelposition="left" headerKey="-1" headerValue="*"/>
-            </ct:when>
-            <ct:otherwise>
+    </ct:if>
+    <ct:if test="not(isEnumeration($attribute))">
+	    <ct:if test="not(call($attribute, 'isReference'))">
+	        <ct:choose>
+	            <ct:when test="call($attribute/type, 'isComparable')">
+    <s:textfield key="<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>Min" cssClass="text medium" labelposition="left"/>
+    <s:textfield key="<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>Max" cssClass="text medium" labelposition="left"/>
+	            </ct:when>
+	            <ct:otherwise>
     <s:textfield key="<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>" cssClass="text medium" labelposition="left"/>
-            </ct:otherwise>
-        </ct:choose>
+	            </ct:otherwise>
+	        </ct:choose>
+	    </ct:if>
     </ct:if>
 </ct:iterate> 
     <s:submit key="button.search" align="left"/>
