@@ -16,7 +16,7 @@
 
 == Building a distribution ==
 
-For building a distribution, simply run [http://xmdl.googlecode.com/svn/trunk/xmdl.lib/build.xml this ant build] script.
+For building a distribution, simply run [http://xmdl.googlecode.com/svn/trunk/xmdl.lib/build.xml this ant build] script. This script needs a build configuration file located in *${user.home}/xmdl.build.properties*. You can locate a sample of the file [http://xmdl.googlecode.com/svn/trunk/xmdl.lib/ here].
 
 Distribution files will be created in *xmdl.lib/dist/* folder.
 
