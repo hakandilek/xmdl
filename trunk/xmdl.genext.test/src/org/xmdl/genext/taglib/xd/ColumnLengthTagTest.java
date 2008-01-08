@@ -27,7 +27,7 @@ public class ColumnLengthTagTest extends BaseTemplateTestCase {
         attribute = null;
     }
 
-    public void testAttributeTypeTag() throws BundleException {
+    public void testColumntLengthTag() throws BundleException {
 
         final String templateClass = ColumnLengthTagTestTemplate.class.getName();
         setVariable("attribute", attribute);

@@ -6,6 +6,7 @@ import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
 import org.xmdl.genext.taglib.ClassTagUtils;
+import org.xmdl.genext.taglib.MissingAttributeException;
 
 import chrome.xmdl.XAttribute;
 
@@ -18,20 +19,32 @@ import chrome.xmdl.XAttribute;
  */
 public class AttributeTypeTag extends BaseEmptyTag {
 
-	public AttributeTypeTag() {
-	}
+    public AttributeTypeTag() {
+    }
 
-	@Override
-	public void doAction(TagInfo td, JET2Context context, JET2Writer out)
-			throws JET2TagException {
-		Object object = fetchObject(context, "attribute");
+    @Override
+    public void doAction(TagInfo td, JET2Context context, JET2Writer out)
+            throws JET2TagException {
+        Object attObject = fetchObject(context, "attribute");
 
-		String result = "";
-		if (object instanceof XAttribute) {
-			XAttribute attribute = (XAttribute) object;
-			result = ClassTagUtils.importType(attribute);
-		}
-		out.write(result);
-	}
+        boolean wrapType = false;
+        String wrapString = null;
+        try {
+            wrapString = fetchAttribute("wrapType");
+            wrapType = wrapString != null
+                    && Boolean.valueOf(wrapString).booleanValue();
+        } catch (MissingAttributeException e) {
+            // ignore optional variables
+        } catch (RuntimeException e) {
+            // ignore
+        }
+
+        String result = "";
+        if (attObject instanceof XAttribute) {
+            XAttribute attribute = (XAttribute) attObject;
+            result = ClassTagUtils.importType(attribute, wrapType);
+        }
+        out.write(result);
+    }
 
 }
