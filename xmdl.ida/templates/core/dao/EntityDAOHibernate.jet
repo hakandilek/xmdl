@@ -58,11 +58,11 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
 	<c:if test="not(call($attribute, 'isReference'))">
 		<c:choose>
 		<c:when test="call($attribute/type, 'isComparable')">
-			<xc:attributeType attribute="$attribute"/> min<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Min();
-			<xc:attributeType attribute="$attribute"/> max<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Max();
+			<xc:attributeType attribute="$attribute" wrapType="true"/> min<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Min();
+			<xc:attributeType attribute="$attribute" wrapType="true"/> max<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Max();
 		</c:when>
 		<c:otherwise>
-			<xc:attributeType attribute="$attribute"/> <xc:uncap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>();
+			<xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>();
 		</c:otherwise>
 		</c:choose>
 	</c:if>
