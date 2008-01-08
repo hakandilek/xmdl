@@ -4,9 +4,9 @@
 <%@taglib prefix="xd" id="xmdl.genext.xmdlDB" %>
 <%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@jet 
-	package="org.xmdl.ida.templates.web.action" 
-	class="ReloadActionImpl"  
-	%><%
+    package="org.xmdl.ida.templates.web.action" 
+    class="ReloadActionImpl"  
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
 package <xc:qualifiedName element="$project/packages[1]"/>.webapp.action;
@@ -27,12 +27,12 @@ package <xc:qualifiedName element="$project/packages[1]"/>.webapp.action;
  */ 
 public class ReloadAction extends BaseReloadAction {
     
-	/**
-	 * @generated
-	 */ 
-	@Override
-	protected void setStartupContext() {
+    /**
+     * @generated
+     */ 
+    @Override
+    protected void setStartupContext() {
         StartupListener.setupContext(getSession().getServletContext());
-	}
+    }
 }
  

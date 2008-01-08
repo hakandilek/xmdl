@@ -4,9 +4,9 @@
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
-	package="org.xmdl.ida.templates.core.test" 
-	class="HibernateConfigurationTestImpl" 
-	%><%
+    package="org.xmdl.ida.templates.core.test" 
+    class="HibernateConfigurationTestImpl" 
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
 package <xc:qualifiedName element="$package"/>.dao.hibernate;
@@ -30,21 +30,21 @@ package <xc:qualifiedName element="$package"/>.dao.hibernate;
  */ 
 public class HibernateConfigurationTest extends BaseDaoTestCase {
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     private SessionFactory sessionFactory;
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     public void testColumnMapping() throws Exception {
         Session session = sessionFactory.openSession();
         try {

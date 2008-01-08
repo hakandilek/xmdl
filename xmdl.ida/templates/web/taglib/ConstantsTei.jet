@@ -4,9 +4,9 @@
 <%@taglib prefix="xd" id="xmdl.genext.xmdlDB" %>
 <%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@jet 
-	package="org.xmdl.ida.templates.web.taglib" 
-	class="ConstantsTeiImpl"  
-	%><%
+    package="org.xmdl.ida.templates.web.taglib" 
+    class="ConstantsTeiImpl"  
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
 package <xc:qualifiedName element="$project/packages[1]"/>.webapp.taglib;

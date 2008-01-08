@@ -4,9 +4,9 @@
 <%@taglib prefix="xd" id="xmdl.genext.xmdlDB" %>
 <%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@jet 
-	package="org.xmdl.ida.templates.core.model" 
-	class="EntityImpl"  
-	%><%
+    package="org.xmdl.ida.templates.core.model" 
+    class="EntityImpl"  
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
 package <xc:qualifiedName element="$class/xPackage"/>.model;
@@ -47,14 +47,14 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
     /** 
      * @generated
      */
-	<c:if test="not(call($attribute, 'isReference'))">
+    <c:if test="not(call($attribute, 'isReference'))">
     @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/>)
-	</c:if>
-	<c:if test="call($attribute, 'isReference')">
-	<ida:association attribute="$attribute" />
-	</c:if>
+    </c:if>
+    <c:if test="call($attribute, 'isReference')">
+    <ida:association attribute="$attribute" />
+    </c:if>
     private <xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/>;
-	
+    
 </c:iterate> 
 
     /** 
@@ -115,14 +115,14 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
         int result;
         result = id.hashCode();
 <c:iterate select="$class/attributes" var="attribute">
-	<c:choose>
-	<c:when test="call($attribute/type, 'isPrimitive')">
+    <c:choose>
+    <c:when test="call($attribute/type, 'isPrimitive')">
         result = 31 * result + ("" + <xc:uncap element="$attribute"/>).hashCode();
-	</c:when>
-	<c:otherwise>
+    </c:when>
+    <c:otherwise>
         result = 31 * result + <xc:uncap element="$attribute"/>.hashCode();
-	</c:otherwise>
-	</c:choose>
+    </c:otherwise>
+    </c:choose>
 </c:iterate>
         return result;
     }

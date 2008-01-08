@@ -26,28 +26,28 @@
 </c:set>
 
 <c:set var="deleteChecks">
-	<input type="checkbox" name="allbox" 
-		   onclick="checkAll(document.getElementById('<xc:uncap element="$class"/>sList'), 'deleteId')" />
+    <input type="checkbox" name="allbox" 
+           onclick="checkAll(document.getElementById('<xc:uncap element="$class"/>sList'), 'deleteId')" />
 </c:set>
 
 <s:form id="<xc:uncap element="$class"/>sForm" namespace="/<xc:cap element="$class"/>" action="<xc:uncap element="$class"/>s">
 <ct:iterate select="$class/attributes" var="attribute">
-	<ct:if test="not(call($attribute, 'isReference'))">
-		<ct:choose>
-			<ct:when test="call($attribute/type, 'isComparable')">
+    <ct:if test="not(call($attribute, 'isReference'))">
+        <ct:choose>
+            <ct:when test="call($attribute/type, 'isComparable')">
     <s:textfield key="<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>Min" cssClass="text medium" labelposition="left"/>
     <s:textfield key="<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>Max" cssClass="text medium" labelposition="left"/>
-			</ct:when>
-			<ct:when test="isEnumeration($attribute)">
+            </ct:when>
+            <ct:when test="isEnumeration($attribute)">
     <s:select name="<xc:uncap element="$attribute"/>Ids" value="<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>.value" 
-    		  listKey="value" key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>"
+              listKey="value" key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>"
               list="<xc:uncap element="$attribute"/>s" labelposition="left" headerKey="-1" headerValue="*"/>
-			</ct:when>
-			<ct:otherwise>
+            </ct:when>
+            <ct:otherwise>
     <s:textfield key="<xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>" cssClass="text medium" labelposition="left"/>
-			</ct:otherwise>
-		</ct:choose>
-	</ct:if>
+            </ct:otherwise>
+        </ct:choose>
+    </ct:if>
 </ct:iterate> 
     <s:submit key="button.search" align="left"/>
 </s:form>
@@ -58,9 +58,9 @@
 
         <display:column property="id" media="csv excel xml pdf" titleKey="<xc:uncap element="$class"/>.id"/>
 <ct:iterate select="$class/attributes" var="attribute">
-	<ct:if test="not(call($attribute, 'isReference'))">
+    <ct:if test="not(call($attribute, 'isReference'))">
         <display:column property="<xc:uncap element="$attribute"/>" sortable="true" titleKey="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>"/>
-	</ct:if>
+    </ct:if>
 </ct:iterate> 
 
         <display:column media="html" titleKey="List.Edit" >
@@ -71,17 +71,17 @@
         </display:column>
         <display:column property="deleteCheckbox" media="html" title="${deleteChecks}"/>
 
-		<display:footer>
-			<tr class="footer">
+        <display:footer>
+            <tr class="footer">
                 <!-- change the "colspan" value below according to the number of columns -->
-				<td colspan="5">&nbsp;</td>
-				<td>
-					<input id="<xc:uncap element="$class"/>DeleteButton" name="method:deleteMass" 
-						   value="<fmt:message key="button.delete"/>" 
-						   onclick="return confirmDelete('<xc:cap element="$class"/>')" type="submit" />
-				</td>
-			</tr>
-		</display:footer>
+                <td colspan="5">&nbsp;</td>
+                <td>
+                    <input id="<xc:uncap element="$class"/>DeleteButton" name="method:deleteMass" 
+                           value="<fmt:message key="button.delete"/>" 
+                           onclick="return confirmDelete('<xc:cap element="$class"/>')" type="submit" />
+                </td>
+            </tr>
+        </display:footer>
 
         <display:setProperty name="paging.banner.item_name"><fmt:message key="<xc:uncap element="$class"/>List.<xc:uncap element="$class"/>"/></display:setProperty>
         <display:setProperty name="paging.banner.items_name"><fmt:message key="<xc:uncap element="$class"/>List.<xc:uncap element="$class"/>s"/></display:setProperty>

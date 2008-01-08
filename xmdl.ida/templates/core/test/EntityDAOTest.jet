@@ -5,9 +5,9 @@
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@taglib prefix="tu" id="xmdl.genext.testUtils" %>
 <%@ jet 
-	package="org.xmdl.ida.templates.core.test" 
-	class="EntityDAOTestImpl" 
-	%><%
+    package="org.xmdl.ida.templates.core.test" 
+    class="EntityDAOTestImpl" 
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %>
 package <xc:qualifiedName element="$class/xPackage"/>.dao;
@@ -31,28 +31,28 @@ package <xc:qualifiedName element="$class/xPackage"/>.dao;
  */ 
 public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     private <xc:cap element="$class"/>DAO <xc:uncap element="$class"/>DAO = null;
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     public void set<xc:cap element="$class"/>DAO(<xc:cap element="$class"/>DAO <xc:uncap element="$class"/>DAO) {
         this.<xc:uncap element="$class"/>DAO = <xc:uncap element="$class"/>DAO;
     }
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     public void testAddAndRemove<xc:cap element="$class"/>() throws Exception {
         <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="not(call($attribute, 'isReference'))">
+    <c:if test="not(call($attribute, 'isReference'))">
         <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
-	</c:if>
+    </c:if>
 </c:iterate> 
 
         <xc:uncap element="$class"/> = <xc:uncap element="$class"/>DAO.save(<xc:uncap element="$class"/>);
@@ -62,9 +62,9 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 
         assertNotNull(<xc:uncap element="$class"/>.getId());
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="not(call($attribute, 'isReference'))">
-		assertEquals(<tu:random  attribute="$attribute" wrapString="true" />, <xc:uncap element="$class"/>.<xc:accessor attribute="$attribute"/>());
-	</c:if>
+    <c:if test="not(call($attribute, 'isReference'))">
+        assertEquals(<tu:random  attribute="$attribute" wrapString="true" />, <xc:uncap element="$class"/>.<xc:accessor attribute="$attribute"/>());
+    </c:if>
 </c:iterate> 
 
         log.debug("removing <xc:uncap element="$class"/>...");
@@ -80,39 +80,39 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         }
     }
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     public void testSearch() throws Exception {
         <xc:cap element="$class"/>Search search = new <xc:cap element="$class"/>Search();
     <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="not(call($attribute, 'isReference'))">
-		<c:choose>
-		<c:when test="call($attribute/type, 'isComparable')">
+    <c:if test="not(call($attribute, 'isReference'))">
+        <c:choose>
+        <c:when test="call($attribute/type, 'isComparable')">
         search.<xc:mutator attribute="$attribute"/>Min(<tu:random attribute="$attribute" wrapString="true" />);
         search.<xc:mutator attribute="$attribute"/>Max(<tu:random attribute="$attribute" wrapString="true" />);
-		</c:when>
-		<c:otherwise>
+        </c:when>
+        <c:otherwise>
         search.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
-		</c:otherwise>
-		</c:choose>
-	</c:if>
-	</c:iterate>
+        </c:otherwise>
+        </c:choose>
+    </c:if>
+    </c:iterate>
         Collection<<xc:cap element="$class"/>> <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>DAO.search(search);
         assertTrue(<xc:uncap element="$class"/>s.size() > 0);
     }
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     protected void onSetUpBeforeTransaction() throws Exception {
         super.onSetUpBeforeTransaction();
 
         <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 <c:iterate select="$class/attributes" var="attribute">
-	<c:if test="not(call($attribute, 'isReference'))">
+    <c:if test="not(call($attribute, 'isReference'))">
         <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random  attribute="$attribute" wrapString="true" />);
-	</c:if>
+    </c:if>
 </c:iterate> 
         <xc:uncap element="$class"/>DAO.save(<xc:uncap element="$class"/>);
     }

@@ -1,9 +1,9 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@ jet 
-	package="org.xmdl.ida.templates.web.rsc" 
-	class="ApplicationResourcesPropertiesImpl" 
-	%><%
+    package="org.xmdl.ida.templates.web.rsc" 
+    class="ApplicationResourcesPropertiesImpl" 
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %># The block of messages below are only found in this file. If you'd
 # like to override them for other languages, simply add the keys
@@ -208,7 +208,7 @@ Select.all = All
 List.Edit = Edit
 
 <c:iterate select="$project/packages" var="package">
-	<c:iterate select="$package/classes" var="class">
+    <c:iterate select="$package/classes" var="class">
 # -- <xc:cap element="$class"/>-START
 <xc:cap element="$class"/>.menu.title=<xc:cap element="$class"/>s
 <xc:cap element="$class"/>.menu.edit=<xc:cap element="$class"/> Entry
@@ -233,24 +233,24 @@ List.Edit = Edit
 
 # -- <xc:uncap element="$class"/> attributes --
 <xc:uncap element="$class"/>.id=Id
-		<c:iterate select="$class/attributes" var="attribute">
+        <c:iterate select="$class/attributes" var="attribute">
 <xc:uncap element="$class"/>.<xc:uncap element="$attribute"/> = <xc:cap element="$attribute"/> 
-			<c:if test="not(call($attribute, 'isReference'))">
-				<c:choose>
-				<c:when test="call($attribute/type, 'isComparable')">
+            <c:if test="not(call($attribute, 'isReference'))">
+                <c:choose>
+                <c:when test="call($attribute/type, 'isComparable')">
 <xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>Min = Minimum <xc:cap element="$attribute"/> 
 <xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/>Max = Maximum <xc:cap element="$attribute"/> 
-				</c:when>
-				<c:otherwise>
+                </c:when>
+                <c:otherwise>
 <xc:uncap element="$class"/>Search.<xc:uncap element="$attribute"/> = <xc:cap element="$attribute"/> 
-				</c:otherwise>
-				</c:choose>
-			</c:if>
+                </c:otherwise>
+                </c:choose>
+            </c:if>
 
-		</c:iterate>
+        </c:iterate>
 # -- <xc:cap element="$class"/>-END
 
-	</c:iterate>
+    </c:iterate>
 </c:iterate>
 
 
@@ -262,6 +262,6 @@ menu.title.<xc:qualifiedName element="$package"/> = <xc:qualifiedName element="$
 menu.title.<xc:cap element="$class"/> = <xc:cap element="$class"/>s 
 menu.edit.<xc:cap element="$class"/> = Edit <xc:cap element="$class"/>s
 menu.search.<xc:cap element="$class"/> = Search <xc:cap element="$class"/>s
-	</c:iterate>
+    </c:iterate>
 </c:iterate>
 # -- Modules-END

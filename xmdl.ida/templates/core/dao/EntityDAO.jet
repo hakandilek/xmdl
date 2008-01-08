@@ -2,9 +2,9 @@
 <%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
 <%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@ jet 
-	package="org.xmdl.ida.templates.core.dao" 
-	class="EntityDAOImpl" 
-	%><%
+    package="org.xmdl.ida.templates.core.dao" 
+    class="EntityDAOImpl" 
+    %><%
     org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
 %> 
 package <xc:qualifiedName element="$class/xPackage"/>.dao;
@@ -27,14 +27,14 @@ package <xc:qualifiedName element="$class/xPackage"/>.dao;
  */ 
 public interface <xc:cap element="$class"/>DAO extends GenericDao<<xc:cap element="$class"/>, Long> {
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     Collection<<xc:cap element="$class"/>> search(<ida:searchParameters class="$class"/>);
 
-	/**
-	 * @generated
-	 */ 
+    /**
+     * @generated
+     */ 
     Collection<<xc:cap element="$class"/>> search(<xc:cap element="$class"/>Search searchBean);
 
 }
