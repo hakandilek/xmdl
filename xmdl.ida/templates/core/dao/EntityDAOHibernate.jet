@@ -100,21 +100,18 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
         Criteria criteria = getSession().createCriteria(<xc:cap element="$class"/>.class);
 <c:iterate select="$class/attributes" var="attribute">
 	<c:if test="not(call($attribute, 'isReference'))">
-		<c:choose>
-		<c:when test="$attribute/type/className = 'java.lang.String'">
-        if (<xc:uncap element="$attribute"/> != null && !<xc:uncap element="$attribute"/>.equals(""))
-        	criteria.add(Restrictions.like("<xc:uncap element="$attribute"/>", "%" + <xc:uncap element="$attribute"/> + "%"));
-		</c:when>
-		<c:when test="call($attribute/type, 'isComparable')">
+        <c:choose>
+            <c:when test="call($attribute/type, 'isComparable')">
         if (min<xc:cap element="$attribute"/> != null)
             criteria.add(Restrictions.ge("<xc:uncap element="$attribute"/>", min<xc:cap element="$attribute"/>));
         if (max<xc:cap element="$attribute"/> != null)
             criteria.add(Restrictions.le("<xc:uncap element="$attribute"/>", max<xc:cap element="$attribute"/>));
-		</c:when>
-		<c:otherwise>
+            </c:when>
+            <c:otherwise>
+        if (<xc:uncap element="$attribute"/> != null)
             criteria.add(Restrictions.eq("<xc:uncap element="$attribute"/>", <xc:uncap element="$attribute"/>));
-		</c:otherwise>
-		</c:choose>
+            </c:otherwise>
+        </c:choose>
 	</c:if>
 </c:iterate> 
         List<<xc:cap element="$class"/>> list = criteria.list();

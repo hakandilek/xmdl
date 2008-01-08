@@ -69,9 +69,6 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
 		</c:if>
     </c:iterate> 
 
-        <xc:cap element="$class"/>Search search = new <xc:cap element="$class"/>Search();
-        action.set<xc:cap element="$class"/>Search(search);
-
     <c:iterate select="$class/attributes" var="attribute">
         <c:if test="isEnumeration($attribute)">
         action.set<xc:cap element="$attribute"/>Ids(<xc:uncap element="$attribute"/>Ids);
@@ -90,6 +87,9 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         action.set<xc:cap element="$attribute"/>Ids(null);
         </c:if>
     </c:iterate> 
+        <xc:cap element="$class"/>Search search = new <xc:cap element="$class"/>Search();
+        action.set<xc:cap element="$class"/>Search(search);
+
         assertEquals(action.list(), ActionSupport.SUCCESS);
         assertTrue(action.get<xc:cap element="$class"/>s().size() >= 1);
     <c:iterate select="$class/attributes" var="attribute">
