@@ -77,7 +77,7 @@
         <c:iterate select="$class/attributes" var="attribute">
             <c:if test="not(call($attribute, 'isReference'))">
     			<c:if test="not(isEnumeration($attribute))">
-                <setInputField description="set <xc:uncap element="$attribute"/>" name="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" value="<tu:random  attribute="$attribute" wrapString="false" />"/>
+                <setInputField description="set <xc:uncap element="$attribute"/>" name="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" value="<tu:randomPlain attribute="$attribute" format="MM/dd/yyyy"/>"/>
             	</c:if>
             </c:if>
         </c:iterate> 
@@ -104,7 +104,7 @@
         <c:iterate select="$class/attributes" var="attribute">
             <c:if test="not(call($attribute, 'isReference'))">
     			<c:if test="not(isEnumeration($attribute))">
-                <setInputField description="set <xc:uncap element="$attribute"/>" name="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" value="<tu:random  attribute="$attribute" wrapString="false" />"/>
+                <setInputField description="set <xc:uncap element="$attribute"/>" name="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" value="<tu:randomPlain attribute="$attribute" format="MM/dd/yyyy"/>"/>
             	</c:if>
             </c:if>
         </c:iterate> 
