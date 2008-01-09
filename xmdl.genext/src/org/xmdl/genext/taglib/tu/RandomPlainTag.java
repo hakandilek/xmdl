@@ -16,9 +16,9 @@ import chrome.xmdl.XAttribute;
  * @author Hakan Dilek
  * 
  */
-public class RandomTag extends BaseEmptyTag {
+public class RandomPlainTag extends BaseEmptyTag {
 
-    public RandomTag() {
+    public RandomPlainTag() {
     }
 
     @Override
@@ -29,16 +29,11 @@ public class RandomTag extends BaseEmptyTag {
         String result = "";
         if (object instanceof XAttribute) {
             XAttribute attribute = (XAttribute) object;
-            boolean wrap = false;
             int trim = 0;
-            String wrapString = null;
             String trimString = null;
 
-            try {
-                wrapString = fetchAttribute("wrapString");
-            } catch (MissingAttributeException e) {
-                // ignore optional variables
-            }
+            String formatString = null;
+            
             try {
                 trimString = fetchAttribute("trim");
             } catch (MissingAttributeException e) {
@@ -46,10 +41,9 @@ public class RandomTag extends BaseEmptyTag {
             }
 
             try {
-                wrap = wrapString != null
-                        && Boolean.valueOf(wrapString).booleanValue();
-            } catch (RuntimeException e) {
-                // ignore
+                formatString = fetchAttribute("format");
+            } catch (MissingAttributeException e) {
+                // ignore optional variables
             }
 
             try {
@@ -59,11 +53,9 @@ public class RandomTag extends BaseEmptyTag {
             }
 
             if (trim > 0) {
-                result = TestTagUtils.randomValueTrimmed(attribute, trim);
-            } else if (wrap) {
-                result = TestTagUtils.randomValueString(attribute);
+                result = TestTagUtils.plainRandomValueTrimmed(attribute, trim);
             } else {
-                result = TestTagUtils.randomValuePlain(attribute);
+                result = TestTagUtils.plainRandomValue(attribute, formatString);
             }
         }
         out.write(result);

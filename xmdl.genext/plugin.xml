@@ -146,9 +146,9 @@
             name="Test Utils Tag Library"
             standardPrefix="tu">
          <emptyTag
-               class="org.xmdl.genext.taglib.tu.RandomTag"
+               class="org.xmdl.genext.taglib.tu.RandomPlainTag"
                deprecated="false"
-               name="random">
+               name="randomPlain">
             <description>
                Outputs a random value for the given attribute
             </description>
@@ -160,9 +160,29 @@
             </attribute>
             <attribute
                   deprecated="false"
-                  name="wrapString"
-                  type="boolean"
+                  name="trim"
+                  type="string"
                   use="optional">
+            </attribute>
+            <attribute
+                  deprecated="false"
+                  name="format"
+                  type="string"
+                  use="optional">
+            </attribute>
+         </emptyTag>
+         <emptyTag
+               class="org.xmdl.genext.taglib.tu.RandomWrapTag"
+               deprecated="false"
+               name="randomWrap">
+            <description>
+               Outputs a random value for the given attribute wrapped by the object creation expression
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="attribute"
+                  type="xpath"
+                  use="required">
             </attribute>
             <attribute
                   deprecated="false"

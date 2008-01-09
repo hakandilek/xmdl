@@ -8,15 +8,14 @@ import java.util.Random;
  */
 public class RandomUtils {
 
-	public static final RandomUtils INST = new RandomUtils(); 
-		
-	protected RandomUtils() {
-		super();
-	}
+    public static final RandomUtils INST = new RandomUtils();
 
-	private static int RandomAdjuster = 0;
+    protected RandomUtils() {
+        super();
+    }
+
+    private static int RandomAdjuster = 0;
     private Random random = new Random();
-
 
     public String randomString(int length) {
         // Generate a random String
@@ -34,37 +33,45 @@ public class RandomUtils {
         return result;
     }
 
-    private  void seed() {
-        int seed = (int) (System.currentTimeMillis() % 20) + 1 + RandomAdjuster++;
+    private void seed() {
+        int seed = (int) (System.currentTimeMillis() % 20) + 1
+                + RandomAdjuster++;
 
         random.setSeed(System.currentTimeMillis() * seed);
     }
 
-    public double randomDouble(double limit){
+    public double randomDouble(double limit) {
         seed();
         return random.nextDouble() % limit;
     }
 
-    public int randomInt(int limit){
+    public int randomInt(int limit) {
         seed();
         return random.nextInt(limit);
     }
 
-    public long randomLong(){
+    public long randomLong() {
         seed();
         return random.nextLong();
     }
 
-    public boolean randomBoolean(){
+    public boolean randomBoolean() {
         seed();
         return random.nextBoolean();
     }
 
-	public Object randomObject(List<?> choices) {
-		int size = choices.size();
-		int rnd = randomInt(size);
-		Object object = choices.get(rnd);
-		return object;
-	}
+    public Object randomObject(List<?> choices) {
+        int size = choices.size();
+        int rnd = randomInt(size);
+        Object object = choices.get(rnd);
+        return object;
+    }
+
+    public Object randomLong(long limit) {
+        long l = randomLong();
+        if (l < 0)
+            l = -l;
+        return l % limit;
+    }
 
 }
