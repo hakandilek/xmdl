@@ -34,28 +34,14 @@ public class TestHelper {
 			substring = s.substring(0, len-trimLength);
 		}
 		
-		String valueString = valueString(attrib, substring);
-		return valueString;
+		return substring;
 	}
 	
 	public String randomValueString(XAttribute attrib) {
 		String plain = randomValuePlain(attrib);
-		String valueString = valueString(attrib, plain);
-		return valueString;
+		return plain;
 	}
 	
-	protected String valueString(XAttribute attrib, String plainValue){
-		XType type = attrib.getType();
-		if (XmdlTypes.JAVA_STRING.equals(type)) {
-			return "\"" + plainValue + "\"";
-		}
-		if (type instanceof XEnumeration) {
-			XEnumeration en = (XEnumeration) type;
-			return en.getName() + "." + plainValue;
-		}
-		return plainValue;		
-	}
-
 	public String randomValuePlain(XAttribute attrib) {
 		Object random = randomValues.get(attrib);
 		if (random == null) {
@@ -76,30 +62,31 @@ public class TestHelper {
 			return utils.randomDouble(Math.pow(10, length));
 		}
 		if (XmdlTypes.JAVA_DOUBLE.equals(type)) {
-			return "new Double(" + utils.randomDouble(Math.pow(10, length)) + ")";
+			return utils.randomDouble(Math.pow(10, length));
 		}
 		if (XmdlTypes.JAVA_FLOAT.equals(type)) {
-			return "new Float(" + utils.randomDouble(Math.pow(10, length)) + ")";
+			return utils.randomDouble(Math.pow(10, length));
 		}
 		if (XmdlTypes.INT.equals(type)) {
 			return utils.randomInt((int) Math.pow(10, length));
 		}
 		if (XmdlTypes.JAVA_INTEGER.equals(type)) {
-			return "new Integer(" + utils.randomInt((int) Math.pow(10, length))
-					+ ")";
+			return utils.randomInt((int) Math.pow(10, length));
 		}
 		if (XmdlTypes.LONG.equals(type)) {
 			return utils.randomLong();
 		}
 		if (XmdlTypes.JAVA_LONG.equals(type)) {
-            return "new Long(" + utils.randomLong() + "L)";
+            return utils.randomLong();
         }
 		if (XmdlTypes.JAVA_STRING.equals(type)) {
 			return utils.randomString(length);
 		}
-		if (XmdlTypes.JAVA_DATE.equals(type) || XmdlTypes.JAVA_DATETIME.equals(type)) {
-			return "new Date(" + utils.randomLong() + "L)";
-		}
+        if (XmdlTypes.JAVA_DATE.equals(type)
+                || XmdlTypes.JAVA_DATETIME.equals(type)) {
+            //347068800000L = 10 years in msecs
+            return utils.randomLong(347068800000L);
+        }
 		if (type instanceof XEnumeration) {
 			XEnumeration enumer = (XEnumeration) type;
 			List<XEnumerationLiteral> literals = enumer.getLiterals();
