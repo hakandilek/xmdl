@@ -10,8 +10,10 @@ This guide intends to contain brief information for XMDL developers.
 You would need to install the following software components for XMDL development:
 
  * [http://www.eclipse.org/downloads/moreinfo/classic.php Eclipse Classic] 3.3.x (includes PDE), including the following plugins,
-   * [http://www.eclipse.org/modeling/emf/ Eclipse Modeling Framework Extender SDK] 2.3.0, via update site
+   * [http://www.eclipse.org/modeling/emf/ Eclipse Modeling Framework Extender SDK] 2.3.0, via update site using the [http://www.eclipse.org/modeling/emf/updates/ instructions given].
    * [http://www.eclipse.org/modeling/m2t/downloads/?project=jet JET SDK (Runtime, Source) 0.8.1], Plugin files via manual installation
+      * Download "SDK (Runtime, Source)" component
+      * Extract the zip file in the parent directory where your eclipse installation directory is. Therefore, all jar files in the downloaded zip file will be extracted to eclipse/plugins and eclipse/features directory.
  * Latest version of [http://subclipse.tigris.org/ Subclipse] (SVN client for Eclipse), via [http://subclipse.tigris.org/update_1.2.x/ update site]
 
 When installation is complete, add XMDL project components into your workspace. 
