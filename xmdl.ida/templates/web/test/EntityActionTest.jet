@@ -65,7 +65,7 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         // enter all required fields
     <c:iterate select="$class/attributes" var="attribute">
         <c:if test="not(call($attribute, 'isReference'))">
-        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:random attribute="$attribute" wrapString="true" />);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute"/>);
         </c:if>
     </c:iterate> 
 
