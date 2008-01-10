@@ -11,7 +11,7 @@
   # Deploy binary packages (plugins) on Eclipse, and check for any visible problems
   # Tag source repository
   # Upload released package on site, and specify necessary labels
-  # Clear labels for old packages.
+  # Clear labels for old packages on project "Downloads" page.
   # Make changes on [Roadmap Roadmap page] if necessary. (e.g. link to download URL)
 
 == Building a distribution ==
