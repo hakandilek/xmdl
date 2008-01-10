@@ -98,7 +98,7 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
      * @generated
      */
     public String toString() {
-        return MessageFormat.format("<xc:cap element="$class"/> [id={0}]<%int i=0;%><c:iterate select="$class/attributes" var="attribute">[<xc:uncap element="$attribute"/>={<%=++i%>}]</c:iterate>", id<c:iterate select="$class/attributes" var="attribute">, <xc:uncap element="$attribute"/></c:iterate>);
+        return MessageFormat.format("<xc:cap element="$class"/> [id={0}]<%int i=0;%><c:iterate select="$class/attributes" var="attribute"><c:if test="not(call($attribute, 'isReference'))">[<xc:uncap element="$attribute"/>={<%=++i%>}]</c:if></c:iterate>", id<c:iterate select="$class/attributes" var="attribute"><c:if test="not(call($attribute, 'isReference'))">, <xc:uncap element="$attribute"/></c:if></c:iterate>);
     }
 
     /** 
