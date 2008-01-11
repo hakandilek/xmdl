@@ -14,6 +14,7 @@ You would need to install the following software components for XMDL development
    * [http://www.eclipse.org/modeling/m2t/downloads/?project=jet JET SDK (Runtime, Source) 0.8.1], Plugin files via manual installation
       * Download "SDK (Runtime, Source)" component
       * Extract the zip file in the parent directory where your eclipse installation directory is. Therefore, all jar files in the downloaded zip file will be extracted to eclipse/plugins and eclipse/features directory.
+   * [http://code.google.com/p/xmdl/downloads/list XMDL 0.6.0] via manual installation
  * Latest version of [http://subclipse.tigris.org/ Subclipse] (SVN client for Eclipse), via [http://subclipse.tigris.org/update_1.2.x/ update site]
 
 When installation is complete, add XMDL project components into your workspace. 
