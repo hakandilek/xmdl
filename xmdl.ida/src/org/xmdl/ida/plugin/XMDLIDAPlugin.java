@@ -6,6 +6,7 @@
  */
 package org.xmdl.ida.plugin;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -37,6 +38,8 @@ public final class XMDLIDAPlugin extends EMFPlugin {
 		super
 		  (new ResourceLocator [] {
 		   });
+        initClassLoader();
+        LOGGER.info("XMDLIDAPlugin()");
 	}
 
 	/**
@@ -73,6 +76,11 @@ public final class XMDLIDAPlugin extends EMFPlugin {
 		@Override
 		public void start(BundleContext context) throws Exception {
 			super.start(context);
+
+			initClassLoader();
+
+            LOGGER.info("Class loader initialized");
+
 			LOGGER.info("Plugin startup completed");
 		}
 
@@ -82,5 +90,15 @@ public final class XMDLIDAPlugin extends EMFPlugin {
 			LOGGER.info("Plugin stooped");
 		}
 	}
+
+    private static void initClassLoader() {
+        try {
+            Thread.currentThread()
+                    .getContextClassLoader().getResource("META-INF/MANIFEST.MF");
+        } catch (Throwable e) {
+            e.printStackTrace();
+            BasicConfigurator.configure();
+        }
+    }
 
 }
