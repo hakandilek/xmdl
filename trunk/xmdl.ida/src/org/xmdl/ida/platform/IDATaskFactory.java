@@ -122,23 +122,14 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
             //IFolder target = null;
             InputStream input = null;
             try {
-                IPath file = new Path("/extras/extras.zip");
+                IPath file = new Path("/res/extras.zip");
                 LOGGER.debug("file="+file);
                 Implementation plugin = XMDLIDAPlugin.getPlugin();
                 LOGGER.debug("plugin="+plugin);
                 Bundle bundle = plugin.getBundle();
                 LOGGER.debug("bundle="+bundle);
-//                URL url = FileLocator.find(bundle, file, new HashMap());
-//                LOGGER.debug("url="+url);
-//                input = url.openStream();
                 input = FileLocator.openStream(bundle, file, false);
                 LOGGER.debug("input="+input);
-                
-//                URL baseURL = XMDLIDAPlugin.INSTANCE.getBaseURL();
-//                LOGGER.debug("baseURL="+baseURL);
-//                URL file = new URL(baseURL, "/extras/extras.zip");
-//                LOGGER.debug("file="+file);
-//                input = file.openStream();
             } catch (Exception e) {
                 LOGGER.debug("Exception :" + targetBase, e);
             }
