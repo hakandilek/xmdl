@@ -1,15 +1,19 @@
 package org.xmdl.ida.platform;
 
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.Bundle;
 import org.xmdl.ida.plugin.XMDLIDAPlugin;
+import org.xmdl.ida.plugin.XMDLIDAPlugin.Implementation;
 import org.xmdl.ida.templates.core.dao.EntityDAO;
 import org.xmdl.ida.templates.core.dao.EntityDAOHibernate;
 import org.xmdl.ida.templates.core.model.Entity;
@@ -118,11 +122,23 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
             //IFolder target = null;
             InputStream input = null;
             try {
-                URL baseURL = XMDLIDAPlugin.INSTANCE.getBaseURL();
+                IPath file = new Path("/extras/extras.zip");
+                LOGGER.debug("file="+file);
+                Implementation plugin = XMDLIDAPlugin.getPlugin();
+                LOGGER.debug("plugin="+plugin);
+                Bundle bundle = plugin.getBundle();
+                LOGGER.debug("bundle="+bundle);
+//                URL url = FileLocator.find(bundle, file, new HashMap());
+//                LOGGER.debug("url="+url);
+//                input = url.openStream();
+                input = FileLocator.openStream(bundle, file, false);
+                LOGGER.debug("input="+input);
                 
-                URL file = new URL(baseURL, "/extras/extras.zip");
-                
-                input = file.openStream();
+//                URL baseURL = XMDLIDAPlugin.INSTANCE.getBaseURL();
+//                LOGGER.debug("baseURL="+baseURL);
+//                URL file = new URL(baseURL, "/extras/extras.zip");
+//                LOGGER.debug("file="+file);
+//                input = file.openStream();
             } catch (Exception e) {
                 LOGGER.debug("Exception :" + targetBase, e);
             }
