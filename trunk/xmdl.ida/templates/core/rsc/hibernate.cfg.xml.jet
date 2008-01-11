@@ -10,6 +10,8 @@
 
 <hibernate-configuration>
     <session-factory>
+        <mapping class="org.xmdl.mesken.model.User"/>
+        <mapping class="org.xmdl.mesken.model.Role"/>
 <c:iterate select="$project/packages" var="package">
     <c:iterate select="$package/classes" var="class">
         <mapping class="<xc:qualifiedName element="$package"/>.model.<xc:cap element="$class"/>"/>
