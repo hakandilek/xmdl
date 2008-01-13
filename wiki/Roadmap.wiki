@@ -14,8 +14,9 @@ This is the next future release of XMDL, planned with the extended [Metamodel] s
 IDA platform, defined with the draft project [http://taslak.googlecode.com/ Taslak] will be integrated in this release. Check [ReleasePlan0_6 detailed planning page] for this release. 
 
 || *Version*        ||  *Release Date* || * Notes * ||
-||  v0.6.0 - alpha2 || _January 2008?_ || _Bug fixes & new features_ ||
-||  *[http://xmdl.googlecode.com/files/xmdl_0.6.0.20080110_alpha1.zip v0.6.0 - alpha1]* ||  *10.01.2008* || First code generation for IDA platform, with successful unit tests ||
+||  v0.6.0 - alpha3 || _January 2008?_ || _Bug fixes & new features_ ||
+||  *[http://xmdl.googlecode.com/files/xmdl_0.6.0.20080113_alpha2.zip v0.6.0 - alpha2]* || 13.01.2008 || Bug fixes: [http://code.google.com/p/xmdl/issues/detail?id=59 Issue 59], [http://code.google.com/p/xmdl/issues/detail?id=60 Issue 60] ||
+||  v0.6.0 - alpha1 ||  *10.01.2008* || First code generation for IDA platform, with successful unit tests ||
 
 === Release 0.5 ===
 
