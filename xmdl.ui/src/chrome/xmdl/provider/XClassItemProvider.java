@@ -232,7 +232,7 @@ public class XClassItemProvider extends ItemProviderAdapter implements
         XAttribute att = XmdlFactory.eINSTANCE.createXAttribute();
         int a = cls.getAttributes().size() + 1;
         String name = "attribute" + a;
-        while (cls.hasAttibute(name)) {
+        while (cls.hasAttribute(name)) {
             name = "attribute" + ++a;
         }
         att.setName(name);

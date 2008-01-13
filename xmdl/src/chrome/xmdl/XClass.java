@@ -122,7 +122,7 @@ public interface XClass extends XBase, XType {
 
     List<XAttribute> getSimpleAttributes();
 
-    boolean hasAttibute(String name);
+    boolean hasAttribute(String name);
 
     boolean hasMethod(String name);
 
