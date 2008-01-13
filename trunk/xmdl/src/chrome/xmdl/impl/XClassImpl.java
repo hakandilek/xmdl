@@ -583,7 +583,7 @@ public class XClassImpl extends EObjectImpl implements XClass {
     }
 
     @Override
-    public boolean hasAttibute(String name) {
+    public boolean hasAttribute(String name) {
         return getAttribute(name) != null;
     }
 
