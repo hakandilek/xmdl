@@ -9,27 +9,32 @@ This guide intends to contain brief information for XMDL developers.
 
 You would need to install the following software components for XMDL development:
 
- * Download and unzip [http://www.eclipse.org/downloads/moreinfo/classic.php Eclipse Classic] 3.3.x (includes PDE), 
- * Download [http://xmdl.googlecode.com/svn/trunk/xmdl.update/Bookmarks-dev.xml update site bookmarK file], and save to a local folder
- * Run eclipse using a clean workspace
- * Go to menu Help -> Software Updates -> Find and Install
- * Select "Search for new Features to install", click next
- * Click "Import Sites...", select bookmark file you've downloaded.
- * Select the following from the list, click Finish;
-   * Europa Discovery Site
-   * Subclipse update for 1.2.x
-   * XMDL Update Sites
- * Select mirrors if promted
- * Select the following features to be installed
-   * Europa Discovery Site/Models and Model Development
-     * Eclipse Modeling Framework (EMF) Runtime + End-User Tools 2.3.1.x
-     * Eclipse Modeling Framework (EMF) Extender SDK 2.3.1.x
-     * Java Emitter Templates (JET) (Incubation) 0.8.1.x
-     * Java Emitter Templates (JET) SDK (Incubation) 0.8.1.x
-   * Subclipse update for 1.2.x/Subclipse Plugin
-     * Subclipse 1.2.x
-   * XMDL Update Sites/XMDL Development Updates
-     * XMDL Universal Code Generator 0.6.x
+ * Installing Eclipse
+   * Download and unzip [http://www.eclipse.org/downloads/moreinfo/classic.php Eclipse Classic] 3.3.x (includes PDE), 
+ * Download and install necessary plugins
+   * Download [http://xmdl.googlecode.com/svn/trunk/xmdl.update/Bookmarks-dev.xml update site bookmarK file], and save to a local folder
+   * Run eclipse using a clean workspace
+   * Go to menu Help -> Software Updates -> Find and Install
+   * Select "Search for new Features to install", click next
+   * Click "Import Sites...", select bookmark file you've downloaded.
+   * Select the following from the list, click Finish;
+     * Europa Discovery Site
+     * Subclipse update for 1.2.x
+     * XMDL Update Sites
+   * Select mirrors if promted
+   * Select the following features to be installed, then click Next
+     * Europa Discovery Site/Models and Model Development
+       * Eclipse Modeling Framework (EMF) Runtime + End-User Tools 2.3.1.x
+       * Eclipse Modeling Framework (EMF) Extender SDK 2.3.1.x
+       * Java Emitter Templates (JET) (Incubation) 0.8.1.x
+       * Java Emitter Templates (JET) SDK (Incubation) 0.8.1.x
+     * Subclipse update for 1.2.x/Subclipse Plugin
+       * Subclipse 1.2.x
+     * XMDL Update Sites/XMDL Development Updates
+       * XMDL Universal Code Generator 0.6.x
+   * Accept license agreement, click Next and Finish
+   * Install all components and restart eclipse when installation is finished.
+
 
 
    * [http://www.eclipse.org/modeling/emf/ Eclipse Modeling Framework Extender SDK] 2.3.0, via update site using the [http://www.eclipse.org/modeling/emf/updates/ instructions given].
