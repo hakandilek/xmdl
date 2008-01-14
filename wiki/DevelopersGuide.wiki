@@ -15,7 +15,7 @@ You would need to install the following software components for XMDL development
 
 ====== Download and install necessary plugins ======
 
-   * Download [http://xmdl.googlecode.com/svn/trunk/xmdl.update/Bookmarks-dev.xml update site bookmarK file], and save to a local folder
+   * Download [http://xmdl.googlecode.com/svn/trunk/xmdl.update/Bookmarks-dev.xml update site bookmark file], and save to a local folder
    * Run eclipse using a clean workspace
    * Go to menu Help -> Software Updates -> Find and Install
    * Select "Search for new Features to install", click next
