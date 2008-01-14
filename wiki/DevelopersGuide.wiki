@@ -9,9 +9,12 @@ This guide intends to contain brief information for XMDL developers.
 
 You would need to install the following software components for XMDL development:
 
- * Installing Eclipse
+====== Install Eclipse Classic 3.3.x ======
+
    * Download and unzip [http://www.eclipse.org/downloads/moreinfo/classic.php Eclipse Classic] 3.3.x (includes PDE), 
- * Download and install necessary plugins
+
+====== Download and install necessary plugins ======
+
    * Download [http://xmdl.googlecode.com/svn/trunk/xmdl.update/Bookmarks-dev.xml update site bookmarK file], and save to a local folder
    * Run eclipse using a clean workspace
    * Go to menu Help -> Software Updates -> Find and Install
@@ -35,14 +38,7 @@ You would need to install the following software components for XMDL development
    * Accept license agreement, click Next and Finish
    * Install all components and restart eclipse when installation is finished.
 
-
-
-   * [http://www.eclipse.org/modeling/emf/ Eclipse Modeling Framework Extender SDK] 2.3.0, via update site using the [http://www.eclipse.org/modeling/emf/updates/ instructions given].
-   * [http://www.eclipse.org/modeling/m2t/downloads/?project=jet JET SDK (Runtime, Source) 0.8.1], Plugin files via manual installation
-      * Download "SDK (Runtime, Source)" component
-      * Extract the zip file in the parent directory where your eclipse installation directory is. Therefore, all jar files in the downloaded zip file will be extracted to eclipse/plugins and eclipse/features directory.
-   * [http://code.google.com/p/xmdl/downloads/list XMDL 0.6.0] via manual installation
- * Latest version of [http://subclipse.tigris.org/ Subclipse] (SVN client for Eclipse), via [http://subclipse.tigris.org/update_1.2.x/ update site]
+====== Checkout xmdl components from SVN repository ======
 
 When installation is complete, add XMDL project components into your workspace. 
 _It is recommended to setup a separate workspace in Eclipse containing the following XMDL components_
@@ -61,6 +57,7 @@ _It is recommended to setup a separate workspace in Eclipse containing the follo
    * xmdl.lib/
    * xmdl.ida/
    * xmdl.ui/
+   * xmdl.update/
    * xmdlbo.ui/
    * xmdldb.ui/
    * xmdlgen.ui/
@@ -73,6 +70,7 @@ _It is recommended to setup a separate workspace in Eclipse containing the follo
  * *xmdl.gen* is the code generation engine. Further platforms can be added as [http://wiki.eclipse.org/index.php/FAQ_What_are_extensions_and_extension_points%3F extension points] for this component using an [http://wiki.eclipse.org/FAQ_What_is_a_plug-in%3F Eclipse Plugin definition]. This component also contains [http://java.sun.com/blueprints/corej2eepatterns/Patterns/ViewHelper.html helper classes] to support templates during code generation.
  * *xmdl.genext* is the code generator extension module. JET2 tag libraries are defined in this module. 
  * *xmdl.genext.test* is the unit test module for the *xmdl.genext* module. 
+ * *xmdl.update* is the component that provides the eclipse update site and the *org.xmdl* feature definition.
  * *xmdl.ui* is the component that provides UI editor support for the XMDL Base Metamodel (.xmdl).
  * *xmdlbo.ui* is the component that provides UI editor support for the XMDL Business (Service) Layer Metamodel (.xmdlbo).
  * *xmdldb.ui* is the component that provides UI editor support for the XMDL Database Metamodel (.xmdldb).
