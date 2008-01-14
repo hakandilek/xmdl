@@ -10,10 +10,15 @@ This guide intends to contain brief information for XMDL developers.
 You would need to install the following software components for XMDL development:
 
  * Download and unzip [http://www.eclipse.org/downloads/moreinfo/classic.php Eclipse Classic] 3.3.x (includes PDE), 
+ * Download [http://xmdl.googlecode.com/svn/trunk/xmdl.update/Bookmarks-dev.xml update site bookmarK file], and save to a local folder
  * Run eclipse using a clean workspace
  * Go to menu Help -> Software Updates -> Find and Install
  * Select "Search for new Features to install", click next
- * Click "Import Sites...", 
+ * Click "Import Sites...", select bookmark file you've downloaded.
+ * Select the following from the list;
+   * Europa Discovery Site
+   * Subclipse update for 1.2.x
+   * XMDL Update Sites
 
 
    * [http://www.eclipse.org/modeling/emf/ Eclipse Modeling Framework Extender SDK] 2.3.0, via update site using the [http://www.eclipse.org/modeling/emf/updates/ instructions given].
