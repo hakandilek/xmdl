@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.xmdl"
+      label="XMDL Universal Code Generator"
+      version="0.6.0.20080114_alpha2"
+      provider-name="org.xmdl"
+      plugin="xmdl.ui">
+
+   <description url="http://www.xmdl.org">
+      XMDL Universal Code Generator. For more information see project page on http://www.xmdl.org/
+   </description>
+
+   <copyright url="http://xmdl.googlecode.com/svn/trunk/xmdl.lib/varfiles/NOTICE.txt">
+See project site for more information.
+   </copyright>
+
+   <license url="http://www.gnu.org/licenses/lgpl.html">
+Licensed under LGPL. See site for more information.
+   </license>
+
+   <url>
+      <discovery label="XMDL Home Page" url="http://www.xmdl.org"/>
+      <discovery label="Project page on Google code" url="http://code.google.com/p/xmdl/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.codegen"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.jet"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.emf.mapping"/>
+      <import plugin="org.eclipse.emf.codegen.ecore.ui"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.apache.commons.logging"/>
+      <import plugin="org.junit"/>
+   </requires>
+
+   <plugin
+         id="org.xmdl.ida"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xmdl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xmdl.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xmdl.gen"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xmdl.genext"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xmdl.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xmdlbo.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xmdldb.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xmdlgen.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.commons.beanutils"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.log4j"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
