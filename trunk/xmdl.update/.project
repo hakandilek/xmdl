@@ -3,8 +3,23 @@
 	<name>xmdl.update</name>
 	<comment></comment>
 	<projects>
+		<project>xmdl</project>
+		<project>xmdl.core</project>
+		<project>xmdl.gen</project>
+		<project>xmdl.genext</project>
+		<project>xmdl.ida</project>
+		<project>xmdl.lib</project>
+		<project>xmdl.ui</project>
+		<project>xmdlbo.ui</project>
+		<project>xmdldb.ui</project>
+		<project>xmdlgen.ui</project>
 	</projects>
 	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.pde.FeatureBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.pde.UpdateSiteBuilder</name>
 			<arguments>
@@ -13,5 +28,6 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.pde.UpdateSiteNature</nature>
+		<nature>org.eclipse.pde.FeatureNature</nature>
 	</natures>
 </projectDescription>
