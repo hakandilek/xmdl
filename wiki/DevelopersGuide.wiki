@@ -1,5 +1,5 @@
 #summary XMDL Developer's Guide
-#labels Draft,Phase-Implementation
+#labels Phase-Implementation
 
 == Introduction ==
 
@@ -9,11 +9,11 @@ This guide intends to contain brief information for XMDL developers.
 
 You would need to install the following software components for XMDL development:
 
-====== Install Eclipse Classic 3.3.x ======
+===== Install Eclipse Classic 3.3.x =====
 
    * Download and unzip [http://www.eclipse.org/downloads/moreinfo/classic.php Eclipse Classic] 3.3.x (includes PDE), 
 
-====== Download and install necessary plugins ======
+===== Download and install necessary plugins =====
 
    * Download [http://xmdl.googlecode.com/svn/trunk/xmdl.update/Bookmarks-dev.xml update site bookmark file], and save to a local folder
    * Run eclipse using a clean workspace
@@ -38,7 +38,7 @@ You would need to install the following software components for XMDL development
    * Accept license agreement, click Next and Finish
    * Install all components and restart eclipse when installation is finished.
 
-====== Checkout xmdl components from SVN repository ======
+===== Checkout xmdl components from SVN repository =====
 
 When installation is complete, add XMDL project components into your workspace. 
 _It is recommended to setup a separate workspace in Eclipse containing the following XMDL components_
@@ -66,64 +66,3 @@ _It is recommended to setup a separate workspace in Eclipse containing the follo
  
 You can find [XMDLComponents here] details and inter-dependencies of the XMDL Components
     
-== Platform Development ==
-
-This chapter explains details for introducing a new target platform, or changing currently defined platforms.
-
-=== Plugin Extension Point ===
-
-Each platform is defined as an Eclipse plugin. A platform plugin uses the "xmdl.gen.registry" extension point to register itself as a plugin. Thus, code generation can be performed for this plugin via the editors context menu.
-
-*xmdl.gen.registry* extension point has the following configuration markup:
-{{{
-<!ELEMENT extension (platform+)>
-<!ATTLIST extension
-    point CDATA #IMPLIED
-    id    CDATA #IMPLIED
-    name  CDATA #IMPLIED>
-
- <!--
-    id - Unique extension id 
-    name - Name of extension
- --> 
-
-<!ELEMENT platform EMPTY>
-<!ATTLIST platform
-    name    CDATA #REQUIRED
-    version CDATA #REQUIRED
-    class   CDATA #REQUIRED>
-
-
- <!--
-    name - Name of the platform 
-    version - Platform version 
-    class - Implementation class name 
- -->
-}}}
- 
-An [http://help.eclipse.org/help32/index.jsp?topic=/org.eclipse.pde.doc.user/guide/tools/editors/manifest_editor/extension_points.htm extension point] must be defined in the platform's plugin.xml file. You can use a simple text editor or the [http://help.eclipse.org/help32/topic/org.eclipse.pde.doc.user/guide/tools/editors/manifest_editor/editor.htm Plug-in manifest editor] to add a platform definition.
-
-Here is a sample extension point definition:
-{{{
-    <extension
-         id="xmdl.core"
-         name="XMDL Core Platform"
-         point="xmdl.gen.register">
-      <platform
-            class="chrome.xmdl.core.platform.XmdlCorePlatform"
-            name="Cekirdek"
-            version="0.5.0"/>
-   </extension>
-}}}  
-
-{{{
-TODO: Adding Templates
-TODO: Defining Tasks
-TODO: Init structure
-}}}
-
- 
- 
- 
- 
- 
