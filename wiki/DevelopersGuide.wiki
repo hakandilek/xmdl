@@ -64,5 +64,8 @@ _It is recommended to setup a separate workspace in Eclipse containing the follo
  * Click Finish
  * Perform this step for the wiki/ folder under https://xmdl.googlecode.com/svn/wiki/ if you would like to follow wiki changes inside Eclipse IDE.
  
-You can find [XMDLComponents here] details and inter-dependencies of the XMDL Components
-    
+== Additional Resources ==
+
+ * You can find [XMDLComponents here] details and inter-dependencies of the XMDL Components
+
+ * [PlatformDevelopmentGuide Platform Development Guide] contains some important information guiding how to introduce a new target platform or maintain an existing one. 
