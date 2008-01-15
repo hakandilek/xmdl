@@ -9,7 +9,6 @@ Bundle-ClassPath: .
 Bundle-Activator: chrome.xmdl.ui.XMDLUIPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: chrome.xmdl.presentation,chrome.xmdl.provider,chrome.x
  mdl.ui
 Require-Bundle: xmdl,xmdl.gen,org.eclipse.core.runtime,org.eclipse.cor
