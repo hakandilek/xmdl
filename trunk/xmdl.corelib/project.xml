@@ -1,13 +1,8 @@
 <project>
-    <groupId>tr.siemens.tr.web.ik.chrome.xmdl</groupId>
+    <groupId>org.xmdl.core</groupId>
     <artifactId>lib</artifactId>
     <currentVersion>1.0</currentVersion>
     <developers>
-        <developer>
-            <name>Hakan Dilek</name>
-            <id>tr001\tr1d2643</id>
-            <email>hakan.dilek@siemens.com.tr</email>
-        </developer>        
     </developers>
     <dependencies>
         <dependency>

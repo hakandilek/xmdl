@@ -1,4 +1,4 @@
-package chrome.xmdl.lib.helper;
+package org.xmdl.lib.helper;
 
 import org.apache.commons.chain.Command;
 import org.apache.commons.chain.Context;

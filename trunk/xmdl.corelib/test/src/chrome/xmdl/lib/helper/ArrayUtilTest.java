@@ -1,4 +1,4 @@
-package chrome.xmdl.lib.helper;
+package org.xmdl.lib.helper;
 
 import junit.framework.TestCase;
 

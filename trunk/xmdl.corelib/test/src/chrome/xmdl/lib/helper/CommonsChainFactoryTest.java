@@ -1,4 +1,4 @@
-package chrome.xmdl.lib.helper;
+package org.xmdl.lib.helper;
 
 import junit.framework.TestCase;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 public class CommonsChainFactoryTest extends TestCase{
     private static final Logger LOGGER = Logger.getLogger(CommonsChainFactoryTest.class);
     private static final ClassPathXmlApplicationContext applicationContext
-            = new ClassPathXmlApplicationContext("classpath:chrome/xmdl/lib/helper/chain-test-context.xml");
+            = new ClassPathXmlApplicationContext("classpath:org/xmdl/core/lib/helper/chain-test-context.xml");
 
      public void testChain1(){
          Chain chain = (Chain) applicationContext.getBean("chain1");
