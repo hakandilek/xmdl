@@ -6,16 +6,16 @@
   - Web-specific beans are defined in "countries-servlet.xml".
   -->
 <beans>
-    <bean id="command1" class="chrome.xmdl.lib.helper.DummyCommand">
+    <bean id="command1" class="org.xmdl.lib.helper.DummyCommand">
         <property name="log" value="log message 1"/>
     </bean>
-    <bean id="command2" class="chrome.xmdl.lib.helper.DummyCommand">
+    <bean id="command2" class="org.xmdl.lib.helper.DummyCommand">
         <property name="log" value="log message 2"/>
     </bean>
-    <bean id="command3" class="chrome.xmdl.lib.helper.DummyCommand">
+    <bean id="command3" class="org.xmdl.lib.helper.DummyCommand">
         <property name="log" value="log message 3"/>
     </bean>
-    <bean id="chain1" class="chrome.xmdl.lib.helper.CommonsChainFactory" >
+    <bean id="chain1" class="org.xmdl.lib.helper.CommonsChainFactory" >
         <property name="commandNames">
             <list>
                 <value>command1</value>
