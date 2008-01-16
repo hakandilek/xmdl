@@ -1,8 +1,8 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.dao.hbm.impl" 
-	imports="chrome.xmdl.*
-			chrome.xmdl.core.util.*
-			chrome.xmdl.gen.util.*"
+	package="org.xmdl.core.templates.dao.hbm.impl" 
+	imports="org.xmdl.xmdl.*
+			org.xmdl.core.util.*
+			org.xmdl.gen.util.*"
 	class="AssociationHBMOneToOneImpl" 
 %><%
 	AttributePair pair = (AttributePair) argument;	

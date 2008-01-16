@@ -1,9 +1,9 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.dao.hbm.impl" 
+	package="org.xmdl.core.templates.dao.hbm.impl" 
 	imports="java.util.* 
-			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			chrome.xmdl.xgen.util.*
+			org.xmdl.xmdl.*
+			org.xmdl.gen.util.*
+			org.xmdl.xgen.util.*
 			org.eclipse.emf.ecore.EObject"
 	class="ProjectCFGTemplateImpl" 
 %><%

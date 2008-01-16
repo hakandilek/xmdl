@@ -1,5 +1,5 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.context.impl" 
+	package="org.xmdl.core.templates.context.impl" 
 	class="CommonResourcesPropImpl" 
 %>
 

@@ -1,7 +1,7 @@
 <%@ jet 
-    package="chrome.xmdl.core.templates.service.impl" 
-    imports="chrome.xmdl.*
-            chrome.xmdl.gen.util.*
+    package="org.xmdl.core.templates.service.impl" 
+    imports="org.xmdl.xmdl.*
+            org.xmdl.gen.util.*
             org.eclipse.emf.codegen.util.*"
     class="AbstractEntityServiceTemplateImpl" 
 %><%
@@ -21,8 +21,8 @@ package <%=helper.getQualifiedName(xPackage)%>.bo.impl;
 
 <%
 importManager.addImport("java.util.*");
-importManager.addImport("chrome.xmdl.lib.bo.*");
-importManager.addImport("chrome.xmdl.lib.dao.*");
+importManager.addImport("org.xmdl.lib.bo.*");
+importManager.addImport("org.xmdl.lib.dao.*");
 importManager.addImport("org.apache.commons.chain.*");
 importManager.addImport(helper.getQualifiedName(xPackage) + ".bo.*");
 importManager.addImport(helper.getQualifiedName(xPackage) + ".model.*");

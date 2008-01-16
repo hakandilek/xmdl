@@ -1,7 +1,7 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.context.impl" 
-	imports="chrome.xmdl.*
-			chrome.xmdl.gen.util.*"
+	package="org.xmdl.core.templates.context.impl" 
+	imports="org.xmdl.xmdl.*
+			org.xmdl.gen.util.*"
 	class="ApplicationContextDBImpl" 
 %><%
 	XPackage xPackage = (XPackage) argument;	

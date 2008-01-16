@@ -1,8 +1,8 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.dao.hbm.impl" 
-	imports="chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			chrome.xmdl.core.util.*
+	package="org.xmdl.core.templates.dao.hbm.impl" 
+	imports="org.xmdl.xmdl.*
+			org.xmdl.gen.util.*
+			org.xmdl.core.util.*
 "
 	class="AssociationHBMManyToManyImpl" 
 %><%	

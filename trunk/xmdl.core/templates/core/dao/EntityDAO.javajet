@@ -1,7 +1,7 @@
 <%@ jet 
-    package="chrome.xmdl.core.templates.dao.impl" 
-    imports="chrome.xmdl.*
-            chrome.xmdl.gen.util.*
+    package="org.xmdl.core.templates.dao.impl" 
+    imports="org.xmdl.xmdl.*
+            org.xmdl.gen.util.*
             org.eclipse.emf.codegen.util.*"
     class="EntityDAOTemplateImpl" %>    
      
@@ -21,7 +21,7 @@ package <%=helper.getQualifiedName(xPackage)%>.dao;
 
 <%importManager.addImport("java.util.*");%>
 <%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
-<%importManager.addImport("chrome.xmdl.lib.dao.*");%>
+<%importManager.addImport("org.xmdl.lib.dao.*");%>
 
 <%
     StringBuffer importStringBuffer = stringBuffer;

@@ -1,7 +1,7 @@
 <%@ jet 
-    package="chrome.xmdl.core.templates.ui.web.action.impl" 
-    imports="chrome.xmdl.*
-            chrome.xmdl.gen.util.*
+    package="org.xmdl.core.templates.ui.web.action.impl" 
+    imports="org.xmdl.xmdl.*
+            org.xmdl.gen.util.*
             org.eclipse.emf.codegen.util.*"
     class="EntityActionImpl" 
 %><%
@@ -22,10 +22,10 @@ package <%=helper.getQualifiedName(xPackage)%>.ui.web.action;
 <%importManager.addImport(xPackage.getName() + ".bo.*");%>
 <%importManager.addImport(xPackage.getName() + ".ui.web.form.*");%>
 
-<%importManager.addImport("chrome.xmdl.lib.bo.*");%>
-<%importManager.addImport("chrome.xmdl.lib.helper.*");%>
-<%importManager.addImport("chrome.xmdl.lib.ui.web.action.*");%>
-<%importManager.addImport("chrome.xmdl.lib.bo.DispatchService");%>
+<%importManager.addImport("org.xmdl.lib.bo.*");%>
+<%importManager.addImport("org.xmdl.lib.helper.*");%>
+<%importManager.addImport("org.xmdl.lib.ui.web.action.*");%>
+<%importManager.addImport("org.xmdl.lib.bo.DispatchService");%>
 <%importManager.addImport("org.apache.commons.chain.*");%>
 <%importManager.addImport("org.apache.commons.chain.impl.*");%>
 <%importManager.addImport("org.apache.commons.logging.*");%>

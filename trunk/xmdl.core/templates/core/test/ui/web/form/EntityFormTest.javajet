@@ -1,8 +1,8 @@
 <%@ jet 
-    package="chrome.xmdl.core.templates.test.ui.web.form.impl" 
+    package="org.xmdl.core.templates.test.ui.web.form.impl" 
     imports="java.util.* 
-            chrome.xmdl.* 
-            chrome.xmdl.gen.util.*
+            org.xmdl.xmdl.* 
+            org.xmdl.gen.util.*
             org.eclipse.emf.codegen.util.*"
     class="EntityFormTestImpl" 
 %><%

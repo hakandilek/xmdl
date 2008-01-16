@@ -1,6 +1,6 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.context.impl" 
-	imports="chrome.xmdl.*"
+	package="org.xmdl.core.templates.context.impl" 
+	imports="org.xmdl.xmdl.*"
 	class="DatabasePropertiesImpl" 
 %><%
 	XProject project = (XProject) argument;	
@@ -20,7 +20,7 @@ hibernate.dialect=org.hibernate.dialect.HSQLDialect
 #hibernate.connection.username=chrome
 #hibernate.connection.password=chrometest
 #hibernate.connection.url=jdbc\:firebirdsql\://localhost/E\:\\\\db\\\\<%=project.getName()%>.gdb
-#hibernate.connection.url=jdbc:firebirdsql:localhost:/chrome/db/<%=project.getName()%>.gdb
+#hibernate.connection.url=jdbc:firebirdsql:localhost:/org.xmdl/db/<%=project.getName()%>.gdb
 #hibernate.connection.driver_class=org.firebirdsql.jdbc.FBDriver
 #hibernate.dialect=org.hibernate.dialect.FirebirdDialect
 

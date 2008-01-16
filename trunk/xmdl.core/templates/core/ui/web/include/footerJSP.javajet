@@ -1,5 +1,5 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.ui.web.include.impl" 
+	package="org.xmdl.core.templates.ui.web.include.impl" 
 	imports="java.util.*" 
 	class="FooterJSPImpl"
 	startTag="<$" endTag="$>" 

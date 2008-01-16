@@ -1,5 +1,5 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.ui.web.webinf.impl" 
+	package="org.xmdl.core.templates.ui.web.webinf.impl" 
 	imports=""
 	class="ValidatorRulesXMLImpl" 
 %>
