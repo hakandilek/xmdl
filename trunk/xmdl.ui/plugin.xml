@@ -11,8 +11,8 @@
 
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
     <factory 
-       uri = "http://chrome/xmdl.ecore" 
-       class = "chrome.xmdl.provider.XmdlItemProviderAdapterFactory"
+       uri = "http://www.xmdl.org/xmdl.ecore" 
+       class = "org.xmdl.xmdl.provider.XmdlItemProviderAdapterFactory"
        supportedTypes = 
          "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
           org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -27,7 +27,7 @@
     <application
           visible="true">
       <run
-        class="chrome.xmdl.ui.XmdlEditorAdvisor$Application">
+        class="org.xmdl.xmdl.ui.XmdlEditorAdvisor$Application">
       </run>
     </application>
   </extension>
@@ -48,8 +48,8 @@
     point="org.eclipse.ui.perspectives">
     <perspective
       name="%_UI_Perspective_label"
-      class="chrome.xmdl.ui.perspective.XmdlModelingPerspective"
-      id="chrome.xmdl.ui.XmdlModelingPerspective">
+      class="org.xmdl.xmdl.ui.perspective.XmdlModelingPerspective"
+      id="org.xmdl.xmdl.ui.XmdlModelingPerspective">
     </perspective>
   </extension>
 
@@ -59,22 +59,22 @@
       name="%_UI_Menu_OpenURI_label"
       description="%_UI_Menu_OpenURI_description"
       categoryId="org.eclipse.ui.category.file"
-      id="chrome.xmdl.ui.XmdlEditorAdvisorOpenURICommand" />  
+      id="org.xmdl.xmdl.ui.XmdlEditorAdvisorOpenURICommand" />  
     <command
       name="%_UI_Menu_Open_label"
       description="%_UI_Menu_Open_description"
       categoryId="org.eclipse.ui.category.file"
-      id="chrome.xmdl.ui.XmdlEditorAdvisorOpenCommand" />  
+      id="org.xmdl.xmdl.ui.XmdlEditorAdvisorOpenCommand" />  
   </extension>
   
   <extension
     point="org.eclipse.ui.bindings">
     <key
-      commandId="chrome.xmdl.ui.XmdlEditorAdvisorOpenURICommand"
+      commandId="org.xmdl.xmdl.ui.XmdlEditorAdvisorOpenURICommand"
       sequence="M1+U"
       schemeId="org.eclipse.ui.defaultAcceleratorConfiguration" />
     <key
-      commandId="chrome.xmdl.ui.XmdlEditorAdvisorOpenCommand"
+      commandId="org.xmdl.xmdl.ui.XmdlEditorAdvisorOpenCommand"
       sequence="M1+O"
       schemeId="org.eclipse.ui.defaultAcceleratorConfiguration" />
   </extension>
@@ -87,35 +87,35 @@
       id="XmdlEditorAdvisorActionSet">
       <action
         label="%_UI_Menu_About_label"
-        class="chrome.xmdl.ui.XmdlEditorAdvisor$AboutAction"
+        class="org.xmdl.xmdl.ui.XmdlEditorAdvisor$AboutAction"
         menubarPath="help/additions"
-        id="chrome.xmdl.ui.XmdlEditorAdvisorAboutAction">
+        id="org.xmdl.xmdl.ui.XmdlEditorAdvisorAboutAction">
       </action>
       <action
         label="%_UI_Menu_OpenURI_label"
-        definitionId="chrome.xmdl.ui.XmdlEditorAdvisorOpenURICommand"
-        class="chrome.xmdl.ui.XmdlEditorAdvisor$OpenURIAction"
+        definitionId="org.xmdl.xmdl.ui.XmdlEditorAdvisorOpenURICommand"
+        class="org.xmdl.xmdl.ui.XmdlEditorAdvisor$OpenURIAction"
         menubarPath="file/additions"
-        id="chrome.xmdl.ui.XmdlEditorAdvisorOpenURIAction">
+        id="org.xmdl.xmdl.ui.XmdlEditorAdvisorOpenURIAction">
       </action>
       <action
         label="%_UI_Menu_Open_label"
-        definitionId="chrome.xmdl.ui.XmdlEditorAdvisorOpenCommand"
-        class="chrome.xmdl.ui.XmdlEditorAdvisor$OpenAction"
+        definitionId="org.xmdl.xmdl.ui.XmdlEditorAdvisorOpenCommand"
+        class="org.xmdl.xmdl.ui.XmdlEditorAdvisor$OpenAction"
         menubarPath="file/additions"
-        id="chrome.xmdl.ui.XmdlEditorAdvisorOpenAction">
+        id="org.xmdl.xmdl.ui.XmdlEditorAdvisorOpenAction">
       </action>
     </actionSet>
   </extension>
    
   <extension point = "org.eclipse.ui.editors">
     <editor
-        id = "chrome.xmdl.presentation.XmdlEditorID"
+        id = "org.xmdl.presentation.XmdlEditorID"
         name = "%_UI_XmdlEditor_label"
         icon = "icons/full/obj16/XmdlModelFile.gif"
         extensions = "xmdl"
-        class = "chrome.xmdl.presentation.XmdlEditor" 
-        contributorClass="chrome.xmdl.presentation.XmdlActionBarContributor" >
+        class = "org.xmdl.xmdl.presentation.XmdlEditor" 
+        contributorClass="org.xmdl.xmdl.presentation.XmdlActionBarContributor" >
     </editor>
   </extension>
   <extension
@@ -127,11 +127,11 @@
      <wizard
            canFinishEarly="false"
            category="xmdl.category"
-           class="chrome.xmdl.ui.wizard.XMDLJavaProjectWizard"
-           finalPerspective="chrome.xmdl.ui.XmdlModelingPerspective"
+           class="org.xmdl.xmdl.ui.wizard.XMDLJavaProjectWizard"
+           finalPerspective="org.xmdl.xmdl.ui.XmdlModelingPerspective"
            hasPages="true"
            icon="icons/full/ctool16/XProject.gif"
-           id="chrome.xmdl.ui.wizard.NewXmdlProjectWizard"
+           id="org.xmdl.xmdl.ui.wizard.NewXmdlProjectWizard"
            name="%_UI_XmdlProjectWizard_label"
            project="true">
      </wizard>

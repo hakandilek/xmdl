@@ -1,11 +1,11 @@
 package org.xmdl.ida.templates.core.project;
 
 import org.eclipse.emf.common.util.EList;
+import org.xmdl.gen.util.XMDLClassHelper;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XPackage;
+import org.xmdl.xmdl.XProject;
 
-import chrome.xmdl.XPackage;
-import chrome.xmdl.XProject;
-import chrome.xmdl.gen.util.XMDLClassHelper;
-import chrome.xmdl.xgen.Template;
 
 /**
  * The Application Constants definition file

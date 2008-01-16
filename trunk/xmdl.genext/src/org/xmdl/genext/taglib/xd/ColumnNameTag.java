@@ -5,10 +5,10 @@ import org.eclipse.jet.JET2Writer;
 import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
+import org.xmdl.meta.MetaModelFinder;
+import org.xmdl.xmdl.XAttribute;
+import org.xmdl.xmdldb.DField;
 
-import chrome.xmdl.XAttribute;
-import chrome.xmdl.meta.MetaModelFinder;
-import chrome.xmdldb.DField;
 
 /**
  * Output the name of the column/field from the DB model corresponding to the

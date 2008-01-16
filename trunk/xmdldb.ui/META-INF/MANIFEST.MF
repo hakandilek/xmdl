@@ -5,7 +5,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: xmdldb.ui; singleton:=true
 Bundle-Version: 0.6.0.20071128_SNAPSHOT
-Bundle-Activator: chrome.xmdldb.ui.XmdldbEditPlugin$Implementation
+Bundle-Activator: org.xmdl.xmdldb.ui.XmdldbEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: xmdl.ui,xmdl,org.eclipse.core.runtime,org.eclipse.emf.

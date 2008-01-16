@@ -3,14 +3,15 @@ package org.xmdl.genext.taglib;
 import java.lang.annotation.ElementType;
 import java.util.Locale;
 
-import chrome.xmdl.XAssociationType;
-import chrome.xmdl.XAttribute;
-import chrome.xmdl.XClass;
-import chrome.xmdl.XEnumeration;
-import chrome.xmdl.XEnumerationLiteral;
-import chrome.xmdl.XPackage;
-import chrome.xmdl.XType;
-import chrome.xmdl.XmdlTypes;
+import org.xmdl.xmdl.XAssociationType;
+import org.xmdl.xmdl.XAttribute;
+import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XEnumeration;
+import org.xmdl.xmdl.XEnumerationLiteral;
+import org.xmdl.xmdl.XPackage;
+import org.xmdl.xmdl.XType;
+import org.xmdl.xmdl.XmdlTypes;
+
 
 /**
  * Utility methods used in the tag library

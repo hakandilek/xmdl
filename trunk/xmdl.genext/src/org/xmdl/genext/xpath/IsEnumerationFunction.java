@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.eclipse.jet.xpath.NodeSet;
 import org.eclipse.jet.xpath.XPathFunction;
+import org.xmdl.xmdl.XAttribute;
+import org.xmdl.xmdl.XEnumeration;
+import org.xmdl.xmdl.XType;
 
-import chrome.xmdl.XAttribute;
-import chrome.xmdl.XEnumeration;
-import chrome.xmdl.XType;
 
 /**
  * XPath function that checks if the given attribute or type is an enumeration type

@@ -1,7 +1,8 @@
 package org.xmdl.ida.templates.core.test.rsc;
 
-import chrome.xmdl.xgen.Template;
-import chrome.xmdldb.DModel;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdldb.DModel;
+
 
 /**
  * Sample data configuration template file

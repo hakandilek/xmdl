@@ -1,7 +1,8 @@
 package org.xmdl.ida.templates.web.test.rsc;
 
-import chrome.xmdl.xgen.Template;
-import chrome.xmdldb.DModel;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdldb.DModel;
+
 
 /**
  * sample-data.xml file for web tests template file

@@ -5,14 +5,14 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: xmdl.gen;singleton:=true
 Bundle-Version: 0.6.0.20071209_SNAPSHOT
-Bundle-Activator: chrome.xmdl.gen.plugin.XMDLGenPlugin$Implementation
+Bundle-Activator: org.xmdl.gen.plugin.XMDLGenPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: xmdl,org.eclipse.emf.ecore.xmi,org.eclipse.emf.codegen
  ,org.eclipse.core.runtime.compatibility,org.eclipse.core.resources,or
  g.eclipse.jdt.core,org.junit,org.apache.log4j,org.eclipse.jet
 Eclipse-LazyStart: true
-Export-Package: chrome.xmdl.gen.plugin,chrome.xmdl.gen.util,chrome.xmd
- l.meta,chrome.xmdl.xgen,chrome.xmdl.xgen.util
+Export-Package: org.xmdl.gen.plugin,org.xmdl.gen.util,org.xmd
+ l.meta,org.xmdl.xgen,org.xmdl.xgen.util
 Built-By: hakan
 

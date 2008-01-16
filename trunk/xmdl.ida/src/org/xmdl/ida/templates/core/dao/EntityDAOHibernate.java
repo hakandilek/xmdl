@@ -1,9 +1,10 @@
 package org.xmdl.ida.templates.core.dao;
 
-import chrome.xmdl.XClass;
-import chrome.xmdl.XPackage;
-import chrome.xmdl.gen.util.XMDLClassHelper;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.gen.util.XMDLClassHelper;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XPackage;
+
 
 /**
  * The Hibernate DAO template file

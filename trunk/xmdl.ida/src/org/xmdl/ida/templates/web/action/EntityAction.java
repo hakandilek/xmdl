@@ -1,9 +1,10 @@
 package org.xmdl.ida.templates.web.action;
 
-import chrome.xmdl.XClass;
-import chrome.xmdl.XPackage;
-import chrome.xmdl.gen.util.XMDLClassHelper;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.gen.util.XMDLClassHelper;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XPackage;
+
 
 /**
  * Entity Action for web module template file

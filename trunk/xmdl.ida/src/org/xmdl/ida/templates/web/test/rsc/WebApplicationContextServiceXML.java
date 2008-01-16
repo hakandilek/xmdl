@@ -1,7 +1,8 @@
 package org.xmdl.ida.templates.web.test.rsc;
 
-import chrome.xmdl.XProject;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XProject;
+
 
 /**
  * applicationContext-service.xml file for web module template file

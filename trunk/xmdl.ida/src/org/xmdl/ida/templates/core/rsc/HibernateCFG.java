@@ -1,7 +1,8 @@
 package org.xmdl.ida.templates.core.rsc;
 
-import chrome.xmdl.XProject;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XProject;
+
 
 /**
  * Hibernate configuration template file

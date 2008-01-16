@@ -1,7 +1,8 @@
 package org.xmdl.ida.templates.web.jsp;
 
-import chrome.xmdl.XProject;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XProject;
+
 
 /**
  * taglibs.jsp file for web module template file

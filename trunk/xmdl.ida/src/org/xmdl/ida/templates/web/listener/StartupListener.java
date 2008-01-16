@@ -2,10 +2,11 @@ package org.xmdl.ida.templates.web.listener;
 
 import java.util.List;
 
-import chrome.xmdl.XPackage;
-import chrome.xmdl.XProject;
-import chrome.xmdl.gen.util.XMDLClassHelper;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.gen.util.XMDLClassHelper;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XPackage;
+import org.xmdl.xmdl.XProject;
+
 
 /**
  * Startup listener for web module template file

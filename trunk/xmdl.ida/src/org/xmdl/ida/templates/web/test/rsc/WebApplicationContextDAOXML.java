@@ -1,7 +1,8 @@
 package org.xmdl.ida.templates.web.test.rsc;
 
-import chrome.xmdl.XProject;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XProject;
+
 
 /**
  * applicationContext-dao.xml file for web tests template file

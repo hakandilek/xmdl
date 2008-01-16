@@ -71,7 +71,7 @@
                   Implementation class name
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn="chrome.xmdl.xgen.Platform"/>
+                  <meta.attribute kind="java" basedOn="org.xmdl.xgen.Platform"/>
                </appInfo>
             </annotation>
          </attribute>
@@ -94,11 +94,11 @@
       <documentation>
          &lt;p&gt;
  &lt;pre&gt;
-  &lt;extension point=&quot;chrome.xmdl.xyz.platform&quot;&gt;
+  &lt;extension point=&quot;org.xmdl.xyz.platform&quot;&gt;
    &lt;platform
-    id=&quot;chrome.xmdl.xyz.platform1&quot;
+    id=&quot;org.xmdl.xyz.platform1&quot;
     name=&quot;Sample Platform 1&quot;
-    class=&quot;chrome.xmdl.xyz.platform.SamplePlatform1&quot;&gt;
+    class=&quot;org.xmdl.xyz.platform.SamplePlatform1&quot;&gt;
    &lt;/platform&gt;
   &lt;/extension&gt;
  &lt;/pre&gt;
@@ -112,7 +112,7 @@
       </appInfo>
       <documentation>
          Plug−ins that want to extend this extension point must implement
-&lt;samp&gt;chrome.xmdl.xgen.Platform&lt;/samp&gt; interface.
+&lt;samp&gt;org.xmdl.xgen.Platform&lt;/samp&gt; interface.
       </documentation>
    </annotation>
 

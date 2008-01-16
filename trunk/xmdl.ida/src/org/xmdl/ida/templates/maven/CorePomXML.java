@@ -1,7 +1,8 @@
 package org.xmdl.ida.templates.maven;
 
-import chrome.xmdl.XProject;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XProject;
+
 
 /**
  * Maven Configuration for core module template file

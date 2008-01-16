@@ -7,8 +7,8 @@ import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
 import org.xmdl.genext.taglib.MissingAttributeException;
 import org.xmdl.genext.taglib.TestTagUtils;
+import org.xmdl.xmdl.XAttribute;
 
-import chrome.xmdl.XAttribute;
 
 /**
  * This tag returns a random value that is assigned to the given attribute.

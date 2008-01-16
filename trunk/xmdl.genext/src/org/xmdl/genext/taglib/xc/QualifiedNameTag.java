@@ -6,11 +6,11 @@ import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
 import org.xmdl.genext.taglib.ClassTagUtils;
+import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XEnumeration;
+import org.xmdl.xmdl.XPackage;
+import org.xmdl.xmdl.XProject;
 
-import chrome.xmdl.XClass;
-import chrome.xmdl.XEnumeration;
-import chrome.xmdl.XPackage;
-import chrome.xmdl.XProject;
 
 public class QualifiedNameTag extends BaseEmptyTag {
 

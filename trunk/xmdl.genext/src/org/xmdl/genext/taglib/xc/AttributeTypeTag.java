@@ -7,8 +7,8 @@ import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
 import org.xmdl.genext.taglib.ClassTagUtils;
 import org.xmdl.genext.taglib.MissingAttributeException;
+import org.xmdl.xmdl.XAttribute;
 
-import chrome.xmdl.XAttribute;
 
 /**
  * This tag returns the type of the given attribute. *-to-many associations

@@ -6,8 +6,8 @@ import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
 import org.xmdl.genext.taglib.ClassTagUtils;
+import org.xmdl.xmdl.XAttribute;
 
-import chrome.xmdl.XAttribute;
 
 /**
  * This tag returns the the accessor (e.g. isSafe or getSafe) according to the

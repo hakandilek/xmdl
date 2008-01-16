@@ -1,7 +1,7 @@
 package org.xmdl.ida.platform;
 
-import chrome.xmdl.xgen.AbstractPlatform;
-import chrome.xmdl.xgen.TaskFactory;
+import org.xmdl.xgen.AbstractPlatform;
+import org.xmdl.xgen.TaskFactory;
 
 /**
  * Ida platform definition

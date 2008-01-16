@@ -72,13 +72,13 @@ import org.xmdl.ida.templates.web.webinf.MenuConfigXML;
 import org.xmdl.ida.templates.web.webinf.ResinWebXML;
 import org.xmdl.ida.templates.web.webinf.TaglibTLD;
 import org.xmdl.ida.templates.web.webinf.WebXML;
+import org.xmdl.xgen.AbstractTaskFactory;
+import org.xmdl.xgen.Task;
+import org.xmdl.xgen.TaskFactory;
+import org.xmdl.xgen.Template;
+import org.xmdl.xgen.UnzipTask;
+import org.xmdl.xmdl.XProject;
 
-import chrome.xmdl.XProject;
-import chrome.xmdl.xgen.AbstractTaskFactory;
-import chrome.xmdl.xgen.Task;
-import chrome.xmdl.xgen.TaskFactory;
-import chrome.xmdl.xgen.Template;
-import chrome.xmdl.xgen.UnzipTask;
 
 /**
  * The Task Factory class for the IDA platform. All Code Generation tasks are

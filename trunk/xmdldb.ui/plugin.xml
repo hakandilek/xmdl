@@ -12,8 +12,8 @@
 
     <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
     <factory 
-       uri = "http:///chrome/xmdl.db.ecore" 
-       class = "chrome.xmdldb.provider.XmdldbItemProviderAdapterFactory"
+       uri = "http:///www.xmdl.org/xmdl.db.ecore" 
+       class = "org.xmdl.xmdldb.provider.XmdldbItemProviderAdapterFactory"
        supportedTypes = 
          "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
           org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -26,19 +26,19 @@
 
   <extension point = "org.eclipse.ui.editors">
     <editor
-        id = "chrome.xmdldb.presentation.XmdldbEditorID"
+        id = "org.xmdl.xmdldb.presentation.XmdldbEditorID"
         name = "%_UI_XmdldbEditor_label"
         icon = "icons/full/obj16/XmdldbModelFile.gif"
         extensions = "xmdldb"
-        class = "chrome.xmdldb.presentation.XmdldbEditor" 
-        contributorClass="chrome.xmdldb.presentation.XmdldbActionBarContributor" >
+        class = "org.xmdl.xmdldb.presentation.XmdldbEditor" 
+        contributorClass="org.xmdl.xmdldb.presentation.XmdldbActionBarContributor" >
     </editor>
   </extension>    
   
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http:///chrome/xmdl.db.ecore" 
-       class = "chrome.xmdldb.XmdldbPackage"
+       uri = "http:///www.xmdl.org/xmdl.db.ecore" 
+       class = "org.xmdl.xmdldb.XmdldbPackage"
        genModel = "model/xmdl.db.genmodel" /> 
   </extension>
   
