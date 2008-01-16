@@ -1,9 +1,10 @@
 package org.xmdl.ida.templates.core.model;
 
-import chrome.xmdl.XEnumeration;
-import chrome.xmdl.XPackage;
-import chrome.xmdl.gen.util.XMDLClassHelper;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.gen.util.XMDLClassHelper;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XEnumeration;
+import org.xmdl.xmdl.XPackage;
+
 
 /**
  * The model bean template file

@@ -7,11 +7,11 @@ import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
 import org.xmdl.genext.taglib.ClassTagUtils;
+import org.xmdl.xmdl.XAttribute;
+import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XEnumeration;
+import org.xmdl.xmdl.XEnumerationLiteral;
 
-import chrome.xmdl.XAttribute;
-import chrome.xmdl.XClass;
-import chrome.xmdl.XEnumeration;
-import chrome.xmdl.XEnumerationLiteral;
 
 /**
  * This tag capitalizes the first character in the name of the given element.

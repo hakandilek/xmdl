@@ -1,7 +1,8 @@
 package org.xmdl.ida.templates.core.test.rsc;
 
-import chrome.xmdl.XProject;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XProject;
+
 
 /**
  * Mail configuration (mail.properties) template file

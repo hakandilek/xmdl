@@ -8,10 +8,10 @@ import org.eclipse.jet.taglib.TagInfo;
 import org.eclipse.jet.taglib.java.JavaActionsUtil;
 import org.xmdl.genext.taglib.BaseEmptyTag;
 import org.xmdl.genext.taglib.ClassTagUtils;
+import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XEnumeration;
+import org.xmdl.xmdl.XPackage;
 
-import chrome.xmdl.XClass;
-import chrome.xmdl.XEnumeration;
-import chrome.xmdl.XPackage;
 
 /**
  * This tag replaces the given elements qualified name in the given pattern. If

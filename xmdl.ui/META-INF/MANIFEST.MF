@@ -6,11 +6,12 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: xmdl.ui;singleton:=true
 Bundle-Version: 0.6.0.20071128_SNAPSHOT
 Bundle-ClassPath: .
-Bundle-Activator: chrome.xmdl.ui.XMDLUIPlugin$Implementation
+Bundle-Activator: org.xmdl.xmdl.ui.XMDLUIPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: chrome.xmdl.presentation,chrome.xmdl.provider,chrome.x
- mdl.ui
+Export-Package: org.xmdl.xmdl.ui,
+ org.xmdl.xmdl.presentation,
+ org.xmdl.xmdl.provider
 Require-Bundle: xmdl,xmdl.gen,org.eclipse.core.runtime,org.eclipse.cor
  e.resources,org.eclipse.emf.mapping,org.eclipse.emf.ecore.xmi,org.ecl
  ipse.emf.codegen.ecore.ui,org.eclipse.jdt.core,org.eclipse.jdt.ui,org

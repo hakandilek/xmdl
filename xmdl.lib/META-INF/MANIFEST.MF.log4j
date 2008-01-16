@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.apache.log4j
 Bundle-SymbolicName: org.apache.log4j; singleton:=true
 Bundle-Version: 1.2.11
-Bundle-Vendor: chrome
+Bundle-Vendor: xmdl.org
 Bundle-Localization: plugin
 Export-Package: org.apache.log4j,
  org.apache.log4j.config,

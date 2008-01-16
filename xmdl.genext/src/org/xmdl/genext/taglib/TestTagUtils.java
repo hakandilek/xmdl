@@ -6,11 +6,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import chrome.xmdl.XAttribute;
-import chrome.xmdl.XEnumeration;
-import chrome.xmdl.XType;
-import chrome.xmdl.XmdlTypes;
-import chrome.xmdl.gen.util.TestHelper;
+import org.xmdl.gen.util.TestHelper;
+import org.xmdl.xmdl.XAttribute;
+import org.xmdl.xmdl.XEnumeration;
+import org.xmdl.xmdl.XType;
+import org.xmdl.xmdl.XmdlTypes;
+
 
 /**
  * Utility methods used in the test tag library

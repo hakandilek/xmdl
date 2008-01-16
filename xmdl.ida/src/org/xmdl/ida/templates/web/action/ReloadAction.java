@@ -2,10 +2,11 @@ package org.xmdl.ida.templates.web.action;
 
 import java.util.List;
 
-import chrome.xmdl.XPackage;
-import chrome.xmdl.XProject;
-import chrome.xmdl.gen.util.XMDLClassHelper;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.gen.util.XMDLClassHelper;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XPackage;
+import org.xmdl.xmdl.XProject;
+
 
 /**
  * Reload action for web module template file

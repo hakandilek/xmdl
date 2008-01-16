@@ -1,7 +1,8 @@
 package org.xmdl.ida.templates.web.site;
 
-import chrome.xmdl.XProject;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XProject;
+
 
 /**
  * site.xml file for tapestry template file

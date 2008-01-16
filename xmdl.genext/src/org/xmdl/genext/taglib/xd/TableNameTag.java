@@ -5,10 +5,10 @@ import org.eclipse.jet.JET2Writer;
 import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
 import org.xmdl.genext.taglib.BaseEmptyTag;
+import org.xmdl.meta.MetaModelFinder;
+import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdldb.DTable;
 
-import chrome.xmdl.XClass;
-import chrome.xmdl.meta.MetaModelFinder;
-import chrome.xmdldb.DTable;
 
 /**
  * Output the name of the table from the DB model corresponding to the given

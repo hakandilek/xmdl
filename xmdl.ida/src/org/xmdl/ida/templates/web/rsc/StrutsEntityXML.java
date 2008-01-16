@@ -1,7 +1,8 @@
 package org.xmdl.ida.templates.web.rsc;
 
-import chrome.xmdl.XClass;
-import chrome.xmdl.xgen.Template;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XClass;
+
 
 /**
  * mail.properties file for web module template file

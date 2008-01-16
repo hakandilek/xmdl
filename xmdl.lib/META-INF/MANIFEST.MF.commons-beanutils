@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.apache.commons.beanutils
 Bundle-SymbolicName: org.apache.commons.beanutils
 Bundle-Version: 1.6
-Bundle-Vendor: chrome
+Bundle-Vendor: xmdl.org
 Bundle-Localization: plugin
 Export-Package: org.apache.commons.beanutils,
  org.apache.commons.beanutils.converters,

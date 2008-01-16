@@ -1,9 +1,9 @@
 package org.xmdl.ida.templates.web.jsp;
 
 import org.xmdl.genext.taglib.ClassTagUtils;
+import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XClass;
 
-import chrome.xmdl.XClass;
-import chrome.xmdl.xgen.Template;
 
 /**
  * <entity>Form.jsp file for web module template file
