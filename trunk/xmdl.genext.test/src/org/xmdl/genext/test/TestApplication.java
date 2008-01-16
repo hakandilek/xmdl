@@ -1,4 +1,4 @@
-package xmdl.genext.test;
+package org.xmdl.genext.test;
 
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;

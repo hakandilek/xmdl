@@ -1,12 +1,12 @@
 package org.xmdl.genext.xpath;
 
+import org.xmdl.gen.util.Locator;
 import org.xmdl.genext.BaseTemplateTestCase;
+import org.xmdl.xgen.util.ResourceHelper;
+import org.xmdl.xmdl.XAttribute;
+import org.xmdl.xmdl.XEnumeration;
+import org.xmdl.xmdl.XProject;
 
-import chrome.xmdl.XAttribute;
-import chrome.xmdl.XEnumeration;
-import chrome.xmdl.XProject;
-import chrome.xmdl.gen.util.Locator;
-import chrome.xmdl.xgen.util.ResourceHelper;
 
 public class IsEnumerationFunctionTest extends BaseTemplateTestCase {
 

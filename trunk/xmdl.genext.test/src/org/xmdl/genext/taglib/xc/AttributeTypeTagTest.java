@@ -1,12 +1,12 @@
 package org.xmdl.genext.taglib.xc;
 
 import org.osgi.framework.BundleException;
+import org.xmdl.gen.util.Locator;
 import org.xmdl.genext.BaseTemplateTestCase;
+import org.xmdl.xgen.util.ResourceHelper;
+import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XProject;
 
-import chrome.xmdl.XClass;
-import chrome.xmdl.XProject;
-import chrome.xmdl.gen.util.Locator;
-import chrome.xmdl.xgen.util.ResourceHelper;
 
 public class AttributeTypeTagTest extends BaseTemplateTestCase {
 

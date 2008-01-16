@@ -1,9 +1,11 @@
-package chrome.xmdl.meta;
+package org.xmdl.meta;
+
+import org.xmdl.meta.MetaModelHolder;
+import org.xmdl.xgen.util.ResourceHelper;
+import org.xmdl.xmdl.XProject;
+import org.xmdl.xmdldb.DModel;
 
 import junit.framework.TestCase;
-import chrome.xmdl.XProject;
-import chrome.xmdl.xgen.util.ResourceHelper;
-import chrome.xmdldb.DModel;
 
 public class MetaModelHolderTest extends TestCase {
 
