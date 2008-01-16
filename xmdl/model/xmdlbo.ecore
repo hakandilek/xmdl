@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="xmdlbo"
-    nsURI="http://chrome/xmdl.bo.ecore" nsPrefix="chrome.xmdl.bo">
+    nsURI="http://www.xmdl.org/xmdlbo.ecore" nsPrefix="org.xmdl.bo">
   <eClassifiers xsi:type="ecore:EClass" name="BModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="xProject" eType="ecore:EClass xmdl.ecore#//XProject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
