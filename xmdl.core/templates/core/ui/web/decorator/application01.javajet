@@ -1,5 +1,5 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.ui.web.decorator.impl" 
+	package="org.xmdl.core.templates.ui.web.decorator.impl" 
 	imports=""
 	class="Application01Impl"
 	startTag="<$" endTag="$>" 

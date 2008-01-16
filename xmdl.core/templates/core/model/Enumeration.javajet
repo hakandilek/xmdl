@@ -1,8 +1,8 @@
 <%@ jet 
-    package="chrome.xmdl.core.templates.model.impl" 
+    package="org.xmdl.core.templates.model.impl" 
     imports="java.util.* 
-            chrome.xmdl.*
-            chrome.xmdl.gen.util.*
+            org.xmdl.xmdl.*
+            org.xmdl.gen.util.*
             org.eclipse.emf.codegen.util.*"
     class="EnumerationTemplateImpl" 
 %><%
@@ -20,8 +20,8 @@ package <%=helper.getQualifiedName(xPackage)%>.model;
 <%}%>
 
 <%importManager.addImport("org.apache.commons.beanutils.ConvertUtils");%>
-<%importManager.addImport("chrome.xmdl.lib.dao.*");%>
-<%importManager.addImport("chrome.xmdl.lib.helper.*");%>
+<%importManager.addImport("org.xmdl.lib.dao.*");%>
+<%importManager.addImport("org.xmdl.lib.helper.*");%>
 <%
     StringBuffer importStringBuffer = stringBuffer;
     int importInsertionPoint = stringBuffer.length();

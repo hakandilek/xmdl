@@ -1,10 +1,10 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.ui.web.jsp.impl" 
+	package="org.xmdl.core.templates.ui.web.jsp.impl" 
 	imports="java.util.* 
-			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			chrome.xmdl.core.util.*
-			chrome.xmdl.xgen.*"
+			org.xmdl.xmdl.*
+			org.xmdl.gen.util.*
+			org.xmdl.core.util.*
+			org.xmdl.xgen.*"
 	class="EntitySearchJSPImpl"
 	startTag="<$" endTag="$>" 
 %><$

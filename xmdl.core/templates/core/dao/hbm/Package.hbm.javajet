@@ -1,9 +1,9 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.dao.hbm.impl" 
+	package="org.xmdl.core.templates.dao.hbm.impl" 
 	imports="java.util.* 
-			chrome.xmdl.*
-			chrome.xmdl.core.templates.dao.hbm.*
-			chrome.xmdldb.*"
+			org.xmdl.xmdl.*
+			org.xmdl.core.templates.dao.hbm.*
+			org.xmdl.xmdldb.*"
 	class="PackageHBMTemplateImpl" 
 %><%	
 	DPackage xPackage = (DPackage )argument;

@@ -1,8 +1,8 @@
 <%@ jet 
-    package="chrome.xmdl.core.templates.test.bo.impl" 
+    package="org.xmdl.core.templates.test.bo.impl" 
     imports="java.util.* 
-            chrome.xmdl.*
-            chrome.xmdl.gen.util.*"
+            org.xmdl.xmdl.*
+            org.xmdl.gen.util.*"
     class="BOTestPropertiesTemplateImpl" %>        
 <%  XClass xClass = (XClass) argument;
     ClassHelper helper = XMDLEntityHelper.INSTANCE;

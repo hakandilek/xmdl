@@ -1,7 +1,7 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.ui.web.webinf.impl" 
-	imports="chrome.xmdl.*
-			chrome.xmdl.gen.util.*"
+	package="org.xmdl.core.templates.ui.web.webinf.impl" 
+	imports="org.xmdl.xmdl.*
+			org.xmdl.gen.util.*"
 	class="CustomTLDImpl" 
 %><%
 	XProject project = (XProject) argument;	

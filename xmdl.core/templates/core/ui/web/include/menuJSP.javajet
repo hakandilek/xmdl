@@ -1,9 +1,9 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.ui.web.include.impl" 
+	package="org.xmdl.core.templates.ui.web.include.impl" 
 	imports="
             java.util.* 
-			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
+			org.xmdl.xmdl.*
+			org.xmdl.gen.util.*
 			"
 	class="MenuJSPImpl"
 	startTag="<$" endTag="$>" 

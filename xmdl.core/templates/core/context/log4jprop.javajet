@@ -1,6 +1,6 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.context.impl"
-	imports="chrome.xmdl.*" 
+	package="org.xmdl.core.templates.context.impl"
+	imports="org.xmdl.xmdl.*" 
 	class="Log4JPropImpl" 
 %>
 <%

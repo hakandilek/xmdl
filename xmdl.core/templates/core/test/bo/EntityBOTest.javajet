@@ -1,8 +1,8 @@
 <%@ jet 
-    package="chrome.xmdl.core.templates.test.bo.impl" 
+    package="org.xmdl.core.templates.test.bo.impl" 
     imports="java.util.* 
-            chrome.xmdl.*
-            chrome.xmdl.gen.util.*
+            org.xmdl.xmdl.*
+            org.xmdl.gen.util.*
             org.eclipse.emf.codegen.util.*"
     class="BOTestTemplateImpl" %>    
     
@@ -25,8 +25,8 @@ package <%=helper.getQualifiedName(xPackage)%>.bo;
 <%importManager.addImport(helper.getQualifiedName(xPackage)+".model.*");%>
 <%importManager.addImport(helper.getQualifiedName(xPackage)+".model.impl.*");%>
 <%importManager.addImport(helper.getQualifiedName(xPackage)+".dao.*");%>
-<%importManager.addImport("chrome.xmdl.lib.test.*");%>
-<%importManager.addImport("chrome.xmdl.lib.dao.*");%>
+<%importManager.addImport("org.xmdl.lib.test.*");%>
+<%importManager.addImport("org.xmdl.lib.dao.*");%>
 
 <%importManager.addImport("org.apache.commons.logging.*");%>
 <%importManager.addImport("org.apache.commons.chain.*");%>

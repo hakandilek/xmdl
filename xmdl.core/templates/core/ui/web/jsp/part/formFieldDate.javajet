@@ -1,9 +1,9 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.ui.web.jsp.part.impl" 
+	package="org.xmdl.core.templates.ui.web.jsp.part.impl" 
 	imports="
-			chrome.xmdl.*
-			chrome.xmdl.gen.util.*
-			chrome.xmdl.core.util.*
+			org.xmdl.xmdl.*
+			org.xmdl.gen.util.*
+			org.xmdl.core.util.*
 			"
 	class="FormFieldDateImpl"
 	startTag="<$" endTag="$>" 

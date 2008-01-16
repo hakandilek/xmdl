@@ -1,11 +1,11 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.dao.hbm.impl" 
+	package="org.xmdl.core.templates.dao.hbm.impl" 
 	imports="java.util.*  
-			chrome.xmdl.*
-			chrome.xmdldb.*
-			chrome.xmdl.core.util.*
-			chrome.xmdl.gen.util.*
-			chrome.xmdl.xgen.*"
+			org.xmdl.xmdl.*
+			org.xmdl.xmdldb.*
+			org.xmdl.core.util.*
+			org.xmdl.gen.util.*
+			org.xmdl.xgen.*"
 	class="EntityHBMTemplatePartImpl"
 %><%
 	DTable dTable =(DTable) argument;
@@ -39,7 +39,7 @@
 			XEnumeration enumeration = (XEnumeration) type;%>
 	    <property name="<%=attribute.getName()%>" >
 	        <column name="<%=field.getName()%>"/>
-	        <type name="chrome.xmdl.lib.dao.hib.PersistentEnumType">
+	        <type name="org.xmdl.lib.dao.hib.PersistentEnumType">
 	            <param name="targetClass"><%=helper.getObjectName(enumeration)%></param>
 	        </type>
         </property>

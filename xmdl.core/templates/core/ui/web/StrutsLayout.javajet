@@ -1,5 +1,5 @@
 <%@ jet 
-	package="chrome.xmdl.core.templates.ui.web.impl" 
+	package="org.xmdl.core.templates.ui.web.impl" 
 	imports=" 
 			"
 	class="StrutsLayoutImpl" 
@@ -36,7 +36,7 @@ field.class = fr.improve.struts.taglib.layout.util.BasicField
 treeview.class = fr.improve.struts.taglib.layout.util.BasicTreeview
 
 # name of the formatter class
-formatter.class = chrome.xmdl.lib.ui.web.form.UniversalFormatter
+formatter.class = org.xmdl.lib.ui.web.form.UniversalFormatter
 
 # name of the policy class
 policy.class = 

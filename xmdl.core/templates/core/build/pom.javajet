@@ -1,6 +1,6 @@
 <%@ jet 
-    package="chrome.xmdl.core.templates.build.impl" 
-    imports="chrome.xmdl.*"
+    package="org.xmdl.core.templates.build.impl" 
+    imports="org.xmdl.xmdl.*"
     class="POMImpl" %>    
      
 <%
@@ -28,7 +28,7 @@
     </scm>
     <dependencies>
         <dependency>
-            <groupId>tr.com.siemens.ik.web.chrome</groupId>
+            <groupId>org.xmdl.core</groupId>
             <artifactId>corelib</artifactId>
             <version>1.0</version>
             <scope>compile</scope>

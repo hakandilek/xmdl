@@ -1,7 +1,7 @@
 <%@ jet 
-    package="chrome.xmdl.core.templates.service.impl" 
-    imports="chrome.xmdl.*
-             chrome.xmdl.gen.util.*
+    package="org.xmdl.core.templates.service.impl" 
+    imports="org.xmdl.xmdl.*
+             org.xmdl.gen.util.*
              org.eclipse.emf.codegen.util.*"
     class="SampleListenerTemplateImpl" 
 %><%
@@ -21,7 +21,7 @@ package <%=helper.getQualifiedName(xPackage)%>.bo;
 <%}%>
 
 <%importManager.addImport("java.util.*");%>
-<%importManager.addImport("chrome.xmdl.lib.dao.*");%>
+<%importManager.addImport("org.xmdl.lib.dao.*");%>
 <%
     StringBuffer importStringBuffer = stringBuffer;
     int importInsertionPoint = stringBuffer.length();
