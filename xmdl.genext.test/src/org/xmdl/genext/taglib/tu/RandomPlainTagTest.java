@@ -4,12 +4,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import org.osgi.framework.BundleException;
+import org.xmdl.gen.util.Locator;
 import org.xmdl.genext.BaseTemplateTestCase;
+import org.xmdl.xgen.util.ResourceHelper;
+import org.xmdl.xmdl.XAttribute;
+import org.xmdl.xmdl.XProject;
 
-import chrome.xmdl.XAttribute;
-import chrome.xmdl.XProject;
-import chrome.xmdl.gen.util.Locator;
-import chrome.xmdl.xgen.util.ResourceHelper;
 
 public class RandomPlainTagTest extends BaseTemplateTestCase {
 

@@ -7,8 +7,8 @@ import org.eclipse.jet.JET2TemplateLoader;
 import org.eclipse.jet.JET2Writer;
 import org.eclipse.jet.JET2TemplateManager.ITemplateRunner;
 import org.osgi.framework.Bundle;
+import org.xmdl.xgen.JET1TemplateWrapper;
 
-import chrome.xmdl.xgen.JET1TemplateWrapper;
 
 /**
  * Implementation of {@link ITemplateRunner}. and The Template loader

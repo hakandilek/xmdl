@@ -1,13 +1,13 @@
 package org.xmdl.genext.taglib.xd;
 
 import org.osgi.framework.BundleException;
+import org.xmdl.gen.util.Locator;
 import org.xmdl.genext.BaseTemplateTestCase;
+import org.xmdl.meta.MetaModelHolder;
+import org.xmdl.xgen.util.ResourceHelper;
+import org.xmdl.xmdl.XAttribute;
+import org.xmdl.xmdl.XProject;
 
-import chrome.xmdl.XAttribute;
-import chrome.xmdl.XProject;
-import chrome.xmdl.gen.util.Locator;
-import chrome.xmdl.meta.MetaModelHolder;
-import chrome.xmdl.xgen.util.ResourceHelper;
 
 public class ColumnNameTagTest extends BaseTemplateTestCase {
 
