@@ -1465,7 +1465,7 @@ public class XmdlEditor extends MultiPageEditorPart implements
 				Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 		/*
 		 * this part is added to save type references in the form of
-		 * href="platform:/plugin/xmdl/model/types.xmdl#java.lang.String"
+		 * href="platform:/plugin/org.xmdl.model/model/types.xmdl#java.lang.String"
 		 */
 		saveOptions.put(XMLResource.OPTION_URI_HANDLER,
 				new URIHandlerImpl.PlatformSchemeAware());
