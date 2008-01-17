@@ -3,12 +3,13 @@ Ant-Version: Apache Ant 1.7.0
 Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: xmdl.core; singleton:=true
-Bundle-Version: 0.6.0.20071128_SNAPSHOT
+Bundle-SymbolicName: org.xmdl.core;singleton:=true
+Bundle-Version: 0.6.0.20080117_alpha3
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: xmdl,xmdl.gen,org.eclipse.emf.ecore,org.eclipse.emf.co
- degen,org.eclipse.core.runtime,org.apache.log4j,org.eclipse.jet
+Require-Bundle: org.xmdl.model,org.xmdl.gen,org.eclipse.emf.ecore,org.
+ eclipse.emf.codegen,org.eclipse.core.runtime,org.apache.log4j,org.ecl
+ ipse.jet
 Eclipse-LazyStart: true
 Built-By: Hakan Dilek
 
