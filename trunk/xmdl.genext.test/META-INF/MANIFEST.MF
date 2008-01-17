@@ -1,12 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: xmdl.genext.test;singleton:=true
+Bundle-SymbolicName: org.xmdl.genext.test;singleton:=true
 Bundle-Version: 0.6.0
 Bundle-Vendor: %providerName
-Require-Bundle: xmdl,
- xmdl.gen,
- xmdl.genext,
+Require-Bundle: org.xmdl.model,
+ org.xmdl.gen,
+ org.xmdl.genext,
  org.eclipse.emf.ecore,
  org.eclipse.core.runtime.compatibility,
  org.junit,
