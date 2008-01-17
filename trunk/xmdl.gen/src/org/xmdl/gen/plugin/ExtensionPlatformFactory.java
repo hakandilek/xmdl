@@ -9,7 +9,7 @@ import org.xmdl.xgen.Platform;
 
 public class ExtensionPlatformFactory {
 
-	public static final String POINT_ID = "xmdl.gen.register";
+	public static final String POINT_ID = "org.xmdl.gen.register";
 
 	private static final String ATT_NAME = "name";
 
