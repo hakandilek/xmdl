@@ -9,7 +9,7 @@ This guide is intended to be functional with the following configuration of soft
  * [http://www.eclipse.org/ Eclipse] 3.3.1.1 (java-europa-fall2)
  * [http://www.eclipse.org/modeling/emf/ EMF] 2.3.1
  * [http://www.eclipse.org/emft/projects/jet/ EMFT JET] 0.8.1
- * [http://xmdl.code.google.com/ XMDL] 0.6.0
+ * [http://xmdl.googlecode.com/ XMDL] 0.6.0
 
 == Sample Model ==
 
