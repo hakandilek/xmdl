@@ -7,7 +7,7 @@
     editPluginClass="org.xmdl.xmdldb.ui.XmdldbEditPlugin" editorPluginClass="org.xmdl.xmdldb.presentation.XmdldbEditorPlugin"
     generateSchema="true" rootImplementsInterface="" codeFormatting="true" testSuiteClass="org.xmdl.xmdldb.tests.XmdldbAllTests"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" publicConstructors="true"
-    usedGenPackages="platform:/plugin/xmdl/model/xmdl.genmodel#//xmdl">
+    usedGenPackages="platform:/plugin/org.xmdl.model/model/xmdl.genmodel#//xmdl">
   <foreignModel>xmdldb.ecore</foreignModel>
   <genPackages prefix="Xmdldb" basePackage="org.xmdl" disposableProviderFactory="true"
       ecorePackage="xmdldb.ecore#/">

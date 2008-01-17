@@ -69,7 +69,7 @@ public class XmdlTypes {
 
         ResourceSet rs = new ResourceSetImpl();
         URI defaultURI = URI
-                .createURI("platform:/plugin/xmdl/model/types.xmdl");
+                .createURI("platform:/plugin/org.xmdl.model/model/types.xmdl");
         URI uri = defaultURI;
         LOGGER.debug("Registering types from URI : " + uri);
         Resource r = rs.createResource(uri);

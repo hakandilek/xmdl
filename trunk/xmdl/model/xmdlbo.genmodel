@@ -5,7 +5,7 @@
     editDirectory="/xmdlbo.ui/src" editorDirectory="/xmdlbo.ui/src" modelPluginID="xmdl"
     runtimeJar="true" modelName="Xmdlbo" editPluginClass="org.xmdl.xmdlbo.ui.XmdlboEditPlugin"
     editorPluginClass="org.xmdl.xmdlbo.presentation.XmdlboEditorPlugin" testSuiteClass="org.xmdl.xmdlbo.tests.XmdlboAllTests"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" usedGenPackages="platform:/plugin/xmdl/model/xmdl.genmodel#//xmdl">
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" usedGenPackages="platform:/plugin/org.xmdl.model/model/xmdl.genmodel#//xmdl">
   <foreignModel>xmdlbo.ecore</foreignModel>
   <genPackages prefix="Xmdlbo" basePackage="org.xmdl" disposableProviderFactory="true"
       ecorePackage="xmdlbo.ecore#/">

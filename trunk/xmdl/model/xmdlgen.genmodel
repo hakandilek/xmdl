@@ -5,7 +5,7 @@
     modelDirectory="/xmdl/src" editDirectory="/xmdlgen.ui/src" editorDirectory="/xmdlgen.ui/src"
     modelPluginID="xmdl" runtimeJar="true" modelName="Xmdlgen" editPluginClass="org.xmdl.xmdlgen.ui.XmdlgenEditPlugin"
     editorPluginClass="org.xmdl.xmdlgen.presentation.XmdlgenEditorPlugin" testSuiteClass="org.xmdl.xmdlgen.tests.XmdlgenAllTests"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" usedGenPackages="platform:/plugin/xmdl/model/xmdl.genmodel#//xmdl">
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" usedGenPackages="platform:/plugin/org.xmdl.model/model/xmdl.genmodel#//xmdl">
   <foreignModel>xmdlgen.ecore</foreignModel>
   <genPackages prefix="Xmdlgen" basePackage="org.xmdl" disposableProviderFactory="true"
       ecorePackage="xmdlgen.ecore#/">
