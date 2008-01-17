@@ -3,7 +3,7 @@
 <schema targetNamespace="xmdl.gen.xmdl.gen">
 <annotation>
       <appInfo>
-         <meta.schema plugin="xmdl.gen" id="registry" name="XMDL Platform Registry"/>
+         <meta.schema plugin="org.xmdl.gen" id="registry" name="XMDL Platform Registry"/>
       </appInfo>
       <documentation>
          XMDL Platform Registry

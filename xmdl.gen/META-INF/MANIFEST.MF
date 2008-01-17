@@ -13,7 +13,10 @@ Require-Bundle: org.xmdl.model,org.eclipse.emf.ecore.xmi,org.eclipse.e
  sources,org.eclipse.jdt.core,org.junit,org.apache.log4j,org.eclipse.j
  et
 Eclipse-LazyStart: true
-Export-Package: org.xmdl.gen.plugin,org.xmdl.gen.util,org.xmdl.meta,or
- g.xmdl.xgen,org.xmdl.xgen.util
+Export-Package: org.xmdl.gen.plugin,
+ org.xmdl.gen.util,
+ org.xmdl.meta,
+ org.xmdl.xgen,
+ org.xmdl.xgen.util
 Built-By: Hakan Dilek
 
