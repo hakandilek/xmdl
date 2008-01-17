@@ -8,6 +8,7 @@
 
    <description url="http://www.xmdl.org">
       XMDL Universal Code Generator. For more information see project page on http://www.xmdl.org/
+      
    </description>
 
    <copyright url="http://xmdl.googlecode.com/svn/trunk/xmdl.lib/varfiles/NOTICE.txt">
@@ -24,6 +25,15 @@
    </url>
 
    <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.apache.commons.logging"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.junit"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
       <import feature="org.eclipse.emf" version="2.3.1.v200709252135" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.codegen" version="2.3.1.v200709252135" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.codegen.ecore" version="2.3.1.v200709252135" match="greaterOrEqual"/>
@@ -41,12 +51,9 @@
       <import feature="org.eclipse.emf.mapping.ecore" version="2.3.0.v200709252135" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.mapping.ecore.editor" version="2.3.0.v200709252135" match="greaterOrEqual"/>
       <import feature="org.eclipse.emf.mapping.ui" version="2.3.0.v200709252135" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.sdk" version="2.3.1.v200709252135" match="greaterOrEqual"/>
       <import feature="org.eclipse.jdt" version="3.3.1.r331_v20070629-7o7jE72EDlXAbqAcnbmyg1rf8RIL" match="greaterOrEqual"/>
       <import feature="org.eclipse.jet" version="0.8.1.v20070913-17E19oA55P5V_8" match="greaterOrEqual"/>
-      <import feature="org.eclipse.jet.sdk" version="0.8.1.v20070913-07U182TZ7cjWEGkBuJH" match="greaterOrEqual"/>
       <import feature="org.eclipse.platform" version="3.3.2.R33x_v20071022-_19UEksF-G8Yc6bUv3Dz" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sdk" version="3.3.2.R33x_r20071022-7M7J7C_Mu2gop0b_GAwplOBhyuKO" match="greaterOrEqual"/>
    </requires>
 
    <plugin
