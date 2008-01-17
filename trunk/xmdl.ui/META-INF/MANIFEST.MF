@@ -3,19 +3,18 @@ Ant-Version: Apache Ant 1.7.0
 Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: xmdl.ui;singleton:=true
-Bundle-Version: 0.6.0.20071128_SNAPSHOT
+Bundle-SymbolicName: org.xmdl.xmdl.ui;singleton:=true
+Bundle-Version: 0.6.0.20080117_alpha3
 Bundle-ClassPath: .
 Bundle-Activator: org.xmdl.xmdl.ui.XMDLUIPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.xmdl.xmdl.ui,
- org.xmdl.xmdl.presentation,
- org.xmdl.xmdl.provider
-Require-Bundle: xmdl,xmdl.gen,org.eclipse.core.runtime,org.eclipse.cor
- e.resources,org.eclipse.emf.mapping,org.eclipse.emf.ecore.xmi,org.ecl
- ipse.emf.codegen.ecore.ui,org.eclipse.jdt.core,org.eclipse.jdt.ui,org
- .apache.log4j
+Export-Package: org.xmdl.xmdl.ui,org.xmdl.xmdl.presentation,org.xmdl.x
+ mdl.provider
+Require-Bundle: org.xmdl.model,org.xmdl.gen,org.eclipse.core.runtime,o
+ rg.eclipse.core.resources,org.eclipse.emf.mapping,org.eclipse.emf.eco
+ re.xmi,org.eclipse.emf.codegen.ecore.ui,org.eclipse.jdt.core,org.ecli
+ pse.jdt.ui,org.apache.log4j
 Eclipse-LazyStart: true
 Built-By: Hakan Dilek
 
