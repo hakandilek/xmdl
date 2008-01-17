@@ -6,9 +6,10 @@
 This is a step-by-step guide to XMDL installation. Please follow the steps below to perform a successful XMDL installation.
 
 This guide is intended to be functional with the following configuration of software versions:
- * [http://www.eclipse.org/ Eclipse] 3.3
- * [http://www.eclipse.org/modeling/emf/ EMF] 2.3.0
- * [http://xmdl.code.google.com/ XMDL] 0.5.0
+ * [http://www.eclipse.org/ Eclipse] 3.3.1.1 (java-europa-fall2)
+ * [http://www.eclipse.org/modeling/emf/ EMF] 2.3.1
+ * [http://www.eclipse.org/emft/projects/jet/ EMFT JET] 0.8.1
+ * [http://xmdl.code.google.com/ XMDL] 0.6.0
 
 == Eclipse Installation ==
 
@@ -25,7 +26,7 @@ Eclipse should be ready for further installation after this step.
 
 == [http://www.eclipse.org/modeling/emf/ EMF] (Eclipse Modeling Framework) Runtime Installation ==
 
-Latest version of XMDL runs on EMF 2.3.0. If you have EMF 2.3.0 already installed on your system, you can simply skip this step.
+Latest version of XMDL runs on EMF 2.3.1. If you have EMF 2.3.1 already installed on your system, you can simply skip this step.
 
  * If you would like to setup a proxy server for your Eclipse update system, you should follow the following steps. If you do not need or already have a proxy setup, simply skip this step.
    * Open the Eclipse Preferences dialog using the menu item Window -> Preferences...
@@ -38,7 +39,9 @@ Latest version of XMDL runs on EMF 2.3.0. If you have EMF 2.3.0 already installe
  * Initiate Eclipse Install/Update wizard using the menu item Help -> Software Updates -> Find and Install...
  * Select "Search for new features to install" and click Next.
  * Select the checkbox beside "Europa Discovery Site". This is the general update site for all eclipse features. Click Finish.
- * On the dialog with the title "Search Results", Select "Models and Model Development -> Eclipse Modeling Framework (EMF) Runtime + End User Tools <some version number>" from the displayed tree. Click Next.
+ * On the dialog with the title "Search Results", Select the following from the displayed tree. Click Next.
+   * "Models and Model Development -> Eclipse Modeling Framework (EMF) Runtime + End User Tools <some version number>" 
+   * "Models and Model Development -> Java Emitter Templates (JET) (Incubation)  <some version number>" 
  * Accept the displayed software license. Click Next.
  * In the dialog with title "Installation" simply click Finish.
  * Eclipse will start downloading. When the download is finished a dialog with title "Feature Verification" will show up. Simply click "Install All".
@@ -47,12 +50,21 @@ Latest version of XMDL runs on EMF 2.3.0. If you have EMF 2.3.0 already installe
 
 == XMDL Installation ==
 
-Since, an Eclipse update site has not yet been defined, XMDL has to be installed manually, by extracting necessary files.
+It is possible to install/update XMDL using Eclipse update mechanism. Follow these steps to perform installation of XMDL with Eclipse Update. 
 
- * Go to [http://code.google.com/p/xmdl/downloads/list XMDL download page]. 
- * Select and download the latest XMDL package
- * When download is complete, extract the archive into your eclipse installation directory. After extraction, jar files from XMDL should be directly under plugin directory under your Eclipse installation.
-
+ * Initiate Eclipse Install/Update wizard using the menu item Help -> Software Updates -> Find and Install...
+ * Select "Search for new features to install" and click Next.
+ * Click "New Remote site..." button.
+ * Enter the following information in the dialog and click Ok.
+ {{{
+ Name : XMDL update site
+ URL  : http://xmdl.googlecode.com/svn/trunk/xmdl.update/site.xml
+ }}}
+ * Select only "XMDL update site" from the list and click Finish.
+ * Select the XMDL Universal Code Generator<some_version> version from the list and click Next.
+ * You can now accept the license agreement, click Next and Finish consecutively.
+ * Install all components and restart eclipse when installation is finished.
+  
 == Verify installation ==
 
  * Start Eclipse (again). You should have shut it down after EMF Runtime installation

@@ -6,9 +6,10 @@
 This page is a step-by-step guide to modeling with XMDL. This guide does not intend to guide you through deep coding practice on the generated code. You can refer the specific platforms guide if you are interested in the platform details. Please follow the steps below to model and generate code for a sample application. 
 
 This guide is intended to be functional with the following configuration of software versions:
- * [http://www.eclipse.org/ Eclipse] 3.3
- * [http://www.eclipse.org/modeling/emf/ EMF] 2.3.0
- * [http://xmdl.code.google.com/ XMDL] 0.5.0
+ * [http://www.eclipse.org/ Eclipse] 3.3.1.1 (java-europa-fall2)
+ * [http://www.eclipse.org/modeling/emf/ EMF] 2.3.1
+ * [http://www.eclipse.org/emft/projects/jet/ EMFT JET] 0.8.1
+ * [http://xmdl.code.google.com/ XMDL] 0.6.0
 
 == Sample Model ==
 
