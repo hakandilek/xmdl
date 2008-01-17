@@ -40,6 +40,17 @@
 		<ant antfile="build_lib.xml" target="build_plugins" />
 	</target>
 
+    <macrodef name="update_manifest">
+        <attribute name="plugin.name" />
+
+        <sequential>
+            <manifest file="../@{plugin.name}/META-INF/MANIFEST.MF" mode="update">
+                <attribute name="Built-By" value="${dist.build.user}" />
+                <attribute name="Bundle-Version" value="${version.pattern}" />
+            </manifest>
+        </sequential>
+    </macrodef>
+	
 	<macrodef name="dist_plugin">
 		<attribute name="plugin.name" />
 
@@ -50,10 +61,7 @@
                 <src path="../@{plugin.name}/src"/>
 				<classpath refid="total.classpath" />
 			</javac>
-			<manifest file="../@{plugin.name}/META-INF/MANIFEST.MF" mode="update">
-				<attribute name="Built-By" value="${dist.build.user}" />
-				<attribute name="Bundle-Version" value="${version.pattern}" />
-			</manifest>
+	        <update_manifest plugin.name="@{plugin.name}" />
 			<jar destfile="dist/plugins/@{plugin.name}_${version.pattern}.jar" manifest="../@{plugin.name}/META-INF/MANIFEST.MF">
 				<fileset dir="build/@{plugin.name}" excludes="**/Test.class" />
 				<fileset dir="../@{plugin.name}">
@@ -116,6 +124,24 @@
 		</zip>
 
 	</target>
+
+    <!-- ================================= 
+          target: update_manifests              
+         ================================= -->
+    <target name="update_manifests" description="--> updates the manifest descriptions of plugins according to the current date/version information">
+
+        <update_manifest plugin.name="xmdl" />
+        <update_manifest plugin.name="xmdl.gen" />
+        <update_manifest plugin.name="xmdl.genext" />
+        <update_manifest plugin.name="xmdl.ui" />
+        <update_manifest plugin.name="xmdlbo.ui" />
+        <update_manifest plugin.name="xmdldb.ui" />
+        <update_manifest plugin.name="xmdlgen.ui" />
+        <update_manifest plugin.name="xmdl.gen" />
+        <update_manifest plugin.name="xmdl.core" />
+        <update_manifest plugin.name="xmdl.ida" />
+
+    </target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: init                      
