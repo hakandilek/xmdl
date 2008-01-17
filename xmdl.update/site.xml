@@ -6,6 +6,9 @@
    <feature url="features/org.xmdl_0.6.0.20080114_alpha2.jar" id="org.xmdl" version="0.6.0.20080114_alpha2">
       <category name="org.xmdl.development"/>
    </feature>
+   <feature url="features/org.xmdl_0.6.0.20080117_alpha3.jar" id="org.xmdl" version="0.6.0.20080117_alpha3">
+      <category name="org.xmdl.development"/>
+   </feature>
    <category-def name="org.xmdl.stable" label="XMDL Stable updates">
       <description>
          Here you can find final versions of XMDL releases.
