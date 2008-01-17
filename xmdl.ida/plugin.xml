@@ -2,7 +2,7 @@
 <?eclipse version="3.2"?>
 <plugin>
     <extension
-         id="xmdl.ida"
+         id="org.xmdl.ida.platform"
          name="IDA Platform"
          point="org.xmdl.gen.register">
       <platform
@@ -11,7 +11,9 @@
             version="0.1.0"/>
    </extension>
    <extension
-            point="org.eclipse.jet.tagLibraries">
+         id="org.xmdl.ida.taglib"
+         name="IDA Tag Libraries"
+         point="org.eclipse.jet.tagLibraries">
    
       <tagLibrary
             deprecated="false"
