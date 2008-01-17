@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <plugin>
     <extension
-         id="xmdl.core"
+         id="org.xmdl.core"
          name="XMDL Core Platform"
          point="org.xmdl.gen.register">
       <platform
