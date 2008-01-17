@@ -4,11 +4,12 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
-Bundle-SymbolicName: xmdl.genext;singleton:=true
-Bundle-Version: 0.6.0.20071209_SNAPSHOT
-Require-Bundle: xmdl,xmdl.gen,org.eclipse.jet,org.eclipse.core.runtime
- .compatibility,org.eclipse.emf.ecore,org.eclipse.emf.codegen
+Bundle-SymbolicName: org.xmdl.genext;singleton:=true
+Bundle-Version: 0.6.0.20080117_alpha3
+Require-Bundle: org.xmdl.model,org.xmdl.gen,org.eclipse.jet,org.eclips
+ e.core.runtime.compatibility,org.eclipse.emf.ecore,org.eclipse.emf.co
+ degen
 Eclipse-LazyStart: true
-Built-By: hakan
+Built-By: Hakan Dilek
 Export-Package: org.xmdl.genext.taglib
 
