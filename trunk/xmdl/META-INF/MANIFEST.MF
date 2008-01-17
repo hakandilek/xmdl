@@ -3,29 +3,18 @@ Ant-Version: Apache Ant 1.7.0
 Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: xmdl; singleton:=true
-Bundle-Version: 0.6.0.20071209_SNAPSHOT
+Bundle-SymbolicName: org.xmdl.model;singleton:=true
+Bundle-Version: 0.6.0.20080117_alpha3
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-Activator: org.xmdl.xmdl.plugin.XMDLModelPlugin
 Require-Bundle: org.eclipse.core.runtime,org.eclipse.emf.ecore.xmi,org
  .apache.log4j,org.apache.commons.beanutils
 Eclipse-LazyStart: true
-Export-Package: org.xmdl.xmdlgen,
- org.xmdl.xmdl,
- org.xmdl.xmdl.impl,
- org.xmdl.xmdl.init,
- org.xmdl.xmdl.util,
- org.xmdl.xmdlbo,
- org.xmdl.xmdlbo.impl,
- org.xmdl.xmdlbo.init,
- org.xmdl.xmdlbo.util,
- org.xmdl.xmdldb,
- org.xmdl.xmdldb.impl,
- org.xmdl.xmdldb.init,
- org.xmdl.xmdldb.util,
- org.xmdl.xmdlgen.impl,
- org.xmdl.xmdlgen.init,
- org.xmdl.xmdlgen.util
-Built-By: hakan
+Export-Package: org.xmdl.xmdlgen,org.xmdl.xmdl,org.xmdl.xmdl.impl,org.
+ xmdl.xmdl.init,org.xmdl.xmdl.util,org.xmdl.xmdlbo,org.xmdl.xmdlbo.imp
+ l,org.xmdl.xmdlbo.init,org.xmdl.xmdlbo.util,org.xmdl.xmdldb,org.xmdl.
+ xmdldb.impl,org.xmdl.xmdldb.init,org.xmdl.xmdldb.util,org.xmdl.xmdlge
+ n.impl,org.xmdl.xmdlgen.init,org.xmdl.xmdlgen.util
+Built-By: Hakan Dilek
 
