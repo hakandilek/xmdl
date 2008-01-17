@@ -3,7 +3,7 @@
   <packages name="org.xmdl.demo">
     <classes name="Customer" className="org.xmdl.demo.Customer">
       <attributes name="name">
-        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/xmdl/model/types.xmdl#java.lang.String"/>
+        <type xsi:type="org.xmdl:XClass" href="platform:/plugin/org.xmdl.model/model/types.xmdl#java.lang.String"/>
       </attributes>
       <attributes name="locations" type="Location" associationType="ManyToMany" opposite="//@packages.0/@classes.1/@attributes.0"/>
       <attributes name="manies" type="Many" associationType="OneToMany" associationBehaviour="composition" opposite="//@packages.0/@classes.2/@attributes.0"/>
