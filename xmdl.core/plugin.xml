@@ -4,7 +4,7 @@
     <extension
          id="xmdl.core"
          name="XMDL Core Platform"
-         point="xmdl.gen.register">
+         point="org.xmdl.gen.register">
       <platform
             class="org.xmdl.core.platform.XmdlCorePlatform"
             name="Cekirdek"
