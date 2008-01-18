@@ -43,7 +43,7 @@ You would need to install the following software components for XMDL development
 When installation is complete, add XMDL project components into your workspace. 
 _It is recommended to setup a separate workspace in Eclipse containing the following XMDL components_
 
- * Click menu item File -> Project,
+ * Click menu item File -> New -> Project,
  * Select SVN -> Checkout Projects from SVN, click Next,
  * Select "Create a new repository location", click Next,
  * Enter "https://xmdl.googlecode.com/svn/trunk/" for URL, click Next,
@@ -61,7 +61,11 @@ _It is recommended to setup a separate workspace in Eclipse containing the follo
    * xmdlbo.ui/
    * xmdldb.ui/
    * xmdlgen.ui/
+
+ [http://xmdl.googlecode.com/svn/wiki/DevelopersGuide/0500.png]
+
  * Click Finish
+
  * Perform this step for the wiki/ folder under https://xmdl.googlecode.com/svn/wiki/ if you would like to follow wiki changes inside Eclipse IDE.
  
 == Additional Resources ==
