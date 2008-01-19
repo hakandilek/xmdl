@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="lib" path="features/org.xmdl_0.6.0.20080114_alpha2.jar"/>
+	<classpathentry kind="lib" path="features/org.xmdl_0.6.0.20080117_alpha3.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.commons.beanutils_1.6.0.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.log4j_1.2.11.jar"/>
+	<classpathentry kind="lib" path="plugins/org.xmdl.core_0.6.0.20080117_alpha3.jar"/>
+	<classpathentry kind="lib" path="plugins/org.xmdl.gen_0.6.0.20080117_alpha3.jar"/>
+	<classpathentry kind="lib" path="plugins/org.xmdl.genext_0.6.0.20080117_alpha3.jar"/>
+	<classpathentry kind="lib" path="plugins/org.xmdl.ida_0.6.0.20080114_alpha2.jar"/>
+	<classpathentry kind="lib" path="plugins/org.xmdl.ida_0.6.0.20080117_alpha3.jar"/>
+	<classpathentry kind="lib" path="plugins/org.xmdl.model_0.6.0.20080117_alpha3.jar"/>
+	<classpathentry kind="lib" path="plugins/org.xmdl.xmdl.ui_0.6.0.20080117_alpha3.jar"/>
+	<classpathentry kind="lib" path="plugins/org.xmdl.xmdlbo.ui_0.6.0.20080117_alpha3.jar"/>
+	<classpathentry kind="lib" path="plugins/org.xmdl.xmdldb.ui_0.6.0.20080117_alpha3.jar"/>
+	<classpathentry kind="lib" path="plugins/org.xmdl.xmdlgen.ui_0.6.0.20080117_alpha3.jar"/>
+	<classpathentry kind="lib" path="plugins/xmdl_0.6.0.20080114_alpha2.jar"/>
+	<classpathentry kind="lib" path="plugins/xmdl.core_0.6.0.20080114_alpha2.jar"/>
+	<classpathentry kind="lib" path="plugins/xmdl.gen_0.6.0.20080114_alpha2.jar"/>
+	<classpathentry kind="lib" path="plugins/xmdl.genext_0.6.0.20080114_alpha2.jar"/>
+	<classpathentry kind="lib" path="plugins/xmdl.ui_0.6.0.20080114_alpha2.jar"/>
+	<classpathentry kind="lib" path="plugins/xmdlbo.ui_0.6.0.20080114_alpha2.jar"/>
+	<classpathentry kind="lib" path="plugins/xmdldb.ui_0.6.0.20080114_alpha2.jar"/>
+	<classpathentry kind="lib" path="plugins/xmdlgen.ui_0.6.0.20080114_alpha2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
