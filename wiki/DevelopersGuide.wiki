@@ -67,6 +67,27 @@ _It is recommended to setup a separate workspace in Eclipse containing the follo
  * Click Finish
 
  * Perform this step for the wiki/ folder under https://xmdl.googlecode.com/svn/wiki/ if you would like to follow wiki changes inside Eclipse IDE.
+
+== Run/Debug XMDL using Eclipse ==
+
+In order to run XMDL inside Eclipse you should first set up a Run or Debug configuration. Follow those steps to setup a Run configuration for XMDL:
+
+  * Run -> Open Run Dialog...
+  * Click "Eclipse Application", Click "New" button.
+  * In the dialog set the following: 
+    * Name : XMDL
+    * Run a Product : org.eclipse.platform.ide
+  * Click Run.
+  * A new Eclipse instance will run with the final version of XMDL in your workspace.
+ [http://xmdl.googlecode.com/svn/wiki/DevelopersGuide/0600.png]
+
+If you want to debug this instance of eclipse inside the previous eclipse instance, 
+  * put breakpoints etc., 
+  * do one of the following; 
+    * either select Run -> Debug History -> XMDL from the menu
+ [http://xmdl.googlecode.com/svn/wiki/DevelopersGuide/0610.png]
+    * or click the pull-down debug icon and select XMDL from the menu.
+ [http://xmdl.googlecode.com/svn/wiki/DevelopersGuide/0620.png]
  
 == Additional Resources ==
 
