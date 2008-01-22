@@ -1,13 +1,24 @@
 package org.xmdl.gen.mark;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+
 /**
- * Platform class for the platform mark.
+ * PlatformElement class for the platform mark.
  * 
  * @author Hakan Dilek
  */
-public class Platform {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class PlatformElement {
+
+	@XmlAttribute
 	private String id;
+
+	@XmlAttribute
 	private String name;
+
+	@XmlAttribute
 	private String version;
 
 	public String getId() {
