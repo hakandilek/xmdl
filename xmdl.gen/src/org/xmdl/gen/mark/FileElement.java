@@ -1,20 +1,36 @@
 package org.xmdl.gen.mark;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlEnum;
+
 /**
  * Generated file class for the platform mark.
  * 
  * @author Hakan Dilek
  */
-public class GeneratedFile {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class FileElement {
+
+	@XmlAttribute(name = "name")
 	private String fileName;
+
+	@XmlAttribute
 	private Integer size;
-	private GenerationType generationType;
+
+	@XmlAttribute
+	private OutputType outputType;
+
+	@XmlAttribute
 	private FileType fileType;
 
-	public enum GenerationType {
+	@XmlEnum 
+	public enum OutputType {
 		COPY, GENERATE
 	};
 
+	@XmlEnum 
 	public enum FileType {
 		JAVA, XML, PROPERTY, OTHER
 	}
@@ -35,12 +51,12 @@ public class GeneratedFile {
 		this.size = size;
 	}
 
-	public GenerationType getGenerationType() {
-		return generationType;
+	public OutputType getOutputType() {
+		return outputType;
 	}
 
-	public void setGenerationType(GenerationType generationType) {
-		this.generationType = generationType;
+	public void setOutputType(OutputType outputType) {
+		this.outputType = outputType;
 	}
 
 	public FileType getFileType() {
