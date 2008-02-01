@@ -45,9 +45,9 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.xmdl.gen.mark.PlatformMarkingListener;
 import org.xmdl.meta.MetaModelHolder;
 import org.xmdl.xgen.Generator;
-import org.xmdl.xgen.GeneratorListener;
 import org.xmdl.xgen.Platform;
 import org.xmdl.xmdl.XBase;
 import org.xmdl.xmdl.XProject;
@@ -240,10 +240,9 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 
 			Generator generator = new Generator(project);
-			GeneratorListener listener = new ProgressListener(progressMonitor);
-
 			generator.setWorkspaceRoot(root);
-			generator.addListener(listener);
+			generator.addListener(new ProgressListener(progressMonitor));
+			generator.addListener(new PlatformMarkingListener());
 			return generator;
 		}
 
