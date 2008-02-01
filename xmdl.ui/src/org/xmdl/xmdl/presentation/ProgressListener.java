@@ -1,8 +1,11 @@
 package org.xmdl.xmdl.presentation;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.xmdl.xgen.GeneratorEvent;
+import org.xmdl.xgen.FileGeneratedEvent;
+import org.xmdl.xgen.GenerationFinishedEvent;
+import org.xmdl.xgen.GenerationStartedEvent;
 import org.xmdl.xgen.GeneratorListener;
+import org.xmdl.xgen.InitializedEvent;
 
 
 /**
@@ -19,20 +22,24 @@ public class ProgressListener implements GeneratorListener {
 		this.monitor = progressMonitor;
 	}
 
-	public void generationInitialized(GeneratorEvent event) {
+	@Override
+	public void generationInitialized(InitializedEvent event) {
 		monitor.subTask("XMDL initializing...");
 	}
 
-	public void generationStarted(GeneratorEvent event) {
+	@Override
+	public void generationStarted(GenerationStartedEvent event) {
 		monitor.beginTask("XMDL generate", event.getSize());
 	}
 
-	public void generationFinished(GeneratorEvent event) {
+	@Override
+	public void generationFinished(GenerationFinishedEvent event) {
 		monitor.done();
 	}
-
-	public void progress(GeneratorEvent event) {
+	@Override
+	public void fileGenerated(FileGeneratedEvent event) {
 		monitor.worked(1);
 	}
+
 
 }
