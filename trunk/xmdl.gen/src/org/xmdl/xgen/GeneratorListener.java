@@ -1,11 +1,16 @@
 package org.xmdl.xgen;
 
+/**
+ * A Listener interface used to monitor generator activities.
+ * 
+ * @author Hakan Dilek
+ */
 public interface GeneratorListener {
-	void generationInitialized(GeneratorEvent event);
+	void generationInitialized(InitializedEvent event);
 
-	void generationStarted(GeneratorEvent event);
+	void generationStarted(GenerationStartedEvent event);
 
-	void generationFinished(GeneratorEvent event);
+	void generationFinished(GenerationFinishedEvent event);
 
-	void progress(GeneratorEvent event);
+	void fileGenerated(FileGeneratedEvent event);
 }

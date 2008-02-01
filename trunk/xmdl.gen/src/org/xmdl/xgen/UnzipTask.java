@@ -8,6 +8,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipEntry;
@@ -21,7 +23,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.xmdl.xgen.util.IFileUtils;
 
-
 public class UnzipTask implements Task {
 	private final static Logger LOGGER = Logger.getLogger(UnzipTask.class);
 
@@ -33,6 +34,8 @@ public class UnzipTask implements Task {
 
 	private Map<String, String> replacement;
 
+	private List<FileCopyListener> listeners = new ArrayList<FileCopyListener>();
+
 	public UnzipTask(InputStream input, String destination) {
 		super();
 		this.input = input;
@@ -41,9 +44,7 @@ public class UnzipTask implements Task {
 
 	public UnzipTask(File input, String destination)
 			throws FileNotFoundException {
-		super();
-		this.input = new FileInputStream(input);
-		this.destination = destination;
+		this(new FileInputStream(input), destination);
 	}
 
 	public void run() {
@@ -98,17 +99,18 @@ public class UnzipTask implements Task {
 				} else {
 					LOGGER.debug("creating : " + filename);
 					int dotIndex = filename.lastIndexOf(".");
-					if (dotIndex >0){
+					if (dotIndex > 0) {
 						filename = filename.substring(0, dotIndex);
 					}
 					String foldername = filename;
-                    int slashIndex = filename.lastIndexOf("/");
-                    if (slashIndex > 0){
-                        foldername = filename.substring(0, slashIndex);
-                    }
+					int slashIndex = filename.lastIndexOf("/");
+					if (slashIndex > 0) {
+						foldername = filename.substring(0, slashIndex);
+					}
 					IFileUtils.INST.createFolder(foldername);
 					outFile.create(content, true, null);
 				}
+				fireFileCopied("" + outFile.getFullPath());
 			}
 			zis.close();
 		} catch (FileNotFoundException e) {
@@ -122,6 +124,23 @@ public class UnzipTask implements Task {
 
 	public void setFilenameReplacement(Map<String, String> filenameReplacement) {
 		this.replacement = filenameReplacement;
+	}
+
+	public void addListener(FileCopyListener l) {
+		listeners.add(l);
+	}
+
+	public void removeListener(FileCopyListener l) {
+		listeners.remove(l);
+	}
+
+	protected void fireFileCopied(String filePath) {
+		LOGGER.debug("Generation Initialized");
+		FileCopyEvent event = new FileCopyEvent(filePath);
+		for (int i = 0; i < listeners.size(); i++) {
+			FileCopyListener l = listeners.get(i);
+			l.fileCopied(event);
+		}
 	}
 
 }

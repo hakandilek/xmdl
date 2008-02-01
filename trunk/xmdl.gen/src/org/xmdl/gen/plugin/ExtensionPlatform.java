@@ -14,7 +14,10 @@ public class ExtensionPlatform implements Platform {
 
 	private Platform platform;
 
-	public ExtensionPlatform(String name, String version, Platform platform) {
+	private String id;
+
+	public ExtensionPlatform(String id, String name, String version, Platform platform) {
+		this.id = id;
 		this.name = name;
 		this.version = version;
 		this.platform = platform;
@@ -47,6 +50,11 @@ public class ExtensionPlatform implements Platform {
 	public String name() {
 		if (name != null) return name;
 		return platform.name();
+	}
+
+	public String id() {
+		if (id != null) return id;
+		return platform.id();
 	}
 
 	public String version() {

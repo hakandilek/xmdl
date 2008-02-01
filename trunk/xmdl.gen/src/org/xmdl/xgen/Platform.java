@@ -15,6 +15,11 @@ public interface Platform {
 	String name();
 
 	/**
+	 * @return Returns the unique id of the platform.
+	 */
+	String id();
+
+	/**
 	 * @return Returns the version.
 	 */
 	String version();

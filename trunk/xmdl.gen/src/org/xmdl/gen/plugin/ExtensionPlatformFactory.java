@@ -11,6 +11,8 @@ public class ExtensionPlatformFactory {
 
 	public static final String POINT_ID = "org.xmdl.gen.register";
 
+	private static final String ATT_ID = "id";
+
 	private static final String ATT_NAME = "name";
 
 	private static final String ATT_VERSION = "version";
@@ -37,6 +39,7 @@ public class ExtensionPlatformFactory {
 
 	private static ExtensionPlatform createPlatform(
 			IConfigurationElement element) throws CoreException {
+		String id = element.getAttribute(ATT_ID);
 		String name = element.getAttribute(ATT_NAME);
 		String version = element.getAttribute(ATT_VERSION);
 		Object object = element.createExecutableExtension(ATT_CLASS);
@@ -44,7 +47,7 @@ public class ExtensionPlatformFactory {
 			return null;
 		}
 		Platform p = (Platform) object;
-		ExtensionPlatform platform = new ExtensionPlatform(name, version, p);
+		ExtensionPlatform platform = new ExtensionPlatform(id, name, version, p);
 		return platform;
 	}
 

@@ -1,8 +1,11 @@
 package org.xmdl.xgen;
 
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
@@ -55,4 +58,23 @@ public abstract class AbstractTaskFactory implements TaskFactory {
 	}
 
 	protected abstract List<Template> getTemplates();
+	
+	public UnzipTask getUnzipTask(XProject project) {
+        String projectName = project.getName();
+        String targetBase = "/" + projectName + "/";
+
+        Map<String, String> filenameReplacement = new HashMap<String, String>();
+        filenameReplacement.put("project.name", projectName);
+
+        InputStream input = getZipInput();
+        if (input != null) {
+            UnzipTask unzipTask = new UnzipTask(input, targetBase);
+            unzipTask.setFilenameReplacement(filenameReplacement);
+            return unzipTask;
+        }
+
+		return null;
+	}
+
+	protected abstract InputStream getZipInput();
 }
