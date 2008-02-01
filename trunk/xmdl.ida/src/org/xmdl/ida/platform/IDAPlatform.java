@@ -33,4 +33,9 @@ public class IDAPlatform extends AbstractPlatform {
         return "1.0.0";
     }
 
+	@Override
+	public String id() {
+		return "org.xmdl.ida";
+	}
+
 }

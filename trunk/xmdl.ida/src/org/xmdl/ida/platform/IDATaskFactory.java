@@ -2,9 +2,7 @@ package org.xmdl.ida.platform;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.FileLocator;
@@ -113,29 +111,8 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
             List<EObject> list) {
         if (predecessorTasks == null) {
             predecessorTasks = new ArrayList<Task>();
-            String projectName = project.getName();
-            String targetBase = "/" + projectName + "/";
-
-            Map<String, String> filenameReplacement = new HashMap<String, String>();
-            filenameReplacement.put("project.name", projectName);
-
-            //IFolder target = null;
-            InputStream input = null;
-            try {
-                IPath file = new Path("/res/extras.zip");
-                LOGGER.debug("file="+file);
-                Implementation plugin = XMDLIDAPlugin.getPlugin();
-                LOGGER.debug("plugin="+plugin);
-                Bundle bundle = plugin.getBundle();
-                LOGGER.debug("bundle="+bundle);
-                input = FileLocator.openStream(bundle, file, false);
-                LOGGER.debug("input="+input);
-            } catch (Exception e) {
-                LOGGER.debug("Exception :" + targetBase, e);
-            }
-            
-            UnzipTask unzipTask = new UnzipTask(input, targetBase);
-            unzipTask.setFilenameReplacement(filenameReplacement);
+            UnzipTask unzipTask = getUnzipTask(project);
+            predecessorTasks.add(unzipTask);
             predecessorTasks.add(unzipTask);
         }
         return predecessorTasks;
@@ -247,5 +224,24 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
             LOGGER.warn("FATAL ", e);
         }
     }
+
+	@Override
+	protected InputStream getZipInput() {
+        InputStream input = null;
+        try {
+            IPath file = new Path("/res/extras.zip");
+            LOGGER.debug("file="+file);
+            Implementation plugin = XMDLIDAPlugin.getPlugin();
+            LOGGER.debug("plugin="+plugin);
+            Bundle bundle = plugin.getBundle();
+            LOGGER.debug("bundle="+bundle);
+            input = FileLocator.openStream(bundle, file, false);
+            LOGGER.debug("input="+input);
+            return input;
+        } catch (Exception e) {
+            LOGGER.debug("Exception :", e);
+        }
+		return null;
+	}
 
 }
