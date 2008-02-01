@@ -1,16 +1,17 @@
 package org.xmdl.core.platform;
 
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.eclipse.emf.common.util.URI;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
+import org.osgi.framework.Bundle;
 import org.xmdl.core.plugin.XMDLCorePlugin;
+import org.xmdl.core.plugin.XMDLCorePlugin.Implementation;
 import org.xmdl.core.templates.build.POM;
 import org.xmdl.core.templates.context.ApplicationContextDAO;
 import org.xmdl.core.templates.context.ApplicationContextDB;
@@ -182,35 +183,7 @@ public class CoreTaskFactory extends AbstractTaskFactory {
 	public List<Task> createPredecessorTasks(XProject project, List<EObject> list) {
 		if (predecessorTasks == null){
 			predecessorTasks = new ArrayList<Task>();
-
-			String projectName = project.getName();
-			String targetBase = "/" + projectName + "/";
-
-			Map<String, String> filenameReplacement = new HashMap<String, String>();
-			filenameReplacement.put("project.name", projectName);
-
-			//IFolder target = null;
-			InputStream input = null;
-			try {
-				//IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-				//target = root.getFolder(new Path(targetBase));
-				URL baseURL = XMDLCorePlugin.INSTANCE.getBaseURL();
-				
-				URL file = new URL(baseURL, "/res/defaultContent.zip");
-				
-				input = file.openStream();
-			} catch (Exception e) {
-				LOGGER.debug("Exception :" + targetBase, e);
-			}
-			
-//			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-//			root.getFolder(targetBase +".");
-
-			URI targetURI = URI.createFileURI(targetBase);
-			targetURI = URIHelper.asLocalURI(targetURI);
-			String dest = targetBase;
-			UnzipTask unzipTask = new UnzipTask(input, dest);
-			unzipTask.setFilenameReplacement(filenameReplacement);
+			UnzipTask unzipTask = getUnzipTask(project);
 			predecessorTasks.add(unzipTask);
 		}
 		return predecessorTasks;
@@ -221,6 +194,25 @@ public class CoreTaskFactory extends AbstractTaskFactory {
 			successorTasks = new ArrayList<Task>();
 		}
 		return successorTasks;
+	}
+
+	@Override
+	protected InputStream getZipInput() {
+        InputStream input = null;
+        try {
+            IPath file = new Path("/res/defaultContent.zip");
+            LOGGER.debug("file="+file);
+            Implementation plugin = XMDLCorePlugin.getPlugin();
+            LOGGER.debug("plugin="+plugin);
+            Bundle bundle = plugin.getBundle();
+            LOGGER.debug("bundle="+bundle);
+            input = FileLocator.openStream(bundle, file, false);
+            LOGGER.debug("input="+input);
+            return input;
+        } catch (Exception e) {
+            LOGGER.debug("Exception :", e);
+        }
+		return null;
 	}
 
 }
