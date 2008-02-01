@@ -6,6 +6,7 @@
          name="IDA Platform"
          point="org.xmdl.gen.register">
       <platform
+         	id="org.xmdl.ida"
             class="org.xmdl.ida.platform.IDAPlatform"
             name="IDA"
             version="0.1.0"/>
