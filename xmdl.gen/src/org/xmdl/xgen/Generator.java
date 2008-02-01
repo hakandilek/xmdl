@@ -91,7 +91,7 @@ public class Generator {
 	 * Generates the source code
 	 */
 	public void generate(Platform platform) {
-		fireGenerationInitialized();
+		fireInitialized();
 		LOGGER.info("Generating project : " + project);
 
 		XProject prj = getProject();
@@ -111,7 +111,7 @@ public class Generator {
 		size += preTasks != null ? preTasks.size() : 0;
 		size += postTasks != null ? postTasks.size() : 0;
 		
-		fireGenerationStarted(size);
+		fireGenerationStarted(platform, size);
 
 		// progressMonitor.beginTask("XMDL generate", tasks.size());
 		LOGGER.debug("XMDL generate");
@@ -223,7 +223,7 @@ public class Generator {
 						} else {
 							file.create(generated, true, null);
 						}
-						fireProgress();
+						fireFileGenerated("" + file.getFullPath());
 					} catch (CoreException e) {
 						LOGGER.error("Cannot write to file " + file, e);
 						e.printStackTrace();
@@ -234,7 +234,7 @@ public class Generator {
 					// does not exist, create a new one
 					try {
 						file.create(generated, true, null);
-						fireProgress();
+						fireFileGenerated("" + file.getFullPath());
 					} catch (CoreException e) {
 						LOGGER.error("Cannot create file " + file, e);
 					}
@@ -378,35 +378,39 @@ public class Generator {
 		listeners.remove(l);
 	}
 
-	protected void fireGenerationInitialized() {
+	protected void fireInitialized() {
 		LOGGER.debug("Generation Initialized");
+		InitializedEvent event = new InitializedEvent();
 		for (int i = 0; i < listeners.size(); i++) {
 			GeneratorListener l = listeners.get(i);
-			l.generationInitialized(new GeneratorEvent());
+			l.generationInitialized(event);
 		}
 	}
 
-	protected void fireGenerationStarted(int size) {
+	protected void fireGenerationStarted(Platform platform, int size) {
 		LOGGER.debug("Generation Started, size:" + size);
+		GenerationStartedEvent event = new GenerationStartedEvent(platform, size);
 		for (int i = 0; i < listeners.size(); i++) {
 			GeneratorListener l = listeners.get(i);
-			l.generationStarted(new GeneratorEvent(size));
+			l.generationStarted(event);
 		}
 	}
 
-	protected void fireProgress() {
+	protected void fireFileGenerated(String filePath) {
 		LOGGER.debug("Generation progress");
+		FileGeneratedEvent event = new FileGeneratedEvent(filePath);
 		for (int i = 0; i < listeners.size(); i++) {
 			GeneratorListener l = listeners.get(i);
-			l.progress(new GeneratorEvent());
+			l.fileGenerated(event);
 		}
 	}
 
 	protected void fireGenerationFinished() {
 		LOGGER.debug("Generation Finished");
+		GenerationFinishedEvent event = new GenerationFinishedEvent();
 		for (int i = 0; i < listeners.size(); i++) {
 			GeneratorListener l = listeners.get(i);
-			l.generationFinished(new GeneratorEvent());
+			l.generationFinished(event);
 		}
 	}
 

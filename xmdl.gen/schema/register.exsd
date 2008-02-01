@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="xmdl.gen.xmdl.gen">
+<schema targetNamespace="org.xmdl.gen">
 <annotation>
       <appInfo>
          <meta.schema plugin="org.xmdl.gen" id="registry" name="XMDL Platform Registry"/>
@@ -51,6 +51,13 @@
          </appInfo>
       </annotation>
       <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
          <attribute name="name" type="string" use="required">
             <annotation>
                <documentation>
