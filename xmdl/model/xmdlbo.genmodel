@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/xmdl/src"
-    editDirectory="/xmdlbo.ui/src" editorDirectory="/xmdlbo.ui/src" modelPluginID="xmdl"
-    runtimeJar="true" modelName="Xmdlbo" editPluginClass="org.xmdl.xmdlbo.ui.XmdlboEditPlugin"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.xmdl.model/src"
+    editDirectory="/org.xmdl.xmdlbo.ui/src" editorDirectory="/org.xmdl.xmdlbo.ui/src"
+    modelPluginID="xmdl" runtimeJar="true" modelName="Xmdlbo" editPluginClass="org.xmdl.xmdlbo.ui.XmdlboEditPlugin"
     editorPluginClass="org.xmdl.xmdlbo.presentation.XmdlboEditorPlugin" testSuiteClass="org.xmdl.xmdlbo.tests.XmdlboAllTests"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" usedGenPackages="platform:/plugin/org.xmdl.model/model/xmdl.genmodel#//xmdl">
   <foreignModel>xmdlbo.ecore</foreignModel>
