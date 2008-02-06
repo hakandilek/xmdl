@@ -19,7 +19,7 @@ public class BaseTemplateTestCase extends TestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        pluginID = "xmdl.genext.test";
+        pluginID = "org.xmdl.genext.test";
         context = new JET2Context(null);
         // Set up a context extender... ???
         TransformContextExtender.getInstance(context);
