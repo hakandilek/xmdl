@@ -121,12 +121,12 @@
   <extension
         point="org.eclipse.ui.newWizards">
      <category
-           id="xmdl.category"
+           id="org.xmdl.category"
            name="%_UI_XMDL_Wizard_category">
      </category>
      <wizard
            canFinishEarly="false"
-           category="xmdl.category"
+           category="org.xmdl.category"
            class="org.xmdl.xmdl.ui.wizard.XMDLJavaProjectWizard"
            finalPerspective="org.xmdl.xmdl.ui.XmdlModelingPerspective"
            hasPages="true"
