@@ -2,13 +2,12 @@
 <feature
       id="org.xmdl"
       label="XMDL Universal Code Generator"
-      version="0.6.0.20080117_alpha3"
+      version="0.6.0.20080206_alpha4"
       provider-name="xmdl.org"
       plugin="org.xmdl.xmdl.ui">
 
    <description url="http://www.xmdl.org">
       XMDL Universal Code Generator. For more information see project page on http://www.xmdl.org/
-      
    </description>
 
    <copyright url="http://xmdl.googlecode.com/svn/trunk/xmdl.lib/varfiles/NOTICE.txt">
