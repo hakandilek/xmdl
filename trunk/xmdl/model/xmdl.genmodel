@@ -2,7 +2,7 @@
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="hd"
-    modelDirectory="/xmdl/src" editDirectory="/xmdl.ui/src" editorDirectory="/xmdl.ui/src"
+    modelDirectory="/org.xmdl.model/src" editDirectory="/org.xmdl.xmdl.ui/src" editorDirectory="/org.xmdl.xmdl.ui/src"
     modelPluginID="xmdl" templateDirectory="" runtimeJar="true" redirection="" modelName="Xmdl"
     modelPluginClass="" editPluginClass="org.xmdl.xmdl.ui.XMDLUIPlugin" editorPluginClass="org.xmdl.xmdl.ui.XMDLUIPlugin"
     generateSchema="true" rootImplementsInterface="java.lang.Comparable" featureMapWrapperInterface=""
