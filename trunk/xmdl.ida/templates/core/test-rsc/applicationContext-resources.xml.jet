@@ -1,4 +1,4 @@
-<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
 <%@ jet 
     package="org.xmdl.ida.templates.core.test.rsc" 
     class="ApplicationContextResourcesXMLImpl" 

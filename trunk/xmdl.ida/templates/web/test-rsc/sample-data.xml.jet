@@ -1,6 +1,6 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
-<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
-<%@taglib prefix="tu" id="xmdl.genext.testUtils" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@taglib prefix="tu" id="org.xmdl.genext.testUtils" %>
 <%@ jet 
     package="org.xmdl.ida.templates.web.test.rsc" 
     class="WebSampleDataXMLImpl" 

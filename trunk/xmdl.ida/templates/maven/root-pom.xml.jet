@@ -1,5 +1,5 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
-<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
 <%@ jet 
     package="org.xmdl.ida.templates.maven" 
     class="RootPomXMLImpl" 
