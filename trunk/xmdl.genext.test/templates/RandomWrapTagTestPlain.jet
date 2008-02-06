@@ -1,4 +1,4 @@
-<%@taglib prefix="tu" id="xmdl.genext.testUtils" %>
+<%@taglib prefix="tu" id="org.xmdl.genext.testUtils" %>
 <%@ jet package="org.xmdl.genext.taglib.tu" class="RandomWrapTagTestTemplatePlain"%>
 <tu:randomWrap attribute="$attribute1"/>;<tu:randomWrap attribute="$attribute1"/>;
 <tu:randomWrap attribute="$attribute2"/>;<tu:randomWrap attribute="$attribute2"/>;
