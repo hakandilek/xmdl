@@ -4,12 +4,12 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.xmdl.ida;singleton:=true
-Bundle-Version: 0.6.0.20080117_alpha3
+Bundle-Version: 0.6.0.20080206_alpha4
 Bundle-Vendor: %providerName
 Require-Bundle: org.xmdl.model,org.xmdl.gen,org.xmdl.genext,org.eclips
  e.emf.ecore,org.eclipse.emf.codegen,org.eclipse.core.runtime,org.apac
  he.log4j,org.eclipse.jet
 Eclipse-LazyStart: true
-Built-By: Hakan Dilek
+Built-By: ADDIHA5
 Bundle-Activator: org.xmdl.ida.plugin.XMDLIDAPlugin$Implementation
 

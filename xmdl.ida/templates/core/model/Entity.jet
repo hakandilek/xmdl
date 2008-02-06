@@ -1,7 +1,7 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
-<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
-<%@taglib prefix="xd" id="xmdl.genext.xmdlDB" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@taglib prefix="xd" id="org.xmdl.genext.xmdlDB" %>
 <%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@jet 
     package="org.xmdl.ida.templates.core.model" 

@@ -5,7 +5,7 @@
     endTag="$>"
     %>
 <$@taglib prefix="ct" id="org.eclipse.jet.controlTags" $>
-<$@taglib prefix="xc" id="xmdl.genext.xmdlClass" $>
+<$@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" $>
 <%@ include file="/common/taglibs.jsp"%>
 
 <head>
