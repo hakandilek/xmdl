@@ -1,5 +1,5 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
-<%@taglib prefix="tu" id="xmdl.genext.testUtils" %>
+<%@taglib prefix="tu" id="org.xmdl.genext.testUtils" %>
 <%@ jet package="org.xmdl.genext.xpath" class="IsEnumerationFunctionTestTemplate"%>
 <c:if test="isEnumeration($attribute1)">enumeration</c:if>;
 <c:if test="isEnumeration($attribute2)">enumeration</c:if>;

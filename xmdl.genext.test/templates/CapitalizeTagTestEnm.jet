@@ -2,6 +2,6 @@
 <%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
-<%@taglib prefix="xc" id="xmdl.genext.xmdlClass" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
 <%@ jet package="org.xmdl.genext.taglib.xc" class="CapitalizeTagTestTemplateEnm"%>
 :<xc:cap element="$enumeration"/>;
