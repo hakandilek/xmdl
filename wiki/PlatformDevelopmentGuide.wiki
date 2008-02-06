@@ -50,11 +50,11 @@ An [http://help.eclipse.org/help32/index.jsp?topic=/org.eclipse.pde.doc.user/gui
 Here is a sample extension point definition:
 {{{
     <extension
-         id="xmdl.core"
+         id="org.xmdl.core"
          name="XMDL Core Platform"
-         point="xmdl.gen.register">
+         point="org.xmdl.gen.register">
       <platform
-            class="chrome.xmdl.core.platform.XmdlCorePlatform"
+            class="org.xmdl.core.platform.XmdlCorePlatform"
             name="Cekirdek"
             version="0.5.0"/>
    </extension>
