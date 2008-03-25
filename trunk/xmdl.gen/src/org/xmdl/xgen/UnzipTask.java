@@ -17,10 +17,7 @@ import java.util.zip.ZipInputStream;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Path;
 import org.xmdl.xgen.util.IFileUtils;
 
 public class UnzipTask implements Task {
@@ -54,8 +51,6 @@ public class UnzipTask implements Task {
 		}
 
 		LOGGER.debug("Extracting to destination = " + destination);
-		// BufferedOutputStream dest = null;
-		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 
 		// IFile file = workspaceRoot.getFile(new Path(targetFile));
 		ZipInputStream zis = new ZipInputStream(new BufferedInputStream(input));
@@ -81,43 +76,27 @@ public class UnzipTask implements Task {
 						}
 					}
 				}
-				IFile outFile = root.getFile(new Path(filename));
 
 				byte buffer[] = new byte[BUFFER_SIZE];
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
 				while ((count = zis.read(buffer, 0, BUFFER_SIZE)) != -1) {
 					out.write(buffer, 0, count);
 				}
-
 				InputStream content = new ByteArrayInputStream(out
 						.toByteArray());
 				out.size();
-				if (outFile.exists()) {
-					LOGGER.debug("re writing : " + filename);
-					// TODO:check file size and skip
-					outFile.setContents(content, true, true, null);
-				} else {
-					LOGGER.debug("creating : " + filename);
-					int dotIndex = filename.lastIndexOf(".");
-					if (dotIndex > 0) {
-						filename = filename.substring(0, dotIndex);
-					}
-					String foldername = filename;
-					int slashIndex = filename.lastIndexOf("/");
-					if (slashIndex > 0) {
-						foldername = filename.substring(0, slashIndex);
-					}
-					IFileUtils.INST.createFolder(foldername);
-					outFile.create(content, true, null);
+				
+				try {
+					IFile outFile = IFileUtils.INST.writeFile(content, filename);
+					fireFileCopied("" + outFile.getFullPath());
+				} catch (CoreException e) {
+					LOGGER.error("Error extracting", e);
 				}
-				fireFileCopied("" + outFile.getFullPath());
 			}
 			zis.close();
 		} catch (FileNotFoundException e) {
 			LOGGER.error("Error extracting", e);
 		} catch (IOException e) {
-			LOGGER.error("Error extracting", e);
-		} catch (CoreException e) {
 			LOGGER.error("Error extracting", e);
 		}
 	}
@@ -135,7 +114,8 @@ public class UnzipTask implements Task {
 	}
 
 	protected void fireFileCopied(String filePath) {
-		LOGGER.debug("Generation Initialized");
+		if (LOGGER.isDebugEnabled())
+			LOGGER.debug("File copied: " + filePath);
 		FileCopyEvent event = new FileCopyEvent(filePath);
 		for (int i = 0; i < listeners.size(); i++) {
 			FileCopyListener l = listeners.get(i);

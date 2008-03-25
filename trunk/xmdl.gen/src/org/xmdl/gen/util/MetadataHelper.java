@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EObject;
 import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XClass;
 import org.xmdl.xmdl.XPackage;
@@ -38,6 +39,22 @@ public class MetadataHelper {
 
 		}
 		return list;
+	}
+
+	/**
+	 * Return the project, traversing the metadata tree upwards from the
+	 * selected element.
+	 * 
+	 * @param selected
+	 *            the selected element
+	 * @return the project element
+	 */
+	public XProject getProject(EObject selected) {
+		EObject parent = selected;
+		while (parent != null && !(parent instanceof XProject)) {
+			parent = parent.eContainer();
+		}
+		return (XProject) parent;
 	}
 
 }
