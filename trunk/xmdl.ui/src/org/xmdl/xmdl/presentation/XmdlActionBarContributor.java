@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.apache.log4j.Logger;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
@@ -45,7 +43,11 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.xmdl.gen.mark.MarkElement;
+import org.xmdl.gen.mark.PlatformElement;
+import org.xmdl.gen.mark.PlatformMarkRegistry;
 import org.xmdl.gen.mark.PlatformMarkingListener;
+import org.xmdl.gen.util.MetadataHelper;
 import org.xmdl.meta.MetaModelHolder;
 import org.xmdl.xgen.Generator;
 import org.xmdl.xgen.Platform;
@@ -205,11 +207,8 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 
 	public abstract class ProjectAction extends Action {
 		protected XProject getProject(EObject selected) {
-			EObject parent = selected;
-			while (parent != null && !(parent instanceof XProject)) {
-				parent = parent.eContainer();
-			}
-			return (XProject) parent;
+			MetadataHelper helper = new MetadataHelper();
+			return helper.getProject(selected);
 		}
 
 		public void run() {
@@ -237,10 +236,7 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 
 			LOGGER.debug("project = " + project);
 
-			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-
 			Generator generator = new Generator(project);
-			generator.setWorkspaceRoot(root);
 			generator.addListener(new ProgressListener(progressMonitor));
 			generator.addListener(new PlatformMarkingListener());
 			return generator;
@@ -562,16 +558,46 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 				// menuManager.insertAfter("additions", generateXMDLAction);
 
 				if (selected instanceof XBase) {
+					XBase selElement = (XBase) selected;
 					menuManager.insertBefore("additions", initializeAction);
 					initializeAction.setEnabled(initializeAction.isEnabled());
-					Collection<Platform> platforms = Platforms.INST.values();
-					for (Platform platform : platforms) {
-						IAction generateAction = new GenerateAction(platform);
-						generateAction.setText(platform.name() + " "
-								+ platform.version());
-						generateSubmenuManager.add(generateAction);
-						generateAction.setEnabled(generateAction.isEnabled());
 
+					//determine platformID
+					PlatformMarkRegistry registry = PlatformMarkRegistry
+							.getInstance();
+					String platformID = null;
+					final MarkElement platformMark = registry
+							.getMarkFor(selElement);
+					if (platformMark != null) {
+						final PlatformElement p = platformMark.getPlatform();
+						platformID = p == null ? null : p.getId();
+					}
+					if (LOGGER.isDebugEnabled())
+						LOGGER.debug("platformID=" + platformID);
+
+					Platform markPlatform = null;
+					Collection<Platform> platforms = Platforms.INST.values();
+					if (platformID != null) {
+						for (Platform platform : platforms) {
+							String id = platform.id();
+							if (platformID.equals(id)) {
+								markPlatform = platform;
+								addGenerateActionFor(platform, generateSubmenuManager, true);
+								break;
+							}
+						}
+					}
+					
+					for (Platform platform : platforms) {
+						if (platform.equals(markPlatform))
+							continue;
+						//determine dimming
+						boolean enabled = true;
+						if (markPlatform != null) {
+							enabled = false;
+						}
+						
+						addGenerateActionFor(platform, generateSubmenuManager, enabled);
 					}
 				}
 			}
@@ -581,6 +607,18 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 			menuManager.insertBefore("additions", new ActionContributionItem(
 					xmdlValidateAction));
 		}
+	}
+
+	private void addGenerateActionFor(Platform platform,
+			MenuManager menuManager, boolean enabled) {
+		if (LOGGER.isDebugEnabled())
+			LOGGER.debug("Adding platform(" + enabled + "): " + platform);
+
+		IAction generateAction = new GenerateAction(platform);
+		generateAction.setEnabled(enabled);
+		generateAction.setText(platform.name() + " " + platform.version());
+		menuManager.add(generateAction);
+		generateAction.setEnabled(generateAction.isEnabled());
 	}
 
 	@Override
