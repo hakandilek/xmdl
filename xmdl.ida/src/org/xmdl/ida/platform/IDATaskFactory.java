@@ -113,7 +113,6 @@ public class IDATaskFactory extends AbstractTaskFactory implements TaskFactory {
             predecessorTasks = new ArrayList<Task>();
             UnzipTask unzipTask = getUnzipTask(project);
             predecessorTasks.add(unzipTask);
-            predecessorTasks.add(unzipTask);
         }
         return predecessorTasks;
     }
