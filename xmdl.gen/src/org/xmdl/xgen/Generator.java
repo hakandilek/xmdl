@@ -3,8 +3,6 @@ package org.xmdl.xgen;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,13 +15,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.codegen.merge.java.JControlModel;
 import org.eclipse.emf.codegen.merge.java.JMerger;
-import org.eclipse.emf.codegen.merge.java.facade.JCompilationUnit;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -34,8 +28,10 @@ import org.eclipse.jet.JET2Context;
 import org.eclipse.jet.JET2Platform;
 import org.eclipse.jet.XPathContextExtender;
 import org.eclipse.jet.transform.TransformContextExtender;
+import org.xmdl.gen.mark.PlatformMarkManager;
 import org.xmdl.gen.plugin.XMDLGenPlugin;
 import org.xmdl.meta.MetaModelHolder;
+import org.xmdl.xgen.util.FileMerger;
 import org.xmdl.xgen.util.IFileUtils;
 import org.xmdl.xmdl.XProject;
 
@@ -44,14 +40,10 @@ public class Generator {
 
 	private static final Logger LOGGER = Logger.getLogger(Generator.class);
 
-	public static final String KEEP_EXPRESSION = "@keep";
-
 	private XProject project;
 
-	private IWorkspaceRoot workspaceRoot;
-
 	private List<GeneratorListener> listeners = new ArrayList<GeneratorListener>();
-
+	
 	private URI mergeURI;
 
 	public Generator() {
@@ -80,21 +72,19 @@ public class Generator {
 	}
 
 	/**
-	 * @param workspaceRoot
-	 *            The workspaceRoot to set.
-	 */
-	public void setWorkspaceRoot(IWorkspaceRoot workspaceRoot) {
-		this.workspaceRoot = workspaceRoot;
-	}
-
-	/**
 	 * Generates the source code
 	 */
 	public void generate(Platform platform) {
+		XProject prj = getProject();
+		String projectName = prj.getName();
+
+		PlatformMarkManager markManager = new PlatformMarkManager("/" + projectName +
+				"/");
+		markManager.initialize(this);
+		
 		fireInitialized();
 		LOGGER.info("Generating project : " + project);
 
-		XProject prj = getProject();
 
 		TaskFactory tf = platform.taskFactory();
 		MetaModelHolder.initialize(project);
@@ -103,6 +93,8 @@ public class Generator {
 		List<Task> preTasks = tf.createPredecessorTasks(prj, roots);
 		List<Task> postTasks = tf.createSuccessorTasks(prj, roots);
 		
+		markManager.processTasks(preTasks);
+		markManager.processTasks(postTasks);
 		
 		// Create a merger
 		JMerger merger = createMerger();
@@ -120,7 +112,8 @@ public class Generator {
 		generate(gTasks, merger);
 		run(postTasks);
 		fireGenerationFinished();
-
+		
+		markManager.finish(this);
 	}
 
 	protected void run(List<Task> tasks) {
@@ -159,90 +152,18 @@ public class Generator {
 			} catch (CoreException e1) {
 				LOGGER.error("Cannot create directory" + targetDirectory, e1);
 			}
-			IFile file = workspaceRoot.getFile(new Path(targetFile));
-			// File file = new Path(targetFileName).toFile();
-
+			
 			// Perform generation
 			try {
 				String gen = runTemplate(template, source);
 				InputStream generated = new ByteArrayInputStream(gen.getBytes());
-				LOGGER.debug("file:" + file.toString() + "?" + file.exists());
+				LOGGER.debug("file:" + targetFile);
 				
-				InputStream result = generated;
-				if (file.exists()) {
-					boolean keep = false;
-					InputStream targetIn = null;
-					try {
-						targetIn = new FileInputStream(file.getLocation()
-								.toFile());
-						// targetIn = new FileInputStream(file);
-					} catch (FileNotFoundException e) {
-						LOGGER.fatal("File " + file + " must be present", e);
-					}
-					if (targetFile.endsWith(".java")) {
-						try {
-							// use merging
-
-							// set source
-							merger.setSourceCompilationUnit(merger.createCompilationUnitForInputStream(generated));
-
-							// set target
-							merger.setTargetCompilationUnit(merger
-									.createCompilationUnitForInputStream(targetIn));
-
-							LOGGER.debug("Merging file" + targetFile);
-							// merge source and target
-							merger.merge();
-
-							// extract merged contents
-							JCompilationUnit target = merger
-									.getTargetCompilationUnit();
-							String mergeResult = target.getContents();
-							result = new ByteArrayInputStream(mergeResult.getBytes());
-						} catch (RuntimeException e) {
-							//problem occurred while merging, don't merge directly write result
-							LOGGER.debug("Cannot merge directly writing result. Problem occured:" + e);
-							result = generated;
-						}
-
-						// LOGGER.debug(targetContents);
-					} else {
-						String target = StringReader.INST.read(targetIn);					
-						keep = target.indexOf(KEEP_EXPRESSION) >=0;
-					}
-
-					if (keep){
-						file = workspaceRoot.getFile(file.getFullPath().addFileExtension("gen"));
-					}
-					
-					// Save file
-					LOGGER.debug("Modifying file :" + file.toString());
-					try {
-						if (file.exists()) {
-							file.setContents(result, true, true, null);
-						} else {
-							file.create(generated, true, null);
-						}
-						fireFileGenerated("" + file.getFullPath());
-					} catch (CoreException e) {
-						LOGGER.error("Cannot write to file " + file, e);
-						e.printStackTrace();
-					}
-
-				} else {
-					LOGGER.debug("Creating  file :" + file.toString());
-					// does not exist, create a new one
-					try {
-						file.create(generated, true, null);
-						fireFileGenerated("" + file.getFullPath());
-					} catch (CoreException e) {
-						LOGGER.error("Cannot create file " + file, e);
-					}
-				}
-
-				LOGGER.info("File generated:" + file.toString());
+				FileMerger fileMerger = new FileMerger(merger);
+				IFileUtils.INST.writeFile(generated, targetFile, fileMerger);
+				fireFileGenerated(targetFile);
 			} catch (Exception e) {
-				LOGGER.error("Exceptin generating file :" + file, e);
+				LOGGER.error("Exceptin generating file :" + targetFile, e);
 			}
 		}
 	}

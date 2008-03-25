@@ -114,7 +114,17 @@ public class ExtensionPlatform implements Platform {
 
 	@Override
 	public String toString() {
-		return name;
+		StringBuffer sb = new StringBuffer();
+		sb.append(getClass().getName());
+		sb.append("(");
+		sb.append(id());
+		sb.append("_");
+		sb.append(version());
+		sb.append(", [");
+		sb.append(name());
+		sb.append("]");
+		sb.append(")");
+		return sb.toString();
 	}
 
 }

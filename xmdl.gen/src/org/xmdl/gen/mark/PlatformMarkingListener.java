@@ -1,5 +1,6 @@
 package org.xmdl.gen.mark;
 
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
@@ -34,7 +35,6 @@ public class PlatformMarkingListener implements GeneratorListener, FileCopyListe
 	@Override
 	public void generationFinished(GenerationFinishedEvent event) {
 		finishTime = event.getTime();
-		writeMark();
 	}
 
 	@Override
@@ -62,10 +62,15 @@ public class PlatformMarkingListener implements GeneratorListener, FileCopyListe
 		return finishTime;
 	}
 
-	private void writeMark() {
-		Writer w = new OutputStreamWriter(System.out);
+	public void writeMark(Writer out) {
 		MarkElement mark = getMark();
-		PlatformMark.toXML(mark , w);
+		PlatformMark.toXML(mark , out);
+		
+	}
+	
+	public void writeMark(OutputStream out) {
+		Writer w = new OutputStreamWriter(out);
+		writeMark(w);
 	}
 
 	public MarkElement getMark() {
