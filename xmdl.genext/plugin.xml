@@ -30,6 +30,17 @@
                   Wraps the type with its corresponding object type if the given attribute has a primitive type.
                </description>
             </attribute>
+            <attribute
+                  deprecated="false"
+                  name="wrapAssociation"
+                  type="boolean"
+                  use="optional">
+               <description>
+                  Wraps the association type with its corresponding collection object type if the given attribute is an association.
+
+For example type User is converted to Set&lt;User&gt;.  
+               </description>
+            </attribute>
          </emptyTag>
          <emptyTag
                class="org.xmdl.genext.taglib.xc.CapitalizeTag"
