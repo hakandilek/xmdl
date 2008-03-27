@@ -16,6 +16,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.dao.hibernate;
 
 <xc:import pattern="org.xmdl.ida.lib.dao.hibernate.GenericDaoHibernate"/>
 <xc:import pattern="org.hibernate.Criteria"/>
+<xc:import pattern="org.hibernate.Session"/>
 <xc:import pattern="org.hibernate.criterion.Restrictions"/>
 <xc:import pattern="java.util.*"/>
 
@@ -68,55 +69,48 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
     </c:if>
 </c:iterate> 
 
-            list = search(<ida:searchParameters class="$class" omitType="true"/>);
-        }
-
-        if (log.isDebugEnabled())
-            log.debug("search(<xc:cap element="$class"/>Search <xc:uncap element="$class"/>Search) ->");
-        return list;
-    }
-
-    /**
-     * @generated
-     */ 
-    public Collection<<xc:cap element="$class"/>> search(<ida:searchParameters class="$class"/>) {
-        if (log.isDebugEnabled()) {
-            log.debug("search(<ida:searchParameters class="$class"/> <-");
+            if (log.isDebugEnabled()) {
+                log.debug("search(<ida:searchParameters class="$class"/> <-");
 <c:iterate select="$class/attributes" var="attribute">
     <c:if test="not(call($attribute, 'isReference'))">
         <c:choose>
         <c:when test="call($attribute/type, 'isComparable')">
-            log.debug("min<xc:cap element="$attribute"/>       : " + min<xc:cap element="$attribute"/>);
-            log.debug("max<xc:cap element="$attribute"/>       : " + max<xc:cap element="$attribute"/>);
+                log.debug("min<xc:cap element="$attribute"/>       : " + min<xc:cap element="$attribute"/>);
+                log.debug("max<xc:cap element="$attribute"/>       : " + max<xc:cap element="$attribute"/>);
         </c:when>
         <c:otherwise>
-            log.debug("<xc:uncap element="$attribute"/>       : " + <xc:uncap element="$attribute"/>);
+                log.debug("<xc:uncap element="$attribute"/>       : " + <xc:uncap element="$attribute"/>);
         </c:otherwise>
         </c:choose>
     </c:if>
 </c:iterate>
-        }
-            
-        Criteria criteria = getSession().createCriteria(<xc:cap element="$class"/>.class);
+            }
+
+                Session session = getSession();
+                Criteria criteria = session.createCriteria(<xc:cap element="$class"/>.class);
 <c:iterate select="$class/attributes" var="attribute">
     <c:if test="not(call($attribute, 'isReference'))">
         <c:choose>
             <c:when test="call($attribute/type, 'isComparable')">
-        if (min<xc:cap element="$attribute"/> != null)
-            criteria.add(Restrictions.ge("<xc:uncap element="$attribute"/>", min<xc:cap element="$attribute"/>));
-        if (max<xc:cap element="$attribute"/> != null)
-            criteria.add(Restrictions.le("<xc:uncap element="$attribute"/>", max<xc:cap element="$attribute"/>));
+            if (min<xc:cap element="$attribute"/> != null)
+                criteria.add(Restrictions.ge("<xc:uncap element="$attribute"/>", min<xc:cap element="$attribute"/>));
+            if (max<xc:cap element="$attribute"/> != null)
+                criteria.add(Restrictions.le("<xc:uncap element="$attribute"/>", max<xc:cap element="$attribute"/>));
             </c:when>
             <c:otherwise>
-        if (<xc:uncap element="$attribute"/> != null)
-            criteria.add(Restrictions.eq("<xc:uncap element="$attribute"/>", <xc:uncap element="$attribute"/>));
+            if (<xc:uncap element="$attribute"/> != null)
+                criteria.add(Restrictions.eq("<xc:uncap element="$attribute"/>", <xc:uncap element="$attribute"/>));
             </c:otherwise>
         </c:choose>
     </c:if>
 </c:iterate> 
-        List<<xc:cap element="$class"/>> list = criteria.list();
-        
-        if (log.isDebugEnabled()) log.debug("search(<ida:searchParameters class="$class"/>) <-");
+            list = criteria.list();
+
+        }
+
+
+        if (log.isDebugEnabled())
+            log.debug("search(<xc:cap element="$class"/>Search <xc:uncap element="$class"/>Search) ->");
         return list;
     }
 

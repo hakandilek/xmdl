@@ -43,7 +43,7 @@
             &config;
             <steps>
                 &login;
-                <invoke description="click View <xc:cap element="$class"/> link" url="/<xc:cap element="$class"/>/<xc:uncap element="$class"/>s.html"/>
+                <invoke description="click View <xc:cap element="$class"/> link" url="/<xc:cap element="$class"/>/<xc:uncap element="$class"/>s.do"/>
                 <verifytitle description="we should see the <xc:uncap element="$class"/>List title"
                              text=".*${<xc:uncap element="$class"/>List.title}.*" regex="true"/>
             </steps>
@@ -56,7 +56,7 @@
             &config;
             <steps>
                 &login;
-                <invoke description="click Edit <xc:cap element="$class"/> link" url="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html?id=1"/>
+                <invoke description="click Edit <xc:cap element="$class"/> link" url="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.do?id=1"/>
                 <verifytitle description="we should see the <xc:uncap element="$class"/>Detail title"
                              text=".*${<xc:uncap element="$class"/>Detail.title}.*" regex="true"/>
             </steps>
@@ -69,7 +69,7 @@
             &config;
             <steps>
                 &login;
-                <invoke description="click Edit <xc:cap element="$class"/> link" url="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html?id=1"/>
+                <invoke description="click Edit <xc:cap element="$class"/> link" url="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.do?id=1"/>
                 <verifytitle description="we should see the <xc:uncap element="$class"/>Detail title"
                              text=".*${<xc:uncap element="$class"/>Detail.title}.*" regex="true"/>
 
@@ -96,7 +96,7 @@
             &config;
             <steps>
                 &login;
-                <invoke description="click Add Button" url="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html"/>
+                <invoke description="click Add Button" url="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.do"/>
                 <verifytitle description="we should see the <xc:uncap element="$class"/>Detail title"
                              text=".*${<xc:uncap element="$class"/>Detail.title}.*" regex="true"/>
 
@@ -123,7 +123,7 @@
             &config;
             <steps>
                 &login;
-                <invoke description="click <xc:cap element="$class"/> Order link" url="/<xc:cap element="$class"/>/copy<xc:cap element="$class"/>.html?idToCopy=1"/>
+                <invoke description="click <xc:cap element="$class"/> Order link" url="/<xc:cap element="$class"/>/copy<xc:cap element="$class"/>.do?idToCopy=1"/>
                 <verifytitle description="Values filled by the properties of the <xc:uncap element="$class"/>"
                              text=".*${<xc:uncap element="$class"/>Detail.title}.*" regex="true"/>
             </steps>
@@ -137,7 +137,7 @@
             &config;
             <steps>
                 &login;
-                <invoke description="click Edit <xc:cap element="$class"/> link" url="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html?id=1"/>
+                <invoke description="click Edit <xc:cap element="$class"/> link" url="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.do?id=1"/>
                 <prepareDialogResponse description="Confirm delete" dialogType="confirm" response="true"/>
                 <clickbutton label="${button.delete}" description="Click button 'Delete'"/>
                 <verifyNoDialogResponses/>
@@ -153,7 +153,7 @@
             &config;
             <steps>
                 &login;
-                <invoke description="click List <xc:cap element="$class"/>s link" url="/<xc:cap element="$class"/>/<xc:uncap element="$class"/>s.html"/>
+                <invoke description="click List <xc:cap element="$class"/>s link" url="/<xc:cap element="$class"/>/<xc:uncap element="$class"/>s.do"/>
                 <setCheckbox description="clicks the select all checkbox" name="allbox"/>
                 <prepareDialogResponse description="Confirm delete" dialogType="confirm" response="true"/>
                 <clickbutton label="${button.delete}" description="Click button 'Delete'"/>

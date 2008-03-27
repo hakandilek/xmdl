@@ -12,23 +12,23 @@
         <Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>
     </Displayers>
     <Menus>
-        <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu.html" roles="ROLE_ADMIN,ROLE_USER"/>
-        <Menu name="UserMenu" title="menu.user" description="User Menu" page="/editProfile.html" roles="ROLE_ADMIN,ROLE_USER"/>
-        <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="ROLE_ADMIN" width="120" page="/admin/users.html">
-            <Item name="ViewUsers" title="menu.admin.users" page="/admin/users.html"/>
-            <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/admin/activeUsers.html"/>
-            <Element name="ReloadContext" title="menu.admin.reload" page="/admin/reload.html"/>
-            <Item name="FileUpload" title="menu.selectFile" page="/uploadFile.html"/>
-            <Item name="FlushCache" title="menu.flushCache" page="/admin/flushCache.html"/>
+        <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu.do" roles="ROLE_ADMIN,ROLE_USER"/>
+        <Menu name="UserMenu" title="menu.user" description="User Menu" page="/editProfile.do" roles="ROLE_ADMIN,ROLE_USER"/>
+        <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="ROLE_ADMIN" width="120" page="/admin/users.do">
+            <Item name="ViewUsers" title="menu.admin.users" page="/admin/users.do"/>
+            <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/admin/activeUsers.do"/>
+            <Element name="ReloadContext" title="menu.admin.reload" page="/admin/reload.do"/>
+            <Item name="FileUpload" title="menu.selectFile" page="/uploadFile.do"/>
+            <Item name="FlushCache" title="menu.flushCache" page="/admin/flushCache.do"/>
             <Item name="Clickstream" title="menu.clickstream" page="/admin/clickstreams.jsp"/>
         </Menu>
 
 <c:iterate select="$project/packages" var="package">
         <Menu name="<xc:qualifiedName element="$package"/>Menu" title="menu.title.<xc:qualifiedName element="$package"/>" description="<xc:qualifiedName element="$package"/>" roles="ROLE_ADMIN,ROLE_USER">
     <c:iterate select="$package/classes" var="class">
-            <Item name="<xc:cap element="$class"/>Menu"       title="menu.title.<xc:cap element="$class"/>"  page="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html">
-                <Item name="<xc:cap element="$class"/>Edit"   title="menu.edit.<xc:cap element="$class"/>"   page="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html"/>
-                <Item name="<xc:cap element="$class"/>Search" title="menu.search.<xc:cap element="$class"/>" page="/<xc:cap element="$class"/>/<xc:uncap element="$class"/>s.html"/>
+            <Item name="<xc:cap element="$class"/>Menu"       title="menu.title.<xc:cap element="$class"/>"  page="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.do">
+                <Item name="<xc:cap element="$class"/>Edit"   title="menu.edit.<xc:cap element="$class"/>"   page="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.do"/>
+                <Item name="<xc:cap element="$class"/>Search" title="menu.search.<xc:cap element="$class"/>" page="/<xc:cap element="$class"/>/<xc:uncap element="$class"/>s.do"/>
             </Item>
     </c:iterate>
         </Menu>

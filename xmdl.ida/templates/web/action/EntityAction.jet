@@ -78,7 +78,7 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
     /**
      * @generated
      */
-    public Collection get<xc:cap element="$class"/>s() {
+    public Collection<<xc:cap element="$class"/>> get<xc:cap element="$class"/>s() {
         return <xc:uncap element="$class"/>s;
     }
 
