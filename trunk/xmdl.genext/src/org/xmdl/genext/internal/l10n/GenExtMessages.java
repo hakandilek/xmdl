@@ -23,5 +23,8 @@ public class GenExtMessages extends NLS {
 
     /** used to denote a missing attribute */
     public static String TagLib_MissingAttribute;
+    
+    /** used to denote iteration failure */
+    public static String IterateTablesTag_CannotIterateOnResult;
 
 }
