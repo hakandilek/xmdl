@@ -46,4 +46,20 @@ public class MetaModelFinder {
         return visitor.getFound();
     }
 
+	public static DField findAssociateColumn(XAttribute attribute) {
+        EObject root = MetaModelHolder.getRoot(MetaModel.XMDL_DB);
+        DModel model = (DModel) root;
+        LocateColumnFromAttribute visitor = new LocateAssociateColumnFromAttribute(attribute);
+        model.accept(visitor);
+        return visitor.getFound();
+	}
+
+	public static DField findAssociateOppositeColumn(XAttribute attribute) {
+        EObject root = MetaModelHolder.getRoot(MetaModel.XMDL_DB);
+        DModel model = (DModel) root;
+        LocateColumnFromAttribute visitor = new LocateAssociateColumnFromAttribute(attribute, true);
+        model.accept(visitor);
+        return visitor.getFound();
+	}
+
 }
