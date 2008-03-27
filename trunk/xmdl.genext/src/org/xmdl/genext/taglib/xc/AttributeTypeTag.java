@@ -29,6 +29,8 @@ public class AttributeTypeTag extends BaseEmptyTag {
 
         boolean wrapType = false;
         String wrapString = null;
+        boolean wrapAssociation = true;
+        String wrapAssocString = null;
         try {
             wrapString = fetchAttribute("wrapType");
             wrapType = wrapString != null
@@ -39,10 +41,20 @@ public class AttributeTypeTag extends BaseEmptyTag {
             // ignore
         }
 
+        try {
+            wrapAssocString = fetchAttribute("wrapAssociation");
+            wrapAssociation = wrapAssocString != null
+                    && Boolean.valueOf(wrapAssocString).booleanValue();
+        } catch (MissingAttributeException e) {
+            // ignore optional variables
+        } catch (RuntimeException e) {
+            // ignore
+        }
+
         String result = "";
         if (attObject instanceof XAttribute) {
             XAttribute attribute = (XAttribute) attObject;
-            result = ClassTagUtils.importType(attribute, wrapType);
+            result = ClassTagUtils.importType(attribute, wrapType, wrapAssociation);
         }
         out.write(result);
     }
