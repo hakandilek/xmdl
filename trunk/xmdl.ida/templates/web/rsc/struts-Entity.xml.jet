@@ -21,12 +21,15 @@
         </action>
         <action name="save<xc:cap element="$class"/>" class="<xc:qualifiedName element="$class/xPackage"/>.webapp.action.<xc:cap element="$class"/>Action" method="save">
             <result name="input">/WEB-INF/pages/<xc:uncap element="$class"/>Form.jsp</result>
-            <result name="cancel" type="redirect"><xc:uncap element="$class"/>s.html</result>
-            <result name="delete" type="redirect"><xc:uncap element="$class"/>s.html</result>
-            <result name="success" type="redirect"><xc:uncap element="$class"/>s.html</result>
+            <result name="cancel" type="redirect"><xc:uncap element="$class"/>s.do</result>
+            <result name="delete" type="redirect"><xc:uncap element="$class"/>s.do</result>
+            <result name="success" type="redirect"><xc:uncap element="$class"/>s.do</result>
         </action>
         <action name="copy<xc:cap element="$class"/>" class="<xc:qualifiedName element="$class/xPackage"/>.webapp.action.<xc:cap element="$class"/>Action" method="copy">
             <result name="success">/WEB-INF/pages/<xc:uncap element="$class"/>Form.jsp</result>
+        </action>
+        <action name="ajaxList" class="<xc:qualifiedName element="$class/xPackage"/>.webapp.action.<xc:cap element="$class"/>Action" method="list">
+            <result name="success">/WEB-INF/pages/<xc:uncap element="$class"/>ListJson.jsp</result>
         </action>
     </package>
 </struts>

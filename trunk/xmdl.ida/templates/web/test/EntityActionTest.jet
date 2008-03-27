@@ -160,7 +160,7 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
      * @generated
      */
     public void testMassDelete() throws Exception {
-        <xc:cap element="$class"/> p = action.get<xc:cap element="$class"/>Manager().getAll().get(0);
+        <xc:cap element="$class"/> p = action.get<xc:cap element="$class"/>Manager().get(new Long(3));
 
         List<String> deleteIds = new ArrayList<String>();
         deleteIds.add(p.getId() + "");

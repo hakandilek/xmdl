@@ -9,8 +9,8 @@
 <classpath>
     <classpathentry kind="src" path="core/src/main/java"/>
     <classpathentry kind="src" path="core/src/main/resources" excluding="**/*.java" />
-    <classpathentry kind="src" path="core/src/test/java" output="core/target/test-classes"/>
-    <classpathentry kind="src" path="core/src/test/resources" output="core/target/test-classes" excluding="**/*.java" />
+    <classpathentry kind="src" path="core/src/test/java" output="target/test-classes"/>
+    <classpathentry kind="src" path="core/src/test/resources" output="target/test-classes" excluding="**/*.java" />
     <classpathentry kind="src" path="web/src/main/java"/>
     <classpathentry kind="src" path="web/src/main/resources" excluding="ApplicationResources_de.properties|ApplicationResources_fr.properties|ApplicationResources_ko.properties|ApplicationResources_nl.properties|ApplicationResources_no.properties|ApplicationResources_pt*.properties|ApplicationResources_tr.properties|ApplicationResources_zh*.properties|applicationContext-resources.xml|struts.xml|**/*.java"/>
     <classpathentry kind="src" path="web/src/test/java" output="target/test-classes"/>
@@ -28,7 +28,6 @@
     <classpathentry kind="var" path="M2_REPO/commons-dbcp/commons-dbcp/1.2.2/commons-dbcp-1.2.2.jar"/>
     <classpathentry kind="var" path="M2_REPO/commons-pool/commons-pool/1.3/commons-pool-1.3.jar"/>
     <classpathentry kind="var" path="M2_REPO/hsqldb/hsqldb/1.8.0.7/hsqldb-1.8.0.7.jar"/>
-    <classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.0.5/mysql-connector-java-5.0.5.jar"/>
     <classpathentry kind="var" path="M2_REPO/org/springframework/spring-mock/2.0.7/spring-mock-2.0.7.jar"/>
     <classpathentry kind="var" path="M2_REPO/org/codehaus/xfire/xfire-xmlbeans/1.2.6/xfire-xmlbeans-1.2.6.jar" sourcepath="M2_REPO/org/codehaus/xfire/xfire-xmlbeans/1.2.6/xfire-xmlbeans-1.2.6-sources.jar"/>
     <classpathentry kind="var" path="M2_REPO/junit/junit/4.4/junit-4.4.jar" sourcepath="M2_REPO/junit/junit/4.4/junit-4.4-sources.jar"/>

@@ -58,4 +58,14 @@
       </tagLibrary>
    </extension>
 
+   <extension
+         point="org.eclipse.jet.xpathFunctions">
+      <function
+            implementation="org.xmdl.ida.xpath.IsAssociationFunction"
+            maxArgs="1"
+            minArgs="1"
+            name="isAssociation">
+      </function>
+   </extension>
+
 </plugin>

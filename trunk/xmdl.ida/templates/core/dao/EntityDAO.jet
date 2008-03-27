@@ -30,11 +30,6 @@ public interface <xc:cap element="$class"/>DAO extends GenericDao<<xc:cap elemen
     /**
      * @generated
      */ 
-    Collection<<xc:cap element="$class"/>> search(<ida:searchParameters class="$class"/>);
-
-    /**
-     * @generated
-     */ 
     Collection<<xc:cap element="$class"/>> search(<xc:cap element="$class"/>Search searchBean);
 
 }

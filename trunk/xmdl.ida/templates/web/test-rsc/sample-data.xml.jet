@@ -1,5 +1,6 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@taglib prefix="xd" id="org.xmdl.genext.xmdlDB" %>
 <%@taglib prefix="tu" id="org.xmdl.genext.testUtils" %>
 <%@ jet 
     package="org.xmdl.ida.templates.web.test.rsc" 
@@ -100,10 +101,10 @@
         </row>
     </table>
 
-
 <c:iterate select="$model/dPackages" var="dPackage">
-    <c:iterate select="$dPackage/dTables" var="dTable">
+    <xd:iterateTables select="$dPackage/dTables" var="dTable">
     <!--<xc:qualifiedName element="$dTable/xClass"/>-START-->
+    <c:if test="not(isAssociation($dTable))">
     <table name="<c:get select="$dTable/@name"/>">
         <column>id</column>
         <c:iterate select="$dTable/dFields" var="field">
@@ -116,7 +117,7 @@
             <value description="id">1</value>
         <c:iterate select="$dTable/dFields" var="field">
             <c:if test="not(call($field/xAttribute, 'isReference'))">
-            <value description="Value for <c:get select="$field/@name"/>"><tu:randomWrap attribute="$field/xAttribute"/></value>
+            <value description="Value for <c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute"/></value>
             </c:if>
         </c:iterate>
         </row>
@@ -125,7 +126,7 @@
             <value description="id">2</value>
         <c:iterate select="$dTable/dFields" var="field">
             <c:if test="not(call($field/xAttribute, 'isReference'))">
-            <value description="Value for <c:get select="$field/@name"/>"><tu:randomWrap attribute="$field/xAttribute"/></value>
+            <value description="Value for <c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute"/></value>
             </c:if>
         </c:iterate>
         </row>
@@ -134,13 +135,36 @@
             <value description="id">3</value>
         <c:iterate select="$dTables/dField" var="field">
             <c:if test="not(call($field/xAttribute, 'isReference'))">
-            <value description="Value for <c:get select="$field/@name"/>"><tu:randomWrap attribute="$field/xAttribute"/></value>
+            <value description="Value for <c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute"/></value>
             </c:if>
         </c:iterate>
         </row>
 
     </table>
+    </c:if>
+    
+    <c:if test="isAssociation($dTable)">
+    <table name="<c:get select="$dTable/@name"/>">
+        <c:iterate select="$dTable/dFields" var="field">
+        <column><c:get select="$field/@name"/></column>
+        </c:iterate>
+    
+        <row>
+        <c:iterate select="$dTable/dFields" var="field">
+            <value description="Value for <c:get select="$field/@name"/>">1</value>
+        </c:iterate>
+        </row>
+
+        <row>
+        <c:iterate select="$dTable/dFields" var="field">
+            <value description="Value for <c:get select="$field/@name"/>">2</value>
+        </c:iterate>
+        </row>
+
+    </table>
+    </c:if>
+    
     <!--<xc:qualifiedName element="$dTable/xClass"/>-END-->
-    </c:iterate>
+    </xd:iterateTables>
 </c:iterate>
 </dataset>

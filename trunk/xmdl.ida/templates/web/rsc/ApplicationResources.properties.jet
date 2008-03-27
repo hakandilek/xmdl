@@ -47,6 +47,9 @@ errors.conversion=An error occurred while converting web values to data values.
 errors.twofields=The {0} field has to have the same value as the {1} field.
 errors.existing.user=This username ({0}) or e-mail address ({1}) already exists.  Please try a different username.
 
+# -- some messages --
+messages.loading=Loading...
+ 	
 # -- success messages --
 user.added=User information for {0} has been added successfully.
 user.deleted=User Profile for {0} has been deleted successfully.
