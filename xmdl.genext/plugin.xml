@@ -239,6 +239,38 @@
                   use="required">
             </attribute>
          </emptyTag>
+         <iteratingTag
+               class="org.xmdl.genext.taglib.xd.IterateTablesTag"
+               deprecated="false"
+               name="iterateTables">
+            <description>
+               Iterate tables considering dependencies.
+            </description>
+            <attribute
+                  name="select"
+                  type="xpath"
+                  use="required">
+               <description>
+                  An XPath expression that returns either a node set (a collection of elements or attributes) or a number.
+               </description>
+            </attribute>
+            <attribute
+                  name="var"
+                  type="string"
+                  use="required">
+               <description>
+                  A variable name. During each iteration, the value of the variable is an object from the set of objects selected by the &apos;select&apos; XPath expression.
+               </description>
+            </attribute>
+            <attribute
+                  name="delimiter"
+                  type="string"
+                  use="optional">
+               <description>
+                  A string that is written to the tag's output between iteration of the tag. The text is not written after the last iteration.
+               </description>
+            </attribute>
+         </iteratingTag>
       </tagLibrary>
    </extension>
    <extension
