@@ -49,6 +49,7 @@ import org.xmdl.gen.mark.PlatformMarkRegistry;
 import org.xmdl.gen.mark.PlatformMarkingListener;
 import org.xmdl.gen.util.MetadataHelper;
 import org.xmdl.meta.MetaModelHolder;
+import org.xmdl.xgen.AssociationManager;
 import org.xmdl.xgen.Generator;
 import org.xmdl.xgen.Platform;
 import org.xmdl.xmdl.XBase;
@@ -239,6 +240,7 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 			Generator generator = new Generator(project);
 			generator.addListener(new ProgressListener(progressMonitor));
 			generator.addListener(new PlatformMarkingListener());
+			generator.addListener(AssociationManager.getInstance());
 			return generator;
 		}
 
