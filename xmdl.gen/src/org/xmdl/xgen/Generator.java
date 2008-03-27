@@ -46,12 +46,7 @@ public class Generator {
 	
 	private URI mergeURI;
 
-	public Generator() {
-		super();
-	}
-
 	public Generator(XProject project) {
-		this();
 		setProject(project);
 	}
 
