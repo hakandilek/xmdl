@@ -56,33 +56,29 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
             list = new ArrayList<<xc:cap element="$class"/>>();
         } else {
 <c:iterate select="$class/attributes" var="attribute">
-    <c:if test="not(call($attribute, 'isReference'))">
-        <c:choose>
-        <c:when test="call($attribute/type, 'isComparable')">
-            <xc:attributeType attribute="$attribute" wrapType="true"/> min<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Min();
-            <xc:attributeType attribute="$attribute" wrapType="true"/> max<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Max();
-        </c:when>
-        <c:otherwise>
-            <xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>();
-        </c:otherwise>
-        </c:choose>
-    </c:if>
+    <c:choose>
+    <c:when test="call($attribute/type, 'isComparable')">
+            <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> min<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Min();
+            <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> max<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Max();
+    </c:when>
+    <c:otherwise>
+            <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> <xc:uncap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>();
+    </c:otherwise>
+    </c:choose>
 </c:iterate> 
 
             if (log.isDebugEnabled()) {
-                log.debug("search(<ida:searchParameters class="$class"/> <-");
+                log.debug("search(<xc:cap element="$class"/>Search <-");
 <c:iterate select="$class/attributes" var="attribute">
-    <c:if test="not(call($attribute, 'isReference'))">
-        <c:choose>
-        <c:when test="call($attribute/type, 'isComparable')">
+    <c:choose>
+    <c:when test="call($attribute/type, 'isComparable')">
                 log.debug("min<xc:cap element="$attribute"/>       : " + min<xc:cap element="$attribute"/>);
                 log.debug("max<xc:cap element="$attribute"/>       : " + max<xc:cap element="$attribute"/>);
-        </c:when>
-        <c:otherwise>
+    </c:when>
+    <c:otherwise>
                 log.debug("<xc:uncap element="$attribute"/>       : " + <xc:uncap element="$attribute"/>);
-        </c:otherwise>
-        </c:choose>
-    </c:if>
+    </c:otherwise>
+    </c:choose>
 </c:iterate>
             }
 
@@ -102,6 +98,12 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
                 criteria.add(Restrictions.eq("<xc:uncap element="$attribute"/>", <xc:uncap element="$attribute"/>));
             </c:otherwise>
         </c:choose>
+    </c:if>
+    <c:if test="call($attribute, 'isReference')">
+            if (<xc:uncap element="$attribute"/> != null){
+                Criteria subCriteria = criteria.createCriteria("<xc:uncap element="$attribute"/>");
+                subCriteria.add(Restrictions.idEq(<xc:uncap element="$attribute"/>.getId()));
+            }
     </c:if>
 </c:iterate> 
             list = criteria.list();

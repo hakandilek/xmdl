@@ -23,10 +23,11 @@
             standardPrefix="ida">
          <emptyTag
                class="org.xmdl.ida.taglib.SearchParametersTag"
-               deprecated="false"
+               deprecated="true"
                name="searchParameters">
             <description>
-               Outputs search parameters for the given class 
+               Outputs search parameters for the given class.
+NOT USED ANYMORE. 
             </description>
             <attribute
                   deprecated="false"

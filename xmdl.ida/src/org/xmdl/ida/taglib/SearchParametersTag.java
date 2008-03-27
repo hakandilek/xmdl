@@ -12,11 +12,12 @@ import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XClass;
 import org.xmdl.xmdl.XType;
 
-
 /**
  * Outputs the search method parameters for the given class
  * 
  * @author Hakan Dilek
+ * 
+ * @deprecated NOT USED ANYMORE.
  * 
  */
 public class SearchParametersTag extends BaseEmptyTag {
@@ -41,35 +42,31 @@ public class SearchParametersTag extends BaseEmptyTag {
 			StringBuffer params = new StringBuffer();
 			int idx = 0;
 			for (Iterator<XAttribute> i = clazz.getAttributes().iterator(); i
-					.hasNext(); ) {
+					.hasNext();) {
 				XAttribute attribute = i.next();
 				if (attribute.isReference())
 					continue;
-				
+
 				if (idx++ > 0)
 					params.append(", ");
-				
+
 				XType type = attribute.getType();
 				boolean comparable = type.isComparable();
+				String typeString = ClassTagUtils.importType(attribute, true,
+						true);
 				if (comparable) {
 					if (!omitType)
-						params
-								.append(ClassTagUtils.importType(attribute,
-										true));
+						params.append(typeString);
 					params.append(" min");
 					params.append(ClassTagUtils.capName(attribute));
 					params.append(", ");
 					if (!omitType)
-						params
-								.append(ClassTagUtils.importType(attribute,
-										true));
+						params.append(typeString);
 					params.append(" max");
 					params.append(ClassTagUtils.capName(attribute));
 				} else {
 					if (!omitType)
-						params
-								.append(ClassTagUtils.importType(attribute,
-										true));
+						params.append(typeString);
 					params.append(" ");
 					params.append(ClassTagUtils.uncapName(attribute));
 				}
