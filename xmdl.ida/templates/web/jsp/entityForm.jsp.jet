@@ -14,7 +14,7 @@
 </head>
 
 <!--copy URL-->
-<s:url id="copyUrl" namespace="/<xc:cap element="$class"/>" action="copy<xc:cap element="$class"/>.html" includeParams="false">
+<s:url id="copyUrl" namespace="/<xc:cap element="$class"/>" action="copy<xc:cap element="$class"/>.do" includeParams="false">
     <s:param name="idToCopy">
         <s:property value="<xc:uncap element="$class"/>.id"/>
     </s:param>

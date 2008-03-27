@@ -16,10 +16,10 @@
 
 <c:set var="buttons">
     <input type="button" style="margin-right: 5px" class="button"
-           onclick="location.href='<c:url value="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html"/>'"
+           onclick="location.href='<c:url value="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.do"/>'"
            value="<fmt:message key="button.add"/>"/>
 
-    <input type="button" class="button" onclick="location.href='<c:url value="/mainMenu.html"/>'"
+    <input type="button" class="button" onclick="location.href='<c:url value="/mainMenu.do"/>'"
            value="<fmt:message key="button.done"/>"/>
 </c:set>
 
@@ -64,10 +64,10 @@
 </ct:iterate> 
 
         <display:column media="html" titleKey="List.Edit" >
-            <a href="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.html?id=<c:out value="${<xc:uncap element="$class"/>List.id}"/>"><ida:base-url context="icon" path="edit.gif"/></a>
+            <a href="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.do?id=<c:out value="${<xc:uncap element="$class"/>List.id}"/>"><ida:base-url context="icon" path="edit.gif"/></a>
         </display:column>
         <display:column media="html" titleKey="button.copy">
-            <a href="/<xc:cap element="$class"/>/copy<xc:cap element="$class"/>.html?idToCopy=<c:out value="${<xc:uncap element="$class"/>List.id}"/>"><ida:base-url context="icon" path="save.gif"/></a>
+            <a href="/<xc:cap element="$class"/>/copy<xc:cap element="$class"/>.do?idToCopy=<c:out value="${<xc:uncap element="$class"/>List.id}"/>"><ida:base-url context="icon" path="save.gif"/></a>
         </display:column>
         <display:column property="deleteCheckbox" media="html" title="${deleteChecks}"/>
 
