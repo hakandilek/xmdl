@@ -108,7 +108,7 @@
     <table name="<c:get select="$dTable/@name"/>">
         <column>id</column>
         <c:iterate select="$dTable/dFields" var="field">
-            <c:if test="not(call($attribute, 'isReference'))">
+            <c:if test="not(call($field/xAttribute, 'isReference'))">
         <column><c:get select="$field/@name"/></column>
             </c:if>
         </c:iterate>
@@ -117,7 +117,7 @@
             <value description="id">1</value>
         <c:iterate select="$dTable/dFields" var="field">
             <c:if test="not(call($field/xAttribute, 'isReference'))">
-            <value description="Value for <c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute"/></value>
+            <value description="<c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute"/></value>
             </c:if>
         </c:iterate>
         </row>
@@ -126,16 +126,16 @@
             <value description="id">2</value>
         <c:iterate select="$dTable/dFields" var="field">
             <c:if test="not(call($field/xAttribute, 'isReference'))">
-            <value description="Value for <c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute"/></value>
+            <value description="<c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute"/></value>
             </c:if>
         </c:iterate>
         </row>
 
         <row>
             <value description="id">3</value>
-        <c:iterate select="$dTables/dField" var="field">
+        <c:iterate select="$dTable/dFields" var="field">
             <c:if test="not(call($field/xAttribute, 'isReference'))">
-            <value description="Value for <c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute"/></value>
+            <value description="<c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute"/></value>
             </c:if>
         </c:iterate>
         </row>
