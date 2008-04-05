@@ -87,7 +87,7 @@ public final class XMDLIDAPlugin extends EMFPlugin {
 		@Override
 		public void stop(BundleContext context) throws Exception {
 			super.stop(context);
-			LOGGER.info("Plugin stooped");
+			LOGGER.info("Plugin stoped");
 		}
 	}
 
