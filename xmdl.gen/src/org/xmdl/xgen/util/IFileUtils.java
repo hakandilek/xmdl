@@ -1,5 +1,7 @@
 package org.xmdl.xgen.util;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import org.apache.log4j.Logger;
@@ -9,6 +11,7 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
+import org.xmdl.xgen.StringReader;
 
 public class IFileUtils {
 	public static final IFileUtils INST = new IFileUtils();
@@ -21,8 +24,6 @@ public class IFileUtils {
 
 	public void createFolder(String target) throws CoreException {
 		LOGGER.debug("create Folder:" + target);
-		// File folder = new Path(targetDirectory).toFile();
-		// folder.mkdirs();
 		IFolder folder = null;
 		try {
 			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
@@ -69,10 +70,10 @@ public class IFileUtils {
 	 *             if an error occurs
 	 */
 	public IFile writeFile(InputStream content, String outFileName,
-			IFileWriteIntegration integration) throws CoreException {
+			FileWriteIntegration integration) throws CoreException {
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IFile outFile = root.getFile(new Path(outFileName));
-		return writeFile(content, outFile);
+		return writeFile(content, outFile, integration);
 	}
 
 	/**
@@ -103,7 +104,7 @@ public class IFileUtils {
 	 *             if an error occurs
 	 */
 	public IFile writeFile(InputStream content, IFile outFile,
-			IFileWriteIntegration integration) throws CoreException {
+			FileWriteIntegration integration) throws CoreException {
 		String filename = outFile.getName();
 		String fullFilename = outFile.getFullPath().toString();
 		
@@ -146,5 +147,18 @@ public class IFileUtils {
 		
 		return outFile;
 	}
+
+	public static String readFile(IFile file) {
+		InputStream targetIn = null;
+		try {
+			targetIn = new FileInputStream(file.getLocation()
+					.toFile());
+		} catch (FileNotFoundException e) {
+			LOGGER.warn("File " + file + " must be present", e);
+		}
+		String target = StringReader.INST.read(targetIn);
+		return target;
+	}
+
 
 }
