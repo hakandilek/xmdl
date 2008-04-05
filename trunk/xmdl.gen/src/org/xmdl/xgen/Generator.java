@@ -9,17 +9,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Writer;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.codegen.merge.java.JControlModel;
-import org.eclipse.emf.codegen.merge.java.JMerger;
-import org.eclipse.emf.codegen.util.CodeGenUtil;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jet.BodyContentWriter;
 import org.eclipse.jet.BufferedJET2Writer;
@@ -29,9 +24,8 @@ import org.eclipse.jet.JET2Platform;
 import org.eclipse.jet.XPathContextExtender;
 import org.eclipse.jet.transform.TransformContextExtender;
 import org.xmdl.gen.mark.PlatformMarkManager;
-import org.xmdl.gen.plugin.XMDLGenPlugin;
+import org.xmdl.gen.merge.FileMergeHandler;
 import org.xmdl.meta.MetaModelHolder;
-import org.xmdl.xgen.util.FileMerger;
 import org.xmdl.xgen.util.IFileUtils;
 import org.xmdl.xmdl.XProject;
 
@@ -44,8 +38,6 @@ public class Generator {
 
 	private List<GeneratorListener> listeners = new ArrayList<GeneratorListener>();
 	
-	private URI mergeURI;
-
 	public Generator(XProject project) {
 		setProject(project);
 	}
@@ -91,9 +83,6 @@ public class Generator {
 		markManager.processTasks(preTasks);
 		markManager.processTasks(postTasks);
 		
-		// Create a merger
-		JMerger merger = createMerger();
-
 		int size = gTasks != null ? gTasks.size() : 0;
 		size += preTasks != null ? preTasks.size() : 0;
 		size += postTasks != null ? postTasks.size() : 0;
@@ -104,7 +93,7 @@ public class Generator {
 		LOGGER.debug("XMDL generate");
 
 		run(preTasks);
-		generate(gTasks, merger);
+		generate(gTasks);
 		run(postTasks);
 		fireGenerationFinished();
 		
@@ -120,7 +109,7 @@ public class Generator {
 		}		
 	}
 
-	private void generate(List<GenerationTask> tasks, JMerger merger) {
+	private void generate(List<GenerationTask> tasks) {
 		for (Iterator<GenerationTask> iter = tasks.iterator(); iter.hasNext();) {
 			GenerationTask task = iter.next();
 
@@ -154,7 +143,7 @@ public class Generator {
 				InputStream generated = new ByteArrayInputStream(gen.getBytes());
 				LOGGER.debug("file:" + targetFile);
 				
-				FileMerger fileMerger = new FileMerger(merger);
+				FileMergeHandler fileMerger = new FileMergeHandler();
 				IFileUtils.INST.writeFile(generated, targetFile, fileMerger);
 				fireFileGenerated(targetFile);
 			} catch (Exception e) {
@@ -164,43 +153,41 @@ public class Generator {
 	}
 
 	public static String runTemplate(Template template, Object parameter) {
-        final BufferedJET2Writer out = new BodyContentWriter();
+		final BufferedJET2Writer out = new BodyContentWriter();
 
-        JET2Context context = new JET2Context(null);
+		JET2Context context = new JET2Context(null);
 
-        XPathContextExtender xpe = XPathContextExtender.getInstance(context);
-        xpe.addCustomFunctions(JET2Platform.getInstalledXPathFunctions());
+		XPathContextExtender xpe = XPathContextExtender.getInstance(context);
+		xpe.addCustomFunctions(JET2Platform.getInstalledXPathFunctions());
 
-        TransformContextExtender.getInstance(context);
-        String parameterName = template.parameterName();
-        context.setVariable(parameterName, parameter);
-        template.generate(context, out);
+		TransformContextExtender.getInstance(context);
+		String parameterName = template.parameterName();
+		context.setVariable(parameterName, parameter);
+		template.generate(context, out);
 
-        final IWriterListener[] eventListeners = out.getEventListeners();
-        for (int i = 0; i < eventListeners.length; i++)
-        {
-          eventListeners[i].finalizeContent(out, null);
-        }
+		final IWriterListener[] eventListeners = out.getEventListeners();
+		for (int i = 0; i < eventListeners.length; i++) {
+			eventListeners[i].finalizeContent(out, null);
+		}
 
-        String output = out.getContent();
-        
-        for (int i = 0; i < eventListeners.length; i++)
-        {
-          eventListeners[i].postCommitContent(out, output);
-        }
+		String output = out.getContent();
 
-        return output;
-    }
+		for (int i = 0; i < eventListeners.length; i++) {
+			eventListeners[i].postCommitContent(out, output);
+		}
+
+		return output;
+	}
 
     /**
-     * Writes contents of source into destination
-     * 
-     * @param reader
-     *            source
-     * @param file
-     *            destination
-     * @throws IOException
-     */
+	 * Writes contents of source into destination
+	 * 
+	 * @param reader
+	 *            source
+	 * @param file
+	 *            destination
+	 * @throws IOException
+	 */
 	protected void writeTo(Reader reader, File file) throws IOException {
 		Writer w = new FileWriter(file);
 		writeTo(reader, w);
@@ -255,27 +242,6 @@ public class Generator {
 	}
 
 
-	protected JMerger createMerger() {
-		// build URI for merge document
-		String mergeXML = null;
-		try {
-			URI fileURI = mergeURI;
-			if (mergeURI == null) {
-				URL baseURL = XMDLGenPlugin.getPlugin().getBaseURL();
-				fileURI = URI.createURI(baseURL.toString() + "/res/merge.xml");
-			}
-			mergeXML = fileURI.toString();
-		} catch (Throwable e) {
-			LOGGER.warn("fatal res exc", e);
-		}
-
-		JControlModel controlModel = new JControlModel();
-	    String facadeHelperClass = JMerger.DEFAULT_FACADE_HELPER_CLASS;
-	    controlModel.initialize(CodeGenUtil.instantiateFacadeHelper(facadeHelperClass), mergeXML);
-		JMerger jmerger = new JMerger(controlModel);
-		return jmerger;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -328,10 +294,6 @@ public class Generator {
 			GeneratorListener l = listeners.get(i);
 			l.generationFinished(event);
 		}
-	}
-
-	public void setMergeURI(URI mergeURI) {
-		this.mergeURI = mergeURI;
 	}
 
 }
