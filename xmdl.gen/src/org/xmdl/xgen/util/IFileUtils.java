@@ -11,7 +11,6 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
-import org.xmdl.xgen.StringReader;
 
 public class IFileUtils {
 	public static final IFileUtils INST = new IFileUtils();
