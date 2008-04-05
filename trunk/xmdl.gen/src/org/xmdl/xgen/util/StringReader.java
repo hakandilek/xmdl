@@ -1,4 +1,4 @@
-package org.xmdl.xgen;
+package org.xmdl.xgen.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,20 +18,21 @@ public class StringReader {
 	}
 
 	public String read(InputStream is) {
-		Reader r = new BufferedReader(new InputStreamReader(is));
 		StringBuffer sb = new StringBuffer();
-		try {
-			//r.reset();
-			char[] buf = new char[8192];
-			int i = r.read(buf);
-			while (i > 0){
-				sb.append(buf, 0, i);
-				i = r.read(buf);
+		if (is != null) {
+			Reader r = new BufferedReader(new InputStreamReader(is));
+			try {
+				// r.reset();
+				char[] buf = new char[8192];
+				int i = r.read(buf);
+				while (i > 0) {
+					sb.append(buf, 0, i);
+					i = r.read(buf);
+				}
+			} catch (IOException e) {
+				LOGGER.error("Cannot read from stream ", e);
 			}
-		} catch (IOException e) {
-			LOGGER.error("Cannot read from stream ", e);
 		}
-		
 		return sb.toString();
 	}
 }
