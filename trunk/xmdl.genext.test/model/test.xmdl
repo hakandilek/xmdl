@@ -52,6 +52,12 @@
         <type xsi:type="org.xmdl:XClass" href="platform:/plugin/org.xmdl.model/model/types.xmdl#//@packages.2/@classes.0"/>
       </attributes>
     </classes>
+    <classes name="MasterClass" className="org.xmdl.genext.test.MasterClass">
+      <attributes name="children" type="//@packages.0/@classes.5" associationType="OneToMany" associationBehaviour="composition" opposite="//@packages.0/@classes.5/@attributes.0"/>
+    </classes>
+    <classes name="ChildClass" className="org.xmdl.genext.test.ChildClass">
+      <attributes name="master" type="//@packages.0/@classes.4" associationType="ManyToOne" opposite="//@packages.0/@classes.4/@attributes.0"/>
+    </classes>
     <enumerations name="Enumeration1" className="org.xmdl.genext.test.Enumeration1" defaultLiteral="//@packages.0/@enumerations.0/@literals.0">
       <literals name="VALUE1" value="1"/>
       <literals name="VALUE2" value="2"/>

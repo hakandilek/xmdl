@@ -1,11 +1,14 @@
 package org.xmdl.genext.taglib;
 
-import java.util.Set;
-
 import org.eclipse.jet.JET2Context;
-import org.eclipse.jet.XPathContextExtender;
 import org.eclipse.jet.taglib.AbstractEmptyTag;
 
+/**
+ * Base empty-tag with support methods.
+ * 
+ * @author Hakan Dilek
+ *
+ */
 public abstract class BaseEmptyTag extends AbstractEmptyTag {
 
     /**
@@ -19,20 +22,7 @@ public abstract class BaseEmptyTag extends AbstractEmptyTag {
      */
     public Object fetchObject(JET2Context context, String name)
             throws MissingAttributeException {
-        String attribute = fetchAttribute(name);
-        XPathContextExtender xpathContext = XPathContextExtender
-                .getInstance(context);
-        Object object = xpathContext.resolveAsObject(xpathContext
-                .currentXPathContextObject(), attribute);
-
-        if (object instanceof Set) {
-            Set<?> set = (Set<?>) object;
-            if (!set.isEmpty()) {
-                Object next = set.iterator().next();
-                object = next;
-            }
-        }
-        return object;
+    	return BaseTagHelper.fetchObject(this, context, name);
     }
 
     /**
@@ -44,11 +34,7 @@ public abstract class BaseEmptyTag extends AbstractEmptyTag {
      */
     protected String fetchAttribute(String attribute)
             throws MissingAttributeException {
-        String a = getAttribute(attribute);
-        if (a == null) {
-            throw new MissingAttributeException(attribute);
-        }
-        return a;
+    	return BaseTagHelper.fetchAttribute(this, attribute);
     }
 
 }

@@ -11,6 +11,7 @@ public class AllTests {
         suite.addTest(org.xmdl.genext.taglib.tu.AllTagTests.suite());
         suite.addTest(org.xmdl.genext.taglib.xc.AllTagTests.suite());
         suite.addTest(org.xmdl.genext.taglib.xd.AllTagTests.suite());
+        suite.addTest(org.xmdl.genext.taglib.xm.AllTagTests.suite());
         suite.addTest(org.xmdl.genext.xpath.AllXPathTests.suite());
         //$JUnit-END$
         return suite;
