@@ -283,6 +283,28 @@ For example type User is converted to Set&lt;User&gt;.
             </attribute>
          </iteratingTag>
       </tagLibrary>
+      <tagLibrary
+            id="xmdlMeta"
+            name="XMDL Metadata Tag Library"
+            standardPrefix="xm">
+         <conditionalTag
+               class="org.xmdl.genext.taglib.xm.IsChildTag"
+               deprecated="false"
+               name="isChild">
+            <description>
+               process contents if the given parameter(class/attribute) refers to a child entity.
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="element"
+                  type="xpath"
+                  use="required">
+               <description>
+                  A model element (class or attribute).
+               </description>
+            </attribute>
+         </conditionalTag>
+      </tagLibrary>
    </extension>
    <extension
          point="org.eclipse.jet.xpathFunctions">
