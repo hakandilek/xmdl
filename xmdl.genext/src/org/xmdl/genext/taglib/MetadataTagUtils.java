@@ -20,4 +20,12 @@ public class MetadataTagUtils {
 		return MasterChildHelper.INST.isChild(class1);
 	}
 
+	public static boolean isMaster(XAttribute attribute) {
+		return MasterChildHelper.INST.isMaster(attribute);
+	}
+
+	public static boolean isMaster(XClass class1) {
+		return MasterChildHelper.INST.isMaster(class1);
+	}
+
 }

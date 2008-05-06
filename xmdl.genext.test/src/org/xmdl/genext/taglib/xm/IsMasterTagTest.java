@@ -8,7 +8,7 @@ import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XClass;
 import org.xmdl.xmdl.XProject;
 
-public class IsChildTagTest extends BaseTemplateTestCase {
+public class IsMasterTagTest extends BaseTemplateTestCase {
 
 	private XClass masterClass;
 	private XClass childClass;
@@ -38,7 +38,7 @@ public class IsChildTagTest extends BaseTemplateTestCase {
 
 	public void testWithClass() throws BundleException {
 
-		final String templateClass = IsChildTagTestTemplate.class.getName();
+		final String templateClass = IsMasterTagTestTemplate.class.getName();
 		setVariable("master", masterClass);
 		setVariable("child", childClass);
 		String output = runTemplate(templateClass);
@@ -47,13 +47,13 @@ public class IsChildTagTest extends BaseTemplateTestCase {
 		String[] pieces = output.split("\\;");
 		assertNotNull(pieces);
 		assertEquals(2, pieces.length);
-		assertEquals(":", pieces[0].trim());
-		assertEquals(":test2", pieces[1].trim());
+		assertEquals(":test1", pieces[0].trim());
+		assertEquals(":", pieces[1].trim());
 	}
 
 	public void testWithAttribute() throws BundleException {
 
-		final String templateClass = IsChildTagTestTemplate.class.getName();
+		final String templateClass = IsMasterTagTestTemplate.class.getName();
 		setVariable("master", masterAttribute);
 		setVariable("child", childAttribute);
 		String output = runTemplate(templateClass);
@@ -62,8 +62,8 @@ public class IsChildTagTest extends BaseTemplateTestCase {
 		String[] pieces = output.split("\\;");
 		assertNotNull(pieces);
 		assertEquals(2, pieces.length);
-		assertEquals(":", pieces[0].trim());
-		assertEquals(":test2", pieces[1].trim());
+		assertEquals(":test1", pieces[0].trim());
+		assertEquals(":", pieces[1].trim());
 	}
 
 }
