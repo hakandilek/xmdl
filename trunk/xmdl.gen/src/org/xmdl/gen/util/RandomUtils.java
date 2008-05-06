@@ -26,8 +26,13 @@ public class RandomUtils {
         seed();
         byte[] passByte = new byte[length];
         random.nextBytes(passByte);
+        int nextSpace = 3 + randomInt(10);
         for (int i = 0; i < passByte.length; i++) {
             result += chars.charAt(passByte[i] & 0x3f);
+            if (i == nextSpace) {
+            	result += " ";
+                nextSpace = 3 + randomInt(10) + ++i;
+            }
         }
 
         return result;

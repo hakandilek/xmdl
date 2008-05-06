@@ -13,7 +13,6 @@ import org.xmdl.xmdl.XClass;
 import org.xmdl.xmdl.XProject;
 import org.xmdl.xmdl.XType;
 
-
 /**
  * This class contains helper methods for needed for master/child pattern
  * operations.
@@ -24,7 +23,8 @@ import org.xmdl.xmdl.XType;
  * 
  */
 public class MasterChildHelper {
-	private final static Logger LOGGER = Logger.getLogger(MasterChildHelper.class);
+	private final static Logger LOGGER = Logger
+			.getLogger(MasterChildHelper.class);
 
 	public static final MasterChildHelper INST = new MasterChildHelper();
 
@@ -69,22 +69,21 @@ public class MasterChildHelper {
 	 */
 	public boolean isMaster(XClass xClass) {
 		LOGGER.debug("isMaster(xClass)");
-		List<XAttribute> attributes = xClass.getAttributes();	
+		List<XAttribute> attributes = xClass.getAttributes();
 		for (Iterator<XAttribute> it = attributes.iterator(); it.hasNext();) {
 			XAttribute attribute = (XAttribute) it.next();
-			if(isChild(attribute)){
+			if (isChild(attribute)) {
 				return true;
-			}		 
+			}
 		}
-		
+
 		MetadataHelper helper = new MetadataHelper();
 		XProject project = xClass.getXPackage().getProject();
 		Set<XAttribute> allAttributes = helper.allAttributes(project);
 		for (XAttribute attribute : allAttributes) {
-			if (xClass.equals(attribute.getType()) 
-					&& isChild(attribute)) {
+			if (xClass.equals(attribute.getType()) && isChild(attribute)) {
 				return false;
-			}			
+			}
 		}
 		return true;
 	}
@@ -100,11 +99,12 @@ public class MasterChildHelper {
 	public XClass getMaster(XClass xClass) {
 		LOGGER.debug("getMaster(xClass)");
 		if (isChild(xClass)) {
-			
+
 			List<XAttribute> attributes = xClass.getAttributes();
 			for (Iterator<XAttribute> it = attributes.iterator(); it.hasNext();) {
 				XAttribute attribute = (XAttribute) it.next();
-				XAssociationType associationType = attribute.getAssociationType();
+				XAssociationType associationType = attribute
+						.getAssociationType();
 				if (XAssociationType.MANY_TO_ONE_LITERAL == associationType) {
 					XAttribute opposite = attribute.getOpposite();
 					if (opposite != null) {
@@ -112,7 +112,7 @@ public class MasterChildHelper {
 								.getAssociationBehaviour();
 						XAssociationType oppositeType = opposite
 								.getAssociationType();
-						if( (XAssociationBehaviour.COMPOSITION_LITERAL == oppositeBehaviour && XAssociationType.ONE_TO_MANY_LITERAL == oppositeType))
+						if ((XAssociationBehaviour.COMPOSITION_LITERAL == oppositeBehaviour && XAssociationType.ONE_TO_MANY_LITERAL == oppositeType))
 							return opposite.getXClass();
 					}
 				}
@@ -121,39 +121,41 @@ public class MasterChildHelper {
 		return null;
 	}
 
-    /**
-     * Returns the pointing out attribute to master class of the given class if that class is a child class
-     * 
-     * @param xClass
-     *            child class
-     * @return the pointing out attribute to master class
-     * @see #getMaster(XClass);
-     */
-    public XAttribute getMasterPointerAttribute(XClass xClass) {
-        LOGGER.debug("getMaster(xClass)");
-        if (isChild(xClass)) {
-            
-            List<XAttribute> attributes = xClass.getAttributes();
-            for (Iterator<XAttribute> it = attributes.iterator(); it.hasNext();) {
-                XAttribute attribute = (XAttribute) it.next();
-                XAssociationType associationType = attribute.getAssociationType();
-                if (XAssociationType.MANY_TO_ONE_LITERAL == associationType) {
-                    XAttribute opposite = attribute.getOpposite();
-                    if (opposite != null) {
-                        XAssociationBehaviour oppositeBehaviour = opposite
-                                .getAssociationBehaviour();
-                        XAssociationType oppositeType = opposite
-                                .getAssociationType();
-                        if( (XAssociationBehaviour.COMPOSITION_LITERAL == oppositeBehaviour && XAssociationType.ONE_TO_MANY_LITERAL == oppositeType))
-                            return attribute;
-                    }
-                }
-            }
-        }
-        return null;
-    }
+	/**
+	 * Returns the pointing out attribute to master class of the given class if
+	 * that class is a child class
+	 * 
+	 * @param xClass
+	 *            child class
+	 * @return the pointing out attribute to master class
+	 * @see #getMaster(XClass);
+	 */
+	public XAttribute getMasterPointerAttribute(XClass xClass) {
+		LOGGER.debug("getMaster(xClass)");
+		if (isChild(xClass)) {
 
-    /**
+			List<XAttribute> attributes = xClass.getAttributes();
+			for (Iterator<XAttribute> it = attributes.iterator(); it.hasNext();) {
+				XAttribute attribute = (XAttribute) it.next();
+				XAssociationType associationType = attribute
+						.getAssociationType();
+				if (XAssociationType.MANY_TO_ONE_LITERAL == associationType) {
+					XAttribute opposite = attribute.getOpposite();
+					if (opposite != null) {
+						XAssociationBehaviour oppositeBehaviour = opposite
+								.getAssociationBehaviour();
+						XAssociationType oppositeType = opposite
+								.getAssociationType();
+						if ((XAssociationBehaviour.COMPOSITION_LITERAL == oppositeBehaviour && XAssociationType.ONE_TO_MANY_LITERAL == oppositeType))
+							return attribute;
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
 	 * Returns children of a master class
 	 * 
 	 * @param xClass
@@ -171,7 +173,7 @@ public class MasterChildHelper {
 				XClass clazz = (XClass) type;
 				if (clazz != null && isChild(clazz)) {
 					list.add(clazz);
-				}				
+				}
 			}
 		}
 		return list;
@@ -192,6 +194,26 @@ public class MasterChildHelper {
 					.getAssociationBehaviour();
 			return XAssociationBehaviour.COMPOSITION_LITERAL == behaviour
 					&& XAssociationType.ONE_TO_MANY_LITERAL == associationType;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Test an attribute if it is from child to master.
+	 * 
+	 * @param attribute
+	 * @return true is the pointing target attribute is master
+	 */
+	public boolean isMaster(XAttribute attribute) {
+		XType type = attribute.getType();
+		XAttribute opposite = attribute.getOpposite();
+		if (type instanceof XClass && opposite != null) {
+			XAssociationType associationType = attribute.getAssociationType();
+			XAssociationBehaviour oppositeBehaviour = opposite
+					.getAssociationBehaviour();
+			return XAssociationBehaviour.COMPOSITION_LITERAL == oppositeBehaviour
+					& XAssociationType.MANY_TO_ONE_LITERAL == associationType;
 		}
 
 		return false;

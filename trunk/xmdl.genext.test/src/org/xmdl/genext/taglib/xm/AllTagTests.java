@@ -9,6 +9,7 @@ public class AllTagTests {
         TestSuite suite = new TestSuite("Test for org.xmdl.genext.taglib.xm");
         //$JUnit-BEGIN$
         suite.addTestSuite(IsChildTagTest.class);
+        suite.addTestSuite(IsMasterTagTest.class);
         //$JUnit-END$
         return suite;
     }
