@@ -3,6 +3,7 @@
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
 <%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@taglib prefix="xm" id="org.xmdl.genext.xmdlMeta" %>
 <%@jet 
     package="org.xmdl.ida.templates.core.service" 
     class="EntityServiceImpl" 
@@ -34,4 +35,10 @@ public interface <xc:cap element="$class"/>Manager extends GenericManager<<xc:ca
      */ 
     Collection<<xc:cap element="$class"/>> search(<xc:cap element="$class"/>Search <xc:uncap element="$class"/>Search);
 
+<xm:isChild element="$class">
+    /**
+     * @generated
+     */ 
+    void copyFrom(Order source, Order destination);
+</xm:isChild>
 }

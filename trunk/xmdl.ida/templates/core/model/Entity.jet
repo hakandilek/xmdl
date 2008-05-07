@@ -31,7 +31,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.model;
  * @generated
  */ 
 @Entity (name=("<xd:tableName class="$class"/>"))
-public class <xc:cap element="$class"/> extends BaseObject implements Serializable {
+public class <xc:cap element="$class"/> extends BaseObject implements Serializable, Cloneable {
 
     /** 
      * Unique identifier
@@ -129,5 +129,21 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
         return result;
     }
 
+    /** 
+     * @generated
+     */
+     public <xc:cap element="$class"/> createClone() {
+     	try {
+     		return (<xc:cap element="$class"/>) clone();
+		} catch (CloneNotSupportedException e) {
+			<xc:cap element="$class"/> copy = new <xc:cap element="$class"/>();
+<c:iterate select="$class/attributes" var="attribute">
+	<c:if test="not(call($attribute, 'isReference'))">
+			copy.<xc:uncap element="$attribute"/> = this.<xc:uncap element="$attribute"/>;
+	</c:if> 
+</c:iterate>
+			return copy;
+		}
+     }
 
 }
