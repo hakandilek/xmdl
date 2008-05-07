@@ -117,23 +117,23 @@ public class <xc:cap element="$class"/>Search implements Serializable {
         return MessageFormat.format("<xc:cap element="$class"/>Search "<%int i=0;%>
         <c:iterate select="$class/attributes" var="attribute">
             <c:choose>
-                <c:when test="call($attribute/type, 'isComparable')">
-                + "[<xc:uncap element="$attribute"/>Min={<%=i++%>}]"
-                + "[<xc:uncap element="$attribute"/>Max={<%=i++%>}]"
+            <c:when test="call($attribute/type, 'isComparable')">
+            + "[<xc:uncap element="$attribute"/>Min={<%=i++%>}]"
+            + "[<xc:uncap element="$attribute"/>Max={<%=i++%>}]"
             </c:when>
             <c:otherwise>
-                + "[<xc:uncap element="$attribute"/>={<%=i++%>}]"
+            + "[<xc:uncap element="$attribute"/>={<%=i++%>}]"
             </c:otherwise>
             </c:choose>
         </c:iterate> 
         <c:iterate select="$class/attributes" var="attribute">
             <c:choose>
-                <c:when test="call($attribute/type, 'isComparable')">
-                , <xc:uncap element="$attribute"/>Min
-                , <xc:uncap element="$attribute"/>Max
+            <c:when test="call($attribute/type, 'isComparable')">
+            , <xc:uncap element="$attribute"/>Min
+            , <xc:uncap element="$attribute"/>Max
             </c:when>
             <c:otherwise>
-                , <xc:uncap element="$attribute"/>
+            , <xc:uncap element="$attribute"/>
             </c:otherwise>
             </c:choose>
         </c:iterate>
@@ -150,22 +150,22 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     <c:when test="call($attribute/type, 'isComparable')">
         <c:choose>
         <c:when test="call($attribute/type, 'isPrimitive')">
-                result = 31 * result + ("" + <xc:uncap element="$attribute"/>Min).hashCode();
-                result = 31 * result + ("" + <xc:uncap element="$attribute"/>Max).hashCode();
+            result = 31 * result + ("" + <xc:uncap element="$attribute"/>Min).hashCode();
+            result = 31 * result + ("" + <xc:uncap element="$attribute"/>Max).hashCode();
         </c:when>
         <c:otherwise>
-                result = 31 * result + <xc:uncap element="$attribute"/>Min.hashCode();
-                result = 31 * result + <xc:uncap element="$attribute"/>Max.hashCode();
+            result = 31 * result + <xc:uncap element="$attribute"/>Min.hashCode();
+            result = 31 * result + <xc:uncap element="$attribute"/>Max.hashCode();
         </c:otherwise>
         </c:choose>
     </c:when>
     <c:otherwise>
         <c:choose>
         <c:when test="call($attribute/type, 'isPrimitive')">
-                result = 31 * result + ("" + <xc:uncap element="$attribute"/>).hashCode();
+            result = 31 * result + ("" + <xc:uncap element="$attribute"/>).hashCode();
         </c:when>
         <c:otherwise>
-                result = 31 * result + <xc:uncap element="$attribute"/>.hashCode();
+            result = 31 * result + <xc:uncap element="$attribute"/>.hashCode();
         </c:otherwise>
         </c:choose>
     </c:otherwise>
