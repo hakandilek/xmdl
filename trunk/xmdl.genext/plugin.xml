@@ -321,6 +321,23 @@ For example type User is converted to Set&lt;User&gt;.
                </description>
             </attribute>
          </conditionalTag>
+         <emptyTag
+               class="org.xmdl.genext.taglib.xm.MasterNameTag"
+               deprecated="false"
+               name="master">
+            <description>
+               returns the master class name of the given element (class/attribute) if it refers to a child entity, otherwise empty string is returned. 
+            </description>
+            <attribute
+                  deprecated="false"
+                  name="element"
+                  type="xpath"
+                  use="required">
+               <description>
+                  A model element (class or attribute).
+               </description>
+            </attribute>
+         </emptyTag>
       </tagLibrary>
    </extension>
    <extension
