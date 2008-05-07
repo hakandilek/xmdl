@@ -28,4 +28,12 @@ public class MetadataTagUtils {
 		return MasterChildHelper.INST.isMaster(class1);
 	}
 
+	public static XClass getMaster(XClass class1) {
+		return MasterChildHelper.INST.getMaster(class1);
+	}
+
+	public static XClass getMaster(XAttribute attribute) {
+		return MasterChildHelper.INST.getMaster(attribute);
+	}
+
 }
