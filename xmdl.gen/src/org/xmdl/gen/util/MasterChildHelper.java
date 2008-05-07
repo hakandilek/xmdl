@@ -122,6 +122,44 @@ public class MasterChildHelper {
 	}
 
 	/**
+	 * Returns master class of the given class if that class is a child class
+	 * 
+	 * @param attribute
+	 *            child attribute
+	 * @return master attribute
+	 * @see #isChild(XAttribute);
+	 */
+	public XClass getMaster(XAttribute attribute) {
+		LOGGER.debug("getMaster(xClass)");
+		if (isChild(attribute)) {
+			XAssociationType associationType = attribute.getAssociationType();
+			if (XAssociationType.MANY_TO_ONE_LITERAL == associationType) {
+				XAttribute opposite = attribute.getOpposite();
+				if (opposite != null) {
+					XAssociationBehaviour oppositeBehaviour = opposite
+							.getAssociationBehaviour();
+					XAssociationType oppositeType = opposite
+							.getAssociationType();
+					if ((XAssociationBehaviour.COMPOSITION_LITERAL == oppositeBehaviour && XAssociationType.ONE_TO_MANY_LITERAL == oppositeType))
+						return opposite.getXClass();
+				}
+			}
+			if (XAssociationType.ONE_TO_MANY_LITERAL == associationType) {
+				XAttribute opposite = attribute.getOpposite();
+				if (opposite != null) {
+					XAssociationBehaviour behaviour = attribute
+							.getAssociationBehaviour();
+					XAssociationType oppositeType = opposite
+							.getAssociationType();
+					if ((XAssociationBehaviour.COMPOSITION_LITERAL == behaviour && XAssociationType.MANY_TO_ONE_LITERAL == oppositeType))
+						return attribute.getXClass();
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
 	 * Returns the pointing out attribute to master class of the given class if
 	 * that class is a child class
 	 * 
