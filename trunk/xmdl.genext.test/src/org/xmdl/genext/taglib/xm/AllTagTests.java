@@ -10,7 +10,8 @@ public class AllTagTests {
         //$JUnit-BEGIN$
         suite.addTestSuite(IsChildTagTest.class);
         suite.addTestSuite(IsMasterTagTest.class);
-        suite.addTestSuite(MasterNameTagTest.class);
+        suite.addTestSuite(MasterClassNameTagTest.class);
+        suite.addTestSuite(MasterAttributeNameTagTest.class);
         //$JUnit-END$
         return suite;
     }

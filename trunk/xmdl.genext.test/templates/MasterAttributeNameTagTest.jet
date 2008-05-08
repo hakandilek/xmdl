@@ -4,6 +4,6 @@
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
 <%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
 <%@taglib prefix="xm" id="org.xmdl.genext.xmdlMeta" %>
-<%@ jet package="org.xmdl.genext.taglib.xm" class="MasterNameTagTestTemplate"%>
-:<xm:master element="$master"/>;
-:<xm:master element="$child"/>;
+<%@ jet package="org.xmdl.genext.taglib.xm" class="MasterAttributeNameTagTestTemplate"%>
+:<xm:masterAttributeName element="$master"/>;
+:<xm:masterAttributeName element="$child"/>;
