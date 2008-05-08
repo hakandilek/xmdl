@@ -35,7 +35,7 @@ public class <xc:cap element="$class"/>ManagerImpl extends GenericManagerImpl<<x
     /**
      * @generated
      */ 
-    <xc:cap element="$class"/>DAO <xc:uncap element="$class"/>DAO;
+    private final <xc:cap element="$class"/>DAO <xc:uncap element="$class"/>DAO;
 
     /**
      * @generated
