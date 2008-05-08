@@ -1,5 +1,8 @@
 package org.xmdl.gen.util;
 
+import java.lang.annotation.ElementType;
+import java.util.Locale;
+
 import org.xmdl.xmdl.XAssociationType;
 import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XClass;
@@ -230,4 +233,168 @@ public class XMDLClassHelper extends ClassHelper {
 
 	}
 
+	/**
+	 * Capitalize first character in the name of the attribute
+	 * 
+	 * @param attribute
+	 *            the attribute
+	 * @return the capitalized name
+	 */
+	public static String capName(XAttribute attribute) {
+	    return capName(attribute.getName());
+	}
+
+	/**
+	 * Capitalize first character in the name of the class
+	 * 
+	 * @param clazz
+	 *            the class
+	 * @return the capitalized name
+	 */
+	public static String capName(XClass clazz) {
+	    return capName(clazz.getName());
+	}
+
+	/**
+	 * Capitalize first character in the name of the enumeration
+	 * 
+	 * @param enumeration
+	 *            the enumeration
+	 * @return the capitalized name
+	 */
+	public static String capName(XEnumeration enumeration) {
+	    return capName(enumeration.getName());
+	}
+
+	/**
+	 * Capitalize the name of the enumeration literal
+	 * 
+	 * @param literal
+	 *            the enumeration literal
+	 * @return the capitalized name
+	 */
+	public static String capName(XEnumerationLiteral literal) {
+	    String name = literal.getName();
+	    return name == null ? "" : name.toUpperCase(Locale.US);
+	}
+
+	/**
+	 * Make lower-case the first character in the name of the attribute
+	 * 
+	 * @param attribute
+	 *            the attribute
+	 * @return the capitalized name
+	 */
+	public static String uncapName(XAttribute attribute) {
+	    return uncapName(attribute.getName());
+	}
+
+	/**
+	 * Make lower-case the first character in the name of the class
+	 * 
+	 * @param clazz
+	 *            the class
+	 * @return the capitalized name
+	 */
+	public static String uncapName(XClass xClass) {
+	    return uncapName(xClass.getName());
+	}
+
+	/**
+	 * Make lower-case the first character in the name of the enumeration
+	 * 
+	 * @param enumeration
+	 *            the enumeration
+	 * @return the capitalized name
+	 */
+	public static String uncapName(XEnumeration xClass) {
+	    return uncapName(xClass.getName());
+	}
+
+	/**
+	 * Make lower-case the name of the enumeration literal
+	 * 
+	 * @param literal
+	 *            the enumeration literal
+	 * @return the capitalized name
+	 */
+	public static String uncapName(XEnumerationLiteral literal) {
+	    String name = literal.getName();
+	    return name == null ? "" : name.toLowerCase(Locale.US);
+	}
+
+	/**
+	 * Return the fully qualified name of the given class. e.g. if the Class is
+	 * {@link String} then, the returned string will be "java.lang.String"
+	 * 
+	 * @param clazz
+	 *            the class
+	 * @return the fully qualified name
+	 */
+	public static String qualifiedName(XClass clazz) {
+	    String name = capName(clazz.getName());
+	    XPackage package1 = clazz.getXPackage();
+	    if (package1 != null) {
+	        String pn = qualifiedName(package1);
+	        if (!"".equals(pn))
+	            name = pn + "." + name;
+	    }
+	    return name;
+	}
+
+	/**
+	 * Return the fully qualified name of the given attribute. e.g. if the attribute is
+	 * {@link String.length} then, the returned string will be "java.lang.String.length"
+	 * 
+	 * @param attribute
+	 *            the attribute
+	 * @return the fully qualified name
+	 */
+	public static String qualifiedName(XAttribute attribute) {
+	    String name = uncapName(attribute.getName());
+	    XClass clazz = attribute.getXClass();
+	    if (clazz != null) {
+	    	String cn = qualifiedName(clazz);
+	        if (!"".equals(cn))
+	            name = cn + "." + name;
+	    }
+	    return name;
+	}
+
+	/**
+	 * Return the fully qualified name of the given enumeration. e.g. if the
+	 * enumeration is {@link ElementType} then, the returned string will be
+	 * "java.lang.annotation.ElementType"
+	 * 
+	 * @param enumeration
+	 *            the enumeration
+	 * @return the fully qualified name
+	 */
+	public static String qualifiedName(XEnumeration enumeration) {
+	    String name = capName(enumeration.getName());
+	    XPackage package1 = enumeration.getXPackage();
+	    if (package1 != null) {
+	        String pn = qualifiedName(package1);
+	        if (!"".equals(pn))
+	            name = pn + "." + name;
+	    }
+	    return name;
+	}
+
+	/**
+	 * Return the fully qualified name of the given package e.g. if the package
+	 * is java.lang then, the returned string will be "java.lang"
+	 * 
+	 * @param package1
+	 *            the package
+	 * @return the fully qualified name
+	 */
+	public static String qualifiedName(XPackage package1) {
+	    String name = package1.getName();
+	    name = uncapName(name);
+	    name = name.replaceAll("/", ".");
+	    return name;
+	}
+
+	
 }
