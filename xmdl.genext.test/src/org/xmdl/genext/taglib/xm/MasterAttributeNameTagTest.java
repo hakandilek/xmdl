@@ -8,7 +8,7 @@ import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XClass;
 import org.xmdl.xmdl.XProject;
 
-public class MasterNameTagTest extends BaseTemplateTestCase {
+public class MasterAttributeNameTagTest extends BaseTemplateTestCase {
 
 	private XClass masterClass;
 	private XClass childClass;
@@ -38,7 +38,7 @@ public class MasterNameTagTest extends BaseTemplateTestCase {
 
 	public void testWithClass() throws BundleException {
 
-		final String templateClass = MasterNameTagTestTemplate.class.getName();
+		final String templateClass = MasterAttributeNameTagTestTemplate.class.getName();
 		setVariable("master", masterClass);
 		setVariable("child", childClass);
 		String output = runTemplate(templateClass);
@@ -48,12 +48,12 @@ public class MasterNameTagTest extends BaseTemplateTestCase {
 		assertNotNull(pieces);
 		assertEquals(2, pieces.length);
 		assertEquals(":", pieces[0].trim());
-		assertEquals(":MasterClass", pieces[1].trim());
+		assertEquals(":master", pieces[1].trim());
 	}
 
 	public void testWithAttribute() throws BundleException {
 
-		final String templateClass = MasterNameTagTestTemplate.class.getName();
+		final String templateClass = MasterAttributeNameTagTestTemplate.class.getName();
 		setVariable("master", masterAttribute);
 		setVariable("child", childAttribute);
 		String output = runTemplate(templateClass);
@@ -63,7 +63,7 @@ public class MasterNameTagTest extends BaseTemplateTestCase {
 		assertNotNull(pieces);
 		assertEquals(2, pieces.length);
 		assertEquals(":", pieces[0].trim());
-		assertEquals(":MasterClass", pieces[1].trim());
+		assertEquals(":", pieces[1].trim());
 	}
 
 }

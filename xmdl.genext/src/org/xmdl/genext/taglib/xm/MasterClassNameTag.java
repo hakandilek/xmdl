@@ -16,7 +16,7 @@ import org.xmdl.xmdl.XClass;
  * @author Hakan Dilek
  * 
  */
-public class MasterNameTag extends BaseEmptyTag {
+public class MasterClassNameTag extends BaseEmptyTag {
 
 	@Override
 	public void doAction(TagInfo td, JET2Context context, JET2Writer out)

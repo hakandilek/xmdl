@@ -36,4 +36,8 @@ public class MetadataTagUtils {
 		return MasterChildHelper.INST.getMaster(attribute);
 	}
 
+	public static XAttribute getMasterPointerAttribute(XClass class1) {
+		return MasterChildHelper.INST.getMasterPointerAttribute(class1);
+	}
+
 }
