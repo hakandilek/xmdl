@@ -202,14 +202,18 @@ public abstract class ClassHelper implements GenConstants {
 		return primitiveTypes;
 	}
 
-	public String capName(String name) {
+	public static String capName(String name) {
+	    if (name == null)
+	        return "";
 		if (name.length() == 0)
 			return name;
 		else
 			return name.substring(0, 1).toUpperCase(Locale.US) + name.substring(1);
 	}
 
-	public String uncapName(String name) {
+	public static String uncapName(String name) {
+	    if (name == null)
+	        return "";
 		if (name.length() == 0)
 			return name;
 		else
