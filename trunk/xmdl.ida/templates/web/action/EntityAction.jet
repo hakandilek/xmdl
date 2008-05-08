@@ -1,6 +1,7 @@
 <%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@taglib prefix="xm" id="org.xmdl.genext.xmdlMeta" %>
 <%@ jet 
     package="org.xmdl.ida.templates.web.action" 
     class="EntityActionImpl" 
@@ -28,6 +29,13 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
      * @generated
      */
     private <xc:cap element="$class"/>Manager <xc:uncap element="$class"/>Manager;
+
+<xm:isChild element="$class">
+    /**
+     * @generated
+     */
+    private <xm:masterClassName element="$class"/>Manager <xm:masterAttributeName element="$class"/>Manager;
+</xm:isChild>
 
     /**
      * @generated
@@ -68,6 +76,18 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
      */
     private <xc:cap element="$class"/>Search <xc:uncap element="$class"/>Search = new <xc:cap element="$class"/>Search();
 
+<xm:isChild element="$class">
+    /**
+     * @generated
+     */
+     private <xm:masterClassName element="$class"/> <xm:masterAttributeName element="$class"/>;
+     
+    /**
+     * @generated
+     */
+     private Long <xm:masterAttributeName element="$class"/>ID;
+</xm:isChild>
+ 
     /**
      * @generated
      */
@@ -92,6 +112,24 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
                 <xc:uncap element="$class"/> = <xc:uncap element="$class"/>Manager.get((long) id);
             }else{
                 <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
+<xm:isChild element="$class">
+               	if (<xm:masterAttributeName element="$class"/>ID == null) {
+					try {
+               			String parameter = getRequest().getParameter("<xc:uncap element="$class"/>.<xm:masterAttributeName element="$class"/>.id");
+                		<xm:masterAttributeName element="$class"/>ID = Long.parseLong(parameter);
+					} catch (NumberFormatException e) {
+						log.info("no id");
+					}
+				}
+				
+				if (<xm:masterAttributeName element="$class"/>ID != null) {
+                    <xm:masterAttributeName element="$class"/> = orderManager.get(<xm:masterAttributeName element="$class"/>ID);
+                   	<xc:uncap element="$class"/>Search.set<xm:masterAttributeName element="$class" cap="true"/>(<xm:masterAttributeName element="$class"/>);
+                    <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>Manager.search(<xc:uncap element="$class"/>Search);
+	            } else {
+                	<xm:masterAttributeName element="$class"/> = new <xm:masterClassName element="$class"/>();
+            	}
+</xm:isChild>
             }
         }
 
