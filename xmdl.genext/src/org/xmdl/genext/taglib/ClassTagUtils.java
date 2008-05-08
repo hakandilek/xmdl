@@ -83,35 +83,16 @@ public class ClassTagUtils {
     }
 
     /**
-     * Return the fully qualified name of the given class. e.g. if the Class is
-     * {@link String} then, the returned string will be "java.lang.String"
-     * 
-     * @param clazz
-     *            the class
-     * @return the fully qualified name
-     */
-    public static String qualifiedName(XClass clazz) {
-        String name = capName(clazz.getName());
-        XPackage package1 = clazz.getXPackage();
-        if (package1 != null) {
-            String pn = qualifiedName(package1);
-            if (!"".equals(pn))
-                name = pn + "." + name;
-        }
-        return name;
-    }
-
-    /**
-     * Return the fully qualified path of the given class. e.g. if the Class is
+     * Return the fully qualified path of the given type. e.g. if the type is
      * {@link String} then, the returned string will be "java/lang/String"
      * 
-     * @param clazz
-     *            the class
+     * @param type
+     *            the type
      * @return the fully qualified path
      */
-    public static String qualifiedPath(XClass clazz) {
-        String name = capName(clazz.getName());
-        XPackage package1 = clazz.getXPackage();
+    public static String qualifiedPath(XType type) {
+        String name = capName(type.getName());
+        XPackage package1 = type.getXPackage();
         if (package1 != null) {
             String pn = qualifiedPath(package1);
             if (!"".equals(pn))
@@ -151,41 +132,21 @@ public class ClassTagUtils {
     }
 
     /**
-     * Return the fully qualified name of the given enumeration. e.g. if the
-     * enumeration is {@link ElementType} then, the returned string will be
+     * Return the fully qualified name of the given type. e.g. if the
+     * type is {@link ElementType} then, the returned string will be
      * "java.lang.annotation.ElementType"
      * 
-     * @param enumeration
-     *            the enumeration
+     * @param type
+     *            the type (class or enumeration)
      * @return the fully qualified name
      */
-    public static String qualifiedName(XEnumeration enumeration) {
-        String name = capName(enumeration.getName());
-        XPackage package1 = enumeration.getXPackage();
+    public static String qualifiedName(XType type) {
+        String name = capName(type.getName());
+        XPackage package1 = type.getXPackage();
         if (package1 != null) {
             String pn = qualifiedName(package1);
             if (!"".equals(pn))
                 name = pn + "." + name;
-        }
-        return name;
-    }
-
-    /**
-     * Return the fully qualified path of the given enumeration. e.g. if the
-     * enumeration is {@link ElementType} then, the returned string will be
-     * "java.lang.annotation.ElementType"
-     * 
-     * @param enumeration
-     *            the enumeration
-     * @return the fully qualified path
-     */
-    public static String qualifiedPath(XEnumeration enumeration) {
-        String name = capName(enumeration.getName());
-        XPackage package1 = enumeration.getXPackage();
-        if (package1 != null) {
-            String pn = qualifiedPath(package1);
-            if (!"".equals(pn))
-                name = pn + "/" + name;
         }
         return name;
     }
