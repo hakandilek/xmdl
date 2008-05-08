@@ -38,7 +38,8 @@ public class MasterAttributeNameTagTest extends BaseTemplateTestCase {
 
 	public void testWithClass() throws BundleException {
 
-		final String templateClass = MasterAttributeNameTagTestTemplate.class.getName();
+		final String templateClass = MasterAttributeNameTagTestTemplate.class
+				.getName();
 		setVariable("master", masterClass);
 		setVariable("child", childClass);
 		String output = runTemplate(templateClass);
@@ -46,14 +47,17 @@ public class MasterAttributeNameTagTest extends BaseTemplateTestCase {
 		assertNotNull(output);
 		String[] pieces = output.split("\\;");
 		assertNotNull(pieces);
-		assertEquals(2, pieces.length);
+		assertEquals(4, pieces.length);
 		assertEquals(":", pieces[0].trim());
 		assertEquals(":master", pieces[1].trim());
+		assertEquals(":", pieces[2].trim());
+		assertEquals(":Master", pieces[3].trim());
 	}
 
 	public void testWithAttribute() throws BundleException {
 
-		final String templateClass = MasterAttributeNameTagTestTemplate.class.getName();
+		final String templateClass = MasterAttributeNameTagTestTemplate.class
+				.getName();
 		setVariable("master", masterAttribute);
 		setVariable("child", childAttribute);
 		String output = runTemplate(templateClass);
@@ -61,9 +65,11 @@ public class MasterAttributeNameTagTest extends BaseTemplateTestCase {
 		assertNotNull(output);
 		String[] pieces = output.split("\\;");
 		assertNotNull(pieces);
-		assertEquals(2, pieces.length);
+		assertEquals(4, pieces.length);
 		assertEquals(":", pieces[0].trim());
 		assertEquals(":", pieces[1].trim());
+		assertEquals(":", pieces[2].trim());
+		assertEquals(":", pieces[3].trim());
 	}
 
 }

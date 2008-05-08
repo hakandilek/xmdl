@@ -23,13 +23,22 @@ public class MasterAttributeNameTag extends BaseEmptyTag {
 			throws JET2TagException {
 		Object object = fetchObject(context, "element");
 
+		boolean capitalize = false;
+		try {
+			String cap = fetchAttribute("cap");
+			capitalize = Boolean.parseBoolean(cap);
+		} catch (Exception e) {
+			// skip
+		}
+
 		String eval = "";
 		if (object instanceof XClass) {
 			XClass xClass = (XClass) object;
 			if (MetadataTagUtils.isChild(xClass)) {
 				XAttribute attrib = MetadataTagUtils
 						.getMasterPointerAttribute(xClass);
-				eval = ClassTagUtils.uncapName(attrib);
+				eval = capitalize ? ClassTagUtils.capName(attrib)
+						: ClassTagUtils.uncapName(attrib);
 			}
 		}
 		out.write(eval);
