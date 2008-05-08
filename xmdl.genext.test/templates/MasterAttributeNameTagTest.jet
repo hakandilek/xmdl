@@ -7,3 +7,5 @@
 <%@ jet package="org.xmdl.genext.taglib.xm" class="MasterAttributeNameTagTestTemplate"%>
 :<xm:masterAttributeName element="$master"/>;
 :<xm:masterAttributeName element="$child"/>;
+:<xm:masterAttributeName element="$master" cap="true"/>;
+:<xm:masterAttributeName element="$child" cap="true"/>;

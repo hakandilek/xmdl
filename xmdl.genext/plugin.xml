@@ -354,6 +354,15 @@ For example type User is converted to Set&lt;User&gt;.
                   A model element (class).
                </description>
             </attribute>
+            <attribute
+                  deprecated="false"
+                  name="cap"
+                  type="boolean"
+                  use="optional">
+               <description>
+                  Whether to capitalize attribute name
+               </description>
+            </attribute>
          </emptyTag>
       </tagLibrary>
    </extension>
