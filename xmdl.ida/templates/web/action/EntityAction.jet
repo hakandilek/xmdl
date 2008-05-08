@@ -120,7 +120,7 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
     </c:iterate> 
         <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>Manager.search(<xc:uncap element="$class"/>Search);
 
-        if (log.isDebugEnabled()) log.debug("listing items:" + <xc:uncap element="$class"/>s.size());
+        if (log.isDebugEnabled()) log.debug("listing items:" + <xc:uncap element="$class"/>s == null ? null : <xc:uncap element="$class"/>s.size());
         if (log.isDebugEnabled()) log.debug("list() ->");
         return SUCCESS;
     }

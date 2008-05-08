@@ -48,7 +48,23 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
      * @generated
      */
     <c:if test="not(call($attribute, 'isReference'))">
-    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/>)
+    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/><c:if test="isEnumeration($attribute)">, columnDefinition = "integer", nullable = false</c:if>)
+	    <c:if test="isEnumeration($attribute)">
+    @Type(
+            type = "org.xmdl.ida.lib.dao.hibernate.GenericEnumUserType",
+            parameters = {
+            @Parameter(
+                    name = "enumClass",
+                    value = "<xc:qualifiedName element="$attribute/type/xPackage"/>.model.<xc:cap element="$attribute/type"/>"),
+            @Parameter(
+                    name = "identifierMethod",
+                    value = "toInt"),
+            @Parameter(
+                    name = "valueOfMethod",
+                    value = "fromInt")
+                    }
+    )
+	    </c:if>
     </c:if>
     <c:if test="call($attribute, 'isReference')">
     <ida:association attribute="$attribute" />
@@ -112,16 +128,16 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
      * @generated
      */
     public int hashCode() {
-        int result;
-        result = id.hashCode();
+        int result = 1;
+        if (id != null) result = 31 * result + id.hashCode();
 <c:iterate select="$class/attributes" var="attribute">
 	<c:if test="not(call($attribute, 'isReference'))">
 	    <c:choose>
 	    <c:when test="call($attribute/type, 'isPrimitive')">
-        result = 31 * result + ("" + <xc:uncap element="$attribute"/>).hashCode();
+        if (<xc:uncap element="$attribute"/> != null) result = 31 * result + ("" + <xc:uncap element="$attribute"/>).hashCode();
 	    </c:when>
 	    <c:otherwise>
-        result = 31 * result + <xc:uncap element="$attribute"/>.hashCode();
+        if (<xc:uncap element="$attribute"/> != null) result = 31 * result + <xc:uncap element="$attribute"/>.hashCode();
 	    </c:otherwise>
 	    </c:choose>
     </c:if> 
