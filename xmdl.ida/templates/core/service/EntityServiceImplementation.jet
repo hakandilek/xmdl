@@ -56,14 +56,14 @@ public class <xc:cap element="$class"/>ManagerImpl extends GenericManagerImpl<<x
     /**
      * @generated
      */ 
-    public void copyFrom(<xm:master element="$class"/> source, <xm:master element="$class"/> destination) {
+    public void copyFrom(<xm:masterClassName element="$class"/> source, <xm:masterClassName element="$class"/> destination) {
         <xc:cap element="$class"/>Search search = new <xc:cap element="$class"/>Search();
-        search.set<xm:master element="$class"/>(source);
+        search.set<xm:masterClassName element="$class"/>(source);
 
         Collection<<xc:cap element="$class"/>> children = <xc:uncap element="$class"/>DAO.search(search);
         for (<xc:cap element="$class"/> child : children) {
             <xc:cap element="$class"/> copy = child.createClone();
-            copy.set<xm:master element="$class"/>(destination);
+            copy.set<xm:masterClassName element="$class"/>(destination);
             save(copy);
         }
     }
