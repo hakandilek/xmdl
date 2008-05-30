@@ -4,12 +4,12 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.xmdl.core;singleton:=true
-Bundle-Version: 0.6.0.20080206_alpha4
+Bundle-Version: 0.6.0.20080530_alpha5
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.xmdl.model,org.xmdl.gen,org.eclipse.emf.ecore,org.
  eclipse.emf.codegen,org.eclipse.core.runtime,org.apache.log4j,org.ecl
  ipse.jet
 Eclipse-LazyStart: true
-Built-By: ADDIHA5
+Built-By: Hakan Dilek
 

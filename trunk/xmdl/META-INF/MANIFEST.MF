@@ -4,7 +4,7 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.xmdl.model;singleton:=true
-Bundle-Version: 0.6.0.20080206_alpha4
+Bundle-Version: 0.6.0.20080530_alpha5
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-Activator: org.xmdl.xmdl.plugin.XMDLModelPlugin
@@ -16,5 +16,5 @@ Export-Package: org.xmdl.xmdlgen,org.xmdl.xmdl,org.xmdl.xmdl.impl,org.
  l,org.xmdl.xmdlbo.init,org.xmdl.xmdlbo.util,org.xmdl.xmdldb,org.xmdl.
  xmdldb.impl,org.xmdl.xmdldb.init,org.xmdl.xmdldb.util,org.xmdl.xmdlge
  n.impl,org.xmdl.xmdlgen.init,org.xmdl.xmdlgen.util
-Built-By: ADDIHA5
+Built-By: Hakan Dilek
 
