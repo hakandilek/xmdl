@@ -41,10 +41,10 @@
 	</target>
 
     <macrodef name="update_manifest">
-        <attribute name="plugin.name" />
+		<attribute name="plugin.path" />
 
         <sequential>
-            <manifest file="../@{plugin.name}/META-INF/MANIFEST.MF" mode="update">
+            <manifest file="../@{plugin.path}/META-INF/MANIFEST.MF" mode="update">
                 <attribute name="Built-By" value="${dist.build.user}" />
                 <attribute name="Bundle-Version" value="${version.pattern}" />
             </manifest>
@@ -53,18 +53,19 @@
 	
 	<macrodef name="dist_plugin">
 		<attribute name="plugin.name" />
+		<attribute name="plugin.path" />
 
 		<sequential>
 			<echo message=" --- Building plugin : @{plugin.name}"/>
 			<mkdir dir="build/@{plugin.name}" />
-			<javac srcdir="../@{plugin.name}/src" destdir="build/@{plugin.name}" debug="on">
-                <src path="../@{plugin.name}/src"/>
+			<javac srcdir="../@{plugin.path}/src" destdir="build/@{plugin.name}" debug="on">
+                <src path="../@{plugin.path}/src"/>
 				<classpath refid="total.classpath" />
 			</javac>
-	        <update_manifest plugin.name="@{plugin.name}" />
-			<jar destfile="dist/plugins/@{plugin.name}_${version.pattern}.jar" manifest="../@{plugin.name}/META-INF/MANIFEST.MF">
+	        <update_manifest plugin.path="@{plugin.path}"/>
+			<jar destfile="dist/plugins/@{plugin.name}_${version.pattern}.jar" manifest="../@{plugin.path}/META-INF/MANIFEST.MF">
 				<fileset dir="build/@{plugin.name}" excludes="**/Test.class" />
-				<fileset dir="../@{plugin.name}">
+				<fileset dir="../@{plugin.path}">
 					<include name="plugin.*" />
 					<include name="model/*" />
                     <include name="res/*" />
@@ -76,22 +77,20 @@
 
     <macrodef name="dist_template_plugin">
         <attribute name="plugin.name" />
+		<attribute name="plugin.path" />
 
         <sequential>
             <echo message=" --- Building plugin : @{plugin.name}"/>
             <mkdir dir="build/@{plugin.name}" />
-            <javac srcdir="../@{plugin.name}/src" destdir="build/@{plugin.name}" debug="on">
-                <src path="../@{plugin.name}/src"/>
-                <src path="../@{plugin.name}/tmp-src"/>
+            <javac srcdir="../@{plugin.path}/src" destdir="build/@{plugin.name}" debug="on">
+                <src path="../@{plugin.path}/src"/>
+                <src path="../@{plugin.path}/tmp-src"/>
                 <classpath refid="total.classpath" />
             </javac>
-            <manifest file="../@{plugin.name}/META-INF/MANIFEST.MF" mode="update">
-                <attribute name="Built-By" value="${dist.build.user}" />
-                <attribute name="Bundle-Version" value="${version.pattern}" />
-            </manifest>
-            <jar destfile="dist/plugins/@{plugin.name}_${version.pattern}.jar" manifest="../@{plugin.name}/META-INF/MANIFEST.MF">
+	        <update_manifest plugin.path="@{plugin.path}"/>
+            <jar destfile="dist/plugins/@{plugin.name}_${version.pattern}.jar" manifest="../@{plugin.path}/META-INF/MANIFEST.MF">
                 <fileset dir="build/@{plugin.name}" excludes="**/Test.class" />
-                <fileset dir="../@{plugin.name}">
+                <fileset dir="../@{plugin.path}">
                     <include name="plugin.*" />
                     <include name="model/*" />
                     <include name="res/*" />
@@ -101,24 +100,61 @@
         </sequential>
     </macrodef>
 
+	<macrodef name="dist_feature">
+		<attribute name="feature.name" />
+		<attribute name="feature.path" />
+
+		<sequential>
+			<echo message=" --- Building feature : @{feature.name}"/>
+			<mkdir dir="build/@{feature.name}" />
+	        <update_manifest plugin.path="@{feature.path}"/>
+			<jar destfile="dist/features/@{feature.name}_${version.pattern}.jar" manifest="../@{feature.path}/META-INF/MANIFEST.MF">
+				<fileset dir="../@{feature.path}">
+					<include name="feature.*" />
+				</fileset>
+			</jar>
+		</sequential>
+	</macrodef>
+
 	<!-- ================================= 
           target: dist_xmdl              
          ================================= -->
 	<target name="dist_xmdl" depends="init" description="--> builds plugins out of xmdl jar files">
 
-		<dist_plugin plugin.name="xmdl" />
-		<dist_plugin plugin.name="xmdl.gen" />
-        <dist_plugin plugin.name="xmdl.genext" />
-		<dist_plugin plugin.name="xmdl.ui" />
-		<dist_plugin plugin.name="xmdlbo.ui" />
-		<dist_plugin plugin.name="xmdldb.ui" />
-		<dist_plugin plugin.name="xmdlgen.ui" />
-		<dist_plugin plugin.name="xmdl.gen" />
-		<dist_plugin plugin.name="xmdl.core" />
-        <dist_template_plugin plugin.name="xmdl.ida" />
+		<dist_feature feature.name="org.xmdl" feature.path="xmdl.update" />
+		<dist_plugin plugin.name="org.xmdl.model" plugin.path="xmdl" />
+		<dist_plugin plugin.name="org.xmdl.gen" plugin.path="xmdl.gen" />
+        <dist_plugin plugin.name="org.xmdl.genext" plugin.path="xmdl.genext" />
+		<dist_plugin plugin.name="org.xmdl.xmdl.ui" plugin.path="xmdl.ui" />
+		<dist_plugin plugin.name="org.xmdl.xmdlbo.ui" plugin.path="xmdlbo.ui" />
+		<dist_plugin plugin.name="org.xmdl.xmdldb.ui" plugin.path="xmdldb.ui" />
+		<dist_plugin plugin.name="org.xmdl.xmdlgen.ui" plugin.path="xmdlgen.ui" />
+		<dist_plugin plugin.name="org.xmdl.core" plugin.path="xmdl.core" />
+        <dist_template_plugin plugin.name="org.xmdl.ida" plugin.path="xmdl.ida" />
 
+		<!-- copy to update site -->
+		<copy todir="../xmdl.update/features">
+			<fileset file="dist/features/org.xmdl_${version.pattern}.jar" />
+		</copy>
+
+		<copy todir="../xmdl.update/plugins">
+			<fileset file="dist/plugins/org.xmdl.model_${version.pattern}.jar" />
+			<fileset file="dist/plugins/org.xmdl.gen_${version.pattern}.jar" />
+			<fileset file="dist/plugins/org.xmdl.genext_${version.pattern}.jar" />
+			<fileset file="dist/plugins/org.xmdl.xmdl.ui_${version.pattern}.jar" />
+			<fileset file="dist/plugins/org.xmdl.xmdlbo.ui_${version.pattern}.jar" />
+			<fileset file="dist/plugins/org.xmdl.xmdldb.ui_${version.pattern}.jar" />
+			<fileset file="dist/plugins/org.xmdl.xmdlgen.ui_${version.pattern}.jar" />
+			<fileset file="dist/plugins/org.xmdl.core_${version.pattern}.jar" />
+			<fileset file="dist/plugins/org.xmdl.ida_${version.pattern}.jar" />
+		</copy>
+		
+		<!-- creates a zip collection -->
 		<zip destfile="dist/xmdl_${version.pattern}.zip">
-			<fileset dir="dist" includes="plugins/*" />
+			<fileset dir="dist" >
+                <include name="features/*" />
+                <include name="plugins/*" />
+			</fileset> 
 			<zipfileset dir="licenses" includes="*" prefix="xmdl" />
 			<zipfileset dir="varfiles" includes="*" prefix="xmdl" />
 		</zip>
@@ -130,16 +166,16 @@
          ================================= -->
     <target name="update_manifests" description="--> updates the manifest descriptions of plugins according to the current date/version information">
 
-        <update_manifest plugin.name="xmdl" />
-        <update_manifest plugin.name="xmdl.gen" />
-        <update_manifest plugin.name="xmdl.genext" />
-        <update_manifest plugin.name="xmdl.ui" />
-        <update_manifest plugin.name="xmdlbo.ui" />
-        <update_manifest plugin.name="xmdldb.ui" />
-        <update_manifest plugin.name="xmdlgen.ui" />
-        <update_manifest plugin.name="xmdl.gen" />
-        <update_manifest plugin.name="xmdl.core" />
-        <update_manifest plugin.name="xmdl.ida" />
+        <update_manifest plugin.path="xmdl" />
+        <update_manifest plugin.path="xmdl.gen" />
+        <update_manifest plugin.path="xmdl.genext" />
+        <update_manifest plugin.path="xmdl.ui" />
+        <update_manifest plugin.path="xmdlbo.ui" />
+        <update_manifest plugin.path="xmdldb.ui" />
+        <update_manifest plugin.path="xmdlgen.ui" />
+        <update_manifest plugin.path="xmdl.gen" />
+        <update_manifest plugin.path="xmdl.core" />
+        <update_manifest plugin.path="xmdl.ida" />
 
     </target>
 
@@ -149,5 +185,6 @@
 	<target name="init">
 		<mkdir dir="build" />
 		<mkdir dir="dist/plugins" />
+		<mkdir dir="dist/features" />
 	</target>
 </project>
