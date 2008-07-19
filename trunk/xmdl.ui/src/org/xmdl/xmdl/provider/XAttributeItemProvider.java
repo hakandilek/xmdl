@@ -158,7 +158,6 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 	 * @generated
 	 * @param object
 	 */
-	@SuppressWarnings("unchecked")
 	protected void addTypePropertyDescriptorGen(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
@@ -176,7 +175,6 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 	 * 
 	 * @generated NOT
 	 */
-	@SuppressWarnings("unchecked")
 	protected void addTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(new XAtrributeTypePropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
@@ -194,7 +192,6 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 	 * 
 	 * @generated NOT
 	 */
-	@SuppressWarnings("unchecked")
 	protected void addAssociationTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
 				.add(new XAtrributeAssociationTypePropertyDescriptor(
@@ -252,7 +249,6 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 	 * 
 	 * @generated NOT
 	 */
-	@SuppressWarnings("unchecked")
 	protected void addOppositePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(new XAtrributeOppositePropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)

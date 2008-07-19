@@ -4,13 +4,13 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.xmdl.xmdlbo.ui;singleton:=true
-Bundle-Version: 0.6.0.20080530_alpha5
+Bundle-Version: 0.6.0.20080719_alpha6
 Bundle-Activator: org.xmdl.xmdlbo.ui.XmdlboEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: org.xmdl.model,org.xmdl.xmdl.ui,org.eclipse.core.runti
  me,org.eclipse.emf.edit.ui,org.eclipse.core.resources,org.eclipse.ui.
  ide,org.eclipse.emf.ecore.xmi
-Eclipse-LazyStart: true
-Built-By: Hakan Dilek
+Bundle-ActivationPolicy: lazy
+Built-By: hakan
 

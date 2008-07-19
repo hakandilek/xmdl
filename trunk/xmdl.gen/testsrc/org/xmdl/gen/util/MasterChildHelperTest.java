@@ -113,7 +113,6 @@ public class MasterChildHelperTest extends TestCase {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	public void testIsChildForAttribute(){
 		
 		XProject project = ResourceHelper.loadProject("testsrc/test.xmdl");

@@ -47,7 +47,6 @@ public class XmdldbUtils {
 		return findField(opposite, rel);
 	}
 
-	@SuppressWarnings("unchecked")
 	public static DTable findRelationTable(DField field) {
 		XAttribute attrib1 = field.getXAttribute();
 		XAttribute attrib2 = attrib1.getOpposite();
@@ -127,7 +126,6 @@ public class XmdldbUtils {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	private static DTable findTableOf(DModel model, XClass xClass) {
 		DTable result = null;
 		if (model != null) {

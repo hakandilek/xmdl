@@ -39,7 +39,6 @@ public class XMDLDBInitializerTest extends AbstractTestCase {
 		assertEquals(3, dTables.size());
 	}
 	
-	@SuppressWarnings("unchecked")
 	public void testDTable() throws IOException {
 		EObject object = ResourceHelper.loadResource(path);
 		DModel gModel = (DModel) object;

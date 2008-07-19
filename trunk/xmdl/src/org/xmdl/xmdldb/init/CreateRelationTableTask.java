@@ -29,7 +29,6 @@ public class CreateRelationTableTask implements Task {
 		this.fieldSuffix = fieldSuffix;
 	}
 
-	@SuppressWarnings("unchecked")
 	public void initialize(Object source, Object destination) {
 		XAttribute attrib1 = (XAttribute) source;
 		XAttribute attrib2 = attrib1.getOpposite();

@@ -21,7 +21,6 @@ public class HasManyToMany extends AbstractAssertion implements Assertion {
 		super();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean test() {
 		boolean testResult = false;
