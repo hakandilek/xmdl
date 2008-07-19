@@ -105,8 +105,10 @@ public class PlatformMarkManager {
 		MarkElement mark = null;
 		try {
 			IFile markFile = getFile();
-			InputStream contents = markFile.getContents();
-			mark = PlatformMark.fromXML(contents);
+			if (markFile.exists()) {
+				InputStream contents = markFile.getContents();
+				mark = PlatformMark.fromXML(contents);
+			}
 		} catch (CoreException e) {
 			LOGGER.error("Error reading mark", e);
 		}
