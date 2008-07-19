@@ -12,8 +12,6 @@ import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.internal.ui.JavaPlugin;
 import org.eclipse.jdt.internal.ui.JavaPluginImages;
 import org.eclipse.jdt.internal.ui.util.ExceptionHandler;
-import org.eclipse.jdt.internal.ui.wizards.JavaProjectWizardFirstPage;
-import org.eclipse.jdt.internal.ui.wizards.JavaProjectWizardSecondPage;
 import org.eclipse.jdt.internal.ui.wizards.NewElementWizard;
 import org.eclipse.jdt.internal.ui.wizards.NewWizardMessages;
 import org.eclipse.swt.widgets.Shell;
@@ -27,8 +25,8 @@ public class XMDLJavaProjectWizard extends NewElementWizard implements IExecutab
 	/** the logger */
 	private static final Logger LOGGER = Logger.getLogger(XMDLUIPlugin.class);
 
-    private JavaProjectWizardFirstPage fFirstPage;
-    private JavaProjectWizardSecondPage fSecondPage;
+    private XMDLJavaProjectWizardFirstPage fFirstPage;
+    private XMDLJavaProjectWizardSecondPage fSecondPage;
     
     private IConfigurationElement fConfigElement;
     
@@ -44,7 +42,7 @@ public class XMDLJavaProjectWizard extends NewElementWizard implements IExecutab
      */	
     public void addPages() {
         super.addPages();
-        fFirstPage= new JavaProjectWizardFirstPage();
+        fFirstPage= new XMDLJavaProjectWizardFirstPage();
         addPage(fFirstPage);
         fSecondPage= new XMDLJavaProjectWizardSecondPage(fFirstPage);
         addPage(fSecondPage);
@@ -97,7 +95,7 @@ public class XMDLJavaProjectWizard extends NewElementWizard implements IExecutab
 	 * @see org.eclipse.jdt.internal.ui.wizards.NewElementWizard#getCreatedElement()
 	 */
 	public IJavaElement getCreatedElement() {
-		return JavaCore.create(fFirstPage.getProjectHandle());
+		return JavaCore.create(fSecondPage.getJavaProject().getProject());
 	}
         
 }

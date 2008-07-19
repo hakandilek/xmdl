@@ -9,19 +9,17 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jdt.core.IJavaProject;
-import org.eclipse.jdt.internal.ui.wizards.JavaProjectWizardFirstPage;
-import org.eclipse.jdt.internal.ui.wizards.JavaProjectWizardSecondPage;
+import org.eclipse.jdt.ui.wizards.NewJavaProjectWizardPageTwo;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.xmdl.xgen.util.ResourceHelper;
 import org.xmdl.xmdl.XProject;
 import org.xmdl.xmdl.XmdlFactory;
 
-
-@SuppressWarnings("restriction")
 public class XMDLJavaProjectWizardSecondPage extends
-		JavaProjectWizardSecondPage {
+		NewJavaProjectWizardPageTwo implements IWizardPage {
 
-	@SuppressWarnings("restriction")
-	public XMDLJavaProjectWizardSecondPage(JavaProjectWizardFirstPage firstPage) {
+	public XMDLJavaProjectWizardSecondPage(
+			XMDLJavaProjectWizardFirstPage firstPage) {
 		super(firstPage);
 	}
 

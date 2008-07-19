@@ -4,7 +4,7 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.xmdl.xmdl.ui;singleton:=true
-Bundle-Version: 0.6.0.20080530_alpha5
+Bundle-Version: 0.6.0.20080719_alpha6
 Bundle-ClassPath: .
 Bundle-Activator: org.xmdl.xmdl.ui.XMDLUIPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -15,6 +15,6 @@ Require-Bundle: org.xmdl.model,org.xmdl.gen,org.eclipse.core.runtime,o
  rg.eclipse.core.resources,org.eclipse.emf.mapping,org.eclipse.emf.eco
  re.xmi,org.eclipse.emf.codegen.ecore.ui,org.eclipse.jdt.core,org.ecli
  pse.jdt.ui,org.apache.log4j
-Eclipse-LazyStart: true
-Built-By: Hakan Dilek
+Bundle-ActivationPolicy: lazy
+Built-By: hakan
 

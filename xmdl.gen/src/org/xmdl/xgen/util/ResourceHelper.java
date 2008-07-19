@@ -42,19 +42,16 @@ public class ResourceHelper {
 		return object;		
 	}
 	
-	@SuppressWarnings("unchecked")
 	public static XProject loadProject(URI fileURI) {
 		XProject res = (XProject) loadResource(fileURI);
 		return res;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static DModel loadDModel(URI fileURI) {
 		DModel res = (DModel) loadResource(fileURI);
 		return res;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static Resource saveResource(URI uri, EObject root) throws IOException {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		URIConverter converter = resourceSet.getURIConverter();

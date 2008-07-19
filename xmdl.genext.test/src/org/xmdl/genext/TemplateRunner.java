@@ -45,7 +45,6 @@ public class TemplateRunner implements ITemplateRunner, JET2TemplateLoader {
             if (JET2Template.class.isAssignableFrom(templateClass)) {
                 return (JET2Template) templateClass.newInstance();
             } else {
-                @SuppressWarnings("unchecked")
                 Class<?> template = (Class<?>) templateClass;
                 return new JET1TemplateWrapper(template);
             }

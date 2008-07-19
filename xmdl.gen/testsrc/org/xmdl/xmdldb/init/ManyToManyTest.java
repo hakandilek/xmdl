@@ -12,7 +12,6 @@ import org.xmdl.xmdldb.DTable;
 public class ManyToManyTest extends AbstractTestCase {
 
 
-	@SuppressWarnings("unchecked")
 	public void testRelationTable() throws IOException {
 		DModel dModel = ResourceHelper.loadDModel("testsrc/test.xmdldb");
 		DPackage pack = (DPackage) dModel.getDPackages().get(0);
@@ -34,7 +33,6 @@ public class ManyToManyTest extends AbstractTestCase {
 		assertEquals(2, relationTable.getDFields().size());
 	}
 
-	@SuppressWarnings("unchecked")
 	public void testReRun() throws IOException {
 		DModel dModel = ResourceHelper.loadDModel("testsrc/test.xmdldb");
 		DPackage pack = (DPackage) dModel.getDPackages().get(0);

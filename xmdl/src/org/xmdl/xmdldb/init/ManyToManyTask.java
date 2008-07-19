@@ -23,7 +23,6 @@ public class ManyToManyTask implements Task {
 		this.createRelation = createRelation;
 	}
 
-	@SuppressWarnings("unchecked")
 	public void initialize(Object source, Object destination) {
 		if (source != null && source instanceof XClass) {
 			XClass clazz = (XClass) source;
