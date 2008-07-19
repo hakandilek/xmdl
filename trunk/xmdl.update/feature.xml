@@ -2,7 +2,7 @@
 <feature
       id="org.xmdl"
       label="XMDL Universal Code Generator"
-      version="0.6.0.20080530_alpha5"
+      version="0.6.0.20080719_alpha6"
       provider-name="xmdl.org"
       plugin="org.xmdl.xmdl.ui">
 
