@@ -6,14 +6,14 @@
 This is a step-by-step guide to XMDL installation. Please follow the steps below to perform a successful XMDL installation.
 
 This guide is intended to be functional with the following configuration of software versions:
- * [http://www.eclipse.org/ Eclipse] 3.3.1.1 (java-europa-fall2)
- * [http://www.eclipse.org/modeling/emf/ EMF] 2.3.1
- * [http://www.eclipse.org/emft/projects/jet/ EMFT JET] 0.8.1
+ * [http://www.eclipse.org/ Eclipse] 3.4 (java-ganymede)
+ * [http://www.eclipse.org/modeling/emf/ EMF] 2.4.0
+ * [http://www.eclipse.org/emft/projects/jet/ EMFT JET] 0.9.0
  * [http://xmdl.googlecode.com/ XMDL] 0.6.0
 
 == Eclipse Installation ==
 
-Latest version of XMDL runs on Eclipse Platform 3.3. If you have Eclipse 3.3 already installed on your system, you can simply skip this step.
+Latest version of XMDL runs on Eclipse Platform 3.4. If you have Eclipse 3.4 already installed on your system, you can simply skip this step.
 
  * Go to [http://www.eclipse.org/downloads/ Eclipse download page]
  * Select "Eclipse IDE for Java Developers" that suits your operating system configuration
@@ -26,42 +26,22 @@ Eclipse should be ready for further installation after this step.
 
 == [http://www.eclipse.org/modeling/emf/ EMF] (Eclipse Modeling Framework) Runtime Installation ==
 
-Latest version of XMDL runs on EMF 2.3.1. If you have EMF 2.3.1 already installed on your system, you can simply skip this step.
-
- * If you would like to setup a proxy server for your Eclipse update system, you should follow the following steps. If you do not need or already have a proxy setup, simply skip this step.
-   * Open the Eclipse Preferences dialog using the menu item Window -> Preferences...
-   * Using the tree on the left, select General -> Network Connections
-   * Select "Manual proxy configuration" if not selected before
-   * Type your proxy host and port in "HTTP Proxy" and "Port" fields.
-   * Check "Use this proxy server for SSL" box.
-   * If your proxy requires authentication check "Enable proxy authentication" box, and type your username and password.
-   * Click Ok. All your updates will be performed on this proxy server you have just specified.
- * Initiate Eclipse Install/Update wizard using the menu item Help -> Software Updates -> Find and Install...
- * Select "Search for new features to install" and click Next.
- * Select the checkbox beside "Europa Discovery Site". This is the general update site for all eclipse features. Click Finish.
- * On the dialog with the title "Search Results", Select the following from the displayed tree. Click Next.
-   * "Models and Model Development -> Eclipse Modeling Framework (EMF) Runtime + End User Tools <some version number>" 
-   * "Models and Model Development -> Java Emitter Templates (JET) (Incubation)  <some version number>" 
- * Accept the displayed software license. Click Next.
- * In the dialog with title "Installation" simply click Finish.
- * Eclipse will start downloading. When the download is finished a dialog with title "Feature Verification" will show up. Simply click "Install All".
- * After installation is complete you have to restart Eclipse to activate the newly installed plugins. But first XMDL plugin files should be installed, so simply click No on the confirmation dialog asking to restart Eclipse.
- * Close Eclipse, we will re-run it after installation is complete.
+Latest version of XMDL runs on EMF 2.4.0. The next step will install EMF as a dependency of XMDL.
 
 == XMDL Installation ==
 
 It is possible to install/update XMDL using Eclipse update mechanism. Follow these steps to perform installation of XMDL with Eclipse Update. 
 
- * Initiate Eclipse Install/Update wizard using the menu item Help -> Software Updates -> Find and Install...
- * Select "Search for new features to install" and click Next.
- * Click "New Remote site..." button.
+ * Initiate Eclipse Install/Update wizard using the menu item Help -> Software Updates
+ * Click "Available Software" tab.
+ * Click "Add Site..." button.
  * Enter the following information in the dialog and click Ok.
  {{{
- Name : XMDL update site
- URL  : http://xmdl.googlecode.com/svn/trunk/xmdl.update/site.xml
+ Location: http://xmdl.googlecode.com/svn/trunk/xmdl.update/site.xml
  }}}
- * Select only "XMDL update site" from the list and click Finish.
- * Select the XMDL Universal Code Generator<some_version> version from the list and click Next.
+ * Select newly added update site from the list and select the latest version from "XMDL Stable Updates" or "XMDL Development Updates".
+ * Click "Install..." button.
+ * Select the XMDL Universal Code Generator<some_version> version from the list and click Next. 
  * You can now accept the license agreement, click Next and Finish consecutively.
  * Install all components and restart eclipse when installation is finished.
   
@@ -72,6 +52,4 @@ It is possible to install/update XMDL using Eclipse update mechanism. Follow the
  * If you see a copyright dialog about XMDL, this means that you have successfully completed your installation.
 
 If you have a problem during the installation do not hesitate to inform developers. You can fill an [http://code.google.com/p/xmdl/issues/entry issue form] on the project site with all necessary details about your problem, and your contact information.
-
-
 
