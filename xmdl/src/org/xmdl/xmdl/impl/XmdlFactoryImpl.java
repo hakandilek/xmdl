@@ -113,6 +113,8 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
 		case XmdlPackage.XASSOCIATION_BEHAVIOUR:
 			return createXAssociationBehaviourFromString(eDataType,
 					initialValue);
+		case XmdlPackage.XCLASS_BEHAVIOR:
+			return createXClassBehaviorFromString(eDataType, initialValue);
 		case XmdlPackage.IPATH:
 			return createIPathFromString(eDataType, initialValue);
 		case XmdlPackage.URI:
@@ -140,6 +142,8 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
 		case XmdlPackage.XASSOCIATION_BEHAVIOUR:
 			return convertXAssociationBehaviourToString(eDataType,
 					instanceValue);
+		case XmdlPackage.XCLASS_BEHAVIOR:
+			return convertXClassBehaviorToString(eDataType, instanceValue);
 		case XmdlPackage.IPATH:
 			return convertIPathToString(eDataType, instanceValue);
 		case XmdlPackage.URI:
@@ -290,6 +294,31 @@ public class XmdlFactoryImpl extends EFactoryImpl implements XmdlFactory {
 	 * @generated
 	 */
 	public String convertXAssociationBehaviourToString(EDataType eDataType,
+			Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public XClassBehavior createXClassBehaviorFromString(EDataType eDataType,
+			String initialValue) {
+		XClassBehavior result = XClassBehavior.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException("The value '" + initialValue
+					+ "' is not a valid enumerator of '" + eDataType.getName()
+					+ "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertXClassBehaviorToString(EDataType eDataType,
 			Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}

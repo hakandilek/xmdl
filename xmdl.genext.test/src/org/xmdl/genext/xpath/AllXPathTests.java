@@ -10,6 +10,7 @@ public class AllXPathTests {
         //$JUnit-BEGIN$
         suite.addTestSuite(CallFunctionTest.class);
         suite.addTestSuite(IsEnumerationFunctionTest.class);
+        suite.addTestSuite(ClassBehaviorFunctionTest.class);
         //$JUnit-END$
         return suite;
     }

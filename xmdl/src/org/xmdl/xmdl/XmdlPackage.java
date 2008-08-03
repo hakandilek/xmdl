@@ -263,13 +263,22 @@ public interface XmdlPackage extends EPackage {
 	int XCLASS__COMPARABLE = XBASE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Behavior</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XCLASS__BEHAVIOR = XBASE_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>XClass</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int XCLASS_FEATURE_COUNT = XBASE_FEATURE_COUNT + 7;
+	int XCLASS_FEATURE_COUNT = XBASE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.xmdl.xmdl.impl.XMethodImpl <em>XMethod</em>}' class.
@@ -752,6 +761,16 @@ public interface XmdlPackage extends EPackage {
 	int XASSOCIATION_BEHAVIOUR = 16;
 
 	/**
+	 * The meta object id for the '{@link org.xmdl.xmdl.XClassBehavior <em>XClass Behavior</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.xmdl.xmdl.XClassBehavior
+	 * @see org.xmdl.xmdl.impl.XmdlPackageImpl#getXClassBehavior()
+	 * @generated
+	 */
+	int XCLASS_BEHAVIOR = 17;
+
+	/**
 	 * The meta object id for the '<em>IPath</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -759,7 +778,7 @@ public interface XmdlPackage extends EPackage {
 	 * @see org.xmdl.xmdl.impl.XmdlPackageImpl#getIPath()
 	 * @generated
 	 */
-	int IPATH = 17;
+	int IPATH = 18;
 
 	/**
 	 * The meta object id for the '<em>URI</em>' data type.
@@ -769,7 +788,7 @@ public interface XmdlPackage extends EPackage {
 	 * @see org.xmdl.xmdl.impl.XmdlPackageImpl#getURI()
 	 * @generated
 	 */
-	int URI = 18;
+	int URI = 19;
 
 	/**
 	 * The meta object id for the '<em>Resource</em>' data type.
@@ -779,7 +798,7 @@ public interface XmdlPackage extends EPackage {
 	 * @see org.xmdl.xmdl.impl.XmdlPackageImpl#getResource()
 	 * @generated
 	 */
-	int RESOURCE = 19;
+	int RESOURCE = 20;
 
 	/**
 	 * The meta object id for the '<em>Comparable</em>' data type.
@@ -789,7 +808,7 @@ public interface XmdlPackage extends EPackage {
 	 * @see org.xmdl.xmdl.impl.XmdlPackageImpl#getComparable()
 	 * @generated
 	 */
-	int COMPARABLE = 20;
+	int COMPARABLE = 21;
 
 	/**
 	 * Returns the meta object for class '{@link org.xmdl.xmdl.XAttribute <em>XAttribute</em>}'.
@@ -964,6 +983,17 @@ public interface XmdlPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getXClass_Comparable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.xmdl.xmdl.XClass#getBehavior <em>Behavior</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Behavior</em>'.
+	 * @see org.xmdl.xmdl.XClass#getBehavior()
+	 * @see #getXClass()
+	 * @generated
+	 */
+	EAttribute getXClass_Behavior();
 
 	/**
 	 * Returns the meta object for class '{@link org.xmdl.xmdl.XPackage <em>XPackage</em>}'.
@@ -1380,6 +1410,16 @@ public interface XmdlPackage extends EPackage {
 	EEnum getXAssociationBehaviour();
 
 	/**
+	 * Returns the meta object for enum '{@link org.xmdl.xmdl.XClassBehavior <em>XClass Behavior</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>XClass Behavior</em>'.
+	 * @see org.xmdl.xmdl.XClassBehavior
+	 * @generated
+	 */
+	EEnum getXClassBehavior();
+
+	/**
 	 * Returns the meta object for data type '{@link org.eclipse.core.runtime.IPath <em>IPath</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1563,6 +1603,14 @@ public interface XmdlPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute XCLASS__COMPARABLE = eINSTANCE.getXClass_Comparable();
+
+		/**
+		 * The meta object literal for the '<em><b>Behavior</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute XCLASS__BEHAVIOR = eINSTANCE.getXClass_Behavior();
 
 		/**
 		 * The meta object literal for the '{@link org.xmdl.xmdl.impl.XEnumerationImpl <em>XEnumeration</em>}' class.
@@ -1928,6 +1976,16 @@ public interface XmdlPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum XASSOCIATION_BEHAVIOUR = eINSTANCE.getXAssociationBehaviour();
+
+		/**
+		 * The meta object literal for the '{@link org.xmdl.xmdl.XClassBehavior <em>XClass Behavior</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.xmdl.xmdl.XClassBehavior
+		 * @see org.xmdl.xmdl.impl.XmdlPackageImpl#getXClassBehavior()
+		 * @generated
+		 */
+		EEnum XCLASS_BEHAVIOR = eINSTANCE.getXClassBehavior();
 
 		/**
 		 * The meta object literal for the '<em>IPath</em>' data type.

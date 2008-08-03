@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsd:schema xmlns:org.xmdl="http://www.xmdl.org/xmdl.ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xmdl.org/xmdl.ecore">
-  <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="XMI.xsd"/>
+  <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
   <xsd:simpleType name="XAssociationType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="OneToOne"/>
@@ -13,6 +13,13 @@
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="aggregation"/>
       <xsd:enumeration value="composition"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="XClassBehavior">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="PERSISTED"/>
+      <xsd:enumeration value="VIRTUAL"/>
+      <xsd:enumeration value="EMBEDDABLE"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:complexType name="XProject">
@@ -49,6 +56,7 @@
         <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="className" type="xsd:string"/>
         <xsd:attribute name="comparable" type="xsd:boolean"/>
+        <xsd:attribute name="behavior" type="org.xmdl:XClassBehavior"/>
         <xsd:attribute name="superTypes" type="xsd:string"/>
       </xsd:extension>
     </xsd:complexContent>

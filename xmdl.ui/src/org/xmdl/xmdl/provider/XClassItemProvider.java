@@ -71,6 +71,7 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 			addNamePropertyDescriptor(object);
 			addClassNamePropertyDescriptor(object);
 			addComparablePropertyDescriptor(object);
+			addBehaviorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -107,6 +108,23 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 						"_UI_XClass_comparable_feature", "_UI_XClass_type"),
 				XmdlPackage.Literals.XCLASS__COMPARABLE, true, false, false,
 				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Behavior feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBehaviorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_XClass_behavior_feature"), getString(
+						"_UI_PropertyDescriptor_description",
+						"_UI_XClass_behavior_feature", "_UI_XClass_type"),
+				XmdlPackage.Literals.XCLASS__BEHAVIOR, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -198,6 +216,7 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 		case XmdlPackage.XCLASS__NAME:
 		case XmdlPackage.XCLASS__CLASS_NAME:
 		case XmdlPackage.XCLASS__COMPARABLE:
+		case XmdlPackage.XCLASS__BEHAVIOR:
 			fireNotifyChanged(new ViewerNotification(notification, notification
 					.getNotifier(), false, true));
 			return;

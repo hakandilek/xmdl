@@ -23,6 +23,7 @@ import org.xmdl.xmdl.XAssociationType;
 import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XBase;
 import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XClassBehavior;
 import org.xmdl.xmdl.XEnumeration;
 import org.xmdl.xmdl.XEnumerationLiteral;
 import org.xmdl.xmdl.XException;
@@ -170,6 +171,13 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 	 * @generated
 	 */
 	private EEnum xAssociationBehaviourEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum xClassBehaviorEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -419,6 +427,15 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 	 */
 	public EAttribute getXClass_Comparable() {
 		return (EAttribute) xClassEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getXClass_Behavior() {
+		return (EAttribute) xClassEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -780,6 +797,15 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getXClassBehavior() {
+		return xClassBehaviorEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getIPath() {
 		return iPathEDataType;
 	}
@@ -856,6 +882,7 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 		createEReference(xClassEClass, XCLASS__ATTRIBUTES);
 		createEReference(xClassEClass, XCLASS__METHODS);
 		createEAttribute(xClassEClass, XCLASS__COMPARABLE);
+		createEAttribute(xClassEClass, XCLASS__BEHAVIOR);
 
 		xEnumerationEClass = createEClass(XENUMERATION);
 		createEReference(xEnumerationEClass, XENUMERATION__XPACKAGE);
@@ -912,6 +939,7 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 		// Create enums
 		xAssociationTypeEEnum = createEEnum(XASSOCIATION_TYPE);
 		xAssociationBehaviourEEnum = createEEnum(XASSOCIATION_BEHAVIOUR);
+		xClassBehaviorEEnum = createEEnum(XCLASS_BEHAVIOR);
 
 		// Create data types
 		iPathEDataType = createEDataType(IPATH);
@@ -1022,6 +1050,10 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 				IS_ORDERED);
 		initEAttribute(getXClass_Comparable(), ecorePackage.getEBoolean(),
 				"comparable", null, 0, 1, XClass.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getXClass_Behavior(), this.getXClassBehavior(),
+				"behavior", "PERSISTED", 0, 1, XClass.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
@@ -1307,6 +1339,11 @@ public class XmdlPackageImpl extends EPackageImpl implements XmdlPackage {
 				XAssociationBehaviour.AGGREGATION_LITERAL);
 		addEEnumLiteral(xAssociationBehaviourEEnum,
 				XAssociationBehaviour.COMPOSITION_LITERAL);
+
+		initEEnum(xClassBehaviorEEnum, XClassBehavior.class, "XClassBehavior");
+		addEEnumLiteral(xClassBehaviorEEnum, XClassBehavior.PERSISTED);
+		addEEnumLiteral(xClassBehaviorEEnum, XClassBehavior.VIRTUAL);
+		addEEnumLiteral(xClassBehaviorEEnum, XClassBehavior.EMBEDDABLE);
 
 		// Initialize data types
 		initEDataType(iPathEDataType, IPath.class, "IPath", IS_SERIALIZABLE,

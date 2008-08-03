@@ -7,7 +7,9 @@
 package org.xmdl.xmdl.presentation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +73,26 @@ public class XmdlModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	public static final String copyright = "hd";
+
+	/**
+	 * The supported extensions for created files.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final List<String> FILE_EXTENSIONS = Collections
+			.unmodifiableList(Arrays.asList(XMDLUIPlugin.INSTANCE.getString(
+					"_UI_XmdlEditorFilenameExtensions").split("\\s*,\\s*")));
+
+	/**
+	 * A formatted list of supported file extensions, suitable for display.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String FORMATTED_FILE_EXTENSIONS = XMDLUIPlugin.INSTANCE
+			.getString("_UI_XmdlEditorFilenameExtensions").replaceAll(
+					"\\s*,\\s*", ", ");
 
 	/**
 	 * This caches an instance of the model package.
@@ -303,22 +325,17 @@ public class XmdlModelWizard extends Wizard implements INewWizard {
 		@Override
 		protected boolean validatePage() {
 			if (super.validatePage()) {
-				// Make sure the file ends in ".xmdl".
-				//
-				String requiredExt = XMDLUIPlugin.INSTANCE
-						.getString("_UI_XmdlEditorFilenameExtension");
-				String enteredExt = new Path(getFileName()).getFileExtension();
-				if (enteredExt == null || !enteredExt.equals(requiredExt)) {
-					setErrorMessage(XMDLUIPlugin.INSTANCE.getString(
-							"_WARN_FilenameExtension",
-							new Object[] { requiredExt }));
+				String extension = new Path(getFileName()).getFileExtension();
+				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
+					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions"
+							: "_WARN_FilenameExtension";
+					setErrorMessage(XMDLUIPlugin.INSTANCE.getString(key,
+							new Object[] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
-				} else {
-					return true;
 				}
-			} else {
-				return false;
+				return true;
 			}
+			return false;
 		}
 
 		/**
@@ -563,9 +580,7 @@ public class XmdlModelWizard extends Wizard implements INewWizard {
 				.getString("_UI_XmdlModelWizard_description"));
 		newFileCreationPage.setFileName(XMDLUIPlugin.INSTANCE
 				.getString("_UI_XmdlEditorFilenameDefaultBase")
-				+ "."
-				+ XMDLUIPlugin.INSTANCE
-						.getString("_UI_XmdlEditorFilenameExtension"));
+				+ "." + FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -595,8 +610,8 @@ public class XmdlModelWizard extends Wizard implements INewWizard {
 					//
 					String defaultModelBaseFilename = XMDLUIPlugin.INSTANCE
 							.getString("_UI_XmdlEditorFilenameDefaultBase");
-					String defaultModelFilenameExtension = XMDLUIPlugin.INSTANCE
-							.getString("_UI_XmdlEditorFilenameExtension");
+					String defaultModelFilenameExtension = FILE_EXTENSIONS
+							.get(0);
 					String modelFilename = defaultModelBaseFilename + "."
 							+ defaultModelFilenameExtension;
 					for (int i = 1; ((IContainer) selectedResource)
