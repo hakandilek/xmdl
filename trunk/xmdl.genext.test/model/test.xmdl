@@ -58,6 +58,9 @@
     <classes name="ChildClass" className="org.xmdl.genext.test.ChildClass">
       <attributes name="master" type="//@packages.0/@classes.4" associationType="ManyToOne" opposite="//@packages.0/@classes.4/@attributes.0"/>
     </classes>
+    <classes name="EmbeddableClass" className="org.xmdl.genext.test.EmbeddableClass" behavior="EMBEDDABLE"/>
+    <classes name="VirtualClass" className="org.xmdl.genext.test.VirtualClass" behavior="VIRTUAL"/>
+    <classes name="PersistedClass" className="org.xmdl.genext.test.PersistedClass"/>
     <enumerations name="Enumeration1" className="org.xmdl.genext.test.Enumeration1" defaultLiteral="//@packages.0/@enumerations.0/@literals.0">
       <literals name="VALUE1" value="1"/>
       <literals name="VALUE2" value="2"/>

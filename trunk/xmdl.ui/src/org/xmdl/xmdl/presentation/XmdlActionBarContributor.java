@@ -584,12 +584,13 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 							String id = platform.id();
 							if (platformID.equals(id)) {
 								markPlatform = platform;
-								addGenerateActionFor(platform, generateSubmenuManager, true);
+								addGenerateActionFor(platform,
+										generateSubmenuManager, true);
 								break;
 							}
 						}
 					}
-					
+
 					for (Platform platform : platforms) {
 						if (platform.equals(markPlatform))
 							continue;
@@ -598,8 +599,9 @@ public class XmdlActionBarContributor extends EditingDomainActionBarContributor
 						if (markPlatform != null) {
 							enabled = false;
 						}
-						
-						addGenerateActionFor(platform, generateSubmenuManager, enabled);
+
+						addGenerateActionFor(platform, generateSubmenuManager,
+								enabled);
 					}
 				}
 			}

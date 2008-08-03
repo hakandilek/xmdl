@@ -39,14 +39,22 @@ public class AssociationTag extends BaseEmptyTag {
 			StringBuffer sb = new StringBuffer();
 			if (att.isReference()) {
 				XAssociationType type = att.getAssociationType();
+				boolean navigable = att.isNavigable();
 				AssociationManager associationManager = AssociationManager.getInstance();
 				switch (type.getValue()) {
 				case XAssociationType.ONE_TO_ONE:
-					// TODO:how is this defined?
+					if (navigable)
+					{
+						// Sample:
+					    //@OneToOne(cascade = CascadeType.ALL)
+					    //@PrimaryKeyJoinColumn
+						sb.append("@OneToOne(cascade = CascadeType.ALL)");
+						sb.append(System.getProperty("line.separator"));
+						sb.append("@PrimaryKeyJoinColumn");
+					}
 
 					break;
 				case XAssociationType.ONE_TO_MANY:
-					// Sample:
 					// @OneToMany(cascade = CascadeType.REMOVE, mappedBy =
 					// ("product"))
 

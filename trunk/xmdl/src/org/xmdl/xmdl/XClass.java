@@ -120,6 +120,36 @@ public interface XClass extends XBase, XType {
 	 */
 	void setComparable(boolean value);
 
+	/**
+	 * Returns the value of the '<em><b>Behavior</b></em>' attribute.
+	 * The default value is <code>"PERSISTED"</code>.
+	 * The literals are from the enumeration {@link org.xmdl.xmdl.XClassBehavior}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Behavior</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Behavior</em>' attribute.
+	 * @see org.xmdl.xmdl.XClassBehavior
+	 * @see #setBehavior(XClassBehavior)
+	 * @see org.xmdl.xmdl.XmdlPackage#getXClass_Behavior()
+	 * @model default="PERSISTED"
+	 * @generated
+	 */
+	XClassBehavior getBehavior();
+
+	/**
+	 * Sets the value of the '{@link org.xmdl.xmdl.XClass#getBehavior <em>Behavior</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Behavior</em>' attribute.
+	 * @see org.xmdl.xmdl.XClassBehavior
+	 * @see #getBehavior()
+	 * @generated
+	 */
+	void setBehavior(XClassBehavior value);
+
 	List<XAttribute> getSimpleAttributes();
 
 	boolean hasAttribute(String name);

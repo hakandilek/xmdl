@@ -27,6 +27,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
         eType="#//XMethod" containment="true" resolveProxies="false" eOpposite="#//XMethod/xClass"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="comparable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="behavior" eType="#//XClassBehavior"
+        defaultValueLiteral="PERSISTED"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XEnumeration" eSuperTypes="#//XBase #//XType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="xPackage" lowerBound="1"
@@ -175,4 +177,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="XVisitorBase" eSuperTypes="#//XVisitor"/>
   <eClassifiers xsi:type="ecore:EClass" name="XMDLModel" eSuperTypes="#//XModel"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="XClassBehavior">
+    <eLiterals name="PERSISTED" literal="PERSISTED"/>
+    <eLiterals name="VIRTUAL" value="1"/>
+    <eLiterals name="EMBEDDABLE" value="2"/>
+  </eClassifiers>
 </ecore:EPackage>

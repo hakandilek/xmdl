@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XBase;
 import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XClassBehavior;
 import org.xmdl.xmdl.XMethod;
 import org.xmdl.xmdl.XPackage;
 import org.xmdl.xmdl.XType;
@@ -129,6 +130,26 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	 * @ordered
 	 */
 	protected boolean comparable = COMPARABLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBehavior() <em>Behavior</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBehavior()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final XClassBehavior BEHAVIOR_EDEFAULT = XClassBehavior.PERSISTED;
+
+	/**
+	 * The cached value of the '{@link #getBehavior() <em>Behavior</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBehavior()
+	 * @generated
+	 * @ordered
+	 */
+	protected XClassBehavior behavior = BEHAVIOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -274,6 +295,28 @@ public class XClassImpl extends EObjectImpl implements XClass {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public XClassBehavior getBehavior() {
+		return behavior;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBehavior(XClassBehavior newBehavior) {
+		XClassBehavior oldBehavior = behavior;
+		behavior = newBehavior == null ? BEHAVIOR_EDEFAULT : newBehavior;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					XmdlPackage.XCLASS__BEHAVIOR, oldBehavior, behavior));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated NOT
@@ -343,6 +386,8 @@ public class XClassImpl extends EObjectImpl implements XClass {
 		result.append(name);
 		result.append(", comparable: ");
 		result.append(comparable);
+		result.append(", behavior: ");
+		result.append(behavior);
 		result.append(')');
 		return result.toString();
 	}
@@ -473,6 +518,8 @@ public class XClassImpl extends EObjectImpl implements XClass {
 			return getMethods();
 		case XmdlPackage.XCLASS__COMPARABLE:
 			return isComparable() ? Boolean.TRUE : Boolean.FALSE;
+		case XmdlPackage.XCLASS__BEHAVIOR:
+			return getBehavior();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -507,6 +554,9 @@ public class XClassImpl extends EObjectImpl implements XClass {
 		case XmdlPackage.XCLASS__COMPARABLE:
 			setComparable(((Boolean) newValue).booleanValue());
 			return;
+		case XmdlPackage.XCLASS__BEHAVIOR:
+			setBehavior((XClassBehavior) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -537,6 +587,9 @@ public class XClassImpl extends EObjectImpl implements XClass {
 		case XmdlPackage.XCLASS__COMPARABLE:
 			setComparable(COMPARABLE_EDEFAULT);
 			return;
+		case XmdlPackage.XCLASS__BEHAVIOR:
+			setBehavior(BEHAVIOR_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -564,6 +617,8 @@ public class XClassImpl extends EObjectImpl implements XClass {
 			return methods != null && !methods.isEmpty();
 		case XmdlPackage.XCLASS__COMPARABLE:
 			return comparable != COMPARABLE_EDEFAULT;
+		case XmdlPackage.XCLASS__BEHAVIOR:
+			return behavior != BEHAVIOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

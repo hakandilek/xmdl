@@ -380,6 +380,24 @@ For example type User is converted to Set&lt;User&gt;.
             minArgs="1"
             name="isEnumeration">
       </function>
+      <function
+            implementation="org.xmdl.genext.xpath.IsEmbeddableFunction"
+            maxArgs="1"
+            minArgs="1"
+            name="isEmbeded">
+      </function>
+      <function
+            implementation="org.xmdl.genext.xpath.IsPersistedFunction"
+            maxArgs="1"
+            minArgs="1"
+            name="isPersisted">
+      </function>
+      <function
+            implementation="org.xmdl.genext.xpath.IsVirtualFunction"
+            maxArgs="1"
+            minArgs="1"
+            name="isVirtual">
+      </function>
    </extension>
 
 </plugin>
