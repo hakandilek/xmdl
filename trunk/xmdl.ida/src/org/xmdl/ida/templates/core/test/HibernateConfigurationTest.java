@@ -1,7 +1,11 @@
 package org.xmdl.ida.templates.core.test;
 
+import java.util.List;
+
 import org.xmdl.gen.util.XMDLClassHelper;
 import org.xmdl.xgen.Template;
+import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XClassBehavior;
 import org.xmdl.xmdl.XPackage;
 
 
@@ -26,7 +30,15 @@ public class HibernateConfigurationTest extends HibernateConfigurationTestImpl
 
 	@Override
 	public boolean accept(Object object) {
-		return (object instanceof XPackage);
+		if (object instanceof XPackage) {
+			XPackage pack = (XPackage) object;
+			List<XClass> classes = pack.getClasses();
+			for (XClass cls : classes) {
+				if (XClassBehavior.EMBEDDABLE == cls.getBehavior())
+					return true;
+			}
+		}
+		return false;
 	}
 
 	@Override

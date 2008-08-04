@@ -103,6 +103,7 @@
 
 <c:iterate select="$model/dPackages" var="dPackage">
     <xd:iterateTables select="$dPackage/dTables" var="dTable">
+    <c:if test="isPersisted($dTable/xClass)">
     <!--<xc:qualifiedName element="$dTable/xClass"/>-START-->
     <c:if test="not(isAssociation($dTable))">
     <table name="<c:get select="$dTable/@name"/>">
@@ -165,6 +166,7 @@
     </c:if>
     
     <!--<xc:qualifiedName element="$dTable/xClass"/>-END-->
+    </c:if>
     </xd:iterateTables>
 </c:iterate>
 </dataset>
