@@ -10,3 +10,6 @@
 <c:if test="isVirtual($embeddableClass)">virtual</c:if>;
 <c:if test="isVirtual($virtualClass)">virtual</c:if>;
 <c:if test="isVirtual($persistedClass)">virtual</c:if>;
+<c:if test="isPersisted($pack)">pack</c:if>;
+<c:if test="isEmbeded($pack)">pack</c:if>;
+<c:if test="isVirtual($pack)">pack</c:if>;
