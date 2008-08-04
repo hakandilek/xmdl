@@ -24,14 +24,16 @@
         </Menu>
 
 <c:iterate select="$project/packages" var="package">
+	<c:if test="isPersisted($package)">
         <Menu name="<xc:qualifiedName element="$package"/>Menu" title="menu.title.<xc:qualifiedName element="$package"/>" description="<xc:qualifiedName element="$package"/>" roles="ROLE_ADMIN,ROLE_USER">
     <c:iterate select="$package/classes" var="class">
-            <Item name="<xc:cap element="$class"/>Menu"       title="menu.title.<xc:cap element="$class"/>"  page="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.do">
-                <Item name="<xc:cap element="$class"/>Edit"   title="menu.edit.<xc:cap element="$class"/>"   page="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.do"/>
-                <Item name="<xc:cap element="$class"/>Search" title="menu.search.<xc:cap element="$class"/>" page="/<xc:cap element="$class"/>/<xc:uncap element="$class"/>s.do"/>
-            </Item>
+    	<c:if test="isPersisted($class)">
+            <Item name="<xc:cap element="$class"/>Edit"   title="menu.edit.<xc:cap element="$class"/>"   page="/<xc:cap element="$class"/>/edit<xc:cap element="$class"/>.do"/>
+            <Item name="<xc:cap element="$class"/>Search" title="menu.search.<xc:cap element="$class"/>" page="/<xc:cap element="$class"/>/<xc:uncap element="$class"/>s.do"/>
+        </c:if>
     </c:iterate>
         </Menu>
+    </c:if>
 </c:iterate>
 
         <Menu name="Logout" title="user.logout" page="/logout.jsp" roles="ROLE_ADMIN,ROLE_USER"/>
