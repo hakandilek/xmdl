@@ -73,7 +73,7 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
     <c:if test="call($attribute, 'isReference')">
     <ida:association attribute="$attribute" />
     </c:if>
-    private <xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/>;
+    private <xc:attributeType attribute="$attribute" wrapType="true"/> <xc:uncap element="$attribute"/><c:if test="isEmbeded($attribute/type)"> = new <xc:attributeType attribute="$attribute" wrapType="true"/>()</c:if>;
     
 </c:iterate> 
 
