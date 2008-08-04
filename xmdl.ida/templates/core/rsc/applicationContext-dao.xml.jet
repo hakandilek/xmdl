@@ -15,8 +15,14 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
+                <!-- Mesken Beans -->
+                <value>org.xmdl.mesken.model.User</value>
+                <value>org.xmdl.mesken.model.Role</value>
+                <!-- Application beans -->
 <c:iterate select="$package/classes" var="class">
+    	<c:if test="isPersisted($class)">
                 <value><xc:qualifiedName element="$package"/>.model.<xc:cap element="$class"/></value>
+    	</c:if>
 </c:iterate> 
             </list>
         </property>
@@ -45,9 +51,11 @@
     </bean>
 
 <c:iterate select="$package/classes" var="class">
+	<c:if test="isPersisted($class)">
     <bean id="<xc:uncap element="$class"/>DAO" class="<xc:qualifiedName element="$package"/>.dao.hibernate.<xc:cap element="$class"/>DAOHibernate">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+	</c:if>
 </c:iterate> 
 
     <!-- If you want to be able to do simple CRUD for new domain objects without 

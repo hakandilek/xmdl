@@ -17,6 +17,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.model.search;
 <xc:import pattern="java.io.Serializable" />
 <xc:import pattern="java.text.MessageFormat" />
 <xc:import pattern="$element.model.*" element="$class/xPackage"/>
+<xc:importVirtual element="$class/xPackage/project"/>
 
 /**
  *
@@ -28,8 +29,9 @@ package <xc:qualifiedName element="$class/xPackage"/>.model.search;
  */ 
 public class <xc:cap element="$class"/>Search implements Serializable {
 <c:iterate select="$class/attributes" var="attribute">
-    <c:choose>
-    <c:when test="call($attribute/type, 'isComparable')">
+	<c:if test="not(isEmbeded($attribute/type))">
+	    <c:choose>
+	    <c:when test="call($attribute/type, 'isComparable')">
 
     /** 
      * @generated
@@ -40,16 +42,16 @@ public class <xc:cap element="$class"/>Search implements Serializable {
      * @generated
      */
     private <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> <xc:uncap element="$attribute"/>Max;
-    </c:when>
-    <c:otherwise>
+	    </c:when>
+	    <c:otherwise>
 
     /** 
      * @generated
      */
     private <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> <xc:uncap element="$attribute"/>;
-    </c:otherwise>
-    </c:choose>
-    
+	    </c:otherwise>
+	    </c:choose>
+    </c:if>
 </c:iterate> 
 
     /** 
@@ -59,8 +61,9 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     }
 
 <c:iterate select="$class/attributes" var="attribute">
-    <c:choose>
-    <c:when test="call($attribute/type, 'isComparable')">
+	<c:if test="not(isEmbeded($attribute/type))">
+	    <c:choose>
+	    <c:when test="call($attribute/type, 'isComparable')">
 
     /** 
      * @generated
@@ -89,8 +92,8 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     public void set<xc:cap element="$attribute"/>Max(<xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> <xc:uncap element="$attribute"/>Max) {
         this.<xc:uncap element="$attribute"/>Max = <xc:uncap element="$attribute"/>Max;
     }
-    </c:when>
-    <c:otherwise>
+	    </c:when>
+	    <c:otherwise>
 
     /** 
      * @generated
@@ -105,8 +108,9 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     public void set<xc:cap element="$attribute"/>(<xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> <xc:uncap element="$attribute"/>) {
         this.<xc:uncap element="$attribute"/> = <xc:uncap element="$attribute"/>;
     }
-    </c:otherwise>
-    </c:choose>
+	    </c:otherwise>
+	    </c:choose>
+    </c:if>
 
 </c:iterate> 
 
@@ -117,6 +121,7 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     public String toString() {
         return MessageFormat.format("<xc:cap element="$class"/>Search "<%int i=0;%>
         <c:iterate select="$class/attributes" var="attribute">
+		<c:if test="not(isEmbeded($attribute/type))">
             <c:choose>
             <c:when test="call($attribute/type, 'isComparable')">
             + "[<xc:uncap element="$attribute"/>Min={<%=i++%>}]"
@@ -126,8 +131,10 @@ public class <xc:cap element="$class"/>Search implements Serializable {
             + "[<xc:uncap element="$attribute"/>={<%=i++%>}]"
             </c:otherwise>
             </c:choose>
+        </c:if>
         </c:iterate> 
         <c:iterate select="$class/attributes" var="attribute">
+		<c:if test="not(isEmbeded($attribute/type))">
             <c:choose>
             <c:when test="call($attribute/type, 'isComparable')">
             , <xc:uncap element="$attribute"/>Min
@@ -137,6 +144,7 @@ public class <xc:cap element="$class"/>Search implements Serializable {
             , <xc:uncap element="$attribute"/>
             </c:otherwise>
             </c:choose>
+        </c:if>
         </c:iterate>
         );
     }
@@ -148,6 +156,7 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     public int hashCode() {
         int result = 1;
 <c:iterate select="$class/attributes" var="attribute">
+	<c:if test="not(isEmbeded($attribute/type))">
     <c:choose>
     <c:when test="call($attribute/type, 'isComparable')">
         <c:choose>
@@ -172,6 +181,7 @@ public class <xc:cap element="$class"/>Search implements Serializable {
         </c:choose>
     </c:otherwise>
     </c:choose>
+    </c:if>
 </c:iterate>
         return result;
     }

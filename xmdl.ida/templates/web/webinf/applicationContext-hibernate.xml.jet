@@ -19,7 +19,9 @@
                 <value>org.xmdl.mesken.model.Role</value>
 <c:iterate select="$project/packages" var="package">
     <c:iterate select="$package/classes" var="class">
+		<c:if test="isPersisted($class)">
                 <value><xc:qualifiedName element="$package"/>.model.<xc:cap element="$class"/></value>
+		</c:if>
     </c:iterate>
 </c:iterate>
             </list>

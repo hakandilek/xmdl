@@ -3,6 +3,7 @@ package org.xmdl.ida.templates.web.action;
 import org.xmdl.gen.util.XMDLClassHelper;
 import org.xmdl.xgen.Template;
 import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XClassBehavior;
 import org.xmdl.xmdl.XPackage;
 
 
@@ -28,7 +29,12 @@ public class EntityAction extends EntityActionImpl implements Template {
 
     @Override
     public boolean accept(Object object) {
-        return (object instanceof XClass);
+		if (object instanceof XClass) {
+			XClass cls = (XClass) object;
+			XClassBehavior behavior = cls.getBehavior();
+			return XClassBehavior.PERSISTED == behavior;
+		} else
+			return false;
     }
 
     @Override

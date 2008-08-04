@@ -23,6 +23,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.dao.hibernate;
 <xc:import pattern="$element.model.*" element="$class/xPackage"/>
 <xc:import pattern="$element.model.search.*" element="$class/xPackage"/>
 <xc:import pattern="$element.dao.*" element="$class/xPackage"/>
+<xc:importVirtual element="$class/xPackage/project"/>
 
 /**
  *
@@ -56,6 +57,7 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
             list = new ArrayList<<xc:cap element="$class"/>>();
         } else {
 <c:iterate select="$class/attributes" var="attribute">
+<c:if test="not(isEmbeded($attribute/type))">
     <c:choose>
     <c:when test="call($attribute/type, 'isComparable')">
             <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> min<xc:cap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>Min();
@@ -65,11 +67,13 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
             <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> <xc:uncap element="$attribute"/> = <xc:uncap element="$class"/>Search.<xc:accessor attribute="$attribute"/>();
     </c:otherwise>
     </c:choose>
+</c:if>
 </c:iterate> 
 
             if (log.isDebugEnabled()) {
                 log.debug("search(<xc:cap element="$class"/>Search <-");
 <c:iterate select="$class/attributes" var="attribute">
+<c:if test="not(isEmbeded($attribute/type))">
     <c:choose>
     <c:when test="call($attribute/type, 'isComparable')">
                 log.debug("min<xc:cap element="$attribute"/>       : " + min<xc:cap element="$attribute"/>);
@@ -79,6 +83,7 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
                 log.debug("<xc:uncap element="$attribute"/>       : " + <xc:uncap element="$attribute"/>);
     </c:otherwise>
     </c:choose>
+</c:if>
 </c:iterate>
             }
 
@@ -100,10 +105,12 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
         </c:choose>
     </c:if>
     <c:if test="call($attribute, 'isReference')">
+		<c:if test="not(isEmbeded($attribute/type))">
             if (<xc:uncap element="$attribute"/> != null){
                 Criteria subCriteria = criteria.createCriteria("<xc:uncap element="$attribute"/>");
                 subCriteria.add(Restrictions.idEq(<xc:uncap element="$attribute"/>.getId()));
             }
+    	</c:if>
     </c:if>
 </c:iterate> 
             list = criteria.list();

@@ -25,6 +25,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XClassBehavior;
 import org.xmdl.xmdl.XMethod;
 import org.xmdl.xmdl.XmdlFactory;
 import org.xmdl.xmdl.XmdlPackage;
@@ -181,10 +182,18 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 	 * This returns XClass.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Object getImage(Object object) {
+		XClass xClass = (XClass) object;
+		XClassBehavior behavior = xClass.getBehavior();
+		if (XClassBehavior.EMBEDDABLE == behavior)
+			return overlayImage(object, getResourceLocator().getImage(
+					"full/obj16/XClassEmbeded"));
+		if (XClassBehavior.VIRTUAL == behavior)
+			return overlayImage(object, getResourceLocator().getImage(
+					"full/obj16/XClassVirtual"));
 		return overlayImage(object, getResourceLocator().getImage(
 				"full/obj16/XClass"));
 	}
@@ -243,26 +252,29 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		XClass cls = (XClass) object;
-		XAttribute att = XmdlFactory.eINSTANCE.createXAttribute();
-		int a = cls.getAttributes().size() + 1;
-		String name = "attribute" + a;
-		while (cls.hasAttribute(name)) {
-			name = "attribute" + ++a;
-		}
-		att.setName(name);
-		att.setType(XmdlTypes.JAVA_STRING);
-		newChildDescriptors.add(createChildParameter(
-				XmdlPackage.Literals.XCLASS__ATTRIBUTES, att));
+		XClassBehavior behavior = cls.getBehavior();
+		if (XClassBehavior.VIRTUAL != behavior) {
+			XAttribute att = XmdlFactory.eINSTANCE.createXAttribute();
+			int a = cls.getAttributes().size() + 1;
+			String name = "attribute" + a;
+			while (cls.hasAttribute(name)) {
+				name = "attribute" + ++a;
+			}
+			att.setName(name);
+			att.setType(XmdlTypes.JAVA_STRING);
+			newChildDescriptors.add(createChildParameter(
+					XmdlPackage.Literals.XCLASS__ATTRIBUTES, att));
 
-		XMethod met = XmdlFactory.eINSTANCE.createXMethod();
-		int m = cls.getMethods().size() + 1;
-		name = "method" + m;
-		while (cls.hasMethod(name)) {
-			name = "method" + ++m;
+			XMethod met = XmdlFactory.eINSTANCE.createXMethod();
+			int m = cls.getMethods().size() + 1;
+			name = "method" + m;
+			while (cls.hasMethod(name)) {
+				name = "method" + ++m;
+			}
+			met.setName(name);
+			newChildDescriptors.add(createChildParameter(
+					XmdlPackage.Literals.XCLASS__METHODS, met));
 		}
-		met.setName(name);
-		newChildDescriptors.add(createChildParameter(
-				XmdlPackage.Literals.XCLASS__METHODS, met));
 	}
 
 	/**

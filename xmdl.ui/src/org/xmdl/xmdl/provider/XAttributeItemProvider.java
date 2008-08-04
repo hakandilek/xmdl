@@ -300,10 +300,14 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 	 * This returns XAttribute.gif. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Object getImage(Object object) {
+		XAttribute attrib = (XAttribute) object;
+		if (attrib.isReference())
+			return overlayImage(object, getResourceLocator().getImage(
+					"full/obj16/XAttributeReference"));
 		return overlayImage(object, getResourceLocator().getImage(
 				"full/obj16/XAttribute"));
 	}

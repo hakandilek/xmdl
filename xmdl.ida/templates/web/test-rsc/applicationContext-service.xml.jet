@@ -72,10 +72,11 @@
 
 <c:iterate select="$project/packages" var="package">
     <c:iterate select="$package/classes" var="class">
+		<c:if test="isPersisted($class)">
     <bean id="<xc:uncap element="$class"/>Manager" class="<xc:qualifiedName element="$package"/>.service.impl.<xc:cap element="$class"/>ManagerImpl">
         <constructor-arg ref="<xc:uncap element="$class"/>DAO"/>
     </bean>
-
+		</c:if>
     </c:iterate>
 </c:iterate>
 

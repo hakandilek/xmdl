@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
@@ -69,13 +70,14 @@ public class JavaMerger extends FileMerger {
 			IPath outFilePath = outputFile.getFullPath();
 
 			// set source
-			JCompilationUnit compilationUnit = merger
+			JCompilationUnit sourceUnit = merger
 					.createCompilationUnitForInputStream(content);
-			merger.setSourceCompilationUnit(compilationUnit);
+			merger.setSourceCompilationUnit(sourceUnit);
 
 			// set target
-			merger.setTargetCompilationUnit(merger
-					.createCompilationUnitForInputStream(targetInput));
+			JCompilationUnit targetUnit = merger
+					.createCompilationUnitForInputStream(targetInput);
+			merger.setTargetCompilationUnit(targetUnit);
 
 			LOGGER.debug("Merging file" + outFilePath);
 			// merge source and target
@@ -92,9 +94,13 @@ public class JavaMerger extends FileMerger {
 		} catch (RuntimeException e) {
 			// problem occurred while merging, don't merge directly
 			// write result
-			LOGGER
-					.debug("Cannot merge directly writing result. Problem occured:"
-							+ e);
+			LOGGER.debug("Cannot merge directly writing result."
+					+ "Problem occured:" + e);
+			try {
+				content.reset();
+			} catch (IOException e1) {
+				LOGGER.debug("Cannot reset input. Problem occured:" + e1);
+			}
 		}
 	}
 
