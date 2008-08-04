@@ -3,6 +3,7 @@ package org.xmdl.ida.templates.web.jsp;
 import org.xmdl.genext.taglib.ClassTagUtils;
 import org.xmdl.xgen.Template;
 import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XClassBehavior;
 
 
 /**
@@ -25,7 +26,12 @@ public class EntityListJSP extends EntityListJSPImpl implements Template {
 
     @Override
     public boolean accept(Object object) {
-        return object instanceof XClass;
+		if (object instanceof XClass) {
+			XClass cls = (XClass) object;
+			XClassBehavior behavior = cls.getBehavior();
+			return XClassBehavior.PERSISTED == behavior;
+		} else
+			return false;
     }
 
     @Override

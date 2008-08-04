@@ -21,7 +21,9 @@
                 <!-- Application beans -->
 <c:iterate select="$project/packages" var="package">
     <c:iterate select="$package/classes" var="class">
+    	<c:if test="isPersisted($class)">
                 <value><xc:qualifiedName element="$package"/>.model.<xc:cap element="$class"/></value>
+    	</c:if>
     </c:iterate>
 </c:iterate>
             </list>
@@ -56,10 +58,11 @@
 
 <c:iterate select="$project/packages" var="package">
     <c:iterate select="$package/classes" var="class">
+    	<c:if test="isPersisted($class)">
     <bean id="<xc:uncap element="$class"/>DAO" class="<xc:qualifiedName element="$package"/>.dao.hibernate.<xc:cap element="$class"/>DAOHibernate">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
+    	</c:if>
     </c:iterate>
 </c:iterate>
 

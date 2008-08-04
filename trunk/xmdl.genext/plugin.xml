@@ -150,6 +150,21 @@ For example type User is converted to Set&lt;User&gt;.
                   use="optional">
             </attribute>
          </emptyTag>
+         <emptyTag
+               class="org.xmdl.genext.taglib.xc.ImportVirtualTag"
+               deprecated="false"
+               name="importVirtual">
+            <description>
+				This tag imports the virtual class definitions in the given project or
+  				package element.            
+			</description>
+            <attribute
+                  deprecated="false"
+                  name="element"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </emptyTag>
       </tagLibrary>
       <tagLibrary
             deprecated="false"

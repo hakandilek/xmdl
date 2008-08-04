@@ -3,6 +3,7 @@ package org.xmdl.ida.templates.core.test;
 import org.xmdl.gen.util.XMDLClassHelper;
 import org.xmdl.xgen.Template;
 import org.xmdl.xmdl.XClass;
+import org.xmdl.xmdl.XClassBehavior;
 import org.xmdl.xmdl.XPackage;
 
 
@@ -30,7 +31,12 @@ public class EntityServiceTest extends EntityServiceTestImpl
 
 	@Override
 	public boolean accept(Object object) {
-		return (object instanceof XClass);
+		if (object instanceof XClass) {
+			XClass cls = (XClass) object;
+			XClassBehavior behavior = cls.getBehavior();
+			return XClassBehavior.PERSISTED == behavior;
+		} else
+			return false;
 	}
 
 	@Override

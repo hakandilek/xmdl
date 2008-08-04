@@ -20,6 +20,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.model;
 <xc:import pattern="java.io.Serializable"/>
 <xc:import pattern="java.text.MessageFormat"/>
 <xc:import pattern="java.util.*"/>
+<xc:importVirtual element="$class/xPackage/project"/>
 
 
 /**
@@ -30,9 +31,11 @@ package <xc:qualifiedName element="$class/xPackage"/>.model;
  *
  * @generated
  */ 
-@Entity (name=("<xd:tableName class="$class"/>"))
+<c:if test="isPersisted($class)">@Entity (name=("<xd:tableName class="$class"/>"))</c:if>
+<c:if test="isEmbeded($class)">@Embeddable</c:if>
 public class <xc:cap element="$class"/> extends BaseObject implements Serializable, Cloneable {
 
+<c:if test="isPersisted($class)">
     /** 
      * Unique identifier
      * 
@@ -42,6 +45,7 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = ("ID"))
     private Long id;
+</c:if>
 
 <c:iterate select="$class/attributes" var="attribute">
     /** 
@@ -79,6 +83,7 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
     public <xc:cap element="$class"/>() {
     }
 
+<c:if test="isPersisted($class)">
     /** 
      * @generated
      */
@@ -92,6 +97,7 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
     public void setId(Long id) {
         this.id = id;
     }
+</c:if>
 
 <c:iterate select="$class/attributes" var="attribute">
     /** 
@@ -114,14 +120,14 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
      * @generated
      */
     public String toString() {
-        return MessageFormat.format("<xc:cap element="$class"/> [id={0}]<%int i=0;%><c:iterate select="$class/attributes" var="attribute"><c:if test="not(call($attribute, 'isReference'))">[<xc:uncap element="$attribute"/>={<%=++i%>}]</c:if></c:iterate>", id<c:iterate select="$class/attributes" var="attribute"><c:if test="not(call($attribute, 'isReference'))">, <xc:uncap element="$attribute"/></c:if></c:iterate>);
+        return MessageFormat.format("<xc:cap element="$class"/> <c:if test="isPersisted($class)">[id={0}]</c:if><%int i=0;%><c:iterate select="$class/attributes" var="attribute"><c:if test="not(call($attribute, 'isReference'))">[<xc:uncap element="$attribute"/>={<%=++i%>}]</c:if></c:iterate>"<c:if test="isPersisted($class)">, id</c:if><c:iterate select="$class/attributes" var="attribute"><c:if test="not(call($attribute, 'isReference'))">, <xc:uncap element="$attribute"/></c:if></c:iterate>);
     }
 
     /** 
      * @generated
      */
     public boolean equals(Object o) {
-        return o instanceof <xc:cap element="$class"/> && ((<xc:cap element="$class"/>) o).getId() == this.getId();
+        return o instanceof <xc:cap element="$class"/> <c:if test="isPersisted($class)">&& ((<xc:cap element="$class"/>) o).getId() == this.getId()</c:if>;
     }
 
     /** 
@@ -129,7 +135,7 @@ public class <xc:cap element="$class"/> extends BaseObject implements Serializab
      */
     public int hashCode() {
         int result = 1;
-        if (id != null) result = 31 * result + id.hashCode();
+		<c:if test="isPersisted($class)">if (id != null) result = 31 * result + id.hashCode();</c:if>
 <c:iterate select="$class/attributes" var="attribute">
 	<c:if test="not(call($attribute, 'isReference'))">
 	    <c:choose>

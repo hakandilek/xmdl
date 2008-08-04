@@ -106,6 +106,7 @@
     <xd:iterateTables select="$dPackage/dTables" var="dTable">
     <!--<xc:qualifiedName element="$dTable/xClass"/>-START-->
     <c:if test="not(isAssociation($dTable))">
+    	<c:if test="isPersisted($class)">
     <table name="<c:get select="$dTable/@name"/>">
         <column>id</column>
         <c:iterate select="$dTable/dFields" var="field">
@@ -142,9 +143,11 @@
         </row>
 
     </table>
+    	</c:if>
     </c:if>
     
     <c:if test="isAssociation($dTable)">
+    	<c:if test="isPersisted($class)">
     <table name="<c:get select="$dTable/@name"/>">
         <c:iterate select="$dTable/dFields" var="field">
         <column><c:get select="$field/@name"/></column>
@@ -163,6 +166,7 @@
         </row>
 
     </table>
+    	</c:if>
     </c:if>
     
     <!--<xc:qualifiedName element="$dTable/xClass"/>-END-->
