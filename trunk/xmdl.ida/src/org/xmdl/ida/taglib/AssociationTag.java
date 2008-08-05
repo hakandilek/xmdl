@@ -4,10 +4,10 @@ import org.eclipse.jet.JET2Context;
 import org.eclipse.jet.JET2Writer;
 import org.eclipse.jet.taglib.JET2TagException;
 import org.eclipse.jet.taglib.TagInfo;
+import org.xmdl.gen.util.AttributeHelper;
 import org.xmdl.genext.taglib.BaseEmptyTag;
 import org.xmdl.meta.MetaModelFinder;
 import org.xmdl.xgen.AssociationManager;
-import org.xmdl.xmdl.XAssociationBehaviour;
 import org.xmdl.xmdl.XAssociationType;
 import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdldb.DField;
@@ -43,19 +43,17 @@ public class AssociationTag extends BaseEmptyTag {
 				AssociationManager associationManager = AssociationManager.getInstance();
 				switch (type.getValue()) {
 				case XAssociationType.ONE_TO_ONE:
-						
-					XAssociationBehaviour assBe = att.getAssociationBehaviour();
-					if(XAssociationBehaviour.AGGREGATION_LITERAL == assBe) {
+					if (AttributeHelper.getInstance().isEmbeded(att)) {
+						// Sample:
+					    //@Embedded
+						sb.append("@Embedded");
+					} else {
 						// Sample:
 					    //@OneToOne(cascade = CascadeType.ALL)
 					    //@PrimaryKeyJoinColumn
 						sb.append("@OneToOne(cascade = CascadeType.ALL)");
 						sb.append(System.getProperty("line.separator"));
 						sb.append("@PrimaryKeyJoinColumn");
-					} else if(XAssociationBehaviour.COMPOSITION_LITERAL == assBe) {
-						// Sample:
-					    //@Embedded
-						sb.append("@Embedded");
 					}
 
 					break;

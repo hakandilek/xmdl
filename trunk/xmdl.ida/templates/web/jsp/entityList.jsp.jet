@@ -61,6 +61,11 @@
     <ct:if test="not(call($attribute, 'isReference'))">
         <display:column property="<xc:uncap element="$attribute"/>" sortable="true" titleKey="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>"/>
     </ct:if>
+    <ct:if test="isEmbeded($attribute)">
+		<xc:iterateAttributes select="$attribute/type" var="attrib">
+		<display:column property="<xc:uncap element="$attribute"/>.<xc:uncap element="$attrib"/>" sortable="true" titleKey="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>.<xc:uncap element="$attrib"/>"/>
+		</xc:iterateAttributes> 
+    </ct:if>
 </ct:iterate> 
 
         <display:column media="html" titleKey="List.Edit" >

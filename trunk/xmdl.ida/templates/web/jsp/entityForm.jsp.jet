@@ -34,6 +34,14 @@
                   list="<xc:uncap element="$attribute"/>s" labelposition="left"/>
         </ct:if>
     </ct:if>
+    <ct:if test="isEmbeded($attribute)">
+		<tr>
+	   		<td class="tdLabel" colspan="2"><label class="desc"><fmt:message key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>"/></label></td>
+		</tr>
+		<xc:iterateAttributes select="$attribute/type" var="attrib">
+        <s:textfield key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>.<xc:uncap element="$attrib"/>" required="false" cssClass="text medium" labelposition="left"/>
+		</xc:iterateAttributes> 
+    </ct:if>
 </ct:iterate> 
 
     <li class="buttonBar bottom">
