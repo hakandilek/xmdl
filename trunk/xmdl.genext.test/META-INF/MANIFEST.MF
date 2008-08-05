@@ -12,3 +12,4 @@ Require-Bundle: org.xmdl.model,
  org.junit,
  org.apache.log4j,
  org.eclipse.jet
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

@@ -13,3 +13,5 @@
 <c:if test="isPersisted($pack)">pack</c:if>;
 <c:if test="isEmbeded($pack)">pack</c:if>;
 <c:if test="isVirtual($pack)">pack</c:if>;
+<c:if test="isEmbeded($normalAttribute)">normal</c:if>;
+<c:if test="isEmbeded($embedAttribute)">embeded</c:if>;

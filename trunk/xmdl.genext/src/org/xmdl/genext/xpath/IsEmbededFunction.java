@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.eclipse.jet.xpath.NodeSet;
 import org.eclipse.jet.xpath.XPathFunction;
+import org.xmdl.gen.util.AttributeHelper;
+import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XClass;
 import org.xmdl.xmdl.XClassBehavior;
 
@@ -14,7 +16,7 @@ import org.xmdl.xmdl.XClassBehavior;
  * @author Hakan Dilek
  *
  */
-public class IsEmbeddableFunction implements XPathFunction {
+public class IsEmbededFunction implements XPathFunction {
 
     @SuppressWarnings("unchecked")
     @Override
@@ -33,6 +35,9 @@ public class IsEmbeddableFunction implements XPathFunction {
             		return Boolean.TRUE;
             	else 
             		return Boolean.FALSE;
+            } else if (object instanceof XAttribute){
+            	XAttribute att = (XAttribute) object;
+            	return AttributeHelper.getInstance().isEmbeded(att);
             } else {
                 return Boolean.FALSE;
             }

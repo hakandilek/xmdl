@@ -13,4 +13,5 @@ Require-Bundle: org.xmdl.model,org.xmdl.gen,org.eclipse.jet,org.eclips
 Bundle-ActivationPolicy: lazy
 Built-By: Hakan Dilek
 Export-Package: org.xmdl.genext.taglib
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 
