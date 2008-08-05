@@ -14,7 +14,7 @@ This is the next future release of XMDL, planned with the extended [Metamodel] s
 IDA platform, defined with the draft project [http://taslak.googlecode.com/ Taslak] will be integrated in this release. Check [ReleasePlan0_6 detailed planning page] for this release. 
 
 || *Version*        ||  *Release Date* || * Notes * ||
-||  v0.6.0 - alpha8 || _August 2008?_ || Features : [http://code.google.com/p/xmdl/issues/detail?id=78 Issue 78], Bug Fixes : [http://code.google.com/p/xmdl/issues/detail?id=33 Issue 33] ||
+||  v0.6.0 - alpha8 || _August 2008?_ || Features : [http://code.google.com/p/xmdl/issues/detail?id=78 Issue 78], Bug Fixes : [http://code.google.com/p/xmdl/issues/detail?id=33 Issue 33] [http://code.google.com/p/xmdl/issues/detail?id=79 Issue 79] ||
 || *v0.6.0 - alpha7*|| *21.07.2008*  || This release is only valid for update site since it fixes problems with the update site. ||
 || *v0.6.0 - alpha6*|| *19.07.2008* || Eclipse 3.4 integration: [http://code.google.com/p/xmdl/issues/detail?id=77 Issue 77] ||
 ||  v0.6.0 - alpha5 ||  30.05.2008  || Features: [http://code.google.com/p/xmdl/issues/detail?id=34 Issue 34], Bug fixes: [http://code.google.com/p/xmdl/issues/detail?id=65 Issue 65], [http://code.google.com/p/xmdl/issues/detail?id=70 Issue 70], Taslak bug fixes: [http://code.google.com/p/taslak/issues/detail?id=37 Issue 37], [http://code.google.com/p/taslak/issues/detail?id=40 Issue 40] ||
