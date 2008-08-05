@@ -3,6 +3,7 @@ package org.xmdl.genext.xpath;
 import org.xmdl.gen.util.Locator;
 import org.xmdl.genext.BaseTemplateTestCase;
 import org.xmdl.xgen.util.ResourceHelper;
+import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XClass;
 import org.xmdl.xmdl.XPackage;
 import org.xmdl.xmdl.XProject;
@@ -13,6 +14,8 @@ public class ClassBehaviorFunctionTest extends BaseTemplateTestCase {
 	private XClass virtualClass;
 	private XClass persistedClass;
 	private XPackage pack;
+	private XAttribute normalAtribute;
+	private XAttribute embedAtribute;
 
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -25,6 +28,10 @@ public class ClassBehaviorFunctionTest extends BaseTemplateTestCase {
 				"xmdl.genext.test/org.xmdl.genext.test/PersistedClass");
 		pack = Locator.locatePackage(project,
 				"xmdl.genext.test/org.xmdl.genext.test");
+		normalAtribute = Locator.locateAttribute(project,
+				"xmdl.genext.test/org.xmdl.genext.test/Class4/date");
+		embedAtribute = Locator.locateAttribute(project,
+				"xmdl.genext.test/org.xmdl.genext.test/Class4/embe");
 	}
 
 	protected void tearDown() throws Exception {
@@ -33,6 +40,8 @@ public class ClassBehaviorFunctionTest extends BaseTemplateTestCase {
 		virtualClass = null;
 		persistedClass = null;
 		pack = null;
+		normalAtribute = null;
+		embedAtribute = null;
 	}
 
 	public void testEvaluate() {
@@ -42,13 +51,16 @@ public class ClassBehaviorFunctionTest extends BaseTemplateTestCase {
 		setVariable("virtualClass", virtualClass);
 		setVariable("persistedClass", persistedClass);
 		setVariable("pack", pack);
+		setVariable("normalAttribute", normalAtribute);
+		setVariable("embedAttribute", embedAtribute);
+		
 		String output = runTemplate(templateClass);
 
 		// attribute1:string
 		assertNotNull(output);
 		String[] pieces = output.split("\\;");
 		assertNotNull(pieces);
-		assertEquals(12, pieces.length);
+		assertEquals(14, pieces.length);
 		assertEquals("", pieces[0].trim());
 		assertEquals("", pieces[1].trim());
 		assertEquals("persisted", pieces[2].trim());
@@ -61,6 +73,8 @@ public class ClassBehaviorFunctionTest extends BaseTemplateTestCase {
 		assertEquals("pack", pieces[9].trim());
 		assertEquals("", pieces[10].trim());
 		assertEquals("", pieces[11].trim());
+		assertEquals("", pieces[12].trim());
+		assertEquals("embeded", pieces[13].trim());
 	}
 
 }

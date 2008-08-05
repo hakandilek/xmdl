@@ -51,6 +51,7 @@
       <attributes name="date">
         <type xsi:type="org.xmdl:XClass" href="platform:/plugin/org.xmdl.model/model/types.xmdl#//@packages.2/@classes.0"/>
       </attributes>
+      <attributes name="embe" type="//@packages.0/@classes.6" associationType="OneToOne" associationBehaviour="composition"/>
     </classes>
     <classes name="MasterClass" className="org.xmdl.genext.test.MasterClass">
       <attributes name="children" type="//@packages.0/@classes.5" associationType="OneToMany" associationBehaviour="composition" opposite="//@packages.0/@classes.5/@attributes.0"/>

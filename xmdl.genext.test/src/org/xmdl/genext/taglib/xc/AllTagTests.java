@@ -19,6 +19,7 @@ public class AllTagTests {
         suite.addTestSuite(DefaultValueTagTest.class);
         suite.addTestSuite(ImportTagTest.class);
         suite.addTestSuite(ImportVirtualTagTest.class);
+        suite.addTestSuite(IterateAttributesTagTest.class);
         //$JUnit-END$
         return suite;
     }
