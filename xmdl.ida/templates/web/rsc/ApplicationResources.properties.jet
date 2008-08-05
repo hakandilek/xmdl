@@ -237,6 +237,11 @@ List.Edit = Edit
 # -- <xc:uncap element="$class"/> attributes --
 <xc:uncap element="$class"/>.id=Id
         <c:iterate select="$class/attributes" var="attribute">
+            <c:if test="isEmbeded($attribute)">
+                <xc:iterateAttributes select="$attribute/type" var="attrib">
+<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>.<xc:uncap element="$attrib"/> = <xc:cap element="$attrib"/>
+                </xc:iterateAttributes> 
+            </c:if>
 <xc:uncap element="$class"/>.<xc:uncap element="$attribute"/> = <xc:cap element="$attribute"/> 
             <c:if test="not(call($attribute, 'isReference'))">
                 <c:choose>
