@@ -22,6 +22,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.xmdl.gen.util.AttributeHelper;
+import org.xmdl.gen.util.MasterChildHelper;
 import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XType;
 import org.xmdl.xmdl.XmdlPackage;
@@ -305,6 +307,15 @@ public class XAttributeItemProvider extends ItemProviderAdapter implements
 	@Override
 	public Object getImage(Object object) {
 		XAttribute attrib = (XAttribute) object;
+		if (MasterChildHelper.INST.isChild(attrib))
+			return overlayImage(object, getResourceLocator().getImage(
+					"full/obj16/XAttributeChild"));
+		if (MasterChildHelper.INST.isMaster(attrib))
+			return overlayImage(object, getResourceLocator().getImage(
+					"full/obj16/XAttributeMaster"));
+		if (AttributeHelper.getInstance().isEmbeded(attrib))
+			return overlayImage(object, getResourceLocator().getImage(
+					"full/obj16/XAttributeEmbeded"));
 		if (attrib.isReference())
 			return overlayImage(object, getResourceLocator().getImage(
 					"full/obj16/XAttributeReference"));

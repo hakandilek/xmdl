@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.xmdl.gen.util.MasterChildHelper;
 import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XClass;
 import org.xmdl.xmdl.XClassBehavior;
@@ -194,6 +195,10 @@ public class XClassItemProvider extends ItemProviderAdapter implements
 		if (XClassBehavior.VIRTUAL == behavior)
 			return overlayImage(object, getResourceLocator().getImage(
 					"full/obj16/XClassVirtual"));
+		//TODO: The following check is quite slow. Consider a faster approach.
+		if (MasterChildHelper.INST.isChild(xClass))
+			return overlayImage(object, getResourceLocator().getImage(
+					"full/obj16/XClassChild"));
 		return overlayImage(object, getResourceLocator().getImage(
 				"full/obj16/XClass"));
 	}
