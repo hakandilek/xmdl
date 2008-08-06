@@ -2,5 +2,5 @@ Manifest-Version: 1.0
 Ant-Version: Apache Ant 1.7.0
 Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Built-By: hakan
-Bundle-Version: 0.6.0.20080719_alpha6
+Bundle-Version: 0.6.0.20080806_alpha8
 
