@@ -8,21 +8,36 @@ import java.io.Reader;
 
 import org.apache.log4j.Logger;
 
+/**
+ * This is the utility class used to read strings from various resources
+ * 
+ * @author Hakan Dilek
+ */
 public class StringReader {
+
+	/** the logger */
 	private final static Logger LOGGER = Logger.getLogger(StringReader.class);
 
+	/** singleton instance */
 	public static final StringReader INST = new StringReader();
 
+	/** hidden constructor */
 	protected StringReader() {
 		super();
 	}
 
+	/**
+	 * reads the string from a given input stream
+	 * 
+	 * @param is
+	 *            the nput stream
+	 * @return read string
+	 */
 	public String read(InputStream is) {
 		StringBuffer sb = new StringBuffer();
 		if (is != null) {
 			Reader r = new BufferedReader(new InputStreamReader(is));
 			try {
-				// r.reset();
 				char[] buf = new char[8192];
 				int i = r.read(buf);
 				while (i > 0) {

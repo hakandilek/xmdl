@@ -6,19 +6,32 @@ import java.net.URL;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.emf.common.util.URI;
 
+/**
+ * This helper class is used for various URI related operations.
+ * 
+ * @author Hakan Dilek
+ */
 public class URIHelper {
 
+	/**
+	 * Used to fix the given URL scheme, and return it as a URI.
+	 * 
+	 * Only file-scheme URIs will be re-encoded. If a URI was decoded in the
+	 * workaround above, and Platform.resolve() didn't return a file-scheme URI,
+	 * then this will return an decoded URI.
+	 * 
+	 * @param url
+	 *            the URL scheme
+	 * @param fragment
+	 *            fragment appended at the end of result URI
+	 * @return the result URI
+	 * @throws IOException
+	 *             on problems
+	 */
 	protected static URI fix(URL url, String fragment) throws IOException {
-		// Only file-scheme URIs will be re-encoded. If a URI was decoded in the
-		// workaround
-		// above, and Platform.resolve() didn't return a file-scheme URI, then
-		// this will return
-		// an decoded URI.
-		//
 		String protocol = url.getProtocol();
-		URI result = "file".equalsIgnoreCase(protocol) ? URI
-				.createFileURI(URI.decode(url.getFile())) : URI.createURI(url
-				.toString());
+		URI result = "file".equalsIgnoreCase(protocol) ? URI.createFileURI(URI
+				.decode(url.getFile())) : URI.createURI(url.toString());
 		if (fragment != null) {
 			result = result.appendFragment(fragment);
 		}
@@ -27,6 +40,10 @@ public class URIHelper {
 
 	/**
 	 * Use the platform to convert to a local URI.
+	 * 
+	 * @param uri
+	 *            the URI to resolve
+	 * @return the resolved URI
 	 */
 	public static URI resolve(URI uri) {
 		String fragment = uri.fragment();
@@ -60,6 +77,10 @@ public class URIHelper {
 
 	/**
 	 * Use the platform to convert to a local URI.
+	 * 
+	 * @param uri
+	 *            the URI to convert
+	 * @return the converted URI
 	 */
 	public static URI asLocalURI(URI uri) {
 		try {
@@ -71,7 +92,7 @@ public class URIHelper {
 			URL localURL = FileLocator.toFileURL(url);
 			return fix(localURL, fragment);
 		} catch (IOException exception) {
-			//ignore this
+			// ignore this
 		}
 		return uri;
 	}
