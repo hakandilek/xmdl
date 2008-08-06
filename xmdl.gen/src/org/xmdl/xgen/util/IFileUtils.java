@@ -11,16 +11,38 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
+import org.xmdl.gen.mark.PlatformMarkManager;
+import org.xmdl.xgen.Generator;
 
+/**
+ * This class is used by the {@link Generator} and {@link PlatformMarkManager}
+ * to perform operations on {@link IFile} types
+ * 
+ * @author Hakan Dilek
+ */
 public class IFileUtils {
+
+	/** singleton instance */
 	public static final IFileUtils INST = new IFileUtils();
 
+	/** the logger */
 	private final static Logger LOGGER = Logger.getLogger(IFileUtils.class);
 
+	/**
+	 * hidden constructor
+	 */
 	protected IFileUtils() {
 		super();
 	}
 
+	/**
+	 * Creates a folder in the given target path
+	 * 
+	 * @param target
+	 *            target path
+	 * @throws CoreException
+	 *             on problems
+	 */
 	public void createFolder(String target) throws CoreException {
 		LOGGER.debug("create Folder:" + target);
 		IFolder folder = null;
@@ -52,7 +74,8 @@ public class IFileUtils {
 	 * @throws CoreException
 	 *             if an error occurs
 	 */
-	public IFile writeFile(InputStream content, String outFileName) throws CoreException {
+	public IFile writeFile(InputStream content, String outFileName)
+			throws CoreException {
 		return writeFile(content, outFileName, null);
 	}
 
@@ -106,7 +129,7 @@ public class IFileUtils {
 			FileWriteIntegration integration) throws CoreException {
 		String filename = outFile.getName();
 		String fullFilename = outFile.getFullPath().toString();
-		
+
 		if (integration != null) {
 			integration.setContent(content);
 			integration.setOutFile(outFile);
@@ -114,7 +137,7 @@ public class IFileUtils {
 			content = integration.getContent();
 			outFile = integration.getOutFile();
 		}
-		
+
 		if (outFile.exists()) {
 			LOGGER.debug("re writing : " + filename);
 			// TODO:check file size and skip
@@ -125,7 +148,7 @@ public class IFileUtils {
 			if (dotIndex > 0) {
 				filename = filename.substring(0, dotIndex);
 			}
-			
+
 			int slashIndex = fullFilename.lastIndexOf("/");
 			if (slashIndex > 0) {
 				String foldername = fullFilename.substring(0, slashIndex);
@@ -143,21 +166,26 @@ public class IFileUtils {
 			content = integration.getContent();
 			outFile = integration.getOutFile();
 		}
-		
+
 		return outFile;
 	}
 
+	/**
+	 * reads the given file and retuns contents
+	 * 
+	 * @param file
+	 *            the file to read
+	 * @return file content
+	 */
 	public static String readFile(IFile file) {
 		InputStream targetIn = null;
 		try {
-			targetIn = new FileInputStream(file.getLocation()
-					.toFile());
+			targetIn = new FileInputStream(file.getLocation().toFile());
 		} catch (FileNotFoundException e) {
 			LOGGER.warn("File " + file + " must be present", e);
 		}
 		String target = StringReader.INST.read(targetIn);
 		return target;
 	}
-
 
 }
