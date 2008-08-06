@@ -3,14 +3,14 @@
 <repository name='file:/home/hakan/mutfak/xmdl/xmdl.update/ - artifacts' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1.0.0'>
   <properties size='2'>
     <property name='p2.compressed' value='false'/>
-    <property name='p2.timestamp' value='1216643313277'/>
+    <property name='p2.timestamp' value='1218023873788'/>
   </properties>
   <mappings size='3'>
     <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
     <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
     <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
   </mappings>
-  <artifacts size='68'>
+  <artifacts size='78'>
     <artifact classifier='osgi.bundle' id='org.xmdl.xmdldb.ui' version='0.6.0.20080530_alpha5'>
       <properties size='3'>
         <property name='artifact.size' value='82505'/>
@@ -119,6 +119,13 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.xmdl.model' version='0.6.0.20080806_alpha8'>
+      <properties size='3'>
+        <property name='artifact.size' value='237345'/>
+        <property name='download.size' value='237345'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.xmdl.xmdlbo.ui' version='0.6.0.20080206_alpha4'>
       <properties size='3'>
         <property name='artifact.size' value='81753'/>
@@ -154,6 +161,12 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='org.xmdl' version='0.6.0.20080806_alpha8'>
+      <properties size='2'>
+        <property name='artifact.size' value='1322'/>
+        <property name='download.size' value='1322'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.xmdl.model' version='0.6.0.20080719_alpha6'>
       <properties size='3'>
         <property name='artifact.size' value='234848'/>
@@ -161,17 +174,17 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='org.xmdl' version='0.6.0.20080721_alpha7'>
+      <properties size='2'>
+        <property name='artifact.size' value='1323'/>
+        <property name='download.size' value='1323'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='xmdl.gen' version='0.6.0.20080114_alpha2'>
       <properties size='3'>
         <property name='artifact.size' value='85870'/>
         <property name='download.size' value='85870'/>
         <property name='download.contentType' value='application/zip'/>
-      </properties>
-    </artifact>
-    <artifact classifier='org.eclipse.update.feature' id='org.xmdl' version='0.6.0.20080721_alpha7'>
-      <properties size='2'>
-        <property name='artifact.size' value='1323'/>
-        <property name='download.size' value='1323'/>
       </properties>
     </artifact>
     <artifact classifier='osgi.bundle' id='org.xmdl.xmdl.ui' version='0.6.0.20080719_alpha6'>
@@ -243,10 +256,24 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.xmdl.xmdl.ui' version='0.6.0.20080806_alpha8'>
+      <properties size='3'>
+        <property name='artifact.size' value='164648'/>
+        <property name='download.size' value='164648'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.xmdl.xmdl.ui' version='0.6.0.20080206_alpha4'>
       <properties size='3'>
         <property name='artifact.size' value='159703'/>
         <property name='download.size' value='159703'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.xmdl.core' version='0.6.0.20080806_alpha8'>
+      <properties size='3'>
+        <property name='artifact.size' value='334778'/>
+        <property name='download.size' value='334778'/>
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
@@ -261,6 +288,13 @@
       <properties size='3'>
         <property name='artifact.size' value='186980'/>
         <property name='download.size' value='186980'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.xmdl.xmdldb.ui' version='0.6.0.20080806_alpha8'>
+      <properties size='3'>
+        <property name='artifact.size' value='85692'/>
+        <property name='download.size' value='85692'/>
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
@@ -299,6 +333,13 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.xmdl.ida' version='0.6.0.20080806_alpha8'>
+      <properties size='3'>
+        <property name='artifact.size' value='675037'/>
+        <property name='download.size' value='675037'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.xmdl.ida' version='0.6.0.20080719_alpha6'>
       <properties size='3'>
         <property name='artifact.size' value='664691'/>
@@ -310,6 +351,13 @@
       <properties size='3'>
         <property name='artifact.size' value='81484'/>
         <property name='download.size' value='81484'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.xmdl.xmdlbo.ui' version='0.6.0.20080806_alpha8'>
+      <properties size='3'>
+        <property name='artifact.size' value='81759'/>
+        <property name='download.size' value='81759'/>
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
@@ -334,10 +382,10 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
-    <artifact classifier='osgi.bundle' id='org.xmdl.genext' version='0.6.0.20080117_alpha3'>
+    <artifact classifier='osgi.bundle' id='org.xmdl.xmdlgen.ui' version='0.6.0.20080806_alpha8'>
       <properties size='3'>
-        <property name='artifact.size' value='27146'/>
-        <property name='download.size' value='27146'/>
+        <property name='artifact.size' value='80014'/>
+        <property name='download.size' value='80014'/>
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
@@ -345,6 +393,13 @@
       <properties size='3'>
         <property name='artifact.size' value='27002'/>
         <property name='download.size' value='27002'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.xmdl.genext' version='0.6.0.20080117_alpha3'>
+      <properties size='3'>
+        <property name='artifact.size' value='27146'/>
+        <property name='download.size' value='27146'/>
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
@@ -437,10 +492,24 @@
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
+    <artifact classifier='osgi.bundle' id='org.xmdl.genext' version='0.6.0.20080806_alpha8'>
+      <properties size='3'>
+        <property name='artifact.size' value='43162'/>
+        <property name='download.size' value='43162'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
     <artifact classifier='osgi.bundle' id='org.xmdl.gen' version='0.6.0.20080530_alpha5'>
       <properties size='3'>
         <property name='artifact.size' value='90574'/>
         <property name='download.size' value='90574'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.xmdl.gen' version='0.6.0.20080806_alpha8'>
+      <properties size='3'>
+        <property name='artifact.size' value='114828'/>
+        <property name='download.size' value='114828'/>
         <property name='download.contentType' value='application/zip'/>
       </properties>
     </artifact>
