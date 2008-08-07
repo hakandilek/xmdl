@@ -57,6 +57,9 @@ public class TestTagUtils {
         if (XmdlTypes.JAVA_LONG.equals(type)) {
             return "new Long(" + plain + "L)";
         }
+        if (XmdlTypes.JAVA_BOOLEAN.equals(type)) {
+            return "new Boolean(" + plain + ")";
+        }
         if (XmdlTypes.JAVA_DATE.equals(type)
                 || XmdlTypes.JAVA_DATETIME.equals(type)) {
             long l = 0;
