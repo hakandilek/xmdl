@@ -224,14 +224,20 @@ public class ClassTagUtils {
     }
 
 	public static String importType(XAttribute attribute) {
-		return importType(attribute, false, true);
+		return importType(attribute, false, true, false);
 	}
 	
 	public static String importType(XAttribute attribute, boolean advance, boolean wrapAssociation) {
+		return importType(attribute, advance, wrapAssociation, false);
+	}
+	
+	public static String importType(XAttribute attribute, boolean advance, boolean wrapAssociation, boolean instance) {
 		StringBuffer out = new StringBuffer();
 		XAssociationType associationType = attribute.getAssociationType();
 		boolean association = (XAssociationType.ONE_TO_MANY_LITERAL == associationType || XAssociationType.MANY_TO_MANY_LITERAL == associationType);
 		if (wrapAssociation && association) {
+			if (instance)
+				out.append("Hash");//becomes HashSet<>
 			out.append("Set<");
 		}
 		XType type = attribute.getType();
