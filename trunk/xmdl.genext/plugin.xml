@@ -41,6 +41,17 @@
 For example type User is converted to Set&lt;User&gt;.  
                </description>
             </attribute>
+            <attribute
+                  deprecated="false"
+                  name="instance"
+                  type="boolean"
+                  use="optional">
+               <description>
+                  Wraps the association type with its corresponding collection instance  type if the given attribute is an association and wrapAssociation isset to true. 
+
+For example type User is converted to HashSet&lt;User&gt;.  
+               </description>
+            </attribute>
          </emptyTag>
          <emptyTag
                class="org.xmdl.genext.taglib.xc.CapitalizeTag"
