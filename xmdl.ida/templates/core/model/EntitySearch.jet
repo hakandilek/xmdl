@@ -68,7 +68,7 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     /** 
      * @generated
      */
-    public <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> get<xc:cap element="$attribute"/>Min() {
+    public <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> <xc:accessor attribute="$attribute"/>Min() {
         return <xc:uncap element="$attribute"/>Min;
     }
 
@@ -82,7 +82,7 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     /** 
      * @generated
      */
-    public <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> get<xc:cap element="$attribute"/>Max() {
+    public <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> <xc:accessor attribute="$attribute"/>Max() {
         return <xc:uncap element="$attribute"/>Max;
     }
 
@@ -98,7 +98,7 @@ public class <xc:cap element="$class"/>Search implements Serializable {
     /** 
      * @generated
      */
-    public <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> get<xc:cap element="$attribute"/>() {
+    public <xc:attributeType attribute="$attribute" wrapType="true" wrapAssociation="false"/> <xc:accessor attribute="$attribute"/>() {
         return <xc:uncap element="$attribute"/>;
     }
 
