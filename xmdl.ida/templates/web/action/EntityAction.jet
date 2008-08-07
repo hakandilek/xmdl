@@ -123,7 +123,7 @@ public class <xc:cap element="$class"/>Action extends BaseAction implements Prep
 				}
 				
 				if (<xm:masterAttributeName element="$class"/>ID != null) {
-                    <xm:masterAttributeName element="$class"/> = orderManager.get(<xm:masterAttributeName element="$class"/>ID);
+                    <xm:masterAttributeName element="$class"/> = <xm:masterAttributeName element="$class"/>Manager.get(<xm:masterAttributeName element="$class"/>ID);
                    	<xc:uncap element="$class"/>Search.set<xm:masterAttributeName element="$class" cap="true"/>(<xm:masterAttributeName element="$class"/>);
                     <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>Manager.search(<xc:uncap element="$class"/>Search);
 	            } else {

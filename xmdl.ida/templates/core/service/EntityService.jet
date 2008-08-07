@@ -39,6 +39,6 @@ public interface <xc:cap element="$class"/>Manager extends GenericManager<<xc:ca
     /**
      * @generated
      */ 
-    void copyFrom(Order source, Order destination);
+    void copyFrom(<xm:masterClassName element="$class"/> source, <xm:masterClassName element="$class"/> destination);
 </xm:isChild>
 }

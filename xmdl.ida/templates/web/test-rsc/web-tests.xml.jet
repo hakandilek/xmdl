@@ -123,7 +123,7 @@
             &config;
             <steps>
                 &login;
-                <invoke description="click <xc:cap element="$class"/> Order link" url="/<xc:cap element="$class"/>/copy<xc:cap element="$class"/>.do?idToCopy=1"/>
+                <invoke description="click Entity link" url="/<xc:cap element="$class"/>/copy<xc:cap element="$class"/>.do?idToCopy=1"/>
                 <verifytitle description="Values filled by the properties of the <xc:uncap element="$class"/>"
                              text=".*${<xc:uncap element="$class"/>Detail.title}.*" regex="true"/>
             </steps>
