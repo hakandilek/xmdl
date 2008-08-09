@@ -210,7 +210,7 @@ public class <%=helper.getCapName(xClass)%>ServiceTest extends BaseServiceTest<<
 <%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference() && !attribute.getType().isComparable()) {%>
-        searchBean.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueStringTrimmed(attribute, 2)%>);
+        searchBean.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueAsStringTrimmed(attribute, 2)%>);
 <%}//if (attribute.getType() !=null%>
 <%}//for%>        
 

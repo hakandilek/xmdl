@@ -88,7 +88,7 @@ public class <%=helper.getCapName(xClass)%>ActionTest extends BaseActionTest imp
 <%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
-        addRequestParameter("<%=helper.uncapSafeName(xClass)%>.<%=helper.uncapSafeName(attribute)%>", "<%=testHelper.randomValuePlain(attribute)%>");
+        addRequestParameter("<%=helper.uncapSafeName(xClass)%>.<%=helper.uncapSafeName(attribute)%>", "<%=testHelper.randomValueAsString(attribute)%>");
 <%}//if (attribute.getType() !=null%>
 <%}//for%>        
 
@@ -119,7 +119,7 @@ public class <%=helper.getCapName(xClass)%>ActionTest extends BaseActionTest imp
 <%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
-        addRequestParameter("<%=helper.uncapSafeName(xClass)%>.<%=helper.uncapSafeName(attribute)%>", "<%=testHelper.randomValuePlain(attribute)%>");
+        addRequestParameter("<%=helper.uncapSafeName(xClass)%>.<%=helper.uncapSafeName(attribute)%>", "<%=testHelper.randomValueAsString(attribute)%>");
 <%}//if (attribute.getType() !=null%>
 <%}//for%>        
 

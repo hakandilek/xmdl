@@ -1,7 +1,6 @@
 <%@ jet 
 	package="org.xmdl.core.templates.ui.web.impl" 
-	imports="
-			org.xmdl.xmdl.*
+	imports="org.xmdl.xmdl.*
 			org.xmdl.gen.util.*
 			org.eclipse.emf.codegen.util.*
 			"
@@ -28,7 +27,7 @@ package <%=helper.getQualifiedName(xPackage)%>.ui.web.action;
 
 /**
  * $Id$
- * Created: 17.Þub.2006 13:28:22
+ * Created: 17.ï¿½ub.2006 13:28:22
  *
  * @author hd
  * @generated

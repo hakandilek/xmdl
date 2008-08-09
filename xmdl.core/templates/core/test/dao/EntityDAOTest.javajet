@@ -67,7 +67,7 @@ public class <%=helper.getCapName(xClass)%>DAOTest extends BaseDAOTestCase<<%=he
 <%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
-        assertEquals(<%=helper.uncapName(xClass.getName())%>.<%=helper.getGetAccessor(attribute)%>(), <%=testHelper.randomValueString(attribute)%>);
+        assertEquals(<%=helper.uncapName(xClass.getName())%>.<%=helper.getGetAccessor(attribute)%>(), <%=testHelper.randomValueAsString(attribute)%>);
 <%}//if (attribute.getType() !=null%>
 <%}//for%>
     }
@@ -126,7 +126,7 @@ public class <%=helper.getCapName(xClass)%>DAOTest extends BaseDAOTestCase<<%=he
 <%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
-		<%=helper.getImportedAttributeType(attribute)%> test<%=helper.uncapSafeName(attribute)%> = <%=testHelper.randomValueString(attribute)%>;
+		<%=helper.getImportedAttributeType(attribute)%> test<%=helper.uncapSafeName(attribute)%> = <%=testHelper.randomValueAsString(attribute)%>;
         <%=helper.uncapName(xClass.getName())%>.set<%=helper.getAccessorName(attribute)%>(test<%=helper.uncapSafeName(attribute)%>);		
 <%}//if (attribute.getType() !=null%>
 <%}//for%>
@@ -160,7 +160,7 @@ public class <%=helper.getCapName(xClass)%>DAOTest extends BaseDAOTestCase<<%=he
 <%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
-		<%=helper.getImportedAttributeType(attribute)%> test<%=helper.uncapSafeName(attribute)%> = <%=testHelper.randomValueString(attribute)%>;
+		<%=helper.getImportedAttributeType(attribute)%> test<%=helper.uncapSafeName(attribute)%> = <%=testHelper.randomValueAsString(attribute)%>;
         <%=helper.uncapName(xClass.getName())%>.set<%=helper.getAccessorName(attribute)%>(test<%=helper.uncapSafeName(attribute)%>);		
 <%}//if (attribute.getType() !=null%>
 <%}//for%>
@@ -218,7 +218,7 @@ public class <%=helper.getCapName(xClass)%>DAOTest extends BaseDAOTestCase<<%=he
 <%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
-        assertEquals(<%=helper.uncapName(xClass.getName())%>.<%=helper.getGetAccessor(attribute)%>(), <%=testHelper.randomValueString(attribute)%>);
+        assertEquals(<%=helper.uncapName(xClass.getName())%>.<%=helper.getGetAccessor(attribute)%>(), <%=testHelper.randomValueAsString(attribute)%>);
 <%}//if (attribute.getType() !=null%>
 <%}//for%>
 
@@ -304,7 +304,7 @@ public class <%=helper.getCapName(xClass)%>DAOTest extends BaseDAOTestCase<<%=he
 <%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference() && !attribute.getType().isComparable()) {%>
-        searchBean.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueStringTrimmed(attribute, 2)%>);
+        searchBean.set<%=helper.getAccessorName(attribute)%>(<%=testHelper.randomValueAsStringTrimmed(attribute, 2)%>);
 <%}//if (attribute.getType() !=null%>
 <%}//for%>        
 

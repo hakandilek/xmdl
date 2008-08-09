@@ -1,6 +1,5 @@
 <%@ jet 
 	package="org.xmdl.core.templates.ui.web.include.impl" 
-	imports=""
 	class="HeaderJSPImpl"
 	startTag="<$" endTag="$>" 
 %>

@@ -17,6 +17,7 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.EList;
 import org.xmdl.xgen.util.IFileUtils;
 import org.xmdl.xmdl.XAttribute;
 import org.xmdl.xmdl.XClass;
@@ -42,9 +43,9 @@ public class TestHelper {
 		super();
 	}
 
-	public String randomValueStringTrimmed(XAttribute attrib, int trimLength) {
+	public String randomValueAsStringTrimmed(XAttribute attrib, int trimLength) {
 		XType type = attrib.getType();
-		String s = randomValuePlain(attrib);
+		String s = randomValueAsString(attrib);
 		String substring = s;
 
 		if (XmdlTypes.JAVA_STRING.equals(type)) {
@@ -58,18 +59,26 @@ public class TestHelper {
 		return substring;
 	}
 
-	public String randomValueString(XAttribute attrib) {
-		String plain = randomValuePlain(attrib);
+	public String randomValueAsString(XAttribute attrib) {
+		String plain = "";
+		Object value = randomValuePlain(attrib);
+		if (value instanceof XEnumerationLiteral) {
+			XEnumerationLiteral lit = (XEnumerationLiteral) value;
+			plain = lit.getName();
+		} else {
+			plain = value + "";
+		}
+		
 		return plain;
 	}
 
-	public String randomValuePlain(XAttribute attrib) {
+	public Object randomValuePlain(XAttribute attrib) {
 		Object random = randomValues.get(attrib);
 		if (random == null) {
 			random = randomValue(attrib);
 			randomValues.put(attrib, random);
 		}
-		return "" + random;
+		return random;
 	}
 
 	public Object randomValue(XAttribute attrib) {
@@ -109,7 +118,7 @@ public class TestHelper {
 			List<XEnumerationLiteral> literals = enumer.getLiterals();
 			XEnumerationLiteral literal = (XEnumerationLiteral) utils
 					.randomObject(literals);
-			result = literal.getName();
+			result = literal;
 		}
 
 		if (result != null) {
@@ -122,6 +131,11 @@ public class TestHelper {
 		IFile file = getPreserveFile(attrib);
 		if (file == null)
 			return;
+		
+		if (value instanceof XEnumerationLiteral) {
+			XEnumerationLiteral lit = (XEnumerationLiteral) value;
+			value = lit.getValue();
+		}
 
 		Properties properties = new Properties();
 		try {
@@ -158,6 +172,25 @@ public class TestHelper {
 			properties.load(contents);
 			String key = getPropertyKey(attrib);
 			Object value = properties.get(key);
+			
+			//special conversion for enumeration literals value -> literal
+			XType type = attrib.getType();
+			if (type instanceof XEnumeration) {
+				Integer i = null;
+				try {
+					i = Integer.parseInt(value+"");
+				} catch (NumberFormatException e) {
+					return value;
+				}
+				XEnumeration enumer = (XEnumeration) type;
+				EList<XEnumerationLiteral> lits = enumer.getLiterals();
+				for (XEnumerationLiteral lit : lits) {
+					if (i == lit.getValue()) {
+						value = lit;
+						break;
+					}
+				}
+			}
 			return value;
 		} catch (CoreException e) {
 			LOGGER.error("Error reading values", e);

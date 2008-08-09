@@ -1,7 +1,6 @@
 <%@ jet 
 	package="org.xmdl.core.templates.ui.web.jsp.part.impl" 
-	imports="
-			org.xmdl.xmdl.*
+	imports="org.xmdl.xmdl.*
 			org.xmdl.gen.util.*
 			org.xmdl.core.util.*
 			"
