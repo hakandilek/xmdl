@@ -1,6 +1,5 @@
 <%@ jet 
 	package="org.xmdl.core.templates.ui.web.decorator.impl" 
-	imports=""
 	class="Application01Impl"
 	startTag="<$" endTag="$>" 
 %><$ 

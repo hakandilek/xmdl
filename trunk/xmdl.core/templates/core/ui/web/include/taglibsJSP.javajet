@@ -1,8 +1,6 @@
 <%@ jet 
 	package="org.xmdl.core.templates.ui.web.include.impl" 
-	imports="
-			org.xmdl.xmdl.*
-			"
+	imports="org.xmdl.xmdl.*"
 	class="TaglibsJSPImpl"
 	startTag="<$" endTag="$>" 
 %><$ 

@@ -1,6 +1,5 @@
 <%@ jet 
 	package="org.xmdl.core.templates.ui.web.webinf.impl" 
-	imports=""
 	class="ValidatorRulesXMLImpl" 
 %>
 <!DOCTYPE form-validation PUBLIC

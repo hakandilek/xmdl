@@ -13,6 +13,6 @@
 <%for (Iterator<XAttribute> i= xClass.getAttributes().iterator(); i.hasNext();) {
     XAttribute attribute = (XAttribute) i.next();%>
 <%if (attribute.getType() != null && !attribute.isReference()) {%>
-<%=attribute.getName()%> = <%=testHelper.randomValuePlain(attribute)%>
+<%=attribute.getName()%> = <%=testHelper.randomValueAsString(attribute)%>
 <%}//if (attribute.getType() !=null%>
 <%}//for%>
