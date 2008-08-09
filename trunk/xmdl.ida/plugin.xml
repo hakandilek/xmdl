@@ -56,6 +56,25 @@ NOT USED ANYMORE.
                   use="required">
             </attribute>
          </emptyTag>
+         <conditionalTag
+               class="org.xmdl.ida.taglib.IsEntityReferenceTag"
+               deprecated="false"
+               name="isEntityReference"
+               processContents="standard"
+               whenContainingLineIsEmpty="remove">
+            <description>
+               This tag checks whether the given attribute is an entity reference. The
+ following are threatened as entity references:
+ 
+ many-to-one associations,
+ references in association tables for many-to-many associations
+            </description>
+            <attribute
+                  name="attribute"
+                  type="xpath"
+                  use="required">
+            </attribute>
+         </conditionalTag>
       </tagLibrary>
    </extension>
 
