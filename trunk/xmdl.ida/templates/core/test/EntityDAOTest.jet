@@ -4,6 +4,8 @@
 <%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
 <%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
 <%@taglib prefix="tu" id="org.xmdl.genext.testUtils" %>
+<%@taglib prefix="xm" id="org.xmdl.genext.xmdlMeta" %>
+<%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@ jet 
     package="org.xmdl.ida.templates.core.test" 
     class="EntityDAOTestImpl" 
@@ -53,6 +55,25 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
     <c:if test="not(call($attribute, 'isReference'))">
         <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute"/>);
     </c:if>
+    <xm:isMaster element="$attribute">
+        <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
+        <xc:uncap element="$attribute"/>.setId(1L);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<xc:uncap element="$attribute"/>);
+    </xm:isMaster>
+    <c:if test="isEmbeded($attribute)">
+        <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
+        <xc:iterateAttributes select="$attribute/type" var="attrib">
+            <c:if test="not(call($attrib, 'isReference'))">
+        <xc:uncap element="$attribute"/>.<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib"/>);
+            </c:if>
+    		<xm:isMaster element="$attribute">
+        <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
+        <xc:uncap element="$attribute"/>.setId(1L);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<xc:uncap element="$attribute"/>);
+    		</xm:isMaster>
+        </xc:iterateAttributes>
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<xc:uncap element="$attribute"/>);
+    </c:if>
 </c:iterate> 
 
         <xc:uncap element="$class"/> = <xc:uncap element="$class"/>DAO.save(<xc:uncap element="$class"/>);
@@ -85,7 +106,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
      */ 
     public void testSearch() throws Exception {
         <xc:cap element="$class"/>Search search = new <xc:cap element="$class"/>Search();
-    <c:iterate select="$class/attributes" var="attribute">
+<c:iterate select="$class/attributes" var="attribute">
     <c:if test="not(call($attribute, 'isReference'))">
         <c:choose>
         <c:when test="call($attribute/type, 'isComparable')">
@@ -97,7 +118,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         </c:otherwise>
         </c:choose>
     </c:if>
-    </c:iterate>
+</c:iterate>
         Collection<<xc:cap element="$class"/>> <xc:uncap element="$class"/>s = <xc:uncap element="$class"/>DAO.search(search);
         assertTrue(<xc:uncap element="$class"/>s.size() > 0);
     }
@@ -112,6 +133,25 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 <c:iterate select="$class/attributes" var="attribute">
     <c:if test="not(call($attribute, 'isReference'))">
         <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute"/>);
+    </c:if>
+    <xm:isMaster element="$attribute">
+        <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
+        <xc:uncap element="$attribute"/>.setId(1L);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<xc:uncap element="$attribute"/>);
+    </xm:isMaster>
+    <c:if test="isEmbeded($attribute)">
+        <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
+        <xc:iterateAttributes select="$attribute/type" var="attrib">
+            <c:if test="not(call($attrib, 'isReference'))">
+        <xc:uncap element="$attribute"/>.<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib"/>);
+            </c:if>
+    	<xm:isMaster element="$attribute">
+        <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
+        <xc:uncap element="$attribute"/>.setId(1L);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<xc:uncap element="$attribute"/>);
+    	</xm:isMaster>
+        </xc:iterateAttributes>
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<xc:uncap element="$attribute"/>);
     </c:if>
 </c:iterate> 
         <xc:uncap element="$class"/>DAO.save(<xc:uncap element="$class"/>);
