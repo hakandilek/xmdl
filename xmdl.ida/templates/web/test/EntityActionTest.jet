@@ -2,6 +2,8 @@
 <%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
 <%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
 <%@taglib prefix="tu" id="org.xmdl.genext.testUtils" %>
+<%@taglib prefix="xm" id="org.xmdl.genext.xmdlMeta" %>
+<%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
 <%@ jet 
     package="org.xmdl.ida.templates.web.test" 
     class="EntityActionTestImpl" 
@@ -52,7 +54,6 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
      * @generated
      */
     @Override
-    @SuppressWarnings("unchecked")
     protected void onSetUpBeforeTransaction() throws Exception {
         super.onSetUpBeforeTransaction();
         action = new <xc:cap element="$class"/>Action();
@@ -63,17 +64,36 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 
         // enter all required fields
-    <c:iterate select="$class/attributes" var="attribute">
-        <c:if test="not(call($attribute, 'isReference'))">
+<c:iterate select="$class/attributes" var="attribute">
+    <c:if test="not(call($attribute, 'isReference'))">
         <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute"/>);
-        </c:if>
-    </c:iterate> 
+    </c:if>
+    <xm:isMaster element="$attribute">
+        <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
+        <xc:uncap element="$attribute"/>.setId(1L);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<xc:uncap element="$attribute"/>);
+    </xm:isMaster>
+    <c:if test="isEmbeded($attribute)">
+        <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
+        <xc:iterateAttributes select="$attribute/type" var="attrib">
+            <c:if test="not(call($attrib, 'isReference'))">
+        <xc:uncap element="$attribute"/>.<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib"/>);
+            </c:if>
+    	<xm:isMaster element="$attribute">
+        <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
+        <xc:uncap element="$attribute"/>.setId(1L);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<xc:uncap element="$attribute"/>);
+    	</xm:isMaster>
+        </xc:iterateAttributes>
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<xc:uncap element="$attribute"/>);
+    </c:if>
+</c:iterate> 
 
-    <c:iterate select="$class/attributes" var="attribute">
-        <c:if test="isEnumeration($attribute)">
+<c:iterate select="$class/attributes" var="attribute">
+    <c:if test="isEnumeration($attribute)">
         action.set<xc:cap element="$attribute"/>Ids(<xc:uncap element="$attribute"/>Ids);
-        </c:if>
-    </c:iterate> 
+    </c:if>
+</c:iterate> 
 
         <xc:uncap element="$class"/>Manager.save(<xc:uncap element="$class"/>);
     }
