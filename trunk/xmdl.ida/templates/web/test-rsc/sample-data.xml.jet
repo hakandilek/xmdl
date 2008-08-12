@@ -169,11 +169,9 @@
             <c:if test="not(call($field/xAttribute, 'isReference'))">
             <value description="<c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd"/></value>
             </c:if>
-		    <c:if test="isEmbeded($field/xAttribute)">
             <ida:isEntityReference attribute="$field/xAttribute">
             <value description="<c:get select="$field/@name"/>">3</value>
             </ida:isEntityReference>
-		    </c:if>
 		    <c:if test="isEmbeded($field/xAttribute)">
 				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
             		<c:if test="not(call($attrib, 'isReference'))">
