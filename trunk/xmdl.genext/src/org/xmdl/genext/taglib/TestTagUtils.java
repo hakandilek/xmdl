@@ -39,7 +39,7 @@ public class TestTagUtils {
 	 * @return text wrapped with type info
 	 */
 	private static String wrap(Object plain, XAttribute attribute) {
-		String result = "";
+		String result = "" + plain;
 		XType type = attribute.getType();
 		if (XmdlTypes.JAVA_STRING.equals(type)) {
 			result = "\"" + plain + "\"";
