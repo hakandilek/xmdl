@@ -18,7 +18,9 @@
     <menu:displayMenu name="Logout"/>
 
 <ct:iterate select="$project/packages" var="package">
+	<ct:if test="isPersisted($package)">
     <menu:displayMenu name="<xc:qualifiedName element="$package"/>Menu"/>
+    </ct:if>
 </ct:iterate>
 
 </ul>
