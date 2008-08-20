@@ -16,4 +16,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: org.xmdl.gen.mark,org.xmdl.gen.plugin,org.xmdl.gen.uti
  l,org.xmdl.meta,org.xmdl.xgen,org.xmdl.xgen.util
 Built-By: Hakan Dilek
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 

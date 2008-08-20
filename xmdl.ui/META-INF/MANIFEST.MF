@@ -17,4 +17,5 @@ Require-Bundle: org.xmdl.model,org.xmdl.gen,org.eclipse.core.runtime,o
  pse.jdt.ui,org.apache.log4j
 Bundle-ActivationPolicy: lazy
 Built-By: Hakan Dilek
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 

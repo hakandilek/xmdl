@@ -13,4 +13,5 @@ Require-Bundle: org.xmdl.model,org.xmdl.gen,org.xmdl.genext,org.eclips
 Bundle-ActivationPolicy: lazy
 Built-By: Hakan Dilek
 Bundle-Activator: org.xmdl.ida.plugin.XMDLIDAPlugin$Implementation
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 

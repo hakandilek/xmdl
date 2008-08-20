@@ -12,4 +12,5 @@ Require-Bundle: org.xmdl.model,org.xmdl.gen,org.eclipse.emf.ecore,org.
  ipse.jet
 Eclipse-LazyStart: true
 Built-By: Hakan Dilek
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 
