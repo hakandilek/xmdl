@@ -13,6 +13,7 @@
     <classpathentry kind="src" path="core/src/test/resources" output="target/test-classes" excluding="**/*.java" />
     <classpathentry kind="src" path="web/src/main/java"/>
     <classpathentry kind="src" path="web/src/main/resources" excluding="ApplicationResources_de.properties|ApplicationResources_fr.properties|ApplicationResources_ko.properties|ApplicationResources_nl.properties|ApplicationResources_no.properties|ApplicationResources_pt*.properties|ApplicationResources_tr.properties|ApplicationResources_zh*.properties|applicationContext-resources.xml|struts.xml|**/*.java"/>
+    <classpathentry kind="src" path="web/src/main/webapp"/>
     <classpathentry kind="src" path="web/src/test/java" output="target/test-classes"/>
     <classpathentry kind="src" path="web/src/test/resources" excluding="**/*.java" output="target/test-classes"/>
     <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
