@@ -87,4 +87,5 @@
     <classpathentry kind="var" path="M2_REPO/struts-menu/struts-menu/2.4.3/struts-menu-2.4.3.jar" sourcepath="M2_REPO/struts-menu/struts-menu/2.4.3/struts-menu-2.4.3-sources.jar"/>
     <classpathentry kind="var" path="M2_REPO/org/apache/struts/struts2-codebehind-plugin/2.0.11/struts2-codebehind-plugin-2.0.11.jar"/>
 	<classpathentry kind="var" path="M2_REPO/displaytag/displaytag/1.1.1/displaytag-1.1.1.jar" sourcepath="/M2_REPO/displaytag/displaytag/1.1.1/displaytag-1.1.1-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/opensymphony/ognl/2.6.11/ognl-2.6.11.jar" sourcepath="M2_REPO/opensymphony/ognl/2.6.11/ognl-2.6.11-sources.jar"/>
 </classpath>
