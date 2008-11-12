@@ -2,7 +2,7 @@
 <feature
       id="org.xmdl"
       label="XMDL Universal Code Generator"
-      version="0.6.0.20080806_alpha8"
+      version="0.6.0.20081112_beta1"
       provider-name="xmdl.org"
       plugin="org.xmdl.xmdl.ui">
 
@@ -59,7 +59,7 @@
          id="org.xmdl.ida"
          download-size="0"
          install-size="0"
-         version="0.6.0.20080806_alpha8"
+         version="0.6.0.20081112_beta1"
          unpack="false"/>
 
    <plugin
@@ -80,56 +80,56 @@
          id="org.xmdl.core"
          download-size="0"
          install-size="0"
-         version="0.6.0.20080806_alpha8"
+         version="0.6.0.20081112_beta1"
          unpack="false"/>
 
    <plugin
          id="org.xmdl.gen"
          download-size="0"
          install-size="0"
-         version="0.6.0.20080806_alpha8"
+         version="0.6.0.20081112_beta1"
          unpack="false"/>
 
    <plugin
          id="org.xmdl.genext"
          download-size="0"
          install-size="0"
-         version="0.6.0.20080806_alpha8"
+         version="0.6.0.20081112_beta1"
          unpack="false"/>
 
    <plugin
          id="org.xmdl.model"
          download-size="0"
          install-size="0"
-         version="0.6.0.20080806_alpha8"
+         version="0.6.0.20081112_beta1"
          unpack="false"/>
 
    <plugin
          id="org.xmdl.xmdl.ui"
          download-size="0"
          install-size="0"
-         version="0.6.0.20080806_alpha8"
+         version="0.6.0.20081112_beta1"
          unpack="false"/>
 
    <plugin
          id="org.xmdl.xmdlbo.ui"
          download-size="0"
          install-size="0"
-         version="0.6.0.20080806_alpha8"
+         version="0.6.0.20081112_beta1"
          unpack="false"/>
 
    <plugin
          id="org.xmdl.xmdldb.ui"
          download-size="0"
          install-size="0"
-         version="0.6.0.20080806_alpha8"
+         version="0.6.0.20081112_beta1"
          unpack="false"/>
 
    <plugin
          id="org.xmdl.xmdlgen.ui"
          download-size="0"
          install-size="0"
-         version="0.6.0.20080806_alpha8"
+         version="0.6.0.20081112_beta1"
          unpack="false"/>
 
 </feature>

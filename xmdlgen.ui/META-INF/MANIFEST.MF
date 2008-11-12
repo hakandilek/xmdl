@@ -4,7 +4,7 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.xmdl.xmdlgen.ui;singleton:=true
-Bundle-Version: 0.6.0.20080806_alpha8
+Bundle-Version: 0.6.0.20081112_beta1
 Bundle-Activator: org.xmdl.xmdlgen.ui.XmdlgenEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -12,6 +12,6 @@ Require-Bundle: org.xmdl.model,org.xmdl.xmdl.ui,org.eclipse.core.runti
  me,org.eclipse.emf.edit.ui,org.eclipse.core.resources,org.eclipse.ui.
  ide,org.eclipse.emf.ecore.xmi
 Bundle-ActivationPolicy: lazy
-Built-By: Hakan Dilek
+Built-By: hakan
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 
