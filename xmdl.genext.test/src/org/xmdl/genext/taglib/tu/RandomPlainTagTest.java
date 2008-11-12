@@ -225,8 +225,8 @@ public class RandomPlainTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            assertTrue(a, "VALUE1".equals(a) || "VALUE2".equals(a));
-            assertTrue(b, "VALUE1".equals(b) || "VALUE2".equals(b));
+            assertTrue(a, "1".equals(a) || "2".equals(a));
+            assertTrue(b, "1".equals(b) || "2".equals(b));
             assertEquals(a, b);
         } catch (Exception e) {
             fail("parsing failed");
@@ -410,9 +410,9 @@ public class RandomPlainTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            assertTrue(a, "VALUE1".equals(a) || "VALUE2".equals(a));
+            assertTrue(a, "1".equals(a) || "2".equals(a));
             assertTrue(b, "VALUE1".equals(b) || "VALUE2".equals(b));
-            assertEquals(a, b);
+            assertNotSame(a, b);
         } catch (Exception e) {
             fail("parsing failed");
         }
