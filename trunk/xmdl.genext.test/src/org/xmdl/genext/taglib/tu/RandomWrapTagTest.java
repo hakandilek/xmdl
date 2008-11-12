@@ -217,8 +217,8 @@ public class RandomWrapTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            assertTrue("true".equals(a) || "false".equals(a));
-            assertTrue("true".equals(b) || "false".equals(b));
+            assertTrue("new Boolean(true)".equals(a) || "new Boolean(false)".equals(a));
+            assertTrue("new Boolean(true)".equals(b) || "new Boolean(false)".equals(b));
             Boolean.parseBoolean(a);
             Boolean.parseBoolean(b);
             assertEquals(a, b);
@@ -400,8 +400,8 @@ public class RandomWrapTagTest extends BaseTemplateTestCase {
             assertNotNull(b);
             assertNotSame("", a);
             assertNotSame("", b);
-            assertTrue("true".equals(a) || "false".equals(a));
-            assertTrue("true".equals(b) || "false".equals(b));
+            assertTrue("new Boolean(true)".equals(a) || "new Boolean(false)".equals(a));
+            assertTrue("new Boolean(true)".equals(b) || "new Boolean(false)".equals(b));
             Boolean.parseBoolean(a);
             Boolean.parseBoolean(b);
             assertEquals(a, b);
