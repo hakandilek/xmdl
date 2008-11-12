@@ -1,5 +1,5 @@
 <%@taglib prefix="tu" id="org.xmdl.genext.testUtils" %>
-<%@ jet package="org.xmdl.genext.taglib.tu" class="RandomPlainTagTestTemplateTrim"%>
+<%@ jet package="org.xmdl.genext.taglib.tu" class="RandomPlainTagTestTemplateTrimVariant"%>
 <tu:randomPlain attribute="$attribute1"/>;<tu:randomPlain attribute="$attribute1" trim="5"/>;
 <tu:randomPlain attribute="$attribute2"/>;<tu:randomPlain attribute="$attribute2" trim="5"/>;
 <tu:randomPlain attribute="$attribute3"/>;<tu:randomPlain attribute="$attribute3" trim="5"/>;

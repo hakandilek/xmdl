@@ -32,6 +32,8 @@ public class RandomWrapTag extends BaseEmptyTag {
             int trim = 0;
             String trimString = null;
 
+            String variantString = null;
+
             try {
                 trimString = fetchAttribute("trim");
             } catch (MissingAttributeException e) {
@@ -44,10 +46,16 @@ public class RandomWrapTag extends BaseEmptyTag {
                 // ignore
             }
 
+            try {
+                variantString = fetchAttribute("variant");
+            } catch (MissingAttributeException e) {
+                // ignore optional variables
+            }
+
             if (trim > 0) {
-                result = TestTagUtils.wrapRandomValueTrimmed(attribute, trim);
+                result = TestTagUtils.wrapRandomValueTrimmed(attribute, variantString, trim);
             } else {
-                result = TestTagUtils.wrapRandomValue(attribute);
+                result = TestTagUtils.wrapRandomValue(attribute, variantString);
             }
         }
         out.write(result);

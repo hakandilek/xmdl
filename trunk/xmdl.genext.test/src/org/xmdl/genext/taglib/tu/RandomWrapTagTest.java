@@ -263,9 +263,10 @@ public class RandomWrapTagTest extends BaseTemplateTestCase {
         String[] pieces = output.split("\\;");
         assertNotNull(pieces);
         assertEquals(21, pieces.length);
-        assertEquals(17, pieces[0].trim().length());
-        assertEquals(15-5+2, pieces[1].trim().length());
-        assertEquals(pieces[0].trim().substring(0, 11) + "\"", pieces[1].trim());
+        int trim = 5;
+        assertTrue(pieces[0].trim().length() >= 17);
+        assertEquals(trim + 2, pieces[1].trim().length());
+        assertEquals(pieces[0].trim().substring(0, trim + 1) + "\"", pieces[1].trim());
 
         // attribute2:long
         try {

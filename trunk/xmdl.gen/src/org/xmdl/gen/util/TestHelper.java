@@ -35,7 +35,7 @@ public class TestHelper {
 
 	public static final String TEST_PRESERVE_PATH = "/model/testValues.properties";
 
-	private Map<XAttribute, Object> randomValues = new HashMap<XAttribute, Object>();
+	private Map<XAttribute, Map<String, Object>> randomValues = new HashMap<XAttribute, Map<String, Object>>();
 
 	private RandomUtils utils = RandomUtils.INST;
 
@@ -44,8 +44,12 @@ public class TestHelper {
 	}
 
 	public String randomValueAsStringTrimmed(XAttribute attrib, int trimLength) {
+		return randomValueAsStringTrimmed(attrib, null, trimLength);
+	}
+	
+	public String randomValueAsStringTrimmed(XAttribute attrib, String variant, int trimLength) {
 		XType type = attrib.getType();
-		String s = randomValueAsString(attrib);
+		String s = randomValueAsString(attrib, variant);
 		String substring = s;
 
 		if (XmdlTypes.JAVA_STRING.equals(type)) {
@@ -53,15 +57,19 @@ public class TestHelper {
 			int len = s.length();
 			if (trimLength > len)
 				return "";
-			substring = s.substring(0, len - trimLength);
+			substring = s.substring(0, trimLength);
 		}
 
 		return substring;
 	}
 
 	public String randomValueAsString(XAttribute attrib) {
+		return randomValueAsString(attrib, null);
+	}
+	
+	public String randomValueAsString(XAttribute attrib, String variant) {
 		String plain = "";
-		Object value = randomValuePlain(attrib);
+		Object value = randomValuePlain(attrib, variant);
 		if (value instanceof XEnumerationLiteral) {
 			XEnumerationLiteral lit = (XEnumerationLiteral) value;
 			plain = lit.getName();
@@ -72,17 +80,30 @@ public class TestHelper {
 		return plain;
 	}
 
-	public Object randomValuePlain(XAttribute attrib) {
-		Object random = randomValues.get(attrib);
+	public Object randomValuePlain(XAttribute attrib, String variant) {
+		Map<String, Object> map = randomValues.get(attrib);
+		if (map == null) {
+			map = new HashMap<String, Object>();
+			randomValues.put(attrib, map);
+		}
+		Object random = map.get(variant);
 		if (random == null) {
-			random = randomValue(attrib);
-			randomValues.put(attrib, random);
+			random = randomValue(attrib, variant);
+			map.put(variant, random);
 		}
 		return random;
 	}
 
+	public Object randomValuePlain(XAttribute attrib) {
+		return randomValuePlain(attrib, null);
+	}
+
 	public Object randomValue(XAttribute attrib) {
-		Object preserved = getPreservedValue(attrib);
+		return randomValue(attrib, null);
+	}
+	
+	public Object randomValue(XAttribute attrib, String variant) {
+		Object preserved = getPreservedValue(attrib, variant);
 		if (preserved != null)
 			return preserved;
 
@@ -122,12 +143,12 @@ public class TestHelper {
 		}
 
 		if (result != null) {
-			preserveValue(attrib, result);
+			preserveValue(attrib, variant, result);
 		}
 		return result;
 	}
 
-	private void preserveValue(XAttribute attrib, Object value) {
+	private void preserveValue(XAttribute attrib, String variant, Object value) {
 		IFile file = getPreserveFile(attrib);
 		if (file == null)
 			return;
@@ -146,7 +167,7 @@ public class TestHelper {
 		}
 		
 		try {
-			String key = getPropertyKey(attrib);
+			String key = getPropertyKey(attrib, variant);
 			properties.put(key, value+"");
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
 			Writer w = new OutputStreamWriter(out);
@@ -161,7 +182,7 @@ public class TestHelper {
 		}
 	}
 
-	private Object getPreservedValue(XAttribute attrib) {
+	private Object getPreservedValue(XAttribute attrib, String variant) {
 		IFile file = getPreserveFile(attrib);
 		if (file == null)
 			return null;
@@ -170,7 +191,7 @@ public class TestHelper {
 			InputStream contents = file.getContents();
 			Properties properties = new Properties();
 			properties.load(contents);
-			String key = getPropertyKey(attrib);
+			String key = getPropertyKey(attrib, variant);
 			Object value = properties.get(key);
 			
 			//special conversion for enumeration literals value -> literal
@@ -214,8 +235,10 @@ public class TestHelper {
 		return null;
 	}
 
-	private String getPropertyKey(XAttribute attrib) {
+	private String getPropertyKey(XAttribute attrib, String variant) {
 		String name = XMDLClassHelper.qualifiedName(attrib);
+		if (variant != null)
+			name += "." + variant;
 		return name;
 	}
 

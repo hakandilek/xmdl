@@ -24,7 +24,17 @@ public class TestTagUtils {
 	 * @return a plain random value that is determined for the given attribute.
 	 */
 	public static String wrapRandomValue(XAttribute attribute) {
-		Object plain = TestHelper.INSTANCE.randomValuePlain(attribute);
+		return wrapRandomValue(attribute, null);
+	}
+	/**
+	 * @param attribute
+	 *            the attribute
+	 * @param variant
+	 *            random value variant
+	 * @return a plain random value that is determined for the given attribute.
+	 */
+	public static String wrapRandomValue(XAttribute attribute, String variant) {
+		Object plain = TestHelper.INSTANCE.randomValuePlain(attribute, variant);
 		String wrap = wrap(plain, attribute);
 		return wrap;
 	}
@@ -82,8 +92,20 @@ public class TestTagUtils {
 	 * @return the random value string trimmed with the given amount
 	 */
 	public static String wrapRandomValueTrimmed(XAttribute attribute, int amount) {
-		String plain = TestHelper.INSTANCE.randomValueAsStringTrimmed(attribute,
-				amount);
+		return wrapRandomValueTrimmed(attribute, null, amount);
+	}
+	/**
+	 * @param attribute
+	 *            the attribute
+	 * @param variant
+	 *            random value variant
+	 * @param amount
+	 *            trim amount
+	 * @return the random value string trimmed with the given amount
+	 */
+	public static String wrapRandomValueTrimmed(XAttribute attribute, String variant, int amount) {
+		String plain = TestHelper.INSTANCE.randomValueAsStringTrimmed(
+				attribute, variant, amount);
 		String wrap = wrap(plain, attribute);
 		return wrap;
 	}
@@ -95,8 +117,21 @@ public class TestTagUtils {
 	 * @return a plain random value that is determined for the given attribute.
 	 */
 	public static String plainRandomValue(XAttribute attribute, String format) {
+		return plainRandomValue(attribute, null, format);
+	}
+
+	/**
+	 * @param attribute
+	 *            the attribute
+	 * @param variant
+	 *            random value variant
+	 * @param format
+	 *            format expression
+	 * @return a plain random value that is determined for the given attribute.
+	 */
+	public static String plainRandomValue(XAttribute attribute, String variant, String format) {
 		XType type = attribute.getType();
-		Object value = TestHelper.INSTANCE.randomValuePlain(attribute);
+		Object value = TestHelper.INSTANCE.randomValuePlain(attribute, variant);
 		String plain = "";
 		if (value instanceof XEnumerationLiteral) {
 			XEnumerationLiteral lit = (XEnumerationLiteral) value;
@@ -131,13 +166,28 @@ public class TestTagUtils {
 	/**
 	 * @param attribute
 	 *            the attribute
+	 * @param variant
+	 *            random value variant
+	 * @param amount
+	 *            trim amount
+	 * @return the random value string trimmed with the given amount
+	 */
+	public static String plainRandomValueTrimmed(XAttribute attribute,
+			String variant, int amount) {
+		return TestHelper.INSTANCE.randomValueAsStringTrimmed(attribute,
+				variant, amount);
+	}
+
+	/**
+	 * @param attribute
+	 *            the attribute
 	 * @param amount
 	 *            trim amount
 	 * @return the random value string trimmed with the given amount
 	 */
 	public static String plainRandomValueTrimmed(XAttribute attribute,
 			int amount) {
-		return TestHelper.INSTANCE.randomValueAsStringTrimmed(attribute, amount);
+		return plainRandomValueTrimmed(attribute, null, amount);
 	}
 
 }
