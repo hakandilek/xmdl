@@ -4,7 +4,7 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.xmdl.gen;singleton:=true
-Bundle-Version: 0.6.0.20080806_alpha8
+Bundle-Version: 0.6.0.20081112_beta1
 Bundle-Activator: org.xmdl.gen.plugin.XMDLGenPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -15,6 +15,6 @@ Require-Bundle: org.xmdl.model,org.eclipse.emf.ecore.xmi,org.eclipse.e
 Bundle-ActivationPolicy: lazy
 Export-Package: org.xmdl.gen.mark,org.xmdl.gen.plugin,org.xmdl.gen.uti
  l,org.xmdl.meta,org.xmdl.xgen,org.xmdl.xgen.util
-Built-By: Hakan Dilek
+Built-By: hakan
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 
