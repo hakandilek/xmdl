@@ -66,7 +66,7 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         // enter all required fields
 <c:iterate select="$class/attributes" var="attribute">
     <c:if test="not(call($attribute, 'isReference'))">
-        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute"/>);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute" variant="1"/>);
     </c:if>
     <xm:isMaster element="$attribute">
         <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
@@ -77,7 +77,7 @@ public class <xc:cap element="$class"/>ActionTest extends BaseActionTestCase {
         <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
         <xc:iterateAttributes select="$attribute/type" var="attrib">
             <c:if test="not(call($attrib, 'isReference'))">
-        <xc:uncap element="$attribute"/>.<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib"/>);
+        <xc:uncap element="$attribute"/>.<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib" variant="1"/>);
             </c:if>
     	<xm:isMaster element="$attribute">
         <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();

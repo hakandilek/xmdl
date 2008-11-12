@@ -130,7 +130,7 @@
             <value description="id">1</value>
         <c:iterate select="$dTable/dFields" var="field">
             <c:if test="not(call($field/xAttribute, 'isReference'))">
-            <value description="<c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd"/></value>
+            <value description="<c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="1"/></value>
             </c:if>
             <ida:isEntityReference attribute="$field/xAttribute">
             <value description="<c:get select="$field/@name"/>">1</value>
@@ -138,7 +138,7 @@
 		    <c:if test="isEmbeded($field/xAttribute)">
 				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
             		<c:if test="not(call($attrib, 'isReference'))">
-			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd"/></value>
+			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="1"/></value>
 		    		</c:if>
 				</xc:iterateAttributes> 
 		    </c:if>
@@ -149,7 +149,7 @@
             <value description="id">2</value>
         <c:iterate select="$dTable/dFields" var="field">
             <c:if test="not(call($field/xAttribute, 'isReference'))">
-            <value description="<c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd"/></value>
+            <value description="<c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="2"/></value>
             </c:if>
             <ida:isEntityReference attribute="$field/xAttribute">
             <value description="<c:get select="$field/@name"/>">2</value>
@@ -157,7 +157,7 @@
 		    <c:if test="isEmbeded($field/xAttribute)">
 				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
             		<c:if test="not(call($attrib, 'isReference'))">
-			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd"/></value>
+			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="2"/></value>
 		    		</c:if>
 				</xc:iterateAttributes> 
 		    </c:if>
@@ -168,7 +168,7 @@
             <value description="id">3</value>
         <c:iterate select="$dTable/dFields" var="field">
             <c:if test="not(call($field/xAttribute, 'isReference'))">
-            <value description="<c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd"/></value>
+            <value description="<c:get select="$field/@name"/>"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="3"/></value>
             </c:if>
             <ida:isEntityReference attribute="$field/xAttribute">
             <value description="<c:get select="$field/@name"/>">3</value>
@@ -176,7 +176,7 @@
 		    <c:if test="isEmbeded($field/xAttribute)">
 				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
             		<c:if test="not(call($attrib, 'isReference'))">
-			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd"/></value>
+			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="3"/></value>
 		    		</c:if>
 				</xc:iterateAttributes> 
 		    </c:if>

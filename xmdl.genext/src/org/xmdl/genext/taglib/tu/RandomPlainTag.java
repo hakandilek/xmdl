@@ -33,6 +33,8 @@ public class RandomPlainTag extends BaseEmptyTag {
             String trimString = null;
 
             String formatString = null;
+
+            String variantString = null;
             
             try {
                 trimString = fetchAttribute("trim");
@@ -47,15 +49,21 @@ public class RandomPlainTag extends BaseEmptyTag {
             }
 
             try {
+                variantString = fetchAttribute("variant");
+            } catch (MissingAttributeException e) {
+                // ignore optional variables
+            }
+
+            try {
                 trim = trimString == null ? 0 : Integer.parseInt(trimString);
             } catch (RuntimeException e) {
                 // ignore
             }
 
             if (trim > 0) {
-                result = TestTagUtils.plainRandomValueTrimmed(attribute, trim);
+                result = TestTagUtils.plainRandomValueTrimmed(attribute, variantString, trim);
             } else {
-                result = TestTagUtils.plainRandomValue(attribute, formatString);
+                result = TestTagUtils.plainRandomValue(attribute, variantString, formatString);
             }
         }
         out.write(result);

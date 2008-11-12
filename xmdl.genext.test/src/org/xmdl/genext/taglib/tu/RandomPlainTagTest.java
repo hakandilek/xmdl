@@ -272,11 +272,12 @@ public class RandomPlainTagTest extends BaseTemplateTestCase {
         // attribute1:string
         assertNotNull(output);
         String[] pieces = output.split("\\;");
+        int trim = 5;
         assertNotNull(pieces);
-        assertEquals(23, pieces.length);
-        assertEquals(15, pieces[0].trim().length());
-        assertEquals(15 - 5, pieces[1].trim().length());
-        assertEquals(pieces[0].trim().substring(0, 10), pieces[1].trim());
+        assertEquals(22, pieces.length);
+        assertEquals(15, pieces[0].length());
+        assertEquals(trim, pieces[1].length());//trim by 5
+        assertEquals(pieces[0].trim().substring(0, trim), pieces[1].trim());
 
         // attribute2:long
         try {
@@ -436,4 +437,376 @@ public class RandomPlainTagTest extends BaseTemplateTestCase {
             }
         }
     }
+    
+    public void testRandomValuePlainVariant() throws BundleException {
+
+        final String templateClass = RandomPlainTagTestTemplatePlainVariant.class
+                .getName();
+        setVariable("attribute1", attribute1);
+        setVariable("attribute2", attribute2);
+        setVariable("attribute3", attribute3);
+        setVariable("attribute4", attribute4);
+        setVariable("attribute5", attribute5);
+        setVariable("attribute6", attribute6);
+        setVariable("attribute7", attribute7);
+        setVariable("attribute8", attribute8);
+        setVariable("attribute9", attribute9);
+        setVariable("attribute10", attribute10);
+        setVariable("date", date);
+        String output = runTemplate(templateClass);
+
+        // attribute1:string
+        assertNotNull(output);
+        String[] pieces = output.split("\\;");
+        assertNotNull(pieces);
+        assertEquals(22, pieces.length);
+        assertTrue(15 <= pieces[0].trim().length());
+        assertTrue(15 <= pieces[1].length());
+        assertEquals(pieces[0].trim(), pieces[1].trim());
+
+        // attribute2:long
+        try {
+            String a = pieces[2].trim();
+            String b = pieces[3].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Long.parseLong(a);
+            Long.parseLong(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute3:Long
+        try {
+            String a = pieces[4].trim();
+            String b = pieces[5].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Long.parseLong(a);
+            Long.parseLong(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute4:int
+        try {
+            String a = pieces[6].trim();
+            String b = pieces[7].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Integer.parseInt(a);
+            Integer.parseInt(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute5:Integer
+        try {
+            String a = pieces[8].trim();
+            String b = pieces[9].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Integer.parseInt(a);
+            Integer.parseInt(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute6:double
+        try {
+            String a = pieces[10].trim();
+            String b = pieces[11].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Double.parseDouble(a);
+            Double.parseDouble(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute7:Double
+        try {
+            String a = pieces[12].trim();
+            String b = pieces[13].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Double.parseDouble(a);
+            Double.parseDouble(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute8:boolean
+        try {
+            String a = pieces[14].trim();
+            String b = pieces[15].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            assertTrue("true".equals(a) || "false".equals(a));
+            assertTrue("true".equals(b) || "false".equals(b));
+            Boolean.parseBoolean(a);
+            Boolean.parseBoolean(b);
+            //might be same
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute9:Boolean
+        try {
+            String a = pieces[16].trim();
+            String b = pieces[17].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            assertTrue("true".equals(a) || "false".equals(a));
+            assertTrue("true".equals(b) || "false".equals(b));
+            Boolean.parseBoolean(a);
+            Boolean.parseBoolean(b);
+            //might be same
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute10:enum
+        try {
+            String a = pieces[18].trim();
+            String b = pieces[19].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            assertTrue(a, "1".equals(a) || "2".equals(a));
+            assertTrue(b, "1".equals(b) || "2".equals(b));
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // date:Date
+        {
+            String a = pieces[20].trim();
+            String b = pieces[21].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            assertNotSame(a, b);
+            SimpleDateFormat f = new SimpleDateFormat("dd.MM.yyyy");
+            f.setLenient(false);//fail if error occurs
+            try {
+                f.parse(a);
+                f.parse(b);
+            } catch (ParseException e) {
+                fail("wrong date:" + a);
+            }
+        }
+    }
+
+    public void testRandomValueTrimVariant() throws BundleException {
+
+        final String templateClass = RandomPlainTagTestTemplateTrimVariant.class
+                .getName();
+        setVariable("attribute1", attribute1);
+        setVariable("attribute2", attribute2);
+        setVariable("attribute3", attribute3);
+        setVariable("attribute4", attribute4);
+        setVariable("attribute5", attribute5);
+        setVariable("attribute6", attribute6);
+        setVariable("attribute7", attribute7);
+        setVariable("attribute8", attribute8);
+        setVariable("attribute9", attribute9);
+        setVariable("attribute10", attribute10);
+        setVariable("date", date);
+        String output = runTemplate(templateClass);
+
+        // attribute1:string
+        assertNotNull(output);
+        String[] pieces = output.split("\\;");
+        assertNotNull(pieces);
+        int trim = 5;
+        assertEquals(23, pieces.length);
+        assertTrue(14 <= pieces[0].trim().length());
+        assertEquals(trim, pieces[1].trim().length());
+        assertEquals(pieces[0].trim().substring(0, trim), pieces[1].trim());
+
+        // attribute2:long
+        try {
+            String a = pieces[2].trim();
+            String b = pieces[3].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Long.parseLong(a);
+            Long.parseLong(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute3:Long
+        try {
+            String a = pieces[4].trim();
+            String b = pieces[5].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Long.parseLong(a);
+            Long.parseLong(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute4:int
+        try {
+            String a = pieces[6].trim();
+            String b = pieces[7].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Integer.parseInt(a);
+            Integer.parseInt(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute5:Integer
+        try {
+            String a = pieces[8].trim();
+            String b = pieces[9].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Integer.parseInt(a);
+            Integer.parseInt(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute6:double
+        try {
+            String a = pieces[10].trim();
+            String b = pieces[11].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Double.parseDouble(a);
+            Double.parseDouble(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute7:Double
+        try {
+            String a = pieces[12].trim();
+            String b = pieces[13].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            Double.parseDouble(a);
+            Double.parseDouble(b);
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute8:boolean
+        try {
+            String a = pieces[14].trim();
+            String b = pieces[15].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            assertTrue("true".equals(a) || "false".equals(a));
+            assertTrue("true".equals(b) || "false".equals(b));
+            Boolean.parseBoolean(a);
+            Boolean.parseBoolean(b);
+            //might be same
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute9:Boolean
+        try {
+            String a = pieces[16].trim();
+            String b = pieces[17].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            assertTrue("true".equals(a) || "false".equals(a));
+            assertTrue("true".equals(b) || "false".equals(b));
+            Boolean.parseBoolean(a);
+            Boolean.parseBoolean(b);
+            //might be same
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // attribute10:enum
+        try {
+            String a = pieces[18].trim();
+            String b = pieces[19].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            assertTrue(a, "1".equals(a) || "2".equals(a));
+            assertTrue(b, "VALUE1".equals(b) || "VALUE2".equals(b));
+            assertNotSame(a, b);
+        } catch (Exception e) {
+            fail("parsing failed");
+        }
+
+        // date:Date
+         {
+            String a = pieces[20].trim();
+            String b = pieces[21].trim();
+            assertNotNull(a);
+            assertNotNull(b);
+            assertNotSame("", a);
+            assertNotSame("", b);
+            assertNotSame(a, b);
+            SimpleDateFormat f = new SimpleDateFormat("dd.MM.yyyy");
+            f.setLenient(false);//fail if error occurs
+            try {
+                f.parse(a);
+                f.parse(b);
+            } catch (ParseException e) {
+                fail("wrong date:" + a);
+            }
+        }
+    }
+
 }

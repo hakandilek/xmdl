@@ -239,6 +239,11 @@ For example type User is converted to HashSet&lt;User&gt;.
                   type="string"
                   use="optional">
             </attribute>
+            <attribute
+                  name="variant"
+                  type="string"
+                  use="optional">
+            </attribute>
          </emptyTag>
          <emptyTag
                class="org.xmdl.genext.taglib.tu.RandomWrapTag"
@@ -256,6 +261,11 @@ For example type User is converted to HashSet&lt;User&gt;.
             <attribute
                   deprecated="false"
                   name="trim"
+                  type="string"
+                  use="optional">
+            </attribute>
+            <attribute
+                  name="variant"
                   type="string"
                   use="optional">
             </attribute>

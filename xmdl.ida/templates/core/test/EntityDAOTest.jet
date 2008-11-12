@@ -53,7 +53,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
 
 <c:iterate select="$class/attributes" var="attribute">
     <c:if test="not(call($attribute, 'isReference'))">
-        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute"/>);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute" variant="1"/>);
     </c:if>
     <xm:isMaster element="$attribute">
         <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
@@ -64,7 +64,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
         <xc:iterateAttributes select="$attribute/type" var="attrib">
             <c:if test="not(call($attrib, 'isReference'))">
-        <xc:uncap element="$attribute"/>.<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib"/>);
+        <xc:uncap element="$attribute"/>.<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib" variant="1"/>);
             </c:if>
     		<xm:isMaster element="$attribute">
         <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
@@ -84,7 +84,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         assertNotNull(<xc:uncap element="$class"/>.getId());
 <c:iterate select="$class/attributes" var="attribute">
     <c:if test="not(call($attribute, 'isReference'))">
-        assertEquals(<tu:randomWrap attribute="$attribute"/>, <xc:uncap element="$class"/>.<xc:accessor attribute="$attribute"/>());
+        assertEquals(<tu:randomWrap attribute="$attribute" variant="1"/>, <xc:uncap element="$class"/>.<xc:accessor attribute="$attribute"/>());
     </c:if>
 </c:iterate> 
 
@@ -110,11 +110,11 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
     <c:if test="not(call($attribute, 'isReference'))">
         <c:choose>
         <c:when test="call($attribute/type, 'isComparable')">
-        search.<xc:mutator attribute="$attribute"/>Min(<tu:randomWrap attribute="$attribute"/>);
-        search.<xc:mutator attribute="$attribute"/>Max(<tu:randomWrap attribute="$attribute"/>);
+        search.<xc:mutator attribute="$attribute"/>Min(<tu:randomWrap attribute="$attribute" variant="1"/>);
+        search.<xc:mutator attribute="$attribute"/>Max(<tu:randomWrap attribute="$attribute" variant="1"/>);
         </c:when>
         <c:otherwise>
-        search.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute"/>);
+        search.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute" variant="1"/>);
         </c:otherwise>
         </c:choose>
     </c:if>
@@ -132,7 +132,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         <xc:cap element="$class"/> <xc:uncap element="$class"/> = new <xc:cap element="$class"/>();
 <c:iterate select="$class/attributes" var="attribute">
     <c:if test="not(call($attribute, 'isReference'))">
-        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute"/>);
+        <xc:uncap element="$class"/>.<xc:mutator attribute="$attribute"/>(<tu:randomWrap attribute="$attribute" variant="1"/>);
     </c:if>
     <xm:isMaster element="$attribute">
         <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
@@ -143,7 +143,7 @@ public class <xc:cap element="$class"/>DAOTest extends BaseDaoTestCase {
         <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
         <xc:iterateAttributes select="$attribute/type" var="attrib">
             <c:if test="not(call($attrib, 'isReference'))">
-        <xc:uncap element="$attribute"/>.<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib"/>);
+        <xc:uncap element="$attribute"/>.<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib" variant="1"/>);
             </c:if>
     	<xm:isMaster element="$attribute">
         <xc:cap element="$attribute/type"/> <xc:uncap element="$attribute"/> = new <xc:cap element="$attribute/type"/>();
