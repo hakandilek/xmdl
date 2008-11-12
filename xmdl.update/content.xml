@@ -3,7 +3,7 @@
 <repository name='file:/home/hakan/mutfak/xmdl/xmdl.update/ - metadata' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'>
   <properties size='2'>
     <property name='p2.compressed' value='false'/>
-    <property name='p2.timestamp' value='1218023873804'/>
+    <property name='p2.timestamp' value='1226522958247'/>
   </properties>
   <references size='4'>
     <repository url='http://www.xmdl.org' type='0' options='0'/>
@@ -11,7 +11,7 @@
     <repository url='http://code.google.com/p/xmdl/' type='0' options='0'/>
     <repository url='http://code.google.com/p/xmdl/' type='1' options='0'/>
   </references>
-  <units size='83'>
+  <units size='94'>
     <unit id='org.xmdl.xmdldb.ui' version='0.6.0.20080719_alpha6'>
       <update id='org.xmdl.xmdldb.ui' range='[0.0.0,0.6.0.20080719_alpha6)' severity='0'/>
       <properties size='4'>
@@ -3365,6 +3365,455 @@
         <instructions size='1'>
           <instruction key='manifest'>
             Ant-Version: Apache Ant 1.7.0&#xA;Bundle-Name: %pluginName&#xA;Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)&#xA;Bundle-Activator: org.xmdl.ida.plugin.XMDLIDAPlugin$Implementation&#xA;Manifest-Version: 1.0&#xA;Bundle-Vendor: %providerName&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-SymbolicName: org.xmdl.ida;singleton:=true&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Version: 0.6.0.20080806_alpha8&#xA;Built-By: Hakan Dilek&#xA;Bundle-Localization: plugin&#xA;Require-Bundle: org.xmdl.model,org.xmdl.gen,org.xmdl.genext,org.eclipse.emf.ecore,org.eclipse.emf.codegen,org.eclipse.core.runtime,org.apache.log4j,org.eclipse.jet
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.xmdl.genext' version='0.6.0.20081112_beta1'>
+      <update id='org.xmdl.genext' range='[0.0.0,0.6.0.20081112_beta1)' severity='0'/>
+      <properties size='4'>
+        <property name='df_LT.providerName' value='xmdl.org'/>
+        <property name='df_LT.pluginName' value='Xmdl Code Generation Extensions Plugin'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      </properties>
+      <provides size='5'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.genext' version='0.6.0.20081112_beta1'/>
+        <provided namespace='osgi.bundle' name='org.xmdl.genext' version='0.6.0.20081112_beta1'/>
+        <provided namespace='java.package' name='org.xmdl.genext.taglib' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='6'>
+        <required namespace='osgi.bundle' name='org.xmdl.model' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.xmdl.gen' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jet' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime.compatibility' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.codegen' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.xmdl.genext' version='0.6.0.20081112_beta1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-Name: %pluginName&#xA;Bundle-Version: 0.6.0.20081112_beta1&#xA;Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)&#xA;Bundle-Vendor: %providerName&#xA;Require-Bundle: org.xmdl.model,org.xmdl.gen,org.eclipse.jet,org.eclipse.core.runtime.compatibility,org.eclipse.emf.ecore,org.eclipse.emf.codegen&#xA;Export-Package: org.xmdl.genext.taglib&#xA;Bundle-SymbolicName: org.xmdl.genext;singleton:=true&#xA;Built-By: hakan&#xA;Ant-Version: Apache Ant 1.7.0&#xA;Manifest-Version: 1.0&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Bundle-Localization: plugin
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.xmdl.core' version='0.6.0.20081112_beta1'>
+      <update id='org.xmdl.core' range='[0.0.0,0.6.0.20081112_beta1)' severity='0'/>
+      <properties size='4'>
+        <property name='df_LT.providerName' value='xmdl.org'/>
+        <property name='df_LT.pluginName' value='Xmdl Core Platform (Cekirdek) Plugin'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.core' version='0.6.0.20081112_beta1'/>
+        <provided namespace='osgi.bundle' name='org.xmdl.core' version='0.6.0.20081112_beta1'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='7'>
+        <required namespace='osgi.bundle' name='org.xmdl.model' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.xmdl.gen' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.codegen' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.apache.log4j' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jet' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.xmdl.core' version='0.6.0.20081112_beta1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Ant-Version: Apache Ant 1.7.0&#xA;Bundle-Name: %pluginName&#xA;Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)&#xA;Manifest-Version: 1.0&#xA;Bundle-Vendor: %providerName&#xA;Bundle-SymbolicName: org.xmdl.core;singleton:=true&#xA;Bundle-ManifestVersion: 2&#xA;Eclipse-LazyStart: true&#xA;Bundle-Version: 0.6.0.20081112_beta1&#xA;Built-By: hakan&#xA;Bundle-Localization: plugin&#xA;Require-Bundle: org.xmdl.model,org.xmdl.gen,org.eclipse.emf.ecore,org.eclipse.emf.codegen,org.eclipse.core.runtime,org.apache.log4j,org.eclipse.jet
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.xmdl.feature.group' version='0.6.0.20081112_beta1' singleton='false'>
+      <update id='org.xmdl.feature.group' range='[0.0.0,0.6.0.20081112_beta1)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='XMDL Universal Code Generator'/>
+        <property name='org.eclipse.equinox.p2.description' value='XMDL Universal Code Generator. For more information see project page on http://www.xmdl.org/'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://www.xmdl.org'/>
+        <property name='org.eclipse.equinox.p2.provider' value='xmdl.org'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.feature.group' version='0.6.0.20081112_beta1'/>
+      </provides>
+      <requires size='41'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.logging' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.ecore.xmi' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime.compatibility' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.junit' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.feature.group' range='2.3.1.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.codegen.feature.group' range='2.3.1.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.codegen.ecore.feature.group' range='2.3.1.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.codegen.ecore.ui.feature.group' range='2.3.0.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.codegen.ui.feature.group' range='2.3.0.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.common.feature.group' range='2.3.0.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.common.ui.feature.group' range='2.3.1.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.converter.feature.group' range='2.3.1.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.ecore.feature.group' range='2.3.1.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.ecore.edit.feature.group' range='2.3.0.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.ecore.editor.feature.group' range='2.3.1.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.edit.feature.group' range='2.3.1.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.edit.ui.feature.group' range='2.3.1.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.mapping.feature.group' range='2.3.0.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.mapping.ecore.feature.group' range='2.3.0.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.mapping.ecore.editor.feature.group' range='2.3.0.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.mapping.ui.feature.group' range='2.3.0.v200709252135'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.feature.group' range='3.3.1.r331_v20070629-7o7jE72EDlXAbqAcnbmyg1rf8RIL'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jet.feature.group' range='0.8.1.v20070913-17E19oA55P5V_8'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.platform.feature.group' range='3.3.2.R33x_v20071022-_19UEksF-G8Yc6bUv3Dz'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.ida' range='[0.6.0.20081112_beta1,0.6.0.20081112_beta1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.beanutils' range='[1.6.0,1.6.0]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.log4j' range='[1.2.13.v200806030600,1.2.13.v200806030600]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.core' range='[0.6.0.20081112_beta1,0.6.0.20081112_beta1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.gen' range='[0.6.0.20081112_beta1,0.6.0.20081112_beta1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.genext' range='[0.6.0.20081112_beta1,0.6.0.20081112_beta1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.model' range='[0.6.0.20081112_beta1,0.6.0.20081112_beta1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.xmdl.ui' range='[0.6.0.20081112_beta1,0.6.0.20081112_beta1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.xmdlbo.ui' range='[0.6.0.20081112_beta1,0.6.0.20081112_beta1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.xmdldb.ui' range='[0.6.0.20081112_beta1,0.6.0.20081112_beta1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.xmdlgen.ui' range='[0.6.0.20081112_beta1,0.6.0.20081112_beta1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.feature.jar' range='[0.6.0.20081112_beta1,0.6.0.20081112_beta1]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license url='http://www.gnu.org/licenses/lgpl.html'>
+          Licensed under LGPL. See site for more information.
+        </license>
+      </licenses>
+      <copyright url='http://xmdl.googlecode.com/svn/trunk/xmdl.lib/varfiles/NOTICE.txt'>
+        See project site for more information.
+      </copyright>
+    </unit>
+    <unit id='org.xmdl.xmdlgen.ui' version='0.6.0.20081112_beta1'>
+      <update id='org.xmdl.xmdlgen.ui' range='[0.0.0,0.6.0.20081112_beta1)' severity='0'/>
+      <properties size='4'>
+        <property name='df_LT.providerName' value='xmdl.org'/>
+        <property name='df_LT.pluginName' value='XmdlGEN Edit Support'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.xmdlgen.ui' version='0.6.0.20081112_beta1'/>
+        <provided namespace='osgi.bundle' name='org.xmdl.xmdlgen.ui' version='0.6.0.20081112_beta1'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='7'>
+        <required namespace='osgi.bundle' name='org.xmdl.model' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.xmdl.xmdl.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.edit.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.xmdl.xmdlgen.ui' version='0.6.0.20081112_beta1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-Name: %pluginName&#xA;Bundle-Version: 0.6.0.20081112_beta1&#xA;Bundle-Activator: org.xmdl.xmdlgen.ui.XmdlgenEditPlugin$Implementation&#xA;Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)&#xA;Bundle-Vendor: %providerName&#xA;Require-Bundle: org.xmdl.model,org.xmdl.xmdl.ui,org.eclipse.core.runtime,org.eclipse.emf.edit.ui,org.eclipse.core.resources,org.eclipse.ui.ide,org.eclipse.emf.ecore.xmi&#xA;Bundle-SymbolicName: org.xmdl.xmdlgen.ui;singleton:=true&#xA;Built-By: hakan&#xA;Ant-Version: Apache Ant 1.7.0&#xA;Manifest-Version: 1.0&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Bundle-Localization: plugin
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.xmdl.xmdl.ui' version='0.6.0.20081112_beta1'>
+      <update id='org.xmdl.xmdl.ui' range='[0.0.0,0.6.0.20081112_beta1)' severity='0'/>
+      <properties size='4'>
+        <property name='df_LT.providerName' value='xmdl.org'/>
+        <property name='df_LT.pluginName' value='Xmdl Edit Support'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      </properties>
+      <provides size='7'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.xmdl.ui' version='0.6.0.20081112_beta1'/>
+        <provided namespace='osgi.bundle' name='org.xmdl.xmdl.ui' version='0.6.0.20081112_beta1'/>
+        <provided namespace='java.package' name='org.xmdl.xmdl.ui' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdl.presentation' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdl.provider' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='10'>
+        <required namespace='osgi.bundle' name='org.xmdl.model' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.xmdl.gen' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.mapping' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.codegen.ecore.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.apache.log4j' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.xmdl.xmdl.ui' version='0.6.0.20081112_beta1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)&#xA;Manifest-Version: 1.0&#xA;Bundle-Name: %pluginName&#xA;Bundle-Vendor: %providerName&#xA;Bundle-ActivationPolicy: lazy&#xA;Ant-Version: Apache Ant 1.7.0&#xA;Bundle-ClassPath: .&#xA;Bundle-Version: 0.6.0.20081112_beta1&#xA;Export-Package: org.xmdl.xmdl.ui,org.xmdl.xmdl.presentation,org.xmdl.xmdl.provider&#xA;Require-Bundle: org.xmdl.model,org.xmdl.gen,org.eclipse.core.runtime,org.eclipse.core.resources,org.eclipse.emf.mapping,org.eclipse.emf.ecore.xmi,org.eclipse.emf.codegen.ecore.ui,org.eclipse.jdt.core,org.eclipse.jdt.ui,org.apache.log4j&#xA;Bundle-Activator: org.xmdl.xmdl.ui.XMDLUIPlugin$Implementation&#xA;Bundle-SymbolicName: org.xmdl.xmdl.ui;singleton:=true&#xA;Built-By: hakan&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Bundle-Localization: plugin
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.xmdl.gen' version='0.6.0.20081112_beta1'>
+      <update id='org.xmdl.gen' range='[0.0.0,0.6.0.20081112_beta1)' severity='0'/>
+      <properties size='4'>
+        <property name='df_LT.providerName' value='xmdl.org'/>
+        <property name='df_LT.pluginName' value='Xmdl Code Generation Support Plugin'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      </properties>
+      <provides size='10'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.gen' version='0.6.0.20081112_beta1'/>
+        <provided namespace='osgi.bundle' name='org.xmdl.gen' version='0.6.0.20081112_beta1'/>
+        <provided namespace='java.package' name='org.xmdl.gen.mark' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.gen.plugin' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.gen.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.meta' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xgen' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xgen.util' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='9'>
+        <required namespace='osgi.bundle' name='org.xmdl.model' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.codegen' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime.compatibility' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.junit' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.apache.log4j' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jet' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.xmdl.gen' version='0.6.0.20081112_beta1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-Name: %pluginName&#xA;Ant-Version: Apache Ant 1.7.0&#xA;Require-Bundle: org.xmdl.model,org.eclipse.emf.ecore.xmi,org.eclipse.emf.codegen,org.eclipse.core.runtime.compatibility,org.eclipse.core.resources,org.eclipse.jdt.core,org.junit,org.apache.log4j,org.eclipse.jet&#xA;Bundle-Activator: org.xmdl.gen.plugin.XMDLGenPlugin$Implementation&#xA;Bundle-Vendor: %providerName&#xA;Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)&#xA;Manifest-Version: 1.0&#xA;Bundle-Version: 0.6.0.20081112_beta1&#xA;Bundle-Localization: plugin&#xA;Built-By: hakan&#xA;Export-Package: org.xmdl.gen.mark,org.xmdl.gen.plugin,org.xmdl.gen.util,org.xmdl.meta,org.xmdl.xgen,org.xmdl.xgen.util&#xA;Bundle-SymbolicName: org.xmdl.gen;singleton:=true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.xmdl.feature.jar' version='0.6.0.20081112_beta1'>
+      <update id='org.xmdl.feature.jar' range='[0.0.0,0.6.0.20081112_beta1)' severity='0'/>
+      <properties size='5'>
+        <property name='org.eclipse.equinox.p2.name' value='XMDL Universal Code Generator'/>
+        <property name='org.eclipse.equinox.p2.description' value='XMDL Universal Code Generator. For more information see project page on http://www.xmdl.org/'/>
+        <property name='org.eclipse.equinox.p2.description.url' value='http://www.xmdl.org'/>
+        <property name='org.eclipse.equinox.p2.provider' value='xmdl.org'/>
+        <property name='org.eclipse.update.feature.plugin' value='org.xmdl.xmdl.ui'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.feature.jar' version='0.6.0.20081112_beta1'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='org.xmdl' version='0.6.0.20081112_beta1'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='org.xmdl' version='0.6.0.20081112_beta1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+      <licenses size='1'>
+        <license url='http://www.gnu.org/licenses/lgpl.html'>
+          Licensed under LGPL. See site for more information.
+        </license>
+      </licenses>
+      <copyright url='http://xmdl.googlecode.com/svn/trunk/xmdl.lib/varfiles/NOTICE.txt'>
+        See project site for more information.
+      </copyright>
+    </unit>
+    <unit id='org.xmdl.xmdldb.ui' version='0.6.0.20081112_beta1'>
+      <update id='org.xmdl.xmdldb.ui' range='[0.0.0,0.6.0.20081112_beta1)' severity='0'/>
+      <properties size='4'>
+        <property name='df_LT.providerName' value='xmdl.org'/>
+        <property name='df_LT.pluginName' value='XmdlDB Edit Support'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.xmdldb.ui' version='0.6.0.20081112_beta1'/>
+        <provided namespace='osgi.bundle' name='org.xmdl.xmdldb.ui' version='0.6.0.20081112_beta1'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='7'>
+        <required namespace='osgi.bundle' name='org.xmdl.model' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.xmdl.xmdl.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.edit.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.xmdl.xmdldb.ui' version='0.6.0.20081112_beta1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-Name: %pluginName&#xA;Bundle-Version: 0.6.0.20081112_beta1&#xA;Bundle-Activator: org.xmdl.xmdldb.ui.XmdldbEditPlugin$Implementation&#xA;Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)&#xA;Bundle-Vendor: %providerName&#xA;Require-Bundle: org.xmdl.model,org.xmdl.xmdl.ui,org.eclipse.core.runtime,org.eclipse.emf.edit.ui,org.eclipse.core.resources,org.eclipse.ui.ide,org.eclipse.emf.ecore.xmi&#xA;Bundle-SymbolicName: org.xmdl.xmdldb.ui;singleton:=true&#xA;Built-By: hakan&#xA;Ant-Version: Apache Ant 1.7.0&#xA;Manifest-Version: 1.0&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Bundle-Localization: plugin
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.xmdl.model' version='0.6.0.20081112_beta1'>
+      <update id='org.xmdl.model' range='[0.0.0,0.6.0.20081112_beta1)' severity='0'/>
+      <properties size='4'>
+        <property name='df_LT.providerName' value='xmdl.org'/>
+        <property name='df_LT.pluginName' value='Xmdl Model Objects'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      </properties>
+      <provides size='20'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.model' version='0.6.0.20081112_beta1'/>
+        <provided namespace='osgi.bundle' name='org.xmdl.model' version='0.6.0.20081112_beta1'/>
+        <provided namespace='java.package' name='org.xmdl.xmdlgen' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdl.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdl.init' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdl.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdlbo' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdlbo.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdlbo.init' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdlbo.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdldb' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdldb.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdldb.init' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdldb.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdlgen.impl' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdlgen.init' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmdl.xmdlgen.util' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='4'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.apache.log4j' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.apache.commons.beanutils' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.xmdl.model' version='0.6.0.20081112_beta1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-Name: %pluginName&#xA;Ant-Version: Apache Ant 1.7.0&#xA;Require-Bundle: org.eclipse.core.runtime,org.eclipse.emf.ecore.xmi,org.apache.log4j,org.apache.commons.beanutils&#xA;Bundle-Activator: org.xmdl.xmdl.plugin.XMDLModelPlugin&#xA;Bundle-Vendor: %providerName&#xA;Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)&#xA;Manifest-Version: 1.0&#xA;Bundle-Version: 0.6.0.20081112_beta1&#xA;Bundle-Localization: plugin&#xA;Built-By: hakan&#xA;Export-Package: org.xmdl.xmdlgen,org.xmdl.xmdl,org.xmdl.xmdl.impl,org.xmdl.xmdl.init,org.xmdl.xmdl.util,org.xmdl.xmdlbo,org.xmdl.xmdlbo.impl,org.xmdl.xmdlbo.init,org.xmdl.xmdlbo.util,org.xmdl.xmdldb,org.xmdl.xmdldb.impl,org.xmdl.xmdldb.init,org.xmdl.xmdldb.util,org.xmdl.xmdlgen.impl,org.xmdl.xmdlgen.init,org.xmdl.xmdlgen.util&#xA;Bundle-SymbolicName: org.xmdl.model;singleton:=true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.xmdl.xmdlbo.ui' version='0.6.0.20081112_beta1'>
+      <update id='org.xmdl.xmdlbo.ui' range='[0.0.0,0.6.0.20081112_beta1)' severity='0'/>
+      <properties size='4'>
+        <property name='df_LT.providerName' value='xmdl.org'/>
+        <property name='df_LT.pluginName' value='XmdlBO Edit Support'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.xmdlbo.ui' version='0.6.0.20081112_beta1'/>
+        <provided namespace='osgi.bundle' name='org.xmdl.xmdlbo.ui' version='0.6.0.20081112_beta1'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='7'>
+        <required namespace='osgi.bundle' name='org.xmdl.model' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.xmdl.xmdl.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.edit.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore.xmi' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.xmdl.xmdlbo.ui' version='0.6.0.20081112_beta1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-Name: %pluginName&#xA;Bundle-Version: 0.6.0.20081112_beta1&#xA;Bundle-Activator: org.xmdl.xmdlbo.ui.XmdlboEditPlugin$Implementation&#xA;Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)&#xA;Bundle-Vendor: %providerName&#xA;Require-Bundle: org.xmdl.model,org.xmdl.xmdl.ui,org.eclipse.core.runtime,org.eclipse.emf.edit.ui,org.eclipse.core.resources,org.eclipse.ui.ide,org.eclipse.emf.ecore.xmi&#xA;Bundle-SymbolicName: org.xmdl.xmdlbo.ui;singleton:=true&#xA;Built-By: hakan&#xA;Ant-Version: Apache Ant 1.7.0&#xA;Manifest-Version: 1.0&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Bundle-Localization: plugin
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.xmdl.ida' version='0.6.0.20081112_beta1'>
+      <update id='org.xmdl.ida' range='[0.0.0,0.6.0.20081112_beta1)' severity='0'/>
+      <properties size='4'>
+        <property name='df_LT.providerName' value='xmdl.org'/>
+        <property name='df_LT.pluginName' value='IDA Platform Plugin'/>
+        <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+        <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.xmdl.ida' version='0.6.0.20081112_beta1'/>
+        <provided namespace='osgi.bundle' name='org.xmdl.ida' version='0.6.0.20081112_beta1'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+      </provides>
+      <requires size='8'>
+        <required namespace='osgi.bundle' name='org.xmdl.model' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.xmdl.gen' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.xmdl.genext' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.emf.codegen' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.apache.log4j' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jet' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.xmdl.ida' version='0.6.0.20081112_beta1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='manifest'>
+            Bundle-Name: %pluginName&#xA;Bundle-Version: 0.6.0.20081112_beta1&#xA;Bundle-Activator: org.xmdl.ida.plugin.XMDLIDAPlugin$Implementation&#xA;Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)&#xA;Bundle-Vendor: %providerName&#xA;Require-Bundle: org.xmdl.model,org.xmdl.gen,org.xmdl.genext,org.eclipse.emf.ecore,org.eclipse.emf.codegen,org.eclipse.core.runtime,org.apache.log4j,org.eclipse.jet&#xA;Bundle-SymbolicName: org.xmdl.ida;singleton:=true&#xA;Built-By: hakan&#xA;Ant-Version: Apache Ant 1.7.0&#xA;Manifest-Version: 1.0&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-RequiredExecutionEnvironment: JavaSE-1.6&#xA;Bundle-Localization: plugin
           </instruction>
         </instructions>
       </touchpointData>
