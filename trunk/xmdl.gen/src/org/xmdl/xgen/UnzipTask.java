@@ -18,6 +18,7 @@ import java.util.zip.ZipInputStream;
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.xmdl.xgen.util.FileWriteIntegration;
 import org.xmdl.xgen.util.IFileUtils;
 
 public class UnzipTask implements Task {
@@ -44,7 +45,7 @@ public class UnzipTask implements Task {
 		this(new FileInputStream(input), destination);
 	}
 
-	public void run() {
+	public void run(FileWriteIntegration writeIntegration) {
 		if (input == null) {
 			LOGGER.error("no input, input=" + input);
 			return;
@@ -87,7 +88,7 @@ public class UnzipTask implements Task {
 				out.size();
 				
 				try {
-					IFile outFile = IFileUtils.INST.writeFile(content, filename);
+					IFile outFile = IFileUtils.INST.writeFile(content, filename, writeIntegration);
 					fireFileCopied("" + outFile.getFullPath());
 				} catch (CoreException e) {
 					LOGGER.error("Error extracting", e);
