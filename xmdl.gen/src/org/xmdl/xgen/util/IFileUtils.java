@@ -74,23 +74,6 @@ public class IFileUtils {
 	 * @throws CoreException
 	 *             if an error occurs
 	 */
-	public IFile writeFile(InputStream content, String outFileName)
-			throws CoreException {
-		return writeFile(content, outFileName, null);
-	}
-
-	/**
-	 * Writes the given stream to the file specified by name. output file name
-	 * is relative to the workspace root.
-	 * 
-	 * @param content
-	 *            content of the file to write
-	 * @param outFileName
-	 *            the output file name
-	 * @return the file if writing is successful
-	 * @throws CoreException
-	 *             if an error occurs
-	 */
 	public IFile writeFile(InputStream content, String outFileName,
 			FileWriteIntegration integration) throws CoreException {
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();

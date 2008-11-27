@@ -26,6 +26,7 @@ import org.eclipse.jet.transform.TransformContextExtender;
 import org.xmdl.gen.mark.PlatformMarkManager;
 import org.xmdl.gen.merge.FileMergeHandler;
 import org.xmdl.meta.MetaModelHolder;
+import org.xmdl.xgen.util.FileWriteIntegration;
 import org.xmdl.xgen.util.IFileUtils;
 import org.xmdl.xmdl.XProject;
 
@@ -92,24 +93,26 @@ public class Generator {
 		// progressMonitor.beginTask("XMDL generate", tasks.size());
 		LOGGER.debug("XMDL generate");
 
-		run(preTasks);
-		generate(gTasks);
-		run(postTasks);
+		FileWriteIntegration merger = new FileMergeHandler();
+
+		run(preTasks, merger);
+		generate(gTasks, merger);
+		run(postTasks, merger);
 		fireGenerationFinished();
 		
 		markManager.finish(this);
 	}
 
-	protected void run(List<Task> tasks) {
+	protected void run(List<Task> tasks, FileWriteIntegration writeIntegration) {
 		if (tasks != null){
 			for (Task task : tasks) {
 				LOGGER.debug(" running task = " + task);
-				task.run();
+				task.run(writeIntegration);
 			}
 		}		
 	}
 
-	private void generate(List<GenerationTask> tasks) {
+	private void generate(List<GenerationTask> tasks, FileWriteIntegration writeIntegration) {
 		for (Iterator<GenerationTask> iter = tasks.iterator(); iter.hasNext();) {
 			GenerationTask task = iter.next();
 
@@ -143,8 +146,7 @@ public class Generator {
 				InputStream generated = new ByteArrayInputStream(gen.getBytes());
 				LOGGER.debug("file:" + targetFile);
 				
-				FileMergeHandler fileMerger = new FileMergeHandler();
-				IFileUtils.INST.writeFile(generated, targetFile, fileMerger);
+				IFileUtils.INST.writeFile(generated, targetFile, writeIntegration);
 				fireFileGenerated(targetFile);
 			} catch (Exception e) {
 				LOGGER.error("Exceptin generating file :" + targetFile, e);
