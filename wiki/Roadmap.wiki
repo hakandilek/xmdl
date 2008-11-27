@@ -14,7 +14,7 @@ This is the next future release of XMDL, planned with the extended [Metamodel] s
 IDA platform, defined with the draft project [http://taslak.googlecode.com/ Taslak] will be integrated in this release. Check [ReleasePlan0_6 detailed planning page] for this release. 
 
 || *Version*        ||  *Release Date* || * Notes * ||
-|| _v0.6.0 - beta2_ || _Jan. 2009_  || Bug Fixes : [http://code.google.com/p/xmdl/issues/detail?id=84 Issue 84], [http://code.google.com/p/xmdl/issues/detail?id=67 Issue 67] ||
+|| _v0.6.0 - beta2_ || _Jan. 2009_  || Bug Fixes : [http://code.google.com/p/xmdl/issues/detail?id=84 Issue 84], [http://code.google.com/p/xmdl/issues/detail?id=67 Issue 67], [http://code.google.com/p/xmdl/issues/detail?id=68 Issue 68] ||
 || *v0.6.0 - beta1* || *12.11.2008* || Features : [http://code.google.com/p/xmdl/issues/detail?id=72 Issue 72], Bug Fixes : [http://code.google.com/p/xmdl/issues/detail?id=80 Issue 80], [http://code.google.com/p/xmdl/issues/detail?id=81 Issue 81], [http://code.google.com/p/xmdl/issues/detail?id=82 Issue 82] and also several minor fixes related to tests ||
 ||  v0.6.0 - alpha8 ||  06.08.2008  || Features : [http://code.google.com/p/xmdl/issues/detail?id=78 Issue 78], Bug Fixes : [http://code.google.com/p/xmdl/issues/detail?id=33 Issue 33], [http://code.google.com/p/xmdl/issues/detail?id=79 Issue 79], [http://code.google.com/p/xmdl/issues/detail?id=74 Issue 74], [http://code.google.com/p/xmdl/issues/detail?id=58 Issue 58]  ||
 ||  v0.6.0 - alpha7 ||  21.07.2008  || This release is only valid for update site since it fixes problems with the update site. ||
