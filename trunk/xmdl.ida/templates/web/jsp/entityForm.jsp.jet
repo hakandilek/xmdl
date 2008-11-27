@@ -27,7 +27,19 @@
 <ct:iterate select="$class/attributes" var="attribute">
     <ct:if test="not(call($attribute, 'isReference'))">
         <ct:if test="not(isEnumeration($attribute))">
+	        <ct:choose>
+				<ct:when test="$attribute/type/@className = 'java.util.Date'">
+        <s:datetimepicker key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" required="false" cssClass="text medium" labelposition="left"
+        	displayFormat="%{datePattern}" />
+				</ct:when>
+				<ct:when test="$attribute/type/@className = 'java.util.DateTime'">
+        <s:datetimepicker key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" required="false" cssClass="text medium" labelposition="left"
+        	displayFormat="%{datePattern}" />
+				</ct:when>
+	            <ct:otherwise>
         <s:textfield key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>" required="false" cssClass="text medium" labelposition="left"/>
+	            </ct:otherwise>
+	        </ct:choose>
         </ct:if>
         <ct:if test="isEnumeration($attribute)">
         <s:select name="<xc:uncap element="$attribute"/>Ids" value="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>.value" listKey="value" key="<xc:uncap element="$class"/>.<xc:uncap element="$attribute"/>"
