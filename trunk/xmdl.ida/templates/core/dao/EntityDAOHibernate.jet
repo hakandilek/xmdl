@@ -18,6 +18,7 @@ package <xc:qualifiedName element="$class/xPackage"/>.dao.hibernate;
 <xc:import pattern="org.hibernate.Criteria"/>
 <xc:import pattern="org.hibernate.Session"/>
 <xc:import pattern="org.hibernate.criterion.Restrictions"/>
+<xc:import pattern="org.apache.commons.lang.StringUtils"/>
 <xc:import pattern="java.util.*"/>
 
 <xc:import pattern="$element.model.*" element="$class/xPackage"/>
@@ -98,6 +99,10 @@ public class <xc:cap element="$class"/>DAOHibernate extends GenericDaoHibernate<
             if (max<xc:cap element="$attribute"/> != null)
                 criteria.add(Restrictions.le("<xc:uncap element="$attribute"/>", max<xc:cap element="$attribute"/>));
             </c:when>
+			<c:when test="$attribute/type/@className = 'java.lang.String'">
+            if (!StringUtils.isEmpty(<xc:uncap element="$attribute"/>))
+                criteria.add(Restrictions.eq("<xc:uncap element="$attribute"/>", <xc:uncap element="$attribute"/>));
+			</c:when>
             <c:otherwise>
             if (<xc:uncap element="$attribute"/> != null)
                 criteria.add(Restrictions.eq("<xc:uncap element="$attribute"/>", <xc:uncap element="$attribute"/>));
