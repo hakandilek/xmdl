@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+    <extension
+         id="org.xmdl.core"
+         name="XMDL Core Platform"
+         point="org.xmdl.gen.register">
+      <platform
+      		id="org.xmdl.core"
+            class="org.xmdl.core.platform.XmdlCorePlatform"
+            name="Cekirdek"
+            version="0.5.0"/>
+   </extension>
+
+
+</plugin>

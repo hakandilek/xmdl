@@ -1,0 +1,86 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@jet 
+    package="org.xmdl.ida.templates.core.model" 
+    class="EnumerationImpl"  
+    %><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <xc:qualifiedName element="$enumeration/xPackage"/>.model;
+
+<j:importsLocation package=""/>
+
+
+/**
+ *
+ * <xc:cap element="$enumeration"/> enumeration type
+ *  
+ * $Id$
+ *
+ * @generated
+ */ 
+public enum <xc:cap element="$enumeration"/> {
+
+<c:iterate select="$enumeration/literals" var="literal">
+    <c:get select="$literal/@name"/>(<c:get select="$literal/@value"/>),
+</c:iterate> 
+    ;
+
+    /**
+     * @generated
+     */ 
+    private int value;
+
+    <xc:cap element="$enumeration"/>(int value) {
+        this.value = value;
+    }
+
+    /**
+     * The identifier method
+     * @generated
+     */ 
+    public int toInt() {
+        return value;
+    }
+
+    /**
+     * @generated
+     */ 
+    public int getValue(){
+        return value;
+    }
+
+    /**
+     * the value Of Method
+     * @generated
+     */ 
+    public static <xc:cap element="$enumeration"/> fromInt(int value) {
+        switch (value) {
+<c:iterate select="$enumeration/literals" var="literal">
+            case <c:get select="$literal/@value"/>:
+                return <c:get select="$literal/@name"/>;
+</c:iterate> 
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * @generated
+     */ 
+    public String toString() {
+        switch (this) {
+<c:iterate select="$enumeration/literals" var="literal">
+            case <c:get select="$literal/@name"/>:
+                return "<c:get select="$literal/@name"/>";
+</c:iterate> 
+            default:
+                return null;
+        }
+    }
+}
+
+

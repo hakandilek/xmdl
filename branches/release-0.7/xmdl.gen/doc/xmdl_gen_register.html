@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>XMDL Platform Registry</title>
+<style>@import url("file:/e:/eclipse/plugins/org.eclipse.sdk_3.1.2/book.css");</style>
+<style>@import url("file:/e:/eclipse/plugins/org.eclipse.platform.doc.isv_3.1.2/schema.css");</style>
+</HEAD>
+<BODY>
+<H1><CENTER>XMDL Platform Registry</CENTER></H1>
+<p></p>
+<h6 class=CaptionFigColumn id=header>Identifier: </h6>xmdl.gen.registry<p></p>
+<h6 class=CaptionFigColumn id=header>Since: </h6>3.1
+<p></p>
+
+<p>
+<h6 class=CaptionFigColumn id=header>Description: </h6>XMDL Platform Registry</p>
+<p><h6 class=CaptionFigColumn id=header>Configuration Markup:</h6></p>
+<p class=code id=dtd>&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.platform">platform</a>+)&gt;</p>
+<p class=code id=dtd>&lt;!ATTLIST extension</p>
+<p class=code id=dtdAttlist>point&nbsp;CDATA #IMPLIED<p class=code id=dtdAttlist>id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED<p class=code id=dtdAttlist>name&nbsp;&nbsp;CDATA #IMPLIED&gt;</p>
+<p></p>
+<ul class=ConfigMarkup id=attlistDesc>
+<li><b>id</b> - Unique extension id</li>
+<li><b>name</b> - Name of extension</li>
+</ul>
+<br><p class=code id=dtd>&lt;!ELEMENT <a name="e.platform">platform</a> EMPTY&gt;</p>
+<p class=code id=dtd>&lt;!ATTLIST platform</p>
+<p class=code id=dtdAttlist>name&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED<p class=code id=dtdAttlist>version&nbsp;CDATA #REQUIRED<p class=code id=dtdAttlist>class&nbsp;&nbsp;&nbsp;CDATA #REQUIRED&gt;</p>
+<p></p>
+<ul class=ConfigMarkup id=attlistDesc>
+<li><b>name</b> - Name of the platform</li>
+<li><b>version</b> - Platform version</li>
+<li><b>class</b> - Implementation class name</li>
+</ul>
+<br><h6 class=CaptionFigColumn id=header>Examples: </h6><p>
+ <pre>
+  <p class=code id=tag>&lt;extension point=<p class=code id=cstring>&quot;org.xmdl.xyz.platform&quot;</p><p class=code id=tag>&gt;</p>
+   <p class=code id=tag>&lt;platform
+    id=<p class=code id=cstring>&quot;org.xmdl.xyz.platform1&quot;</p><p class=code id=tag>
+    name=<p class=code id=cstring>&quot;Sample Platform 1&quot;</p><p class=code id=tag>
+    class=<p class=code id=cstring>&quot;org.xmdl.xyz.platform.SamplePlatform1&quot;</p><p class=code id=tag>&gt;</p>
+   <p class=code id=tag>&lt;/platform&gt;</p>
+  <p class=code id=tag>&lt;/extension&gt;</p>
+ </pre>
+</p>
+<p></p>
+
+<h6 class=CaptionFigColumn id=header>API Information: </h6>Plug−ins that want to extend this extension point must implement
+<samp>org.xmdl.xgen.Platform</samp> interface.
+<p></p>
+
+<h6 class=CaptionFigColumn id=header>Supplied Implementation: </h6>XMDL Gen Plug-in provides <b>NO</b> default implementation of the Platform.
+<p></p>
+
+<br>
+<p class=note id=copyright>
+hd (c) 2006
+<p></p>
+
+</p>
+</BODY>
+</HTML>

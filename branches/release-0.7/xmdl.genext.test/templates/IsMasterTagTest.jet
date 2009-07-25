@@ -1,0 +1,9 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@taglib prefix="xm" id="org.xmdl.genext.xmdlMeta" %>
+<%@ jet package="org.xmdl.genext.taglib.xm" class="IsMasterTagTestTemplate"%>
+:<xm:isMaster element="$master">test1</xm:isMaster>;
+:<xm:isMaster element="$child">test2</xm:isMaster>;

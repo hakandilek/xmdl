@@ -1,0 +1,6 @@
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@ jet package="org.xmdl.genext.taglib.xc" class="ImportTagTestTemplateCls"%>
+<j:importsLocation package=""/>
+<xc:import pattern="Prefix-$element-Suffix" element="$class"/>
+<xc:import pattern="SomePattern" />

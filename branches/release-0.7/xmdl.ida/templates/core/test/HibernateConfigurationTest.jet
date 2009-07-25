@@ -1,0 +1,64 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@ jet 
+    package="org.xmdl.ida.templates.core.test" 
+    class="HibernateConfigurationTestImpl" 
+    %><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <xc:qualifiedName element="$package"/>.dao.hibernate;
+
+<j:importsLocation package=""/>
+
+<xc:import pattern="org.xmdl.ida.lib.test.BaseDaoTestCase"/>
+<xc:import pattern="org.hibernate.SessionFactory"/>
+<xc:import pattern="org.hibernate.Query"/>
+<xc:import pattern="org.hibernate.Session"/>
+<xc:import pattern="org.hibernate.persister.entity.EntityPersister"/>
+<xc:import pattern="java.util.Map"/>
+
+/**
+ *
+ * '<xc:qualifiedName element="$package"/>' package Hibernate Configuration Test Case
+ *  
+ * $Id$
+ *
+ * @generated
+ */ 
+public class HibernateConfigurationTest extends BaseDaoTestCase {
+
+    /**
+     * @generated
+     */ 
+    private SessionFactory sessionFactory;
+
+    /**
+     * @generated
+     */ 
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    /**
+     * @generated
+     */ 
+    public void testColumnMapping() throws Exception {
+        Session session = sessionFactory.openSession();
+        try {
+            Map<?, ?> metadata = sessionFactory.getAllClassMetadata();
+            for (Object o : metadata.values()) {
+                EntityPersister persister = (EntityPersister) o;
+                String className = persister.getEntityName();
+                log.debug("Trying select * from: " + className);
+                Query q = session.createQuery("from " + className + " c");
+                q.iterate();
+                log.debug("ok: " + className);
+            }
+        } finally {
+            session.close();
+        }
+    }
+}

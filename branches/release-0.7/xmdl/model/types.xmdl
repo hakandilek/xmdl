@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.xmdl:XProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.xmdl="http://www.xmdl.org/xmdl.ecore" name="xmdl.types">
+  <packages name="java.lang">
+    <classes name="String" className="java.lang.String"/>
+    <classes name="Integer" className="java.lang.Integer" comparable="true"/>
+    <classes name="Boolean" className="java.lang.Boolean"/>
+    <classes name="Double" className="java.lang.Double" comparable="true"/>
+    <classes name="Byte" className="java.lang.Byte"/>
+    <classes name="Character" className="java.lang.Character"/>
+    <classes name="Float" className="java.lang.Float" comparable="true"/>
+    <classes name="Short" className="java.lang.Short" comparable="true"/>
+    <classes name="Long" className="java.lang.Long" comparable="true"/>
+  </packages>
+  <packages name="&lt;defaultPackage&gt;">
+    <classes name="int" className="int" comparable="true"/>
+    <classes name="void" className="void"/>
+    <classes name="boolean" className="boolean"/>
+    <classes name="double" className="double" comparable="true"/>
+    <classes name="byte" className="byte"/>
+    <classes name="char" className="char"/>
+    <classes name="float" className="float" comparable="true"/>
+    <classes name="short" className="short" comparable="true"/>
+    <classes name="long" className="long" comparable="true"/>
+  </packages>
+  <packages name="java.util">
+    <classes name="Date" className="java.util.Date" comparable="true"/>
+    <classes name="DateTime" className="java.util.DateTime" comparable="true"/>
+  </packages>
+</org.xmdl:XProject>

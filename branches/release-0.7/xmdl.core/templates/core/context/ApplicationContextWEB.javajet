@@ -1,0 +1,32 @@
+<%@ jet 
+	package="org.xmdl.core.templates.context.impl" 
+	imports="java.util.* 
+			org.xmdl.xmdl.*
+			org.xmdl.gen.util.*"
+	class="ApplicationContextWEBImpl" 
+%><%
+	XPackage xPackage = (XPackage) argument;	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+	
+%><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
+		XClass xClass = (XClass) it.next();
+%>
+    <bean name="/search<%=helper.getCapName(xClass)%>" class="<%=helper.getObjectActionName(xClass)%>" singleton="false">
+        <property name="<%=helper.uncapSafeName(xClass)%>Service">
+            <ref bean="<%=helper.uncapSafeName(xClass)%>Service"/>
+        </property>
+    </bean>
+    <bean name="/edit<%=helper.getCapName(xClass)%>" class="<%=helper.getObjectActionName(xClass)%>" singleton="false">
+        <property name="<%=helper.uncapSafeName(xClass)%>Service">
+            <ref bean="<%=helper.uncapSafeName(xClass)%>Service"/>
+        </property>
+    </bean>
+<%}%>
+
+</beans>
+

@@ -1,0 +1,28 @@
+<%@ jet 
+	package="org.xmdl.core.templates.dao.hbm.impl" 
+	imports="org.xmdl.xmdl.*
+			org.xmdl.gen.util.*
+			org.xmdl.core.util.*
+"
+	class="AssociationHBMManyToManyImpl" 
+%><%	
+	AttributePair pair = (AttributePair) argument;
+	ClassHelper helper = XMDLClassHelper.INSTANCE;	
+	//DField f = XmdldbUtils.getField();	
+	XAttribute a = pair.getAttribute();
+//	DTable rel = XmdldbUtils.findRelationTable(f);	
+//	XAttribute a = f.getXAttribute();
+//	DField of = XmdldbUtils.getOpposite(f);
+	//DTable ot = of.getDTable();
+//	XAssociationBehaviour b = a.getAssociationBehaviour();
+%>  <list 
+		name="<%=a.getName()%>"
+		table="??">
+
+        <key column="??"/>
+		<index column="??"/>
+        <many-to-many 
+			class="<%=helper.getObjectImplName(a.getType())%>"
+			column="??"
+    	/>
+    </list>

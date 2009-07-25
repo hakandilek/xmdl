@@ -1,0 +1,142 @@
+<%@ jet 
+    package="org.xmdl.core.templates.service.impl" 
+    imports="org.xmdl.xmdl.*
+            org.xmdl.gen.util.*
+            org.eclipse.emf.codegen.util.*"
+    class="AbstractEntityServiceTemplateImpl" 
+%><%
+    XClass xClass = (XClass) argument;
+    XPackage xPackage = xClass.getXPackage();
+    ClassHelper helper = XMDLClassHelper.INSTANCE;
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+    %>
+    
+<%ImportManager importManager=null;%>
+<%if (helper.getQualifiedName(xPackage) != null) {%>
+<%importManager = helper.makeImportManager(helper.getQualifiedName(xPackage));%>
+package <%=helper.getQualifiedName(xPackage)%>.bo.impl;
+<%} else {%>
+<%importManager = helper.makeImportManager("");%>
+<%}%>    
+
+<%
+importManager.addImport("java.util.*");
+importManager.addImport("org.xmdl.lib.bo.*");
+importManager.addImport("org.xmdl.lib.dao.*");
+importManager.addImport("org.apache.commons.chain.*");
+importManager.addImport(helper.getQualifiedName(xPackage) + ".bo.*");
+importManager.addImport(helper.getQualifiedName(xPackage) + ".model.*");
+importManager.addImport(helper.getQualifiedName(xPackage) + ".dao.*");
+
+    StringBuffer importStringBuffer = stringBuffer;
+    int importInsertionPoint = stringBuffer.length();
+    importManager.addCompilationUnitImports(stringBuffer.toString());
+%>
+/** 
+ * NOT USED Since 0.4.2
+ * @generated
+ */
+public abstract class Abstract<%=xClass.getName()%>Service extends AbstractEntityService<<%=xClass.getName()%>>
+        implements <%=xClass.getName()%>Service {
+
+    /** 
+     * @generated
+     */
+    protected <%=xClass.getName()%>DAO dao;
+
+    /** 
+     * @generated
+     */
+    public <%=xClass.getName()%>DAO get<%=helper.getCapName(xClass)%>DAO() {
+        return dao;
+    }
+
+    /** 
+     * @generated
+     */
+    public void set<%=helper.getCapName(xClass)%>DAO(<%=xClass.getName()%>DAO dao) {
+        this.dao = dao;
+    }
+
+    /** 
+     * @generated
+     */
+    public DAO<<%=helper.getCapName(xClass)%>> getDAO() {
+        return get<%=helper.getCapName(xClass)%>DAO();
+    }
+
+    /** 
+     * @generated
+     */
+    public void putEntity(Context context, <%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%>) {
+        context.put(<%=helper.capAllName(xClass.getName())%>_KEY, <%=helper.uncapName(xClass.getName())%>);
+    }
+
+    /** 
+     * @generated
+     */
+    public <%=xClass.getName()%> getEntity(Context context) {
+        return (<%=xClass.getName()%>) context.get(<%=helper.capAllName(xClass.getName())%>_KEY);
+    }
+
+    /** 
+     * @generated
+     */
+    public void putID(Context context, Long id) {
+        context.put(<%=helper.capAllName(xClass.getName())%>_ID_KEY, id);
+    }
+
+    /** 
+     * @generated
+     */
+    public Long getID(Context context) {
+        return (Long) context.get(<%=helper.capAllName(xClass.getName())%>_ID_KEY);
+    }
+
+    /** 
+     * @generated
+     */
+    public void putEntityList(Context context, List<<%=xClass.getName()%>> <%=helper.uncapName(xClass.getName())%>s) {
+        context.put(<%=helper.capAllName(xClass.getName())%>_LIST_KEY, <%=helper.uncapName(xClass.getName())%>s);
+    }
+
+    /** 
+     * @generated
+     */
+    public List<<%=xClass.getName()%>> getEntityList(Context context) {
+        return (List<<%=xClass.getName()%>>) context.get(<%=helper.capAllName(xClass.getName())%>_LIST_KEY);
+    }
+
+
+    /** 
+     * @generated
+     */
+    public Object getKeys(Context context) {
+        return context.get(<%=helper.capAllName(xClass.getName())%>_ID_KEY);
+    }
+
+    /** 
+     * @generated
+     */
+    public SearchBean<<%=xClass.getName()%>> getSearchBean(Context context) {
+        return (SearchBean<<%=xClass.getName()%>>) context.get(<%=helper.capAllName(xClass.getName())%>_SEARCH_KEY);
+    }
+
+    /** 
+     * @generated
+     */
+    public void putSearchBean(Context context, SearchBean<<%=xClass.getName()%>> searchBean) {
+        context.put(<%=helper.capAllName(xClass.getName())%>_SEARCH_KEY, searchBean);
+    }
+
+    /** 
+     * @generated
+     */
+    protected <%=xClass.getName()%> merge(<%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%>1, <%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%>2) {
+        <%=xClass.getName()%> <%=helper.uncapName(xClass.getName())%> = <%=helper.uncapName(xClass.getName())%>1;
+        //todo
+        return <%=helper.uncapName(xClass.getName())%>;
+    }
+
+}
+<%importStringBuffer.insert(importInsertionPoint, importManager.computeSortedImports());%>

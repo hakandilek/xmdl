@@ -1,0 +1,38 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@taglib prefix="xd" id="org.xmdl.genext.xmdlDB" %>
+<%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
+<%@jet 
+    package="org.xmdl.ida.templates.web.action" 
+    class="ReloadActionImpl"  
+    %><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <xc:qualifiedName element="$project/packages[1]"/>.webapp.action;
+
+<j:importsLocation package=""/>
+
+<xc:import pattern="org.xmdl.ida.lib.web.action.BaseReloadAction"/>
+<xc:import pattern="$element.webapp.listener.StartupListener" element="$project/packages[1]"/>
+
+/**
+ *
+ * <xc:cap element="$project"/> Web Reload action
+ *  
+ * This class is used to reload the drop-downs initialized in the
+ * StartupListener.
+ *
+ * @generated
+ */ 
+public class ReloadAction extends BaseReloadAction {
+    
+    /**
+     * @generated
+     */ 
+    @Override
+    protected void setStartupContext() {
+        StartupListener.setupContext(getSession().getServletContext());
+    }
+}
+ 

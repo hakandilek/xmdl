@@ -1,0 +1,150 @@
+<%@ jet 
+	package="org.xmdl.core.templates.ui.web.webinf.impl" 
+	imports="java.util.* 
+			org.xmdl.xmdl.*
+			org.xmdl.gen.util.*"
+	class="StrutsConfigXMLImpl" 
+%><%
+	XProject project = (XProject) argument;	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+	
+%><?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+ "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+      Define your Struts data sources in a file called struts-data-sources.xml and place
+      it in your merge directory.
+    -->
+
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+<%for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
+		XPackage xPackage = (XPackage ) itp.next();%>
+	<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
+			XClass xClass = (XClass) it.next();%>
+        <form-bean
+            name="<%=helper.uncapSafeName(xClass)%>Form"
+            type="<%=helper.getObjectFormName(xClass)%>"
+            />
+	<%}%>
+<%}%>
+    </form-beans>
+
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception"
+            key="errors.general"
+            handler="org.xmdl.lib.ui.web.action.ExceptionHandleAction"/>
+    </global-exceptions>
+
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+
+        <forward name="home" path="/include/home.jsp"/>
+        
+        <!-- Logout by forward to a JSP, I do this b/c if I forward to an
+             an action, and the users session is expired - they'll be prompted
+             to login - just to logout!  Seems silly to me.
+        -->
+        <forward name="logout" path="/logout.jsp"/>        
+        
+<%for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
+		XPackage xPackage = (XPackage ) itp.next();%>
+	<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
+			XClass xClass = (XClass) it.next();%>
+        <forward name="edit<%=helper.getCapName(xClass)%>" path="/edit<%=helper.getCapName(xClass)%>.do"/>
+	<%}%>
+<%}%>
+
+
+    </global-forwards>
+
+    <!-- ========== Action Mapping Definitions =================================== -->
+    <action-mappings>
+<%for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
+		XPackage xPackage = (XPackage ) itp.next();%>
+	<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
+			XClass xClass = (XClass) it.next();%>
+        <action
+            path="/search<%=helper.getCapName(xClass)%>"
+            type="org.xmdl.lib.ui.web.action.DelegatingAction"
+            name="<%=helper.uncapSafeName(xClass)%>Form"
+            scope="request"
+            input="home"
+            parameter="method"
+            unknown="false"
+            validate="false"
+            >
+            <forward
+                name="success"
+                path="/<%=helper.getCapName(xClass)%>/search.jsp"
+                redirect="false"
+                />
+        </action>
+        <action
+            path="/edit<%=helper.getCapName(xClass)%>"
+            type="org.xmdl.lib.ui.web.action.DelegatingAction"
+            name="<%=helper.uncapSafeName(xClass)%>Form"
+            scope="request"
+            input="home"
+            parameter="method"
+            unknown="false"
+            validate="false"
+            >
+            <forward
+                name="success"
+                path="/<%=helper.getCapName(xClass)%>/edit.jsp"
+                redirect="false"
+                />
+            <forward
+                name="list"
+                path="/edit<%=helper.getCapName(xClass)%>.do"
+                redirect="true"
+                />
+		<%	XClass master = null;
+			if (MasterChildHelper.INST.isChild(xClass)) { 
+			   master = MasterChildHelper.INST.getMaster(xClass);
+			   if (master != null) { %>
+            <forward
+                name="master"
+                path="/edit<%=helper.getCapName(master)%>.do"
+                redirect="false"
+                />
+			   <%}
+		   } %>
+                
+        </action>
+	<%}%>
+<%}%>
+
+        <!-- Forwards to the home -->
+        <action path="/home" type="org.apache.struts.actions.ForwardAction"
+            parameter="/include/home.jsp"/>
+
+    </action-mappings>
+
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+
+<%for (Iterator<XPackage> itp = project.getPackages().iterator(); itp.hasNext();) {
+		XPackage xPackage = (XPackage ) itp.next();%>
+    <message-resources parameter="<%=xPackage.getName()%>.ApplicationResources"/>
+<%}%>
+<!--
+    <message-resources parameter="CommonResources" key="common" id="common" />
+-->
+
+    <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+            value="/WEB-INF/validator-rules.xml,
+                   /WEB-INF/validator-rules-custom.xml,
+                   /WEB-INF/validation.xml"/>
+    </plug-in>
+
+
+</struts-config>

@@ -1,0 +1,13 @@
+<%@taglib prefix="tu" id="org.xmdl.genext.testUtils" %>
+<%@ jet package="org.xmdl.genext.taglib.tu" class="RandomPlainTagTestTemplatePlain"%>
+<tu:randomPlain attribute="$attribute1"/>;<tu:randomPlain attribute="$attribute1"/>;
+<tu:randomPlain attribute="$attribute2"/>;<tu:randomPlain attribute="$attribute2"/>;
+<tu:randomPlain attribute="$attribute3"/>;<tu:randomPlain attribute="$attribute3"/>;
+<tu:randomPlain attribute="$attribute4"/>;<tu:randomPlain attribute="$attribute4"/>;
+<tu:randomPlain attribute="$attribute5"/>;<tu:randomPlain attribute="$attribute5"/>;
+<tu:randomPlain attribute="$attribute6"/>;<tu:randomPlain attribute="$attribute6"/>;
+<tu:randomPlain attribute="$attribute7"/>;<tu:randomPlain attribute="$attribute7"/>;
+<tu:randomPlain attribute="$attribute8"/>;<tu:randomPlain attribute="$attribute8"/>;
+<tu:randomPlain attribute="$attribute9"/>;<tu:randomPlain attribute="$attribute9"/>;
+<tu:randomPlain attribute="$attribute10"/>;<tu:randomPlain attribute="$attribute10"/>;
+<tu:randomPlain attribute="$date"/>;<tu:randomPlain attribute="$date"/>;

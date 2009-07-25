@@ -1,0 +1,31 @@
+<%@ jet 
+	package="org.xmdl.core.templates.ui.web.include.impl" 
+	imports="java.util.* 
+			org.xmdl.xmdl.*
+			org.xmdl.gen.util.*
+			"
+	class="MenuJSPImpl"
+	startTag="<$" endTag="$>" 
+%><$ 
+	XProject project = (XProject) argument;	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+$><%@ include file="/include/taglibs.jsp"%>
+
+<link rel="stylesheet" type="text/css" media="screen" href="styles/tabs.css" />
+<script type="text/javascript" src="scripts/tabs.js"></script>
+
+<menu:useMenuDisplayer name="TabbedMenu"
+    bundle="org.apache.struts.action.MESSAGE">
+    <menu:displayMenu name="Home"/>
+	<$for (Iterator<XPackage> i = project.getPackages().iterator(); i.hasNext();) {
+	    XPackage xPackage = (XPackage) i.next();$>
+		<$for (Iterator<XClass> i2 = xPackage.getClasses().iterator(); i2.hasNext();) {
+		    XClass xClass = (XClass) i2.next();
+		    if (MasterChildHelper.INST.isMaster(xClass)) {
+		    $>
+	<menu:displayMenu name="<$=helper.getCapName(xClass)$>Menu"/>
+			<$} $> 
+		<$} $> 
+	<$}$>
+    <menu:displayMenu name="Exit"/>
+</menu:useMenuDisplayer>

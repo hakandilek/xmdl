@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="hd"
+    modelDirectory="/org.xmdl.model/src" editDirectory="/org.xmdl.xmdlgen.ui/src"
+    editorDirectory="/org.xmdl.xmdlgen.ui/src" modelPluginID="xmdl" runtimeJar="true"
+    modelName="Xmdlgen" editPluginClass="org.xmdl.xmdlgen.ui.XmdlgenEditPlugin" editorPluginClass="org.xmdl.xmdlgen.presentation.XmdlgenEditorPlugin"
+    testSuiteClass="org.xmdl.xmdlgen.tests.XmdlgenAllTests" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" providerRootExtendsClass="" usedGenPackages="platform:/plugin/org.xmdl.model/model/xmdl.genmodel#//xmdl">
+  <foreignModel>xmdlgen.ecore</foreignModel>
+  <genPackages prefix="Xmdlgen" basePackage="org.xmdl" disposableProviderFactory="true"
+      ecorePackage="xmdlgen.ecore#/">
+    <genClasses ecoreClass="xmdlgen.ecore#//GModel">
+      <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Base Model"
+          ecoreFeature="ecore:EReference xmdlgen.ecore#//GModel/xProject"/>
+      <genFeatures createChild="false" propertyCategory="Generation Model" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GModel/name"/>
+      <genFeatures property="Readonly" createChild="false" propertyCategory="Base Model"
+          ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GModel/xModel"/>
+      <genFeatures children="true" createChild="true" propertyCategory="Generation Model"
+          ecoreFeature="ecore:EReference xmdlgen.ecore#//GModel/gPackages"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdlgen.ecore#//GPackage">
+      <genFeatures createChild="false" propertyCategory="Generation Model" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GPackage/name"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Base Model"
+          ecoreFeature="ecore:EReference xmdlgen.ecore#//GPackage/xPackage"/>
+      <genFeatures createChild="false" propertyCategory="Generation Model" ecoreFeature="ecore:EReference xmdlgen.ecore#//GPackage/gModel"/>
+      <genFeatures children="true" createChild="true" propertyCategory="Generation Model"
+          ecoreFeature="ecore:EReference xmdlgen.ecore#//GPackage/gClasses"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdlgen.ecore#//GClass">
+      <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Base Model"
+          ecoreFeature="ecore:EReference xmdlgen.ecore#//GClass/xClass"/>
+      <genFeatures createChild="false" propertyCategory="Generation Model" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GClass/name"/>
+      <genFeatures notify="false" createChild="false" propertyCategory="Generation Model"
+          ecoreFeature="ecore:EReference xmdlgen.ecore#//GClass/gPackage"/>
+      <genFeatures children="true" createChild="true" propertyCategory="Generation Model"
+          ecoreFeature="ecore:EReference xmdlgen.ecore#//GClass/gAttributes"/>
+      <genFeatures createChild="false" propertyCategory="Persistance" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GClass/persistent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GClass/deleteServiceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GClass/editServiceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GClass/saveServiceName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GClass/searchServiceName"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdlgen.ecore#//GAttribute">
+      <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Base Model"
+          ecoreFeature="ecore:EReference xmdlgen.ecore#//GAttribute/xAttribute"/>
+      <genFeatures createChild="false" propertyCategory="Generation Model" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GAttribute/name"/>
+      <genFeatures createChild="false" propertyCategory="Persistance" ecoreFeature="ecore:EAttribute xmdlgen.ecore#//GAttribute/persistent"/>
+      <genFeatures notify="false" createChild="false" propertyCategory="Generation Model"
+          ecoreFeature="ecore:EReference xmdlgen.ecore#//GAttribute/gClass"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdlgen.ecore#//XMDLGenModel"/>
+  </genPackages>
+</genmodel:GenModel>

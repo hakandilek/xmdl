@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.xmdl.model/src"
+    editDirectory="/org.xmdl.xmdlbo.ui/src" editorDirectory="/org.xmdl.xmdlbo.ui/src"
+    modelPluginID="xmdl" runtimeJar="true" modelName="Xmdlbo" editPluginClass="org.xmdl.xmdlbo.ui.XmdlboEditPlugin"
+    editorPluginClass="org.xmdl.xmdlbo.presentation.XmdlboEditorPlugin" testSuiteClass="org.xmdl.xmdlbo.tests.XmdlboAllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" usedGenPackages="platform:/plugin/org.xmdl.model/model/xmdl.genmodel#//xmdl">
+  <foreignModel>xmdlbo.ecore</foreignModel>
+  <genPackages prefix="Xmdlbo" basePackage="org.xmdl" disposableProviderFactory="true"
+      ecorePackage="xmdlbo.ecore#/">
+    <genEnums ecoreEnum="xmdlbo.ecore#//BParameterNature">
+      <genEnumLiterals ecoreEnumLiteral="xmdlbo.ecore#//BParameterNature/IN"/>
+      <genEnumLiterals ecoreEnumLiteral="xmdlbo.ecore#//BParameterNature/OUT"/>
+      <genEnumLiterals ecoreEnumLiteral="xmdlbo.ecore#//BParameterNature/IN_OUT"/>
+    </genEnums>
+    <genClasses ecoreClass="xmdlbo.ecore#//BModel">
+      <genFeatures notify="false" createChild="false" propertyCategory="Base Model"
+          ecoreFeature="ecore:EReference xmdlbo.ecore#//BModel/xProject"/>
+      <genFeatures createChild="false" propertyCategory="Business Model" ecoreFeature="ecore:EAttribute xmdlbo.ecore#//BModel/name"/>
+      <genFeatures property="Readonly" createChild="false" propertyCategory="Base Model"
+          ecoreFeature="ecore:EAttribute xmdlbo.ecore#//BModel/xModel"/>
+      <genFeatures children="true" createChild="true" propertyCategory="Business Model"
+          ecoreFeature="ecore:EReference xmdlbo.ecore#//BModel/bPackages"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdlbo.ecore#//XMDLBOModel"/>
+    <genClasses ecoreClass="xmdlbo.ecore#//BPackage">
+      <genFeatures createChild="false" propertyCategory="Business Model" ecoreFeature="ecore:EAttribute xmdlbo.ecore#//BPackage/name"/>
+      <genFeatures createChild="false" propertyCategory="Business Model" ecoreFeature="ecore:EReference xmdlbo.ecore#//BPackage/model"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Base Model"
+          ecoreFeature="ecore:EReference xmdlbo.ecore#//BPackage/xPackage"/>
+      <genFeatures children="true" createChild="true" propertyCategory="Business Model"
+          ecoreFeature="ecore:EReference xmdlbo.ecore#//BPackage/services"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdlbo.ecore#//BService">
+      <genFeatures createChild="false" propertyCategory="Business Model" ecoreFeature="ecore:EAttribute xmdlbo.ecore#//BService/name"/>
+      <genFeatures createChild="false" propertyCategory="Business Model" ecoreFeature="ecore:EReference xmdlbo.ecore#//BService/bPackage"/>
+      <genFeatures property="None" children="true" createChild="true" propertyCategory="Business Model"
+          ecoreFeature="ecore:EReference xmdlbo.ecore#//BService/methods"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Base Model"
+          ecoreFeature="ecore:EReference xmdlbo.ecore#//BService/xClass"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdlbo.ecore#//BParameter">
+      <genFeatures createChild="false" propertyCategory="Business Model" ecoreFeature="ecore:EAttribute xmdlbo.ecore#//BParameter/name"/>
+      <genFeatures notify="false" createChild="false" propertyCategory="Business Model"
+          ecoreFeature="ecore:EReference xmdlbo.ecore#//BParameter/type"/>
+      <genFeatures createChild="false" propertyCategory="Business Model" ecoreFeature="ecore:EAttribute xmdlbo.ecore#//BParameter/nature"/>
+      <genFeatures createChild="false" propertyCategory="Business Model" ecoreFeature="ecore:EAttribute xmdlbo.ecore#//BParameter/constant"/>
+      <genFeatures property="None" notify="false" createChild="false" propertyCategory="Business Model"
+          ecoreFeature="ecore:EReference xmdlbo.ecore#//BParameter/method"/>
+    </genClasses>
+    <genClasses ecoreClass="xmdlbo.ecore#//BMethod">
+      <genFeatures createChild="false" propertyCategory="Business Model" ecoreFeature="ecore:EAttribute xmdlbo.ecore#//BMethod/name"/>
+      <genFeatures property="None" children="true" createChild="true" propertyCategory="Business Model"
+          ecoreFeature="ecore:EReference xmdlbo.ecore#//BMethod/parameters"/>
+      <genFeatures notify="false" createChild="false" propertyCategory="Business Model"
+          ecoreFeature="ecore:EReference xmdlbo.ecore#//BMethod/service"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

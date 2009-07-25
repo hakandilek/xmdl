@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.xmdl"
+      label="XMDL Universal Code Generator"
+      version="0.6.0.20081112_beta1"
+      provider-name="xmdl.org"
+      plugin="org.xmdl.xmdl.ui">
+
+   <description url="http://www.xmdl.org">
+      XMDL Universal Code Generator. For more information see project page on http://www.xmdl.org/
+   </description>
+
+   <copyright url="http://xmdl.googlecode.com/svn/trunk/xmdl.lib/varfiles/NOTICE.txt">
+      See project site for more information.
+   </copyright>
+
+   <license url="http://www.gnu.org/licenses/lgpl.html">
+      Licensed under LGPL. See site for more information.
+   </license>
+
+   <url>
+      <discovery label="XMDL Home Page" url="http://www.xmdl.org"/>
+      <discovery label="Project page on Google code" url="http://code.google.com/p/xmdl/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.apache.commons.logging"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.core.runtime.compatibility"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.junit"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import feature="org.eclipse.emf" version="2.3.1.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.codegen" version="2.3.1.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.codegen.ecore" version="2.3.1.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.codegen.ecore.ui" version="2.3.0.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.codegen.ui" version="2.3.0.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.common" version="2.3.0.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.common.ui" version="2.3.1.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.converter" version="2.3.1.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecore" version="2.3.1.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecore.edit" version="2.3.0.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecore.editor" version="2.3.1.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.edit" version="2.3.1.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.edit.ui" version="2.3.1.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.mapping" version="2.3.0.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.mapping.ecore" version="2.3.0.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.mapping.ecore.editor" version="2.3.0.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.mapping.ui" version="2.3.0.v200709252135" match="greaterOrEqual"/>
+      <import feature="org.eclipse.jdt" version="3.3.1.r331_v20070629-7o7jE72EDlXAbqAcnbmyg1rf8RIL" match="greaterOrEqual"/>
+      <import feature="org.eclipse.jet" version="0.8.1.v20070913-17E19oA55P5V_8" match="greaterOrEqual"/>
+      <import feature="org.eclipse.platform" version="3.3.2.R33x_v20071022-_19UEksF-G8Yc6bUv3Dz" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.xmdl.ida"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.commons.beanutils"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.log4j"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xmdl.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xmdl.gen"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xmdl.genext"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xmdl.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xmdl.xmdl.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xmdl.xmdlbo.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xmdl.xmdldb.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.xmdl.xmdlgen.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

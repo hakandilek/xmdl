@@ -1,0 +1,16 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@ jet package="org.xmdl.genext.taglib.xc" class="DefaultValueTagTestTemplate"%>
+:<xc:defaultValue attribute="$attribute1"/>;
+:<xc:defaultValue attribute="$attribute2"/>;
+:<xc:defaultValue attribute="$attribute3"/>;
+:<xc:defaultValue attribute="$attribute4"/>;
+:<xc:defaultValue attribute="$attribute5"/>;
+:<xc:defaultValue attribute="$attribute6"/>;
+:<xc:defaultValue attribute="$attribute7"/>;
+:<xc:defaultValue attribute="$attribute8"/>;
+:<xc:defaultValue attribute="$attribute9"/>;
+:<xc:defaultValue attribute="$attribute10"/>;

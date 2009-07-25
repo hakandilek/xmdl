@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<project basedir="./" default="make_jar" name="thisProject">
+
+    <property name="user.build.properties" value="${user.home}/.xmdl/build.properties"/>
+    <property name="project.properties" value="${basedir}/build.properties"/>
+
+
+    <property file="${user.build.properties}"/>
+    <property file="${project.properties}"/>
+
+
+    <property name="src" value="${basedir}/src"/>
+    <property name="bin" value="${basedir}/bin"/>
+    <property name="dist" value="${basedir}/dist"/>
+    <property name="lib" value="${basedir}/lib"/>
+    <property name="build" value="${basedir}/build"/>
+    <property name="build.bundles" value="${build}/bundles"/>
+    <property name="build.bundles.append" value="${build.bundles}/append"/>
+    <property name="report.src" value="${basedir}/reports"/>
+    <property name="report.bin" value="${build}/report"/>
+    <property name="tmp" value="${build}/temp"/>
+
+    <property name="cvs.pass.file" value="${user.home}/.xmdl/cvspass"/>
+
+
+    <path id="classpath">
+        <fileset dir="${lib}" includes="**/*.jar"/>
+        <fileset dir="${dist}" includes="**/*.jar"/>
+        <fileset dir="${internal.lib.dir}" includes="**/*.jar"/>
+        <fileset dir="${thirdparty.lib.dir}" includes="**/*.jar"/>
+    </path>
+
+<!--    <taskdef name="jrc" classname="net.sf.jasperreports.ant.JRAntCompileTask">-->
+<!--        <classpath refid="classpath"/>-->
+<!--    </taskdef>-->
+
+
+    <target name="init">
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${build}"/>
+        <mkdir dir="${build.bundles}"/>
+        <mkdir dir="${build.bundles.append}"/>
+        <mkdir dir="${report.bin}"/>
+        <mkdir dir="${report.src}"/>
+        <mkdir dir="${tmp}"/>
+        <mkdir dir="${bin}"/>
+    </target>
+
+    <target name="compile" depends="init, clean">
+        <antcall target="compile_sources" />
+<!--        <antcall target="compile_reports" />-->
+    </target>
+
+    <target name="compile_sources" depends="init" >
+        <javac srcdir="${src}" destdir="${bin}" failonerror="true" debug="true">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+
+
+
+
+
+
+
+    <target name="clean" description="Removes previous build">
+        <delete verbose="true">
+            <fileset dir="${bin}"/>
+        </delete>
+
+        <delete>
+            <fileset
+                dir="${build.bundles.append}"
+                includes="*.properties"/>
+        </delete>
+
+        <delete verbose="true">
+            <fileset dir="${report.bin}"/>
+            <fileset dir="${report.src}" excludes="*.jrxml"/>
+        </delete>
+
+    </target>
+
+    <target name="make_jar" depends="init" description="Makes jar file from binaries">
+        <antcall target="clean"/>
+        <antcall target="compile"/>
+        <jar destfile="${dist}/${project.name}.jar" basedir="${bin}">
+            <manifest>
+                <attribute name="Built-By" value="${user.name}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="copy_jar" depends="make_jar" description="Copies the generated jar file into tomcat webapps directory">
+        <!--        <echo message="" -->
+    </target>
+
+
+</project>

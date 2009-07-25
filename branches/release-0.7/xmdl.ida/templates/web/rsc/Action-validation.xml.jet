@@ -1,0 +1,17 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@ jet 
+    package="org.xmdl.ida.templates.web.rsc" 
+    class="ActionValidationXMLImpl" 
+    %><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%><!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+    "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="<xc:uncap element="$class"/>">
+        <field-validator type="visitor">
+            <param name="appendPrefix">false</param>
+            <message/>
+        </field-validator>
+    </field>
+</validators> 

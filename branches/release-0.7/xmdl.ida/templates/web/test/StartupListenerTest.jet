@@ -1,0 +1,94 @@
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@ jet 
+    package="org.xmdl.ida.templates.web.test" 
+    class="StartupListenerTestImpl" 
+    %><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>package <xc:qualifiedName element="$project/packages[1]"/>.webapp.listener;
+
+<j:importsLocation package=""/>
+
+<xc:import pattern="$element.ApplicationConstants" element="$project/packages[1]"/>
+<xc:import pattern="junit.framework.TestCase"/>
+<xc:import pattern="org.springframework.mock.web.MockServletContext"/>
+<xc:import pattern="org.springframework.web.context.ContextLoader"/>
+<xc:import pattern="org.springframework.web.context.WebApplicationContext"/>
+<xc:import pattern="org.springframework.web.context.ContextLoaderListener"/>
+
+<xc:import pattern="javax.servlet.ServletContextEvent"/>
+<xc:import pattern="javax.servlet.ServletContextListener"/>
+<xc:import pattern="java.util.Map"/>
+
+
+/**
+ * This class tests the StartupListener class to verify that variables are
+ * placed into the servlet context.
+ *
+ * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
+ * @generated
+ */
+public class StartupListenerTest extends TestCase {
+
+    /**
+     * @generated
+     */ 
+    private MockServletContext sc = null;
+
+    /**
+     * @generated
+     */ 
+    private ServletContextListener listener = null;
+    
+    /**
+     * @generated
+     */ 
+    private ContextLoaderListener springListener = null;
+
+    /**
+     * @generated
+     */ 
+    protected void setUp() throws Exception {
+        super.setUp();
+        sc = new MockServletContext("");
+        sc.addInitParameter("daoType", "hibernate");
+        sc.addInitParameter(ApplicationConstants.CSS_THEME, "simplicity");
+        
+        // initialize Spring
+        sc.addInitParameter(ContextLoader.CONFIG_LOCATION_PARAM,
+                "classpath*:/**/applicationContext*.xml, " +
+                "classpath*:**/applicationContext*.xml, " +
+                "/WEB-INF/applicationContext*.xml"
+                );
+
+        springListener = new ContextLoaderListener();
+        springListener.contextInitialized(new ServletContextEvent(sc));
+        listener = new StartupListener();
+    }
+
+    /**
+     * @generated
+     */ 
+    protected void tearDown() throws Exception {
+        super.tearDown();
+        springListener = null;
+        listener = null;
+        sc = null;
+    }
+
+    /**
+     * @generated
+     */ 
+    public void testContextInitialized() {
+        listener.contextInitialized(new ServletContextEvent(sc));
+
+        assertTrue(sc.getAttribute(ApplicationConstants.CONFIG) != null);
+        Map<?, ?> config = (Map<?, ?>) sc.getAttribute(ApplicationConstants.CONFIG);
+        assertEquals(config.get(ApplicationConstants.CSS_THEME), "simplicity");
+        
+        assertTrue(sc.getAttribute(WebApplicationContext
+                .ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE) != null);
+        assertTrue(sc.getAttribute(ApplicationConstants.AVAILABLE_ROLES) != null);
+    }
+}

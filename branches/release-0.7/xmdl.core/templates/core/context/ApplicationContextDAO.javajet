@@ -1,0 +1,67 @@
+<%@ jet 
+	package="org.xmdl.core.templates.context.impl" 
+	imports="java.util.* 
+			org.xmdl.xmdl.*
+			org.xmdl.gen.util.*
+			org.xmdl.core.util.*"
+	class="ApplicationContextDAOImpl" 
+%><%
+	XPackage xPackage = (XPackage) argument;	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+	
+%><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!-- Hibernate SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+
+        <property name="mappingResources">
+            <list>
+				<value><%=XMDLDBHelper.INSTANCE.getMappingFile(xPackage)%></value>
+            </list>
+        </property>
+        <!-- The property below is commented out b/c it doesn't work when run via
+             Ant in Eclipse.  It works fine for indivakidual JUnit tests and in IDEA ??
+        <property name="mappingJarLocations">
+            <list><value>file:dist/appfuse-dao.jar</value></list>
+        </property>
+        -->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.connection.username">${hibernate.connection.username}</prop>
+                <prop key="hibernate.connection.password">${hibernate.connection.password}</prop>
+                <prop key="hibernate.connection.url">${hibernate.connection.url}</prop>
+                <prop key="hibernate.connection.driver_class">${hibernate.connection.driver_class}</prop>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.query.substitutions">${hibernate.query.substitutions}</prop>
+                <prop key="hibernate.cglib.use_reflection_optimizer">${hibernate.cglib.use_reflection_optimizer}</prop>
+                <prop key="hibernate.generate_statistics">${hibernate.generate_statistics}</prop>
+
+                <prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
+                <prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+                <prop key="hibernate.cache.use_minimal_puts">${hibernate.cache.use_minimal_puts}</prop>
+
+            </props>
+        </property>
+    </bean>
+
+    <!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+<%for (Iterator<XClass> it = xPackage.getClasses().iterator(); it.hasNext();) {
+		XClass xClass = (XClass) it.next();
+%>
+    <!-- <%=helper.getCapName(xClass)%>DAO: Hibernate implementation -->
+    <bean id="<%=helper.getObjectDAOName(xClass)%>" class="<%=helper.getObjectDAOImplName(xClass)%>">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+<%}%>
+</beans>

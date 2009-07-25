@@ -1,0 +1,28 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="w" id="org.eclipse.jet.workspaceTags" %>
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="f" id="org.eclipse.jet.formatTags" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
+<%@ jet 
+    package="org.xmdl.ida.templates.core.project" 
+    class="ConstantsImpl" 
+    %><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%>
+package <xc:qualifiedName element="$project/packages[1]"/>;
+
+<j:importsLocation package=""/>
+
+/**
+ *
+ * Constant values used throughout the application.
+ * 
+ * $Id$
+ *
+ * @generated
+ */ 
+public interface ApplicationConstants extends  <j:import>org.xmdl.ida.lib.BaseConstants</j:import> {
+
+
+}

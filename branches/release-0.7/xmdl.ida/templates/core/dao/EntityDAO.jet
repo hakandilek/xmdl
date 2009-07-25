@@ -1,0 +1,35 @@
+<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
+<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
+<%@taglib prefix="ida" id="org.xmdl.ida.idaUtils" %>
+<%@ jet 
+    package="org.xmdl.ida.templates.core.dao" 
+    class="EntityDAOImpl" 
+    %><%
+    org.apache.log4j.Logger.getLogger(getClass()).debug(" generate ");    
+%> 
+package <xc:qualifiedName element="$class/xPackage"/>.dao;
+
+<j:importsLocation package=""/>
+
+<xc:import pattern="java.util.*"/>
+<xc:import pattern="org.xmdl.ida.lib.dao.GenericDao"/>
+
+<xc:import pattern="$element.model.*" element="$class/xPackage"/>
+<xc:import pattern="$element.model.search.*" element="$class/xPackage"/>
+
+/**
+ *
+ * <xc:cap element="$class"/> DAO interface
+ *  
+ * $Id$
+ *
+ * @generated
+ */ 
+public interface <xc:cap element="$class"/>DAO extends GenericDao<<xc:cap element="$class"/>, Long> {
+
+    /**
+     * @generated
+     */ 
+    Collection<<xc:cap element="$class"/>> search(<xc:cap element="$class"/>Search searchBean);
+
+}

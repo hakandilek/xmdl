@@ -1,0 +1,20 @@
+<%@ jet 
+	package="org.xmdl.core.templates.dao.hbm.impl" 
+	imports="org.xmdl.xmdl.*
+			org.xmdl.gen.util.*
+			org.xmdl.core.util.*
+			org.xmdl.xmdldb.*"
+	class="AssociationHBMManyToOneImpl" 
+%><%	
+	AttributePair pair = (AttributePair) argument;	
+	DField f = pair.getField();	
+	XAttribute a = pair.getAttribute();
+	XAssociationBehaviour b = a.getAssociationBehaviour();
+	
+	ClassHelper helper = XMDLClassHelper.INSTANCE;
+%><many-to-one 
+	name="<%=a.getName()%>" 
+	class="<%=helper.getObjectImplName(a.getType())%>"
+	cascade="<%=XAssociationBehaviour.COMPOSITION == b.getValue() ? "delete" : "none" %>"
+	column="<%=f.getName()%>"
+	/>

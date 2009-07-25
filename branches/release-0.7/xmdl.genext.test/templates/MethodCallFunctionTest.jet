@@ -1,0 +1,13 @@
+<%@taglib prefix="c" id="org.eclipse.jet.controlTags" %>
+<%@taglib prefix="tu" id="org.xmdl.genext.testUtils" %>
+<%@ jet package="org.xmdl.genext.xpath" class="MethodCallFunctionTestTemplate"%>
+<c:if test="call($attribute1/type, 'isPrimitive')">isPrimitive</c:if>;
+<c:if test="call($attribute2/type, 'isPrimitive')">isPrimitive</c:if>;
+<c:if test="call($attribute3/type, 'isPrimitive')">isPrimitive</c:if>;
+<c:if test="call($attribute4/type, 'isPrimitive')">isPrimitive</c:if>;
+<c:if test="call($attribute5/type, 'isPrimitive')">isPrimitive</c:if>;
+<c:if test="call($attribute6/type, 'isPrimitive')">isPrimitive</c:if>;
+<c:if test="call($attribute7/type, 'isPrimitive')">isPrimitive</c:if>;
+<c:if test="call($attribute8/type, 'isPrimitive')">isPrimitive</c:if>;
+<c:if test="call($attribute9/type, 'isPrimitive')">isPrimitive</c:if>;
+<c:if test="call($attribute10/type, 'isPrimitive')">isPrimitive</c:if>;
