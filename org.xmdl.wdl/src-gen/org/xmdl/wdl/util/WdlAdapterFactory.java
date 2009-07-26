@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.xmdl.wdl.Attribute;
 import org.xmdl.wdl.Embed;
 import org.xmdl.wdl.Entity;
-import org.xmdl.wdl.EntityBody;
 import org.xmdl.wdl.EnumLiteral;
 import org.xmdl.wdl.JAVAID;
 import org.xmdl.wdl.Model;
+import org.xmdl.wdl.Project;
 import org.xmdl.wdl.SimpleType;
 import org.xmdl.wdl.Type;
 import org.xmdl.wdl.WdlPackage;
@@ -92,6 +92,11 @@ public class WdlAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
+      public Adapter caseProject(Project object)
+      {
+        return createProjectAdapter();
+      }
+      @Override
       public Adapter caseType(Type object)
       {
         return createTypeAdapter();
@@ -112,6 +117,11 @@ public class WdlAdapterFactory extends AdapterFactoryImpl
         return createEntityAdapter();
       }
       @Override
+      public Adapter caseEmbed(Embed object)
+      {
+        return createEmbedAdapter();
+      }
+      @Override
       public Adapter caseAttribute(Attribute object)
       {
         return createAttributeAdapter();
@@ -125,16 +135,6 @@ public class WdlAdapterFactory extends AdapterFactoryImpl
       public Adapter caseEnumLiteral(EnumLiteral object)
       {
         return createEnumLiteralAdapter();
-      }
-      @Override
-      public Adapter caseEmbed(Embed object)
-      {
-        return createEmbedAdapter();
-      }
-      @Override
-      public Adapter caseEntityBody(EntityBody object)
-      {
-        return createEntityBodyAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -169,6 +169,21 @@ public class WdlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createModelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.Project <em>Project</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xmdl.wdl.Project
+   * @generated
+   */
+  public Adapter createProjectAdapter()
   {
     return null;
   }
@@ -234,6 +249,21 @@ public class WdlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.Embed <em>Embed</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xmdl.wdl.Embed
+   * @generated
+   */
+  public Adapter createEmbedAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xmdl.wdl.Attribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -274,36 +304,6 @@ public class WdlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEnumLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.Embed <em>Embed</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xmdl.wdl.Embed
-   * @generated
-   */
-  public Adapter createEmbedAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.EntityBody <em>Entity Body</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xmdl.wdl.EntityBody
-   * @generated
-   */
-  public Adapter createEntityBodyAdapter()
   {
     return null;
   }

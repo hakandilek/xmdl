@@ -35,6 +35,15 @@ public interface WdlFactory extends EFactory
   Model createModel();
 
   /**
+   * Returns a new object of class '<em>Project</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Project</em>'.
+   * @generated
+   */
+  Project createProject();
+
+  /**
    * Returns a new object of class '<em>Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -71,6 +80,15 @@ public interface WdlFactory extends EFactory
   Entity createEntity();
 
   /**
+   * Returns a new object of class '<em>Embed</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Embed</em>'.
+   * @generated
+   */
+  Embed createEmbed();
+
+  /**
    * Returns a new object of class '<em>Attribute</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -96,24 +114,6 @@ public interface WdlFactory extends EFactory
    * @generated
    */
   EnumLiteral createEnumLiteral();
-
-  /**
-   * Returns a new object of class '<em>Embed</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Embed</em>'.
-   * @generated
-   */
-  Embed createEmbed();
-
-  /**
-   * Returns a new object of class '<em>Entity Body</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Entity Body</em>'.
-   * @generated
-   */
-  EntityBody createEntityBody();
 
   /**
    * Returns the package supported by this factory.

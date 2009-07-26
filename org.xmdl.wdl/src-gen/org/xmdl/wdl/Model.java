@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.xmdl.wdl.Model#getProject <em>Project</em>}</li>
  *   <li>{@link org.xmdl.wdl.Model#getTypes <em>Types</em>}</li>
  * </ul>
  * </p>
@@ -27,6 +28,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Model extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Project</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Project</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Project</em>' containment reference.
+   * @see #setProject(Project)
+   * @see org.xmdl.wdl.WdlPackage#getModel_Project()
+   * @model containment="true"
+   * @generated
+   */
+  Project getProject();
+
+  /**
+   * Sets the value of the '{@link org.xmdl.wdl.Model#getProject <em>Project</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Project</em>' containment reference.
+   * @see #getProject()
+   * @generated
+   */
+  void setProject(Project value);
+
   /**
    * Returns the value of the '<em><b>Types</b></em>' containment reference list.
    * The list contents are of type {@link org.xmdl.wdl.Type}.

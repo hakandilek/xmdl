@@ -70,13 +70,22 @@ public interface WdlPackage extends EPackage
   int MODEL = 0;
 
   /**
+   * The feature id for the '<em><b>Project</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__PROJECT = 0;
+
+  /**
    * The feature id for the '<em><b>Types</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__TYPES = 0;
+  int MODEL__TYPES = 1;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -85,7 +94,44 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 1;
+  int MODEL_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.xmdl.wdl.impl.ProjectImpl <em>Project</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xmdl.wdl.impl.ProjectImpl
+   * @see org.xmdl.wdl.impl.WdlPackageImpl#getProject()
+   * @generated
+   */
+  int PROJECT = 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROJECT__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Base Package</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROJECT__BASE_PACKAGE = 1;
+
+  /**
+   * The number of structural features of the '<em>Project</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROJECT_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xmdl.wdl.impl.TypeImpl <em>Type</em>}' class.
@@ -95,7 +141,16 @@ public interface WdlPackage extends EPackage
    * @see org.xmdl.wdl.impl.WdlPackageImpl#getType()
    * @generated
    */
-  int TYPE = 1;
+  int TYPE = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__NAME = 0;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -104,7 +159,7 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_FEATURE_COUNT = 0;
+  int TYPE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xmdl.wdl.impl.SimpleTypeImpl <em>Simple Type</em>}' class.
@@ -114,7 +169,7 @@ public interface WdlPackage extends EPackage
    * @see org.xmdl.wdl.impl.WdlPackageImpl#getSimpleType()
    * @generated
    */
-  int SIMPLE_TYPE = 2;
+  int SIMPLE_TYPE = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -123,7 +178,7 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SIMPLE_TYPE__NAME = TYPE_FEATURE_COUNT + 0;
+  int SIMPLE_TYPE__NAME = TYPE__NAME;
 
   /**
    * The feature id for the '<em><b>Mapped Type</b></em>' containment reference.
@@ -132,7 +187,7 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SIMPLE_TYPE__MAPPED_TYPE = TYPE_FEATURE_COUNT + 1;
+  int SIMPLE_TYPE__MAPPED_TYPE = TYPE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Simple Type</em>' class.
@@ -141,7 +196,7 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SIMPLE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
+  int SIMPLE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xmdl.wdl.impl.JAVAIDImpl <em>JAVAID</em>}' class.
@@ -151,7 +206,7 @@ public interface WdlPackage extends EPackage
    * @see org.xmdl.wdl.impl.WdlPackageImpl#getJAVAID()
    * @generated
    */
-  int JAVAID = 3;
+  int JAVAID = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -179,7 +234,34 @@ public interface WdlPackage extends EPackage
    * @see org.xmdl.wdl.impl.WdlPackageImpl#getEntity()
    * @generated
    */
-  int ENTITY = 4;
+  int ENTITY = 5;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY__NAME = TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Entity</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY__SUPER_ENTITY = TYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY__ATTRIBUTES = TYPE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Entity</em>' class.
@@ -188,7 +270,53 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+  int ENTITY_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.xmdl.wdl.impl.EmbedImpl <em>Embed</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xmdl.wdl.impl.EmbedImpl
+   * @see org.xmdl.wdl.impl.WdlPackageImpl#getEmbed()
+   * @generated
+   */
+  int EMBED = 6;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EMBED__NAME = TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Super Entity</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EMBED__SUPER_ENTITY = TYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EMBED__ATTRIBUTES = TYPE_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Embed</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EMBED_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.xmdl.wdl.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -198,7 +326,7 @@ public interface WdlPackage extends EPackage
    * @see org.xmdl.wdl.impl.WdlPackageImpl#getAttribute()
    * @generated
    */
-  int ATTRIBUTE = 5;
+  int ATTRIBUTE = 7;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -244,7 +372,7 @@ public interface WdlPackage extends EPackage
    * @see org.xmdl.wdl.impl.WdlPackageImpl#getEnum()
    * @generated
    */
-  int ENUM = 6;
+  int ENUM = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -253,7 +381,7 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUM__NAME = TYPE_FEATURE_COUNT + 0;
+  int ENUM__NAME = TYPE__NAME;
 
   /**
    * The feature id for the '<em><b>Literals</b></em>' containment reference list.
@@ -262,7 +390,7 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUM__LITERALS = TYPE_FEATURE_COUNT + 1;
+  int ENUM__LITERALS = TYPE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Enum</em>' class.
@@ -271,7 +399,7 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUM_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
+  int ENUM_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.xmdl.wdl.impl.EnumLiteralImpl <em>Enum Literal</em>}' class.
@@ -281,7 +409,7 @@ public interface WdlPackage extends EPackage
    * @see org.xmdl.wdl.impl.WdlPackageImpl#getEnumLiteral()
    * @generated
    */
-  int ENUM_LITERAL = 7;
+  int ENUM_LITERAL = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -310,71 +438,6 @@ public interface WdlPackage extends EPackage
    */
   int ENUM_LITERAL_FEATURE_COUNT = 2;
 
-  /**
-   * The meta object id for the '{@link org.xmdl.wdl.impl.EmbedImpl <em>Embed</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xmdl.wdl.impl.EmbedImpl
-   * @see org.xmdl.wdl.impl.WdlPackageImpl#getEmbed()
-   * @generated
-   */
-  int EMBED = 8;
-
-  /**
-   * The number of structural features of the '<em>Embed</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EMBED_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.xmdl.wdl.impl.EntityBodyImpl <em>Entity Body</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xmdl.wdl.impl.EntityBodyImpl
-   * @see org.xmdl.wdl.impl.WdlPackageImpl#getEntityBody()
-   * @generated
-   */
-  int ENTITY_BODY = 9;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY_BODY__NAME = ENTITY_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Super Entity</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY_BODY__SUPER_ENTITY = ENTITY_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY_BODY__ATTRIBUTES = ENTITY_FEATURE_COUNT + 2;
-
-  /**
-   * The number of structural features of the '<em>Entity Body</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY_BODY_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 3;
-
 
   /**
    * Returns the meta object for class '{@link org.xmdl.wdl.Model <em>Model</em>}'.
@@ -385,6 +448,17 @@ public interface WdlPackage extends EPackage
    * @generated
    */
   EClass getModel();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xmdl.wdl.Model#getProject <em>Project</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Project</em>'.
+   * @see org.xmdl.wdl.Model#getProject()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_Project();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.xmdl.wdl.Model#getTypes <em>Types</em>}'.
@@ -398,6 +472,38 @@ public interface WdlPackage extends EPackage
   EReference getModel_Types();
 
   /**
+   * Returns the meta object for class '{@link org.xmdl.wdl.Project <em>Project</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Project</em>'.
+   * @see org.xmdl.wdl.Project
+   * @generated
+   */
+  EClass getProject();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.Project#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xmdl.wdl.Project#getName()
+   * @see #getProject()
+   * @generated
+   */
+  EAttribute getProject_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.Project#getBasePackage <em>Base Package</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Base Package</em>'.
+   * @see org.xmdl.wdl.Project#getBasePackage()
+   * @see #getProject()
+   * @generated
+   */
+  EAttribute getProject_BasePackage();
+
+  /**
    * Returns the meta object for class '{@link org.xmdl.wdl.Type <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -408,6 +514,17 @@ public interface WdlPackage extends EPackage
   EClass getType();
 
   /**
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.Type#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xmdl.wdl.Type#getName()
+   * @see #getType()
+   * @generated
+   */
+  EAttribute getType_Name();
+
+  /**
    * Returns the meta object for class '{@link org.xmdl.wdl.SimpleType <em>Simple Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -416,17 +533,6 @@ public interface WdlPackage extends EPackage
    * @generated
    */
   EClass getSimpleType();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xmdl.wdl.SimpleType#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xmdl.wdl.SimpleType#getName()
-   * @see #getSimpleType()
-   * @generated
-   */
-  EAttribute getSimpleType_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xmdl.wdl.SimpleType#getMappedType <em>Mapped Type</em>}'.
@@ -469,6 +575,60 @@ public interface WdlPackage extends EPackage
    * @generated
    */
   EClass getEntity();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xmdl.wdl.Entity#getSuperEntity <em>Super Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Super Entity</em>'.
+   * @see org.xmdl.wdl.Entity#getSuperEntity()
+   * @see #getEntity()
+   * @generated
+   */
+  EReference getEntity_SuperEntity();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xmdl.wdl.Entity#getAttributes <em>Attributes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Attributes</em>'.
+   * @see org.xmdl.wdl.Entity#getAttributes()
+   * @see #getEntity()
+   * @generated
+   */
+  EReference getEntity_Attributes();
+
+  /**
+   * Returns the meta object for class '{@link org.xmdl.wdl.Embed <em>Embed</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Embed</em>'.
+   * @see org.xmdl.wdl.Embed
+   * @generated
+   */
+  EClass getEmbed();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xmdl.wdl.Embed#getSuperEntity <em>Super Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Super Entity</em>'.
+   * @see org.xmdl.wdl.Embed#getSuperEntity()
+   * @see #getEmbed()
+   * @generated
+   */
+  EReference getEmbed_SuperEntity();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xmdl.wdl.Embed#getAttributes <em>Attributes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Attributes</em>'.
+   * @see org.xmdl.wdl.Embed#getAttributes()
+   * @see #getEmbed()
+   * @generated
+   */
+  EReference getEmbed_Attributes();
 
   /**
    * Returns the meta object for class '{@link org.xmdl.wdl.Attribute <em>Attribute</em>}'.
@@ -524,17 +684,6 @@ public interface WdlPackage extends EPackage
   EClass getEnum();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xmdl.wdl.Enum#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xmdl.wdl.Enum#getName()
-   * @see #getEnum()
-   * @generated
-   */
-  EAttribute getEnum_Name();
-
-  /**
    * Returns the meta object for the containment reference list '{@link org.xmdl.wdl.Enum#getLiterals <em>Literals</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -578,59 +727,6 @@ public interface WdlPackage extends EPackage
   EAttribute getEnumLiteral_Ordinal();
 
   /**
-   * Returns the meta object for class '{@link org.xmdl.wdl.Embed <em>Embed</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Embed</em>'.
-   * @see org.xmdl.wdl.Embed
-   * @generated
-   */
-  EClass getEmbed();
-
-  /**
-   * Returns the meta object for class '{@link org.xmdl.wdl.EntityBody <em>Entity Body</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Entity Body</em>'.
-   * @see org.xmdl.wdl.EntityBody
-   * @generated
-   */
-  EClass getEntityBody();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xmdl.wdl.EntityBody#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xmdl.wdl.EntityBody#getName()
-   * @see #getEntityBody()
-   * @generated
-   */
-  EAttribute getEntityBody_Name();
-
-  /**
-   * Returns the meta object for the reference '{@link org.xmdl.wdl.EntityBody#getSuperEntity <em>Super Entity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Super Entity</em>'.
-   * @see org.xmdl.wdl.EntityBody#getSuperEntity()
-   * @see #getEntityBody()
-   * @generated
-   */
-  EReference getEntityBody_SuperEntity();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xmdl.wdl.EntityBody#getAttributes <em>Attributes</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Attributes</em>'.
-   * @see org.xmdl.wdl.EntityBody#getAttributes()
-   * @see #getEntityBody()
-   * @generated
-   */
-  EReference getEntityBody_Attributes();
-
-  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -664,12 +760,46 @@ public interface WdlPackage extends EPackage
     EClass MODEL = eINSTANCE.getModel();
 
     /**
+     * The meta object literal for the '<em><b>Project</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__PROJECT = eINSTANCE.getModel_Project();
+
+    /**
      * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference MODEL__TYPES = eINSTANCE.getModel_Types();
+
+    /**
+     * The meta object literal for the '{@link org.xmdl.wdl.impl.ProjectImpl <em>Project</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xmdl.wdl.impl.ProjectImpl
+     * @see org.xmdl.wdl.impl.WdlPackageImpl#getProject()
+     * @generated
+     */
+    EClass PROJECT = eINSTANCE.getProject();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROJECT__NAME = eINSTANCE.getProject_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Base Package</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROJECT__BASE_PACKAGE = eINSTANCE.getProject_BasePackage();
 
     /**
      * The meta object literal for the '{@link org.xmdl.wdl.impl.TypeImpl <em>Type</em>}' class.
@@ -682,6 +812,14 @@ public interface WdlPackage extends EPackage
     EClass TYPE = eINSTANCE.getType();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TYPE__NAME = eINSTANCE.getType_Name();
+
+    /**
      * The meta object literal for the '{@link org.xmdl.wdl.impl.SimpleTypeImpl <em>Simple Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -690,14 +828,6 @@ public interface WdlPackage extends EPackage
      * @generated
      */
     EClass SIMPLE_TYPE = eINSTANCE.getSimpleType();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SIMPLE_TYPE__NAME = eINSTANCE.getSimpleType_Name();
 
     /**
      * The meta object literal for the '<em><b>Mapped Type</b></em>' containment reference feature.
@@ -734,6 +864,48 @@ public interface WdlPackage extends EPackage
      * @generated
      */
     EClass ENTITY = eINSTANCE.getEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Super Entity</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENTITY__SUPER_ENTITY = eINSTANCE.getEntity_SuperEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENTITY__ATTRIBUTES = eINSTANCE.getEntity_Attributes();
+
+    /**
+     * The meta object literal for the '{@link org.xmdl.wdl.impl.EmbedImpl <em>Embed</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xmdl.wdl.impl.EmbedImpl
+     * @see org.xmdl.wdl.impl.WdlPackageImpl#getEmbed()
+     * @generated
+     */
+    EClass EMBED = eINSTANCE.getEmbed();
+
+    /**
+     * The meta object literal for the '<em><b>Super Entity</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EMBED__SUPER_ENTITY = eINSTANCE.getEmbed_SuperEntity();
+
+    /**
+     * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EMBED__ATTRIBUTES = eINSTANCE.getEmbed_Attributes();
 
     /**
      * The meta object literal for the '{@link org.xmdl.wdl.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -780,14 +952,6 @@ public interface WdlPackage extends EPackage
     EClass ENUM = eINSTANCE.getEnum();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ENUM__NAME = eINSTANCE.getEnum_Name();
-
-    /**
      * The meta object literal for the '<em><b>Literals</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -820,50 +984,6 @@ public interface WdlPackage extends EPackage
      * @generated
      */
     EAttribute ENUM_LITERAL__ORDINAL = eINSTANCE.getEnumLiteral_Ordinal();
-
-    /**
-     * The meta object literal for the '{@link org.xmdl.wdl.impl.EmbedImpl <em>Embed</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xmdl.wdl.impl.EmbedImpl
-     * @see org.xmdl.wdl.impl.WdlPackageImpl#getEmbed()
-     * @generated
-     */
-    EClass EMBED = eINSTANCE.getEmbed();
-
-    /**
-     * The meta object literal for the '{@link org.xmdl.wdl.impl.EntityBodyImpl <em>Entity Body</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xmdl.wdl.impl.EntityBodyImpl
-     * @see org.xmdl.wdl.impl.WdlPackageImpl#getEntityBody()
-     * @generated
-     */
-    EClass ENTITY_BODY = eINSTANCE.getEntityBody();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ENTITY_BODY__NAME = eINSTANCE.getEntityBody_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Super Entity</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ENTITY_BODY__SUPER_ENTITY = eINSTANCE.getEntityBody_SuperEntity();
-
-    /**
-     * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ENTITY_BODY__ATTRIBUTES = eINSTANCE.getEntityBody_Attributes();
 
   }
 

@@ -3,8 +3,11 @@ grammar org.xmdl.WDL with org.eclipse.xtext.common.Terminals
 generate wdl "http://www.xmdl.org/WDL"
 
 Model:
-  (types+=Type)*;
+  project=Project (types+=Type)*;
 
+Project:
+  "project" "{" "projectName" ":" name=STRING "basePackage" ":" basePackage=STRING "}";
+  
 Type:
   SimpleType|Entity|Enum|Embed;
 
@@ -15,7 +18,10 @@ JAVAID:
   name=ID ("." ID)*;
 
 Entity:
-  "entity" EntityBody;
+  "entity" name=ID ("extends" superEntity=[Entity])? "{" (attributes+=Attribute)* "}";
+
+Embed:
+  "embed" name=ID ("extends" superEntity=[Entity])? "{" (attributes+=Attribute)* "}";
 
 Attribute:
   type=[Type] (many?="*")? name=ID;
@@ -25,9 +31,3 @@ Enum:
 
 EnumLiteral:
   name=ID "(" ordinal=INT ")";
-
-Embed:
-  "embed" EntityBody;
-
-EntityBody:
-  name=ID ("extends" superEntity=[Entity])? "{" (attributes+=Attribute)* "}";
