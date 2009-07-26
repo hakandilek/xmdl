@@ -1,9 +1,23 @@
-import wDL;
+import wdl;
 
-listSubclasses(Entity this) :
-	let subclasses = this.eRootContainer.eAllContents.typeSelect(Entity).select(e|e.extends == this).name:
-		switch (subclasses.size) { 
-			case 0: "no subclasses"
-			case 1: "subclass: " + subclasses.toString(", ")
-			default: subclasses.size.toString() + " subclasses: " + subclasses.toString(", ")
-		};
+boolean isReference(Attribute att) : att.type.isReference(); 	
+
+boolean isEnumeration(Attribute att) : att.type.isEnumeration();
+
+boolean isEmbed(Attribute att) : att.type.isEmbed();
+
+boolean isPrimitive(Attribute att) : att.type.isPrimitive();
+
+boolean isComparable(Attribute att) : att.type.isComparable();
+
+boolean isReference(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isReference(org.xmdl.wdl.Type); 	
+
+boolean isEnumeration(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isEnumeration(org.xmdl.wdl.Type);
+
+boolean isEmbed(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isEmbed(org.xmdl.wdl.Type);
+
+boolean isPrimitive(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isPrimitive(org.xmdl.wdl.Type);
+
+boolean isComparable(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isComparable(org.xmdl.wdl.Type);
+
+String simpleName(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.simpleName(org.xmdl.wdl.Type);

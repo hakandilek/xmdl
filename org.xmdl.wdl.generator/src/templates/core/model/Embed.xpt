@@ -1,0 +1,105 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+
+«DEFINE entity FOR wdl::Embed»
+  «FILE "core/src/main/java/org/xmdl/taslak/model/"+ this.name + ".java"»
+package org.xmdl.taslak.model;
+
+import javax.persistence.*"/>
+import org.xmdl.ida.lib.model.BaseObject"/>
+import org.hibernate.annotations.Type"/>
+import org.hibernate.annotations.Parameter"/>
+import java.io.Serializable"/>
+import java.text.MessageFormat"/>
+import java.util.*"/>
+
+
+/**
+ *
+ * «this.name» entity bean
+ *  
+ * $Id$
+ *
+ */ 
+@Embeddable
+public class «this.name» extends BaseObject implements Serializable, Cloneable {
+
+	«FOREACH this.attributes AS attribute»
+	«IF !attribute.isReference()»
+	@Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/><c:if test="isEnumeration($attribute)">, columnDefinition = "integer", nullable = false</c:if>)
+		«IF attribute.isEnumeration()»
+    @Type(
+            type = "org.xmdl.ida.lib.dao.hibernate.GenericEnumUserType",
+            parameters = {
+            @Parameter(
+                    name = "enumClass",
+                    value = "<xc:qualifiedName element="$attribute/type/xPackage"/>.model.<xc:cap element="$attribute/type"/>"),
+            @Parameter(
+                    name = "identifierMethod",
+                    value = "toInt"),
+            @Parameter(
+                    name = "valueOfMethod",
+                    value = "fromInt")
+                    }
+    )
+		«ENDIF»
+	«ELSE»
+    <ida:association attribute="$attribute" />
+	«ENDIF»
+    private «attribute.type.simpleName()» «attribute.name.toFirstLower()»
+	«IF attribute.isEmbed()»
+		= new <xc:attributeType attribute="$attribute" wrapType="true" instance="true"/>();    	
+	«ENDIF»
+	«ENDFOREACH»
+
+    public «this.name»() {
+    }
+
+	«FOREACH this.attributes AS attribute»
+    public «attribute.type.simpleName()» «attribute.name.toFirstUpper()» {
+        return «attribute.name.toFirstLower()»;
+    }
+
+    public void set«attribute.name.toFirstUpper()»(«attribute.type.simpleName()» «attribute.name.toFirstLower()») {
+        this.«attribute.name.toFirstLower()» = «attribute.name.toFirstLower()»;
+    }
+
+	«ENDFOREACH»
+
+    public String toString() {
+        return MessageFormat.format("«this.name»«LET 0 AS i» «FOREACH attributes AS a» «IF !a.isReference()» [«a.name.toFirstLower()»={«i»}] «ENDIF»«ENDFOREACH»«ENDLET» 
+                                                             «FOREACH attributes AS a» «IF !a.isReference()», «a.name.toFirstLower()»  «ENDIF»«ENDFOREACH»
+                                                            
+                                      ;
+    }
+
+    public int hashCode() {
+        int result = 1;
+    «FOREACH this.attributes AS attribute»
+        «IF !attribute.isReference()»
+            «IF attribute.isPrimitive()»
+        if («attribute.name.toFirstLower()» != null) result = 31 * result + ("" + «attribute.name.toFirstLower()»).hashCode();
+            «ELSE»
+        if («attribute.name.toFirstLower()» != null) result = 31 * result + «attribute.name.toFirstLower()».hashCode();
+            «ENDIF»
+        «ENDIF»
+    «ENDFOREACH»
+        return result;
+    }
+
+     public «this.name» createClone() {
+         try {
+             return («this.name») clone();
+        } catch (CloneNotSupportedException e) {
+            «this.name» copy = new «this.name»();
+    «FOREACH this.attributes AS attribute»
+        «IF !attribute.isReference()»
+            copy.«attribute.name.toFirstLower()» = this.«attribute.name.toFirstLower()»;
+        «ENDIF»
+    «ENDFOREACH»
+            return copy;
+        }
+     }
+  «ENDFILE»
+«ENDDEFINE»
