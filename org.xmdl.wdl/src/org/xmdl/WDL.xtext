@@ -1,0 +1,33 @@
+grammar org.xmdl.WDL with org.eclipse.xtext.common.Terminals
+
+generate wdl "http://www.xmdl.org/WDL"
+
+Model:
+  (types+=Type)*;
+
+Type:
+  SimpleType|Entity|Enum|Embed;
+
+SimpleType:
+  "type" name=ID ("is" mappedType=JAVAID)?;
+
+JAVAID:
+  name=ID ("." ID)*;
+
+Entity:
+  "entity" EntityBody;
+
+Attribute:
+  type=[Type] (many?="*")? name=ID;
+
+Enum:
+  "enum" name=ID "{" (literals+=EnumLiteral)* "}";
+
+EnumLiteral:
+  name=ID "(" ordinal=INT ")";
+
+Embed:
+  "embed" EntityBody;
+
+EntityBody:
+  name=ID ("extends" superEntity=[Entity])? "{" (attributes+=Attribute)* "}";

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.xmdl.wdl/src-gen" editDirectory="/org.xmdl.wdl.edit/src" editorDirectory="/org.xmdl.wdl.editor/src" modelPluginID="org.xmdl.wdl" forceOverwrite="true" modelName="WDL" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" complianceLevel="5.0" copyrightFields="false" editPluginID="org.xmdl.wdl.edit" editorPluginID="org.xmdl.wdl.editor">
+  <genPackages prefix="Wdl" basePackage="org.xmdl" disposableProviderFactory="true">
+    <ecorePackage href="WDL.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//Model"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Model/types"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//Type"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//SimpleType"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//SimpleType/name"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//SimpleType/mappedType"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//JAVAID"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//JAVAID/name"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//Entity"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//Attribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Attribute/type"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//Attribute/many"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//Attribute/name"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//Enum"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//Enum/name"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Enum/literals"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//EnumLiteral"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//EnumLiteral/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//EnumLiteral/ordinal"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//Embed"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//EntityBody"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//EntityBody/name"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//EntityBody/superEntity"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//EntityBody/attributes"/>
+      </genFeatures>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
