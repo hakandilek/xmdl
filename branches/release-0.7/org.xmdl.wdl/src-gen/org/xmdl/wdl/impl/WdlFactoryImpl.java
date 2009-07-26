@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.xmdl.wdl.Attribute;
 import org.xmdl.wdl.Embed;
 import org.xmdl.wdl.Entity;
-import org.xmdl.wdl.EntityBody;
 import org.xmdl.wdl.EnumLiteral;
 import org.xmdl.wdl.JAVAID;
 import org.xmdl.wdl.Model;
+import org.xmdl.wdl.Project;
 import org.xmdl.wdl.SimpleType;
 import org.xmdl.wdl.Type;
 import org.xmdl.wdl.WdlFactory;
@@ -78,15 +78,15 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
     switch (eClass.getClassifierID())
     {
       case WdlPackage.MODEL: return createModel();
+      case WdlPackage.PROJECT: return createProject();
       case WdlPackage.TYPE: return createType();
       case WdlPackage.SIMPLE_TYPE: return createSimpleType();
       case WdlPackage.JAVAID: return createJAVAID();
       case WdlPackage.ENTITY: return createEntity();
+      case WdlPackage.EMBED: return createEmbed();
       case WdlPackage.ATTRIBUTE: return createAttribute();
       case WdlPackage.ENUM: return createEnum();
       case WdlPackage.ENUM_LITERAL: return createEnumLiteral();
-      case WdlPackage.EMBED: return createEmbed();
-      case WdlPackage.ENTITY_BODY: return createEntityBody();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -101,6 +101,17 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
   {
     ModelImpl model = new ModelImpl();
     return model;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Project createProject()
+  {
+    ProjectImpl project = new ProjectImpl();
+    return project;
   }
 
   /**
@@ -152,6 +163,17 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Embed createEmbed()
+  {
+    EmbedImpl embed = new EmbedImpl();
+    return embed;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Attribute createAttribute()
   {
     AttributeImpl attribute = new AttributeImpl();
@@ -178,28 +200,6 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
   {
     EnumLiteralImpl enumLiteral = new EnumLiteralImpl();
     return enumLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Embed createEmbed()
-  {
-    EmbedImpl embed = new EmbedImpl();
-    return embed;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EntityBody createEntityBody()
-  {
-    EntityBodyImpl entityBody = new EntityBodyImpl();
-    return entityBody;
   }
 
   /**

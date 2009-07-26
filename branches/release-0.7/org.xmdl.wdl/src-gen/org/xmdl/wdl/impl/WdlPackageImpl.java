@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.xmdl.wdl.Attribute;
 import org.xmdl.wdl.Embed;
 import org.xmdl.wdl.Entity;
-import org.xmdl.wdl.EntityBody;
 import org.xmdl.wdl.EnumLiteral;
 import org.xmdl.wdl.Model;
+import org.xmdl.wdl.Project;
 import org.xmdl.wdl.SimpleType;
 import org.xmdl.wdl.Type;
 import org.xmdl.wdl.WdlFactory;
@@ -37,6 +37,13 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * @generated
    */
   private EClass modelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass projectEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,6 +78,13 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass embedEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass attributeEClass = null;
 
   /**
@@ -86,20 +100,6 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * @generated
    */
   private EClass enumLiteralEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass embedEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass entityBodyEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -179,9 +179,49 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Types()
+  public EReference getModel_Project()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModel_Types()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProject()
+  {
+    return projectEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProject_Name()
+  {
+    return (EAttribute)projectEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProject_BasePackage()
+  {
+    return (EAttribute)projectEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -199,6 +239,16 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getType_Name()
+  {
+    return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getSimpleType()
   {
     return simpleTypeEClass;
@@ -209,19 +259,9 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSimpleType_Name()
-  {
-    return (EAttribute)simpleTypeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getSimpleType_MappedType()
   {
-    return (EReference)simpleTypeEClass.getEStructuralFeatures().get(1);
+    return (EReference)simpleTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -252,6 +292,56 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
   public EClass getEntity()
   {
     return entityEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEntity_SuperEntity()
+  {
+    return (EReference)entityEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEntity_Attributes()
+  {
+    return (EReference)entityEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEmbed()
+  {
+    return embedEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEmbed_SuperEntity()
+  {
+    return (EReference)embedEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEmbed_Attributes()
+  {
+    return (EReference)embedEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -309,19 +399,9 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEnum_Name()
-  {
-    return (EAttribute)enumEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getEnum_Literals()
   {
-    return (EReference)enumEClass.getEStructuralFeatures().get(1);
+    return (EReference)enumEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -359,56 +439,6 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEmbed()
-  {
-    return embedEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getEntityBody()
-  {
-    return entityBodyEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getEntityBody_Name()
-  {
-    return (EAttribute)entityBodyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getEntityBody_SuperEntity()
-  {
-    return (EReference)entityBodyEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getEntityBody_Attributes()
-  {
-    return (EReference)entityBodyEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public WdlFactory getWdlFactory()
   {
     return (WdlFactory)getEFactoryInstance();
@@ -435,18 +465,29 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
 
     // Create classes and their features
     modelEClass = createEClass(MODEL);
+    createEReference(modelEClass, MODEL__PROJECT);
     createEReference(modelEClass, MODEL__TYPES);
 
+    projectEClass = createEClass(PROJECT);
+    createEAttribute(projectEClass, PROJECT__NAME);
+    createEAttribute(projectEClass, PROJECT__BASE_PACKAGE);
+
     typeEClass = createEClass(TYPE);
+    createEAttribute(typeEClass, TYPE__NAME);
 
     simpleTypeEClass = createEClass(SIMPLE_TYPE);
-    createEAttribute(simpleTypeEClass, SIMPLE_TYPE__NAME);
     createEReference(simpleTypeEClass, SIMPLE_TYPE__MAPPED_TYPE);
 
     javaidEClass = createEClass(JAVAID);
     createEAttribute(javaidEClass, JAVAID__NAME);
 
     entityEClass = createEClass(ENTITY);
+    createEReference(entityEClass, ENTITY__SUPER_ENTITY);
+    createEReference(entityEClass, ENTITY__ATTRIBUTES);
+
+    embedEClass = createEClass(EMBED);
+    createEReference(embedEClass, EMBED__SUPER_ENTITY);
+    createEReference(embedEClass, EMBED__ATTRIBUTES);
 
     attributeEClass = createEClass(ATTRIBUTE);
     createEReference(attributeEClass, ATTRIBUTE__TYPE);
@@ -454,19 +495,11 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     createEAttribute(attributeEClass, ATTRIBUTE__NAME);
 
     enumEClass = createEClass(ENUM);
-    createEAttribute(enumEClass, ENUM__NAME);
     createEReference(enumEClass, ENUM__LITERALS);
 
     enumLiteralEClass = createEClass(ENUM_LITERAL);
     createEAttribute(enumLiteralEClass, ENUM_LITERAL__NAME);
     createEAttribute(enumLiteralEClass, ENUM_LITERAL__ORDINAL);
-
-    embedEClass = createEClass(EMBED);
-
-    entityBodyEClass = createEClass(ENTITY_BODY);
-    createEAttribute(entityBodyEClass, ENTITY_BODY__NAME);
-    createEReference(entityBodyEClass, ENTITY_BODY__SUPER_ENTITY);
-    createEReference(entityBodyEClass, ENTITY_BODY__ATTRIBUTES);
   }
 
   /**
@@ -500,25 +533,34 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     // Add supertypes to classes
     simpleTypeEClass.getESuperTypes().add(this.getType());
     entityEClass.getESuperTypes().add(this.getType());
-    enumEClass.getESuperTypes().add(this.getType());
     embedEClass.getESuperTypes().add(this.getType());
-    entityBodyEClass.getESuperTypes().add(this.getEntity());
-    entityBodyEClass.getESuperTypes().add(this.getEmbed());
+    enumEClass.getESuperTypes().add(this.getType());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getModel_Project(), this.getProject(), null, "project", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Types(), this.getType(), null, "types", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(projectEClass, Project.class, "Project", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProject_Name(), ecorePackage.getEString(), "name", null, 0, 1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProject_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getType_Name(), ecorePackage.getEString(), "name", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(simpleTypeEClass, SimpleType.class, "SimpleType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSimpleType_Name(), ecorePackage.getEString(), "name", null, 0, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSimpleType_MappedType(), this.getJAVAID(), null, "mappedType", null, 0, 1, SimpleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(javaidEClass, org.xmdl.wdl.JAVAID.class, "JAVAID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getJAVAID_Name(), ecorePackage.getEString(), "name", null, 0, 1, org.xmdl.wdl.JAVAID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEntity_SuperEntity(), this.getEntity(), null, "superEntity", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntity_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(embedEClass, Embed.class, "Embed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEmbed_SuperEntity(), this.getEntity(), null, "superEntity", null, 0, 1, Embed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEmbed_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, Embed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAttribute_Type(), this.getType(), null, "type", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -526,19 +568,11 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(enumEClass, org.xmdl.wdl.Enum.class, "Enum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEnum_Name(), ecorePackage.getEString(), "name", null, 0, 1, org.xmdl.wdl.Enum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEnum_Literals(), this.getEnumLiteral(), null, "literals", null, 0, -1, org.xmdl.wdl.Enum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(enumLiteralEClass, EnumLiteral.class, "EnumLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEnumLiteral_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEnumLiteral_Ordinal(), ecorePackage.getEInt(), "ordinal", null, 0, 1, EnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(embedEClass, Embed.class, "Embed", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(entityBodyEClass, EntityBody.class, "EntityBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEntityBody_Name(), ecorePackage.getEString(), "name", null, 0, 1, EntityBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntityBody_SuperEntity(), this.getEntity(), null, "superEntity", null, 0, 1, EntityBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntityBody_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, EntityBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

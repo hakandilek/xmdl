@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.xmdl.wdl.Attribute;
 import org.xmdl.wdl.Embed;
 import org.xmdl.wdl.Entity;
-import org.xmdl.wdl.EntityBody;
 import org.xmdl.wdl.EnumLiteral;
 import org.xmdl.wdl.JAVAID;
 import org.xmdl.wdl.Model;
+import org.xmdl.wdl.Project;
 import org.xmdl.wdl.SimpleType;
 import org.xmdl.wdl.Type;
 import org.xmdl.wdl.WdlPackage;
@@ -111,6 +111,13 @@ public class WdlSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case WdlPackage.PROJECT:
+      {
+        Project project = (Project)theEObject;
+        T result = caseProject(project);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case WdlPackage.TYPE:
       {
         Type type = (Type)theEObject;
@@ -141,6 +148,14 @@ public class WdlSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case WdlPackage.EMBED:
+      {
+        Embed embed = (Embed)theEObject;
+        T result = caseEmbed(embed);
+        if (result == null) result = caseType(embed);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case WdlPackage.ATTRIBUTE:
       {
         Attribute attribute = (Attribute)theEObject;
@@ -163,24 +178,6 @@ public class WdlSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WdlPackage.EMBED:
-      {
-        Embed embed = (Embed)theEObject;
-        T result = caseEmbed(embed);
-        if (result == null) result = caseType(embed);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WdlPackage.ENTITY_BODY:
-      {
-        EntityBody entityBody = (EntityBody)theEObject;
-        T result = caseEntityBody(entityBody);
-        if (result == null) result = caseEntity(entityBody);
-        if (result == null) result = caseEmbed(entityBody);
-        if (result == null) result = caseType(entityBody);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       default: return defaultCase(theEObject);
     }
   }
@@ -197,6 +194,22 @@ public class WdlSwitch<T>
    * @generated
    */
   public T caseModel(Model object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Project</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Project</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProject(Project object)
   {
     return null;
   }
@@ -266,6 +279,22 @@ public class WdlSwitch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Embed</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Embed</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEmbed(Embed object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -309,38 +338,6 @@ public class WdlSwitch<T>
    * @generated
    */
   public T caseEnumLiteral(EnumLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Embed</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Embed</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseEmbed(Embed object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Entity Body</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Entity Body</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseEntityBody(EntityBody object)
   {
     return null;
   }

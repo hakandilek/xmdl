@@ -43,21 +43,32 @@ public class WDLParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				{
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
+					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
+					put(grammarAccess.getProjectAccess().getGroup(), "rule__Project__Group__0");
 					put(grammarAccess.getSimpleTypeAccess().getGroup(), "rule__SimpleType__Group__0");
 					put(grammarAccess.getSimpleTypeAccess().getGroup_2(), "rule__SimpleType__Group_2__0");
 					put(grammarAccess.getJAVAIDAccess().getGroup(), "rule__JAVAID__Group__0");
 					put(grammarAccess.getJAVAIDAccess().getGroup_1(), "rule__JAVAID__Group_1__0");
 					put(grammarAccess.getEntityAccess().getGroup(), "rule__Entity__Group__0");
+					put(grammarAccess.getEntityAccess().getGroup_2(), "rule__Entity__Group_2__0");
+					put(grammarAccess.getEmbedAccess().getGroup(), "rule__Embed__Group__0");
+					put(grammarAccess.getEmbedAccess().getGroup_2(), "rule__Embed__Group_2__0");
 					put(grammarAccess.getAttributeAccess().getGroup(), "rule__Attribute__Group__0");
 					put(grammarAccess.getEnumAccess().getGroup(), "rule__Enum__Group__0");
 					put(grammarAccess.getEnumLiteralAccess().getGroup(), "rule__EnumLiteral__Group__0");
-					put(grammarAccess.getEmbedAccess().getGroup(), "rule__Embed__Group__0");
-					put(grammarAccess.getEntityBodyAccess().getGroup(), "rule__EntityBody__Group__0");
-					put(grammarAccess.getEntityBodyAccess().getGroup_1(), "rule__EntityBody__Group_1__0");
-					put(grammarAccess.getModelAccess().getTypesAssignment(), "rule__Model__TypesAssignment");
+					put(grammarAccess.getModelAccess().getProjectAssignment_0(), "rule__Model__ProjectAssignment_0");
+					put(grammarAccess.getModelAccess().getTypesAssignment_1(), "rule__Model__TypesAssignment_1");
+					put(grammarAccess.getProjectAccess().getNameAssignment_4(), "rule__Project__NameAssignment_4");
+					put(grammarAccess.getProjectAccess().getBasePackageAssignment_7(), "rule__Project__BasePackageAssignment_7");
 					put(grammarAccess.getSimpleTypeAccess().getNameAssignment_1(), "rule__SimpleType__NameAssignment_1");
 					put(grammarAccess.getSimpleTypeAccess().getMappedTypeAssignment_2_1(), "rule__SimpleType__MappedTypeAssignment_2_1");
 					put(grammarAccess.getJAVAIDAccess().getNameAssignment_0(), "rule__JAVAID__NameAssignment_0");
+					put(grammarAccess.getEntityAccess().getNameAssignment_1(), "rule__Entity__NameAssignment_1");
+					put(grammarAccess.getEntityAccess().getSuperEntityAssignment_2_1(), "rule__Entity__SuperEntityAssignment_2_1");
+					put(grammarAccess.getEntityAccess().getAttributesAssignment_4(), "rule__Entity__AttributesAssignment_4");
+					put(grammarAccess.getEmbedAccess().getNameAssignment_1(), "rule__Embed__NameAssignment_1");
+					put(grammarAccess.getEmbedAccess().getSuperEntityAssignment_2_1(), "rule__Embed__SuperEntityAssignment_2_1");
+					put(grammarAccess.getEmbedAccess().getAttributesAssignment_4(), "rule__Embed__AttributesAssignment_4");
 					put(grammarAccess.getAttributeAccess().getTypeAssignment_0(), "rule__Attribute__TypeAssignment_0");
 					put(grammarAccess.getAttributeAccess().getManyAssignment_1(), "rule__Attribute__ManyAssignment_1");
 					put(grammarAccess.getAttributeAccess().getNameAssignment_2(), "rule__Attribute__NameAssignment_2");
@@ -65,9 +76,6 @@ public class WDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnumAccess().getLiteralsAssignment_3(), "rule__Enum__LiteralsAssignment_3");
 					put(grammarAccess.getEnumLiteralAccess().getNameAssignment_0(), "rule__EnumLiteral__NameAssignment_0");
 					put(grammarAccess.getEnumLiteralAccess().getOrdinalAssignment_2(), "rule__EnumLiteral__OrdinalAssignment_2");
-					put(grammarAccess.getEntityBodyAccess().getNameAssignment_0(), "rule__EntityBody__NameAssignment_0");
-					put(grammarAccess.getEntityBodyAccess().getSuperEntityAssignment_1_1(), "rule__EntityBody__SuperEntityAssignment_1_1");
-					put(grammarAccess.getEntityBodyAccess().getAttributesAssignment_3(), "rule__EntityBody__AttributesAssignment_3");
 				}
 			};
 		}

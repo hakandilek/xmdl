@@ -24,7 +24,6 @@ import org.xmdl.wdl.WdlPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.xmdl.wdl.impl.SimpleTypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.xmdl.wdl.impl.SimpleTypeImpl#getMappedType <em>Mapped Type</em>}</li>
  * </ul>
  * </p>
@@ -33,26 +32,6 @@ import org.xmdl.wdl.WdlPackage;
  */
 public class SimpleTypeImpl extends TypeImpl implements SimpleType
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getMappedType() <em>Mapped Type</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -82,29 +61,6 @@ public class SimpleTypeImpl extends TypeImpl implements SimpleType
   protected EClass eStaticClass()
   {
     return WdlPackage.Literals.SIMPLE_TYPE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WdlPackage.SIMPLE_TYPE__NAME, oldName, name));
   }
 
   /**
@@ -181,8 +137,6 @@ public class SimpleTypeImpl extends TypeImpl implements SimpleType
   {
     switch (featureID)
     {
-      case WdlPackage.SIMPLE_TYPE__NAME:
-        return getName();
       case WdlPackage.SIMPLE_TYPE__MAPPED_TYPE:
         return getMappedType();
     }
@@ -199,9 +153,6 @@ public class SimpleTypeImpl extends TypeImpl implements SimpleType
   {
     switch (featureID)
     {
-      case WdlPackage.SIMPLE_TYPE__NAME:
-        setName((String)newValue);
-        return;
       case WdlPackage.SIMPLE_TYPE__MAPPED_TYPE:
         setMappedType((JAVAID)newValue);
         return;
@@ -219,9 +170,6 @@ public class SimpleTypeImpl extends TypeImpl implements SimpleType
   {
     switch (featureID)
     {
-      case WdlPackage.SIMPLE_TYPE__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case WdlPackage.SIMPLE_TYPE__MAPPED_TYPE:
         setMappedType((JAVAID)null);
         return;
@@ -239,29 +187,10 @@ public class SimpleTypeImpl extends TypeImpl implements SimpleType
   {
     switch (featureID)
     {
-      case WdlPackage.SIMPLE_TYPE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case WdlPackage.SIMPLE_TYPE__MAPPED_TYPE:
         return mappedType != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //SimpleTypeImpl

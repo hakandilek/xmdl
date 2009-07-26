@@ -1,5 +1,5 @@
 <workflow>
-	<property file="org/xmdl/GenerateWDL.properties"/>
+	<property file="src/org/xmdl/GenerateWDL.properties"/>
 	
 	<property name="runtimeProject" value="../${projectName}"/>
 	

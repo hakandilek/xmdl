@@ -23,12 +23,12 @@ import java.util.ArrayList;
 
 public class InternalWDLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'type'", "'is'", "'.'", "'entity'", "'*'", "'enum'", "'{'", "'}'", "'('", "')'", "'embed'", "'extends'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'project'", "'{'", "'projectName'", "':'", "'basePackage'", "'}'", "'type'", "'is'", "'.'", "'entity'", "'extends'", "'embed'", "'*'", "'enum'", "'('", "')'"
     };
-    public static final int RULE_ID=4;
-    public static final int RULE_STRING=6;
+    public static final int RULE_ID=5;
+    public static final int RULE_STRING=4;
     public static final int RULE_ANY_OTHER=10;
-    public static final int RULE_INT=5;
+    public static final int RULE_INT=6;
     public static final int RULE_WS=9;
     public static final int RULE_SL_COMMENT=8;
     public static final int EOF=-1;
@@ -102,39 +102,70 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleModel
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:80:1: ruleModel returns [EObject current=null] : (lv_types_0= ruleType )* ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:80:1: ruleModel returns [EObject current=null] : ( (lv_project_0= ruleProject ) (lv_types_1= ruleType )* ) ;
     public final EObject ruleModel() throws RecognitionException {
         EObject current = null;
 
-        EObject lv_types_0 = null;
+        EObject lv_project_0 = null;
+
+        EObject lv_types_1 = null;
 
 
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:85:6: ( (lv_types_0= ruleType )* )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:86:1: (lv_types_0= ruleType )*
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:85:6: ( ( (lv_project_0= ruleProject ) (lv_types_1= ruleType )* ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:86:1: ( (lv_project_0= ruleProject ) (lv_types_1= ruleType )* )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:86:1: (lv_types_0= ruleType )*
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:86:1: ( (lv_project_0= ruleProject ) (lv_types_1= ruleType )* )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:86:2: (lv_project_0= ruleProject ) (lv_types_1= ruleType )*
+            {
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:86:2: (lv_project_0= ruleProject )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:89:6: lv_project_0= ruleProject
+            {
+             
+            	        currentNode=createCompositeNode(grammarAccess.getModelAccess().getProjectProjectParserRuleCall_0_0(), currentNode); 
+            	    
+            pushFollow(FOLLOW_ruleProject_in_ruleModel142);
+            lv_project_0=ruleProject();
+            _fsp--;
+
+
+            	        if (current==null) {
+            	            current = factory.create(grammarAccess.getModelRule().getType().getClassifier());
+            	            associateNodeWithAstElement(currentNode.getParent(), current);
+            	        }
+            	        
+            	        try {
+            	       		set(current, "project", lv_project_0, "Project", currentNode);
+            	        } catch (ValueConverterException vce) {
+            				handleValueConverterException(vce);
+            	        }
+            	        currentNode = currentNode.getParent();
+            	    
+
+            }
+
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:107:2: (lv_types_1= ruleType )*
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==11||LA1_0==14||LA1_0==16||LA1_0==21) ) {
+                if ( (LA1_0==17||LA1_0==20||LA1_0==22||LA1_0==24) ) {
                     alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:89:6: lv_types_0= ruleType
+            	    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:110:6: lv_types_1= ruleType
             	    {
             	     
-            	    	        currentNode=createCompositeNode(grammarAccess.getModelAccess().getTypesTypeParserRuleCall_0(), currentNode); 
+            	    	        currentNode=createCompositeNode(grammarAccess.getModelAccess().getTypesTypeParserRuleCall_1_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleType_in_ruleModel141);
-            	    lv_types_0=ruleType();
+            	    pushFollow(FOLLOW_ruleType_in_ruleModel180);
+            	    lv_types_1=ruleType();
             	    _fsp--;
 
 
@@ -144,7 +175,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
             	    	        }
             	    	        
             	    	        try {
-            	    	       		add(current, "types", lv_types_0, "Type", currentNode);
+            	    	       		add(current, "types", lv_types_1, "Type", currentNode);
             	    	        } catch (ValueConverterException vce) {
             	    				handleValueConverterException(vce);
             	    	        }
@@ -158,6 +189,9 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
             	    break loop1;
                 }
             } while (true);
+
+
+            }
 
 
             }
@@ -178,8 +212,156 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
     // $ANTLR end ruleModel
 
 
+    // $ANTLR start entryRuleProject
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:135:1: entryRuleProject returns [EObject current=null] : iv_ruleProject= ruleProject EOF ;
+    public final EObject entryRuleProject() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleProject = null;
+
+
+        try {
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:135:49: (iv_ruleProject= ruleProject EOF )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:136:2: iv_ruleProject= ruleProject EOF
+            {
+             currentNode = createCompositeNode(grammarAccess.getProjectRule(), currentNode); 
+            pushFollow(FOLLOW_ruleProject_in_entryRuleProject218);
+            iv_ruleProject=ruleProject();
+            _fsp--;
+
+             current =iv_ruleProject; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleProject228); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end entryRuleProject
+
+
+    // $ANTLR start ruleProject
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:143:1: ruleProject returns [EObject current=null] : ( 'project' '{' 'projectName' ':' (lv_name_4= RULE_STRING ) 'basePackage' ':' (lv_basePackage_7= RULE_STRING ) '}' ) ;
+    public final EObject ruleProject() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_name_4=null;
+        Token lv_basePackage_7=null;
+
+         EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+            
+        try {
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:148:6: ( ( 'project' '{' 'projectName' ':' (lv_name_4= RULE_STRING ) 'basePackage' ':' (lv_basePackage_7= RULE_STRING ) '}' ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:149:1: ( 'project' '{' 'projectName' ':' (lv_name_4= RULE_STRING ) 'basePackage' ':' (lv_basePackage_7= RULE_STRING ) '}' )
+            {
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:149:1: ( 'project' '{' 'projectName' ':' (lv_name_4= RULE_STRING ) 'basePackage' ':' (lv_basePackage_7= RULE_STRING ) '}' )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:149:2: 'project' '{' 'projectName' ':' (lv_name_4= RULE_STRING ) 'basePackage' ':' (lv_basePackage_7= RULE_STRING ) '}'
+            {
+            match(input,11,FOLLOW_11_in_ruleProject262); 
+
+                    createLeafNode(grammarAccess.getProjectAccess().getProjectKeyword_0(), null); 
+                
+            match(input,12,FOLLOW_12_in_ruleProject271); 
+
+                    createLeafNode(grammarAccess.getProjectAccess().getLeftCurlyBracketKeyword_1(), null); 
+                
+            match(input,13,FOLLOW_13_in_ruleProject280); 
+
+                    createLeafNode(grammarAccess.getProjectAccess().getProjectNameKeyword_2(), null); 
+                
+            match(input,14,FOLLOW_14_in_ruleProject289); 
+
+                    createLeafNode(grammarAccess.getProjectAccess().getColonKeyword_3(), null); 
+                
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:165:1: (lv_name_4= RULE_STRING )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:167:6: lv_name_4= RULE_STRING
+            {
+            lv_name_4=(Token)input.LT(1);
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleProject311); 
+
+            		createLeafNode(grammarAccess.getProjectAccess().getNameSTRINGTerminalRuleCall_4_0(), "name"); 
+            	
+
+            	        if (current==null) {
+            	            current = factory.create(grammarAccess.getProjectRule().getType().getClassifier());
+            	            associateNodeWithAstElement(currentNode, current);
+            	        }
+            	        
+            	        try {
+            	       		set(current, "name", lv_name_4, "STRING", lastConsumedNode);
+            	        } catch (ValueConverterException vce) {
+            				handleValueConverterException(vce);
+            	        }
+            	    
+
+            }
+
+            match(input,15,FOLLOW_15_in_ruleProject328); 
+
+                    createLeafNode(grammarAccess.getProjectAccess().getBasePackageKeyword_5(), null); 
+                
+            match(input,14,FOLLOW_14_in_ruleProject337); 
+
+                    createLeafNode(grammarAccess.getProjectAccess().getColonKeyword_6(), null); 
+                
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:193:1: (lv_basePackage_7= RULE_STRING )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:195:6: lv_basePackage_7= RULE_STRING
+            {
+            lv_basePackage_7=(Token)input.LT(1);
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleProject359); 
+
+            		createLeafNode(grammarAccess.getProjectAccess().getBasePackageSTRINGTerminalRuleCall_7_0(), "basePackage"); 
+            	
+
+            	        if (current==null) {
+            	            current = factory.create(grammarAccess.getProjectRule().getType().getClassifier());
+            	            associateNodeWithAstElement(currentNode, current);
+            	        }
+            	        
+            	        try {
+            	       		set(current, "basePackage", lv_basePackage_7, "STRING", lastConsumedNode);
+            	        } catch (ValueConverterException vce) {
+            				handleValueConverterException(vce);
+            	        }
+            	    
+
+            }
+
+            match(input,16,FOLLOW_16_in_ruleProject376); 
+
+                    createLeafNode(grammarAccess.getProjectAccess().getRightCurlyBracketKeyword_8(), null); 
+                
+
+            }
+
+
+            }
+
+             resetLookahead(); 
+                	lastConsumedNode = currentNode;
+                
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end ruleProject
+
+
     // $ANTLR start entryRuleType
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:114:1: entryRuleType returns [EObject current=null] : iv_ruleType= ruleType EOF ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:224:1: entryRuleType returns [EObject current=null] : iv_ruleType= ruleType EOF ;
     public final EObject entryRuleType() throws RecognitionException {
         EObject current = null;
 
@@ -187,16 +369,16 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:114:46: (iv_ruleType= ruleType EOF )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:115:2: iv_ruleType= ruleType EOF
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:224:46: (iv_ruleType= ruleType EOF )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:225:2: iv_ruleType= ruleType EOF
             {
              currentNode = createCompositeNode(grammarAccess.getTypeRule(), currentNode); 
-            pushFollow(FOLLOW_ruleType_in_entryRuleType178);
+            pushFollow(FOLLOW_ruleType_in_entryRuleType409);
             iv_ruleType=ruleType();
             _fsp--;
 
              current =iv_ruleType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType188); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType419); 
 
             }
 
@@ -214,7 +396,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleType
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:122:1: ruleType returns [EObject current=null] : (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed ) ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:232:1: ruleType returns [EObject current=null] : (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed ) ;
     public final EObject ruleType() throws RecognitionException {
         EObject current = null;
 
@@ -230,47 +412,47 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:127:6: ( (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:128:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:237:6: ( (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:238:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:128:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:238:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed )
             int alt2=4;
             switch ( input.LA(1) ) {
-            case 11:
+            case 17:
                 {
                 alt2=1;
                 }
                 break;
-            case 14:
+            case 20:
                 {
                 alt2=2;
                 }
                 break;
-            case 16:
+            case 24:
                 {
                 alt2=3;
                 }
                 break;
-            case 21:
+            case 22:
                 {
                 alt2=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("128:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed )", 2, 0, input);
+                    new NoViableAltException("238:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed )", 2, 0, input);
 
                 throw nvae;
             }
 
             switch (alt2) {
                 case 1 :
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:129:5: this_SimpleType_0= ruleSimpleType
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:239:5: this_SimpleType_0= ruleSimpleType
                     {
                      
                             currentNode=createCompositeNode(grammarAccess.getTypeAccess().getSimpleTypeParserRuleCall_0(), currentNode); 
                         
-                    pushFollow(FOLLOW_ruleSimpleType_in_ruleType235);
+                    pushFollow(FOLLOW_ruleSimpleType_in_ruleType466);
                     this_SimpleType_0=ruleSimpleType();
                     _fsp--;
 
@@ -282,12 +464,12 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:139:5: this_Entity_1= ruleEntity
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:249:5: this_Entity_1= ruleEntity
                     {
                      
                             currentNode=createCompositeNode(grammarAccess.getTypeAccess().getEntityParserRuleCall_1(), currentNode); 
                         
-                    pushFollow(FOLLOW_ruleEntity_in_ruleType262);
+                    pushFollow(FOLLOW_ruleEntity_in_ruleType493);
                     this_Entity_1=ruleEntity();
                     _fsp--;
 
@@ -299,12 +481,12 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:149:5: this_Enum_2= ruleEnum
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:259:5: this_Enum_2= ruleEnum
                     {
                      
                             currentNode=createCompositeNode(grammarAccess.getTypeAccess().getEnumParserRuleCall_2(), currentNode); 
                         
-                    pushFollow(FOLLOW_ruleEnum_in_ruleType289);
+                    pushFollow(FOLLOW_ruleEnum_in_ruleType520);
                     this_Enum_2=ruleEnum();
                     _fsp--;
 
@@ -316,12 +498,12 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:159:5: this_Embed_3= ruleEmbed
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:269:5: this_Embed_3= ruleEmbed
                     {
                      
                             currentNode=createCompositeNode(grammarAccess.getTypeAccess().getEmbedParserRuleCall_3(), currentNode); 
                         
-                    pushFollow(FOLLOW_ruleEmbed_in_ruleType316);
+                    pushFollow(FOLLOW_ruleEmbed_in_ruleType547);
                     this_Embed_3=ruleEmbed();
                     _fsp--;
 
@@ -355,7 +537,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleSimpleType
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:174:1: entryRuleSimpleType returns [EObject current=null] : iv_ruleSimpleType= ruleSimpleType EOF ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:284:1: entryRuleSimpleType returns [EObject current=null] : iv_ruleSimpleType= ruleSimpleType EOF ;
     public final EObject entryRuleSimpleType() throws RecognitionException {
         EObject current = null;
 
@@ -363,16 +545,16 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:174:52: (iv_ruleSimpleType= ruleSimpleType EOF )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:175:2: iv_ruleSimpleType= ruleSimpleType EOF
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:284:52: (iv_ruleSimpleType= ruleSimpleType EOF )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:285:2: iv_ruleSimpleType= ruleSimpleType EOF
             {
              currentNode = createCompositeNode(grammarAccess.getSimpleTypeRule(), currentNode); 
-            pushFollow(FOLLOW_ruleSimpleType_in_entryRuleSimpleType348);
+            pushFollow(FOLLOW_ruleSimpleType_in_entryRuleSimpleType579);
             iv_ruleSimpleType=ruleSimpleType();
             _fsp--;
 
              current =iv_ruleSimpleType; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSimpleType358); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSimpleType589); 
 
             }
 
@@ -390,7 +572,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleSimpleType
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:182:1: ruleSimpleType returns [EObject current=null] : ( 'type' (lv_name_1= RULE_ID ) ( 'is' (lv_mappedType_3= ruleJAVAID ) )? ) ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:292:1: ruleSimpleType returns [EObject current=null] : ( 'type' (lv_name_1= RULE_ID ) ( 'is' (lv_mappedType_3= ruleJAVAID ) )? ) ;
     public final EObject ruleSimpleType() throws RecognitionException {
         EObject current = null;
 
@@ -401,21 +583,21 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:187:6: ( ( 'type' (lv_name_1= RULE_ID ) ( 'is' (lv_mappedType_3= ruleJAVAID ) )? ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:188:1: ( 'type' (lv_name_1= RULE_ID ) ( 'is' (lv_mappedType_3= ruleJAVAID ) )? )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:297:6: ( ( 'type' (lv_name_1= RULE_ID ) ( 'is' (lv_mappedType_3= ruleJAVAID ) )? ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:298:1: ( 'type' (lv_name_1= RULE_ID ) ( 'is' (lv_mappedType_3= ruleJAVAID ) )? )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:188:1: ( 'type' (lv_name_1= RULE_ID ) ( 'is' (lv_mappedType_3= ruleJAVAID ) )? )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:188:2: 'type' (lv_name_1= RULE_ID ) ( 'is' (lv_mappedType_3= ruleJAVAID ) )?
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:298:1: ( 'type' (lv_name_1= RULE_ID ) ( 'is' (lv_mappedType_3= ruleJAVAID ) )? )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:298:2: 'type' (lv_name_1= RULE_ID ) ( 'is' (lv_mappedType_3= ruleJAVAID ) )?
             {
-            match(input,11,FOLLOW_11_in_ruleSimpleType392); 
+            match(input,17,FOLLOW_17_in_ruleSimpleType623); 
 
                     createLeafNode(grammarAccess.getSimpleTypeAccess().getTypeKeyword_0(), null); 
                 
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:192:1: (lv_name_1= RULE_ID )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:194:6: lv_name_1= RULE_ID
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:302:1: (lv_name_1= RULE_ID )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:304:6: lv_name_1= RULE_ID
             {
             lv_name_1=(Token)input.LT(1);
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSimpleType414); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSimpleType645); 
 
             		createLeafNode(grammarAccess.getSimpleTypeAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
             	
@@ -434,28 +616,28 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:212:2: ( 'is' (lv_mappedType_3= ruleJAVAID ) )?
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:322:2: ( 'is' (lv_mappedType_3= ruleJAVAID ) )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0==12) ) {
+            if ( (LA3_0==18) ) {
                 alt3=1;
             }
             switch (alt3) {
                 case 1 :
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:212:3: 'is' (lv_mappedType_3= ruleJAVAID )
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:322:3: 'is' (lv_mappedType_3= ruleJAVAID )
                     {
-                    match(input,12,FOLLOW_12_in_ruleSimpleType432); 
+                    match(input,18,FOLLOW_18_in_ruleSimpleType663); 
 
                             createLeafNode(grammarAccess.getSimpleTypeAccess().getIsKeyword_2_0(), null); 
                         
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:216:1: (lv_mappedType_3= ruleJAVAID )
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:219:6: lv_mappedType_3= ruleJAVAID
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:326:1: (lv_mappedType_3= ruleJAVAID )
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:329:6: lv_mappedType_3= ruleJAVAID
                     {
                      
                     	        currentNode=createCompositeNode(grammarAccess.getSimpleTypeAccess().getMappedTypeJAVAIDParserRuleCall_2_1_0(), currentNode); 
                     	    
-                    pushFollow(FOLLOW_ruleJAVAID_in_ruleSimpleType466);
+                    pushFollow(FOLLOW_ruleJAVAID_in_ruleSimpleType697);
                     lv_mappedType_3=ruleJAVAID();
                     _fsp--;
 
@@ -504,7 +686,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleJAVAID
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:244:1: entryRuleJAVAID returns [EObject current=null] : iv_ruleJAVAID= ruleJAVAID EOF ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:354:1: entryRuleJAVAID returns [EObject current=null] : iv_ruleJAVAID= ruleJAVAID EOF ;
     public final EObject entryRuleJAVAID() throws RecognitionException {
         EObject current = null;
 
@@ -512,16 +694,16 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:244:48: (iv_ruleJAVAID= ruleJAVAID EOF )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:245:2: iv_ruleJAVAID= ruleJAVAID EOF
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:354:48: (iv_ruleJAVAID= ruleJAVAID EOF )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:355:2: iv_ruleJAVAID= ruleJAVAID EOF
             {
              currentNode = createCompositeNode(grammarAccess.getJAVAIDRule(), currentNode); 
-            pushFollow(FOLLOW_ruleJAVAID_in_entryRuleJAVAID505);
+            pushFollow(FOLLOW_ruleJAVAID_in_entryRuleJAVAID736);
             iv_ruleJAVAID=ruleJAVAID();
             _fsp--;
 
              current =iv_ruleJAVAID; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleJAVAID515); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleJAVAID746); 
 
             }
 
@@ -539,7 +721,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleJAVAID
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:252:1: ruleJAVAID returns [EObject current=null] : ( (lv_name_0= RULE_ID ) ( '.' RULE_ID )* ) ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:362:1: ruleJAVAID returns [EObject current=null] : ( (lv_name_0= RULE_ID ) ( '.' RULE_ID )* ) ;
     public final EObject ruleJAVAID() throws RecognitionException {
         EObject current = null;
 
@@ -548,17 +730,17 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:257:6: ( ( (lv_name_0= RULE_ID ) ( '.' RULE_ID )* ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:258:1: ( (lv_name_0= RULE_ID ) ( '.' RULE_ID )* )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:367:6: ( ( (lv_name_0= RULE_ID ) ( '.' RULE_ID )* ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:368:1: ( (lv_name_0= RULE_ID ) ( '.' RULE_ID )* )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:258:1: ( (lv_name_0= RULE_ID ) ( '.' RULE_ID )* )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:258:2: (lv_name_0= RULE_ID ) ( '.' RULE_ID )*
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:368:1: ( (lv_name_0= RULE_ID ) ( '.' RULE_ID )* )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:368:2: (lv_name_0= RULE_ID ) ( '.' RULE_ID )*
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:258:2: (lv_name_0= RULE_ID )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:260:6: lv_name_0= RULE_ID
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:368:2: (lv_name_0= RULE_ID )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:370:6: lv_name_0= RULE_ID
             {
             lv_name_0=(Token)input.LT(1);
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleJAVAID562); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleJAVAID793); 
 
             		createLeafNode(grammarAccess.getJAVAIDAccess().getNameIDTerminalRuleCall_0_0(), "name"); 
             	
@@ -577,26 +759,26 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:278:2: ( '.' RULE_ID )*
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:388:2: ( '.' RULE_ID )*
             loop4:
             do {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( (LA4_0==13) ) {
+                if ( (LA4_0==19) ) {
                     alt4=1;
                 }
 
 
                 switch (alt4) {
             	case 1 :
-            	    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:278:3: '.' RULE_ID
+            	    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:388:3: '.' RULE_ID
             	    {
-            	    match(input,13,FOLLOW_13_in_ruleJAVAID580); 
+            	    match(input,19,FOLLOW_19_in_ruleJAVAID811); 
 
             	            createLeafNode(grammarAccess.getJAVAIDAccess().getFullStopKeyword_1_0(), null); 
             	        
-            	    match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleJAVAID589); 
+            	    match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleJAVAID820); 
             	     
             	        createLeafNode(grammarAccess.getJAVAIDAccess().getIDTerminalRuleCall_1_1(), null); 
             	        
@@ -632,7 +814,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleEntity
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:293:1: entryRuleEntity returns [EObject current=null] : iv_ruleEntity= ruleEntity EOF ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:403:1: entryRuleEntity returns [EObject current=null] : iv_ruleEntity= ruleEntity EOF ;
     public final EObject entryRuleEntity() throws RecognitionException {
         EObject current = null;
 
@@ -640,16 +822,16 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:293:48: (iv_ruleEntity= ruleEntity EOF )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:294:2: iv_ruleEntity= ruleEntity EOF
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:403:48: (iv_ruleEntity= ruleEntity EOF )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:404:2: iv_ruleEntity= ruleEntity EOF
             {
              currentNode = createCompositeNode(grammarAccess.getEntityRule(), currentNode); 
-            pushFollow(FOLLOW_ruleEntity_in_entryRuleEntity623);
+            pushFollow(FOLLOW_ruleEntity_in_entryRuleEntity854);
             iv_ruleEntity=ruleEntity();
             _fsp--;
 
              current =iv_ruleEntity; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEntity633); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEntity864); 
 
             }
 
@@ -667,36 +849,138 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleEntity
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:301:1: ruleEntity returns [EObject current=null] : ( 'entity' this_EntityBody_1= ruleEntityBody ) ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:411:1: ruleEntity returns [EObject current=null] : ( 'entity' (lv_name_1= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_5= ruleAttribute )* '}' ) ;
     public final EObject ruleEntity() throws RecognitionException {
         EObject current = null;
 
-        EObject this_EntityBody_1 = null;
+        Token lv_name_1=null;
+        EObject lv_attributes_5 = null;
 
 
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:306:6: ( ( 'entity' this_EntityBody_1= ruleEntityBody ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:307:1: ( 'entity' this_EntityBody_1= ruleEntityBody )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:416:6: ( ( 'entity' (lv_name_1= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_5= ruleAttribute )* '}' ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:417:1: ( 'entity' (lv_name_1= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_5= ruleAttribute )* '}' )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:307:1: ( 'entity' this_EntityBody_1= ruleEntityBody )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:307:2: 'entity' this_EntityBody_1= ruleEntityBody
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:417:1: ( 'entity' (lv_name_1= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_5= ruleAttribute )* '}' )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:417:2: 'entity' (lv_name_1= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_5= ruleAttribute )* '}'
             {
-            match(input,14,FOLLOW_14_in_ruleEntity667); 
+            match(input,20,FOLLOW_20_in_ruleEntity898); 
 
                     createLeafNode(grammarAccess.getEntityAccess().getEntityKeyword_0(), null); 
                 
-             
-                    currentNode=createCompositeNode(grammarAccess.getEntityAccess().getEntityBodyParserRuleCall_1(), currentNode); 
-                
-            pushFollow(FOLLOW_ruleEntityBody_in_ruleEntity689);
-            this_EntityBody_1=ruleEntityBody();
-            _fsp--;
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:421:1: (lv_name_1= RULE_ID )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:423:6: lv_name_1= RULE_ID
+            {
+            lv_name_1=(Token)input.LT(1);
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEntity920); 
 
-             
-                    current = this_EntityBody_1; 
-                    currentNode = currentNode.getParent();
+            		createLeafNode(grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
+            	
+
+            	        if (current==null) {
+            	            current = factory.create(grammarAccess.getEntityRule().getType().getClassifier());
+            	            associateNodeWithAstElement(currentNode, current);
+            	        }
+            	        
+            	        try {
+            	       		set(current, "name", lv_name_1, "ID", lastConsumedNode);
+            	        } catch (ValueConverterException vce) {
+            				handleValueConverterException(vce);
+            	        }
+            	    
+
+            }
+
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:441:2: ( 'extends' ( RULE_ID ) )?
+            int alt5=2;
+            int LA5_0 = input.LA(1);
+
+            if ( (LA5_0==21) ) {
+                alt5=1;
+            }
+            switch (alt5) {
+                case 1 :
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:441:3: 'extends' ( RULE_ID )
+                    {
+                    match(input,21,FOLLOW_21_in_ruleEntity938); 
+
+                            createLeafNode(grammarAccess.getEntityAccess().getExtendsKeyword_2_0(), null); 
+                        
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:445:1: ( RULE_ID )
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:448:3: RULE_ID
+                    {
+
+                    			if (current==null) {
+                    	            current = factory.create(grammarAccess.getEntityRule().getType().getClassifier());
+                    	            associateNodeWithAstElement(currentNode, current);
+                    	        }
+                            
+                    match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEntity960); 
+
+                    		createLeafNode(grammarAccess.getEntityAccess().getSuperEntityEntityCrossReference_2_1_0(), "superEntity"); 
+                    	
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            match(input,12,FOLLOW_12_in_ruleEntity974); 
+
+                    createLeafNode(grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_3(), null); 
+                
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:465:1: (lv_attributes_5= ruleAttribute )*
+            loop6:
+            do {
+                int alt6=2;
+                int LA6_0 = input.LA(1);
+
+                if ( (LA6_0==RULE_ID) ) {
+                    alt6=1;
+                }
+
+
+                switch (alt6) {
+            	case 1 :
+            	    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:468:6: lv_attributes_5= ruleAttribute
+            	    {
+            	     
+            	    	        currentNode=createCompositeNode(grammarAccess.getEntityAccess().getAttributesAttributeParserRuleCall_4_0(), currentNode); 
+            	    	    
+            	    pushFollow(FOLLOW_ruleAttribute_in_ruleEntity1008);
+            	    lv_attributes_5=ruleAttribute();
+            	    _fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = factory.create(grammarAccess.getEntityRule().getType().getClassifier());
+            	    	            associateNodeWithAstElement(currentNode.getParent(), current);
+            	    	        }
+            	    	        
+            	    	        try {
+            	    	       		add(current, "attributes", lv_attributes_5, "Attribute", currentNode);
+            	    	        } catch (ValueConverterException vce) {
+            	    				handleValueConverterException(vce);
+            	    	        }
+            	    	        currentNode = currentNode.getParent();
+            	    	    
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop6;
+                }
+            } while (true);
+
+            match(input,16,FOLLOW_16_in_ruleEntity1022); 
+
+                    createLeafNode(grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_5(), null); 
                 
 
             }
@@ -720,8 +1004,199 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
     // $ANTLR end ruleEntity
 
 
+    // $ANTLR start entryRuleEmbed
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:497:1: entryRuleEmbed returns [EObject current=null] : iv_ruleEmbed= ruleEmbed EOF ;
+    public final EObject entryRuleEmbed() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleEmbed = null;
+
+
+        try {
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:497:47: (iv_ruleEmbed= ruleEmbed EOF )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:498:2: iv_ruleEmbed= ruleEmbed EOF
+            {
+             currentNode = createCompositeNode(grammarAccess.getEmbedRule(), currentNode); 
+            pushFollow(FOLLOW_ruleEmbed_in_entryRuleEmbed1055);
+            iv_ruleEmbed=ruleEmbed();
+            _fsp--;
+
+             current =iv_ruleEmbed; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEmbed1065); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end entryRuleEmbed
+
+
+    // $ANTLR start ruleEmbed
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:505:1: ruleEmbed returns [EObject current=null] : ( 'embed' (lv_name_1= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_5= ruleAttribute )* '}' ) ;
+    public final EObject ruleEmbed() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_name_1=null;
+        EObject lv_attributes_5 = null;
+
+
+         EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+            
+        try {
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:510:6: ( ( 'embed' (lv_name_1= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_5= ruleAttribute )* '}' ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:511:1: ( 'embed' (lv_name_1= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_5= ruleAttribute )* '}' )
+            {
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:511:1: ( 'embed' (lv_name_1= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_5= ruleAttribute )* '}' )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:511:2: 'embed' (lv_name_1= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_5= ruleAttribute )* '}'
+            {
+            match(input,22,FOLLOW_22_in_ruleEmbed1099); 
+
+                    createLeafNode(grammarAccess.getEmbedAccess().getEmbedKeyword_0(), null); 
+                
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:515:1: (lv_name_1= RULE_ID )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:517:6: lv_name_1= RULE_ID
+            {
+            lv_name_1=(Token)input.LT(1);
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEmbed1121); 
+
+            		createLeafNode(grammarAccess.getEmbedAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
+            	
+
+            	        if (current==null) {
+            	            current = factory.create(grammarAccess.getEmbedRule().getType().getClassifier());
+            	            associateNodeWithAstElement(currentNode, current);
+            	        }
+            	        
+            	        try {
+            	       		set(current, "name", lv_name_1, "ID", lastConsumedNode);
+            	        } catch (ValueConverterException vce) {
+            				handleValueConverterException(vce);
+            	        }
+            	    
+
+            }
+
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:535:2: ( 'extends' ( RULE_ID ) )?
+            int alt7=2;
+            int LA7_0 = input.LA(1);
+
+            if ( (LA7_0==21) ) {
+                alt7=1;
+            }
+            switch (alt7) {
+                case 1 :
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:535:3: 'extends' ( RULE_ID )
+                    {
+                    match(input,21,FOLLOW_21_in_ruleEmbed1139); 
+
+                            createLeafNode(grammarAccess.getEmbedAccess().getExtendsKeyword_2_0(), null); 
+                        
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:539:1: ( RULE_ID )
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:542:3: RULE_ID
+                    {
+
+                    			if (current==null) {
+                    	            current = factory.create(grammarAccess.getEmbedRule().getType().getClassifier());
+                    	            associateNodeWithAstElement(currentNode, current);
+                    	        }
+                            
+                    match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEmbed1161); 
+
+                    		createLeafNode(grammarAccess.getEmbedAccess().getSuperEntityEntityCrossReference_2_1_0(), "superEntity"); 
+                    	
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            match(input,12,FOLLOW_12_in_ruleEmbed1175); 
+
+                    createLeafNode(grammarAccess.getEmbedAccess().getLeftCurlyBracketKeyword_3(), null); 
+                
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:559:1: (lv_attributes_5= ruleAttribute )*
+            loop8:
+            do {
+                int alt8=2;
+                int LA8_0 = input.LA(1);
+
+                if ( (LA8_0==RULE_ID) ) {
+                    alt8=1;
+                }
+
+
+                switch (alt8) {
+            	case 1 :
+            	    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:562:6: lv_attributes_5= ruleAttribute
+            	    {
+            	     
+            	    	        currentNode=createCompositeNode(grammarAccess.getEmbedAccess().getAttributesAttributeParserRuleCall_4_0(), currentNode); 
+            	    	    
+            	    pushFollow(FOLLOW_ruleAttribute_in_ruleEmbed1209);
+            	    lv_attributes_5=ruleAttribute();
+            	    _fsp--;
+
+
+            	    	        if (current==null) {
+            	    	            current = factory.create(grammarAccess.getEmbedRule().getType().getClassifier());
+            	    	            associateNodeWithAstElement(currentNode.getParent(), current);
+            	    	        }
+            	    	        
+            	    	        try {
+            	    	       		add(current, "attributes", lv_attributes_5, "Attribute", currentNode);
+            	    	        } catch (ValueConverterException vce) {
+            	    				handleValueConverterException(vce);
+            	    	        }
+            	    	        currentNode = currentNode.getParent();
+            	    	    
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop8;
+                }
+            } while (true);
+
+            match(input,16,FOLLOW_16_in_ruleEmbed1223); 
+
+                    createLeafNode(grammarAccess.getEmbedAccess().getRightCurlyBracketKeyword_5(), null); 
+                
+
+            }
+
+
+            }
+
+             resetLookahead(); 
+                	lastConsumedNode = currentNode;
+                
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end ruleEmbed
+
+
     // $ANTLR start entryRuleAttribute
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:327:1: entryRuleAttribute returns [EObject current=null] : iv_ruleAttribute= ruleAttribute EOF ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:591:1: entryRuleAttribute returns [EObject current=null] : iv_ruleAttribute= ruleAttribute EOF ;
     public final EObject entryRuleAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -729,16 +1204,16 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:327:51: (iv_ruleAttribute= ruleAttribute EOF )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:328:2: iv_ruleAttribute= ruleAttribute EOF
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:591:51: (iv_ruleAttribute= ruleAttribute EOF )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:592:2: iv_ruleAttribute= ruleAttribute EOF
             {
              currentNode = createCompositeNode(grammarAccess.getAttributeRule(), currentNode); 
-            pushFollow(FOLLOW_ruleAttribute_in_entryRuleAttribute721);
+            pushFollow(FOLLOW_ruleAttribute_in_entryRuleAttribute1256);
             iv_ruleAttribute=ruleAttribute();
             _fsp--;
 
              current =iv_ruleAttribute; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAttribute731); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAttribute1266); 
 
             }
 
@@ -756,7 +1231,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleAttribute
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:335:1: ruleAttribute returns [EObject current=null] : ( ( RULE_ID ) (lv_many_1= '*' )? (lv_name_2= RULE_ID ) ) ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:599:1: ruleAttribute returns [EObject current=null] : ( ( RULE_ID ) (lv_many_1= '*' )? (lv_name_2= RULE_ID ) ) ;
     public final EObject ruleAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -766,14 +1241,14 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:340:6: ( ( ( RULE_ID ) (lv_many_1= '*' )? (lv_name_2= RULE_ID ) ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:341:1: ( ( RULE_ID ) (lv_many_1= '*' )? (lv_name_2= RULE_ID ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:604:6: ( ( ( RULE_ID ) (lv_many_1= '*' )? (lv_name_2= RULE_ID ) ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:605:1: ( ( RULE_ID ) (lv_many_1= '*' )? (lv_name_2= RULE_ID ) )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:341:1: ( ( RULE_ID ) (lv_many_1= '*' )? (lv_name_2= RULE_ID ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:341:2: ( RULE_ID ) (lv_many_1= '*' )? (lv_name_2= RULE_ID )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:605:1: ( ( RULE_ID ) (lv_many_1= '*' )? (lv_name_2= RULE_ID ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:605:2: ( RULE_ID ) (lv_many_1= '*' )? (lv_name_2= RULE_ID )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:341:2: ( RULE_ID )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:344:3: RULE_ID
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:605:2: ( RULE_ID )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:608:3: RULE_ID
             {
 
             			if (current==null) {
@@ -781,26 +1256,26 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
             	            associateNodeWithAstElement(currentNode, current);
             	        }
                     
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttribute778); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttribute1313); 
 
             		createLeafNode(grammarAccess.getAttributeAccess().getTypeTypeCrossReference_0_0(), "type"); 
             	
 
             }
 
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:357:2: (lv_many_1= '*' )?
-            int alt5=2;
-            int LA5_0 = input.LA(1);
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:621:2: (lv_many_1= '*' )?
+            int alt9=2;
+            int LA9_0 = input.LA(1);
 
-            if ( (LA5_0==15) ) {
-                alt5=1;
+            if ( (LA9_0==23) ) {
+                alt9=1;
             }
-            switch (alt5) {
+            switch (alt9) {
                 case 1 :
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:359:6: lv_many_1= '*'
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:623:6: lv_many_1= '*'
                     {
                     lv_many_1=(Token)input.LT(1);
-                    match(input,15,FOLLOW_15_in_ruleAttribute802); 
+                    match(input,23,FOLLOW_23_in_ruleAttribute1337); 
 
                             createLeafNode(grammarAccess.getAttributeAccess().getManyAsteriskKeyword_1_0(), "many"); 
                         
@@ -822,11 +1297,11 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:378:3: (lv_name_2= RULE_ID )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:380:6: lv_name_2= RULE_ID
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:642:3: (lv_name_2= RULE_ID )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:644:6: lv_name_2= RULE_ID
             {
             lv_name_2=(Token)input.LT(1);
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttribute838); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAttribute1373); 
 
             		createLeafNode(grammarAccess.getAttributeAccess().getNameIDTerminalRuleCall_2_0(), "name"); 
             	
@@ -868,7 +1343,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleEnum
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:405:1: entryRuleEnum returns [EObject current=null] : iv_ruleEnum= ruleEnum EOF ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:669:1: entryRuleEnum returns [EObject current=null] : iv_ruleEnum= ruleEnum EOF ;
     public final EObject entryRuleEnum() throws RecognitionException {
         EObject current = null;
 
@@ -876,16 +1351,16 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:405:46: (iv_ruleEnum= ruleEnum EOF )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:406:2: iv_ruleEnum= ruleEnum EOF
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:669:46: (iv_ruleEnum= ruleEnum EOF )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:670:2: iv_ruleEnum= ruleEnum EOF
             {
              currentNode = createCompositeNode(grammarAccess.getEnumRule(), currentNode); 
-            pushFollow(FOLLOW_ruleEnum_in_entryRuleEnum879);
+            pushFollow(FOLLOW_ruleEnum_in_entryRuleEnum1414);
             iv_ruleEnum=ruleEnum();
             _fsp--;
 
              current =iv_ruleEnum; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnum889); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnum1424); 
 
             }
 
@@ -903,7 +1378,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleEnum
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:413:1: ruleEnum returns [EObject current=null] : ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' ) ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:677:1: ruleEnum returns [EObject current=null] : ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' ) ;
     public final EObject ruleEnum() throws RecognitionException {
         EObject current = null;
 
@@ -914,21 +1389,21 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:418:6: ( ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:419:1: ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:682:6: ( ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:683:1: ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:419:1: ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:419:2: 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}'
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:683:1: ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:683:2: 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}'
             {
-            match(input,16,FOLLOW_16_in_ruleEnum923); 
+            match(input,24,FOLLOW_24_in_ruleEnum1458); 
 
                     createLeafNode(grammarAccess.getEnumAccess().getEnumKeyword_0(), null); 
                 
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:423:1: (lv_name_1= RULE_ID )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:425:6: lv_name_1= RULE_ID
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:687:1: (lv_name_1= RULE_ID )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:689:6: lv_name_1= RULE_ID
             {
             lv_name_1=(Token)input.LT(1);
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnum945); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnum1480); 
 
             		createLeafNode(grammarAccess.getEnumAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
             	
@@ -947,29 +1422,29 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
             }
 
-            match(input,17,FOLLOW_17_in_ruleEnum962); 
+            match(input,12,FOLLOW_12_in_ruleEnum1497); 
 
                     createLeafNode(grammarAccess.getEnumAccess().getLeftCurlyBracketKeyword_2(), null); 
                 
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:447:1: (lv_literals_3= ruleEnumLiteral )*
-            loop6:
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:711:1: (lv_literals_3= ruleEnumLiteral )*
+            loop10:
             do {
-                int alt6=2;
-                int LA6_0 = input.LA(1);
+                int alt10=2;
+                int LA10_0 = input.LA(1);
 
-                if ( (LA6_0==RULE_ID) ) {
-                    alt6=1;
+                if ( (LA10_0==RULE_ID) ) {
+                    alt10=1;
                 }
 
 
-                switch (alt6) {
+                switch (alt10) {
             	case 1 :
-            	    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:450:6: lv_literals_3= ruleEnumLiteral
+            	    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:714:6: lv_literals_3= ruleEnumLiteral
             	    {
             	     
             	    	        currentNode=createCompositeNode(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_3_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleEnumLiteral_in_ruleEnum996);
+            	    pushFollow(FOLLOW_ruleEnumLiteral_in_ruleEnum1531);
             	    lv_literals_3=ruleEnumLiteral();
             	    _fsp--;
 
@@ -991,11 +1466,11 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop6;
+            	    break loop10;
                 }
             } while (true);
 
-            match(input,18,FOLLOW_18_in_ruleEnum1010); 
+            match(input,16,FOLLOW_16_in_ruleEnum1545); 
 
                     createLeafNode(grammarAccess.getEnumAccess().getRightCurlyBracketKeyword_4(), null); 
                 
@@ -1022,7 +1497,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start entryRuleEnumLiteral
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:479:1: entryRuleEnumLiteral returns [EObject current=null] : iv_ruleEnumLiteral= ruleEnumLiteral EOF ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:743:1: entryRuleEnumLiteral returns [EObject current=null] : iv_ruleEnumLiteral= ruleEnumLiteral EOF ;
     public final EObject entryRuleEnumLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -1030,16 +1505,16 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:479:53: (iv_ruleEnumLiteral= ruleEnumLiteral EOF )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:480:2: iv_ruleEnumLiteral= ruleEnumLiteral EOF
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:743:53: (iv_ruleEnumLiteral= ruleEnumLiteral EOF )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:744:2: iv_ruleEnumLiteral= ruleEnumLiteral EOF
             {
              currentNode = createCompositeNode(grammarAccess.getEnumLiteralRule(), currentNode); 
-            pushFollow(FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral1043);
+            pushFollow(FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral1578);
             iv_ruleEnumLiteral=ruleEnumLiteral();
             _fsp--;
 
              current =iv_ruleEnumLiteral; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumLiteral1053); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumLiteral1588); 
 
             }
 
@@ -1057,7 +1532,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleEnumLiteral
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:487:1: ruleEnumLiteral returns [EObject current=null] : ( (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')' ) ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:751:1: ruleEnumLiteral returns [EObject current=null] : ( (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')' ) ;
     public final EObject ruleEnumLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -1067,17 +1542,17 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:492:6: ( ( (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')' ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:493:1: ( (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')' )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:756:6: ( ( (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')' ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:757:1: ( (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')' )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:493:1: ( (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')' )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:493:2: (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')'
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:757:1: ( (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')' )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:757:2: (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')'
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:493:2: (lv_name_0= RULE_ID )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:495:6: lv_name_0= RULE_ID
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:757:2: (lv_name_0= RULE_ID )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:759:6: lv_name_0= RULE_ID
             {
             lv_name_0=(Token)input.LT(1);
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumLiteral1100); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumLiteral1635); 
 
             		createLeafNode(grammarAccess.getEnumLiteralAccess().getNameIDTerminalRuleCall_0_0(), "name"); 
             	
@@ -1096,15 +1571,15 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
             }
 
-            match(input,19,FOLLOW_19_in_ruleEnumLiteral1117); 
+            match(input,25,FOLLOW_25_in_ruleEnumLiteral1652); 
 
                     createLeafNode(grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1(), null); 
                 
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:517:1: (lv_ordinal_2= RULE_INT )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:519:6: lv_ordinal_2= RULE_INT
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:781:1: (lv_ordinal_2= RULE_INT )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:783:6: lv_ordinal_2= RULE_INT
             {
             lv_ordinal_2=(Token)input.LT(1);
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleEnumLiteral1139); 
+            match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleEnumLiteral1674); 
 
             		createLeafNode(grammarAccess.getEnumLiteralAccess().getOrdinalINTTerminalRuleCall_2_0(), "ordinal"); 
             	
@@ -1123,7 +1598,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
             }
 
-            match(input,20,FOLLOW_20_in_ruleEnumLiteral1156); 
+            match(input,26,FOLLOW_26_in_ruleEnumLiteral1691); 
 
                     createLeafNode(grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_3(), null); 
                 
@@ -1149,337 +1624,75 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
     // $ANTLR end ruleEnumLiteral
 
 
-    // $ANTLR start entryRuleEmbed
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:548:1: entryRuleEmbed returns [EObject current=null] : iv_ruleEmbed= ruleEmbed EOF ;
-    public final EObject entryRuleEmbed() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleEmbed = null;
-
-
-        try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:548:47: (iv_ruleEmbed= ruleEmbed EOF )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:549:2: iv_ruleEmbed= ruleEmbed EOF
-            {
-             currentNode = createCompositeNode(grammarAccess.getEmbedRule(), currentNode); 
-            pushFollow(FOLLOW_ruleEmbed_in_entryRuleEmbed1189);
-            iv_ruleEmbed=ruleEmbed();
-            _fsp--;
-
-             current =iv_ruleEmbed; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEmbed1199); 
-
-            }
-
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end entryRuleEmbed
-
-
-    // $ANTLR start ruleEmbed
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:556:1: ruleEmbed returns [EObject current=null] : ( 'embed' this_EntityBody_1= ruleEntityBody ) ;
-    public final EObject ruleEmbed() throws RecognitionException {
-        EObject current = null;
-
-        EObject this_EntityBody_1 = null;
-
-
-         EObject temp=null; setCurrentLookahead(); resetLookahead(); 
-            
-        try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:561:6: ( ( 'embed' this_EntityBody_1= ruleEntityBody ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:562:1: ( 'embed' this_EntityBody_1= ruleEntityBody )
-            {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:562:1: ( 'embed' this_EntityBody_1= ruleEntityBody )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:562:2: 'embed' this_EntityBody_1= ruleEntityBody
-            {
-            match(input,21,FOLLOW_21_in_ruleEmbed1233); 
-
-                    createLeafNode(grammarAccess.getEmbedAccess().getEmbedKeyword_0(), null); 
-                
-             
-                    currentNode=createCompositeNode(grammarAccess.getEmbedAccess().getEntityBodyParserRuleCall_1(), currentNode); 
-                
-            pushFollow(FOLLOW_ruleEntityBody_in_ruleEmbed1255);
-            this_EntityBody_1=ruleEntityBody();
-            _fsp--;
-
-             
-                    current = this_EntityBody_1; 
-                    currentNode = currentNode.getParent();
-                
-
-            }
-
-
-            }
-
-             resetLookahead(); 
-                	lastConsumedNode = currentNode;
-                
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end ruleEmbed
-
-
-    // $ANTLR start entryRuleEntityBody
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:582:1: entryRuleEntityBody returns [EObject current=null] : iv_ruleEntityBody= ruleEntityBody EOF ;
-    public final EObject entryRuleEntityBody() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleEntityBody = null;
-
-
-        try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:582:52: (iv_ruleEntityBody= ruleEntityBody EOF )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:583:2: iv_ruleEntityBody= ruleEntityBody EOF
-            {
-             currentNode = createCompositeNode(grammarAccess.getEntityBodyRule(), currentNode); 
-            pushFollow(FOLLOW_ruleEntityBody_in_entryRuleEntityBody1287);
-            iv_ruleEntityBody=ruleEntityBody();
-            _fsp--;
-
-             current =iv_ruleEntityBody; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEntityBody1297); 
-
-            }
-
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end entryRuleEntityBody
-
-
-    // $ANTLR start ruleEntityBody
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:590:1: ruleEntityBody returns [EObject current=null] : ( (lv_name_0= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_4= ruleAttribute )* '}' ) ;
-    public final EObject ruleEntityBody() throws RecognitionException {
-        EObject current = null;
-
-        Token lv_name_0=null;
-        EObject lv_attributes_4 = null;
-
-
-         EObject temp=null; setCurrentLookahead(); resetLookahead(); 
-            
-        try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:595:6: ( ( (lv_name_0= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_4= ruleAttribute )* '}' ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:596:1: ( (lv_name_0= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_4= ruleAttribute )* '}' )
-            {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:596:1: ( (lv_name_0= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_4= ruleAttribute )* '}' )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:596:2: (lv_name_0= RULE_ID ) ( 'extends' ( RULE_ID ) )? '{' (lv_attributes_4= ruleAttribute )* '}'
-            {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:596:2: (lv_name_0= RULE_ID )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:598:6: lv_name_0= RULE_ID
-            {
-            lv_name_0=(Token)input.LT(1);
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEntityBody1344); 
-
-            		createLeafNode(grammarAccess.getEntityBodyAccess().getNameIDTerminalRuleCall_0_0(), "name"); 
-            	
-
-            	        if (current==null) {
-            	            current = factory.create(grammarAccess.getEntityBodyRule().getType().getClassifier());
-            	            associateNodeWithAstElement(currentNode, current);
-            	        }
-            	        
-            	        try {
-            	       		set(current, "name", lv_name_0, "ID", lastConsumedNode);
-            	        } catch (ValueConverterException vce) {
-            				handleValueConverterException(vce);
-            	        }
-            	    
-
-            }
-
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:616:2: ( 'extends' ( RULE_ID ) )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
-
-            if ( (LA7_0==22) ) {
-                alt7=1;
-            }
-            switch (alt7) {
-                case 1 :
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:616:3: 'extends' ( RULE_ID )
-                    {
-                    match(input,22,FOLLOW_22_in_ruleEntityBody1362); 
-
-                            createLeafNode(grammarAccess.getEntityBodyAccess().getExtendsKeyword_1_0(), null); 
-                        
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:620:1: ( RULE_ID )
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:623:3: RULE_ID
-                    {
-
-                    			if (current==null) {
-                    	            current = factory.create(grammarAccess.getEntityBodyRule().getType().getClassifier());
-                    	            associateNodeWithAstElement(currentNode, current);
-                    	        }
-                            
-                    match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEntityBody1384); 
-
-                    		createLeafNode(grammarAccess.getEntityBodyAccess().getSuperEntityEntityCrossReference_1_1_0(), "superEntity"); 
-                    	
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-            match(input,17,FOLLOW_17_in_ruleEntityBody1398); 
-
-                    createLeafNode(grammarAccess.getEntityBodyAccess().getLeftCurlyBracketKeyword_2(), null); 
-                
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:640:1: (lv_attributes_4= ruleAttribute )*
-            loop8:
-            do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
-
-                if ( (LA8_0==RULE_ID) ) {
-                    alt8=1;
-                }
-
-
-                switch (alt8) {
-            	case 1 :
-            	    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:643:6: lv_attributes_4= ruleAttribute
-            	    {
-            	     
-            	    	        currentNode=createCompositeNode(grammarAccess.getEntityBodyAccess().getAttributesAttributeParserRuleCall_3_0(), currentNode); 
-            	    	    
-            	    pushFollow(FOLLOW_ruleAttribute_in_ruleEntityBody1432);
-            	    lv_attributes_4=ruleAttribute();
-            	    _fsp--;
-
-
-            	    	        if (current==null) {
-            	    	            current = factory.create(grammarAccess.getEntityBodyRule().getType().getClassifier());
-            	    	            associateNodeWithAstElement(currentNode.getParent(), current);
-            	    	        }
-            	    	        
-            	    	        try {
-            	    	       		add(current, "attributes", lv_attributes_4, "Attribute", currentNode);
-            	    	        } catch (ValueConverterException vce) {
-            	    				handleValueConverterException(vce);
-            	    	        }
-            	    	        currentNode = currentNode.getParent();
-            	    	    
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop8;
-                }
-            } while (true);
-
-            match(input,18,FOLLOW_18_in_ruleEntityBody1446); 
-
-                    createLeafNode(grammarAccess.getEntityBodyAccess().getRightCurlyBracketKeyword_4(), null); 
-                
-
-            }
-
-
-            }
-
-             resetLookahead(); 
-                	lastConsumedNode = currentNode;
-                
-        }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
-                appendSkippedTokens();
-            } 
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end ruleEntityBody
-
-
  
 
     public static final BitSet FOLLOW_ruleModel_in_entryRuleModel73 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleModel83 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_ruleModel141 = new BitSet(new long[]{0x0000000000214802L});
-    public static final BitSet FOLLOW_ruleType_in_entryRuleType178 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType188 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleType_in_ruleType235 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEntity_in_ruleType262 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnum_in_ruleType289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEmbed_in_ruleType316 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleType_in_entryRuleSimpleType348 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSimpleType358 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_ruleSimpleType392 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSimpleType414 = new BitSet(new long[]{0x0000000000001002L});
-    public static final BitSet FOLLOW_12_in_ruleSimpleType432 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleJAVAID_in_ruleSimpleType466 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJAVAID_in_entryRuleJAVAID505 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleJAVAID515 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleJAVAID562 = new BitSet(new long[]{0x0000000000002002L});
-    public static final BitSet FOLLOW_13_in_ruleJAVAID580 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleJAVAID589 = new BitSet(new long[]{0x0000000000002002L});
-    public static final BitSet FOLLOW_ruleEntity_in_entryRuleEntity623 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEntity633 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_ruleEntity667 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleEntityBody_in_ruleEntity689 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute721 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAttribute731 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAttribute778 = new BitSet(new long[]{0x0000000000008010L});
-    public static final BitSet FOLLOW_15_in_ruleAttribute802 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAttribute838 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnum_in_entryRuleEnum879 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnum889 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_ruleEnum923 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnum945 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleEnum962 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_ruleEnumLiteral_in_ruleEnum996 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_18_in_ruleEnum1010 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral1043 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnumLiteral1053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumLiteral1100 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_19_in_ruleEnumLiteral1117 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleEnumLiteral1139 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_ruleEnumLiteral1156 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEmbed_in_entryRuleEmbed1189 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEmbed1199 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_ruleEmbed1233 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleEntityBody_in_ruleEmbed1255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEntityBody_in_entryRuleEntityBody1287 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEntityBody1297 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEntityBody1344 = new BitSet(new long[]{0x0000000000420000L});
-    public static final BitSet FOLLOW_22_in_ruleEntityBody1362 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEntityBody1384 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_ruleEntityBody1398 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_ruleAttribute_in_ruleEntityBody1432 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_18_in_ruleEntityBody1446 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleProject_in_ruleModel142 = new BitSet(new long[]{0x0000000001520002L});
+    public static final BitSet FOLLOW_ruleType_in_ruleModel180 = new BitSet(new long[]{0x0000000001520002L});
+    public static final BitSet FOLLOW_ruleProject_in_entryRuleProject218 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleProject228 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_11_in_ruleProject262 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleProject271 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_13_in_ruleProject280 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleProject289 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleProject311 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_ruleProject328 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleProject337 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleProject359 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_16_in_ruleProject376 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_entryRuleType409 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType419 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSimpleType_in_ruleType466 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEntity_in_ruleType493 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnum_in_ruleType520 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEmbed_in_ruleType547 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSimpleType_in_entryRuleSimpleType579 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSimpleType589 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_ruleSimpleType623 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSimpleType645 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_18_in_ruleSimpleType663 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_ruleJAVAID_in_ruleSimpleType697 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJAVAID_in_entryRuleJAVAID736 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleJAVAID746 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleJAVAID793 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_19_in_ruleJAVAID811 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleJAVAID820 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_ruleEntity_in_entryRuleEntity854 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEntity864 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_ruleEntity898 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEntity920 = new BitSet(new long[]{0x0000000000201000L});
+    public static final BitSet FOLLOW_21_in_ruleEntity938 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEntity960 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleEntity974 = new BitSet(new long[]{0x0000000000010020L});
+    public static final BitSet FOLLOW_ruleAttribute_in_ruleEntity1008 = new BitSet(new long[]{0x0000000000010020L});
+    public static final BitSet FOLLOW_16_in_ruleEntity1022 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEmbed_in_entryRuleEmbed1055 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEmbed1065 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_ruleEmbed1099 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEmbed1121 = new BitSet(new long[]{0x0000000000201000L});
+    public static final BitSet FOLLOW_21_in_ruleEmbed1139 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEmbed1161 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleEmbed1175 = new BitSet(new long[]{0x0000000000010020L});
+    public static final BitSet FOLLOW_ruleAttribute_in_ruleEmbed1209 = new BitSet(new long[]{0x0000000000010020L});
+    public static final BitSet FOLLOW_16_in_ruleEmbed1223 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute1256 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAttribute1266 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAttribute1313 = new BitSet(new long[]{0x0000000000800020L});
+    public static final BitSet FOLLOW_23_in_ruleAttribute1337 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAttribute1373 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnum_in_entryRuleEnum1414 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnum1424 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_ruleEnum1458 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnum1480 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleEnum1497 = new BitSet(new long[]{0x0000000000010020L});
+    public static final BitSet FOLLOW_ruleEnumLiteral_in_ruleEnum1531 = new BitSet(new long[]{0x0000000000010020L});
+    public static final BitSet FOLLOW_16_in_ruleEnum1545 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral1578 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnumLiteral1588 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumLiteral1635 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_25_in_ruleEnumLiteral1652 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleEnumLiteral1674 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleEnumLiteral1691 = new BitSet(new long[]{0x0000000000000002L});
 
 }
