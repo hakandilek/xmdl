@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Jul 27, 2009 12:11:36 AM                                                        
+
+     org.xmdl.wdl.taslak    
+     Taslak generation project
+                   
+     hakan                                                                
+     ====================================================================== -->
+<project name="org.xmdl.wdl.taslak" default="generate">
+    <description>
+    	Taslak generation project
+    </description>
+
+	<property file="${user.home}/wdl.build.properties" />
+	<loadproperties srcFile="build.properties" />
+
+	<path id="generator.classpath">
+		<fileset dir="${eclipse.plugin.dir}" includes="**/*.jar" />
+	</path>
+
+    <!-- ================================= 
+          target: generate
+          generates source code              
+         ================================= -->
+    <target name="generate" description="description">
+		<taskdef name="workflow" classname="org.eclipse.emf.mwe.core.ant.WorkflowAntTask" classpathref="generator.classpath">
+			<classpath refid="generator.classpath"></classpath>
+		</taskdef>
+		<workflow file='wdl/workflow/Generator.mwe'>
+			<param name='baseDir' value='/base/'/>
+		</workflow>
+    </target>
+
+</project>
