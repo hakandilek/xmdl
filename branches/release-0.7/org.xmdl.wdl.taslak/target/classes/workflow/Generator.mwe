@@ -1,0 +1,3 @@
+<workflow>
+  <cartridge file="workflow/WDLGenerator.mwe" model="classpath:/model/TaslakModel.wdl"/>
+</workflow>
