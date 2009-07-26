@@ -1,3 +1,8 @@
+project {
+	projectName :"org.xmdl.wdl.taslak"
+	basePackage : "org.xmdl.taslak"
+}
+
 type Double
 type Long
 type String
