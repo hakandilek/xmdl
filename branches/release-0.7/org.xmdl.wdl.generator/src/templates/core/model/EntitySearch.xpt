@@ -1,0 +1,136 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+
+«DEFINE entity FOR wdl::Entity»
+  «FILE "core/src/main/java/org/xmdl/taslak/model/search/"+ this.name + "Search.java"»
+package org.xmdl.taslak.model.search;
+
+import java.util.*;
+import java.io.Serializable;
+import java.text.MessageFormat;
+import org.xmdl.taslak.model.*;
+
+/**
+ *
+ * «this.name» entity search bean
+ *  
+ * $Id$
+ *
+ */ 
+public class «this.name»Search implements Serializable {
+    «FOREACH this.attributes AS attribute»
+    	«IF !attribute.isEmbed()»
+    		«IF attribute.type.isComparable()»
+
+    private «attribute.type.name» «attribute.name.toFirstLower()»Min;
+
+    private «attribute.type.name» «attribute.name.toFirstLower()»Max;
+			«ELSE»
+
+    private «attribute.type.name» «attribute.name.toFirstLower()»;
+    		«ENDIF»
+    	«ENDIF»
+    «ENDFOREACH»
+
+    public «this.name»Search() {
+    }
+
+    «FOREACH this.attributes AS attribute»
+    	«IF !attribute.isEmbed()»
+    		«IF attribute.type.isComparable()»
+
+    public «attribute.type.name» get«attribute.name.toFirstUpper()»Min() {
+        return «attribute.name.toFirstLower()»Min;
+    }
+
+    public void set«attribute.name.toFirstUpper()»Min(«attribute.type.name» «attribute.name.toFirstLower()»Min) {
+        this.«attribute.name.toFirstLower()»Min = «attribute.name.toFirstLower()»Min;
+    }
+
+    public «attribute.type.name» get«attribute.name.toFirstUpper()»Max() {
+        return «attribute.name.toFirstLower()»Max;
+    }
+
+    public void set«attribute.name.toFirstUpper()»Max(«attribute.type.name» «attribute.name.toFirstLower()»Max) {
+        this.«attribute.name.toFirstLower()»Max = «attribute.name.toFirstLower()»Max;
+    }
+			«ELSE»
+
+    public «attribute.type.name» get«attribute.name.toFirstUpper()»() {
+        return «attribute.name.toFirstLower()»;
+    }
+
+    public void set«attribute.name.toFirstUpper()»(«attribute.type.name» «attribute.name.toFirstLower()») {
+        this.«attribute.name.toFirstLower()» = «attribute.name.toFirstLower()»;
+    }
+    		«ENDIF»
+    	«ENDIF»
+    «ENDFOREACH»
+
+    /** 
+     * @generated
+     */
+	@Override
+    public String toString() {
+        return MessageFormat.format("«this.name»Search "<%int i=0;%>
+    «LET 0 AS i»
+	    «FOREACH this.attributes AS attribute»
+	    	«IF !attribute.isEmbed()»
+	    		«IF attribute.type.isComparable()»
+	            + "[«attribute.name.toFirstLower()»Min={<%=i++%>}]"
+	            + "[«attribute.name.toFirstLower()»Max={<%=i++%>}]"
+				«ELSE»
+	            + "[«attribute.name.toFirstLower()»={<%=i++%>}]"
+	    		«ENDIF»
+	    	«ENDIF»
+	    «ENDFOREACH»
+    «ENDLET»
+    «FOREACH this.attributes AS attribute»
+    	«IF !attribute.isEmbed()»
+    		«IF attribute.type.isComparable()»
+            , «attribute.name.toFirstLower()»Min
+            , «attribute.name.toFirstLower()»Max
+			«ELSE»
+            , «attribute.name.toFirstLower()»
+    		«ENDIF»
+    	«ENDIF»
+    «ENDFOREACH»
+        );
+    }
+
+    /** 
+     * @generated
+     */
+	@Override
+    public int hashCode() {
+        int result = 1;
+    «FOREACH this.attributes AS attribute»
+    	«IF !attribute.isEmbed()»
+    		«IF attribute.type.isComparable()»
+    			«IF attribute.type.isPrimitive()»
+        if («attribute.name.toFirstLower()»Min != null) result = 31 * result + ("" + «attribute.name.toFirstLower()»Min).hashCode();
+        if («attribute.name.toFirstLower()»Max != null) result = 31 * result + ("" + «attribute.name.toFirstLower()»Max).hashCode();
+    			«ELSE»
+        if («attribute.name.toFirstLower()»Min != null) result = 31 * result + «attribute.name.toFirstLower()»Min.hashCode();
+		if («attribute.name.toFirstLower()»Max != null) result = 31 * result + «attribute.name.toFirstLower()»Max.hashCode();
+    			«ENDIF»
+			«ELSE»
+    			«IF attribute.type.isPrimitive()»
+        if («attribute.name.toFirstLower()» != null) result = 31 * result + ("" + «attribute.name.toFirstLower()»).hashCode();
+    			«ELSE»
+        if («attribute.name.toFirstLower()» != null) result = 31 * result + «attribute.name.toFirstLower()».hashCode();
+    			«ENDIF»
+    		«ENDIF»
+    	«ENDIF»
+    «ENDFOREACH»
+        return result;
+    }
+
+	@Override
+	public boolean equals(Object obj) {
+		return hashCode() == obj.hashCode();
+	}
+}
+  «ENDFILE»
+«ENDDEFINE»

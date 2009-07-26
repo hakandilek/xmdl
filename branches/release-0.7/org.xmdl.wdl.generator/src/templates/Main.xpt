@@ -1,0 +1,9 @@
+«IMPORT wdl»
+
+«DEFINE main FOR Model»
+	«EXPAND core::model::Entity::entity FOREACH this.types.typeSelect(Entity)»
+	«EXPAND core::model::EntitySearch::entity FOREACH this.types.typeSelect(Entity)»
+	«EXPAND core::model::Enumeration::entity FOREACH this.types.typeSelect(Enum)»
+	«EXPAND core::model::Embed::entity FOREACH this.types.typeSelect(Embed)»
+	«EXPAND eclipse::Classpath::project FOR this.project»
+«ENDDEFINE»

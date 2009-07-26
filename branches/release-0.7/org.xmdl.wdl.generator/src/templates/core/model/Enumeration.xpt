@@ -1,0 +1,63 @@
+«IMPORT wdl»
+
+«DEFINE entity FOR wdl::Enum»
+  «FILE "core/src/main/java/org/xmdl/taslak/model/"+ this.name + "Search.java"»
+package org.xmdl.taslak.model;
+
+/**
+ *
+ * «this.name» enumeration type
+ *  
+ * $Id$
+ *
+ */ 
+public enum «this.name» {
+	«FOREACH this.literals AS literal»
+	«literal.name»(«literal.ordinal»),
+	«ENDFOREACH»
+    ;
+
+    private int value;
+
+    «this.name»(int value) {
+        this.value = value;
+    }
+
+    /**
+     * The identifier method
+     */ 
+    public int toInt() {
+        return value;
+    }
+
+    public int getValue(){
+        return value;
+    }
+
+    /**
+     * the value Of Method
+     */ 
+    public static «this.name» fromInt(int value) {
+        switch (value) {
+	«FOREACH this.literals AS literal»
+            case «literal.ordinal»:
+                return «literal.name»;
+	«ENDFOREACH»
+            default:
+                return null;
+        }
+    }
+
+    public String toString() {
+        switch (this) {
+	«FOREACH this.literals AS literal»
+            case «literal.name»:
+                return «literal.name»;
+	«ENDFOREACH»
+            default:
+                return null;
+        }
+    }
+}
+  «ENDFILE»
+«ENDDEFINE»
