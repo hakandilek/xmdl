@@ -1,6 +1,7 @@
 «IMPORT wdl»
 
 «EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
   «FILE "core/src/main/java/org/xmdl/taslak/model/search/"+ this.name + "Search.java"»
@@ -73,30 +74,7 @@ public class «this.name»Search implements Serializable {
      */
 	@Override
     public String toString() {
-        return MessageFormat.format("«this.name»Search "<%int i=0;%>
-    «LET 0 AS i»
-	    «FOREACH this.attributes AS attribute»
-	    	«IF !attribute.isEmbed()»
-	    		«IF attribute.type.isComparable()»
-	            + "[«attribute.name.toFirstLower()»Min={<%=i++%>}]"
-	            + "[«attribute.name.toFirstLower()»Max={<%=i++%>}]"
-				«ELSE»
-	            + "[«attribute.name.toFirstLower()»={<%=i++%>}]"
-	    		«ENDIF»
-	    	«ENDIF»
-	    «ENDFOREACH»
-    «ENDLET»
-    «FOREACH this.attributes AS attribute»
-    	«IF !attribute.isEmbed()»
-    		«IF attribute.type.isComparable()»
-            , «attribute.name.toFirstLower()»Min
-            , «attribute.name.toFirstLower()»Max
-			«ELSE»
-            , «attribute.name.toFirstLower()»
-    		«ENDIF»
-    	«ENDIF»
-    «ENDFOREACH»
-        );
+    	«this.searchToString()»;
     }
 
     /** 
