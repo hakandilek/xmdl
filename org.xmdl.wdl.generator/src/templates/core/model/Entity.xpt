@@ -14,6 +14,7 @@ import org.hibernate.annotations.Parameter;
 import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.*;
+import org.xmdl.mesken.model.*;
 
 
 /**
@@ -38,7 +39,7 @@ public class «this.name» extends BaseObject implements Serializable, Cloneable
     
     «FOREACH this.attributes AS attribute»
     «IF !attribute.isReference()»
-	@Column(name = ("«attribute.columnName()»"), length = «attribute.columnSize()»«IF attribute.isEnumeration()», columnDefinition = "integer", nullable = false«ENDIF»);
+	@Column(name = "«attribute.columnName()»", length = «attribute.columnSize()»«IF attribute.isEnumeration()», columnDefinition = "integer", nullable = false«ENDIF»)
         «IF attribute.isEnumeration()»
     @Type(
             type = "org.xmdl.ida.lib.dao.hibernate.GenericEnumUserType",
