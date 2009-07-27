@@ -52,7 +52,7 @@ public enum «this.name» {
         switch (this) {
 	«FOREACH this.literals AS literal»
             case «literal.name»:
-                return «literal.name»;
+                return "«literal.name»";
 	«ENDFOREACH»
             default:
                 return null;
