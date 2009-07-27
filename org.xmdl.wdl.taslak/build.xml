@@ -15,8 +15,15 @@
 	<property file="${user.home}/wdl.build.properties" />
 	<loadproperties srcFile="build.properties" />
 
+	<tstamp>
+		<format property="TODAY" pattern="yyyyMMdd" />
+	</tstamp>
+	<property name="version.pattern" value="${dist.version.prefix}.${TODAY}_${dist.version.suffix}" />
+
 	<path id="generator.classpath">
+		<pathelement location="wdl"/>
 		<fileset dir="${eclipse.plugin.dir}" includes="**/*.jar" />
+		<fileset dir="dist/plugins/" includes="**/*.jar" />
 	</path>
 
     <!-- ================================= 
@@ -24,12 +31,70 @@
           generates source code              
          ================================= -->
     <target name="generate" description="description">
-		<taskdef name="workflow" classname="org.eclipse.emf.mwe.core.ant.WorkflowAntTask" classpathref="generator.classpath">
-			<classpath refid="generator.classpath"></classpath>
-		</taskdef>
-		<workflow file='wdl/workflow/Generator.mwe'>
-			<param name='baseDir' value='/base/'/>
-		</workflow>
+    	<java classname="org.eclipse.emf.mwe.core.WorkflowRunner" classpathref="generator.classpath">
+    		<arg value="wdl/workflow/Generator.mwe"/>
+    	</java>
     </target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: build_generator                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="build_generator">
+    	<!-- temporary part that compiles the generator  -->
+		<dist_plugin 
+			plugin.name="org.xmdl.wdl" 
+			plugin.path="org.xmdl.wdl" />
+		<dist_plugin 
+			plugin.name="org.xmdl.wdl.generator" 
+			plugin.path="org.xmdl.wdl.generator" />
+    </target>
+	
+	<!-- ================================= 
+          target: build_and_generate              
+         ================================= -->
+    <target name="build_and_generate" depends="build_generator">
+        <antcall target="generate"/>
+    </target>
+
+	<macrodef name="dist_plugin">
+		<attribute name="plugin.name" />
+		<attribute name="plugin.path" />
+
+		<sequential>
+			<echo message=" --- Building plugin : @{plugin.name}"/>
+			<mkdir dir="build/@{plugin.name}" />
+			<mkdir dir="dist/plugins/" />
+			<javac srcdir="../@{plugin.path}/src" destdir="build/@{plugin.name}" debug="on">
+                <src path="../@{plugin.path}/src"/>
+                <src path="../@{plugin.path}/src-gen"/>
+				<classpath refid="generator.classpath" />
+			</javac>
+	        <update_manifest plugin.path="@{plugin.path}"/>
+			<copy todir="build/@{plugin.name}">
+				<fileset dir="../@{plugin.path}/src"     excludes="**/*.java" />
+				<fileset dir="../@{plugin.path}/src-gen" excludes="**/*.java" />
+			</copy>
+			<jar destfile="dist/plugins/@{plugin.name}_${version.pattern}.jar" manifest="../@{plugin.path}/META-INF/MANIFEST.MF">
+				<fileset dir="build/@{plugin.name}" excludes="**/Test.class" />
+				<fileset dir="../@{plugin.path}">
+					<include name="plugin.*" />
+					<include name="model/*" />
+                    <include name="res/*" />
+                    <include name="icons/**" />
+				</fileset>
+			</jar>
+		</sequential>
+	</macrodef>
+
+    <macrodef name="update_manifest">
+		<attribute name="plugin.path" />
+
+        <sequential>
+            <manifest file="../@{plugin.path}/META-INF/MANIFEST.MF" mode="update">
+                <attribute name="Built-By" value="${dist.build.user}" />
+                <attribute name="Bundle-Version" value="${version.pattern}" />
+            </manifest>
+        </sequential>
+    </macrodef>
 
 </project>
