@@ -22,7 +22,7 @@ public class Money extends BaseObject implements Serializable, Cloneable {
 
 	
 	
-	@Column(name = (""), length = "");
+	@Column(name = (""), length = 0);
 		
 	
     private Double amount ;
