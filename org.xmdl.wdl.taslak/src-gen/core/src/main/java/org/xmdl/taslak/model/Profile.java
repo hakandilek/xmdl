@@ -37,7 +37,7 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
     private User user ;
     
     
-	@Column(name = (""), length = "");
+	@Column(name = (""), length = 0);
         
     
     private String privatePhone ;

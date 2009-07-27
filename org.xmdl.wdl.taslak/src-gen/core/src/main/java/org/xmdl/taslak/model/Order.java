@@ -32,13 +32,13 @@ public class Order extends BaseObject implements Serializable, Cloneable {
     
     
     
-	@Column(name = (""), length = "");
+	@Column(name = (""), length = 0);
         
     
     private String name ;
     
     
-	@Column(name = (""), length = "");
+	@Column(name = (""), length = 0);
         
     
     private Double priceTotals ;
