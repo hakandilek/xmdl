@@ -18,15 +18,12 @@ public class ProductSearch implements Serializable {
     	
     		
 
-    private String name;
-    		
+    private String nameMin;
+
+    private String nameMax;
+			
     	
     
-    	
-    		
-
-    private Money price;
-    		
     	
     
     	
@@ -51,27 +48,24 @@ public class ProductSearch implements Serializable {
     	
     		
 
-    public String getName() {
-        return name;
+    public String getNameMin() {
+        return nameMin;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameMin(String nameMin) {
+        this.nameMin = nameMin;
     }
-    		
+
+    public String getNameMax() {
+        return nameMax;
+    }
+
+    public void setNameMax(String nameMax) {
+        this.nameMax = nameMax;
+    }
+			
     	
     
-    	
-    		
-
-    public Money getPrice() {
-        return price;
-    }
-
-    public void setPrice(Money price) {
-        this.price = price;
-    }
-    		
     	
     
     	
@@ -106,60 +100,7 @@ public class ProductSearch implements Serializable {
      */
 	@Override
     public String toString() {
-        return MessageFormat.format("ProductSearch "<%int i=0;%>
-    
-	    
-	    	
-	    		
-	            + "[name={<%=i++%>}]"
-	    		
-	    	
-	    
-	    	
-	    		
-	            + "[price={<%=i++%>}]"
-	    		
-	    	
-	    
-	    	
-	    		
-	            + "[orderElements={<%=i++%>}]"
-	    		
-	    	
-	    
-	    	
-	    		
-	            + "[suppliers={<%=i++%>}]"
-	    		
-	    	
-	    
-    
-    
-    	
-    		
-            , name
-    		
-    	
-    
-    	
-    		
-            , price
-    		
-    	
-    
-    	
-    		
-            , orderElements
-    		
-    	
-    
-    	
-    		
-            , suppliers
-    		
-    	
-    
-        );
+    	return MessageFormat.format("Product[nameMin={1}][nameMax={2}]", nameMin , nameMax );
     }
 
     /** 
@@ -172,7 +113,18 @@ public class ProductSearch implements Serializable {
     	
     		
     			
-        if (name != null) result = 31 * result + name.hashCode();
+        if (nameMin != null) result = 31 * result + ("" + nameMin).hashCode();
+        if (nameMax != null) result = 31 * result + ("" + nameMax).hashCode();
+    			
+			
+    	
+    
+    	
+    
+    	
+    		
+    			
+        if (orderElements != null) result = 31 * result + ("" + orderElements).hashCode();
     			
     		
     	
@@ -180,23 +132,7 @@ public class ProductSearch implements Serializable {
     	
     		
     			
-        if (price != null) result = 31 * result + price.hashCode();
-    			
-    		
-    	
-    
-    	
-    		
-    			
-        if (orderElements != null) result = 31 * result + orderElements.hashCode();
-    			
-    		
-    	
-    
-    	
-    		
-    			
-        if (suppliers != null) result = 31 * result + suppliers.hashCode();
+        if (suppliers != null) result = 31 * result + ("" + suppliers).hashCode();
     			
     		
     	

@@ -18,8 +18,10 @@ public class SupplierSearch implements Serializable {
     	
     		
 
-    private String name;
-    		
+    private String nameMin;
+
+    private String nameMax;
+			
     	
     
     	
@@ -37,14 +39,22 @@ public class SupplierSearch implements Serializable {
     	
     		
 
-    public String getName() {
-        return name;
+    public String getNameMin() {
+        return nameMin;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameMin(String nameMin) {
+        this.nameMin = nameMin;
     }
-    		
+
+    public String getNameMax() {
+        return nameMax;
+    }
+
+    public void setNameMax(String nameMax) {
+        this.nameMax = nameMax;
+    }
+			
     	
     
     	
@@ -66,36 +76,7 @@ public class SupplierSearch implements Serializable {
      */
 	@Override
     public String toString() {
-        return MessageFormat.format("SupplierSearch "<%int i=0;%>
-    
-	    
-	    	
-	    		
-	            + "[name={<%=i++%>}]"
-	    		
-	    	
-	    
-	    	
-	    		
-	            + "[products={<%=i++%>}]"
-	    		
-	    	
-	    
-    
-    
-    	
-    		
-            , name
-    		
-    	
-    
-    	
-    		
-            , products
-    		
-    	
-    
-        );
+    	return MessageFormat.format("Supplier[nameMin={1}][nameMax={2}]", nameMin , nameMax );
     }
 
     /** 
@@ -108,15 +89,16 @@ public class SupplierSearch implements Serializable {
     	
     		
     			
-        if (name != null) result = 31 * result + name.hashCode();
+        if (nameMin != null) result = 31 * result + ("" + nameMin).hashCode();
+        if (nameMax != null) result = 31 * result + ("" + nameMax).hashCode();
     			
-    		
+			
     	
     
     	
     		
     			
-        if (products != null) result = 31 * result + products.hashCode();
+        if (products != null) result = 31 * result + ("" + products).hashCode();
     			
     		
     	

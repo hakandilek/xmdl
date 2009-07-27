@@ -18,8 +18,10 @@ public class OrderElementSearch implements Serializable {
     	
     		
 
-    private Long quantity;
-    		
+    private Long quantityMin;
+
+    private Long quantityMax;
+			
     	
     
     	
@@ -44,14 +46,22 @@ public class OrderElementSearch implements Serializable {
     	
     		
 
-    public Long getQuantity() {
-        return quantity;
+    public Long getQuantityMin() {
+        return quantityMin;
     }
 
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
+    public void setQuantityMin(Long quantityMin) {
+        this.quantityMin = quantityMin;
     }
-    		
+
+    public Long getQuantityMax() {
+        return quantityMax;
+    }
+
+    public void setQuantityMax(Long quantityMax) {
+        this.quantityMax = quantityMax;
+    }
+			
     	
     
     	
@@ -86,48 +96,7 @@ public class OrderElementSearch implements Serializable {
      */
 	@Override
     public String toString() {
-        return MessageFormat.format("OrderElementSearch "<%int i=0;%>
-    
-	    
-	    	
-	    		
-	            + "[quantity={<%=i++%>}]"
-	    		
-	    	
-	    
-	    	
-	    		
-	            + "[order={<%=i++%>}]"
-	    		
-	    	
-	    
-	    	
-	    		
-	            + "[product={<%=i++%>}]"
-	    		
-	    	
-	    
-    
-    
-    	
-    		
-            , quantity
-    		
-    	
-    
-    	
-    		
-            , order
-    		
-    	
-    
-    	
-    		
-            , product
-    		
-    	
-    
-        );
+    	return MessageFormat.format("OrderElement[quantityMin={1}][quantityMax={2}]", quantityMin , quantityMax );
     }
 
     /** 
@@ -140,7 +109,16 @@ public class OrderElementSearch implements Serializable {
     	
     		
     			
-        if (quantity != null) result = 31 * result + quantity.hashCode();
+        if (quantityMin != null) result = 31 * result + ("" + quantityMin).hashCode();
+        if (quantityMax != null) result = 31 * result + ("" + quantityMax).hashCode();
+    			
+			
+    	
+    
+    	
+    		
+    			
+        if (order != null) result = 31 * result + ("" + order).hashCode();
     			
     		
     	
@@ -148,15 +126,7 @@ public class OrderElementSearch implements Serializable {
     	
     		
     			
-        if (order != null) result = 31 * result + order.hashCode();
-    			
-    		
-    	
-    
-    	
-    		
-    			
-        if (product != null) result = 31 * result + product.hashCode();
+        if (product != null) result = 31 * result + ("" + product).hashCode();
     			
     		
     	

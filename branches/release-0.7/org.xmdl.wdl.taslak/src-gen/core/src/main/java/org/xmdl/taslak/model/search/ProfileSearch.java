@@ -25,8 +25,10 @@ public class ProfileSearch implements Serializable {
     	
     		
 
-    private String privatePhone;
-    		
+    private String privatePhoneMin;
+
+    private String privatePhoneMax;
+			
     	
     
 
@@ -50,14 +52,22 @@ public class ProfileSearch implements Serializable {
     	
     		
 
-    public String getPrivatePhone() {
-        return privatePhone;
+    public String getPrivatePhoneMin() {
+        return privatePhoneMin;
     }
 
-    public void setPrivatePhone(String privatePhone) {
-        this.privatePhone = privatePhone;
+    public void setPrivatePhoneMin(String privatePhoneMin) {
+        this.privatePhoneMin = privatePhoneMin;
     }
-    		
+
+    public String getPrivatePhoneMax() {
+        return privatePhoneMax;
+    }
+
+    public void setPrivatePhoneMax(String privatePhoneMax) {
+        this.privatePhoneMax = privatePhoneMax;
+    }
+			
     	
     
 
@@ -66,36 +76,7 @@ public class ProfileSearch implements Serializable {
      */
 	@Override
     public String toString() {
-        return MessageFormat.format("ProfileSearch "<%int i=0;%>
-    
-	    
-	    	
-	    		
-	            + "[user={<%=i++%>}]"
-	    		
-	    	
-	    
-	    	
-	    		
-	            + "[privatePhone={<%=i++%>}]"
-	    		
-	    	
-	    
-    
-    
-    	
-    		
-            , user
-    		
-    	
-    
-    	
-    		
-            , privatePhone
-    		
-    	
-    
-        );
+    	return MessageFormat.format("Profile[privatePhoneMin={1}][privatePhoneMax={2}]", privatePhoneMin , privatePhoneMax );
     }
 
     /** 
@@ -108,7 +89,7 @@ public class ProfileSearch implements Serializable {
     	
     		
     			
-        if (user != null) result = 31 * result + user.hashCode();
+        if (user != null) result = 31 * result + ("" + user).hashCode();
     			
     		
     	
@@ -116,9 +97,10 @@ public class ProfileSearch implements Serializable {
     	
     		
     			
-        if (privatePhone != null) result = 31 * result + privatePhone.hashCode();
+        if (privatePhoneMin != null) result = 31 * result + ("" + privatePhoneMin).hashCode();
+        if (privatePhoneMax != null) result = 31 * result + ("" + privatePhoneMax).hashCode();
     			
-    		
+			
     	
     
         return result;

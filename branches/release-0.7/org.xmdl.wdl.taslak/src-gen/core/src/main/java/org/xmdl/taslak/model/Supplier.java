@@ -1,13 +1,13 @@
 
 package org.xmdl.taslak.model;
 
-import javax.persistence.*"/>
-import org.xmdl.ida.lib.model.BaseObject"/>
-import org.hibernate.annotations.Type"/>
-import org.hibernate.annotations.Parameter"/>
-import java.io.Serializable"/>
-import java.text.MessageFormat"/>
-import java.util.*"/>
+import javax.persistence.*;
+import org.xmdl.ida.lib.model.BaseObject;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.Parameter;
+import java.io.Serializable;
+import java.text.MessageFormat;
+import java.util.*;
 
 
 /**
@@ -17,7 +17,7 @@ import java.util.*"/>
  * $Id$
  *
  */ 
-@Entity (name=("TBL_SUPPLIER))</c:if>
+@Entity (name=("TBL_SUPPLIER"))
 public class Supplier extends BaseObject implements Serializable, Cloneable {
 
     /** 
@@ -32,18 +32,15 @@ public class Supplier extends BaseObject implements Serializable, Cloneable {
     
     
     
-    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/><c:if test="isEnumeration($attribute)">, columnDefinition = "integer", nullable = false</c:if>)
+	@Column(name = (""), length = "");
         
     
-    private  name
+    private String name ;
     
     
     
-    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/><c:if test="isEnumeration($attribute)">, columnDefinition = "integer", nullable = false</c:if>)
-        
     
-    private  products
-    
+    private Product products ;
     
 
     public Supplier() {
@@ -58,30 +55,27 @@ public class Supplier extends BaseObject implements Serializable, Cloneable {
     }
 
     
-    public  Name {
+    public String getName() {
         return name;
     }
 
-    public void setName( name) {
+    public void setName(String name) {
         this.name = name;
     }
 
     
-    public  Products {
+    public Product getProducts() {
         return products;
     }
 
-    public void setProducts( products) {
+    public void setProducts(Product products) {
         this.products = products;
     }
 
     
 
     public String toString() {
-        return MessageFormat.format("Supplier [id={0}]    [name={0}]   [products={0}]  
-                                                                        , name   , products  
-                                                            
-                                      ;
+    	return MessageFormat.format("Supplier[name={1}], ", name );
     }
 
     public boolean equals(Object o) {
@@ -94,14 +88,10 @@ public class Supplier extends BaseObject implements Serializable, Cloneable {
     
         
             
-        if (name != null) result = 31 * result + name.hashCode();
+        if (name != null) result = 31 * result + ("" + name).hashCode();
             
         
     
-        
-            
-        if (products != null) result = 31 * result + products.hashCode();
-            
         
     
         return result;
@@ -118,10 +108,9 @@ public class Supplier extends BaseObject implements Serializable, Cloneable {
         
     
         
-            copy.products = this.products;
-        
     
             return copy;
         }
      }
+}
   

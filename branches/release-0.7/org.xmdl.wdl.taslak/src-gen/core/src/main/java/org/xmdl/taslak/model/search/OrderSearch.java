@@ -18,15 +18,19 @@ public class OrderSearch implements Serializable {
     	
     		
 
-    private String name;
-    		
+    private String nameMin;
+
+    private String nameMax;
+			
     	
     
     	
     		
 
-    private Double priceTotals;
-    		
+    private Double priceTotalsMin;
+
+    private Double priceTotalsMax;
+			
     	
     
     	
@@ -51,27 +55,43 @@ public class OrderSearch implements Serializable {
     	
     		
 
-    public String getName() {
-        return name;
+    public String getNameMin() {
+        return nameMin;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameMin(String nameMin) {
+        this.nameMin = nameMin;
     }
-    		
+
+    public String getNameMax() {
+        return nameMax;
+    }
+
+    public void setNameMax(String nameMax) {
+        this.nameMax = nameMax;
+    }
+			
     	
     
     	
     		
 
-    public Double getPriceTotals() {
-        return priceTotals;
+    public Double getPriceTotalsMin() {
+        return priceTotalsMin;
     }
 
-    public void setPriceTotals(Double priceTotals) {
-        this.priceTotals = priceTotals;
+    public void setPriceTotalsMin(Double priceTotalsMin) {
+        this.priceTotalsMin = priceTotalsMin;
     }
-    		
+
+    public Double getPriceTotalsMax() {
+        return priceTotalsMax;
+    }
+
+    public void setPriceTotalsMax(Double priceTotalsMax) {
+        this.priceTotalsMax = priceTotalsMax;
+    }
+			
     	
     
     	
@@ -106,60 +126,7 @@ public class OrderSearch implements Serializable {
      */
 	@Override
     public String toString() {
-        return MessageFormat.format("OrderSearch "<%int i=0;%>
-    
-	    
-	    	
-	    		
-	            + "[name={<%=i++%>}]"
-	    		
-	    	
-	    
-	    	
-	    		
-	            + "[priceTotals={<%=i++%>}]"
-	    		
-	    	
-	    
-	    	
-	    		
-	            + "[createDate={<%=i++%>}]"
-	    		
-	    	
-	    
-	    	
-	    		
-	            + "[orderElements={<%=i++%>}]"
-	    		
-	    	
-	    
-    
-    
-    	
-    		
-            , name
-    		
-    	
-    
-    	
-    		
-            , priceTotals
-    		
-    	
-    
-    	
-    		
-            , createDate
-    		
-    	
-    
-    	
-    		
-            , orderElements
-    		
-    	
-    
-        );
+    	return MessageFormat.format("Order[nameMin={1}][nameMax={2}][priceTotalsMin={3}][priceTotalsMax={4}]", nameMin , nameMax , priceTotalsMin , priceTotalsMax );
     }
 
     /** 
@@ -172,7 +139,25 @@ public class OrderSearch implements Serializable {
     	
     		
     			
-        if (name != null) result = 31 * result + name.hashCode();
+        if (nameMin != null) result = 31 * result + ("" + nameMin).hashCode();
+        if (nameMax != null) result = 31 * result + ("" + nameMax).hashCode();
+    			
+			
+    	
+    
+    	
+    		
+    			
+        if (priceTotalsMin != null) result = 31 * result + ("" + priceTotalsMin).hashCode();
+        if (priceTotalsMax != null) result = 31 * result + ("" + priceTotalsMax).hashCode();
+    			
+			
+    	
+    
+    	
+    		
+    			
+        if (createDate != null) result = 31 * result + ("" + createDate).hashCode();
     			
     		
     	
@@ -180,23 +165,7 @@ public class OrderSearch implements Serializable {
     	
     		
     			
-        if (priceTotals != null) result = 31 * result + priceTotals.hashCode();
-    			
-    		
-    	
-    
-    	
-    		
-    			
-        if (createDate != null) result = 31 * result + createDate.hashCode();
-    			
-    		
-    	
-    
-    	
-    		
-    			
-        if (orderElements != null) result = 31 * result + orderElements.hashCode();
+        if (orderElements != null) result = 31 * result + ("" + orderElements).hashCode();
     			
     		
     	
