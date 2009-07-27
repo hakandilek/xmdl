@@ -34,7 +34,7 @@ public class DirectoryCreator extends AbstractWorkflowComponent2 {
 	 */
 	@Override
 	public String getLogMessage() {
-		return "cleaning directory '" + directory + "'";
+		return "Creating directory '" + directory + "'";
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class DirectoryCreator extends AbstractWorkflowComponent2 {
 				final String dir = st.nextToken().trim();
 				final File f = new File(dir);
 				if (f.exists() && f.isDirectory()) {
-					LOG.info("Cleaning " + f.getAbsolutePath());
+					LOG.info("Creating " + f.getAbsolutePath());
 					try {
 						createFolder(f.getAbsolutePath());
 					} catch (FileNotFoundException e) {
