@@ -1,13 +1,13 @@
 
 package org.xmdl.taslak.model;
 
-import javax.persistence.*"/>
-import org.xmdl.ida.lib.model.BaseObject"/>
-import org.hibernate.annotations.Type"/>
-import org.hibernate.annotations.Parameter"/>
-import java.io.Serializable"/>
-import java.text.MessageFormat"/>
-import java.util.*"/>
+import javax.persistence.*;
+import org.xmdl.ida.lib.model.BaseObject;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.Parameter;
+import java.io.Serializable;
+import java.text.MessageFormat;
+import java.util.*;
 
 
 /**
@@ -17,7 +17,7 @@ import java.util.*"/>
  * $Id$
  *
  */ 
-@Entity (name=("TBL_PROFILE))</c:if>
+@Entity (name=("TBL_PROFILE"))
 public class Profile extends BaseObject implements Serializable, Cloneable {
 
     /** 
@@ -32,18 +32,15 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
     
     
     
-    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/><c:if test="isEnumeration($attribute)">, columnDefinition = "integer", nullable = false</c:if>)
+    
+    
+    private User user ;
+    
+    
+	@Column(name = (""), length = "");
         
     
-    private  user
-    
-    
-    
-    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/><c:if test="isEnumeration($attribute)">, columnDefinition = "integer", nullable = false</c:if>)
-        
-    
-    private  privatePhone
-    
+    private String privatePhone ;
     
 
     public Profile() {
@@ -58,30 +55,27 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
     }
 
     
-    public  User {
+    public User getUser() {
         return user;
     }
 
-    public void setUser( user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
     
-    public  PrivatePhone {
+    public String getPrivatePhone() {
         return privatePhone;
     }
 
-    public void setPrivatePhone( privatePhone) {
+    public void setPrivatePhone(String privatePhone) {
         this.privatePhone = privatePhone;
     }
 
     
 
     public String toString() {
-        return MessageFormat.format("Profile [id={0}]    [user={0}]   [privatePhone={0}]  
-                                                                        , user   , privatePhone  
-                                                            
-                                      ;
+    	return MessageFormat.format("Profile[privatePhone={1}], ", privatePhone );
     }
 
     public boolean equals(Object o) {
@@ -93,14 +87,10 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
         if (id != null) result = 31 * result + id.hashCode();
     
         
-            
-        if (user != null) result = 31 * result + user.hashCode();
-            
-        
     
         
             
-        if (privatePhone != null) result = 31 * result + privatePhone.hashCode();
+        if (privatePhone != null) result = 31 * result + ("" + privatePhone).hashCode();
             
         
     
@@ -114,8 +104,6 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
             Profile copy = new Profile();
     
         
-            copy.user = this.user;
-        
     
         
             copy.privatePhone = this.privatePhone;
@@ -124,4 +112,5 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
             return copy;
         }
      }
+}
   

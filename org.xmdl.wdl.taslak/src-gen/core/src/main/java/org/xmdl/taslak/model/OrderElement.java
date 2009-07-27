@@ -1,13 +1,13 @@
 
 package org.xmdl.taslak.model;
 
-import javax.persistence.*"/>
-import org.xmdl.ida.lib.model.BaseObject"/>
-import org.hibernate.annotations.Type"/>
-import org.hibernate.annotations.Parameter"/>
-import java.io.Serializable"/>
-import java.text.MessageFormat"/>
-import java.util.*"/>
+import javax.persistence.*;
+import org.xmdl.ida.lib.model.BaseObject;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.Parameter;
+import java.io.Serializable;
+import java.text.MessageFormat;
+import java.util.*;
 
 
 /**
@@ -17,7 +17,7 @@ import java.util.*"/>
  * $Id$
  *
  */ 
-@Entity (name=("TBL_ORDERELEMENT))</c:if>
+@Entity (name=("TBL_ORDERELEMENT"))
 public class OrderElement extends BaseObject implements Serializable, Cloneable {
 
     /** 
@@ -32,25 +32,20 @@ public class OrderElement extends BaseObject implements Serializable, Cloneable 
     
     
     
-    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/><c:if test="isEnumeration($attribute)">, columnDefinition = "integer", nullable = false</c:if>)
+	@Column(name = (""), length = "");
         
     
-    private  quantity
+    private Long quantity ;
     
     
     
-    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/><c:if test="isEnumeration($attribute)">, columnDefinition = "integer", nullable = false</c:if>)
-        
     
-    private  order
+    private Order order ;
     
     
     
-    @Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/><c:if test="isEnumeration($attribute)">, columnDefinition = "integer", nullable = false</c:if>)
-        
     
-    private  product
-    
+    private Product product ;
     
 
     public OrderElement() {
@@ -65,39 +60,36 @@ public class OrderElement extends BaseObject implements Serializable, Cloneable 
     }
 
     
-    public  Quantity {
+    public Long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity( quantity) {
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
 
     
-    public  Order {
+    public Order getOrder() {
         return order;
     }
 
-    public void setOrder( order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 
     
-    public  Product {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct( product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
     
 
     public String toString() {
-        return MessageFormat.format("OrderElement [id={0}]    [quantity={0}]   [order={0}]   [product={0}]  
-                                                                        , quantity   , order   , product  
-                                                            
-                                      ;
+    	return MessageFormat.format("OrderElement[quantity={1}], ", quantity );
     }
 
     public boolean equals(Object o) {
@@ -110,20 +102,12 @@ public class OrderElement extends BaseObject implements Serializable, Cloneable 
     
         
             
-        if (quantity != null) result = 31 * result + quantity.hashCode();
+        if (quantity != null) result = 31 * result + ("" + quantity).hashCode();
             
         
     
         
-            
-        if (order != null) result = 31 * result + order.hashCode();
-            
-        
     
-        
-            
-        if (product != null) result = 31 * result + product.hashCode();
-            
         
     
         return result;
@@ -140,14 +124,11 @@ public class OrderElement extends BaseObject implements Serializable, Cloneable 
         
     
         
-            copy.order = this.order;
-        
     
-        
-            copy.product = this.product;
         
     
             return copy;
         }
      }
+}
   

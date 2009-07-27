@@ -1,13 +1,13 @@
 
 package org.xmdl.taslak.model;
 
-import javax.persistence.*"/>
-import org.xmdl.ida.lib.model.BaseObject"/>
-import org.hibernate.annotations.Type"/>
-import org.hibernate.annotations.Parameter"/>
-import java.io.Serializable"/>
-import java.text.MessageFormat"/>
-import java.util.*"/>
+import javax.persistence.*;
+import org.xmdl.ida.lib.model.BaseObject;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.Parameter;
+import java.io.Serializable;
+import java.text.MessageFormat;
+import java.util.*;
 
 
 /**
@@ -22,48 +22,42 @@ public class Money extends BaseObject implements Serializable, Cloneable {
 
 	
 	
-	@Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/><c:if test="isEnumeration($attribute)">, columnDefinition = "integer", nullable = false</c:if>)
+	@Column(name = (""), length = "");
 		
 	
-    private  amount
+    private Double amount ;
 	
 	
+    
 	
-	@Column(name = ("<xd:columnName attribute="$attribute"/>"), length = <xd:columnLength attribute="$attribute"/><c:if test="isEnumeration($attribute)">, columnDefinition = "integer", nullable = false</c:if>)
-		
-	
-    private  currency
-	
+    private Currency currency ;
 	
 
     public Money() {
     }
 
 	
-    public  Amount {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount( amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
 	
-    public  Currency {
+    public Currency getCurrency() {
         return currency;
     }
 
-    public void setCurrency( currency) {
+    public void setCurrency(Currency currency) {
         this.currency = currency;
     }
 
 	
 
     public String toString() {
-        return MessageFormat.format("Money   [amount={0}]   [currency={0}]  
-                                                              , amount   , currency  
-                                                            
-                                      ;
+    	return MessageFormat.format("Money[amount={1}], ", amount );
     }
 
     public int hashCode() {
@@ -71,14 +65,10 @@ public class Money extends BaseObject implements Serializable, Cloneable {
     
         
             
-        if (amount != null) result = 31 * result + amount.hashCode();
+        if (amount != null) result = 31 * result + ("" + amount).hashCode();
             
         
     
-        
-            
-        if (currency != null) result = 31 * result + currency.hashCode();
-            
         
     
         return result;
@@ -95,10 +85,9 @@ public class Money extends BaseObject implements Serializable, Cloneable {
         
     
         
-            copy.currency = this.currency;
-        
     
             return copy;
         }
      }
+}
   
