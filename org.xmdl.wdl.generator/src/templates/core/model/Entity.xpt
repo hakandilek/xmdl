@@ -24,7 +24,7 @@ import org.xmdl.mesken.model.*;
  * $Id$
  *
  */ 
-@Entity (name=("TBL_«this.name.toUpperCase()»"))
+@Entity (name="TBL_«this.name.toUpperCase()»")
 public class «this.name» extends BaseObject implements Serializable, Cloneable {
 
     /** 
@@ -34,7 +34,7 @@ public class «this.name» extends BaseObject implements Serializable, Cloneable
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = ("ID"))
+    @Column(name = "ID")
     private Long id;
     
     «FOREACH this.attributes AS attribute»

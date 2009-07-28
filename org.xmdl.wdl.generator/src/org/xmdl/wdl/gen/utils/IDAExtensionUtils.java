@@ -58,9 +58,9 @@ public class IDAExtensionUtils extends ExtensionUtils {
 				}
 				sb.append("@OneToMany(");
 				sb.append("cascade = CascadeType.REMOVE, ");
-				sb.append("mappedBy = (\"");
+				sb.append("mappedBy = \"");
 				sb.append(fieldName);
-				sb.append("\"))");
+				sb.append("\")");
 
 				break;
 			case MANY_TO_ONE:
@@ -73,9 +73,9 @@ public class IDAExtensionUtils extends ExtensionUtils {
 				sb.append("@ManyToOne()");
 				sb.append(System.getProperty("line.separator"));
 				sb.append("\t@JoinColumn(");
-				sb.append("name = (\"");
+				sb.append("name = \"");
 				sb.append(columnName);
-				sb.append("\"), nullable = false)");
+				sb.append("\", nullable = false)");
 
 				break;
 			case MANY_TO_MANY:

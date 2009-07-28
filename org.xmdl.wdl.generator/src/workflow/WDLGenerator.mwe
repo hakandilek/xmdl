@@ -24,5 +24,7 @@
 		<fileEncoding value="UTF-8"/>
 		<expand value="templates::Main::main FOR model"/>
 		<genPath value="src-gen"/>
+		<beautifier class="org.eclipse.xpand2.output.JavaBeautifier"/>
+		<beautifier class="org.eclipse.xpand2.output.XmlBeautifier"/>
 	</component>
 </workflow>
