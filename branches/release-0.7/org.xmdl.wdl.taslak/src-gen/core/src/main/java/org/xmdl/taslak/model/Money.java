@@ -22,8 +22,7 @@ public class Money extends BaseObject implements Serializable, Cloneable {
 	@Column(name = "F_AMOUNT", length = 15)
 	private Double amount;
 
-	@ManyToOne()
-	@JoinColumn(name = "F_CURRENCY", nullable = false)
+	@Column(name = "F_CURRENCY", length = 15)
 	private Currency currency;
 
 	public Money() {
@@ -46,7 +45,8 @@ public class Money extends BaseObject implements Serializable, Cloneable {
 	}
 
 	public String toString() {
-		return MessageFormat.format("Money[amount={1}], ", amount);
+		return MessageFormat.format("Money[amount={1}], [currency={2}], ",
+				amount, currency);
 	}
 
 	public boolean equals(Object o) {
@@ -59,6 +59,9 @@ public class Money extends BaseObject implements Serializable, Cloneable {
 		if (amount != null)
 			result = 31 * result + ("" + amount).hashCode();
 
+		if (currency != null)
+			result = 31 * result + ("" + currency).hashCode();
+
 		return result;
 	}
 
@@ -69,6 +72,8 @@ public class Money extends BaseObject implements Serializable, Cloneable {
 			Money copy = new Money();
 
 			copy.amount = this.amount;
+
+			copy.currency = this.currency;
 
 			return copy;
 		}

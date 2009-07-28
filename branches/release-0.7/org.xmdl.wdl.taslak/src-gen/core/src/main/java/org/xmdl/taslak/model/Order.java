@@ -35,8 +35,7 @@ public class Order extends BaseObject implements Serializable, Cloneable {
 	@Column(name = "F_PRICETOTALS", length = 15)
 	private Double priceTotals;
 
-	@ManyToOne()
-	@JoinColumn(name = "F_CREATEDATE", nullable = false)
+	@Column(name = "F_CREATEDATE", length = 15)
 	private Date createDate;
 
 	@OneToOne(cascade = CascadeType.ALL)
@@ -87,8 +86,9 @@ public class Order extends BaseObject implements Serializable, Cloneable {
 	}
 
 	public String toString() {
-		return MessageFormat.format("Order[name={1}], [priceTotals={2}], ",
-				name, priceTotals);
+		return MessageFormat.format(
+				"Order[name={1}], [priceTotals={2}], [createDate={3}], ", name,
+				priceTotals, createDate);
 	}
 
 	public boolean equals(Object o) {
@@ -106,6 +106,9 @@ public class Order extends BaseObject implements Serializable, Cloneable {
 		if (priceTotals != null)
 			result = 31 * result + ("" + priceTotals).hashCode();
 
+		if (createDate != null)
+			result = 31 * result + ("" + createDate).hashCode();
+
 		return result;
 	}
 
@@ -118,6 +121,8 @@ public class Order extends BaseObject implements Serializable, Cloneable {
 			copy.name = this.name;
 
 			copy.priceTotals = this.priceTotals;
+
+			copy.createDate = this.createDate;
 
 			return copy;
 		}

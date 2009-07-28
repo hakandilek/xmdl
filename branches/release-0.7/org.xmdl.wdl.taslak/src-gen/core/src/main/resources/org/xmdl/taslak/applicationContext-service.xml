@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-lazy-init="true" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+    <tx:annotation-driven/>
+    
+    <!-- Fix bug in Spring 2.0.6: http://issues.appfuse.org/browse/APF-887 -->
+    <bean class="org.springframework.transaction.aspectj.AnnotationTransactionAspect" dependency-check="none" factory-method="aspectOf" lazy-init="false">
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+    
+    <!-- Enable @AspectJ support -->
+    <aop:aspectj-autoproxy/>
+
+    <!-- Enable @Configured support -->
+    <aop:spring-configured/>
+    
+    <tx:advice id="txAdvice">
+        <tx:attributes>
+            <!-- Read-only commented out to make things easier for end-users -->
+            <!-- http://issues.appfuse.org/browse/APF-556 -->
+            <!--tx:method name="get*" read-only="true"/-->
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <!-- Fix bug in Spring 2.0.6: http://issues.appfuse.org/browse/APF-887 -->
+    <bean class="org.springframework.transaction.aspectj.AnnotationTransactionAspect" dependency-check="none" factory-method="aspectOf" lazy-init="false">
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+    
+    <!-- =================================================================== -->
+    <!-- Managers: For accessing DAOs                                        -->
+    <!-- =================================================================== -->
+    
+    <bean class="org.xmdl.ida.lib.service.impl.UniversalManagerImpl" id="manager">
+        <property name="dao" ref="universalDao"/>
+    </bean>
+
+
+    <bean class="org.xmdl.taslak.service.impl.OrderManagerImpl" id="orderManager">
+        <constructor-arg ref="orderDAO"/>
+    </bean>
+
+    <bean class="org.xmdl.taslak.service.impl.OrderElementManagerImpl" id="orderElementManager">
+        <constructor-arg ref="orderElementDAO"/>
+    </bean>
+
+    <bean class="org.xmdl.taslak.service.impl.ProductManagerImpl" id="productManager">
+        <constructor-arg ref="productDAO"/>
+    </bean>
+
+    <bean class="org.xmdl.taslak.service.impl.ProfileManagerImpl" id="profileManager">
+        <constructor-arg ref="profileDAO"/>
+    </bean>
+
+    <bean class="org.xmdl.taslak.service.impl.SupplierManagerImpl" id="supplierManager">
+        <constructor-arg ref="supplierDAO"/>
+    </bean>
+ 
+
+</beans>

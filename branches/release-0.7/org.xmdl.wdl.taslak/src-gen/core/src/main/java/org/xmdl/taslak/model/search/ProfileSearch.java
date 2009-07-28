@@ -53,9 +53,10 @@ public class ProfileSearch implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return MessageFormat.format(
-				"Profile[privatePhoneMin={1}][privatePhoneMax={2}]",
-				privatePhoneMin, privatePhoneMax);
+		return MessageFormat
+				.format(
+						"Profile[user={1}], [privatePhoneMin={2}][privatePhoneMax={3}]",
+						user, privatePhoneMin, privatePhoneMax);
 	}
 
 	/** 
