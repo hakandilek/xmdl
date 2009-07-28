@@ -112,9 +112,9 @@
         <column>«attribute.columnName()»</column>
             </ida:isEntityReference>
 		    «IF attribute.isEmbed()»
-				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
+				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
             		«IF !attrib.isReference()»
-		<column><xd:columnName attribute="$attrib"/></column>
+		<column>«attrib.columnName()»</column>
 		    		«ENDIF»
 				«ENDFOREACH» 
 		    «ENDIF»
@@ -130,9 +130,9 @@
             <value description="«attribute.columnName()»">1</value>
             </ida:isEntityReference>
 		    «IF attribute.isEmbed()»
-				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
+				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
             		«IF !attrib.isReference()»
-			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="1"/></value>
+			<value description="«attrib.columnName()»"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="1"/></value>
 		    		«ENDIF»
 				«ENDFOREACH» 
 		    «ENDIF»
@@ -149,9 +149,9 @@
             <value description="«attribute.columnName()»">2</value>
             </ida:isEntityReference>
 		    «IF attribute.isEmbed()»
-				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
+				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
             		«IF !attrib.isReference()»
-			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="2"/></value>
+			<value description="«attrib.columnName()»"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="2"/></value>
 		    		«ENDIF»
 				«ENDFOREACH» 
 		    «ENDIF»
@@ -168,9 +168,9 @@
             <value description="«attribute.columnName()»">3</value>
             </ida:isEntityReference>
 		    «IF attribute.isEmbed()»
-				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
+				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
             		«IF !attrib.isReference()»
-			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="3"/></value>
+			<value description="«attrib.columnName()»"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="3"/></value>
 		    		«ENDIF»
 				«ENDFOREACH» 
 		    «ENDIF»
