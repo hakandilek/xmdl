@@ -21,3 +21,5 @@ boolean isPrimitive(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isPrimi
 boolean isComparable(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isComparable(org.xmdl.wdl.Type);
 
 String simpleName(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.simpleName(org.xmdl.wdl.Type);
+
+String qualifiedName(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.qualifiedName(org.xmdl.wdl.Type);

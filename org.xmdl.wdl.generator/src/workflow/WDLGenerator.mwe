@@ -17,6 +17,8 @@
 		<register class="org.xmdl.WDLStandaloneSetup"/>
 	</component>
 	
+	<component class="org.xmdl.wdl.gen.utils.AssociationManagerReset"/>
+	
 	<component class="org.eclipse.xpand2.Generator">
 		<metaModel class="org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel"/>
 		<fileEncoding value="UTF-8"/>

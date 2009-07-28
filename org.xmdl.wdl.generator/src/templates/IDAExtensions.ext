@@ -1,6 +1,6 @@
 import wdl;
 
-String association(Attribute att) :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.association(org.xmdl.wdl.Attribute); 	
+String associationAnnotation(Attribute att) :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.associationAnnotation(org.xmdl.wdl.Attribute); 	
 
 String entityToString(Entity e) :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.entityToString(org.xmdl.wdl.Entity); 	
 
