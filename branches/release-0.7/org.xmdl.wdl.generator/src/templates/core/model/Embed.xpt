@@ -30,24 +30,9 @@ public class «this.name» extends BaseObject implements Serializable, Cloneable
 	«FOREACH this.attributes AS attribute»
 	«IF !attribute.isReference()»
 	@Column(name = "«attribute.columnName()»", length = «attribute.columnSize()»«IF attribute.isEnumeration()», columnDefinition = "integer", nullable = false«ENDIF»)
-		«IF attribute.isEnumeration()»
-    @Type(
-            type = "org.xmdl.ida.lib.dao.hibernate.GenericEnumUserType",
-            parameters = {
-            @Parameter(
-                    name = "enumClass",
-                    value = "<xc:qualifiedName element="$attribute/type/xPackage"/>.model.<xc:cap element="$attribute/type"/>"),
-            @Parameter(
-                    name = "identifierMethod",
-                    value = "toInt"),
-            @Parameter(
-                    name = "valueOfMethod",
-                    value = "fromInt")
-                    }
-    )
-		«ENDIF»
+	«EXPAND Entity::enumAnnotation FOR attribute »
 	«ELSE»
-    «attribute.association()»
+    «attribute.associationAnnotation()»
 	«ENDIF»
     private «attribute.type.simpleName()» «attribute.name.toFirstLower()» «IF attribute.isEmbed()»= new «attribute.type.name»()«ENDIF»;
 	«ENDFOREACH»
