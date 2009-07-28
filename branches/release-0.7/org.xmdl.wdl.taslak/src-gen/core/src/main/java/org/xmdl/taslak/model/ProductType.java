@@ -1,4 +1,3 @@
-
 package org.xmdl.taslak.model;
 
 /**
@@ -7,77 +6,76 @@ package org.xmdl.taslak.model;
  *  
  * $Id$
  *
- */ 
+ */
 public enum ProductType {
-	
+
 	RAWMATERIAL(1),
-	
+
 	INTERMEDIATEPRODUCT(2),
-	
+
 	PRODUCT(3),
-	
+
 	SERVICE(4),
-	
-    ;
 
-    private int value;
+	;
 
-    ProductType(int value) {
-        this.value = value;
-    }
+	private int value;
 
-    /**
-     * The identifier method
-     */ 
-    public int toInt() {
-        return value;
-    }
+	ProductType(int value) {
+		this.value = value;
+	}
 
-    public int getValue(){
-        return value;
-    }
+	/**
+	 * The identifier method
+	 */
+	public int toInt() {
+		return value;
+	}
 
-    /**
-     * the value Of Method
-     */ 
-    public static ProductType fromInt(int value) {
-        switch (value) {
-	
-            case 1:
-                return RAWMATERIAL;
-	
-            case 2:
-                return INTERMEDIATEPRODUCT;
-	
-            case 3:
-                return PRODUCT;
-	
-            case 4:
-                return SERVICE;
-	
-            default:
-                return null;
-        }
-    }
+	public int getValue() {
+		return value;
+	}
 
-    public String toString() {
-        switch (this) {
-	
-            case RAWMATERIAL:
-                return "RAWMATERIAL";
-	
-            case INTERMEDIATEPRODUCT:
-                return "INTERMEDIATEPRODUCT";
-	
-            case PRODUCT:
-                return "PRODUCT";
-	
-            case SERVICE:
-                return "SERVICE";
-	
-            default:
-                return null;
-        }
-    }
+	/**
+	 * the value Of Method
+	 */
+	public static ProductType fromInt(int value) {
+		switch (value) {
+
+			case 1 :
+				return RAWMATERIAL;
+
+			case 2 :
+				return INTERMEDIATEPRODUCT;
+
+			case 3 :
+				return PRODUCT;
+
+			case 4 :
+				return SERVICE;
+
+			default :
+				return null;
+		}
+	}
+
+	public String toString() {
+		switch (this) {
+
+			case RAWMATERIAL :
+				return "RAWMATERIAL";
+
+			case INTERMEDIATEPRODUCT :
+				return "INTERMEDIATEPRODUCT";
+
+			case PRODUCT :
+				return "PRODUCT";
+
+			case SERVICE :
+				return "SERVICE";
+
+			default :
+				return null;
+		}
+	}
 }
-  

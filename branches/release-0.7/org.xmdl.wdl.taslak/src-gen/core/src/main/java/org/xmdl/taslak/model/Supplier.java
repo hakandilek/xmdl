@@ -1,4 +1,3 @@
-
 package org.xmdl.taslak.model;
 
 import javax.persistence.*;
@@ -10,110 +9,87 @@ import java.text.MessageFormat;
 import java.util.*;
 import org.xmdl.mesken.model.*;
 
-
 /**
  *
  * Supplier entity bean
  *  
  * $Id$
  *
- */ 
-@Entity (name=("TBL_SUPPLIER"))
+ */
+@Entity(name = "TBL_SUPPLIER")
 public class Supplier extends BaseObject implements Serializable, Cloneable {
 
-    /** 
-     * Unique identifier
-     * 
-     * @generated
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = ("ID"))
-    private Long id;
-    
-    
-    
+	/** 
+	 * Unique identifier
+	 * 
+	 * @generated
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
+	private Long id;
+
 	@Column(name = "F_NAME", length = 15)
-	
+	private String name;
 
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "suppliers")
+	private Product products;
 
-    
-    private String name ;
-    
-    
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = ("suppliers"))
-    
-    private Product products ;
-    
+	public Supplier() {
+	}
 
-    public Supplier() {
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getName() {
+		return name;
+	}
 
-    
-    public String getName() {
-        return name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public Product getProducts() {
+		return products;
+	}
 
-    
-    public Product getProducts() {
-        return products;
-    }
+	public void setProducts(Product products) {
+		this.products = products;
+	}
 
-    public void setProducts(Product products) {
-        this.products = products;
-    }
+	public String toString() {
+		return MessageFormat.format("Supplier[name={1}], ", name);
+	}
 
-    
+	public boolean equals(Object o) {
+		return o instanceof Supplier && ((Supplier) o).getId() == this.getId();
+	}
 
-    public String toString() {
-    	return MessageFormat.format("Supplier[name={1}], ", name );
-    }
+	public int hashCode() {
+		int result = 1;
+		if (id != null)
+			result = 31 * result + id.hashCode();
 
-    public boolean equals(Object o) {
-        return o instanceof Supplier && ((Supplier) o).getId() == this.getId();
-    }
+		if (name != null)
+			result = 31 * result + ("" + name).hashCode();
 
-    public int hashCode() {
-        int result = 1;
-        if (id != null) result = 31 * result + id.hashCode();
-    
-        
-            
-        if (name != null) result = 31 * result + ("" + name).hashCode();
-            
-        
-    
-        
-    
-        return result;
-    }
+		return result;
+	}
 
-     public Supplier createClone() {
-         try {
-             return (Supplier) clone();
-        } catch (CloneNotSupportedException e) {
-            Supplier copy = new Supplier();
-    
-        
-            copy.name = this.name;
-        
-    
-        
-    
-            return copy;
-        }
-     }
+	public Supplier createClone() {
+		try {
+			return (Supplier) clone();
+		} catch (CloneNotSupportedException e) {
+			Supplier copy = new Supplier();
+
+			copy.name = this.name;
+
+			return copy;
+		}
+	}
 }
-  
