@@ -22,7 +22,9 @@
 
 	<path id="generator.classpath">
 		<pathelement location="wdl"/>
-		<fileset dir="${eclipse.plugin.dir}" includes="**/*.jar" excludes="**/org.apache.jasper*" />
+		<fileset dir="${eclipse.plugin.dir}" includes="**/*.jar" excludes="**/org.apache.jasper*">
+			<exclude name="org.apache.log4j*"/>
+		</fileset>
 		<fileset dir="dist/plugins/" includes="**/*.jar"/>
 	</path>
 
