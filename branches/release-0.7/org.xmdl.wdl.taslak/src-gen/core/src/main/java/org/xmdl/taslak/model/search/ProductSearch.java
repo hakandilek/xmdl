@@ -5,6 +5,7 @@ import java.util.*;
 import java.io.Serializable;
 import java.text.MessageFormat;
 import org.xmdl.taslak.model.*;
+import org.xmdl.mesken.model.*;
 
 /**
  *
@@ -24,6 +25,15 @@ public class ProductSearch implements Serializable {
 			
     	
     
+    	
+    
+    	
+    		
+
+    private ProductType productTypeMin;
+
+    private ProductType productTypeMax;
+			
     	
     
     	
@@ -71,6 +81,27 @@ public class ProductSearch implements Serializable {
     	
     		
 
+    public ProductType getProductTypeMin() {
+        return productTypeMin;
+    }
+
+    public void setProductTypeMin(ProductType productTypeMin) {
+        this.productTypeMin = productTypeMin;
+    }
+
+    public ProductType getProductTypeMax() {
+        return productTypeMax;
+    }
+
+    public void setProductTypeMax(ProductType productTypeMax) {
+        this.productTypeMax = productTypeMax;
+    }
+			
+    	
+    
+    	
+    		
+
     public OrderElement getOrderElements() {
         return orderElements;
     }
@@ -100,7 +131,7 @@ public class ProductSearch implements Serializable {
      */
 	@Override
     public String toString() {
-    	return MessageFormat.format("Product[nameMin={1}][nameMax={2}]", nameMin , nameMax );
+    	return MessageFormat.format("Product[nameMin={1}][nameMax={2}][productTypeMin={3}][productTypeMax={4}]", nameMin , nameMax , productTypeMin , productTypeMax );
     }
 
     /** 
@@ -119,6 +150,15 @@ public class ProductSearch implements Serializable {
 			
     	
     
+    	
+    
+    	
+    		
+    			
+        if (productTypeMin != null) result = 31 * result + ("" + productTypeMin).hashCode();
+        if (productTypeMax != null) result = 31 * result + ("" + productTypeMax).hashCode();
+    			
+			
     	
     
     	

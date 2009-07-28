@@ -64,16 +64,16 @@ public enum ProductType {
         switch (this) {
 	
             case RAWMATERIAL:
-                return RAWMATERIAL;
+                return "RAWMATERIAL";
 	
             case INTERMEDIATEPRODUCT:
-                return INTERMEDIATEPRODUCT;
+                return "INTERMEDIATEPRODUCT";
 	
             case PRODUCT:
-                return PRODUCT;
+                return "PRODUCT";
 	
             case SERVICE:
-                return SERVICE;
+                return "SERVICE";
 	
             default:
                 return null;

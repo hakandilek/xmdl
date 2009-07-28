@@ -8,6 +8,7 @@ import org.hibernate.annotations.Parameter;
 import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.*;
+import org.xmdl.mesken.model.*;
 
 
 /**
@@ -22,13 +23,16 @@ public class Money extends BaseObject implements Serializable, Cloneable {
 
 	
 	
-	@Column(name = (""), length = 0);
-		
+	@Column(name = "F_AMOUNT", length = 15)
+	
+
+
 	
     private Double amount ;
 	
 	
-    
+    @ManyToOne()
+	@JoinColumn(name = ("F_CURRENCY"), nullable = false)
 	
     private Currency currency ;
 	
@@ -58,6 +62,10 @@ public class Money extends BaseObject implements Serializable, Cloneable {
 
     public String toString() {
     	return MessageFormat.format("Money[amount={1}], ", amount );
+    }
+
+    public boolean equals(Object o) {
+        return (o != null && o instanceof Money);
     }
 
     public int hashCode() {

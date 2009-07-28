@@ -38,6 +38,7 @@ entity OrderElement {
 entity Product {
     String name
     Money price
+    ProductType productType
 	OrderElement* orderElements
 	Supplier* suppliers
 }

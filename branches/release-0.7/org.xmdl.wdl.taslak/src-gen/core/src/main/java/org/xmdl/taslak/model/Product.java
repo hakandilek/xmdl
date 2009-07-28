@@ -8,6 +8,7 @@ import org.hibernate.annotations.Parameter;
 import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.*;
+import org.xmdl.mesken.model.*;
 
 
 /**
@@ -32,23 +33,50 @@ public class Product extends BaseObject implements Serializable, Cloneable {
     
     
     
-	@Column(name = (""), length = 0);
-        
+	@Column(name = "F_NAME", length = 15)
+	
+
+
     
     private String name ;
     
     
-    
+    @ManyToOne()
+	@JoinColumn(name = ("F_PRICE"), nullable = false)
     
     private Money price = new Money();
     
     
+	@Column(name = "F_PRODUCTTYPE", length = 15, columnDefinition = "integer", nullable = false)
+	
+
+    @Type(
+            type = "org.xmdl.ida.lib.dao.hibernate.GenericEnumUserType",
+            parameters = {
+            @Parameter(
+                    name = "enumClass",
+                    value = "ProductType"),
+            @Parameter(
+                    name = "identifierMethod",
+                    value = "toInt"),
+            @Parameter(
+                    name = "valueOfMethod",
+                    value = "fromInt")
+                    }
+    )
+
+
     
+    private ProductType productType ;
+    
+    
+    @OneToOne(cascade = CascadeType.ALL)
+@PrimaryKeyJoinColumn
     
     private OrderElement orderElements ;
     
     
-    
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = ("products"))
     
     private Supplier suppliers ;
     
@@ -83,6 +111,15 @@ public class Product extends BaseObject implements Serializable, Cloneable {
     }
 
     
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
+    }
+
+    
     public OrderElement getOrderElements() {
         return orderElements;
     }
@@ -103,7 +140,7 @@ public class Product extends BaseObject implements Serializable, Cloneable {
     
 
     public String toString() {
-    	return MessageFormat.format("Product[name={1}], ", name );
+    	return MessageFormat.format("Product[name={1}], [productType={2}], ", name , productType );
     }
 
     public boolean equals(Object o) {
@@ -123,6 +160,12 @@ public class Product extends BaseObject implements Serializable, Cloneable {
         
     
         
+            
+        if (productType != null) result = 31 * result + ("" + productType).hashCode();
+            
+        
+    
+        
     
         
     
@@ -139,6 +182,10 @@ public class Product extends BaseObject implements Serializable, Cloneable {
             copy.name = this.name;
         
     
+        
+    
+        
+            copy.productType = this.productType;
         
     
         
