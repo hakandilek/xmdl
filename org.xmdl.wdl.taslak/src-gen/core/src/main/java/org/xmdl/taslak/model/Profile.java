@@ -8,6 +8,7 @@ import org.hibernate.annotations.Parameter;
 import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.*;
+import org.xmdl.mesken.model.*;
 
 
 /**
@@ -32,13 +33,16 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
     
     
     
-    
+    @ManyToOne()
+	@JoinColumn(name = ("F_USER"), nullable = false)
     
     private User user ;
     
     
-	@Column(name = (""), length = 0);
-        
+	@Column(name = "F_PRIVATEPHONE", length = 15)
+	
+
+
     
     private String privatePhone ;
     

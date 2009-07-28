@@ -8,6 +8,7 @@ import org.hibernate.annotations.Parameter;
 import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.*;
+import org.xmdl.mesken.model.*;
 
 
 /**
@@ -32,24 +33,30 @@ public class Order extends BaseObject implements Serializable, Cloneable {
     
     
     
-	@Column(name = (""), length = 0);
-        
+	@Column(name = "F_NAME", length = 15)
+	
+
+
     
     private String name ;
     
     
-	@Column(name = (""), length = 0);
-        
+	@Column(name = "F_PRICETOTALS", length = 15)
+	
+
+
     
     private Double priceTotals ;
     
     
-    
+    @ManyToOne()
+	@JoinColumn(name = ("F_CREATEDATE"), nullable = false)
     
     private Date createDate ;
     
     
-    
+    @OneToOne(cascade = CascadeType.ALL)
+@PrimaryKeyJoinColumn
     
     private OrderElement orderElements ;
     

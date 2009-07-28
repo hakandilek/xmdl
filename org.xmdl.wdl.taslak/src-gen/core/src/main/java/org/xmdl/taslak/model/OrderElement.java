@@ -8,6 +8,7 @@ import org.hibernate.annotations.Parameter;
 import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.*;
+import org.xmdl.mesken.model.*;
 
 
 /**
@@ -32,18 +33,22 @@ public class OrderElement extends BaseObject implements Serializable, Cloneable 
     
     
     
-	@Column(name = (""), length = 0);
-        
+	@Column(name = "F_QUANTITY", length = 15)
+	
+
+
     
     private Long quantity ;
     
     
-    
+    @ManyToMany(targetEntity = Order.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(name = "TBL_ORDERELEMENTORDER",    joinColumns = { @JoinColumn(name = "F_ORDERELEMENTS") },    inverseJoinColumns = { @JoinColumn(name = "F_ORDER") })
     
     private Order order ;
     
     
-    
+    @ManyToMany(targetEntity = Product.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(name = "TBL_ORDERELEMENTPRODUCT",    joinColumns = { @JoinColumn(name = "F_ORDERELEMENTS") },    inverseJoinColumns = { @JoinColumn(name = "F_PRODUCT") })
     
     private Product product ;
     
