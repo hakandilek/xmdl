@@ -116,7 +116,7 @@
             		«IF !attrib.isReference()»
 		<column><xd:columnName attribute="$attrib"/></column>
 		    		«ENDIF»
-				</xc:iterateAttributes> 
+				«ENDFOREACH» 
 		    «ENDIF»
         «ENDFOREACH»
 
@@ -134,7 +134,7 @@
             		«IF !attrib.isReference()»
 			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="1"/></value>
 		    		«ENDIF»
-				</xc:iterateAttributes> 
+				«ENDFOREACH» 
 		    «ENDIF»
         «ENDFOREACH»
         </row>
@@ -153,7 +153,7 @@
             		«IF !attrib.isReference()»
 			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="2"/></value>
 		    		«ENDIF»
-				</xc:iterateAttributes> 
+				«ENDFOREACH» 
 		    «ENDIF»
         «ENDFOREACH»
         </row>
@@ -172,7 +172,7 @@
             		«IF !attrib.isReference()»
 			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="3"/></value>
 		    		«ENDIF»
-				</xc:iterateAttributes> 
+				«ENDFOREACH» 
 		    «ENDIF»
         «ENDFOREACH»
         </row>
