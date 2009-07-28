@@ -5,7 +5,7 @@
 
 «DEFINE entity FOR wdl::Entity»
 «FILE "core/src/test/java/org/xmdl/taslak/dao/hibernate/HibernateConfigurationTest.java"»
-package «this.project.basePackage».dao.hibernate;
+package org.xmdl.taslak.dao.hibernate;
 
 import java.util.*;
 import org.xmdl.ida.lib.test.BaseDaoTestCase;
@@ -16,7 +16,7 @@ import org.hibernate.persister.entity.EntityPersister;
 
 /**
  *
- * '«this.project.basePackage»' package Hibernate Configuration Test Case
+ * 'org.xmdl.taslak' package Hibernate Configuration Test Case
  *  
  * $Id$
  *
