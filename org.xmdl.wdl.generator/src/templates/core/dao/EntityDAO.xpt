@@ -1,0 +1,29 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+  «FILE "core/src/main/java/org/xmdl/taslak/dao/"+ this.name + "DAO.java"»
+package org.xmdl.taslak.dao;
+
+import java.util.*;
+import org.xmdl.ida.lib.dao.GenericDao;
+import org.xmdl.taslak.model.*;
+import org.xmdl.taslak.model.search.*;
+
+/**
+ *
+ * «this.name» DAO interface
+ *  
+ * $Id$
+ *
+ */ 
+public interface «this.name»DAO extends GenericDao<«this.name», Long> {
+
+    Collection<«this.name»> search(«this.name»Search searchBean);
+
+}
+
+  «ENDFILE»
+«ENDDEFINE»

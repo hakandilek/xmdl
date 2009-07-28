@@ -1,0 +1,12 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE model FOR wdl::Model»
+  «FILE "core/src/main/resources/default-data.xml"»
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+</dataset>
+  «ENDFILE»
+«ENDDEFINE»
