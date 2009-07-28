@@ -1,0 +1,53 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+  «FILE "core/src/main/java/org/xmdl/taslak/service/impl/"+ this.name + "ManagerImpl.java"»
+package org.xmdl.taslak.service.impl;
+
+import java.util.Collection;
+import org.xmdl.ida.lib.service.impl.GenericManagerImpl
+import org.xmdl.taslak.model.*;
+import org.xmdl.taslak.model.search.*;
+import org.xmdl.taslak.service.*;
+import org.xmdl.taslak.dao.*;
+
+/**
+ *
+ * «this.name» Service implementation
+ *  
+ * $Id$
+ *
+ */ 
+public class «this.name»ManagerImpl extends GenericManagerImpl<«this.name», Long> implements «this.name»Manager {
+
+    private final «this.name»DAO «this.name.toFirstLower()»DAO;
+
+    public «this.name»ManagerImpl(«this.name»DAO «this.name.toFirstLower()»DAO) {
+        super(«this.name.toFirstLower()»DAO);
+        this.«this.name.toFirstLower()»DAO = «this.name.toFirstLower()»DAO;
+    }
+
+    public Collection<«this.name»> search(«this.name»Search «this.name.toFirstLower()»Search) {
+        return «this.name.toFirstLower()»DAO.search(«this.name.toFirstLower()»Search);
+    }
+
+«IF this.isChild()»
+    public void copyFrom(«this.master().name» source, «this.master().name» destination) {
+        «this.name»Search search = new «this.name»Search();
+        search.set«this.master().name»(source);
+
+        Collection<«this.name»> children = «this.name.toFirstLower()»DAO.search(search);
+        for («this.name» child : children) {
+            «this.name» copy = child.createClone();
+            copy.set«this.master().name»(destination);
+            save(copy);
+        }
+    }
+«ENDIF»
+
+}
+«ENDFILE»
+«ENDDEFINE»

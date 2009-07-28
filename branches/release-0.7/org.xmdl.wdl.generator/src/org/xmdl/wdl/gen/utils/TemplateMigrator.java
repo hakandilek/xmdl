@@ -41,6 +41,9 @@ public class TemplateMigrator {
 		if (!file.exists()) {
 			throw new FileNotFoundException("" + file);
 		}
+		if (file.getName().startsWith("."))
+			return;
+		
 		if (file.isDirectory()) {
 			File[] files = file.listFiles();
 			for (File f : files) {

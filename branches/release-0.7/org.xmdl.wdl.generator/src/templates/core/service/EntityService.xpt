@@ -1,0 +1,30 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+	«FILE "core/src/main/java/org/xmdl/taslak/service/"+ this.name + "Manager.java"»
+package org.xmdl.taslak.service;
+
+import java.util.Collection;
+import org.xmdl.ida.lib.service.GenericManager;
+import org.xmdl.taslak.model.*;
+import org.xmdl.taslak.model.search.*;
+
+/**
+ *
+ * «this.name» Service interface
+ *  
+ * $Id$
+ */ 
+public interface «this.name»Manager extends GenericManager<«this.name», Long>{
+
+    Collection<«this.name»> search(«this.name»Search «this.name.toFirstLower()»Search);
+
+	«IF this.isChild()»
+    void copyFrom(«this.master().name» source, «this.master().name» destination);
+	«ENDIF»
+}
+	«ENDFILE»
+«ENDDEFINE»

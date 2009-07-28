@@ -23,3 +23,8 @@ boolean isComparable(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isComp
 String simpleName(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.simpleName(org.xmdl.wdl.Type);
 
 String qualifiedName(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.qualifiedName(org.xmdl.wdl.Type);
+
+boolean isChild(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isChild(org.xmdl.wdl.Type);
+
+Type master(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.master(org.xmdl.wdl.Type);
+

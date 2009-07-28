@@ -166,4 +166,13 @@ public class ExtensionUtils {
 		return null;
 	}
 
+	public static boolean isChild(Type t) {
+		//TODO
+		return false;
+	}
+	
+	public static Type master(Type t) {
+		//TODO
+		return null;
+	}	
 }
