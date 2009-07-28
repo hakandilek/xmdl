@@ -13,3 +13,7 @@ String tableName(Entity e)  :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.tab
 String columnName(Attribute a)  :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.columnName(org.xmdl.wdl.Attribute); 	
 
 String columnSize(Attribute a)  :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.columnSize(org.xmdl.wdl.Attribute); 	
+
+String basePackagePath(Model m) : m.project.basePackagePath();
+
+String basePackagePath(Project p) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.basePackagePath(org.xmdl.wdl.Project);

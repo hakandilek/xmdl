@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.xmdl.wdl.Attribute;
 import org.xmdl.wdl.Embed;
 import org.xmdl.wdl.Entity;
+import org.xmdl.wdl.Project;
 import org.xmdl.wdl.Type;
 
 /**
@@ -221,6 +222,11 @@ public class IDAExtensionUtils extends ExtensionUtils {
 
 	public static String associateColumnName(Attribute attribute) {
 		return columnName(attribute);
+	}
+
+	public static String basePackagePath(Project p) {
+		String basePackage = p.getBasePackage();
+		return basePackage.replaceAll("\\.", "/");
 	}
 
 }

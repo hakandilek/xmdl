@@ -1,9 +1,21 @@
 «IMPORT wdl»
 
 «DEFINE main FOR Model»
+	«EXPAND eclipse::Classpath::project FOR this.project»
+
 	«EXPAND core::model::Entity::entity FOREACH this.types.typeSelect(Entity)»
 	«EXPAND core::model::EntitySearch::entity FOREACH this.types.typeSelect(Entity)»
 	«EXPAND core::model::Enumeration::entity FOREACH this.types.typeSelect(Enum)»
 	«EXPAND core::model::Embed::entity FOREACH this.types.typeSelect(Embed)»
-	«EXPAND eclipse::Classpath::project FOR this.project»
+
+	«EXPAND core::dao::EntityDAO::entity FOREACH this.types.typeSelect(Entity)»
+	«EXPAND core::dao::EntityDAOHibernate::entity FOREACH this.types.typeSelect(Entity)»
+	
+	«EXPAND core::project::Constants::entity FOR this»
+	
+	«EXPAND core::rsc::ApplicationContextDaoXml::model FOR this»
+	«EXPAND core::rsc::ApplicationContextServiceXml::model FOR this»
+	«EXPAND core::rsc::DetaultDataXml::model FOR this»
+	«EXPAND core::rsc::HibernateCfgXml::model FOR this»
+	
 «ENDDEFINE»

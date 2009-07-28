@@ -1,0 +1,22 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Model»
+  «FILE "core/src/main/java/org/xmdl/taslak/ApplicationConstants.java"»
+package org.xmdl.taslak;
+
+/**
+ *
+ * Constant values used throughout the application.
+ * 
+ * $Id$
+ *
+ */ 
+public interface ApplicationConstants extends  org.xmdl.ida.lib.BaseConstants {
+
+
+}
+  «ENDFILE»
+«ENDDEFINE»

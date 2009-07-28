@@ -26,7 +26,7 @@ public class ExtensionUtils {
 	static List<String> BASIC_TYPES = Arrays.asList(new String[] { "int",
 			"void", "String", "boolean", "double", "byte", "char", "float",
 			"short", "long", "Boolean", "Double", "Byte", "Character", "Float",
-			"Short", "Long",
+			"Short", "Long", 
 
 			"java.lang.String", "java.lang.Integer", "java.lang.Boolean",
 			"java.lang.Double", "java.lang.Byte", "java.lang.Character",
@@ -35,7 +35,8 @@ public class ExtensionUtils {
 	});
 
 	public static boolean isReference(Type t) {
-		boolean result = !isBasic(t) && !isEnumeration(t);
+		boolean result = !isBasic(t) && !isEnumeration(t)
+				&& !(t instanceof SimpleType);
 		return result;
 	}
 
