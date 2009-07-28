@@ -18,4 +18,16 @@
 	«EXPAND core::rsc::DetaultDataXml::model FOR this»
 	«EXPAND core::rsc::HibernateCfgXml::model FOR this»
 	
+	«EXPAND core::service::EntityService::entity FOREACH this.types.typeSelect(Entity)»
+	«EXPAND core::service::EntityServiceImplementation::entity FOREACH this.types.typeSelect(Entity)»
+	
+	«EXPAND core::test::EntityServiceTest::entity FOREACH this.types.typeSelect(Entity)»
+	«EXPAND core::test::HibernateConfigurationTest::entity FOREACH this.types.typeSelect(Entity)»
+
+	«EXPAND core::testrsc::ApplicationContextResourcesXml::model FOR this»
+	«EXPAND core::testrsc::ApplicationContextTestXml::model FOR this»
+	«EXPAND core::testrsc::JdbcProperties::model FOR this»
+	«EXPAND core::testrsc::Log4jXml::model FOR this»
+	«EXPAND core::testrsc::MailProperties::model FOR this»
+	«EXPAND core::testrsc::PersistenceXml::model FOR this»
 «ENDDEFINE»

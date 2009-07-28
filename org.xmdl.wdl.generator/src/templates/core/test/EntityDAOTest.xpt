@@ -1,0 +1,134 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+  «FILE "core/src/test/java/org/xmdl/taslak/dao/"+ this.name + "DAOTest.java"»
+package org.xmdl.taslak.service;
+
+import java.util.*;
+import org.springframework.dao.DataAccessException;
+import org.xmdl.ida.lib.test.BaseDaoTestCase;
+import org.xmdl.taslak.model.*;
+import org.xmdl.taslak.model.search.*;
+
+/**
+ *
+ * «this.name» DAO Test Case
+ *  
+ * $Id$
+ */ 
+public class «this.name»DAOTest extends BaseDaoTestCase {
+
+    private «this.name»DAO «this.name.toFirstLower()»DAO = null;
+
+    public void set«this.name»DAO(«this.name»DAO «this.name.toFirstLower()»DAO) {
+        this.«this.name.toFirstLower()»DAO = «this.name.toFirstLower()»DAO;
+    }
+
+    public void testAddAndRemove«this.name»() throws Exception {
+        «this.name» «this.name.toFirstLower()» = new «this.name»();
+
+«FOREACH this.attributes AS attribute»
+    «IF!attribute.isReference()»
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»set«attribute.name.toFirstUpper()»(<tu:randomWrap attribute="$attribute" variant="1"/>);
+    «ENDIF»
+    <xm:isMaster element="$attribute">
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»«attribute.type.name»();
+        «attribute.name.toFirstLower()».setId(1L);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    </xm:isMaster>
+    «IF attribute.isEmbed()»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        <xc:iterateAttributes select="$attribute/type" var="attrib">
+            «IF !attrib.isReference()»
+        «attribute.name.toFirstLower()».<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib" variant="1"/>);
+            «ENDIF»
+    		<xm:isMaster element="$attribute">
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «attribute.name.toFirstLower()».setId(1L);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    		</xm:isMaster>
+        </xc:iterateAttributes>
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    «ENDIF»
+«ENDFOREACH» 
+
+        «this.name.toFirstLower()» = «this.name.toFirstLower()»DAO.save(«this.name.toFirstLower()»);
+        flush();
+
+        «this.name.toFirstLower()» = «this.name.toFirstLower()»DAO.get(«this.name.toFirstLower()».getId());
+
+        assertNotNull(«this.name.toFirstLower()».getId());
+«FOREACH this.attributes AS attribute»
+    «IF!attribute.isReference()»
+        assertEquals(<tu:randomWrap attribute="$attribute" variant="1"/>, «this.name.toFirstLower()».get«attribute.name.toFirstUpper()»());
+    «ENDIF»
+«ENDFOREACH» 
+
+        log.debug("removing «this.name.toFirstLower()»...");
+        «this.name.toFirstLower()»DAO.remove(«this.name.toFirstLower()».getId());
+        flush();
+
+        try {
+            «this.name.toFirstLower()»DAO.get(«this.name.toFirstLower()».getId());
+            fail("«this.name» found in database");
+        } catch (DataAccessException dae) {
+            log.debug("Expected exception: " + dae.getMessage());
+            assertNotNull(dae);
+        }
+    }
+
+    public void testSearch() throws Exception {
+        «this.name»Search search = new «this.name»Search();
+«FOREACH this.attributes AS attribute»
+    «IF!attribute.isReference()»
+        <c:choose>
+        <c:when test="call($attribute/type, 'isComparable')">
+        search.set«attribute.name.toFirstUpper()»Min(<tu:randomWrap attribute="$attribute" variant="1"/>);
+        search.set«attribute.name.toFirstUpper()»Max(<tu:randomWrap attribute="$attribute" variant="1"/>);
+        </c:when>
+        <c:otherwise>
+        search.set«attribute.name.toFirstUpper()»(<tu:randomWrap attribute="$attribute" variant="1"/>);
+        </c:otherwise>
+        </c:choose>
+    «ENDIF»
+«ENDFOREACH»
+        Collection<«this.name»> «this.name.toFirstLower()»s = «this.name.toFirstLower()»DAO.search(search);
+        assertTrue(«this.name.toFirstLower()»s.size() > 0);
+    }
+
+    protected void onSetUpBeforeTransaction() throws Exception {
+        super.onSetUpBeforeTransaction();
+
+        «this.name» «this.name.toFirstLower()» = new «this.name»();
+«FOREACH this.attributes AS attribute»
+    «IF!attribute.isReference()»
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(<tu:randomWrap attribute="$attribute" variant="1"/>);
+    «ENDIF»
+    <xm:isMaster element="$attribute">
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «attribute.name.toFirstLower()».setId(1L);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    </xm:isMaster>
+    «IF attribute.isEmbed()»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        <xc:iterateAttributes select="$attribute/type" var="attrib">
+            «IF !attrib.isReference()»
+        «attribute.name.toFirstLower()».<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib" variant="1"/>);
+            «ENDIF»
+    	<xm:isMaster element="$attribute">
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «attribute.name.toFirstLower()».setId(1L);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    	</xm:isMaster>
+        </xc:iterateAttributes>
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    «ENDIF»
+«ENDFOREACH» 
+        «this.name.toFirstLower()»DAO.save(«this.name.toFirstLower()»);
+    }
+}
+«ENDFILE»
+«ENDDEFINE»

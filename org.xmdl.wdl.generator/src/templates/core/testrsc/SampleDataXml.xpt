@@ -1,0 +1,208 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE model FOR wdl::Model»
+«FILE "core/src/test/resources/sample-data.xml"»
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+    <table name="TBL_USER">
+        <column>id</column>
+        <column>username</column>
+        <column>password</column>
+        <column>first_name</column>
+        <column>last_name</column>
+        <column>address</column>
+        <column>city</column>
+        <column>country</column>
+        <column>email</column>
+        <column>phone_number</column>
+        <column>postal_code</column>
+        <column>province</column>
+        <column>website</column>
+        <column>password_hint</column>
+        <column>version</column>
+        <column>account_enabled</column>
+        <column>account_expired</column>
+        <column>account_locked</column>
+        <column>credentials_expired</column>
+        <row>
+            <value description="id">1</value>
+            <value description="username">user</value>
+            <value description="password">12dea96fec20593566ab75692c9949596833adc9</value>
+            <value description="first_name">Tomcat</value>
+            <value description="last_name">User</value>
+            <value description="address"></value>
+            <value description="city">Denver</value>
+            <value description="country">US</value>
+            <value description="email">devel@xmdl.org</value>
+            <value description="phone_number"></value>
+            <value description="postal_code">80210</value>
+            <value description="province">CO</value>
+            <value description="website">http://code.google.com/p/taslak/</value>
+            <value description="password_hint"><![CDATA[A male kitty.]]></value>
+            <value description="version">1</value>
+            <value description="account_enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>
+        <row>
+            <value description="id">2</value>
+            <value description="username">admin</value>
+            <value description="password">d033e22ae348aeb5660fc2140aec35850c4da997</value>
+            <value description="first_name">Admin</value>
+            <value description="last_name">Admin</value>
+            <value description="address"></value>
+            <value description="city">Denver</value>
+            <value description="country">US</value>
+            <value description="email">dev@xmdl.org</value>
+            <value description="phone_number"></value>
+            <value description="postal_code">80210</value>
+            <value description="province">CO</value>
+            <value description="website">http://code.google.com/p/taslak/</value>
+            <value description="password_hint"><![CDATA[Not a female kitty.]]></value>
+            <value description="version">1</value>
+            <value description="account_enabled">1</value>
+            <value description="account_expired">0</value>
+            <value description="account_locked">0</value>
+            <value description="credentials_expired">0</value>
+        </row>
+    </table>
+    <table name="TBL_ROLE">
+        <column>id</column>
+        <column>name</column>
+        <column>description</column>
+        <row>
+            <value description="id">1</value>
+            <value description="name">ROLE_ADMIN</value>
+            <value description="description"><![CDATA[Administrator role (can edit Users)]]></value>
+        </row>
+        <row>
+            <value description="id">2</value>
+            <value description="name">ROLE_USER</value>
+            <value description="description"><![CDATA[Default role for all Users]]></value>
+        </row>
+    </table>
+    <table name="TBL_USER_ROLE">
+        <column>user_id</column>
+        <column>role_id</column>
+        <row>
+            <value description="user_id">1</value>
+            <value description="role_id">2</value>
+        </row>
+        <row>
+            <value description="user_id">2</value>
+            <value description="role_id">1</value>
+        </row>
+    </table>
+
+    «FOREACH this.types.typeSelect(Entity) AS entity»
+
+    <!--«entity.name» -START-->
+    <table name="«entity.tableName()»">
+        <column>id</column>
+        «FOREACH entity.attributes AS attribute»
+            «IF !attribute.isReference()»
+        <column>«attribute.columnName()»</column>
+            «ENDIF»
+            <ida:isEntityReference attribute="$field/xAttribute">
+        <column>«attribute.columnName()»</column>
+            </ida:isEntityReference>
+		    «IF attribute.isEmbed()»
+				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
+            		«IF !attrib.isReference()»
+		<column><xd:columnName attribute="$attrib"/></column>
+		    		«ENDIF»
+				</xc:iterateAttributes> 
+		    «ENDIF»
+        «ENDFOREACH»
+
+        <row>
+            <value description="id">1</value>
+        «FOREACH entity.attributes AS attribute»
+            «IF !attribute.isReference()»
+            <value description="«attribute.columnName()»"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="1"/></value>
+            «ENDIF»
+            <ida:isEntityReference attribute="$field/xAttribute">
+            <value description="«attribute.columnName()»">1</value>
+            </ida:isEntityReference>
+		    «IF attribute.isEmbed()»
+				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
+            		«IF !attrib.isReference()»
+			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="1"/></value>
+		    		«ENDIF»
+				</xc:iterateAttributes> 
+		    «ENDIF»
+        «ENDFOREACH»
+        </row>
+
+        <row>
+            <value description="id">2</value>
+        «FOREACH entity.attributes AS attribute»
+            «IF !attribute.isReference()»
+            <value description="«attribute.columnName()»"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="2"/></value>
+            «ENDIF»
+            <ida:isEntityReference attribute="$field/xAttribute">
+            <value description="«attribute.columnName()»">2</value>
+            </ida:isEntityReference>
+		    «IF attribute.isEmbed()»
+				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
+            		«IF !attrib.isReference()»
+			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="2"/></value>
+		    		«ENDIF»
+				</xc:iterateAttributes> 
+		    «ENDIF»
+        «ENDFOREACH»
+        </row>
+
+        <row>
+            <value description="id">3</value>
+        «FOREACH entity.attributes AS attribute»
+            «IF !attribute.isReference()»
+            <value description="«attribute.columnName()»"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="3"/></value>
+            «ENDIF»
+            <ida:isEntityReference attribute="$field/xAttribute">
+            <value description="«attribute.columnName()»">3</value>
+            </ida:isEntityReference>
+		    «IF attribute.isEmbed()»
+				<xc:iterateAttributes select="$field/xAttribute/type" var="attrib">
+            		«IF !attrib.isReference()»
+			<value description="<xd:columnName attribute="$attrib"/>"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="3"/></value>
+		    		«ENDIF»
+				</xc:iterateAttributes> 
+		    «ENDIF»
+        «ENDFOREACH»
+        </row>
+    </table>
+    «ENDIF»
+    
+    <c:if test="isAssociation($dTable)">
+    <table name="«entity.tableName()»">
+        «FOREACH entity.attributes AS attribute»
+        <column>«attribute.columnName()»</column>
+        «ENDFOREACH»
+    
+        <row>
+        «FOREACH entity.attributes AS attribute»
+            <value description="Value for «attribute.columnName()»">1</value>
+        «ENDFOREACH»
+        </row>
+
+        <row>
+        «FOREACH entity.attributes AS attribute»
+            <value description="Value for «attribute.columnName()»">2</value>
+        «ENDFOREACH»
+        </row>
+    </table>
+    «ENDIF»
+    
+    <!--«entity.name»-END-->
+    «ENDIF»
+    </xd:iterateTables>
+«ENDFOREACH»
+</dataset>
+«ENDFILE»
+«ENDDEFINE»
