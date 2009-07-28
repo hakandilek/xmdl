@@ -34,23 +34,23 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
     «IF!attribute.isReference()»
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»set«attribute.name.toFirstUpper()»(<tu:randomWrap attribute="$attribute" variant="1"/>);
     «ENDIF»
-    <xm:isMaster element="$attribute">
+    «IF attribute.isEmbed()»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»«attribute.type.name»();
         «attribute.name.toFirstLower()».setId(1L);
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
-    </xm:isMaster>
+    «ENDIF»
     «IF attribute.isEmbed()»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
-        <xc:iterateAttributes select="$attribute/type" var="attrib">
+        «FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
             «IF !attrib.isReference()»
-        «attribute.name.toFirstLower()».<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib" variant="1"/>);
+        «attribute.name.toFirstLower()».set«attrib.name.toFirstUpper()»(<tu:randomWrap attribute="$attrib" variant="1"/>);
             «ENDIF»
-    		<xm:isMaster element="$attribute">
+    		«IF attribute.isEmbed()»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
         «attribute.name.toFirstLower()».setId(1L);
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
-    		</xm:isMaster>
-        </xc:iterateAttributes>
+    		«ENDIF»
+        «ENDFOREACH»
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
     «ENDIF»
 «ENDFOREACH» 
@@ -107,23 +107,23 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
     «IF!attribute.isReference()»
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(<tu:randomWrap attribute="$attribute" variant="1"/>);
     «ENDIF»
-    <xm:isMaster element="$attribute">
-        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
-        «attribute.name.toFirstLower()».setId(1L);
-        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
-    </xm:isMaster>
     «IF attribute.isEmbed()»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
-        <xc:iterateAttributes select="$attribute/type" var="attrib">
+        «attribute.name.toFirstLower()».setId(1L);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    «ENDIF»
+    «IF attribute.isEmbed()»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
             «IF !attrib.isReference()»
-        «attribute.name.toFirstLower()».<xc:mutator attribute="$attrib"/>(<tu:randomWrap attribute="$attrib" variant="1"/>);
+        «attribute.name.toFirstLower()».set«attrib.name.toFirstUpper()»(<tu:randomWrap attribute="$attrib" variant="1"/>);
             «ENDIF»
-    	<xm:isMaster element="$attribute">
+    	«IF attribute.isEmbed()»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
         «attribute.name.toFirstLower()».setId(1L);
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
-    	</xm:isMaster>
-        </xc:iterateAttributes>
+    	«ENDIF»
+        «ENDFOREACH»
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
     «ENDIF»
 «ENDFOREACH» 
