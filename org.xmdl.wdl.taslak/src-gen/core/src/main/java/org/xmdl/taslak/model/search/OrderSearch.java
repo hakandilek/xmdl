@@ -85,8 +85,9 @@ public class OrderSearch implements Serializable {
 	public String toString() {
 		return MessageFormat
 				.format(
-						"Order[nameMin={1}][nameMax={2}][priceTotalsMin={3}][priceTotalsMax={4}]",
-						nameMin, nameMax, priceTotalsMin, priceTotalsMax);
+						"Order[nameMin={1}][nameMax={2}][priceTotalsMin={3}][priceTotalsMax={4}][createDate={5}], ",
+						nameMin, nameMax, priceTotalsMin, priceTotalsMax,
+						createDate);
 	}
 
 	/** 
