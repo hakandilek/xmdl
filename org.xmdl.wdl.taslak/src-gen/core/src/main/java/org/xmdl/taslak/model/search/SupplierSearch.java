@@ -1,4 +1,3 @@
-
 package org.xmdl.taslak.model.search;
 
 import java.util.*;
@@ -13,103 +12,71 @@ import org.xmdl.mesken.model.*;
  *  
  * $Id$
  *
- */ 
+ */
 public class SupplierSearch implements Serializable {
-    
-    	
-    		
 
-    private String nameMin;
+	private String nameMin;
 
-    private String nameMax;
-			
-    	
-    
-    	
-    		
+	private String nameMax;
 
-    private Product products;
-    		
-    	
-    
+	private Product products;
 
-    public SupplierSearch() {
-    }
+	public SupplierSearch() {
+	}
 
-    
-    	
-    		
+	public String getNameMin() {
+		return nameMin;
+	}
 
-    public String getNameMin() {
-        return nameMin;
-    }
+	public void setNameMin(String nameMin) {
+		this.nameMin = nameMin;
+	}
 
-    public void setNameMin(String nameMin) {
-        this.nameMin = nameMin;
-    }
+	public String getNameMax() {
+		return nameMax;
+	}
 
-    public String getNameMax() {
-        return nameMax;
-    }
+	public void setNameMax(String nameMax) {
+		this.nameMax = nameMax;
+	}
 
-    public void setNameMax(String nameMax) {
-        this.nameMax = nameMax;
-    }
-			
-    	
-    
-    	
-    		
+	public Product getProducts() {
+		return products;
+	}
 
-    public Product getProducts() {
-        return products;
-    }
+	public void setProducts(Product products) {
+		this.products = products;
+	}
 
-    public void setProducts(Product products) {
-        this.products = products;
-    }
-    		
-    	
-    
-
-    /** 
-     * @generated
-     */
+	/** 
+	 * @generated
+	 */
 	@Override
-    public String toString() {
-    	return MessageFormat.format("Supplier[nameMin={1}][nameMax={2}]", nameMin , nameMax );
-    }
+	public String toString() {
+		return MessageFormat.format("Supplier[nameMin={1}][nameMax={2}]",
+				nameMin, nameMax);
+	}
 
-    /** 
-     * @generated
-     */
+	/** 
+	 * @generated
+	 */
 	@Override
-    public int hashCode() {
-        int result = 1;
-    
-    	
-    		
-    			
-        if (nameMin != null) result = 31 * result + ("" + nameMin).hashCode();
-        if (nameMax != null) result = 31 * result + ("" + nameMax).hashCode();
-    			
-			
-    	
-    
-    	
-    		
-    			
-        if (products != null) result = 31 * result + ("" + products).hashCode();
-    			
-    		
-    	
-    
-        return result;
-    }
+	public int hashCode() {
+		int result = 1;
+
+		if (nameMin != null)
+			result = 31 * result + ("" + nameMin).hashCode();
+		if (nameMax != null)
+			result = 31 * result + ("" + nameMax).hashCode();
+
+		if (products != null)
+			result = 31 * result + ("" + products).hashCode();
+
+		return result;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
 		return hashCode() == obj.hashCode();
 	}
 }
-  

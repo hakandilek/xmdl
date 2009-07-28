@@ -1,4 +1,3 @@
-
 package org.xmdl.taslak.model.search;
 
 import java.util.*;
@@ -13,131 +12,85 @@ import org.xmdl.mesken.model.*;
  *  
  * $Id$
  *
- */ 
+ */
 public class OrderElementSearch implements Serializable {
-    
-    	
-    		
 
-    private Long quantityMin;
+	private Long quantityMin;
 
-    private Long quantityMax;
-			
-    	
-    
-    	
-    		
+	private Long quantityMax;
 
-    private Order order;
-    		
-    	
-    
-    	
-    		
+	private Order order;
 
-    private Product product;
-    		
-    	
-    
+	private Product product;
 
-    public OrderElementSearch() {
-    }
+	public OrderElementSearch() {
+	}
 
-    
-    	
-    		
+	public Long getQuantityMin() {
+		return quantityMin;
+	}
 
-    public Long getQuantityMin() {
-        return quantityMin;
-    }
+	public void setQuantityMin(Long quantityMin) {
+		this.quantityMin = quantityMin;
+	}
 
-    public void setQuantityMin(Long quantityMin) {
-        this.quantityMin = quantityMin;
-    }
+	public Long getQuantityMax() {
+		return quantityMax;
+	}
 
-    public Long getQuantityMax() {
-        return quantityMax;
-    }
+	public void setQuantityMax(Long quantityMax) {
+		this.quantityMax = quantityMax;
+	}
 
-    public void setQuantityMax(Long quantityMax) {
-        this.quantityMax = quantityMax;
-    }
-			
-    	
-    
-    	
-    		
+	public Order getOrder() {
+		return order;
+	}
 
-    public Order getOrder() {
-        return order;
-    }
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-    		
-    	
-    
-    	
-    		
+	public Product getProduct() {
+		return product;
+	}
 
-    public Product getProduct() {
-        return product;
-    }
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-    		
-    	
-    
-
-    /** 
-     * @generated
-     */
+	/** 
+	 * @generated
+	 */
 	@Override
-    public String toString() {
-    	return MessageFormat.format("OrderElement[quantityMin={1}][quantityMax={2}]", quantityMin , quantityMax );
-    }
+	public String toString() {
+		return MessageFormat.format(
+				"OrderElement[quantityMin={1}][quantityMax={2}]", quantityMin,
+				quantityMax);
+	}
 
-    /** 
-     * @generated
-     */
+	/** 
+	 * @generated
+	 */
 	@Override
-    public int hashCode() {
-        int result = 1;
-    
-    	
-    		
-    			
-        if (quantityMin != null) result = 31 * result + ("" + quantityMin).hashCode();
-        if (quantityMax != null) result = 31 * result + ("" + quantityMax).hashCode();
-    			
-			
-    	
-    
-    	
-    		
-    			
-        if (order != null) result = 31 * result + ("" + order).hashCode();
-    			
-    		
-    	
-    
-    	
-    		
-    			
-        if (product != null) result = 31 * result + ("" + product).hashCode();
-    			
-    		
-    	
-    
-        return result;
-    }
+	public int hashCode() {
+		int result = 1;
+
+		if (quantityMin != null)
+			result = 31 * result + ("" + quantityMin).hashCode();
+		if (quantityMax != null)
+			result = 31 * result + ("" + quantityMax).hashCode();
+
+		if (order != null)
+			result = 31 * result + ("" + order).hashCode();
+
+		if (product != null)
+			result = 31 * result + ("" + product).hashCode();
+
+		return result;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
 		return hashCode() == obj.hashCode();
 	}
 }
-  
