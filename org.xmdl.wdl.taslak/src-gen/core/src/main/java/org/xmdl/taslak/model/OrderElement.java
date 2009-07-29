@@ -29,7 +29,7 @@ public class OrderElement extends BaseObject implements Serializable, Cloneable 
 	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "F_QUANTITY", length = 15)
+	@Column(name = "F_QUANTITY", length = "15")
 	private Long quantity;
 
 	@ManyToMany(targetEntity = Order.class, cascade = {CascadeType.PERSIST,
