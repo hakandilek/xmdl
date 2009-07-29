@@ -19,7 +19,8 @@
                 <value>org.xmdl.mesken.model.User</value>
                 <value>org.xmdl.mesken.model.Role</value>
                 <!-- Application beans -->
-«FOREACH this.types.typeSelect(Entity) AS entity»<value>org.xmdl.taslak.model.«entity.name»</value>«ENDFOREACH» 
+«FOREACH this.types.typeSelect(Entity) AS entity»
+				<value>org.xmdl.taslak.model.«entity.name»</value>«ENDFOREACH» 
             </list>
         </property>
         <property name="hibernateProperties">

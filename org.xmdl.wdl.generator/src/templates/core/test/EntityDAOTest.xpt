@@ -32,7 +32,7 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
 
 «FOREACH this.attributes AS attribute»
     «IF!attribute.isReference()»
-        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»set«attribute.name.toFirstUpper()»(<tu:randomWrap attribute="$attribute" variant="1"/>);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»set«attribute.name.toFirstUpper()»(«attribute.randomize(1)»);
     «ENDIF»
     «IF attribute.isEmbed()»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»«attribute.type.name»();
@@ -63,7 +63,7 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
         assertNotNull(«this.name.toFirstLower()».getId());
 «FOREACH this.attributes AS attribute»
     «IF!attribute.isReference()»
-        assertEquals(<tu:randomWrap attribute="$attribute" variant="1"/>, «this.name.toFirstLower()».get«attribute.name.toFirstUpper()»());
+        assertEquals(«attribute.randomize(1)», «this.name.toFirstLower()».get«attribute.name.toFirstUpper()»());
     «ENDIF»
 «ENDFOREACH» 
 
@@ -86,11 +86,11 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
     «IF!attribute.isReference()»
         <c:choose>
         <c:when test="call($attribute/type, 'isComparable')">
-        search.set«attribute.name.toFirstUpper()»Min(<tu:randomWrap attribute="$attribute" variant="1"/>);
-        search.set«attribute.name.toFirstUpper()»Max(<tu:randomWrap attribute="$attribute" variant="1"/>);
+        search.set«attribute.name.toFirstUpper()»Min(«attribute.randomize(1)»);
+        search.set«attribute.name.toFirstUpper()»Max(«attribute.randomize(1)»);
         </c:when>
         <c:otherwise>
-        search.set«attribute.name.toFirstUpper()»(<tu:randomWrap attribute="$attribute" variant="1"/>);
+        search.set«attribute.name.toFirstUpper()»(«attribute.randomize(1)»);
         </c:otherwise>
         </c:choose>
     «ENDIF»
@@ -105,7 +105,7 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
         «this.name» «this.name.toFirstLower()» = new «this.name»();
 «FOREACH this.attributes AS attribute»
     «IF!attribute.isReference()»
-        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(<tu:randomWrap attribute="$attribute" variant="1"/>);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.randomize(1)»);
     «ENDIF»
     «IF attribute.isEmbed()»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();

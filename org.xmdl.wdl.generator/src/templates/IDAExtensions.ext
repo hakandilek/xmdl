@@ -1,19 +1,21 @@
 import wdl;
 
-String associationAnnotation(Attribute att) :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.associationAnnotation(org.xmdl.wdl.Attribute); 	
+String associationAnnotation(Attribute att) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.associationAnnotation(org.xmdl.wdl.Attribute);
 
-String entityToString(Entity e) :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.entityToString(org.xmdl.wdl.Entity); 	
+String entityToString(Entity e) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.entityToString(org.xmdl.wdl.Entity);
 
-String searchToString(Entity e) :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.searchToString(org.xmdl.wdl.Entity);
- 	
-String entityToString(Embed e)  :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.entityToString(org.xmdl.wdl.Embed); 	
+String searchToString(Entity e) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.searchToString(org.xmdl.wdl.Entity);
 
-String tableName(Entity e)  :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.tableName(org.xmdl.wdl.Entity); 	
+String entityToString(Embed e) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.entityToString(org.xmdl.wdl.Embed);
 
-String columnName(Attribute a)  :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.columnName(org.xmdl.wdl.Attribute); 	
+String tableName(Entity e) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.tableName(org.xmdl.wdl.Entity);
 
-String columnSize(Attribute a)  :  JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.columnSize(org.xmdl.wdl.Attribute); 	
+String columnName(Attribute a) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.columnName(org.xmdl.wdl.Attribute);
+
+String columnSize(Attribute a) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.columnSizeString(org.xmdl.wdl.Attribute);
 
 String basePackagePath(Model m) : m.project.basePackagePath();
 
 String basePackagePath(Project p) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.basePackagePath(org.xmdl.wdl.Project);
+
+String randomize(Attribute a, String variant) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.randomize(org.xmdl.wdl.Attribute, java.lang.String);
