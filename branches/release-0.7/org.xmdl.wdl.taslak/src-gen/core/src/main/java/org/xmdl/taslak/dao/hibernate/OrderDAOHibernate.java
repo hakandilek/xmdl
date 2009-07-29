@@ -47,7 +47,8 @@ public class OrderDAOHibernate extends GenericDaoHibernate<Order, Long>
 			Double minPriceTotals = orderSearch.getPriceTotalsMin();
 			Double maxPriceTotals = orderSearch.getPriceTotalsMax();
 
-			Date createDate = orderSearch.getCreateDate();
+			Date minCreateDate = orderSearch.getCreateDateMin();
+			Date maxCreateDate = orderSearch.getCreateDateMax();
 
 			OrderElement orderElements = orderSearch.getOrderElements();
 
@@ -60,7 +61,8 @@ public class OrderDAOHibernate extends GenericDaoHibernate<Order, Long>
 				log.debug("minPriceTotals       : " + minPriceTotals);
 				log.debug("maxPriceTotals       : " + maxPriceTotals);
 
-				log.debug("createDate       : " + createDate);
+				log.debug("minCreateDate       : " + minCreateDate);
+				log.debug("maxCreateDate       : " + maxCreateDate);
 
 				log.debug("orderElements       : " + orderElements);
 
@@ -79,8 +81,10 @@ public class OrderDAOHibernate extends GenericDaoHibernate<Order, Long>
 			if (maxPriceTotals != null)
 				criteria.add(Restrictions.le("priceTotals", maxPriceTotals));
 
-			if (createDate != null)
-				criteria.add(Restrictions.eq("createDate", createDate));
+			if (minCreateDate != null)
+				criteria.add(Restrictions.ge("createDate", minCreateDate));
+			if (maxCreateDate != null)
+				criteria.add(Restrictions.le("createDate", maxCreateDate));
 
 			if (orderElements != null) {
 				Criteria subCriteria = criteria.createCriteria("orderElements");

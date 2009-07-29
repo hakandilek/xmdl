@@ -23,7 +23,9 @@ public class OrderSearch implements Serializable {
 
 	private Double priceTotalsMax;
 
-	private Date createDate;
+	private Date createDateMin;
+
+	private Date createDateMax;
 
 	private OrderElement orderElements;
 
@@ -62,12 +64,20 @@ public class OrderSearch implements Serializable {
 		this.priceTotalsMax = priceTotalsMax;
 	}
 
-	public Date getCreateDate() {
-		return createDate;
+	public Date getCreateDateMin() {
+		return createDateMin;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setCreateDateMin(Date createDateMin) {
+		this.createDateMin = createDateMin;
+	}
+
+	public Date getCreateDateMax() {
+		return createDateMax;
+	}
+
+	public void setCreateDateMax(Date createDateMax) {
+		this.createDateMax = createDateMax;
 	}
 
 	public OrderElement getOrderElements() {
@@ -85,9 +95,9 @@ public class OrderSearch implements Serializable {
 	public String toString() {
 		return MessageFormat
 				.format(
-						"Order[nameMin={1}][nameMax={2}][priceTotalsMin={3}][priceTotalsMax={4}][createDate={5}], ",
+						"Order[nameMin={1}][nameMax={2}][priceTotalsMin={3}][priceTotalsMax={4}][createDateMin={5}][createDateMax={6}]",
 						nameMin, nameMax, priceTotalsMin, priceTotalsMax,
-						createDate);
+						createDateMin, createDateMax);
 	}
 
 	/** 
@@ -107,8 +117,10 @@ public class OrderSearch implements Serializable {
 		if (priceTotalsMax != null)
 			result = 31 * result + ("" + priceTotalsMax).hashCode();
 
-		if (createDate != null)
-			result = 31 * result + ("" + createDate).hashCode();
+		if (createDateMin != null)
+			result = 31 * result + ("" + createDateMin).hashCode();
+		if (createDateMax != null)
+			result = 31 * result + ("" + createDateMax).hashCode();
 
 		if (orderElements != null)
 			result = 31 * result + ("" + orderElements).hashCode();
