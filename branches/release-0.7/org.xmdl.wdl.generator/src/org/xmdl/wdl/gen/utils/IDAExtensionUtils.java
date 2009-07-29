@@ -200,9 +200,13 @@ public class IDAExtensionUtils extends ExtensionUtils {
 		return "F_" + attribute.getName().toUpperCase(Locale.ENGLISH);
 	}
 
-	public static String columnSize(Attribute attribute) {
+	public static String columnSizeString(Attribute attribute) {
+		return "\"" + columnSize(attribute) + "\"";
+	}
+		
+	public static int columnSize(Attribute attribute) {
 		// TODO:
-		return "15";
+		return 15;
 	}
 
 	public static String tableName(Entity e) {
@@ -229,4 +233,8 @@ public class IDAExtensionUtils extends ExtensionUtils {
 		return basePackage.replaceAll("\\.", "/");
 	}
 
+	public static String randomize(Attribute a, String variant) {
+		//TODO
+		return variant;
+	}
 }

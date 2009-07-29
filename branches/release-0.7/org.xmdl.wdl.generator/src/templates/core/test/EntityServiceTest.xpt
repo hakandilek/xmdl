@@ -4,11 +4,10 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/test/java/org/xmdl/taslak/service/impl/"+ this.name + "ManagerImplTest.java"»
+  «FILE "core/src/test/java/org/xmdl/taslak/service/impl/"+ this.name + "ServiceImplTest.java"»
 package org.xmdl.taslak.service.impl;
 
 import java.util.*;
-import org.xmdl.ida.lib.test.BaseDaoTestCase;
 import org.xmdl.taslak.model.*;
 import org.xmdl.taslak.model.search.*;
 import org.jmock.Mock;

@@ -3,7 +3,6 @@
  */
 package org.xmdl.wdl.gen.utils;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -23,17 +22,19 @@ import org.xmdl.wdl.Type;
  */
 public class ExtensionUtils {
 
-	static List<String> BASIC_TYPES = Arrays.asList(new String[] { "int",
-			"void", "String", "boolean", "double", "byte", "char", "float",
-			"short", "long", "Boolean", "Double", "Byte", "Character", "Float",
-			"Short", "Long", 
-
-			"java.lang.String", "java.lang.Integer", "java.lang.Boolean",
-			"java.lang.Double", "java.lang.Byte", "java.lang.Character",
-			"java.lang.Float", "java.lang.Short", "java.lang.Long",
-
-	});
-
+	public static BasicType basicType(Type t) {
+		BasicType bt = null;
+		final BasicType[] bts = BasicType.values();
+		for (BasicType basicType : bts) {
+			if (basicType.is(t)) {
+				//gotcha!
+				bt = basicType;
+				break;
+			}
+		}
+		return bt;
+	}
+	
 	public static boolean isReference(Type t) {
 		boolean result = !isBasic(t) && !isEnumeration(t)
 				&& !(t instanceof SimpleType);
@@ -41,7 +42,7 @@ public class ExtensionUtils {
 	}
 
 	public static boolean isBasic(Type t) {
-		return BASIC_TYPES.contains(qualifiedName(t));
+		return basicType(t) != null;
 	}
 
 	public static boolean isEnumeration(Type t) {
@@ -58,6 +59,14 @@ public class ExtensionUtils {
 
 	public static boolean isComparable(Type t) {
 		return isEnumeration(t) || isBasic(t);
+	}
+
+	public static boolean isString(Type t) {
+		return BasicType.STRING.is(t);
+	}
+
+	public static boolean isString(Attribute a) {
+		return isString(a.getType());
 	}
 
 	public static String simpleName(Type t) {
