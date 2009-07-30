@@ -1,14 +1,29 @@
 package org.xmdl.wdl.gen.utils;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.eclipse.emf.common.util.EList;
 import org.xmdl.wdl.Attribute;
 import org.xmdl.wdl.EnumLiteral;
 import org.xmdl.wdl.Type;
 
 public class TestUtils {
+	
+	private Log logger = LogFactory.getLog(this.getClass());
 
 	public static final TestUtils INSTANCE = new TestUtils();
 
@@ -17,6 +32,8 @@ public class TestUtils {
 	private Map<Attribute, Map<String, Object>> randomValues = new HashMap<Attribute, Map<String, Object>>();
 
 	private RandomUtils utils = RandomUtils.INST;
+
+	private File preserveFile;
 
 	protected TestUtils() {
 		super();
@@ -83,6 +100,7 @@ public class TestUtils {
 
 	public Object randomValue(Attribute attrib, String variant) {
 		Object preserved = getPreservedValue(attrib, variant);
+		logger.debug("preserved:" + preserved);
 		if (preserved != null)
 			return preserved;
 
@@ -91,43 +109,50 @@ public class TestUtils {
 		Object result = null;
 		
 		BasicType basicType = ExtensionUtils.basicType(type);
-		switch (basicType) {
-		case BOOLEAN:
-			result = utils.randomBoolean();
-			break;
+		logger.debug("basicType:" + basicType);
+		if (basicType != null)
+		{
+			switch (basicType) {
+			case BOOLEAN:
+				result = utils.randomBoolean();
+				break;
 
-		case DOUBLE:
-		case FLOAT:
-			result = utils.randomDouble(Math.pow(10, length));
-			break;
+			case DOUBLE:
+			case FLOAT:
+				result = utils.randomDouble(Math.pow(10, length));
+				break;
 
-		case INTEGER:
-			result = utils.randomInt((int) Math.pow(10, length));
-			break;
+			case INTEGER:
+				result = utils.randomInt((int) Math.pow(10, length));
+				break;
 
-		case LONG:
-			result = utils.randomLong();
-			break;
+			case LONG:
+				result = utils.randomLong();
+				break;
 
-		case STRING:
-			result = utils.randomString(length);
-			break;
+			case STRING:
+				result = utils.randomString(length);
+				break;
 
-		case DATE:
-			// 347068800000L = 10 years in msecs
-			result = utils.randomLong(347068800000L);
-			break;
+			case DATE:
+				// 347068800000L = 10 years in msecs
+				result = utils.randomLong(347068800000L);
+				break;
 
-		default:
+			default:
+				break;
+			}
+		} else {
 			if (type instanceof org.xmdl.wdl.Enum) {
 				org.xmdl.wdl.Enum enumer = (org.xmdl.wdl.Enum) type;
 				List<EnumLiteral> literals = enumer.getLiterals();
+				logger.debug("literals:" + literals);
 				EnumLiteral literal = (EnumLiteral) utils
 						.randomObject(literals);
 				result = literal;
 			}
-			break;
 		}
+		logger.debug("result:" + result);
 
 		if (result != null) {
 			preserveValue(attrib, variant, result);
@@ -136,11 +161,84 @@ public class TestUtils {
 	}
 
 	private void preserveValue(Attribute attrib, String variant, Object value) {
-		// TODO: implement
+		File file = getPreserveFile(attrib);
+		if (file == null)
+			return;
+		
+		if (value instanceof EnumLiteral) {
+			EnumLiteral lit = (EnumLiteral) value;
+			value = lit.getOrdinal();
+		}
+
+		Properties properties = new Properties();
+		try {
+			Reader fr = new FileReader(file);
+			properties.load(fr);
+		} catch (Exception e) {
+			//ignore errors if file does not exist
+		}
+		
+		try {
+			String key = getPropertyKey(attrib, variant);
+			properties.put(key, value+"");
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			Writer w = new OutputStreamWriter(out);
+			properties.store(w, "");
+			byte[] bytes = out.toByteArray();
+			InputStream content = new ByteArrayInputStream(bytes);
+			FileUtils.writeFile(content, file);
+		} catch (IOException e) {
+			logger.error("Error writing properties:" + file, e);
+		}
+	}
+
+	private File getPreserveFile(Attribute attrib) {
+		if (preserveFile == null) {
+			preserveFile = new File("randomValues.properties");
+		}
+		return preserveFile;
+	}
+	
+	private String getPropertyKey(Attribute attrib, String variant) {
+		String name = ExtensionUtils.qualifiedName(attrib);
+		if (variant != null)
+			name += "." + variant;
+		return name;
 	}
 
 	private Object getPreservedValue(Attribute attrib, String variant) {
-		// TODO: implement
+		File file = getPreserveFile(attrib);
+		if (file == null)
+			return null;
+
+		try {
+			Properties properties = FileUtils.loadProperties(file);
+			String key = getPropertyKey(attrib, variant);
+			Object value = properties.get(key);
+			
+			//special conversion for enumeration literals value -> literal
+			Type type = attrib.getType();
+			if (type instanceof org.xmdl.wdl.Enum) {
+				Integer i = null;
+				try {
+					i = Integer.parseInt(value+"");
+				} catch (NumberFormatException e) {
+					return value;
+				}
+				org.xmdl.wdl.Enum enumer = (org.xmdl.wdl.Enum) type;
+				EList<EnumLiteral> lits = enumer.getLiterals();
+				for (EnumLiteral lit : lits) {
+					if (i == lit.getOrdinal()) {
+						value = lit;
+						break;
+					}
+				}
+			}
+			return value;
+		} catch (IOException e) {
+			logger.error("Error reading properties:" + file, e);
+		}
+
 		return null;
 	}
 

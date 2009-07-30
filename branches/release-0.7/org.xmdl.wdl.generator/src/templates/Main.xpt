@@ -21,6 +21,7 @@
 	«EXPAND core::service::EntityService::entity FOREACH this.types.typeSelect(Entity)»
 	«EXPAND core::service::EntityServiceImplementation::entity FOREACH this.types.typeSelect(Entity)»
 	
+	«EXPAND core::test::EntityDAOTest::entity FOREACH this.types.typeSelect(Entity)»
 	«EXPAND core::test::EntityServiceTest::entity FOREACH this.types.typeSelect(Entity)»
 	«EXPAND core::test::HibernateConfigurationTest::entity FOREACH this.types.typeSelect(Entity)»
 
