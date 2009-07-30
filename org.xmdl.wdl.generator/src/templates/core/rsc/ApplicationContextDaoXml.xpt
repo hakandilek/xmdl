@@ -20,7 +20,7 @@
                 <value>org.xmdl.mesken.model.Role</value>
                 <!-- Application beans -->
 «FOREACH this.types.typeSelect(Entity) AS entity»
-				<value>org.xmdl.taslak.model.«entity.name»</value>«ENDFOREACH» 
+				<value>�this.project.basePackage�.model.«entity.name»</value>«ENDFOREACH» 
             </list>
         </property>
         <property name="hibernateProperties">
@@ -48,7 +48,7 @@
     </bean>
 
 «FOREACH this.types.typeSelect(Entity) AS entity»
-    <bean id="«entity.name.toFirstLower()»DAO" class="org.xmdl.taslak.dao.hibernate.«entity.name»DAOHibernate">
+    <bean id="«entity.name.toFirstLower()»DAO" class="�this.project.basePackage�.dao.hibernate.«entity.name»DAOHibernate">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 «ENDFOREACH» 
@@ -59,8 +59,8 @@
         
         eg... 'fooDao'
     
-    <bean id="fooDao" class="org.xmdl.taslak.dao.hibernate.GenericDaoHibernate">
-        <constructor-arg value="org.xmdl.taslak.model.Foo"/>
+    <bean id="fooDao" class="�this.project.basePackage�.dao.hibernate.GenericDaoHibernate">
+        <constructor-arg value="�this.project.basePackage�.model.Foo"/>
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     

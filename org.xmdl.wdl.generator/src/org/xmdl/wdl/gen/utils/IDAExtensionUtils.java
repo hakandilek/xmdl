@@ -234,7 +234,6 @@ public class IDAExtensionUtils extends ExtensionUtils {
 	}
 
 	public static String randomize(Attribute a, String variant) {
-		//TODO
-		return variant;
+		return TestUtils.INSTANCE.randomValueAsString(a, variant);
 	}
 }

@@ -13,7 +13,7 @@
         <mapping class="org.xmdl.mesken.model.User"/>
         <mapping class="org.xmdl.mesken.model.Role"/>
 «FOREACH this.types.typeSelect(Entity) AS entity»
-        <mapping class="org.xmdl.taslak.model.«entity.name»"/>«ENDFOREACH» 
+        <mapping class="�this.project.basePackage�.model.«entity.name»"/>«ENDFOREACH» 
     </session-factory>
 </hibernate-configuration>
   «ENDFILE»

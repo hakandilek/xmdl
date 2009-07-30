@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/test/java/org/xmdl/taslak/service/impl/"+ this.name + "ServiceImplTest.java"»
+  «FILE "core/src/test/java/org/xmdl/taslak/service/impl/"+ this.name + "ManagerImplTest.java"»
 package org.xmdl.taslak.service.impl;
 
 import java.util.*;

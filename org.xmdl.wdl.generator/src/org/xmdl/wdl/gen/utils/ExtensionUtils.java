@@ -183,5 +183,21 @@ public class ExtensionUtils {
 	public static Type master(Type t) {
 		//TODO
 		return null;
+	}
+
+	public static String qualifiedName(Attribute attrib) {
+	    String name = attrib.getName();
+	    EObject eContainer = attrib.eContainer();
+	    Type clazz = null;
+		if (eContainer != null && eContainer instanceof Type)
+	    {
+	    	clazz = (Type) eContainer;
+	    }
+	    if (clazz != null) {
+	    	String cn = qualifiedName(clazz);
+	        if (!"".equals(cn))
+	            name = cn + "." + name;
+	    }
+	    return name;
 	}	
 }
