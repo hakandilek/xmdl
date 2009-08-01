@@ -15,7 +15,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.xmdl.wdl.Attribute;
 import org.xmdl.wdl.Embed;
 import org.xmdl.wdl.Entity;
-import org.xmdl.wdl.EnumLiteral;
+import org.xmdl.wdl.Enumeration;
+import org.xmdl.wdl.EnumerationLiteral;
 import org.xmdl.wdl.Model;
 import org.xmdl.wdl.Project;
 import org.xmdl.wdl.SimpleType;
@@ -92,14 +93,14 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass enumEClass = null;
+  private EClass enumerationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass enumLiteralEClass = null;
+  private EClass enumerationLiteralEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -389,9 +390,9 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEnum()
+  public EClass getEnumeration()
   {
-    return enumEClass;
+    return enumerationEClass;
   }
 
   /**
@@ -399,9 +400,9 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEnum_Literals()
+  public EReference getEnumeration_Literals()
   {
-    return (EReference)enumEClass.getEStructuralFeatures().get(0);
+    return (EReference)enumerationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -409,9 +410,9 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEnumLiteral()
+  public EClass getEnumerationLiteral()
   {
-    return enumLiteralEClass;
+    return enumerationLiteralEClass;
   }
 
   /**
@@ -419,9 +420,9 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEnumLiteral_Name()
+  public EAttribute getEnumerationLiteral_Name()
   {
-    return (EAttribute)enumLiteralEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)enumerationLiteralEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -429,9 +430,9 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEnumLiteral_Ordinal()
+  public EAttribute getEnumerationLiteral_Ordinal()
   {
-    return (EAttribute)enumLiteralEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)enumerationLiteralEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -494,12 +495,12 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     createEAttribute(attributeEClass, ATTRIBUTE__MANY);
     createEAttribute(attributeEClass, ATTRIBUTE__NAME);
 
-    enumEClass = createEClass(ENUM);
-    createEReference(enumEClass, ENUM__LITERALS);
+    enumerationEClass = createEClass(ENUMERATION);
+    createEReference(enumerationEClass, ENUMERATION__LITERALS);
 
-    enumLiteralEClass = createEClass(ENUM_LITERAL);
-    createEAttribute(enumLiteralEClass, ENUM_LITERAL__NAME);
-    createEAttribute(enumLiteralEClass, ENUM_LITERAL__ORDINAL);
+    enumerationLiteralEClass = createEClass(ENUMERATION_LITERAL);
+    createEAttribute(enumerationLiteralEClass, ENUMERATION_LITERAL__NAME);
+    createEAttribute(enumerationLiteralEClass, ENUMERATION_LITERAL__ORDINAL);
   }
 
   /**
@@ -534,7 +535,7 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     simpleTypeEClass.getESuperTypes().add(this.getType());
     entityEClass.getESuperTypes().add(this.getType());
     embedEClass.getESuperTypes().add(this.getType());
-    enumEClass.getESuperTypes().add(this.getType());
+    enumerationEClass.getESuperTypes().add(this.getType());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -567,12 +568,12 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     initEAttribute(getAttribute_Many(), ecorePackage.getEBoolean(), "many", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(enumEClass, org.xmdl.wdl.Enum.class, "Enum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEnum_Literals(), this.getEnumLiteral(), null, "literals", null, 0, -1, org.xmdl.wdl.Enum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(enumerationEClass, Enumeration.class, "Enumeration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEnumeration_Literals(), this.getEnumerationLiteral(), null, "literals", null, 0, -1, Enumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(enumLiteralEClass, EnumLiteral.class, "EnumLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEnumLiteral_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getEnumLiteral_Ordinal(), ecorePackage.getEInt(), "ordinal", null, 0, 1, EnumLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(enumerationLiteralEClass, EnumerationLiteral.class, "EnumerationLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEnumerationLiteral_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEnumerationLiteral_Ordinal(), ecorePackage.getEInt(), "ordinal", null, 0, 1, EnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

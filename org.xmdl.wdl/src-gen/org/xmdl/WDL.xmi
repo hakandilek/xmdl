@@ -154,9 +154,9 @@
         </tokens>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Enum">
+    <rules xsi:type="xtext:ParserRule" name="Enumeration">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.xmdl.org/WDL#//Enum"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.xmdl.org/WDL#//Enumeration"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <tokens xsi:type="xtext:Keyword" value="enum"/>
@@ -170,9 +170,9 @@
         <tokens xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="EnumLiteral">
+    <rules xsi:type="xtext:ParserRule" name="EnumerationLiteral">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.xmdl.org/WDL#//EnumLiteral"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.xmdl.org/WDL#//EnumerationLiteral"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <tokens xsi:type="xtext:Assignment" feature="name" operator="=">

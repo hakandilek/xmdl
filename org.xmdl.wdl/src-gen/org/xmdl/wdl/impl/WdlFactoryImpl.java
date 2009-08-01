@@ -13,17 +13,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.xmdl.wdl.Attribute;
-import org.xmdl.wdl.Embed;
-import org.xmdl.wdl.Entity;
-import org.xmdl.wdl.EnumLiteral;
-import org.xmdl.wdl.JAVAID;
-import org.xmdl.wdl.Model;
-import org.xmdl.wdl.Project;
-import org.xmdl.wdl.SimpleType;
-import org.xmdl.wdl.Type;
-import org.xmdl.wdl.WdlFactory;
-import org.xmdl.wdl.WdlPackage;
+import org.xmdl.wdl.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -85,8 +75,8 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
       case WdlPackage.ENTITY: return createEntity();
       case WdlPackage.EMBED: return createEmbed();
       case WdlPackage.ATTRIBUTE: return createAttribute();
-      case WdlPackage.ENUM: return createEnum();
-      case WdlPackage.ENUM_LITERAL: return createEnumLiteral();
+      case WdlPackage.ENUMERATION: return createEnumeration();
+      case WdlPackage.ENUMERATION_LITERAL: return createEnumerationLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -185,10 +175,10 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public org.xmdl.wdl.Enum createEnum()
+  public Enumeration createEnumeration()
   {
-    EnumImpl enum_ = new EnumImpl();
-    return enum_;
+    EnumerationImpl enumeration = new EnumerationImpl();
+    return enumeration;
   }
 
   /**
@@ -196,10 +186,10 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public EnumLiteral createEnumLiteral()
+  public EnumerationLiteral createEnumerationLiteral()
   {
-    EnumLiteralImpl enumLiteral = new EnumLiteralImpl();
-    return enumLiteral;
+    EnumerationLiteralImpl enumerationLiteral = new EnumerationLiteralImpl();
+    return enumerationLiteral;
   }
 
   /**

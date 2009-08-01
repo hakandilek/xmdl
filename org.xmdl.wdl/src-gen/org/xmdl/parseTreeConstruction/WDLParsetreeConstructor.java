@@ -40,8 +40,8 @@ protected class ThisRootNode extends RootToken {
 			case 5: return new Entity_Group(this, this, 5, inst);
 			case 6: return new Embed_Group(this, this, 6, inst);
 			case 7: return new Attribute_Group(this, this, 7, inst);
-			case 8: return new Enum_Group(this, this, 8, inst);
-			case 9: return new EnumLiteral_Group(this, this, 9, inst);
+			case 8: return new Enumeration_Group(this, this, 8, inst);
+			case 9: return new EnumerationLiteral_Group(this, this, 9, inst);
 			default: return null;
 		}	
 	}	
@@ -407,11 +407,11 @@ protected class Project_RightCurlyBracketKeyword_8 extends KeywordToken  {
 /************ begin Rule Type ****************
  *
  * Type:
- *   SimpleType|Entity|Enum|Embed;
+ *   SimpleType|Entity|Enumeration|Embed;
  *
  **/
 
-// SimpleType|Entity|Enum|Embed
+// SimpleType|Entity|Enumeration|Embed
 protected class Type_Alternatives extends AlternativesToken {
 
 	public Type_Alternatives(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -426,7 +426,7 @@ protected class Type_Alternatives extends AlternativesToken {
 		switch(index) {
 			case 0: return new Type_SimpleTypeParserRuleCall_0(parent, this, 0, inst);
 			case 1: return new Type_EntityParserRuleCall_1(parent, this, 1, inst);
-			case 2: return new Type_EnumParserRuleCall_2(parent, this, 2, inst);
+			case 2: return new Type_EnumerationParserRuleCall_2(parent, this, 2, inst);
 			case 3: return new Type_EmbedParserRuleCall_3(parent, this, 3, inst);
 			default: return null;
 		}	
@@ -500,27 +500,27 @@ protected class Type_EntityParserRuleCall_1 extends RuleCallToken {
 	}	
 }
 
-// Enum
-protected class Type_EnumParserRuleCall_2 extends RuleCallToken {
+// Enumeration
+protected class Type_EnumerationParserRuleCall_2 extends RuleCallToken {
 	
-	public Type_EnumParserRuleCall_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Type_EnumerationParserRuleCall_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public RuleCall getGrammarElement() {
-		return grammarAccess.getTypeAccess().getEnumParserRuleCall_2();
+		return grammarAccess.getTypeAccess().getEnumerationParserRuleCall_2();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Enum_Group(this, this, 0, inst);
+			case 0: return new Enumeration_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}	
 		
 	protected IInstanceDescription tryConsumeVal() {
-		if(checkForRecursion(Enum_Group.class, current)) return null;
-		if(!current.isInstanceOf(grammarAccess.getEnumRule().getType().getClassifier())) return null;
+		if(checkForRecursion(Enumeration_Group.class, current)) return null;
+		if(!current.isInstanceOf(grammarAccess.getEnumerationRule().getType().getClassifier())) return null;
 		return current;
 	}
 	
@@ -1484,46 +1484,46 @@ protected class Attribute_NameAssignment_2 extends AssignmentToken  {
 /************ end Rule Attribute ****************/
 
 
-/************ begin Rule Enum ****************
+/************ begin Rule Enumeration ****************
  *
- * Enum:
- *   "enum" name=ID "{" literals+=EnumLiteral* "}";
+ * Enumeration:
+ *   "enum" name=ID "{" literals+=EnumerationLiteral* "}";
  *
  **/
 
-// "enum" name=ID "{" literals+=EnumLiteral* "}"
-protected class Enum_Group extends GroupToken {
+// "enum" name=ID "{" literals+=EnumerationLiteral* "}"
+protected class Enumeration_Group extends GroupToken {
 	
-	public Enum_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Enumeration_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Group getGrammarElement() {
-		return grammarAccess.getEnumAccess().getGroup();
+		return grammarAccess.getEnumerationAccess().getGroup();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Enum_RightCurlyBracketKeyword_4(parent, this, 0, inst);
+			case 0: return new Enumeration_RightCurlyBracketKeyword_4(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
 		
 	public IInstanceDescription tryConsume() {
-		if(!current.isInstanceOf(grammarAccess.getEnumRule().getType().getClassifier())) return null;
+		if(!current.isInstanceOf(grammarAccess.getEnumerationRule().getType().getClassifier())) return null;
 		return tryConsumeVal();
 	}
 }
 
 // "enum"
-protected class Enum_EnumKeyword_0 extends KeywordToken  {
+protected class Enumeration_EnumKeyword_0 extends KeywordToken  {
 	
-	public Enum_EnumKeyword_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Enumeration_EnumKeyword_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Keyword getGrammarElement() {
-		return grammarAccess.getEnumAccess().getEnumKeyword_0();
+		return grammarAccess.getEnumerationAccess().getEnumKeyword_0();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -1535,19 +1535,19 @@ protected class Enum_EnumKeyword_0 extends KeywordToken  {
 }
 
 // name=ID
-protected class Enum_NameAssignment_1 extends AssignmentToken  {
+protected class Enumeration_NameAssignment_1 extends AssignmentToken  {
 	
-	public Enum_NameAssignment_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Enumeration_NameAssignment_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getEnumAccess().getNameAssignment_1();
+		return grammarAccess.getEnumerationAccess().getNameAssignment_1();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Enum_EnumKeyword_0(parent, this, 0, inst);
+			case 0: return new Enumeration_EnumKeyword_0(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -1557,7 +1557,7 @@ protected class Enum_NameAssignment_1 extends AssignmentToken  {
 		IInstanceDescription obj = current.cloneAndConsume("name");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
 			type = AssignmentType.LRC;
-			element = grammarAccess.getEnumAccess().getNameIDTerminalRuleCall_1_0();
+			element = grammarAccess.getEnumerationAccess().getNameIDTerminalRuleCall_1_0();
 			return obj;
 		}
 		return null;
@@ -1566,39 +1566,39 @@ protected class Enum_NameAssignment_1 extends AssignmentToken  {
 }
 
 // "{"
-protected class Enum_LeftCurlyBracketKeyword_2 extends KeywordToken  {
+protected class Enumeration_LeftCurlyBracketKeyword_2 extends KeywordToken  {
 	
-	public Enum_LeftCurlyBracketKeyword_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Enumeration_LeftCurlyBracketKeyword_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Keyword getGrammarElement() {
-		return grammarAccess.getEnumAccess().getLeftCurlyBracketKeyword_2();
+		return grammarAccess.getEnumerationAccess().getLeftCurlyBracketKeyword_2();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Enum_NameAssignment_1(parent, this, 0, inst);
+			case 0: return new Enumeration_NameAssignment_1(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
 		
 }
 
-// literals+=EnumLiteral*
-protected class Enum_LiteralsAssignment_3 extends AssignmentToken  {
+// literals+=EnumerationLiteral*
+protected class Enumeration_LiteralsAssignment_3 extends AssignmentToken  {
 	
-	public Enum_LiteralsAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Enumeration_LiteralsAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getEnumAccess().getLiteralsAssignment_3();
+		return grammarAccess.getEnumerationAccess().getLiteralsAssignment_3();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new EnumLiteral_Group(this, this, 0, inst);
+			case 0: return new EnumerationLiteral_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -1608,9 +1608,9 @@ protected class Enum_LiteralsAssignment_3 extends AssignmentToken  {
 		IInstanceDescription obj = current.cloneAndConsume("literals");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
 			IInstanceDescription param = getDescr((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getEnumLiteralRule().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getEnumerationLiteralRule().getType().getClassifier())) {
 				type = AssignmentType.PRC;
-				element = grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_3_0(); 
+				element = grammarAccess.getEnumerationAccess().getLiteralsEnumerationLiteralParserRuleCall_3_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -1621,28 +1621,28 @@ protected class Enum_LiteralsAssignment_3 extends AssignmentToken  {
 	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
 		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new Enum_LiteralsAssignment_3(parent, next, actIndex, consumed);
-			case 1: return new Enum_LeftCurlyBracketKeyword_2(parent, next, actIndex, consumed);
+			case 0: return new Enumeration_LiteralsAssignment_3(parent, next, actIndex, consumed);
+			case 1: return new Enumeration_LeftCurlyBracketKeyword_2(parent, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
 
 // "}"
-protected class Enum_RightCurlyBracketKeyword_4 extends KeywordToken  {
+protected class Enumeration_RightCurlyBracketKeyword_4 extends KeywordToken  {
 	
-	public Enum_RightCurlyBracketKeyword_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Enumeration_RightCurlyBracketKeyword_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Keyword getGrammarElement() {
-		return grammarAccess.getEnumAccess().getRightCurlyBracketKeyword_4();
+		return grammarAccess.getEnumerationAccess().getRightCurlyBracketKeyword_4();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Enum_LiteralsAssignment_3(parent, this, 0, inst);
-			case 1: return new Enum_LeftCurlyBracketKeyword_2(parent, this, 1, inst);
+			case 0: return new Enumeration_LiteralsAssignment_3(parent, this, 0, inst);
+			case 1: return new Enumeration_LeftCurlyBracketKeyword_2(parent, this, 1, inst);
 			default: return null;
 		}	
 	}	
@@ -1650,49 +1650,49 @@ protected class Enum_RightCurlyBracketKeyword_4 extends KeywordToken  {
 }
 
 
-/************ end Rule Enum ****************/
+/************ end Rule Enumeration ****************/
 
 
-/************ begin Rule EnumLiteral ****************
+/************ begin Rule EnumerationLiteral ****************
  *
- * EnumLiteral:
+ * EnumerationLiteral:
  *   name=ID "(" ordinal=INT ")";
  *
  **/
 
 // name=ID "(" ordinal=INT ")"
-protected class EnumLiteral_Group extends GroupToken {
+protected class EnumerationLiteral_Group extends GroupToken {
 	
-	public EnumLiteral_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public EnumerationLiteral_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Group getGrammarElement() {
-		return grammarAccess.getEnumLiteralAccess().getGroup();
+		return grammarAccess.getEnumerationLiteralAccess().getGroup();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new EnumLiteral_RightParenthesisKeyword_3(parent, this, 0, inst);
+			case 0: return new EnumerationLiteral_RightParenthesisKeyword_3(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
 		
 	public IInstanceDescription tryConsume() {
-		if(!current.isInstanceOf(grammarAccess.getEnumLiteralRule().getType().getClassifier())) return null;
+		if(!current.isInstanceOf(grammarAccess.getEnumerationLiteralRule().getType().getClassifier())) return null;
 		return tryConsumeVal();
 	}
 }
 
 // name=ID
-protected class EnumLiteral_NameAssignment_0 extends AssignmentToken  {
+protected class EnumerationLiteral_NameAssignment_0 extends AssignmentToken  {
 	
-	public EnumLiteral_NameAssignment_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public EnumerationLiteral_NameAssignment_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getEnumLiteralAccess().getNameAssignment_0();
+		return grammarAccess.getEnumerationLiteralAccess().getNameAssignment_0();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -1706,7 +1706,7 @@ protected class EnumLiteral_NameAssignment_0 extends AssignmentToken  {
 		IInstanceDescription obj = current.cloneAndConsume("name");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
 			type = AssignmentType.LRC;
-			element = grammarAccess.getEnumLiteralAccess().getNameIDTerminalRuleCall_0_0();
+			element = grammarAccess.getEnumerationLiteralAccess().getNameIDTerminalRuleCall_0_0();
 			return obj;
 		}
 		return null;
@@ -1715,19 +1715,19 @@ protected class EnumLiteral_NameAssignment_0 extends AssignmentToken  {
 }
 
 // "("
-protected class EnumLiteral_LeftParenthesisKeyword_1 extends KeywordToken  {
+protected class EnumerationLiteral_LeftParenthesisKeyword_1 extends KeywordToken  {
 	
-	public EnumLiteral_LeftParenthesisKeyword_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public EnumerationLiteral_LeftParenthesisKeyword_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Keyword getGrammarElement() {
-		return grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1();
+		return grammarAccess.getEnumerationLiteralAccess().getLeftParenthesisKeyword_1();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new EnumLiteral_NameAssignment_0(parent, this, 0, inst);
+			case 0: return new EnumerationLiteral_NameAssignment_0(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -1735,19 +1735,19 @@ protected class EnumLiteral_LeftParenthesisKeyword_1 extends KeywordToken  {
 }
 
 // ordinal=INT
-protected class EnumLiteral_OrdinalAssignment_2 extends AssignmentToken  {
+protected class EnumerationLiteral_OrdinalAssignment_2 extends AssignmentToken  {
 	
-	public EnumLiteral_OrdinalAssignment_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public EnumerationLiteral_OrdinalAssignment_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getEnumLiteralAccess().getOrdinalAssignment_2();
+		return grammarAccess.getEnumerationLiteralAccess().getOrdinalAssignment_2();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new EnumLiteral_LeftParenthesisKeyword_1(parent, this, 0, inst);
+			case 0: return new EnumerationLiteral_LeftParenthesisKeyword_1(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -1757,7 +1757,7 @@ protected class EnumLiteral_OrdinalAssignment_2 extends AssignmentToken  {
 		IInstanceDescription obj = current.cloneAndConsume("ordinal");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
 			type = AssignmentType.LRC;
-			element = grammarAccess.getEnumLiteralAccess().getOrdinalINTTerminalRuleCall_2_0();
+			element = grammarAccess.getEnumerationLiteralAccess().getOrdinalINTTerminalRuleCall_2_0();
 			return obj;
 		}
 		return null;
@@ -1766,19 +1766,19 @@ protected class EnumLiteral_OrdinalAssignment_2 extends AssignmentToken  {
 }
 
 // ")"
-protected class EnumLiteral_RightParenthesisKeyword_3 extends KeywordToken  {
+protected class EnumerationLiteral_RightParenthesisKeyword_3 extends KeywordToken  {
 	
-	public EnumLiteral_RightParenthesisKeyword_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public EnumerationLiteral_RightParenthesisKeyword_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Keyword getGrammarElement() {
-		return grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_3();
+		return grammarAccess.getEnumerationLiteralAccess().getRightParenthesisKeyword_3();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new EnumLiteral_OrdinalAssignment_2(parent, this, 0, inst);
+			case 0: return new EnumerationLiteral_OrdinalAssignment_2(parent, this, 0, inst);
 			default: return null;
 		}	
 	}	
@@ -1786,6 +1786,6 @@ protected class EnumLiteral_RightParenthesisKeyword_3 extends KeywordToken  {
 }
 
 
-/************ end Rule EnumLiteral ****************/
+/************ end Rule EnumerationLiteral ****************/
 
 }

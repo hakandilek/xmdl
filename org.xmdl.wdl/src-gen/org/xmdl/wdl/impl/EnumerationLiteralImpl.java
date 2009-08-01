@@ -12,24 +12,24 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.xmdl.wdl.EnumLiteral;
+import org.xmdl.wdl.EnumerationLiteral;
 import org.xmdl.wdl.WdlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Enum Literal</b></em>'.
+ * An implementation of the model object '<em><b>Enumeration Literal</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.xmdl.wdl.impl.EnumLiteralImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.xmdl.wdl.impl.EnumLiteralImpl#getOrdinal <em>Ordinal</em>}</li>
+ *   <li>{@link org.xmdl.wdl.impl.EnumerationLiteralImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xmdl.wdl.impl.EnumerationLiteralImpl#getOrdinal <em>Ordinal</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EnumLiteralImpl extends MinimalEObjectImpl.Container implements EnumLiteral
+public class EnumerationLiteralImpl extends MinimalEObjectImpl.Container implements EnumerationLiteral
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -76,7 +76,7 @@ public class EnumLiteralImpl extends MinimalEObjectImpl.Container implements Enu
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EnumLiteralImpl()
+  protected EnumerationLiteralImpl()
   {
     super();
   }
@@ -89,7 +89,7 @@ public class EnumLiteralImpl extends MinimalEObjectImpl.Container implements Enu
   @Override
   protected EClass eStaticClass()
   {
-    return WdlPackage.Literals.ENUM_LITERAL;
+    return WdlPackage.Literals.ENUMERATION_LITERAL;
   }
 
   /**
@@ -112,7 +112,7 @@ public class EnumLiteralImpl extends MinimalEObjectImpl.Container implements Enu
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WdlPackage.ENUM_LITERAL__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, WdlPackage.ENUMERATION_LITERAL__NAME, oldName, name));
   }
 
   /**
@@ -135,7 +135,7 @@ public class EnumLiteralImpl extends MinimalEObjectImpl.Container implements Enu
     int oldOrdinal = ordinal;
     ordinal = newOrdinal;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WdlPackage.ENUM_LITERAL__ORDINAL, oldOrdinal, ordinal));
+      eNotify(new ENotificationImpl(this, Notification.SET, WdlPackage.ENUMERATION_LITERAL__ORDINAL, oldOrdinal, ordinal));
   }
 
   /**
@@ -148,9 +148,9 @@ public class EnumLiteralImpl extends MinimalEObjectImpl.Container implements Enu
   {
     switch (featureID)
     {
-      case WdlPackage.ENUM_LITERAL__NAME:
+      case WdlPackage.ENUMERATION_LITERAL__NAME:
         return getName();
-      case WdlPackage.ENUM_LITERAL__ORDINAL:
+      case WdlPackage.ENUMERATION_LITERAL__ORDINAL:
         return getOrdinal();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -166,10 +166,10 @@ public class EnumLiteralImpl extends MinimalEObjectImpl.Container implements Enu
   {
     switch (featureID)
     {
-      case WdlPackage.ENUM_LITERAL__NAME:
+      case WdlPackage.ENUMERATION_LITERAL__NAME:
         setName((String)newValue);
         return;
-      case WdlPackage.ENUM_LITERAL__ORDINAL:
+      case WdlPackage.ENUMERATION_LITERAL__ORDINAL:
         setOrdinal((Integer)newValue);
         return;
     }
@@ -186,10 +186,10 @@ public class EnumLiteralImpl extends MinimalEObjectImpl.Container implements Enu
   {
     switch (featureID)
     {
-      case WdlPackage.ENUM_LITERAL__NAME:
+      case WdlPackage.ENUMERATION_LITERAL__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case WdlPackage.ENUM_LITERAL__ORDINAL:
+      case WdlPackage.ENUMERATION_LITERAL__ORDINAL:
         setOrdinal(ORDINAL_EDEFAULT);
         return;
     }
@@ -206,9 +206,9 @@ public class EnumLiteralImpl extends MinimalEObjectImpl.Container implements Enu
   {
     switch (featureID)
     {
-      case WdlPackage.ENUM_LITERAL__NAME:
+      case WdlPackage.ENUMERATION_LITERAL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case WdlPackage.ENUM_LITERAL__ORDINAL:
+      case WdlPackage.ENUMERATION_LITERAL__ORDINAL:
         return ordinal != ORDINAL_EDEFAULT;
     }
     return super.eIsSet(featureID);
@@ -233,4 +233,4 @@ public class EnumLiteralImpl extends MinimalEObjectImpl.Container implements Enu
     return result.toString();
   }
 
-} //EnumLiteralImpl
+} //EnumerationLiteralImpl

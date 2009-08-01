@@ -396,7 +396,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleType
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:232:1: ruleType returns [EObject current=null] : (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed ) ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:232:1: ruleType returns [EObject current=null] : (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enumeration_2= ruleEnumeration | this_Embed_3= ruleEmbed ) ;
     public final EObject ruleType() throws RecognitionException {
         EObject current = null;
 
@@ -404,7 +404,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
         EObject this_Entity_1 = null;
 
-        EObject this_Enum_2 = null;
+        EObject this_Enumeration_2 = null;
 
         EObject this_Embed_3 = null;
 
@@ -412,10 +412,10 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:237:6: ( (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:238:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:237:6: ( (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enumeration_2= ruleEnumeration | this_Embed_3= ruleEmbed ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:238:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enumeration_2= ruleEnumeration | this_Embed_3= ruleEmbed )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:238:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:238:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enumeration_2= ruleEnumeration | this_Embed_3= ruleEmbed )
             int alt2=4;
             switch ( input.LA(1) ) {
             case 17:
@@ -440,7 +440,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("238:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enum_2= ruleEnum | this_Embed_3= ruleEmbed )", 2, 0, input);
+                    new NoViableAltException("238:1: (this_SimpleType_0= ruleSimpleType | this_Entity_1= ruleEntity | this_Enumeration_2= ruleEnumeration | this_Embed_3= ruleEmbed )", 2, 0, input);
 
                 throw nvae;
             }
@@ -481,17 +481,17 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:259:5: this_Enum_2= ruleEnum
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:259:5: this_Enumeration_2= ruleEnumeration
                     {
                      
-                            currentNode=createCompositeNode(grammarAccess.getTypeAccess().getEnumParserRuleCall_2(), currentNode); 
+                            currentNode=createCompositeNode(grammarAccess.getTypeAccess().getEnumerationParserRuleCall_2(), currentNode); 
                         
-                    pushFollow(FOLLOW_ruleEnum_in_ruleType520);
-                    this_Enum_2=ruleEnum();
+                    pushFollow(FOLLOW_ruleEnumeration_in_ruleType520);
+                    this_Enumeration_2=ruleEnumeration();
                     _fsp--;
 
                      
-                            current = this_Enum_2; 
+                            current = this_Enumeration_2; 
                             currentNode = currentNode.getParent();
                         
 
@@ -1342,25 +1342,25 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
     // $ANTLR end ruleAttribute
 
 
-    // $ANTLR start entryRuleEnum
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:669:1: entryRuleEnum returns [EObject current=null] : iv_ruleEnum= ruleEnum EOF ;
-    public final EObject entryRuleEnum() throws RecognitionException {
+    // $ANTLR start entryRuleEnumeration
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:669:1: entryRuleEnumeration returns [EObject current=null] : iv_ruleEnumeration= ruleEnumeration EOF ;
+    public final EObject entryRuleEnumeration() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleEnum = null;
+        EObject iv_ruleEnumeration = null;
 
 
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:669:46: (iv_ruleEnum= ruleEnum EOF )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:670:2: iv_ruleEnum= ruleEnum EOF
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:669:53: (iv_ruleEnumeration= ruleEnumeration EOF )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:670:2: iv_ruleEnumeration= ruleEnumeration EOF
             {
-             currentNode = createCompositeNode(grammarAccess.getEnumRule(), currentNode); 
-            pushFollow(FOLLOW_ruleEnum_in_entryRuleEnum1414);
-            iv_ruleEnum=ruleEnum();
+             currentNode = createCompositeNode(grammarAccess.getEnumerationRule(), currentNode); 
+            pushFollow(FOLLOW_ruleEnumeration_in_entryRuleEnumeration1414);
+            iv_ruleEnumeration=ruleEnumeration();
             _fsp--;
 
-             current =iv_ruleEnum; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnum1424); 
+             current =iv_ruleEnumeration; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumeration1424); 
 
             }
 
@@ -1374,12 +1374,12 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end entryRuleEnum
+    // $ANTLR end entryRuleEnumeration
 
 
-    // $ANTLR start ruleEnum
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:677:1: ruleEnum returns [EObject current=null] : ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' ) ;
-    public final EObject ruleEnum() throws RecognitionException {
+    // $ANTLR start ruleEnumeration
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:677:1: ruleEnumeration returns [EObject current=null] : ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumerationLiteral )* '}' ) ;
+    public final EObject ruleEnumeration() throws RecognitionException {
         EObject current = null;
 
         Token lv_name_1=null;
@@ -1389,27 +1389,27 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:682:6: ( ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:683:1: ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:682:6: ( ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumerationLiteral )* '}' ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:683:1: ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumerationLiteral )* '}' )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:683:1: ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}' )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:683:2: 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumLiteral )* '}'
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:683:1: ( 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumerationLiteral )* '}' )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:683:2: 'enum' (lv_name_1= RULE_ID ) '{' (lv_literals_3= ruleEnumerationLiteral )* '}'
             {
-            match(input,24,FOLLOW_24_in_ruleEnum1458); 
+            match(input,24,FOLLOW_24_in_ruleEnumeration1458); 
 
-                    createLeafNode(grammarAccess.getEnumAccess().getEnumKeyword_0(), null); 
+                    createLeafNode(grammarAccess.getEnumerationAccess().getEnumKeyword_0(), null); 
                 
             // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:687:1: (lv_name_1= RULE_ID )
             // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:689:6: lv_name_1= RULE_ID
             {
             lv_name_1=(Token)input.LT(1);
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnum1480); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumeration1480); 
 
-            		createLeafNode(grammarAccess.getEnumAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
+            		createLeafNode(grammarAccess.getEnumerationAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
             	
 
             	        if (current==null) {
-            	            current = factory.create(grammarAccess.getEnumRule().getType().getClassifier());
+            	            current = factory.create(grammarAccess.getEnumerationRule().getType().getClassifier());
             	            associateNodeWithAstElement(currentNode, current);
             	        }
             	        
@@ -1422,11 +1422,11 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
             }
 
-            match(input,12,FOLLOW_12_in_ruleEnum1497); 
+            match(input,12,FOLLOW_12_in_ruleEnumeration1497); 
 
-                    createLeafNode(grammarAccess.getEnumAccess().getLeftCurlyBracketKeyword_2(), null); 
+                    createLeafNode(grammarAccess.getEnumerationAccess().getLeftCurlyBracketKeyword_2(), null); 
                 
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:711:1: (lv_literals_3= ruleEnumLiteral )*
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:711:1: (lv_literals_3= ruleEnumerationLiteral )*
             loop10:
             do {
                 int alt10=2;
@@ -1439,23 +1439,23 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
                 switch (alt10) {
             	case 1 :
-            	    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:714:6: lv_literals_3= ruleEnumLiteral
+            	    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:714:6: lv_literals_3= ruleEnumerationLiteral
             	    {
             	     
-            	    	        currentNode=createCompositeNode(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_3_0(), currentNode); 
+            	    	        currentNode=createCompositeNode(grammarAccess.getEnumerationAccess().getLiteralsEnumerationLiteralParserRuleCall_3_0(), currentNode); 
             	    	    
-            	    pushFollow(FOLLOW_ruleEnumLiteral_in_ruleEnum1531);
-            	    lv_literals_3=ruleEnumLiteral();
+            	    pushFollow(FOLLOW_ruleEnumerationLiteral_in_ruleEnumeration1531);
+            	    lv_literals_3=ruleEnumerationLiteral();
             	    _fsp--;
 
 
             	    	        if (current==null) {
-            	    	            current = factory.create(grammarAccess.getEnumRule().getType().getClassifier());
+            	    	            current = factory.create(grammarAccess.getEnumerationRule().getType().getClassifier());
             	    	            associateNodeWithAstElement(currentNode.getParent(), current);
             	    	        }
             	    	        
             	    	        try {
-            	    	       		add(current, "literals", lv_literals_3, "EnumLiteral", currentNode);
+            	    	       		add(current, "literals", lv_literals_3, "EnumerationLiteral", currentNode);
             	    	        } catch (ValueConverterException vce) {
             	    				handleValueConverterException(vce);
             	    	        }
@@ -1470,9 +1470,9 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            match(input,16,FOLLOW_16_in_ruleEnum1545); 
+            match(input,16,FOLLOW_16_in_ruleEnumeration1545); 
 
-                    createLeafNode(grammarAccess.getEnumAccess().getRightCurlyBracketKeyword_4(), null); 
+                    createLeafNode(grammarAccess.getEnumerationAccess().getRightCurlyBracketKeyword_4(), null); 
                 
 
             }
@@ -1493,28 +1493,28 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end ruleEnum
+    // $ANTLR end ruleEnumeration
 
 
-    // $ANTLR start entryRuleEnumLiteral
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:743:1: entryRuleEnumLiteral returns [EObject current=null] : iv_ruleEnumLiteral= ruleEnumLiteral EOF ;
-    public final EObject entryRuleEnumLiteral() throws RecognitionException {
+    // $ANTLR start entryRuleEnumerationLiteral
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:743:1: entryRuleEnumerationLiteral returns [EObject current=null] : iv_ruleEnumerationLiteral= ruleEnumerationLiteral EOF ;
+    public final EObject entryRuleEnumerationLiteral() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleEnumLiteral = null;
+        EObject iv_ruleEnumerationLiteral = null;
 
 
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:743:53: (iv_ruleEnumLiteral= ruleEnumLiteral EOF )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:744:2: iv_ruleEnumLiteral= ruleEnumLiteral EOF
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:743:60: (iv_ruleEnumerationLiteral= ruleEnumerationLiteral EOF )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:744:2: iv_ruleEnumerationLiteral= ruleEnumerationLiteral EOF
             {
-             currentNode = createCompositeNode(grammarAccess.getEnumLiteralRule(), currentNode); 
-            pushFollow(FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral1578);
-            iv_ruleEnumLiteral=ruleEnumLiteral();
+             currentNode = createCompositeNode(grammarAccess.getEnumerationLiteralRule(), currentNode); 
+            pushFollow(FOLLOW_ruleEnumerationLiteral_in_entryRuleEnumerationLiteral1578);
+            iv_ruleEnumerationLiteral=ruleEnumerationLiteral();
             _fsp--;
 
-             current =iv_ruleEnumLiteral; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumLiteral1588); 
+             current =iv_ruleEnumerationLiteral; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumerationLiteral1588); 
 
             }
 
@@ -1528,12 +1528,12 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end entryRuleEnumLiteral
+    // $ANTLR end entryRuleEnumerationLiteral
 
 
-    // $ANTLR start ruleEnumLiteral
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:751:1: ruleEnumLiteral returns [EObject current=null] : ( (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')' ) ;
-    public final EObject ruleEnumLiteral() throws RecognitionException {
+    // $ANTLR start ruleEnumerationLiteral
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:751:1: ruleEnumerationLiteral returns [EObject current=null] : ( (lv_name_0= RULE_ID ) '(' (lv_ordinal_2= RULE_INT ) ')' ) ;
+    public final EObject ruleEnumerationLiteral() throws RecognitionException {
         EObject current = null;
 
         Token lv_name_0=null;
@@ -1552,13 +1552,13 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
             // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:759:6: lv_name_0= RULE_ID
             {
             lv_name_0=(Token)input.LT(1);
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumLiteral1635); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEnumerationLiteral1635); 
 
-            		createLeafNode(grammarAccess.getEnumLiteralAccess().getNameIDTerminalRuleCall_0_0(), "name"); 
+            		createLeafNode(grammarAccess.getEnumerationLiteralAccess().getNameIDTerminalRuleCall_0_0(), "name"); 
             	
 
             	        if (current==null) {
-            	            current = factory.create(grammarAccess.getEnumLiteralRule().getType().getClassifier());
+            	            current = factory.create(grammarAccess.getEnumerationLiteralRule().getType().getClassifier());
             	            associateNodeWithAstElement(currentNode, current);
             	        }
             	        
@@ -1571,21 +1571,21 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
             }
 
-            match(input,25,FOLLOW_25_in_ruleEnumLiteral1652); 
+            match(input,25,FOLLOW_25_in_ruleEnumerationLiteral1652); 
 
-                    createLeafNode(grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1(), null); 
+                    createLeafNode(grammarAccess.getEnumerationLiteralAccess().getLeftParenthesisKeyword_1(), null); 
                 
             // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:781:1: (lv_ordinal_2= RULE_INT )
             // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:783:6: lv_ordinal_2= RULE_INT
             {
             lv_ordinal_2=(Token)input.LT(1);
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleEnumLiteral1674); 
+            match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleEnumerationLiteral1674); 
 
-            		createLeafNode(grammarAccess.getEnumLiteralAccess().getOrdinalINTTerminalRuleCall_2_0(), "ordinal"); 
+            		createLeafNode(grammarAccess.getEnumerationLiteralAccess().getOrdinalINTTerminalRuleCall_2_0(), "ordinal"); 
             	
 
             	        if (current==null) {
-            	            current = factory.create(grammarAccess.getEnumLiteralRule().getType().getClassifier());
+            	            current = factory.create(grammarAccess.getEnumerationLiteralRule().getType().getClassifier());
             	            associateNodeWithAstElement(currentNode, current);
             	        }
             	        
@@ -1598,9 +1598,9 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
             }
 
-            match(input,26,FOLLOW_26_in_ruleEnumLiteral1691); 
+            match(input,26,FOLLOW_26_in_ruleEnumerationLiteral1691); 
 
-                    createLeafNode(grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_3(), null); 
+                    createLeafNode(grammarAccess.getEnumerationLiteralAccess().getRightParenthesisKeyword_3(), null); 
                 
 
             }
@@ -1621,7 +1621,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end ruleEnumLiteral
+    // $ANTLR end ruleEnumerationLiteral
 
 
  
@@ -1645,7 +1645,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleType419 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSimpleType_in_ruleType466 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleEntity_in_ruleType493 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnum_in_ruleType520 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumeration_in_ruleType520 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleEmbed_in_ruleType547 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSimpleType_in_entryRuleSimpleType579 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleSimpleType589 = new BitSet(new long[]{0x0000000000000002L});
@@ -1681,18 +1681,18 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_RULE_ID_in_ruleAttribute1313 = new BitSet(new long[]{0x0000000000800020L});
     public static final BitSet FOLLOW_23_in_ruleAttribute1337 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleAttribute1373 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnum_in_entryRuleEnum1414 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnum1424 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_ruleEnum1458 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnum1480 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_ruleEnum1497 = new BitSet(new long[]{0x0000000000010020L});
-    public static final BitSet FOLLOW_ruleEnumLiteral_in_ruleEnum1531 = new BitSet(new long[]{0x0000000000010020L});
-    public static final BitSet FOLLOW_16_in_ruleEnum1545 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral1578 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnumLiteral1588 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumLiteral1635 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_25_in_ruleEnumLiteral1652 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleEnumLiteral1674 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_26_in_ruleEnumLiteral1691 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumeration_in_entryRuleEnumeration1414 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnumeration1424 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_ruleEnumeration1458 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumeration1480 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_12_in_ruleEnumeration1497 = new BitSet(new long[]{0x0000000000010020L});
+    public static final BitSet FOLLOW_ruleEnumerationLiteral_in_ruleEnumeration1531 = new BitSet(new long[]{0x0000000000010020L});
+    public static final BitSet FOLLOW_16_in_ruleEnumeration1545 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumerationLiteral_in_entryRuleEnumerationLiteral1578 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnumerationLiteral1588 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEnumerationLiteral1635 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_25_in_ruleEnumerationLiteral1652 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleEnumerationLiteral1674 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleEnumerationLiteral1691 = new BitSet(new long[]{0x0000000000000002L});
 
 }

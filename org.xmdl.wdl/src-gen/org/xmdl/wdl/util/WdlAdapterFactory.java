@@ -12,16 +12,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.xmdl.wdl.Attribute;
-import org.xmdl.wdl.Embed;
-import org.xmdl.wdl.Entity;
-import org.xmdl.wdl.EnumLiteral;
-import org.xmdl.wdl.JAVAID;
-import org.xmdl.wdl.Model;
-import org.xmdl.wdl.Project;
-import org.xmdl.wdl.SimpleType;
-import org.xmdl.wdl.Type;
-import org.xmdl.wdl.WdlPackage;
+import org.xmdl.wdl.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -127,14 +118,14 @@ public class WdlAdapterFactory extends AdapterFactoryImpl
         return createAttributeAdapter();
       }
       @Override
-      public Adapter caseEnum(org.xmdl.wdl.Enum object)
+      public Adapter caseEnumeration(Enumeration object)
       {
-        return createEnumAdapter();
+        return createEnumerationAdapter();
       }
       @Override
-      public Adapter caseEnumLiteral(EnumLiteral object)
+      public Adapter caseEnumerationLiteral(EnumerationLiteral object)
       {
-        return createEnumLiteralAdapter();
+        return createEnumerationLiteralAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -279,31 +270,31 @@ public class WdlAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.Enum <em>Enum</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.Enumeration <em>Enumeration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xmdl.wdl.Enum
+   * @see org.xmdl.wdl.Enumeration
    * @generated
    */
-  public Adapter createEnumAdapter()
+  public Adapter createEnumerationAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.EnumLiteral <em>Enum Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.EnumerationLiteral <em>Enumeration Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xmdl.wdl.EnumLiteral
+   * @see org.xmdl.wdl.EnumerationLiteral
    * @generated
    */
-  public Adapter createEnumLiteralAdapter()
+  public Adapter createEnumerationLiteralAdapter()
   {
     return null;
   }

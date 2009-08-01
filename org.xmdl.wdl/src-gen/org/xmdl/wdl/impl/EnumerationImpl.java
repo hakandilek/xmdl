@@ -17,23 +17,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.xmdl.wdl.EnumLiteral;
+import org.xmdl.wdl.Enumeration;
+import org.xmdl.wdl.EnumerationLiteral;
 import org.xmdl.wdl.WdlPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Enum</b></em>'.
+ * An implementation of the model object '<em><b>Enumeration</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.xmdl.wdl.impl.EnumImpl#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link org.xmdl.wdl.impl.EnumerationImpl#getLiterals <em>Literals</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EnumImpl extends TypeImpl implements org.xmdl.wdl.Enum
+public class EnumerationImpl extends TypeImpl implements Enumeration
 {
   /**
    * The cached value of the '{@link #getLiterals() <em>Literals</em>}' containment reference list.
@@ -43,14 +44,14 @@ public class EnumImpl extends TypeImpl implements org.xmdl.wdl.Enum
    * @generated
    * @ordered
    */
-  protected EList<EnumLiteral> literals;
+  protected EList<EnumerationLiteral> literals;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EnumImpl()
+  protected EnumerationImpl()
   {
     super();
   }
@@ -63,7 +64,7 @@ public class EnumImpl extends TypeImpl implements org.xmdl.wdl.Enum
   @Override
   protected EClass eStaticClass()
   {
-    return WdlPackage.Literals.ENUM;
+    return WdlPackage.Literals.ENUMERATION;
   }
 
   /**
@@ -71,11 +72,11 @@ public class EnumImpl extends TypeImpl implements org.xmdl.wdl.Enum
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EnumLiteral> getLiterals()
+  public EList<EnumerationLiteral> getLiterals()
   {
     if (literals == null)
     {
-      literals = new EObjectContainmentEList<EnumLiteral>(EnumLiteral.class, this, WdlPackage.ENUM__LITERALS);
+      literals = new EObjectContainmentEList<EnumerationLiteral>(EnumerationLiteral.class, this, WdlPackage.ENUMERATION__LITERALS);
     }
     return literals;
   }
@@ -90,7 +91,7 @@ public class EnumImpl extends TypeImpl implements org.xmdl.wdl.Enum
   {
     switch (featureID)
     {
-      case WdlPackage.ENUM__LITERALS:
+      case WdlPackage.ENUMERATION__LITERALS:
         return ((InternalEList<?>)getLiterals()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -106,7 +107,7 @@ public class EnumImpl extends TypeImpl implements org.xmdl.wdl.Enum
   {
     switch (featureID)
     {
-      case WdlPackage.ENUM__LITERALS:
+      case WdlPackage.ENUMERATION__LITERALS:
         return getLiterals();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -123,9 +124,9 @@ public class EnumImpl extends TypeImpl implements org.xmdl.wdl.Enum
   {
     switch (featureID)
     {
-      case WdlPackage.ENUM__LITERALS:
+      case WdlPackage.ENUMERATION__LITERALS:
         getLiterals().clear();
-        getLiterals().addAll((Collection<? extends EnumLiteral>)newValue);
+        getLiterals().addAll((Collection<? extends EnumerationLiteral>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -141,7 +142,7 @@ public class EnumImpl extends TypeImpl implements org.xmdl.wdl.Enum
   {
     switch (featureID)
     {
-      case WdlPackage.ENUM__LITERALS:
+      case WdlPackage.ENUMERATION__LITERALS:
         getLiterals().clear();
         return;
     }
@@ -158,10 +159,10 @@ public class EnumImpl extends TypeImpl implements org.xmdl.wdl.Enum
   {
     switch (featureID)
     {
-      case WdlPackage.ENUM__LITERALS:
+      case WdlPackage.ENUMERATION__LITERALS:
         return literals != null && !literals.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //EnumImpl
+} //EnumerationImpl

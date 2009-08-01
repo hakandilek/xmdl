@@ -9,25 +9,25 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Enum</b></em>'.
+ * A representation of the model object '<em><b>Enumeration</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.xmdl.wdl.Enum#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link org.xmdl.wdl.Enumeration#getLiterals <em>Literals</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.xmdl.wdl.WdlPackage#getEnum()
+ * @see org.xmdl.wdl.WdlPackage#getEnumeration()
  * @model
  * @generated
  */
-public interface Enum extends Type
+public interface Enumeration extends Type
 {
   /**
    * Returns the value of the '<em><b>Literals</b></em>' containment reference list.
-   * The list contents are of type {@link org.xmdl.wdl.EnumLiteral}.
+   * The list contents are of type {@link org.xmdl.wdl.EnumerationLiteral}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Literals</em>' containment reference list isn't clear,
@@ -35,10 +35,10 @@ public interface Enum extends Type
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Literals</em>' containment reference list.
-   * @see org.xmdl.wdl.WdlPackage#getEnum_Literals()
+   * @see org.xmdl.wdl.WdlPackage#getEnumeration_Literals()
    * @model containment="true"
    * @generated
    */
-  EList<EnumLiteral> getLiterals();
+  EList<EnumerationLiteral> getLiterals();
 
-} // Enum
+} // Enumeration

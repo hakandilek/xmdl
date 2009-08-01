@@ -69,18 +69,18 @@
       </genFeatures>
     </genClasses>
     <genClasses>
-      <ecoreClass href="WDL.ecore#//Enum"/>
+      <ecoreClass href="WDL.ecore#//Enumeration"/>
       <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Enum/literals"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Enumeration/literals"/>
       </genFeatures>
     </genClasses>
     <genClasses>
-      <ecoreClass href="WDL.ecore#//EnumLiteral"/>
+      <ecoreClass href="WDL.ecore#//EnumerationLiteral"/>
       <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//EnumLiteral/name"/>
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//EnumerationLiteral/name"/>
       </genFeatures>
       <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//EnumLiteral/ordinal"/>
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//EnumerationLiteral/ordinal"/>
       </genFeatures>
     </genClasses>
   </genPackages>

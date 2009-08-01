@@ -106,14 +106,14 @@ public class WDLGrammarAccess implements IGrammarAccess {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cSimpleTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cEntityParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cEnumParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cEnumerationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cEmbedParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Type:
-		//  SimpleType|Entity|Enum|Embed;
+		//  SimpleType|Entity|Enumeration|Embed;
 		public ParserRule getRule() { return rule; }
 
-		//SimpleType|Entity|Enum|Embed
+		//SimpleType|Entity|Enumeration|Embed
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//SimpleType
@@ -122,8 +122,8 @@ public class WDLGrammarAccess implements IGrammarAccess {
 		//Entity
 		public RuleCall getEntityParserRuleCall_1() { return cEntityParserRuleCall_1; }
 
-		//Enum
-		public RuleCall getEnumParserRuleCall_2() { return cEnumParserRuleCall_2; }
+		//Enumeration
+		public RuleCall getEnumerationParserRuleCall_2() { return cEnumerationParserRuleCall_2; }
 
 		//Embed
 		public RuleCall getEmbedParserRuleCall_3() { return cEmbedParserRuleCall_3; }
@@ -361,22 +361,22 @@ public class WDLGrammarAccess implements IGrammarAccess {
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
 
-	public class EnumElements implements IParserRuleAccess {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Enum");
+	public class EnumerationElements implements IParserRuleAccess {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Enumeration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cEnumKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cLiteralsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cLiteralsEnumLiteralParserRuleCall_3_0 = (RuleCall)cLiteralsAssignment_3.eContents().get(0);
+		private final RuleCall cLiteralsEnumerationLiteralParserRuleCall_3_0 = (RuleCall)cLiteralsAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//Enum:
-		//  "enum" name=ID "{" literals+=EnumLiteral* "}";
+		//Enumeration:
+		//  "enum" name=ID "{" literals+=EnumerationLiteral* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"enum" name=ID "{" literals+=EnumLiteral* "}"
+		//"enum" name=ID "{" literals+=EnumerationLiteral* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"enum"
@@ -391,18 +391,18 @@ public class WDLGrammarAccess implements IGrammarAccess {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//literals+=EnumLiteral*
+		//literals+=EnumerationLiteral*
 		public Assignment getLiteralsAssignment_3() { return cLiteralsAssignment_3; }
 
-		//EnumLiteral
-		public RuleCall getLiteralsEnumLiteralParserRuleCall_3_0() { return cLiteralsEnumLiteralParserRuleCall_3_0; }
+		//EnumerationLiteral
+		public RuleCall getLiteralsEnumerationLiteralParserRuleCall_3_0() { return cLiteralsEnumerationLiteralParserRuleCall_3_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 
-	public class EnumLiteralElements implements IParserRuleAccess {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EnumLiteral");
+	public class EnumerationLiteralElements implements IParserRuleAccess {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EnumerationLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
@@ -411,7 +411,7 @@ public class WDLGrammarAccess implements IGrammarAccess {
 		private final RuleCall cOrdinalINTTerminalRuleCall_2_0 = (RuleCall)cOrdinalAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//EnumLiteral:
+		//EnumerationLiteral:
 		//  name=ID "(" ordinal=INT ")";
 		public ParserRule getRule() { return rule; }
 
@@ -446,8 +446,8 @@ public class WDLGrammarAccess implements IGrammarAccess {
 	private EntityElements pEntity;
 	private EmbedElements pEmbed;
 	private AttributeElements pAttribute;
-	private EnumElements pEnum;
-	private EnumLiteralElements pEnumLiteral;
+	private EnumerationElements pEnumeration;
+	private EnumerationLiteralElements pEnumerationLiteral;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -491,7 +491,7 @@ public class WDLGrammarAccess implements IGrammarAccess {
 	}
 
 	//Type:
-	//  SimpleType|Entity|Enum|Embed;
+	//  SimpleType|Entity|Enumeration|Embed;
 	public TypeElements getTypeAccess() {
 		return (pType != null) ? pType : (pType = new TypeElements());
 	}
@@ -550,24 +550,24 @@ public class WDLGrammarAccess implements IGrammarAccess {
 		return getAttributeAccess().getRule();
 	}
 
-	//Enum:
-	//  "enum" name=ID "{" literals+=EnumLiteral* "}";
-	public EnumElements getEnumAccess() {
-		return (pEnum != null) ? pEnum : (pEnum = new EnumElements());
+	//Enumeration:
+	//  "enum" name=ID "{" literals+=EnumerationLiteral* "}";
+	public EnumerationElements getEnumerationAccess() {
+		return (pEnumeration != null) ? pEnumeration : (pEnumeration = new EnumerationElements());
 	}
 	
-	public ParserRule getEnumRule() {
-		return getEnumAccess().getRule();
+	public ParserRule getEnumerationRule() {
+		return getEnumerationAccess().getRule();
 	}
 
-	//EnumLiteral:
+	//EnumerationLiteral:
 	//  name=ID "(" ordinal=INT ")";
-	public EnumLiteralElements getEnumLiteralAccess() {
-		return (pEnumLiteral != null) ? pEnumLiteral : (pEnumLiteral = new EnumLiteralElements());
+	public EnumerationLiteralElements getEnumerationLiteralAccess() {
+		return (pEnumerationLiteral != null) ? pEnumerationLiteral : (pEnumerationLiteral = new EnumerationLiteralElements());
 	}
 	
-	public ParserRule getEnumLiteralRule() {
-		return getEnumLiteralAccess().getRule();
+	public ParserRule getEnumerationLiteralRule() {
+		return getEnumerationLiteralAccess().getRule();
 	}
 
 	//terminal ID:

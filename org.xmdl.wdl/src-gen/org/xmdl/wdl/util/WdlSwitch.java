@@ -10,16 +10,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import org.xmdl.wdl.Attribute;
-import org.xmdl.wdl.Embed;
-import org.xmdl.wdl.Entity;
-import org.xmdl.wdl.EnumLiteral;
-import org.xmdl.wdl.JAVAID;
-import org.xmdl.wdl.Model;
-import org.xmdl.wdl.Project;
-import org.xmdl.wdl.SimpleType;
-import org.xmdl.wdl.Type;
-import org.xmdl.wdl.WdlPackage;
+import org.xmdl.wdl.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -163,18 +154,18 @@ public class WdlSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WdlPackage.ENUM:
+      case WdlPackage.ENUMERATION:
       {
-        org.xmdl.wdl.Enum enum_ = (org.xmdl.wdl.Enum)theEObject;
-        T result = caseEnum(enum_);
-        if (result == null) result = caseType(enum_);
+        Enumeration enumeration = (Enumeration)theEObject;
+        T result = caseEnumeration(enumeration);
+        if (result == null) result = caseType(enumeration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WdlPackage.ENUM_LITERAL:
+      case WdlPackage.ENUMERATION_LITERAL:
       {
-        EnumLiteral enumLiteral = (EnumLiteral)theEObject;
-        T result = caseEnumLiteral(enumLiteral);
+        EnumerationLiteral enumerationLiteral = (EnumerationLiteral)theEObject;
+        T result = caseEnumerationLiteral(enumerationLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -311,33 +302,33 @@ public class WdlSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Enum</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Enumeration</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Enum</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Enumeration</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEnum(org.xmdl.wdl.Enum object)
+  public T caseEnumeration(Enumeration object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Enum Literal</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Enumeration Literal</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Enum Literal</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Enumeration Literal</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEnumLiteral(EnumLiteral object)
+  public T caseEnumerationLiteral(EnumerationLiteral object)
   {
     return null;
   }
