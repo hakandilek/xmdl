@@ -9,7 +9,7 @@ Project:
   "project" "{" "projectName" ":" name=STRING "basePackage" ":" basePackage=STRING "}";
   
 Type:
-  SimpleType|Entity|Enum|Embed;
+  SimpleType|Entity|Enumeration|Embed;
 
 SimpleType:
   "type" name=ID ("is" mappedType=JAVAID)?;
@@ -26,8 +26,8 @@ Embed:
 Attribute:
   type=[Type] (many?="*")? name=ID;
 
-Enum:
-  "enum" name=ID "{" (literals+=EnumLiteral)* "}";
+Enumeration:
+  "enum" name=ID "{" (literals+=EnumerationLiteral)* "}";
 
-EnumLiteral:
+EnumerationLiteral:
   name=ID "(" ordinal=INT ")";

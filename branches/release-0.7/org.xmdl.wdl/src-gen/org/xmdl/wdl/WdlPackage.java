@@ -365,14 +365,14 @@ public interface WdlPackage extends EPackage
   int ATTRIBUTE_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link org.xmdl.wdl.impl.EnumImpl <em>Enum</em>}' class.
+   * The meta object id for the '{@link org.xmdl.wdl.impl.EnumerationImpl <em>Enumeration</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xmdl.wdl.impl.EnumImpl
-   * @see org.xmdl.wdl.impl.WdlPackageImpl#getEnum()
+   * @see org.xmdl.wdl.impl.EnumerationImpl
+   * @see org.xmdl.wdl.impl.WdlPackageImpl#getEnumeration()
    * @generated
    */
-  int ENUM = 8;
+  int ENUMERATION = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -381,7 +381,7 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUM__NAME = TYPE__NAME;
+  int ENUMERATION__NAME = TYPE__NAME;
 
   /**
    * The feature id for the '<em><b>Literals</b></em>' containment reference list.
@@ -390,26 +390,26 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUM__LITERALS = TYPE_FEATURE_COUNT + 0;
+  int ENUMERATION__LITERALS = TYPE_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Enum</em>' class.
+   * The number of structural features of the '<em>Enumeration</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENUM_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
+  int ENUMERATION_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.xmdl.wdl.impl.EnumLiteralImpl <em>Enum Literal</em>}' class.
+   * The meta object id for the '{@link org.xmdl.wdl.impl.EnumerationLiteralImpl <em>Enumeration Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xmdl.wdl.impl.EnumLiteralImpl
-   * @see org.xmdl.wdl.impl.WdlPackageImpl#getEnumLiteral()
+   * @see org.xmdl.wdl.impl.EnumerationLiteralImpl
+   * @see org.xmdl.wdl.impl.WdlPackageImpl#getEnumerationLiteral()
    * @generated
    */
-  int ENUM_LITERAL = 9;
+  int ENUMERATION_LITERAL = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -418,7 +418,7 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUM_LITERAL__NAME = 0;
+  int ENUMERATION_LITERAL__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Ordinal</b></em>' attribute.
@@ -427,16 +427,16 @@ public interface WdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUM_LITERAL__ORDINAL = 1;
+  int ENUMERATION_LITERAL__ORDINAL = 1;
 
   /**
-   * The number of structural features of the '<em>Enum Literal</em>' class.
+   * The number of structural features of the '<em>Enumeration Literal</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENUM_LITERAL_FEATURE_COUNT = 2;
+  int ENUMERATION_LITERAL_FEATURE_COUNT = 2;
 
 
   /**
@@ -674,57 +674,57 @@ public interface WdlPackage extends EPackage
   EAttribute getAttribute_Name();
 
   /**
-   * Returns the meta object for class '{@link org.xmdl.wdl.Enum <em>Enum</em>}'.
+   * Returns the meta object for class '{@link org.xmdl.wdl.Enumeration <em>Enumeration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Enum</em>'.
-   * @see org.xmdl.wdl.Enum
+   * @return the meta object for class '<em>Enumeration</em>'.
+   * @see org.xmdl.wdl.Enumeration
    * @generated
    */
-  EClass getEnum();
+  EClass getEnumeration();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xmdl.wdl.Enum#getLiterals <em>Literals</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xmdl.wdl.Enumeration#getLiterals <em>Literals</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Literals</em>'.
-   * @see org.xmdl.wdl.Enum#getLiterals()
-   * @see #getEnum()
+   * @see org.xmdl.wdl.Enumeration#getLiterals()
+   * @see #getEnumeration()
    * @generated
    */
-  EReference getEnum_Literals();
+  EReference getEnumeration_Literals();
 
   /**
-   * Returns the meta object for class '{@link org.xmdl.wdl.EnumLiteral <em>Enum Literal</em>}'.
+   * Returns the meta object for class '{@link org.xmdl.wdl.EnumerationLiteral <em>Enumeration Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Enum Literal</em>'.
-   * @see org.xmdl.wdl.EnumLiteral
+   * @return the meta object for class '<em>Enumeration Literal</em>'.
+   * @see org.xmdl.wdl.EnumerationLiteral
    * @generated
    */
-  EClass getEnumLiteral();
+  EClass getEnumerationLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xmdl.wdl.EnumLiteral#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.EnumerationLiteral#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xmdl.wdl.EnumLiteral#getName()
-   * @see #getEnumLiteral()
+   * @see org.xmdl.wdl.EnumerationLiteral#getName()
+   * @see #getEnumerationLiteral()
    * @generated
    */
-  EAttribute getEnumLiteral_Name();
+  EAttribute getEnumerationLiteral_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xmdl.wdl.EnumLiteral#getOrdinal <em>Ordinal</em>}'.
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.EnumerationLiteral#getOrdinal <em>Ordinal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Ordinal</em>'.
-   * @see org.xmdl.wdl.EnumLiteral#getOrdinal()
-   * @see #getEnumLiteral()
+   * @see org.xmdl.wdl.EnumerationLiteral#getOrdinal()
+   * @see #getEnumerationLiteral()
    * @generated
    */
-  EAttribute getEnumLiteral_Ordinal();
+  EAttribute getEnumerationLiteral_Ordinal();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -942,14 +942,14 @@ public interface WdlPackage extends EPackage
     EAttribute ATTRIBUTE__NAME = eINSTANCE.getAttribute_Name();
 
     /**
-     * The meta object literal for the '{@link org.xmdl.wdl.impl.EnumImpl <em>Enum</em>}' class.
+     * The meta object literal for the '{@link org.xmdl.wdl.impl.EnumerationImpl <em>Enumeration</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xmdl.wdl.impl.EnumImpl
-     * @see org.xmdl.wdl.impl.WdlPackageImpl#getEnum()
+     * @see org.xmdl.wdl.impl.EnumerationImpl
+     * @see org.xmdl.wdl.impl.WdlPackageImpl#getEnumeration()
      * @generated
      */
-    EClass ENUM = eINSTANCE.getEnum();
+    EClass ENUMERATION = eINSTANCE.getEnumeration();
 
     /**
      * The meta object literal for the '<em><b>Literals</b></em>' containment reference list feature.
@@ -957,17 +957,17 @@ public interface WdlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ENUM__LITERALS = eINSTANCE.getEnum_Literals();
+    EReference ENUMERATION__LITERALS = eINSTANCE.getEnumeration_Literals();
 
     /**
-     * The meta object literal for the '{@link org.xmdl.wdl.impl.EnumLiteralImpl <em>Enum Literal</em>}' class.
+     * The meta object literal for the '{@link org.xmdl.wdl.impl.EnumerationLiteralImpl <em>Enumeration Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xmdl.wdl.impl.EnumLiteralImpl
-     * @see org.xmdl.wdl.impl.WdlPackageImpl#getEnumLiteral()
+     * @see org.xmdl.wdl.impl.EnumerationLiteralImpl
+     * @see org.xmdl.wdl.impl.WdlPackageImpl#getEnumerationLiteral()
      * @generated
      */
-    EClass ENUM_LITERAL = eINSTANCE.getEnumLiteral();
+    EClass ENUMERATION_LITERAL = eINSTANCE.getEnumerationLiteral();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -975,7 +975,7 @@ public interface WdlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ENUM_LITERAL__NAME = eINSTANCE.getEnumLiteral_Name();
+    EAttribute ENUMERATION_LITERAL__NAME = eINSTANCE.getEnumerationLiteral_Name();
 
     /**
      * The meta object literal for the '<em><b>Ordinal</b></em>' attribute feature.
@@ -983,7 +983,7 @@ public interface WdlPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ENUM_LITERAL__ORDINAL = eINSTANCE.getEnumLiteral_Ordinal();
+    EAttribute ENUMERATION_LITERAL__ORDINAL = eINSTANCE.getEnumerationLiteral_Ordinal();
 
   }
 

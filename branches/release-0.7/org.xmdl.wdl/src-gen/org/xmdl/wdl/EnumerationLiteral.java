@@ -9,22 +9,22 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Enum Literal</b></em>'.
+ * A representation of the model object '<em><b>Enumeration Literal</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.xmdl.wdl.EnumLiteral#getName <em>Name</em>}</li>
- *   <li>{@link org.xmdl.wdl.EnumLiteral#getOrdinal <em>Ordinal</em>}</li>
+ *   <li>{@link org.xmdl.wdl.EnumerationLiteral#getName <em>Name</em>}</li>
+ *   <li>{@link org.xmdl.wdl.EnumerationLiteral#getOrdinal <em>Ordinal</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.xmdl.wdl.WdlPackage#getEnumLiteral()
+ * @see org.xmdl.wdl.WdlPackage#getEnumerationLiteral()
  * @model
  * @generated
  */
-public interface EnumLiteral extends EObject
+public interface EnumerationLiteral extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -36,14 +36,14 @@ public interface EnumLiteral extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.xmdl.wdl.WdlPackage#getEnumLiteral_Name()
+   * @see org.xmdl.wdl.WdlPackage#getEnumerationLiteral_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.xmdl.wdl.EnumLiteral#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.xmdl.wdl.EnumerationLiteral#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -62,14 +62,14 @@ public interface EnumLiteral extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ordinal</em>' attribute.
    * @see #setOrdinal(int)
-   * @see org.xmdl.wdl.WdlPackage#getEnumLiteral_Ordinal()
+   * @see org.xmdl.wdl.WdlPackage#getEnumerationLiteral_Ordinal()
    * @model
    * @generated
    */
   int getOrdinal();
 
   /**
-   * Sets the value of the '{@link org.xmdl.wdl.EnumLiteral#getOrdinal <em>Ordinal</em>}' attribute.
+   * Sets the value of the '{@link org.xmdl.wdl.EnumerationLiteral#getOrdinal <em>Ordinal</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Ordinal</em>' attribute.
@@ -78,4 +78,4 @@ public interface EnumLiteral extends EObject
    */
   void setOrdinal(int value);
 
-} // EnumLiteral
+} // EnumerationLiteral

@@ -257,11 +257,11 @@ ruleType returns [EObject current=null]
 
     |
     { 
-        currentNode=createCompositeNode(grammarAccess.getTypeAccess().getEnumParserRuleCall_2(), currentNode); 
+        currentNode=createCompositeNode(grammarAccess.getTypeAccess().getEnumerationParserRuleCall_2(), currentNode); 
     }
-    this_Enum_2=ruleEnum
+    this_Enumeration_2=ruleEnumeration
     { 
-        $current = $this_Enum_2.current; 
+        $current = $this_Enumeration_2.current; 
         currentNode = currentNode.getParent();
     }
 
@@ -665,16 +665,16 @@ ruleAttribute returns [EObject current=null]
 
 
 
-// Entry rule entryRuleEnum
-entryRuleEnum returns [EObject current=null] :
-	{ currentNode = createCompositeNode(grammarAccess.getEnumRule(), currentNode); }
-	 iv_ruleEnum=ruleEnum 
-	 { $current=$iv_ruleEnum.current; } 
+// Entry rule entryRuleEnumeration
+entryRuleEnumeration returns [EObject current=null] :
+	{ currentNode = createCompositeNode(grammarAccess.getEnumerationRule(), currentNode); }
+	 iv_ruleEnumeration=ruleEnumeration 
+	 { $current=$iv_ruleEnumeration.current; } 
 	 EOF 
 ;
 
-// Rule Enum
-ruleEnum returns [EObject current=null] 
+// Rule Enumeration
+ruleEnumeration returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
     }
     @after { resetLookahead(); 
@@ -682,18 +682,18 @@ ruleEnum returns [EObject current=null]
     }:
 ('enum' 
     {
-        createLeafNode(grammarAccess.getEnumAccess().getEnumKeyword_0(), null); 
+        createLeafNode(grammarAccess.getEnumerationAccess().getEnumKeyword_0(), null); 
     }
 (	
 	
 	    lv_name_1=	RULE_ID
 	{
-		createLeafNode(grammarAccess.getEnumAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
+		createLeafNode(grammarAccess.getEnumerationAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
 	}
  
 	    {
 	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getEnumRule().getType().getClassifier());
+	            $current = factory.create(grammarAccess.getEnumerationRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode, $current);
 	        }
 	        
@@ -706,23 +706,23 @@ ruleEnum returns [EObject current=null]
 	
 )'{' 
     {
-        createLeafNode(grammarAccess.getEnumAccess().getLeftCurlyBracketKeyword_2(), null); 
+        createLeafNode(grammarAccess.getEnumerationAccess().getLeftCurlyBracketKeyword_2(), null); 
     }
 (	
 	
 	    
 	    { 
-	        currentNode=createCompositeNode(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_3_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getEnumerationAccess().getLiteralsEnumerationLiteralParserRuleCall_3_0(), currentNode); 
 	    }
-	    lv_literals_3=ruleEnumLiteral 
+	    lv_literals_3=ruleEnumerationLiteral 
 	    {
 	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getEnumRule().getType().getClassifier());
+	            $current = factory.create(grammarAccess.getEnumerationRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
 	        }
 	        
 	        try {
-	       		add($current, "literals", lv_literals_3, "EnumLiteral", currentNode);
+	       		add($current, "literals", lv_literals_3, "EnumerationLiteral", currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
@@ -731,7 +731,7 @@ ruleEnum returns [EObject current=null]
 	
 )*'}' 
     {
-        createLeafNode(grammarAccess.getEnumAccess().getRightCurlyBracketKeyword_4(), null); 
+        createLeafNode(grammarAccess.getEnumerationAccess().getRightCurlyBracketKeyword_4(), null); 
     }
 );
 
@@ -739,16 +739,16 @@ ruleEnum returns [EObject current=null]
 
 
 
-// Entry rule entryRuleEnumLiteral
-entryRuleEnumLiteral returns [EObject current=null] :
-	{ currentNode = createCompositeNode(grammarAccess.getEnumLiteralRule(), currentNode); }
-	 iv_ruleEnumLiteral=ruleEnumLiteral 
-	 { $current=$iv_ruleEnumLiteral.current; } 
+// Entry rule entryRuleEnumerationLiteral
+entryRuleEnumerationLiteral returns [EObject current=null] :
+	{ currentNode = createCompositeNode(grammarAccess.getEnumerationLiteralRule(), currentNode); }
+	 iv_ruleEnumerationLiteral=ruleEnumerationLiteral 
+	 { $current=$iv_ruleEnumerationLiteral.current; } 
 	 EOF 
 ;
 
-// Rule EnumLiteral
-ruleEnumLiteral returns [EObject current=null] 
+// Rule EnumerationLiteral
+ruleEnumerationLiteral returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
     }
     @after { resetLookahead(); 
@@ -758,12 +758,12 @@ ruleEnumLiteral returns [EObject current=null]
 	
 	    lv_name_0=	RULE_ID
 	{
-		createLeafNode(grammarAccess.getEnumLiteralAccess().getNameIDTerminalRuleCall_0_0(), "name"); 
+		createLeafNode(grammarAccess.getEnumerationLiteralAccess().getNameIDTerminalRuleCall_0_0(), "name"); 
 	}
  
 	    {
 	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getEnumLiteralRule().getType().getClassifier());
+	            $current = factory.create(grammarAccess.getEnumerationLiteralRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode, $current);
 	        }
 	        
@@ -776,18 +776,18 @@ ruleEnumLiteral returns [EObject current=null]
 	
 )'(' 
     {
-        createLeafNode(grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1(), null); 
+        createLeafNode(grammarAccess.getEnumerationLiteralAccess().getLeftParenthesisKeyword_1(), null); 
     }
 (	
 	
 	    lv_ordinal_2=	RULE_INT
 	{
-		createLeafNode(grammarAccess.getEnumLiteralAccess().getOrdinalINTTerminalRuleCall_2_0(), "ordinal"); 
+		createLeafNode(grammarAccess.getEnumerationLiteralAccess().getOrdinalINTTerminalRuleCall_2_0(), "ordinal"); 
 	}
  
 	    {
 	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getEnumLiteralRule().getType().getClassifier());
+	            $current = factory.create(grammarAccess.getEnumerationLiteralRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode, $current);
 	        }
 	        
@@ -800,7 +800,7 @@ ruleEnumLiteral returns [EObject current=null]
 	
 )')' 
     {
-        createLeafNode(grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_3(), null); 
+        createLeafNode(grammarAccess.getEnumerationLiteralAccess().getRightParenthesisKeyword_3(), null); 
     }
 );
 

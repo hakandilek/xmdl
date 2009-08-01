@@ -98,22 +98,22 @@ public interface WdlFactory extends EFactory
   Attribute createAttribute();
 
   /**
-   * Returns a new object of class '<em>Enum</em>'.
+   * Returns a new object of class '<em>Enumeration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Enum</em>'.
+   * @return a new object of class '<em>Enumeration</em>'.
    * @generated
    */
-  Enum createEnum();
+  Enumeration createEnumeration();
 
   /**
-   * Returns a new object of class '<em>Enum Literal</em>'.
+   * Returns a new object of class '<em>Enumeration Literal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Enum Literal</em>'.
+   * @return a new object of class '<em>Enumeration Literal</em>'.
    * @generated
    */
-  EnumLiteral createEnumLiteral();
+  EnumerationLiteral createEnumerationLiteral();
 
   /**
    * Returns the package supported by this factory.
