@@ -4,13 +4,13 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: org.xmdl.wdl.generator
 Bundle-Vendor: My Company
-Bundle-Version: 0.7.0.20090730_alpha1
+Bundle-Version: 0.7.0.20090802_alpha1
 Bundle-SymbolicName: org.xmdl.wdl.generator; singleton:=true
 Eclipse-RegisterBuddy: org.eclipse.xtext.log4j
 Bundle-ActivationPolicy: lazy
 Require-Bundle:  org.xmdl.wdl,org.eclipse.xpand,org.eclipse.xtend,org.
  eclipse.xtext,org.eclipse.emf.mwe.core,org.eclipse.emf.mwe.utils,org.
  eclipse.xtend.typesystem.emf
-Built-By: Hakan Dilek
+Built-By: ${dist.build.user}
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 

@@ -46,7 +46,7 @@ public class ExtensionUtils {
 	}
 
 	public static boolean isEnumeration(Type t) {
-		return t instanceof org.xmdl.wdl.Enum;
+		return t instanceof org.xmdl.wdl.Enumeration;
 	}
 
 	public static boolean isEmbed(Type t) {
@@ -199,5 +199,12 @@ public class ExtensionUtils {
 	            name = cn + "." + name;
 	    }
 	    return name;
-	}	
+	}
+	
+	public static boolean isFromMany(Attribute attrib) {
+		Attribute opposite = opposite(attrib);
+		if (opposite != null)
+			return opposite.isMany();
+		return false;
+	}
 }
