@@ -29,13 +29,13 @@ public class Order extends BaseObject implements Serializable, Cloneable {
 	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "F_NAME", length = "15")
+	@Column(name = "F_NAME", length = 15)
 	private String name;
 
-	@Column(name = "F_PRICETOTALS", length = "15")
+	@Column(name = "F_PRICETOTALS", length = 15)
 	private Double priceTotals;
 
-	@Column(name = "F_CREATEDATE", length = "15")
+	@Column(name = "F_CREATEDATE", length = 15)
 	private Date createDate;
 
 	@OneToOne(cascade = CascadeType.ALL)

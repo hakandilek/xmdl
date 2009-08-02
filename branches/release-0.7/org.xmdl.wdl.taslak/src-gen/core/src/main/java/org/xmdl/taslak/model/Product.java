@@ -29,14 +29,14 @@ public class Product extends BaseObject implements Serializable, Cloneable {
 	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "F_NAME", length = "15")
+	@Column(name = "F_NAME", length = 15)
 	private String name;
 
 	@ManyToOne()
 	@JoinColumn(name = "F_PRICE", nullable = false)
 	private Money price = new Money();
 
-	@Column(name = "F_PRODUCTTYPE", length = "15", columnDefinition = "integer", nullable = false)
+	@Column(name = "F_PRODUCTTYPE", length = 15, columnDefinition = "integer", nullable = false)
 	@Type(type = "org.xmdl.ida.lib.dao.hibernate.GenericEnumUserType", parameters = {
 			@Parameter(name = "enumClass", value = "ProductType"),
 			@Parameter(name = "identifierMethod", value = "toInt"),

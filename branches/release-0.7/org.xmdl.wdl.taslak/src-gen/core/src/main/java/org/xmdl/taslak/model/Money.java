@@ -19,10 +19,10 @@ import org.xmdl.mesken.model.*;
 @Embeddable
 public class Money extends BaseObject implements Serializable, Cloneable {
 
-	@Column(name = "F_AMOUNT", length = "15")
+	@Column(name = "F_AMOUNT", length = 15)
 	private Double amount;
 
-	@Column(name = "F_CURRENCY", length = "15")
+	@Column(name = "F_CURRENCY", length = 15)
 	private Currency currency;
 
 	public Money() {
