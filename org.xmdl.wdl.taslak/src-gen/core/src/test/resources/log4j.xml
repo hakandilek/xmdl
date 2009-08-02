@@ -1,13 +1,9 @@
-
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <appender class="org.apache.log4j.ConsoleAppender" name="CONSOLE">
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern"
-                value="%p - %C{1}.%M(%L) | %m%n"/>
+            <param name="ConversionPattern" value="%p - %C{1}.%M(%L) | %m%n"/>
         </layout>
     </appender>
 

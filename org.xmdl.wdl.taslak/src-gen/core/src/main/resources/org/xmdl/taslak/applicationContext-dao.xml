@@ -11,11 +11,11 @@
                 <value>org.xmdl.mesken.model.Role</value>
                 <!-- Application beans -->
 
-				<value>org.xmdl.taslak.model.Order</value>
-				<value>org.xmdl.taslak.model.OrderElement</value>
-				<value>org.xmdl.taslak.model.Product</value>
-				<value>org.xmdl.taslak.model.Profile</value>
-				<value>org.xmdl.taslak.model.Supplier</value> 
+				<value>�this.project.basePackage�.model.Order</value>
+				<value>�this.project.basePackage�.model.OrderElement</value>
+				<value>�this.project.basePackage�.model.Product</value>
+				<value>�this.project.basePackage�.model.Profile</value>
+				<value>�this.project.basePackage�.model.Supplier</value> 
             </list>
         </property>
         <property name="hibernateProperties">
@@ -43,23 +43,23 @@
     </bean>
 
 
-    <bean class="org.xmdl.taslak.dao.hibernate.OrderDAOHibernate" id="orderDAO">
+    <bean class="�this.project.basePackage�.dao.hibernate.OrderDAOHibernate" id="orderDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean class="org.xmdl.taslak.dao.hibernate.OrderElementDAOHibernate" id="orderElementDAO">
+    <bean class="�this.project.basePackage�.dao.hibernate.OrderElementDAOHibernate" id="orderElementDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean class="org.xmdl.taslak.dao.hibernate.ProductDAOHibernate" id="productDAO">
+    <bean class="�this.project.basePackage�.dao.hibernate.ProductDAOHibernate" id="productDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean class="org.xmdl.taslak.dao.hibernate.ProfileDAOHibernate" id="profileDAO">
+    <bean class="�this.project.basePackage�.dao.hibernate.ProfileDAOHibernate" id="profileDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean class="org.xmdl.taslak.dao.hibernate.SupplierDAOHibernate" id="supplierDAO">
+    <bean class="�this.project.basePackage�.dao.hibernate.SupplierDAOHibernate" id="supplierDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
  
@@ -70,8 +70,8 @@
         
         eg... 'fooDao'
     
-    <bean id="fooDao" class="org.xmdl.taslak.dao.hibernate.GenericDaoHibernate">
-        <constructor-arg value="org.xmdl.taslak.model.Foo"/>
+    <bean id="fooDao" class="�this.project.basePackage�.dao.hibernate.GenericDaoHibernate">
+        <constructor-arg value="�this.project.basePackage�.model.Foo"/>
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
