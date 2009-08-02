@@ -108,9 +108,9 @@
             «IF !attribute.isReference()»
         <column>«attribute.columnName()»</column>
             «ENDIF»
-            <ida:isEntityReference attribute="$field/xAttribute">
+            «IF attribute.isFromMany()»
         <column>«attribute.columnName()»</column>
-            </ida:isEntityReference>
+            «ENDIF»
 		    «IF attribute.isEmbed()»
 				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
             		«IF !attrib.isReference()»
@@ -126,13 +126,13 @@
             «IF !attribute.isReference()»
             <value description="«attribute.columnName()»"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="1"/></value>
             «ENDIF»
-            <ida:isEntityReference attribute="$field/xAttribute">
+            «IF attribute.isFromMany()»
             <value description="«attribute.columnName()»">1</value>
-            </ida:isEntityReference>
+            «ENDIF»
 		    «IF attribute.isEmbed()»
 				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
             		«IF !attrib.isReference()»
-			<value description="«attrib.columnName()»"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="1"/></value>
+			<value description="«attrib.columnName()»">«attribute.randomize("1", "yyyy-MM-dd")»</value>
 		    		«ENDIF»
 				«ENDFOREACH» 
 		    «ENDIF»
@@ -145,13 +145,13 @@
             «IF !attribute.isReference()»
             <value description="«attribute.columnName()»"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="2"/></value>
             «ENDIF»
-            <ida:isEntityReference attribute="$field/xAttribute">
+            «IF attribute.isFromMany()»
             <value description="«attribute.columnName()»">2</value>
-            </ida:isEntityReference>
+            «ENDIF»
 		    «IF attribute.isEmbed()»
 				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
             		«IF !attrib.isReference()»
-			<value description="«attrib.columnName()»"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="2"/></value>
+			<value description="«attrib.columnName()»">«attribute.randomize("2", "yyyy-MM-dd")»</value>
 		    		«ENDIF»
 				«ENDFOREACH» 
 		    «ENDIF»
@@ -164,22 +164,21 @@
             «IF !attribute.isReference()»
             <value description="«attribute.columnName()»"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="3"/></value>
             «ENDIF»
-            <ida:isEntityReference attribute="$field/xAttribute">
+            «IF attribute.isFromMany()»
             <value description="«attribute.columnName()»">3</value>
-            </ida:isEntityReference>
+            «ENDIF»
 		    «IF attribute.isEmbed()»
 				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
             		«IF !attrib.isReference()»
-			<value description="«attrib.columnName()»"><tu:randomPlain attribute="$attrib" format="yyyy-MM-dd" variant="3"/></value>
+			<value description="«attrib.columnName()»">«attribute.randomize("3", "yyyy-MM-dd")»</value>
 		    		«ENDIF»
 				«ENDFOREACH» 
 		    «ENDIF»
         «ENDFOREACH»
         </row>
     </table>
-    «ENDIF»
-    
-    <c:if test="isAssociation($dTable)">
+
+«REM»association table here«ENDREM»    
     <table name="«entity.tableName()»">
         «FOREACH entity.attributes AS attribute»
         <column>«attribute.columnName()»</column>
@@ -197,10 +196,8 @@
         «ENDFOREACH»
         </row>
     </table>
-    «ENDIF»
     
     <!--«entity.name»-END-->
-    «ENDIF»
     </xd:iterateTables>
 «ENDFOREACH»
 </dataset>

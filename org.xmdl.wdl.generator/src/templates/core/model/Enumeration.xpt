@@ -1,6 +1,6 @@
 «IMPORT wdl»
 
-«DEFINE entity FOR wdl::Enum»
+«DEFINE entity FOR wdl::Enumeration»
   «FILE "core/src/main/java/org/xmdl/taslak/model/"+ this.name + ".java"»
 package org.xmdl.taslak.model;
 

@@ -18,7 +18,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.EList;
 import org.xmdl.wdl.Attribute;
-import org.xmdl.wdl.EnumLiteral;
+import org.xmdl.wdl.Enumeration;
+import org.xmdl.wdl.EnumerationLiteral;
 import org.xmdl.wdl.Type;
 
 public class TestUtils {
@@ -66,8 +67,8 @@ public class TestUtils {
 	public String randomValueAsString(Attribute attrib, String variant) {
 		String plain = "";
 		Object value = randomValuePlain(attrib, variant);
-		if (value instanceof EnumLiteral) {
-			EnumLiteral lit = (EnumLiteral) value;
+		if (value instanceof EnumerationLiteral) {
+			EnumerationLiteral lit = (EnumerationLiteral) value;
 			plain = lit.getName();
 		} else {
 			plain = value + "";
@@ -143,11 +144,11 @@ public class TestUtils {
 				break;
 			}
 		} else {
-			if (type instanceof org.xmdl.wdl.Enum) {
-				org.xmdl.wdl.Enum enumer = (org.xmdl.wdl.Enum) type;
-				List<EnumLiteral> literals = enumer.getLiterals();
+			if (type instanceof Enumeration) {
+				Enumeration enumer = (Enumeration) type;
+				List<EnumerationLiteral> literals = enumer.getLiterals();
 				logger.debug("literals:" + literals);
-				EnumLiteral literal = (EnumLiteral) utils
+				EnumerationLiteral literal = (EnumerationLiteral) utils
 						.randomObject(literals);
 				result = literal;
 			}
@@ -165,8 +166,8 @@ public class TestUtils {
 		if (file == null)
 			return;
 		
-		if (value instanceof EnumLiteral) {
-			EnumLiteral lit = (EnumLiteral) value;
+		if (value instanceof EnumerationLiteral) {
+			EnumerationLiteral lit = (EnumerationLiteral) value;
 			value = lit.getOrdinal();
 		}
 
@@ -218,16 +219,16 @@ public class TestUtils {
 			
 			//special conversion for enumeration literals value -> literal
 			Type type = attrib.getType();
-			if (type instanceof org.xmdl.wdl.Enum) {
+			if (type instanceof Enumeration) {
 				Integer i = null;
 				try {
 					i = Integer.parseInt(value+"");
 				} catch (NumberFormatException e) {
 					return value;
 				}
-				org.xmdl.wdl.Enum enumer = (org.xmdl.wdl.Enum) type;
-				EList<EnumLiteral> lits = enumer.getLiterals();
-				for (EnumLiteral lit : lits) {
+				Enumeration enumer = (Enumeration) type;
+				EList<EnumerationLiteral> lits = enumer.getLiterals();
+				for (EnumerationLiteral lit : lits) {
 					if (i == lit.getOrdinal()) {
 						value = lit;
 						break;
@@ -236,7 +237,7 @@ public class TestUtils {
 			}
 			return value;
 		} catch (IOException e) {
-			logger.error("Error reading properties:" + file, e);
+			logger.debug("Error reading properties:" + file +". This is probably the first run.", e);
 		}
 
 		return null;

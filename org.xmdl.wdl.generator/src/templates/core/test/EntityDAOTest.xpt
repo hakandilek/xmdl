@@ -5,13 +5,13 @@
 
 «DEFINE entity FOR wdl::Entity»
   «FILE "core/src/test/java/org/xmdl/taslak/dao/"+ this.name + "DAOTest.java"»
-package org.xmdl.taslak.service;
+package «this.basePackageName()».dao;
 
 import java.util.*;
 import org.springframework.dao.DataAccessException;
 import org.xmdl.ida.lib.test.BaseDaoTestCase;
-import org.xmdl.taslak.model.*;
-import org.xmdl.taslak.model.search.*;
+import «this.basePackageName()».model.*;
+import «this.basePackageName()».model.search.*;
 
 /**
  *
@@ -32,10 +32,10 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
 
 «FOREACH this.attributes AS attribute -»
     «IF!attribute.isReference()»
-        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.randomize("1")»);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
     «ENDIF»
     «IF attribute.isEmbed()-»
-        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»«attribute.type.name»();
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
         «attribute.name.toFirstLower()».setId(1L);
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
     «ENDIF-»
@@ -43,7 +43,7 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
         «FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
             «IF !attrib.isReference()-»
-        «attribute.name.toFirstLower()».set«attrib.name.toFirstUpper()»(<tu:randomWrap attribute="$attrib" variant="1"/>);
+        «attribute.name.toFirstLower()».set«attrib.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
             «ENDIF-»
     		«IF attribute.isEmbed()-»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
@@ -63,7 +63,7 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
         assertNotNull(«this.name.toFirstLower()».getId());
 «FOREACH this.attributes AS attribute-»
     «IF!attribute.isReference()-»
-        assertEquals(«attribute.randomize("1")», «this.name.toFirstLower()».get«attribute.name.toFirstUpper()»());
+        assertEquals(«attribute.randomizeWrap("1")», «this.name.toFirstLower()».get«attribute.name.toFirstUpper()»());
     «ENDIF-»
 «ENDFOREACH-» 
 
@@ -85,10 +85,10 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
 «FOREACH this.attributes AS attribute-»
     «IF!attribute.isReference()-»
 	    «IF attribute.isComparable()-»
-        search.set«attribute.name.toFirstUpper()»Min(«attribute.randomize("1")»);
-        search.set«attribute.name.toFirstUpper()»Max(«attribute.randomize("1")»);
+        search.set«attribute.name.toFirstUpper()»Min(«attribute.randomizeWrap("1")»);
+        search.set«attribute.name.toFirstUpper()»Max(«attribute.randomizeWrap("1")»);
 	    «ELSE-»
-        search.set«attribute.name.toFirstUpper()»(«attribute.randomize("1")»);
+        search.set«attribute.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
 	    «ENDIF-»
     «ENDIF-»
 «ENDFOREACH-»
@@ -102,7 +102,7 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
         «this.name» «this.name.toFirstLower()» = new «this.name»();
 «FOREACH this.attributes AS attribute-»
     «IF!attribute.isReference()»
-        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.randomize("1")»);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
     «ENDIF»
     «IF attribute.isEmbed()-»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
@@ -113,7 +113,7 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
         «FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
             «IF !attrib.isReference()-»
-        «attribute.name.toFirstLower()».set«attrib.name.toFirstUpper()»(<tu:randomWrap attribute="$attrib" variant="1"/>);
+        «attribute.name.toFirstLower()».set«attrib.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
             «ENDIF-»
     	«IF attribute.isEmbed()-»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();

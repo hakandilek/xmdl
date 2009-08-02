@@ -3,6 +3,9 @@
  */
 package org.xmdl.wdl.gen.utils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import org.eclipse.emf.common.util.EList;
@@ -10,6 +13,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.xmdl.wdl.Attribute;
 import org.xmdl.wdl.Embed;
 import org.xmdl.wdl.Entity;
+import org.xmdl.wdl.Enumeration;
+import org.xmdl.wdl.EnumerationLiteral;
+import org.xmdl.wdl.Model;
 import org.xmdl.wdl.Project;
 import org.xmdl.wdl.Type;
 
@@ -203,7 +209,7 @@ public class IDAExtensionUtils extends ExtensionUtils {
 	public static String columnSizeString(Attribute attribute) {
 		return "\"" + columnSize(attribute) + "\"";
 	}
-		
+
 	public static int columnSize(Attribute attribute) {
 		// TODO:
 		return 15;
@@ -233,7 +239,98 @@ public class IDAExtensionUtils extends ExtensionUtils {
 		return basePackage.replaceAll("\\.", "/");
 	}
 
+	public static String basePackageName(Type t) {
+		EObject container = t.eContainer();
+		if (container instanceof Model) {
+			Model model = (Model) container;
+			Project project = model.getProject();
+			return project.getBasePackage();
+		}
+		return null;
+	}
+	
 	public static String randomize(Attribute a, String variant) {
 		return TestUtils.INSTANCE.randomValueAsString(a, variant);
 	}
+
+	public static String randomizeWrap(Attribute attrib, String variant) {
+		String val = TestUtils.INSTANCE.randomValueAsString(attrib, variant);
+		Type type = attrib.getType();
+		
+		BasicType basicType = ExtensionUtils.basicType(type);
+		if (basicType != null)
+		{
+			switch (basicType) {
+			case STRING:
+				val = "\"" + val + "\"";
+				break;
+			case DOUBLE:
+				val = "new Double(" + val + ")";
+				break;
+			case FLOAT:
+				val = "new Float(" + val + ")";
+				break;
+			case INTEGER:
+				val = "new Integer(" + val + ")";
+				break;
+			case LONG:
+				val = "new Long(" + val + "L)";
+				break;
+			case BOOLEAN:
+				val = "new Boolean(" + val + ")";
+				break;
+			case DATE:
+				long l = 0;
+				try {
+					l = Long.parseLong(val + "");
+				} catch (NumberFormatException e) {
+					// ignore
+				}
+				// 946681200000L = 1st Jan 2000
+				val = "new Date(" + (946681200000L + l) + "L)";
+				break;
+			default:
+				break;
+			}
+		} else {
+			if (type instanceof Enumeration) {
+				Enumeration enumer = (Enumeration) type;
+				val = enumer.getName() + "." + val;
+			}
+		}
+		
+		return val;
+	}
+
+	public static String randomize(Attribute attribute, String variant,
+			String format) {
+		Type type = attribute.getType();
+		Object value = TestUtils.INSTANCE.randomValuePlain(attribute, variant);
+		String plain = "";
+		if (value instanceof EnumerationLiteral) {
+			EnumerationLiteral lit = (EnumerationLiteral) value;
+			plain = lit.getOrdinal() + "";
+		} else if (BasicType.DATE.is(type)) {
+
+			DateFormat f = null;
+			if (format != null) {
+				f = new SimpleDateFormat(format);
+			} else {
+				f = new SimpleDateFormat("dd.MM.yyyy");
+			}
+			long l = 0;
+			try {
+				l = Long.parseLong(value + "");
+			} catch (NumberFormatException e) {
+				// ignore
+			}
+			// 946681200000L = 1st Jan 2000
+			Date date = new Date(946681200000L + l);
+			return f.format(date);
+		} else {
+			plain = value + "";
+		}
+		return plain;
+	}
+
 }

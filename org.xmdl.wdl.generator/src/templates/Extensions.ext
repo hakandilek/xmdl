@@ -28,3 +28,4 @@ boolean isChild(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isChild(org
 
 Type master(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.master(org.xmdl.wdl.Type);
 
+boolean isFromMany(Attribute att) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isFromMany(org.xmdl.wdl.Attribute);

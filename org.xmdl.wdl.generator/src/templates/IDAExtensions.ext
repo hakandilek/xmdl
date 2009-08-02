@@ -18,8 +18,22 @@ String basePackagePath(Model m) : m.project.basePackagePath();
 
 String basePackagePath(Project p) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.basePackagePath(org.xmdl.wdl.Project);
 
+String basePackageName(Model m) : m.project.basePackageName();
+
+String basePackageName(Project p) : p.basePackage;
+
+String basePackageName(Type t) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.basePackageName(org.xmdl.wdl.Type);
+
 String randomize(Attribute a, String variant) : internalRandomize(a, variant); 
+
+String randomize(Attribute a, String variant, String format) : internalRandomize(a, variant, format); 
+
+String randomizeWrap(Attribute a, String variant) : internalRandomizeWrap(a, variant); 
 
 // -------------------------------- INTERNAL --------------------------------   
 
 String internalRandomize(Attribute a, String variant) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.randomize(org.xmdl.wdl.Attribute, java.lang.String);
+
+String internalRandomize(Attribute a, String variant, String format) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.randomize(org.xmdl.wdl.Attribute, java.lang.String, java.lang.String);
+
+String internalRandomizeWrap(Attribute a, String variant) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.randomizeWrap(org.xmdl.wdl.Attribute, java.lang.String);

@@ -5,14 +5,14 @@
 
 «DEFINE entity FOR wdl::Entity»
   «FILE "core/src/test/java/org/xmdl/taslak/service/impl/"+ this.name + "ManagerImplTest.java"»
-package org.xmdl.taslak.service.impl;
+package «this.basePackageName()».service.impl;
 
 import java.util.*;
-import org.xmdl.taslak.model.*;
-import org.xmdl.taslak.model.search.*;
+import «this.basePackageName()».model.*;
+import «this.basePackageName()».model.search.*;
 import org.jmock.Mock;
 import org.xmdl.ida.lib.test.BaseManagerMockTestCase;
-import org.xmdl.taslak.dao.*;
+import «this.basePackageName()».dao.*;
 
 /**
  *
