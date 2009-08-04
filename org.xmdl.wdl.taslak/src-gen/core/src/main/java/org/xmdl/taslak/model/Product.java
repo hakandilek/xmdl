@@ -32,10 +32,8 @@ public class Product extends BaseObject implements Serializable, Cloneable {
 	@Column(name = "F_NAME", length = 15)
 	private String name;
 
-	@ManyToOne()
-	@JoinColumn(name = "F_PRICE", nullable = false)
+	@Embedded
 	private Money price = new Money();
-
 	@Column(name = "F_PRODUCTTYPE", length = 15, columnDefinition = "integer", nullable = false)
 	@Type(type = "org.xmdl.ida.lib.dao.hibernate.GenericEnumUserType", parameters = {
 			@Parameter(name = "enumClass", value = "ProductType"),
@@ -43,12 +41,13 @@ public class Product extends BaseObject implements Serializable, Cloneable {
 			@Parameter(name = "valueOfMethod", value = "fromInt")})
 	private ProductType productType;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private OrderElement orderElements;
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "product")
+	private Set<OrderElement> orderElements;
 
-	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "products")
-	private Supplier suppliers;
+	@ManyToMany(targetEntity = Supplier.class, cascade = {CascadeType.PERSIST,
+			CascadeType.MERGE})
+	@JoinTable(name = "TBL_PRODUCTSUPPLIER", joinColumns = {@JoinColumn(name = "F_PRODUCTS")}, inverseJoinColumns = {@JoinColumn(name = "F_SUPPLIERS")})
+	private Set<Supplier> suppliers;
 
 	public Product() {
 	}
@@ -85,19 +84,19 @@ public class Product extends BaseObject implements Serializable, Cloneable {
 		this.productType = productType;
 	}
 
-	public OrderElement getOrderElements() {
+	public Set<OrderElement> getOrderElements() {
 		return orderElements;
 	}
 
-	public void setOrderElements(OrderElement orderElements) {
+	public void setOrderElements(Set<OrderElement> orderElements) {
 		this.orderElements = orderElements;
 	}
 
-	public Supplier getSuppliers() {
+	public Set<Supplier> getSuppliers() {
 		return suppliers;
 	}
 
-	public void setSuppliers(Supplier suppliers) {
+	public void setSuppliers(Set<Supplier> suppliers) {
 		this.suppliers = suppliers;
 	}
 

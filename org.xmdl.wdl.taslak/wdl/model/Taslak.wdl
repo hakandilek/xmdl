@@ -1,5 +1,5 @@
 project {
-	projectName :"org.xmdl.wdl.taslak"
+	projectName :"taslak"
 	basePackage : "org.xmdl.taslak"
 }
 

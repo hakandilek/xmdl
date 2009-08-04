@@ -5,10 +5,10 @@
         <mapping class="org.xmdl.mesken.model.User"/>
         <mapping class="org.xmdl.mesken.model.Role"/>
 
-        <mapping class="?this.project.basePackage?.model.Order"/>
-        <mapping class="?this.project.basePackage?.model.OrderElement"/>
-        <mapping class="?this.project.basePackage?.model.Product"/>
-        <mapping class="?this.project.basePackage?.model.Profile"/>
-        <mapping class="?this.project.basePackage?.model.Supplier"/> 
+        <mapping class="org.xmdl.taslak.model.Order"/>
+        <mapping class="org.xmdl.taslak.model.OrderElement"/>
+        <mapping class="org.xmdl.taslak.model.Product"/>
+        <mapping class="org.xmdl.taslak.model.Profile"/>
+        <mapping class="org.xmdl.taslak.model.Supplier"/> 
     </session-factory>
 </hibernate-configuration>

@@ -32,8 +32,8 @@ public class Supplier extends BaseObject implements Serializable, Cloneable {
 	@Column(name = "F_NAME", length = 15)
 	private String name;
 
-	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "suppliers")
-	private Product products;
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "suppliers", targetEntity = Product.class)
+	private Set<Product> products;
 
 	public Supplier() {
 	}
@@ -54,11 +54,11 @@ public class Supplier extends BaseObject implements Serializable, Cloneable {
 		this.name = name;
 	}
 
-	public Product getProducts() {
+	public Set<Product> getProducts() {
 		return products;
 	}
 
-	public void setProducts(Product products) {
+	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
 
