@@ -31,16 +31,13 @@ public class Order extends BaseObject implements Serializable, Cloneable {
 
 	@Column(name = "F_NAME", length = 15)
 	private String name;
-
 	@Column(name = "F_PRICETOTALS", length = 15)
 	private Double priceTotals;
-
 	@Column(name = "F_CREATEDATE", length = 15)
 	private Date createDate;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private OrderElement orderElements;
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "order")
+	private Set<OrderElement> orderElements;
 
 	public Order() {
 	}
@@ -77,11 +74,11 @@ public class Order extends BaseObject implements Serializable, Cloneable {
 		this.createDate = createDate;
 	}
 
-	public OrderElement getOrderElements() {
+	public Set<OrderElement> getOrderElements() {
 		return orderElements;
 	}
 
-	public void setOrderElements(OrderElement orderElements) {
+	public void setOrderElements(Set<OrderElement> orderElements) {
 		this.orderElements = orderElements;
 	}
 

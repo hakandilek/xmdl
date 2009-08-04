@@ -26,17 +26,8 @@ public class ProductDAOTest extends BaseDaoTestCase {
 		product.setName("JcTaP7bbMkXAn c");
 
 		Money price = new Money();
-		price.setId(1L);
-		product.setPrice(price);
-		Money price = new Money();
 		price.setAmount(null);
-		Money price = new Money();
-		price.setId(1L);
-		product.setPrice(price);
 		price.setCurrency(null);
-		Money price = new Money();
-		price.setId(1L);
-		product.setPrice(price);
 		product.setPrice(price);
 
 		product.setProductType(ProductType.INTERMEDIATEPRODUCT);
@@ -81,17 +72,8 @@ public class ProductDAOTest extends BaseDaoTestCase {
 		product.setName("JcTaP7bbMkXAn c");
 
 		Money price = new Money();
-		price.setId(1L);
-		product.setPrice(price);
-		Money price = new Money();
 		price.setAmount(null);
-		Money price = new Money();
-		price.setId(1L);
-		product.setPrice(price);
 		price.setCurrency(null);
-		Money price = new Money();
-		price.setId(1L);
-		product.setPrice(price);
 		product.setPrice(price);
 
 		product.setProductType(ProductType.INTERMEDIATEPRODUCT);
