@@ -121,7 +121,6 @@ public class ExtensionUtils {
 	public static AssociationType associationType(Attribute attribute) {
 		if (attribute != null) {
 			Attribute ref = opposite(attribute);
-			System.out.println("ref:"+ref);
 			if (attribute.isMany()) {
 				if (ref != null && ref.isMany())
 					return AssociationType.MANY_TO_MANY;
