@@ -29,10 +29,9 @@ entity Order {
     OrderElement* orderElements
 }
 
-entity OrderElement {
-    Long quantity
-    Order order
-    Product product
+entity Supplier {
+	String name
+	Product* products
 }
 
 entity Product {
@@ -43,13 +42,13 @@ entity Product {
 	Supplier* suppliers
 }
 
+entity OrderElement {
+    Long quantity
+    Order order
+    Product product
+}
 
 entity Profile {
     User user
     String privatePhone
-}
-
-entity Supplier {
-	String name
-	Product* products
 }

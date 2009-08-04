@@ -44,9 +44,7 @@ public class Product extends BaseObject implements Serializable, Cloneable {
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "product")
 	private Set<OrderElement> orderElements;
 
-	@ManyToMany(targetEntity = Supplier.class, cascade = {CascadeType.PERSIST,
-			CascadeType.MERGE})
-	@JoinTable(name = "TBL_PRODUCTSUPPLIER", joinColumns = {@JoinColumn(name = "F_PRODUCTS")}, inverseJoinColumns = {@JoinColumn(name = "F_SUPPLIERS")})
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "products", targetEntity = Supplier.class)
 	private Set<Supplier> suppliers;
 
 	public Product() {

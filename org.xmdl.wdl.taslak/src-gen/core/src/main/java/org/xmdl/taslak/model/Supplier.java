@@ -32,7 +32,9 @@ public class Supplier extends BaseObject implements Serializable, Cloneable {
 	@Column(name = "F_NAME", length = 15)
 	private String name;
 
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "suppliers", targetEntity = Product.class)
+	@ManyToMany(targetEntity = Product.class, cascade = {CascadeType.PERSIST,
+			CascadeType.MERGE})
+	@JoinTable(name = "TBL_SUPPLIERPRODUCT", joinColumns = {@JoinColumn(name = "F_SUPPLIERS")}, inverseJoinColumns = {@JoinColumn(name = "F_PRODUCTS")})
 	private Set<Product> products;
 
 	public Supplier() {

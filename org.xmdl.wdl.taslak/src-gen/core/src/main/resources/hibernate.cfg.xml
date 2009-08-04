@@ -6,9 +6,9 @@
         <mapping class="org.xmdl.mesken.model.Role"/>
 
         <mapping class="org.xmdl.taslak.model.Order"/>
-        <mapping class="org.xmdl.taslak.model.OrderElement"/>
+        <mapping class="org.xmdl.taslak.model.Supplier"/>
         <mapping class="org.xmdl.taslak.model.Product"/>
-        <mapping class="org.xmdl.taslak.model.Profile"/>
-        <mapping class="org.xmdl.taslak.model.Supplier"/> 
+        <mapping class="org.xmdl.taslak.model.OrderElement"/>
+        <mapping class="org.xmdl.taslak.model.Profile"/> 
     </session-factory>
 </hibernate-configuration>

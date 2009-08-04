@@ -12,10 +12,10 @@
                 <!-- Application beans -->
 
 				<value>org.xmdl.taslak.model.Order</value>
-				<value>org.xmdl.taslak.model.OrderElement</value>
+				<value>org.xmdl.taslak.model.Supplier</value>
 				<value>org.xmdl.taslak.model.Product</value>
-				<value>org.xmdl.taslak.model.Profile</value>
-				<value>org.xmdl.taslak.model.Supplier</value> 
+				<value>org.xmdl.taslak.model.OrderElement</value>
+				<value>org.xmdl.taslak.model.Profile</value> 
             </list>
         </property>
         <property name="hibernateProperties">
@@ -47,7 +47,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean class="org.xmdl.taslak.dao.hibernate.OrderElementDAOHibernate" id="orderElementDAO">
+    <bean class="org.xmdl.taslak.dao.hibernate.SupplierDAOHibernate" id="supplierDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
@@ -55,11 +55,11 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean class="org.xmdl.taslak.dao.hibernate.ProfileDAOHibernate" id="profileDAO">
+    <bean class="org.xmdl.taslak.dao.hibernate.OrderElementDAOHibernate" id="orderElementDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean class="org.xmdl.taslak.dao.hibernate.SupplierDAOHibernate" id="supplierDAO">
+    <bean class="org.xmdl.taslak.dao.hibernate.ProfileDAOHibernate" id="profileDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
  
