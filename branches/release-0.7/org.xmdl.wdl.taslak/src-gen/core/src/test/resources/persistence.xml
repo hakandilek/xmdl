@@ -8,13 +8,13 @@
     
         <class>org.xmdl.taslak.model.Order</class>
     
-        <class>org.xmdl.taslak.model.OrderElement</class>
+        <class>org.xmdl.taslak.model.Supplier</class>
     
         <class>org.xmdl.taslak.model.Product</class>
     
-        <class>org.xmdl.taslak.model.Profile</class>
+        <class>org.xmdl.taslak.model.OrderElement</class>
     
-        <class>org.xmdl.taslak.model.Supplier</class>
+        <class>org.xmdl.taslak.model.Profile</class>
     
     </persistence-unit>
 
