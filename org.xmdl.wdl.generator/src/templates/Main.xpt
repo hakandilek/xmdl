@@ -35,4 +35,5 @@
 	«EXPAND core::testrsc::Log4jXml::model FOR this»
 	«EXPAND core::testrsc::MailProperties::model FOR this»
 	«EXPAND core::testrsc::PersistenceXml::model FOR this»
+	«EXPAND core::testrsc::SampleDataXml::model FOR this»
 «ENDDEFINE»

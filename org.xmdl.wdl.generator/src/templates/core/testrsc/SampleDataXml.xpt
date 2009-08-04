@@ -4,10 +4,8 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "core/src/test/resources/sample-data.xml"»
-<?xml version="1.0" encoding="UTF-8"?>
+«FILE "core/src/test/resources/sample-data.xml" »<?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-
     <table name="TBL_USER">
         <column>id</column>
         <column>username</column>
@@ -178,7 +176,7 @@
         </row>
     </table>
 
-«REM»association table here«ENDREM»    
+«REM»association tables here    
     <table name="«entity.tableName()»">
         «FOREACH entity.attributes AS attribute»
         <column>«attribute.columnName()»</column>
@@ -199,6 +197,8 @@
     
     <!--«entity.name»-END-->
     </xd:iterateTables>
+«ENDREM »
+
 «ENDFOREACH»
 </dataset>
 «ENDFILE»
