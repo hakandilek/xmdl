@@ -97,84 +97,85 @@
         </row>
     </table>
 
-    «FOREACH this.types.typeSelect(Entity) AS entity»
+    «FOREACH this.types.typeSelect(Entity) AS entity -»
 
     <!--«entity.name» -START-->
     <table name="«entity.tableName()»">
         <column>id</column>
-        «FOREACH entity.attributes AS attribute»
-            «IF !attribute.isReference()»
+        «FOREACH entity.attributes AS attribute-»
+            «IF !attribute.isReference()-»
         <column>«attribute.columnName()»</column>
-            «ENDIF»
-            «IF attribute.isFromMany()»
+            «ENDIF-»
+            «IF attribute.isFromMany()-»
         <column>«attribute.columnName()»</column>
-            «ENDIF»
-		    «IF attribute.isEmbed()»
-				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
-            		«IF !attrib.isReference()»
+            «ENDIF-»
+		    «IF attribute.isEmbed()-»
+				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib -»
+            		«IF !attrib.isReference() -»
 		<column>«attrib.columnName()»</column>
-		    		«ENDIF»
-				«ENDFOREACH» 
-		    «ENDIF»
-        «ENDFOREACH»
+		    		«ENDIF-»
+				«ENDFOREACH-» 
+		    «ENDIF-»
+        «ENDFOREACH-»
 
         <row>
             <value description="id">1</value>
-        «FOREACH entity.attributes AS attribute»
-            «IF !attribute.isReference()»
-            <value description="«attribute.columnName()»"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="1"/></value>
-            «ENDIF»
-            «IF attribute.isFromMany()»
+        «FOREACH entity.attributes AS attribute-»
+            «IF !attribute.isReference()-»
+            <value description="«attribute.columnName()»">«attribute.randomize("1", "yyyy-MM-dd")»</value>
+            «ENDIF-»
+            «IF attribute.isFromMany()-»
             <value description="«attribute.columnName()»">1</value>
-            «ENDIF»
-		    «IF attribute.isEmbed()»
-				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
-            		«IF !attrib.isReference()»
+            «ENDIF-»
+		    «IF attribute.isEmbed()-»
+				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
+            		«IF !attrib.isReference()-»
 			<value description="«attrib.columnName()»">«attribute.randomize("1", "yyyy-MM-dd")»</value>
-		    		«ENDIF»
-				«ENDFOREACH» 
-		    «ENDIF»
-        «ENDFOREACH»
+		    		«ENDIF-»
+				«ENDFOREACH-» 
+		    «ENDIF-»
+        «ENDFOREACH-»
         </row>
 
         <row>
             <value description="id">2</value>
-        «FOREACH entity.attributes AS attribute»
-            «IF !attribute.isReference()»
-            <value description="«attribute.columnName()»"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="2"/></value>
-            «ENDIF»
-            «IF attribute.isFromMany()»
+        «FOREACH entity.attributes AS attribute-»
+            «IF !attribute.isReference()-»
+            <value description="«attribute.columnName()»">«attribute.randomize("2", "yyyy-MM-dd")»</value>
+            «ENDIF-»
+            «IF attribute.isFromMany()-»
             <value description="«attribute.columnName()»">2</value>
-            «ENDIF»
-		    «IF attribute.isEmbed()»
-				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
-            		«IF !attrib.isReference()»
+            «ENDIF-»
+		    «IF attribute.isEmbed()-»
+				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
+            		«IF !attrib.isReference()-»
 			<value description="«attrib.columnName()»">«attribute.randomize("2", "yyyy-MM-dd")»</value>
-		    		«ENDIF»
-				«ENDFOREACH» 
-		    «ENDIF»
-        «ENDFOREACH»
+		    		«ENDIF-»
+				«ENDFOREACH-» 
+		    «ENDIF-»
+        «ENDFOREACH-»
         </row>
 
         <row>
             <value description="id">3</value>
-        «FOREACH entity.attributes AS attribute»
-            «IF !attribute.isReference()»
-            <value description="«attribute.columnName()»"><tu:randomPlain attribute="$field/xAttribute" format="yyyy-MM-dd" variant="3"/></value>
-            «ENDIF»
-            «IF attribute.isFromMany()»
+        «FOREACH entity.attributes AS attribute-»
+            «IF !attribute.isReference()-»
+            <value description="«attribute.columnName()»">«attribute.randomize("3", "yyyy-MM-dd")»</value>
+            «ENDIF-»
+            «IF attribute.isFromMany()-»
             <value description="«attribute.columnName()»">3</value>
-            «ENDIF»
-		    «IF attribute.isEmbed()»
-				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib»
-            		«IF !attrib.isReference()»
+            «ENDIF-»
+		    «IF attribute.isEmbed()-»
+				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
+            		«IF !attrib.isReference()-»
 			<value description="«attrib.columnName()»">«attribute.randomize("3", "yyyy-MM-dd")»</value>
-		    		«ENDIF»
-				«ENDFOREACH» 
-		    «ENDIF»
-        «ENDFOREACH»
+		    		«ENDIF-»
+				«ENDFOREACH-» 
+		    «ENDIF-»
+        «ENDFOREACH-»
         </row>
     </table>
+«ENDFOREACH-»
 
 «REM»association tables here    
     <table name="«entity.tableName()»">
@@ -199,7 +200,6 @@
     </xd:iterateTables>
 «ENDREM »
 
-«ENDFOREACH»
 </dataset>
 «ENDFILE»
 «ENDDEFINE»
