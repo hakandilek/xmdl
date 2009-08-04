@@ -248,7 +248,7 @@ public class IDAExtensionUtils extends ExtensionUtils {
 		}
 		return null;
 	}
-	
+
 	public static String randomize(Attribute a, String variant) {
 		return TestUtils.INSTANCE.randomValueAsString(a, variant);
 	}
@@ -256,10 +256,9 @@ public class IDAExtensionUtils extends ExtensionUtils {
 	public static String randomizeWrap(Attribute attrib, String variant) {
 		String val = TestUtils.INSTANCE.randomValueAsString(attrib, variant);
 		Type type = attrib.getType();
-		
+
 		BasicType basicType = ExtensionUtils.basicType(type);
-		if (basicType != null)
-		{
+		if (basicType != null) {
 			switch (basicType) {
 			case STRING:
 				val = "\"" + val + "\"";
@@ -298,7 +297,7 @@ public class IDAExtensionUtils extends ExtensionUtils {
 				val = enumer.getName() + "." + val;
 			}
 		}
-		
+
 		return val;
 	}
 
@@ -332,5 +331,32 @@ public class IDAExtensionUtils extends ExtensionUtils {
 		}
 		return plain;
 	}
+	
+	public static String wrapType(Attribute attribute) {
+		return wrapType(attribute, false);
+	}
 
+	public static String wrapType(Attribute attribute, boolean instance) {
+		StringBuffer out = new StringBuffer();
+		String type = simpleName(attribute.getType());
+		boolean association = false;
+		AssociationType associationType = associationType(attribute);
+		switch (associationType) {
+		case ONE_TO_MANY:
+		case MANY_TO_MANY:
+			association = true;
+			break;
+		default:
+			break;
+		}
+		if (association) {
+			if (instance)
+				out.append("Hash");//becomes HashSet
+			out.append("Set<");
+		}
+		out.append(type);
+		if (association)
+			out.append(">");
+		return out.toString();
+	}
 }

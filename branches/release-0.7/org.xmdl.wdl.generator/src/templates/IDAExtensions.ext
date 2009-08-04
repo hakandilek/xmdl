@@ -30,6 +30,8 @@ String randomize(Attribute a, String variant, String format) : internalRandomize
 
 String randomizeWrap(Attribute a, String variant) : internalRandomizeWrap(a, variant); 
 
+String wrapType(Attribute a) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.wrapType(org.xmdl.wdl.Attribute);
+
 // -------------------------------- INTERNAL --------------------------------   
 
 String internalRandomize(Attribute a, String variant) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.randomize(org.xmdl.wdl.Attribute, java.lang.String);

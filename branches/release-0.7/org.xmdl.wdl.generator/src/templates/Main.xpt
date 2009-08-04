@@ -3,6 +3,10 @@
 «DEFINE main FOR Model»
 	«EXPAND eclipse::Classpath::project FOR this.project»
 
+	«EXPAND maven::RootPomXml::project FOR this.project»
+	«EXPAND maven::CorePomXml::project FOR this.project»
+	«EXPAND maven::WebPomXml::project FOR this.project»
+
 	«EXPAND core::model::Entity::entity FOREACH this.types.typeSelect(Entity)»
 	«EXPAND core::model::EntitySearch::entity FOREACH this.types.typeSelect(Entity)»
 	«EXPAND core::model::Enumeration::entity FOREACH this.types.typeSelect(Enumeration)»
