@@ -37,15 +37,15 @@ public class «this.name» extends BaseObject implements Serializable, Cloneable
     @Column(name = "ID")
     private Long id;
     
-    «FOREACH this.attributes AS attribute»
-    «IF !attribute.isReference()»
+    «FOREACH this.attributes AS attribute -»
+    	«IF !attribute.isReference() -»
 	@Column(name = "«attribute.columnName()»", length = «attribute.columnSize()»«IF attribute.isEnumeration()», columnDefinition = "integer", nullable = false«ENDIF»)
-	«EXPAND Entity::enumAnnotation FOR attribute »
-    «ELSE»
+			«EXPAND Entity::enumAnnotation FOR attribute »
+    	«ELSE »
     «attribute.associationAnnotation()»
-    «ENDIF»
-    private «attribute.type.simpleName()» «attribute.name.toFirstLower()» «IF attribute.isEmbed()»= new «attribute.type.name»()«ENDIF»;
-    «ENDFOREACH»
+    	«ENDIF -»
+    private «attribute.wrapType()» «attribute.name.toFirstLower()» «IF attribute.isEmbed()»= new «attribute.type.name»()«ENDIF»;
+    «ENDFOREACH -»
 
     public «this.name»() {
     }
@@ -59,11 +59,11 @@ public class «this.name» extends BaseObject implements Serializable, Cloneable
     }
 
     «FOREACH this.attributes AS attribute»
-    public «attribute.type.simpleName()» get«attribute.name.toFirstUpper()»() {
+    public «attribute.wrapType()» get«attribute.name.toFirstUpper()»() {
         return «attribute.name.toFirstLower()»;
     }
 
-    public void set«attribute.name.toFirstUpper()»(«attribute.type.simpleName()» «attribute.name.toFirstLower()») {
+    public void set«attribute.name.toFirstUpper()»(«attribute.wrapType()» «attribute.name.toFirstLower()») {
         this.«attribute.name.toFirstLower()» = «attribute.name.toFirstLower()»;
     }
 

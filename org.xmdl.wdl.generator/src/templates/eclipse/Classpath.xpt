@@ -1,4 +1,4 @@
-«IMPORT wdl»
+«IMPORT wdl »
 «DEFINE project FOR wdl::Project»
 «FILE "../.classpath"»<?xml version="1.0" encoding="UTF-8"?>
 <classpath>

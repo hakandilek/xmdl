@@ -120,19 +120,19 @@ public class ExtensionUtils {
 
 	public static AssociationType associationType(Attribute attribute) {
 		if (attribute != null) {
+			Attribute ref = opposite(attribute);
+			System.out.println("ref:"+ref);
 			if (attribute.isMany()) {
-				Attribute ref = opposite(attribute);
-				if (ref != null && ref.isMany())
-					return AssociationType.ONE_TO_MANY;
-				else {
-					return AssociationType.ONE_TO_ONE;
-				}
-			} else {
-				Attribute ref = opposite(attribute);
 				if (ref != null && ref.isMany())
 					return AssociationType.MANY_TO_MANY;
 				else {
+					return AssociationType.ONE_TO_MANY;
+				}
+			} else {
+				if (ref != null && ref.isMany())
 					return AssociationType.MANY_TO_ONE;
+				else {
+					return AssociationType.ONE_TO_ONE;
 				}
 			}
 		}
@@ -176,6 +176,11 @@ public class ExtensionUtils {
 	}
 
 	public static boolean isChild(Type t) {
+		//TODO
+		return false;
+	}
+	
+	public static boolean isMaster(Attribute a) {
 		//TODO
 		return false;
 	}

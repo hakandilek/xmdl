@@ -26,6 +26,8 @@ String qualifiedName(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.qualif
 
 boolean isChild(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isChild(org.xmdl.wdl.Type);
 
+boolean isMaster(Attribute a) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isMaster(org.xmdl.wdl.Attribute);
+
 Type master(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.master(org.xmdl.wdl.Type);
 
 boolean isFromMany(Attribute att) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isFromMany(org.xmdl.wdl.Attribute);

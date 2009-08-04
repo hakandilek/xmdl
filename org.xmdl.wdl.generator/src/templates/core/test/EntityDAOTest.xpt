@@ -31,21 +31,21 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
         «this.name» «this.name.toFirstLower()» = new «this.name»();
 
 «FOREACH this.attributes AS attribute -»
-    «IF!attribute.isReference()»
+    «IF !attribute.isReference() »
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
     «ENDIF»
-    «IF attribute.isEmbed()-»
+    «IF attribute.isMaster() -»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
         «attribute.name.toFirstLower()».setId(1L);
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
     «ENDIF-»
-    «IF attribute.isEmbed()-»
+    «IF attribute.isEmbed() -»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
         «FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
             «IF !attrib.isReference()-»
         «attribute.name.toFirstLower()».set«attrib.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
             «ENDIF-»
-    		«IF attribute.isEmbed()-»
+    		«IF attribute.isMaster() -»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
         «attribute.name.toFirstLower()».setId(1L);
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
@@ -101,29 +101,29 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
 
         «this.name» «this.name.toFirstLower()» = new «this.name»();
 «FOREACH this.attributes AS attribute-»
-    «IF!attribute.isReference()»
+    «IF!attribute.isReference() »
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
-    «ENDIF»
-    «IF attribute.isEmbed()-»
+    «ENDIF »
+    «IF attribute.isMaster() -»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
         «attribute.name.toFirstLower()».setId(1L);
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
-    «ENDIF-»
-    «IF attribute.isEmbed()-»
+    «ENDIF -»
+    «IF attribute.isEmbed() -»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
         «FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
             «IF !attrib.isReference()-»
         «attribute.name.toFirstLower()».set«attrib.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
-            «ENDIF-»
-    	«IF attribute.isEmbed()-»
+            «ENDIF -»
+    		«IF attribute.isMaster() -»
         «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
         «attribute.name.toFirstLower()».setId(1L);
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
-    	«ENDIF-»
-        «ENDFOREACH-»
+    		«ENDIF -»
+        «ENDFOREACH -»
         «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
-    «ENDIF-»
-«ENDFOREACH-» 
+    «ENDIF -»
+«ENDFOREACH -» 
         «this.name.toFirstLower()»DAO.save(«this.name.toFirstLower()»);
     }
 }
