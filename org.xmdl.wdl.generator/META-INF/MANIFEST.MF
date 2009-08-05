@@ -13,4 +13,5 @@ Require-Bundle:  org.xmdl.wdl,org.eclipse.xpand,org.eclipse.xtend,org.
  eclipse.xtend.typesystem.emf
 Built-By: Hakan Dilek
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.xmdl.wdl.gen.utils
 
