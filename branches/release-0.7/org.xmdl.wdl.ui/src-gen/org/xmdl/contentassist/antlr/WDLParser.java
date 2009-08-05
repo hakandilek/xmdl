@@ -43,6 +43,7 @@ public class WDLParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				{
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
+					put(grammarAccess.getAttributeManyReferenceAccess().getAlternatives(), "rule__AttributeManyReference__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getProjectAccess().getGroup(), "rule__Project__Group__0");
 					put(grammarAccess.getSimpleTypeAccess().getGroup(), "rule__SimpleType__Group__0");
