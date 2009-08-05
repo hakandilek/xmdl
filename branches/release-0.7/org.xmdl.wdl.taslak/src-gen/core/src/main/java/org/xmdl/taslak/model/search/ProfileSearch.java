@@ -17,9 +17,7 @@ public class ProfileSearch implements Serializable {
 
 	private User user;
 
-	private String privatePhoneMin;
-
-	private String privatePhoneMax;
+	private String privatePhone;
 
 	public ProfileSearch() {
 	}
@@ -32,20 +30,12 @@ public class ProfileSearch implements Serializable {
 		this.user = user;
 	}
 
-	public String getPrivatePhoneMin() {
-		return privatePhoneMin;
+	public String getPrivatePhone() {
+		return privatePhone;
 	}
 
-	public void setPrivatePhoneMin(String privatePhoneMin) {
-		this.privatePhoneMin = privatePhoneMin;
-	}
-
-	public String getPrivatePhoneMax() {
-		return privatePhoneMax;
-	}
-
-	public void setPrivatePhoneMax(String privatePhoneMax) {
-		this.privatePhoneMax = privatePhoneMax;
+	public void setPrivatePhone(String privatePhone) {
+		this.privatePhone = privatePhone;
 	}
 
 	/** 
@@ -53,10 +43,8 @@ public class ProfileSearch implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return MessageFormat
-				.format(
-						"Profile[user={1}], [privatePhoneMin={2}][privatePhoneMax={3}]",
-						user, privatePhoneMin, privatePhoneMax);
+		return MessageFormat.format("Profile[user={1}], [privatePhone={2}], ",
+				user, privatePhone);
 	}
 
 	/** 
@@ -69,10 +57,8 @@ public class ProfileSearch implements Serializable {
 		if (user != null)
 			result = 31 * result + ("" + user).hashCode();
 
-		if (privatePhoneMin != null)
-			result = 31 * result + ("" + privatePhoneMin).hashCode();
-		if (privatePhoneMax != null)
-			result = 31 * result + ("" + privatePhoneMax).hashCode();
+		if (privatePhone != null)
+			result = 31 * result + ("" + privatePhone).hashCode();
 
 		return result;
 	}

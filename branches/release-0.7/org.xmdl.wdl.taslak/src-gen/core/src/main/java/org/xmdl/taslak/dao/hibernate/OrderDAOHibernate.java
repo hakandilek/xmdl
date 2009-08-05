@@ -41,8 +41,7 @@ public class OrderDAOHibernate extends GenericDaoHibernate<Order, Long>
 			list = new ArrayList<Order>();
 		} else {
 
-			String minName = orderSearch.getNameMin();
-			String maxName = orderSearch.getNameMax();
+			String name = orderSearch.getName();
 
 			Double minPriceTotals = orderSearch.getPriceTotalsMin();
 			Double maxPriceTotals = orderSearch.getPriceTotalsMax();
@@ -55,8 +54,7 @@ public class OrderDAOHibernate extends GenericDaoHibernate<Order, Long>
 			if (log.isDebugEnabled()) {
 				log.debug("search(OrderSearch <-");
 
-				log.debug("minName       : " + minName);
-				log.debug("maxName       : " + maxName);
+				log.debug("name       : " + name);
 
 				log.debug("minPriceTotals       : " + minPriceTotals);
 				log.debug("maxPriceTotals       : " + maxPriceTotals);
@@ -71,10 +69,8 @@ public class OrderDAOHibernate extends GenericDaoHibernate<Order, Long>
 			Session session = getSession();
 			Criteria criteria = session.createCriteria(Order.class);
 
-			if (minName != null)
-				criteria.add(Restrictions.ge("name", minName));
-			if (maxName != null)
-				criteria.add(Restrictions.le("name", maxName));
+			if (name != null)
+				criteria.add(Restrictions.eq("name", name));
 
 			if (minPriceTotals != null)
 				criteria.add(Restrictions.ge("priceTotals", minPriceTotals));

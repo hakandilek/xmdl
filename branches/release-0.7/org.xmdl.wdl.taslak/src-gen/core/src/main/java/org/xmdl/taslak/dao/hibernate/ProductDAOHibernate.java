@@ -41,8 +41,7 @@ public class ProductDAOHibernate extends GenericDaoHibernate<Product, Long>
 			list = new ArrayList<Product>();
 		} else {
 
-			String minName = productSearch.getNameMin();
-			String maxName = productSearch.getNameMax();
+			String name = productSearch.getName();
 
 			ProductType minProductType = productSearch.getProductTypeMin();
 			ProductType maxProductType = productSearch.getProductTypeMax();
@@ -54,8 +53,7 @@ public class ProductDAOHibernate extends GenericDaoHibernate<Product, Long>
 			if (log.isDebugEnabled()) {
 				log.debug("search(ProductSearch <-");
 
-				log.debug("minName       : " + minName);
-				log.debug("maxName       : " + maxName);
+				log.debug("name       : " + name);
 
 				log.debug("minProductType       : " + minProductType);
 				log.debug("maxProductType       : " + maxProductType);
@@ -69,10 +67,8 @@ public class ProductDAOHibernate extends GenericDaoHibernate<Product, Long>
 			Session session = getSession();
 			Criteria criteria = session.createCriteria(Product.class);
 
-			if (minName != null)
-				criteria.add(Restrictions.ge("name", minName));
-			if (maxName != null)
-				criteria.add(Restrictions.le("name", maxName));
+			if (name != null)
+				criteria.add(Restrictions.eq("name", name));
 
 			if (minProductType != null)
 				criteria.add(Restrictions.ge("productType", minProductType));

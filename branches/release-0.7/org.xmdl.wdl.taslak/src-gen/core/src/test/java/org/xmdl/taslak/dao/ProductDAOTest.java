@@ -25,9 +25,10 @@ public class ProductDAOTest extends BaseDaoTestCase {
 
 		product.setName("JcTaP7bbMkXAn c");
 
+		product.setPrice(null);
+
 		Money price = new Money();
 		price.setAmount(null);
-		price.setCurrency(null);
 		product.setPrice(price);
 
 		product.setProductType(ProductType.INTERMEDIATEPRODUCT);
@@ -39,6 +40,7 @@ public class ProductDAOTest extends BaseDaoTestCase {
 
 		assertNotNull(product.getId());
 		assertEquals("JcTaP7bbMkXAn c", product.getName());
+		assertEquals(null, product.getPrice());
 		assertEquals(ProductType.INTERMEDIATEPRODUCT, product.getProductType());
 
 		log.debug("removing product...");
@@ -56,10 +58,12 @@ public class ProductDAOTest extends BaseDaoTestCase {
 
 	public void testSearch() throws Exception {
 		ProductSearch search = new ProductSearch();
-		search.setNameMin("JcTaP7bbMkXAn c");
-		search.setNameMax("JcTaP7bbMkXAn c");
+
+		search.setName("JcTaP7bbMkXAn c");
+
 		search.setProductTypeMin(ProductType.INTERMEDIATEPRODUCT);
 		search.setProductTypeMax(ProductType.INTERMEDIATEPRODUCT);
+
 		Collection<Product> products = productDAO.search(search);
 		assertTrue(products.size() > 0);
 	}
@@ -71,9 +75,10 @@ public class ProductDAOTest extends BaseDaoTestCase {
 
 		product.setName("JcTaP7bbMkXAn c");
 
+		product.setPrice(null);
+
 		Money price = new Money();
 		price.setAmount(null);
-		price.setCurrency(null);
 		product.setPrice(price);
 
 		product.setProductType(ProductType.INTERMEDIATEPRODUCT);

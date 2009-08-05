@@ -54,12 +54,15 @@ public class OrderDAOTest extends BaseDaoTestCase {
 
 	public void testSearch() throws Exception {
 		OrderSearch search = new OrderSearch();
-		search.setNameMin("uM7fRBsNrcku P5");
-		search.setNameMax("uM7fRBsNrcku P5");
+
+		search.setName("uM7fRBsNrcku P5");
+
 		search.setPriceTotalsMin(new Double(0.806593589070036));
 		search.setPriceTotalsMax(new Double(0.806593589070036));
+
 		search.setCreateDateMin(new Date(1013559368480L));
 		search.setCreateDateMax(new Date(1013559368480L));
+
 		Collection<Order> orders = orderDAO.search(search);
 		assertTrue(orders.size() > 0);
 	}

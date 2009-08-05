@@ -43,16 +43,14 @@ public class ProfileDAOHibernate extends GenericDaoHibernate<Profile, Long>
 
 			User user = profileSearch.getUser();
 
-			String minPrivatePhone = profileSearch.getPrivatePhoneMin();
-			String maxPrivatePhone = profileSearch.getPrivatePhoneMax();
+			String privatePhone = profileSearch.getPrivatePhone();
 
 			if (log.isDebugEnabled()) {
 				log.debug("search(ProfileSearch <-");
 
 				log.debug("user       : " + user);
 
-				log.debug("minPrivatePhone       : " + minPrivatePhone);
-				log.debug("maxPrivatePhone       : " + maxPrivatePhone);
+				log.debug("privatePhone       : " + privatePhone);
 
 			}
 
@@ -62,10 +60,8 @@ public class ProfileDAOHibernate extends GenericDaoHibernate<Profile, Long>
 			if (user != null)
 				criteria.add(Restrictions.eq("user", user));
 
-			if (minPrivatePhone != null)
-				criteria.add(Restrictions.ge("privatePhone", minPrivatePhone));
-			if (maxPrivatePhone != null)
-				criteria.add(Restrictions.le("privatePhone", maxPrivatePhone));
+			if (privatePhone != null)
+				criteria.add(Restrictions.eq("privatePhone", privatePhone));
 
 			list = criteria.list();
 

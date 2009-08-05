@@ -48,8 +48,9 @@ public class SupplierDAOTest extends BaseDaoTestCase {
 
 	public void testSearch() throws Exception {
 		SupplierSearch search = new SupplierSearch();
-		search.setNameMin("jKyGQtF36ymcf 2");
-		search.setNameMax("jKyGQtF36ymcf 2");
+
+		search.setName("jKyGQtF36ymcf 2");
+
 		Collection<Supplier> suppliers = supplierDAO.search(search);
 		assertTrue(suppliers.size() > 0);
 	}

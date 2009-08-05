@@ -41,16 +41,14 @@ public class SupplierDAOHibernate extends GenericDaoHibernate<Supplier, Long>
 			list = new ArrayList<Supplier>();
 		} else {
 
-			String minName = supplierSearch.getNameMin();
-			String maxName = supplierSearch.getNameMax();
+			String name = supplierSearch.getName();
 
 			Product products = supplierSearch.getProducts();
 
 			if (log.isDebugEnabled()) {
 				log.debug("search(SupplierSearch <-");
 
-				log.debug("minName       : " + minName);
-				log.debug("maxName       : " + maxName);
+				log.debug("name       : " + name);
 
 				log.debug("products       : " + products);
 
@@ -59,10 +57,8 @@ public class SupplierDAOHibernate extends GenericDaoHibernate<Supplier, Long>
 			Session session = getSession();
 			Criteria criteria = session.createCriteria(Supplier.class);
 
-			if (minName != null)
-				criteria.add(Restrictions.ge("name", minName));
-			if (maxName != null)
-				criteria.add(Restrictions.le("name", maxName));
+			if (name != null)
+				criteria.add(Restrictions.eq("name", name));
 
 			if (products != null) {
 				Criteria subCriteria = criteria.createCriteria("products");
