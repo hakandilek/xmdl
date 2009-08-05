@@ -23,6 +23,16 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum AttributeManyReference implements Enumerator
 {
   /**
+   * The '<em><b>NONE</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #NONE_VALUE
+   * @generated
+   * @ordered
+   */
+  NONE(0, "NONE", "NONE"),
+
+  /**
    * The '<em><b>WEAK</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -30,7 +40,7 @@ public enum AttributeManyReference implements Enumerator
    * @generated
    * @ordered
    */
-  WEAK(0, "WEAK", "*"),
+  WEAK(1, "WEAK", "*"),
 
   /**
    * The '<em><b>STRONG</b></em>' literal object.
@@ -40,7 +50,22 @@ public enum AttributeManyReference implements Enumerator
    * @generated
    * @ordered
    */
-  STRONG(1, "STRONG", "#");
+  STRONG(2, "STRONG", "#");
+
+  /**
+   * The '<em><b>NONE</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #NONE
+   * @model
+   * @generated
+   * @ordered
+   */
+  public static final int NONE_VALUE = 0;
 
   /**
    * The '<em><b>WEAK</b></em>' literal value.
@@ -55,7 +80,7 @@ public enum AttributeManyReference implements Enumerator
    * @generated
    * @ordered
    */
-  public static final int WEAK_VALUE = 0;
+  public static final int WEAK_VALUE = 1;
 
   /**
    * The '<em><b>STRONG</b></em>' literal value.
@@ -70,7 +95,7 @@ public enum AttributeManyReference implements Enumerator
    * @generated
    * @ordered
    */
-  public static final int STRONG_VALUE = 1;
+  public static final int STRONG_VALUE = 2;
 
   /**
    * An array of all the '<em><b>Attribute Many Reference</b></em>' enumerators.
@@ -81,6 +106,7 @@ public enum AttributeManyReference implements Enumerator
   private static final AttributeManyReference[] VALUES_ARRAY =
     new AttributeManyReference[]
     {
+      NONE,
       WEAK,
       STRONG,
     };
@@ -141,6 +167,7 @@ public enum AttributeManyReference implements Enumerator
   {
     switch (value)
     {
+      case NONE_VALUE: return NONE;
       case WEAK_VALUE: return WEAK;
       case STRONG_VALUE: return STRONG;
     }

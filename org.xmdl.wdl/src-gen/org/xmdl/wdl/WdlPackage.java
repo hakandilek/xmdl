@@ -339,13 +339,13 @@ public interface WdlPackage extends EPackage
   int ATTRIBUTE__TYPE = 0;
 
   /**
-   * The feature id for the '<em><b>Many</b></em>' attribute.
+   * The feature id for the '<em><b>Many Reference</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE__MANY = 1;
+  int ATTRIBUTE__MANY_REFERENCE = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -663,15 +663,15 @@ public interface WdlPackage extends EPackage
   EReference getAttribute_Type();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xmdl.wdl.Attribute#getMany <em>Many</em>}'.
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.Attribute#getManyReference <em>Many Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Many</em>'.
-   * @see org.xmdl.wdl.Attribute#getMany()
+   * @return the meta object for the attribute '<em>Many Reference</em>'.
+   * @see org.xmdl.wdl.Attribute#getManyReference()
    * @see #getAttribute()
    * @generated
    */
-  EAttribute getAttribute_Many();
+  EAttribute getAttribute_ManyReference();
 
   /**
    * Returns the meta object for the attribute '{@link org.xmdl.wdl.Attribute#getName <em>Name</em>}'.
@@ -947,12 +947,12 @@ public interface WdlPackage extends EPackage
     EReference ATTRIBUTE__TYPE = eINSTANCE.getAttribute_Type();
 
     /**
-     * The meta object literal for the '<em><b>Many</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Many Reference</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ATTRIBUTE__MANY = eINSTANCE.getAttribute_Many();
+    EAttribute ATTRIBUTE__MANY_REFERENCE = eINSTANCE.getAttribute_ManyReference();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

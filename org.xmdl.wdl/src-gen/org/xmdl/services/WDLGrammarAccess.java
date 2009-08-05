@@ -327,16 +327,16 @@ public class WDLGrammarAccess implements IGrammarAccess {
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cTypeTypeCrossReference_0_0 = (CrossReference)cTypeAssignment_0.eContents().get(0);
 		private final RuleCall cTypeTypeIDTerminalRuleCall_0_0_1 = (RuleCall)cTypeTypeCrossReference_0_0.eContents().get(1);
-		private final Assignment cManyAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cManyAttributeManyReferenceEnumRuleCall_1_0 = (RuleCall)cManyAssignment_1.eContents().get(0);
+		private final Assignment cManyReferenceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cManyReferenceAttributeManyReferenceEnumRuleCall_1_0 = (RuleCall)cManyReferenceAssignment_1.eContents().get(0);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		
 		//Attribute:
-		//  type=[Type] many=AttributeManyReference? name=ID;
+		//  type=[Type] manyReference=AttributeManyReference? name=ID;
 		public ParserRule getRule() { return rule; }
 
-		//type=[Type] many=AttributeManyReference? name=ID
+		//type=[Type] manyReference=AttributeManyReference? name=ID
 		public Group getGroup() { return cGroup; }
 
 		//type=[Type]
@@ -348,11 +348,11 @@ public class WDLGrammarAccess implements IGrammarAccess {
 		//ID
 		public RuleCall getTypeTypeIDTerminalRuleCall_0_0_1() { return cTypeTypeIDTerminalRuleCall_0_0_1; }
 
-		//many=AttributeManyReference?
-		public Assignment getManyAssignment_1() { return cManyAssignment_1; }
+		//manyReference=AttributeManyReference?
+		public Assignment getManyReferenceAssignment_1() { return cManyReferenceAssignment_1; }
 
 		//AttributeManyReference
-		public RuleCall getManyAttributeManyReferenceEnumRuleCall_1_0() { return cManyAttributeManyReferenceEnumRuleCall_1_0; }
+		public RuleCall getManyReferenceAttributeManyReferenceEnumRuleCall_1_0() { return cManyReferenceAttributeManyReferenceEnumRuleCall_1_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -441,29 +441,37 @@ public class WDLGrammarAccess implements IGrammarAccess {
 	public class AttributeManyReferenceElements implements IEnumRuleAccess {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "AttributeManyReference");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cWEAKEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cWEAKAsteriskKeyword_0_0 = (Keyword)cWEAKEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cSTRONGEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cSTRONGNumberSignKeyword_1_0 = (Keyword)cSTRONGEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cNONEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cNONENONEKeyword_0_0 = (Keyword)cNONEEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cWEAKEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cWEAKAsteriskKeyword_1_0 = (Keyword)cWEAKEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cSTRONGEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cSTRONGNumberSignKeyword_2_0 = (Keyword)cSTRONGEnumLiteralDeclaration_2.eContents().get(0);
 		
 		//enum AttributeManyReference:
-		//  WEAK="*" | STRONG="#";
+		//  NONE | WEAK="*" | STRONG="#";
 		public EnumRule getRule() { return rule; }
 
-		//WEAK="*" | STRONG="#"
+		//NONE | WEAK="*" | STRONG="#"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
+		//NONE
+		public EnumLiteralDeclaration getNONEEnumLiteralDeclaration_0() { return cNONEEnumLiteralDeclaration_0; }
+
+		//"NONE"
+		public Keyword getNONENONEKeyword_0_0() { return cNONENONEKeyword_0_0; }
+
 		//WEAK="*"
-		public EnumLiteralDeclaration getWEAKEnumLiteralDeclaration_0() { return cWEAKEnumLiteralDeclaration_0; }
+		public EnumLiteralDeclaration getWEAKEnumLiteralDeclaration_1() { return cWEAKEnumLiteralDeclaration_1; }
 
 		//"*"
-		public Keyword getWEAKAsteriskKeyword_0_0() { return cWEAKAsteriskKeyword_0_0; }
+		public Keyword getWEAKAsteriskKeyword_1_0() { return cWEAKAsteriskKeyword_1_0; }
 
 		//STRONG="#"
-		public EnumLiteralDeclaration getSTRONGEnumLiteralDeclaration_1() { return cSTRONGEnumLiteralDeclaration_1; }
+		public EnumLiteralDeclaration getSTRONGEnumLiteralDeclaration_2() { return cSTRONGEnumLiteralDeclaration_2; }
 
 		//"#"
-		public Keyword getSTRONGNumberSignKeyword_1_0() { return cSTRONGNumberSignKeyword_1_0; }
+		public Keyword getSTRONGNumberSignKeyword_2_0() { return cSTRONGNumberSignKeyword_2_0; }
 	}
 	
 	private ModelElements pModel;
@@ -570,7 +578,7 @@ public class WDLGrammarAccess implements IGrammarAccess {
 	}
 
 	//Attribute:
-	//  type=[Type] many=AttributeManyReference? name=ID;
+	//  type=[Type] manyReference=AttributeManyReference? name=ID;
 	public AttributeElements getAttributeAccess() {
 		return (pAttribute != null) ? pAttribute : (pAttribute = new AttributeElements());
 	}
@@ -580,7 +588,7 @@ public class WDLGrammarAccess implements IGrammarAccess {
 	}
 
 	//enum AttributeManyReference:
-	//  WEAK="*" | STRONG="#";
+	//  NONE | WEAK="*" | STRONG="#";
 	public AttributeManyReferenceElements getAttributeManyReferenceAccess() {
 		return (unknownRuleAttributeManyReference != null) ? unknownRuleAttributeManyReference : (unknownRuleAttributeManyReference = new AttributeManyReferenceElements());
 	}

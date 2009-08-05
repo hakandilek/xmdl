@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.xmdl.wdl.Attribute#getType <em>Type</em>}</li>
- *   <li>{@link org.xmdl.wdl.Attribute#getMany <em>Many</em>}</li>
+ *   <li>{@link org.xmdl.wdl.Attribute#getManyReference <em>Many Reference</em>}</li>
  *   <li>{@link org.xmdl.wdl.Attribute#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -54,33 +54,33 @@ public interface Attribute extends EObject
   void setType(Type value);
 
   /**
-   * Returns the value of the '<em><b>Many</b></em>' attribute.
+   * Returns the value of the '<em><b>Many Reference</b></em>' attribute.
    * The literals are from the enumeration {@link org.xmdl.wdl.AttributeManyReference}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Many</em>' attribute isn't clear,
+   * If the meaning of the '<em>Many Reference</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Many</em>' attribute.
+   * @return the value of the '<em>Many Reference</em>' attribute.
    * @see org.xmdl.wdl.AttributeManyReference
-   * @see #setMany(AttributeManyReference)
-   * @see org.xmdl.wdl.WdlPackage#getAttribute_Many()
+   * @see #setManyReference(AttributeManyReference)
+   * @see org.xmdl.wdl.WdlPackage#getAttribute_ManyReference()
    * @model
    * @generated
    */
-  AttributeManyReference getMany();
+  AttributeManyReference getManyReference();
 
   /**
-   * Sets the value of the '{@link org.xmdl.wdl.Attribute#getMany <em>Many</em>}' attribute.
+   * Sets the value of the '{@link org.xmdl.wdl.Attribute#getManyReference <em>Many Reference</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Many</em>' attribute.
+   * @param value the new value of the '<em>Many Reference</em>' attribute.
    * @see org.xmdl.wdl.AttributeManyReference
-   * @see #getMany()
+   * @see #getManyReference()
    * @generated
    */
-  void setMany(AttributeManyReference value);
+  void setManyReference(AttributeManyReference value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

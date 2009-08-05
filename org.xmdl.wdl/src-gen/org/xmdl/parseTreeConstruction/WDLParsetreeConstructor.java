@@ -1356,11 +1356,11 @@ protected class Embed_RightCurlyBracketKeyword_5 extends KeywordToken  {
 /************ begin Rule Attribute ****************
  *
  * Attribute:
- *   type=[Type] many=AttributeManyReference? name=ID;
+ *   type=[Type] manyReference=AttributeManyReference? name=ID;
  *
  **/
 
-// type=[Type] many=AttributeManyReference? name=ID
+// type=[Type] manyReference=AttributeManyReference? name=ID
 protected class Attribute_Group extends GroupToken {
 	
 	public Attribute_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -1417,15 +1417,15 @@ protected class Attribute_TypeAssignment_0 extends AssignmentToken  {
 
 }
 
-// many=AttributeManyReference?
-protected class Attribute_ManyAssignment_1 extends AssignmentToken  {
+// manyReference=AttributeManyReference?
+protected class Attribute_ManyReferenceAssignment_1 extends AssignmentToken  {
 	
-	public Attribute_ManyAssignment_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+	public Attribute_ManyReferenceAssignment_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
 		super(parent, next, no, current);
 	}
 	
 	public Assignment getGrammarElement() {
-		return grammarAccess.getAttributeAccess().getManyAssignment_1();
+		return grammarAccess.getAttributeAccess().getManyReferenceAssignment_1();
 	}
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
@@ -1436,11 +1436,11 @@ protected class Attribute_ManyAssignment_1 extends AssignmentToken  {
 	}	
 		
 	protected IInstanceDescription tryConsumeVal() {
-		if((value = current.getConsumable("many",false)) == null) return null;
-		IInstanceDescription obj = current.cloneAndConsume("many");
+		if((value = current.getConsumable("manyReference",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("manyReference");
 		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
 			type = AssignmentType.ERC;
-			element = grammarAccess.getAttributeAccess().getManyAttributeManyReferenceEnumRuleCall_1_0();
+			element = grammarAccess.getAttributeAccess().getManyReferenceAttributeManyReferenceEnumRuleCall_1_0();
 			return obj;
 		}
 		return null;
@@ -1461,7 +1461,7 @@ protected class Attribute_NameAssignment_2 extends AssignmentToken  {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Attribute_ManyAssignment_1(parent, this, 0, inst);
+			case 0: return new Attribute_ManyReferenceAssignment_1(parent, this, 0, inst);
 			case 1: return new Attribute_TypeAssignment_0(parent, this, 1, inst);
 			default: return null;
 		}	
