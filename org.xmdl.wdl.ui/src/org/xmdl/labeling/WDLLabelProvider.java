@@ -38,7 +38,7 @@ public class WDLLabelProvider extends DefaultLabelProvider {
 
 	public String image(Entity x) {
 		if (ExtensionUtils.isChild(x))
-			return "full/obj16/EntityChild";
+			return "full/obj16/EntityChild.gif";
 		return "full/obj16/Entity.gif";
 	}
 
@@ -56,10 +56,10 @@ public class WDLLabelProvider extends DefaultLabelProvider {
 
 	public String image(Attribute x) {
 		Type type = x.getType();
-		if (ExtensionUtils.isChild(type))
-			return "full/obj16/AttributeChild.gif";
-		if (ExtensionUtils.isMaster(x))
+		if (ExtensionUtils.isChild(x))
 			return "full/obj16/AttributeMaster.gif";
+		if (ExtensionUtils.isMaster(x))
+			return "full/obj16/AttributeChild.gif";
 		if (ExtensionUtils.isEmbed(type))
 			return "full/obj16/AttributeEmbed.gif";
 		if (ExtensionUtils.isReference(type))
@@ -75,6 +75,14 @@ public class WDLLabelProvider extends DefaultLabelProvider {
 		Type type = x.getType();
 		if (type != null) {
 			sb.append(" : ").append(type.getName());
+		}
+		Attribute opp = ExtensionUtils.opposite(x);
+		if (opp != null) {
+			Type t = (Type) opp.eContainer();
+			if (t != null) {
+				sb.append(" -> ");
+				sb.append(t.getName()).append(".").append(opp.getName());
+			}
 		}
 		return sb.toString();
 	}
@@ -94,4 +102,10 @@ public class WDLLabelProvider extends DefaultLabelProvider {
 		return sb.toString();
 	}
 
+	public String text(EnumerationLiteral x) {
+		StringBuffer sb = new StringBuffer();
+		sb.append(x.getOrdinal());
+		sb.append(" : ").append(x.getName());
+		return sb.toString();
+	}
 }
