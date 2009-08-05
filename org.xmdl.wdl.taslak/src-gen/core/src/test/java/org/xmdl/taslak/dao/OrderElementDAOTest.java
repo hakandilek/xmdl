@@ -25,6 +25,10 @@ public class OrderElementDAOTest extends BaseDaoTestCase {
 
 		orderElement.setQuantity(new Long(-8244772088778785312L));
 
+		Order order = new Order();
+		order.setId(1L);
+		orderElement.setOrder(order);
+
 		orderElement = orderElementDAO.save(orderElement);
 		flush();
 
@@ -63,6 +67,10 @@ public class OrderElementDAOTest extends BaseDaoTestCase {
 		OrderElement orderElement = new OrderElement();
 
 		orderElement.setQuantity(new Long(-8244772088778785312L));
+
+		Order order = new Order();
+		order.setId(1L);
+		orderElement.setOrder(order);
 
 		orderElementDAO.save(orderElement);
 	}
