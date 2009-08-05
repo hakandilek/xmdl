@@ -3,11 +3,13 @@
  */
 package org.xmdl.wdl.gen.utils;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.xmdl.wdl.Attribute;
+import org.xmdl.wdl.AttributeManyReference;
 import org.xmdl.wdl.Embed;
 import org.xmdl.wdl.Entity;
 import org.xmdl.wdl.JAVAID;
@@ -91,8 +93,6 @@ public class ExtensionUtils {
 		} else {
 			// Embed, Entity, or Enum
 			Project p = projectOf(t);
-			System.out.println("type:"+t);
-			System.out.println("prj :"+p);
 			if (p != null) {
 				String basePackage = p.getBasePackage();
 				name = basePackage + ".model." + t.getName();
@@ -134,14 +134,14 @@ public class ExtensionUtils {
 	public static AssociationType associationType(Attribute attribute) {
 		if (attribute != null) {
 			Attribute ref = opposite(attribute);
-			if (attribute.isMany()) {
-				if (ref != null && ref.isMany())
+			if (attribute.getMany() != null) {
+				if (ref != null && ref.getMany() != null)
 					return AssociationType.MANY_TO_MANY;
 				else {
 					return AssociationType.ONE_TO_MANY;
 				}
 			} else {
-				if (ref != null && ref.isMany())
+				if (ref != null && ref.getMany() != null)
 					return AssociationType.MANY_TO_ONE;
 				else {
 					return AssociationType.ONE_TO_ONE;
@@ -188,17 +188,40 @@ public class ExtensionUtils {
 	}
 
 	public static boolean isChild(Type t) {
-		//TODO
-		return false;
+		Type master = master(t);
+		return master != null;
 	}
 	
+	/** from master-to-child */
 	public static boolean isMaster(Attribute a) {
-		//TODO
+		AttributeManyReference many = a.getMany();
+		return many != null && AttributeManyReference.STRONG == many;
+	}
+
+	/** from child-to-master */
+	public static boolean isChild(Attribute a) {
+		Attribute opposite = opposite(a);
+		if (opposite != null)
+			return isMaster(opposite);
 		return false;
 	}
 	
 	public static Type master(Type t) {
-		//TODO
+		List<Attribute> attributes = new ArrayList<Attribute>();
+		if (t instanceof Entity) {
+			Entity e = (Entity) t;
+			attributes.addAll(e.getAttributes());
+		}
+		if (t instanceof Embed) {
+			Embed e = (Embed) t;
+			attributes.addAll(e.getAttributes());
+		}
+		for (Attribute attribute : attributes) {
+			Attribute opposite = opposite(attribute);
+			if (opposite != null && isMaster(opposite)) {
+				return (Type) opposite.eContainer();
+			}
+		}
 		return null;
 	}
 
@@ -221,7 +244,7 @@ public class ExtensionUtils {
 	public static boolean isFromMany(Attribute attrib) {
 		Attribute opposite = opposite(attrib);
 		if (opposite != null)
-			return opposite.isMany();
+			return opposite.getMany() != null;
 		return false;
 	}
 	
