@@ -83,6 +83,7 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
     public void testSearch() throws Exception {
         «this.name»Search search = new «this.name»Search();
 «FOREACH this.attributes AS attribute-»
+	«IF !attribute.isEmbed()»
     «IF!attribute.isReference()-»
 	    «IF attribute.isComparable()-»
         search.set«attribute.name.toFirstUpper()»Min(«attribute.randomizeWrap("1")»);
@@ -90,6 +91,7 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
 	    «ELSE-»
         search.set«attribute.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
 	    «ENDIF-»
+    «ENDIF-»
     «ENDIF-»
 «ENDFOREACH-»
         Collection<«this.name»> «this.name.toFirstLower()»s = «this.name.toFirstLower()»DAO.search(search);

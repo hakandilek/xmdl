@@ -101,6 +101,8 @@ public class TestUtils {
 
 	public Object randomValue(Attribute attrib, String variant) {
 		Object preserved = getPreservedValue(attrib, variant);
+		logger.debug("entity   :" + attrib.eContainer());
+		logger.debug("attrib   :" + attrib);
 		logger.debug("preserved:" + preserved);
 		if (preserved != null)
 			return preserved;

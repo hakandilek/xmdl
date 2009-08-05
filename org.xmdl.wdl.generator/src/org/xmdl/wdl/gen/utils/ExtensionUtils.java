@@ -3,6 +3,7 @@
  */
 package org.xmdl.wdl.gen.utils;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -10,6 +11,7 @@ import org.xmdl.wdl.Attribute;
 import org.xmdl.wdl.Embed;
 import org.xmdl.wdl.Entity;
 import org.xmdl.wdl.JAVAID;
+import org.xmdl.wdl.Model;
 import org.xmdl.wdl.Project;
 import org.xmdl.wdl.SimpleType;
 import org.xmdl.wdl.Type;
@@ -37,7 +39,7 @@ public class ExtensionUtils {
 	
 	public static boolean isReference(Type t) {
 		boolean result = !isBasic(t) && !isEnumeration(t)
-				&& !(t instanceof SimpleType);
+				&& !(t instanceof SimpleType) && !isEmbed(t);
 		return result;
 	}
 
@@ -58,7 +60,12 @@ public class ExtensionUtils {
 	}
 
 	public static boolean isComparable(Type t) {
-		return isEnumeration(t) || isBasic(t);
+		if (isEnumeration(t))
+			return true;
+		BasicType basic = basicType(t);
+		if (basic != null && basic.isComparable())
+			return true;
+		return false;
 	}
 
 	public static boolean isString(Type t) {
@@ -211,4 +218,14 @@ public class ExtensionUtils {
 			return opposite.isMany();
 		return false;
 	}
+	
+	public static boolean isManyToOne(Attribute attrib) {
+		AssociationType type = associationType(attrib);
+		return AssociationType.MANY_TO_ONE == type;
+	}
+
+	public static Collection<Association> associations(Model model) {
+		return AssociationManager.getInstance().getAssociations();
+	}
+	
 }
