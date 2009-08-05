@@ -381,17 +381,24 @@ rule__AttributeManyReference__Alternatives
     }
 :
 (
-{ before(grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_0()); }
-(	'*' 
+{ before(grammarAccess.getAttributeManyReferenceAccess().getNONEEnumLiteralDeclaration_0()); }
+(	'NONE' 
 )
-{ after(grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_0()); }
+{ after(grammarAccess.getAttributeManyReferenceAccess().getNONEEnumLiteralDeclaration_0()); }
 )
 
     |(
-{ before(grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_1()); }
+{ before(grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_1()); }
+(	'*' 
+)
+{ after(grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_1()); }
+)
+
+    |(
+{ before(grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_2()); }
 (	'#' 
 )
-{ after(grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_1()); }
+{ after(grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_2()); }
 )
 
 ;
@@ -1171,9 +1178,9 @@ rule__Attribute__Group__1
     }
 :
 (
-{ before(grammarAccess.getAttributeAccess().getManyAssignment_1()); }
-(rule__Attribute__ManyAssignment_1)?
-{ after(grammarAccess.getAttributeAccess().getManyAssignment_1()); }
+{ before(grammarAccess.getAttributeAccess().getManyReferenceAssignment_1()); }
+(rule__Attribute__ManyReferenceAssignment_1)?
+{ after(grammarAccess.getAttributeAccess().getManyReferenceAssignment_1()); }
 )
 
 	rule__Attribute__Group__2
@@ -1616,14 +1623,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Attribute__ManyAssignment_1
+rule__Attribute__ManyReferenceAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getAttributeAccess().getManyAttributeManyReferenceEnumRuleCall_1_0()); }
-	ruleAttributeManyReference{ after(grammarAccess.getAttributeAccess().getManyAttributeManyReferenceEnumRuleCall_1_0()); }
+{ before(grammarAccess.getAttributeAccess().getManyReferenceAttributeManyReferenceEnumRuleCall_1_0()); }
+	ruleAttributeManyReference{ after(grammarAccess.getAttributeAccess().getManyReferenceAttributeManyReferenceEnumRuleCall_1_0()); }
 )
 
 ;

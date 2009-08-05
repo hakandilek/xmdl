@@ -71,7 +71,7 @@ public class WDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEmbedAccess().getSuperEntityAssignment_2_1(), "rule__Embed__SuperEntityAssignment_2_1");
 					put(grammarAccess.getEmbedAccess().getAttributesAssignment_4(), "rule__Embed__AttributesAssignment_4");
 					put(grammarAccess.getAttributeAccess().getTypeAssignment_0(), "rule__Attribute__TypeAssignment_0");
-					put(grammarAccess.getAttributeAccess().getManyAssignment_1(), "rule__Attribute__ManyAssignment_1");
+					put(grammarAccess.getAttributeAccess().getManyReferenceAssignment_1(), "rule__Attribute__ManyReferenceAssignment_1");
 					put(grammarAccess.getAttributeAccess().getNameAssignment_2(), "rule__Attribute__NameAssignment_2");
 					put(grammarAccess.getEnumerationAccess().getNameAssignment_1(), "rule__Enumeration__NameAssignment_1");
 					put(grammarAccess.getEnumerationAccess().getLiteralsAssignment_3(), "rule__Enumeration__LiteralsAssignment_3");
