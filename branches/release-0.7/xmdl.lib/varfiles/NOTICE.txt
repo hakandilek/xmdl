@@ -3,9 +3,9 @@ Copyright 2007 Hakan Dilek
 http://xmdl.googlecode.com/
 
 XMDL Universal Code Generator (xmdl in short) is licensed 
-under the GNU Lesser General Public License (LGPL in short). 
-A copy of LGPL-3 can be found at URL 
-<http://www.gnu.org/licenses/lgpl.txt>.
+under the Eclipse Public License 1.0. 
+A copy of Eclipse Public License 1.0 can be found at URL 
+<http://www.eclipse.org/legal/epl-v10.html>.
 
 This product includes software developed at
 The Apache Software Foundation (http://www.apache.org/).
