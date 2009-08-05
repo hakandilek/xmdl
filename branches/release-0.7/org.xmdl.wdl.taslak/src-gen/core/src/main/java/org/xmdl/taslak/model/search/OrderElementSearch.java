@@ -81,10 +81,10 @@ public class OrderElementSearch implements Serializable {
 			result = 31 * result + ("" + quantityMax).hashCode();
 
 		if (order != null)
-			result = 31 * result + ("" + order).hashCode();
+			result = 31 * result + order.hashCode();
 
 		if (product != null)
-			result = 31 * result + ("" + product).hashCode();
+			result = 31 * result + product.hashCode();
 
 		return result;
 	}

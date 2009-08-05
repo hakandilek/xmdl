@@ -23,7 +23,7 @@ public class OrderElementDAOTest extends BaseDaoTestCase {
 	public void testAddAndRemoveOrderElement() throws Exception {
 		OrderElement orderElement = new OrderElement();
 
-		orderElement.setQuantity(new Long(4769081124694304450L));
+		orderElement.setQuantity(new Long(-8244772088778785312L));
 
 		orderElement = orderElementDAO.save(orderElement);
 		flush();
@@ -31,7 +31,8 @@ public class OrderElementDAOTest extends BaseDaoTestCase {
 		orderElement = orderElementDAO.get(orderElement.getId());
 
 		assertNotNull(orderElement.getId());
-		assertEquals(new Long(4769081124694304450L), orderElement.getQuantity());
+		assertEquals(new Long(-8244772088778785312L), orderElement
+				.getQuantity());
 
 		log.debug("removing orderElement...");
 		orderElementDAO.remove(orderElement.getId());
@@ -49,8 +50,8 @@ public class OrderElementDAOTest extends BaseDaoTestCase {
 	public void testSearch() throws Exception {
 		OrderElementSearch search = new OrderElementSearch();
 
-		search.setQuantityMin(new Long(4769081124694304450L));
-		search.setQuantityMax(new Long(4769081124694304450L));
+		search.setQuantityMin(new Long(-8244772088778785312L));
+		search.setQuantityMax(new Long(-8244772088778785312L));
 
 		Collection<OrderElement> orderElements = orderElementDAO.search(search);
 		assertTrue(orderElements.size() > 0);
@@ -61,7 +62,7 @@ public class OrderElementDAOTest extends BaseDaoTestCase {
 
 		OrderElement orderElement = new OrderElement();
 
-		orderElement.setQuantity(new Long(4769081124694304450L));
+		orderElement.setQuantity(new Long(-8244772088778785312L));
 
 		orderElementDAO.save(orderElement);
 	}
