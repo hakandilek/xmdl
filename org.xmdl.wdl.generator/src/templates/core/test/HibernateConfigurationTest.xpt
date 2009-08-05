@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-«FILE "core/src/test/java/org/xmdl/taslak/dao/hibernate/HibernateConfigurationTest.java"»
+«FILE "core/src/test/java/" + this.project().basePackagePath() + "/dao/hibernate/HibernateConfigurationTest.java"»
 package «this.basePackageName()».dao.hibernate;
 
 import java.util.*;

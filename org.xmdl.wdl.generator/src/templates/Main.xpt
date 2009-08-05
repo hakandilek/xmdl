@@ -15,7 +15,7 @@
 	«EXPAND core::dao::EntityDAO::entity FOREACH this.types.typeSelect(Entity)»
 	«EXPAND core::dao::EntityDAOHibernate::entity FOREACH this.types.typeSelect(Entity)»
 
-	«EXPAND core::project::Constants::entity FOR this»
+	«EXPAND core::project::Constants::model FOR this»
 	
 	«EXPAND core::rsc::ApplicationContextDaoXml::model FOR this»
 	«EXPAND core::rsc::ApplicationContextServiceXml::model FOR this»

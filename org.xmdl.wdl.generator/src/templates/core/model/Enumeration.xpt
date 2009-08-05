@@ -1,8 +1,11 @@
 «IMPORT wdl»
 
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
 «DEFINE entity FOR wdl::Enumeration»
-  «FILE "core/src/main/java/org/xmdl/taslak/model/"+ this.name + ".java"»
-package org.xmdl.taslak.model;
+  «FILE "core/src/main/java/" + this.project().basePackagePath() + "/model/"+ this.name + ".java"»
+package «this.basePackageName()».model;
 
 /**
  *

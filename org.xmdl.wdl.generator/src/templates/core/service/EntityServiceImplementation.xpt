@@ -4,15 +4,15 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/main/java/org/xmdl/taslak/service/impl/"+ this.name + "ManagerImpl.java"»
-package org.xmdl.taslak.service.impl;
+  «FILE "core/src/main/java/" + this.project().basePackagePath() + "/service/impl/"+ this.name + "ManagerImpl.java"»
+package «this.basePackageName()».service.impl;
 
 import java.util.Collection;
 import org.xmdl.ida.lib.service.impl.GenericManagerImpl;
-import org.xmdl.taslak.model.*;
-import org.xmdl.taslak.model.search.*;
-import org.xmdl.taslak.service.*;
-import org.xmdl.taslak.dao.*;
+import «this.basePackageName()».model.*;
+import «this.basePackageName()».model.search.*;
+import «this.basePackageName()».service.*;
+import «this.basePackageName()».dao.*;
 
 /**
  *

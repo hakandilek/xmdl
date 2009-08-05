@@ -11,7 +11,7 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle:  org.xmdl.wdl,org.eclipse.xpand,org.eclipse.xtend,org.
  eclipse.xtext,org.eclipse.emf.mwe.core,org.eclipse.emf.mwe.utils,org.
  eclipse.xtend.typesystem.emf
-Built-By: Hakan Dilek
+Built-By: ${dist.build.user}
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.xmdl.wdl.gen.utils
 

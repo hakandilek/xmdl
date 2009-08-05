@@ -4,8 +4,8 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/main/java/org/xmdl/taslak/dao/hibernate/"+ this.name + "DAOHibernate.java"»
-package org.xmdl.taslak.dao.hibernate;
+  «FILE "core/src/main/java/" + this.project().basePackagePath() + "/dao/hibernate/"+ this.name + "DAOHibernate.java"»
+package «this.basePackageName()».dao.hibernate;
 
 import org.xmdl.ida.lib.dao.hibernate.GenericDaoHibernate;
 import org.hibernate.Criteria;
@@ -15,9 +15,9 @@ import org.apache.commons.lang.StringUtils;
 import java.util.*;
 import org.xmdl.mesken.model.*;
 
-import org.xmdl.taslak.model.*;
-import org.xmdl.taslak.model.search.*;
-import org.xmdl.taslak.dao.*;
+import «this.basePackageName()».model.*;
+import «this.basePackageName()».model.search.*;
+import «this.basePackageName()».dao.*;
 
 /**
  *
