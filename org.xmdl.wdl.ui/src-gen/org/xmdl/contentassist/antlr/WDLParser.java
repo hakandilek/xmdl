@@ -54,8 +54,8 @@ public class WDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEmbedAccess().getGroup(), "rule__Embed__Group__0");
 					put(grammarAccess.getEmbedAccess().getGroup_2(), "rule__Embed__Group_2__0");
 					put(grammarAccess.getAttributeAccess().getGroup(), "rule__Attribute__Group__0");
-					put(grammarAccess.getEnumAccess().getGroup(), "rule__Enum__Group__0");
-					put(grammarAccess.getEnumLiteralAccess().getGroup(), "rule__EnumLiteral__Group__0");
+					put(grammarAccess.getEnumerationAccess().getGroup(), "rule__Enumeration__Group__0");
+					put(grammarAccess.getEnumerationLiteralAccess().getGroup(), "rule__EnumerationLiteral__Group__0");
 					put(grammarAccess.getModelAccess().getProjectAssignment_0(), "rule__Model__ProjectAssignment_0");
 					put(grammarAccess.getModelAccess().getTypesAssignment_1(), "rule__Model__TypesAssignment_1");
 					put(grammarAccess.getProjectAccess().getNameAssignment_4(), "rule__Project__NameAssignment_4");
@@ -72,10 +72,10 @@ public class WDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAttributeAccess().getTypeAssignment_0(), "rule__Attribute__TypeAssignment_0");
 					put(grammarAccess.getAttributeAccess().getManyAssignment_1(), "rule__Attribute__ManyAssignment_1");
 					put(grammarAccess.getAttributeAccess().getNameAssignment_2(), "rule__Attribute__NameAssignment_2");
-					put(grammarAccess.getEnumAccess().getNameAssignment_1(), "rule__Enum__NameAssignment_1");
-					put(grammarAccess.getEnumAccess().getLiteralsAssignment_3(), "rule__Enum__LiteralsAssignment_3");
-					put(grammarAccess.getEnumLiteralAccess().getNameAssignment_0(), "rule__EnumLiteral__NameAssignment_0");
-					put(grammarAccess.getEnumLiteralAccess().getOrdinalAssignment_2(), "rule__EnumLiteral__OrdinalAssignment_2");
+					put(grammarAccess.getEnumerationAccess().getNameAssignment_1(), "rule__Enumeration__NameAssignment_1");
+					put(grammarAccess.getEnumerationAccess().getLiteralsAssignment_3(), "rule__Enumeration__LiteralsAssignment_3");
+					put(grammarAccess.getEnumerationLiteralAccess().getNameAssignment_0(), "rule__EnumerationLiteral__NameAssignment_0");
+					put(grammarAccess.getEnumerationLiteralAccess().getOrdinalAssignment_2(), "rule__EnumerationLiteral__OrdinalAssignment_2");
 				}
 			};
 		}

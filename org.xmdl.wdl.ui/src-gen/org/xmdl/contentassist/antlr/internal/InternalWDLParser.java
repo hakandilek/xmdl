@@ -656,20 +656,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end ruleAttribute
 
 
-    // $ANTLR start entryRuleEnum
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:271:1: entryRuleEnum : ruleEnum EOF ;
-    public final void entryRuleEnum() throws RecognitionException {
+    // $ANTLR start entryRuleEnumeration
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:271:1: entryRuleEnumeration : ruleEnumeration EOF ;
+    public final void entryRuleEnumeration() throws RecognitionException {
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:271:15: ( ruleEnum EOF )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:272:1: ruleEnum EOF
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:271:22: ( ruleEnumeration EOF )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:272:1: ruleEnumeration EOF
             {
-             before(grammarAccess.getEnumRule()); 
-            pushFollow(FOLLOW_ruleEnum_in_entryRuleEnum540);
-            ruleEnum();
+             before(grammarAccess.getEnumerationRule()); 
+            pushFollow(FOLLOW_ruleEnumeration_in_entryRuleEnumeration540);
+            ruleEnumeration();
             _fsp--;
 
-             after(grammarAccess.getEnumRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnum547); 
+             after(grammarAccess.getEnumerationRule()); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumeration547); 
 
             }
 
@@ -682,34 +682,34 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end entryRuleEnum
+    // $ANTLR end entryRuleEnumeration
 
 
-    // $ANTLR start ruleEnum
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:279:1: ruleEnum : ( ( rule__Enum__Group__0 ) ) ;
-    public final void ruleEnum() throws RecognitionException {
+    // $ANTLR start ruleEnumeration
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:279:1: ruleEnumeration : ( ( rule__Enumeration__Group__0 ) ) ;
+    public final void ruleEnumeration() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:283:2: ( ( ( rule__Enum__Group__0 ) ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:284:1: ( ( rule__Enum__Group__0 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:283:2: ( ( ( rule__Enumeration__Group__0 ) ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:284:1: ( ( rule__Enumeration__Group__0 ) )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:284:1: ( ( rule__Enum__Group__0 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:285:1: ( rule__Enum__Group__0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:284:1: ( ( rule__Enumeration__Group__0 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:285:1: ( rule__Enumeration__Group__0 )
             {
-             before(grammarAccess.getEnumAccess().getGroup()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:286:1: ( rule__Enum__Group__0 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:286:2: rule__Enum__Group__0
+             before(grammarAccess.getEnumerationAccess().getGroup()); 
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:286:1: ( rule__Enumeration__Group__0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:286:2: rule__Enumeration__Group__0
             {
-            pushFollow(FOLLOW_rule__Enum__Group__0_in_ruleEnum574);
-            rule__Enum__Group__0();
+            pushFollow(FOLLOW_rule__Enumeration__Group__0_in_ruleEnumeration574);
+            rule__Enumeration__Group__0();
             _fsp--;
 
 
             }
 
-             after(grammarAccess.getEnumAccess().getGroup()); 
+             after(grammarAccess.getEnumerationAccess().getGroup()); 
 
             }
 
@@ -728,23 +728,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end ruleEnum
+    // $ANTLR end ruleEnumeration
 
 
-    // $ANTLR start entryRuleEnumLiteral
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:298:1: entryRuleEnumLiteral : ruleEnumLiteral EOF ;
-    public final void entryRuleEnumLiteral() throws RecognitionException {
+    // $ANTLR start entryRuleEnumerationLiteral
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:298:1: entryRuleEnumerationLiteral : ruleEnumerationLiteral EOF ;
+    public final void entryRuleEnumerationLiteral() throws RecognitionException {
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:298:22: ( ruleEnumLiteral EOF )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:299:1: ruleEnumLiteral EOF
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:298:29: ( ruleEnumerationLiteral EOF )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:299:1: ruleEnumerationLiteral EOF
             {
-             before(grammarAccess.getEnumLiteralRule()); 
-            pushFollow(FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral600);
-            ruleEnumLiteral();
+             before(grammarAccess.getEnumerationLiteralRule()); 
+            pushFollow(FOLLOW_ruleEnumerationLiteral_in_entryRuleEnumerationLiteral600);
+            ruleEnumerationLiteral();
             _fsp--;
 
-             after(grammarAccess.getEnumLiteralRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumLiteral607); 
+             after(grammarAccess.getEnumerationLiteralRule()); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEnumerationLiteral607); 
 
             }
 
@@ -757,34 +757,34 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end entryRuleEnumLiteral
+    // $ANTLR end entryRuleEnumerationLiteral
 
 
-    // $ANTLR start ruleEnumLiteral
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:306:1: ruleEnumLiteral : ( ( rule__EnumLiteral__Group__0 ) ) ;
-    public final void ruleEnumLiteral() throws RecognitionException {
+    // $ANTLR start ruleEnumerationLiteral
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:306:1: ruleEnumerationLiteral : ( ( rule__EnumerationLiteral__Group__0 ) ) ;
+    public final void ruleEnumerationLiteral() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:310:2: ( ( ( rule__EnumLiteral__Group__0 ) ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:311:1: ( ( rule__EnumLiteral__Group__0 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:310:2: ( ( ( rule__EnumerationLiteral__Group__0 ) ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:311:1: ( ( rule__EnumerationLiteral__Group__0 ) )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:311:1: ( ( rule__EnumLiteral__Group__0 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:312:1: ( rule__EnumLiteral__Group__0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:311:1: ( ( rule__EnumerationLiteral__Group__0 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:312:1: ( rule__EnumerationLiteral__Group__0 )
             {
-             before(grammarAccess.getEnumLiteralAccess().getGroup()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:313:1: ( rule__EnumLiteral__Group__0 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:313:2: rule__EnumLiteral__Group__0
+             before(grammarAccess.getEnumerationLiteralAccess().getGroup()); 
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:313:1: ( rule__EnumerationLiteral__Group__0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:313:2: rule__EnumerationLiteral__Group__0
             {
-            pushFollow(FOLLOW_rule__EnumLiteral__Group__0_in_ruleEnumLiteral634);
-            rule__EnumLiteral__Group__0();
+            pushFollow(FOLLOW_rule__EnumerationLiteral__Group__0_in_ruleEnumerationLiteral634);
+            rule__EnumerationLiteral__Group__0();
             _fsp--;
 
 
             }
 
-             after(grammarAccess.getEnumLiteralAccess().getGroup()); 
+             after(grammarAccess.getEnumerationLiteralAccess().getGroup()); 
 
             }
 
@@ -803,17 +803,17 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end ruleEnumLiteral
+    // $ANTLR end ruleEnumerationLiteral
 
 
     // $ANTLR start rule__Type__Alternatives
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:325:1: rule__Type__Alternatives : ( ( ruleSimpleType ) | ( ruleEntity ) | ( ruleEnum ) | ( ruleEmbed ) );
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:325:1: rule__Type__Alternatives : ( ( ruleSimpleType ) | ( ruleEntity ) | ( ruleEnumeration ) | ( ruleEmbed ) );
     public final void rule__Type__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:329:1: ( ( ruleSimpleType ) | ( ruleEntity ) | ( ruleEnum ) | ( ruleEmbed ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:329:1: ( ( ruleSimpleType ) | ( ruleEntity ) | ( ruleEnumeration ) | ( ruleEmbed ) )
             int alt1=4;
             switch ( input.LA(1) ) {
             case 17:
@@ -838,7 +838,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("325:1: rule__Type__Alternatives : ( ( ruleSimpleType ) | ( ruleEntity ) | ( ruleEnum ) | ( ruleEmbed ) );", 1, 0, input);
+                    new NoViableAltException("325:1: rule__Type__Alternatives : ( ( ruleSimpleType ) | ( ruleEntity ) | ( ruleEnumeration ) | ( ruleEmbed ) );", 1, 0, input);
 
                 throw nvae;
             }
@@ -881,17 +881,17 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:342:6: ( ruleEnum )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:342:6: ( ruleEnumeration )
                     {
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:342:6: ( ruleEnum )
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:343:1: ruleEnum
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:342:6: ( ruleEnumeration )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:343:1: ruleEnumeration
                     {
-                     before(grammarAccess.getTypeAccess().getEnumParserRuleCall_2()); 
-                    pushFollow(FOLLOW_ruleEnum_in_rule__Type__Alternatives704);
-                    ruleEnum();
+                     before(grammarAccess.getTypeAccess().getEnumerationParserRuleCall_2()); 
+                    pushFollow(FOLLOW_ruleEnumeration_in_rule__Type__Alternatives704);
+                    ruleEnumeration();
                     _fsp--;
 
-                     after(grammarAccess.getTypeAccess().getEnumParserRuleCall_2()); 
+                     after(grammarAccess.getTypeAccess().getEnumerationParserRuleCall_2()); 
 
                     }
 
@@ -2784,27 +2784,27 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end rule__Attribute__Group__2
 
 
-    // $ANTLR start rule__Enum__Group__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1166:1: rule__Enum__Group__0 : ( 'enum' ) rule__Enum__Group__1 ;
-    public final void rule__Enum__Group__0() throws RecognitionException {
+    // $ANTLR start rule__Enumeration__Group__0
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1166:1: rule__Enumeration__Group__0 : ( 'enum' ) rule__Enumeration__Group__1 ;
+    public final void rule__Enumeration__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1170:1: ( ( 'enum' ) rule__Enum__Group__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1171:1: ( 'enum' ) rule__Enum__Group__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1170:1: ( ( 'enum' ) rule__Enumeration__Group__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1171:1: ( 'enum' ) rule__Enumeration__Group__1
             {
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1171:1: ( 'enum' )
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1172:1: 'enum'
             {
-             before(grammarAccess.getEnumAccess().getEnumKeyword_0()); 
-            match(input,23,FOLLOW_23_in_rule__Enum__Group__02287); 
-             after(grammarAccess.getEnumAccess().getEnumKeyword_0()); 
+             before(grammarAccess.getEnumerationAccess().getEnumKeyword_0()); 
+            match(input,23,FOLLOW_23_in_rule__Enumeration__Group__02287); 
+             after(grammarAccess.getEnumerationAccess().getEnumKeyword_0()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Enum__Group__1_in_rule__Enum__Group__02297);
-            rule__Enum__Group__1();
+            pushFollow(FOLLOW_rule__Enumeration__Group__1_in_rule__Enumeration__Group__02297);
+            rule__Enumeration__Group__1();
             _fsp--;
 
 
@@ -2822,39 +2822,39 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__Enum__Group__0
+    // $ANTLR end rule__Enumeration__Group__0
 
 
-    // $ANTLR start rule__Enum__Group__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1186:1: rule__Enum__Group__1 : ( ( rule__Enum__NameAssignment_1 ) ) rule__Enum__Group__2 ;
-    public final void rule__Enum__Group__1() throws RecognitionException {
+    // $ANTLR start rule__Enumeration__Group__1
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1186:1: rule__Enumeration__Group__1 : ( ( rule__Enumeration__NameAssignment_1 ) ) rule__Enumeration__Group__2 ;
+    public final void rule__Enumeration__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1190:1: ( ( ( rule__Enum__NameAssignment_1 ) ) rule__Enum__Group__2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1191:1: ( ( rule__Enum__NameAssignment_1 ) ) rule__Enum__Group__2
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1190:1: ( ( ( rule__Enumeration__NameAssignment_1 ) ) rule__Enumeration__Group__2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1191:1: ( ( rule__Enumeration__NameAssignment_1 ) ) rule__Enumeration__Group__2
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1191:1: ( ( rule__Enum__NameAssignment_1 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1192:1: ( rule__Enum__NameAssignment_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1191:1: ( ( rule__Enumeration__NameAssignment_1 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1192:1: ( rule__Enumeration__NameAssignment_1 )
             {
-             before(grammarAccess.getEnumAccess().getNameAssignment_1()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1193:1: ( rule__Enum__NameAssignment_1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1193:2: rule__Enum__NameAssignment_1
+             before(grammarAccess.getEnumerationAccess().getNameAssignment_1()); 
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1193:1: ( rule__Enumeration__NameAssignment_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1193:2: rule__Enumeration__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Enum__NameAssignment_1_in_rule__Enum__Group__12325);
-            rule__Enum__NameAssignment_1();
+            pushFollow(FOLLOW_rule__Enumeration__NameAssignment_1_in_rule__Enumeration__Group__12325);
+            rule__Enumeration__NameAssignment_1();
             _fsp--;
 
 
             }
 
-             after(grammarAccess.getEnumAccess().getNameAssignment_1()); 
+             after(grammarAccess.getEnumerationAccess().getNameAssignment_1()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Enum__Group__2_in_rule__Enum__Group__12334);
-            rule__Enum__Group__2();
+            pushFollow(FOLLOW_rule__Enumeration__Group__2_in_rule__Enumeration__Group__12334);
+            rule__Enumeration__Group__2();
             _fsp--;
 
 
@@ -2872,30 +2872,30 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__Enum__Group__1
+    // $ANTLR end rule__Enumeration__Group__1
 
 
-    // $ANTLR start rule__Enum__Group__2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1204:1: rule__Enum__Group__2 : ( '{' ) rule__Enum__Group__3 ;
-    public final void rule__Enum__Group__2() throws RecognitionException {
+    // $ANTLR start rule__Enumeration__Group__2
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1204:1: rule__Enumeration__Group__2 : ( '{' ) rule__Enumeration__Group__3 ;
+    public final void rule__Enumeration__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1208:1: ( ( '{' ) rule__Enum__Group__3 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1209:1: ( '{' ) rule__Enum__Group__3
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1208:1: ( ( '{' ) rule__Enumeration__Group__3 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1209:1: ( '{' ) rule__Enumeration__Group__3
             {
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1209:1: ( '{' )
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1210:1: '{'
             {
-             before(grammarAccess.getEnumAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,12,FOLLOW_12_in_rule__Enum__Group__22363); 
-             after(grammarAccess.getEnumAccess().getLeftCurlyBracketKeyword_2()); 
+             before(grammarAccess.getEnumerationAccess().getLeftCurlyBracketKeyword_2()); 
+            match(input,12,FOLLOW_12_in_rule__Enumeration__Group__22363); 
+             after(grammarAccess.getEnumerationAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Enum__Group__3_in_rule__Enum__Group__22373);
-            rule__Enum__Group__3();
+            pushFollow(FOLLOW_rule__Enumeration__Group__3_in_rule__Enumeration__Group__22373);
+            rule__Enumeration__Group__3();
             _fsp--;
 
 
@@ -2913,24 +2913,24 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__Enum__Group__2
+    // $ANTLR end rule__Enumeration__Group__2
 
 
-    // $ANTLR start rule__Enum__Group__3
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1224:1: rule__Enum__Group__3 : ( ( rule__Enum__LiteralsAssignment_3 )* ) rule__Enum__Group__4 ;
-    public final void rule__Enum__Group__3() throws RecognitionException {
+    // $ANTLR start rule__Enumeration__Group__3
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1224:1: rule__Enumeration__Group__3 : ( ( rule__Enumeration__LiteralsAssignment_3 )* ) rule__Enumeration__Group__4 ;
+    public final void rule__Enumeration__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1228:1: ( ( ( rule__Enum__LiteralsAssignment_3 )* ) rule__Enum__Group__4 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1229:1: ( ( rule__Enum__LiteralsAssignment_3 )* ) rule__Enum__Group__4
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1228:1: ( ( ( rule__Enumeration__LiteralsAssignment_3 )* ) rule__Enumeration__Group__4 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1229:1: ( ( rule__Enumeration__LiteralsAssignment_3 )* ) rule__Enumeration__Group__4
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1229:1: ( ( rule__Enum__LiteralsAssignment_3 )* )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1230:1: ( rule__Enum__LiteralsAssignment_3 )*
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1229:1: ( ( rule__Enumeration__LiteralsAssignment_3 )* )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1230:1: ( rule__Enumeration__LiteralsAssignment_3 )*
             {
-             before(grammarAccess.getEnumAccess().getLiteralsAssignment_3()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1231:1: ( rule__Enum__LiteralsAssignment_3 )*
+             before(grammarAccess.getEnumerationAccess().getLiteralsAssignment_3()); 
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1231:1: ( rule__Enumeration__LiteralsAssignment_3 )*
             loop10:
             do {
                 int alt10=2;
@@ -2943,10 +2943,10 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
                 switch (alt10) {
             	case 1 :
-            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1231:2: rule__Enum__LiteralsAssignment_3
+            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1231:2: rule__Enumeration__LiteralsAssignment_3
             	    {
-            	    pushFollow(FOLLOW_rule__Enum__LiteralsAssignment_3_in_rule__Enum__Group__32401);
-            	    rule__Enum__LiteralsAssignment_3();
+            	    pushFollow(FOLLOW_rule__Enumeration__LiteralsAssignment_3_in_rule__Enumeration__Group__32401);
+            	    rule__Enumeration__LiteralsAssignment_3();
             	    _fsp--;
 
 
@@ -2958,12 +2958,12 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
                 }
             } while (true);
 
-             after(grammarAccess.getEnumAccess().getLiteralsAssignment_3()); 
+             after(grammarAccess.getEnumerationAccess().getLiteralsAssignment_3()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Enum__Group__4_in_rule__Enum__Group__32411);
-            rule__Enum__Group__4();
+            pushFollow(FOLLOW_rule__Enumeration__Group__4_in_rule__Enumeration__Group__32411);
+            rule__Enumeration__Group__4();
             _fsp--;
 
 
@@ -2981,12 +2981,12 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__Enum__Group__3
+    // $ANTLR end rule__Enumeration__Group__3
 
 
-    // $ANTLR start rule__Enum__Group__4
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1242:1: rule__Enum__Group__4 : ( '}' ) ;
-    public final void rule__Enum__Group__4() throws RecognitionException {
+    // $ANTLR start rule__Enumeration__Group__4
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1242:1: rule__Enumeration__Group__4 : ( '}' ) ;
+    public final void rule__Enumeration__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -2997,9 +2997,9 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1247:1: ( '}' )
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1248:1: '}'
             {
-             before(grammarAccess.getEnumAccess().getRightCurlyBracketKeyword_4()); 
-            match(input,16,FOLLOW_16_in_rule__Enum__Group__42440); 
-             after(grammarAccess.getEnumAccess().getRightCurlyBracketKeyword_4()); 
+             before(grammarAccess.getEnumerationAccess().getRightCurlyBracketKeyword_4()); 
+            match(input,16,FOLLOW_16_in_rule__Enumeration__Group__42440); 
+             after(grammarAccess.getEnumerationAccess().getRightCurlyBracketKeyword_4()); 
 
             }
 
@@ -3018,39 +3018,39 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__Enum__Group__4
+    // $ANTLR end rule__Enumeration__Group__4
 
 
-    // $ANTLR start rule__EnumLiteral__Group__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1271:1: rule__EnumLiteral__Group__0 : ( ( rule__EnumLiteral__NameAssignment_0 ) ) rule__EnumLiteral__Group__1 ;
-    public final void rule__EnumLiteral__Group__0() throws RecognitionException {
+    // $ANTLR start rule__EnumerationLiteral__Group__0
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1271:1: rule__EnumerationLiteral__Group__0 : ( ( rule__EnumerationLiteral__NameAssignment_0 ) ) rule__EnumerationLiteral__Group__1 ;
+    public final void rule__EnumerationLiteral__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1275:1: ( ( ( rule__EnumLiteral__NameAssignment_0 ) ) rule__EnumLiteral__Group__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1276:1: ( ( rule__EnumLiteral__NameAssignment_0 ) ) rule__EnumLiteral__Group__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1275:1: ( ( ( rule__EnumerationLiteral__NameAssignment_0 ) ) rule__EnumerationLiteral__Group__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1276:1: ( ( rule__EnumerationLiteral__NameAssignment_0 ) ) rule__EnumerationLiteral__Group__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1276:1: ( ( rule__EnumLiteral__NameAssignment_0 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1277:1: ( rule__EnumLiteral__NameAssignment_0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1276:1: ( ( rule__EnumerationLiteral__NameAssignment_0 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1277:1: ( rule__EnumerationLiteral__NameAssignment_0 )
             {
-             before(grammarAccess.getEnumLiteralAccess().getNameAssignment_0()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1278:1: ( rule__EnumLiteral__NameAssignment_0 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1278:2: rule__EnumLiteral__NameAssignment_0
+             before(grammarAccess.getEnumerationLiteralAccess().getNameAssignment_0()); 
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1278:1: ( rule__EnumerationLiteral__NameAssignment_0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1278:2: rule__EnumerationLiteral__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__EnumLiteral__NameAssignment_0_in_rule__EnumLiteral__Group__02485);
-            rule__EnumLiteral__NameAssignment_0();
+            pushFollow(FOLLOW_rule__EnumerationLiteral__NameAssignment_0_in_rule__EnumerationLiteral__Group__02485);
+            rule__EnumerationLiteral__NameAssignment_0();
             _fsp--;
 
 
             }
 
-             after(grammarAccess.getEnumLiteralAccess().getNameAssignment_0()); 
+             after(grammarAccess.getEnumerationLiteralAccess().getNameAssignment_0()); 
 
             }
 
-            pushFollow(FOLLOW_rule__EnumLiteral__Group__1_in_rule__EnumLiteral__Group__02494);
-            rule__EnumLiteral__Group__1();
+            pushFollow(FOLLOW_rule__EnumerationLiteral__Group__1_in_rule__EnumerationLiteral__Group__02494);
+            rule__EnumerationLiteral__Group__1();
             _fsp--;
 
 
@@ -3068,30 +3068,30 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__EnumLiteral__Group__0
+    // $ANTLR end rule__EnumerationLiteral__Group__0
 
 
-    // $ANTLR start rule__EnumLiteral__Group__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1289:1: rule__EnumLiteral__Group__1 : ( '(' ) rule__EnumLiteral__Group__2 ;
-    public final void rule__EnumLiteral__Group__1() throws RecognitionException {
+    // $ANTLR start rule__EnumerationLiteral__Group__1
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1289:1: rule__EnumerationLiteral__Group__1 : ( '(' ) rule__EnumerationLiteral__Group__2 ;
+    public final void rule__EnumerationLiteral__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1293:1: ( ( '(' ) rule__EnumLiteral__Group__2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1294:1: ( '(' ) rule__EnumLiteral__Group__2
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1293:1: ( ( '(' ) rule__EnumerationLiteral__Group__2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1294:1: ( '(' ) rule__EnumerationLiteral__Group__2
             {
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1294:1: ( '(' )
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1295:1: '('
             {
-             before(grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1()); 
-            match(input,24,FOLLOW_24_in_rule__EnumLiteral__Group__12523); 
-             after(grammarAccess.getEnumLiteralAccess().getLeftParenthesisKeyword_1()); 
+             before(grammarAccess.getEnumerationLiteralAccess().getLeftParenthesisKeyword_1()); 
+            match(input,24,FOLLOW_24_in_rule__EnumerationLiteral__Group__12523); 
+             after(grammarAccess.getEnumerationLiteralAccess().getLeftParenthesisKeyword_1()); 
 
             }
 
-            pushFollow(FOLLOW_rule__EnumLiteral__Group__2_in_rule__EnumLiteral__Group__12533);
-            rule__EnumLiteral__Group__2();
+            pushFollow(FOLLOW_rule__EnumerationLiteral__Group__2_in_rule__EnumerationLiteral__Group__12533);
+            rule__EnumerationLiteral__Group__2();
             _fsp--;
 
 
@@ -3109,39 +3109,39 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__EnumLiteral__Group__1
+    // $ANTLR end rule__EnumerationLiteral__Group__1
 
 
-    // $ANTLR start rule__EnumLiteral__Group__2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1309:1: rule__EnumLiteral__Group__2 : ( ( rule__EnumLiteral__OrdinalAssignment_2 ) ) rule__EnumLiteral__Group__3 ;
-    public final void rule__EnumLiteral__Group__2() throws RecognitionException {
+    // $ANTLR start rule__EnumerationLiteral__Group__2
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1309:1: rule__EnumerationLiteral__Group__2 : ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) ) rule__EnumerationLiteral__Group__3 ;
+    public final void rule__EnumerationLiteral__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1313:1: ( ( ( rule__EnumLiteral__OrdinalAssignment_2 ) ) rule__EnumLiteral__Group__3 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1314:1: ( ( rule__EnumLiteral__OrdinalAssignment_2 ) ) rule__EnumLiteral__Group__3
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1313:1: ( ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) ) rule__EnumerationLiteral__Group__3 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1314:1: ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) ) rule__EnumerationLiteral__Group__3
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1314:1: ( ( rule__EnumLiteral__OrdinalAssignment_2 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1315:1: ( rule__EnumLiteral__OrdinalAssignment_2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1314:1: ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1315:1: ( rule__EnumerationLiteral__OrdinalAssignment_2 )
             {
-             before(grammarAccess.getEnumLiteralAccess().getOrdinalAssignment_2()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1316:1: ( rule__EnumLiteral__OrdinalAssignment_2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1316:2: rule__EnumLiteral__OrdinalAssignment_2
+             before(grammarAccess.getEnumerationLiteralAccess().getOrdinalAssignment_2()); 
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1316:1: ( rule__EnumerationLiteral__OrdinalAssignment_2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1316:2: rule__EnumerationLiteral__OrdinalAssignment_2
             {
-            pushFollow(FOLLOW_rule__EnumLiteral__OrdinalAssignment_2_in_rule__EnumLiteral__Group__22561);
-            rule__EnumLiteral__OrdinalAssignment_2();
+            pushFollow(FOLLOW_rule__EnumerationLiteral__OrdinalAssignment_2_in_rule__EnumerationLiteral__Group__22561);
+            rule__EnumerationLiteral__OrdinalAssignment_2();
             _fsp--;
 
 
             }
 
-             after(grammarAccess.getEnumLiteralAccess().getOrdinalAssignment_2()); 
+             after(grammarAccess.getEnumerationLiteralAccess().getOrdinalAssignment_2()); 
 
             }
 
-            pushFollow(FOLLOW_rule__EnumLiteral__Group__3_in_rule__EnumLiteral__Group__22570);
-            rule__EnumLiteral__Group__3();
+            pushFollow(FOLLOW_rule__EnumerationLiteral__Group__3_in_rule__EnumerationLiteral__Group__22570);
+            rule__EnumerationLiteral__Group__3();
             _fsp--;
 
 
@@ -3159,12 +3159,12 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__EnumLiteral__Group__2
+    // $ANTLR end rule__EnumerationLiteral__Group__2
 
 
-    // $ANTLR start rule__EnumLiteral__Group__3
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1327:1: rule__EnumLiteral__Group__3 : ( ')' ) ;
-    public final void rule__EnumLiteral__Group__3() throws RecognitionException {
+    // $ANTLR start rule__EnumerationLiteral__Group__3
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1327:1: rule__EnumerationLiteral__Group__3 : ( ')' ) ;
+    public final void rule__EnumerationLiteral__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -3175,9 +3175,9 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1332:1: ( ')' )
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1333:1: ')'
             {
-             before(grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_3()); 
-            match(input,25,FOLLOW_25_in_rule__EnumLiteral__Group__32599); 
-             after(grammarAccess.getEnumLiteralAccess().getRightParenthesisKeyword_3()); 
+             before(grammarAccess.getEnumerationLiteralAccess().getRightParenthesisKeyword_3()); 
+            match(input,25,FOLLOW_25_in_rule__EnumerationLiteral__Group__32599); 
+             after(grammarAccess.getEnumerationLiteralAccess().getRightParenthesisKeyword_3()); 
 
             }
 
@@ -3196,7 +3196,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__EnumLiteral__Group__3
+    // $ANTLR end rule__EnumerationLiteral__Group__3
 
 
     // $ANTLR start rule__Model__ProjectAssignment_0
@@ -3838,9 +3838,9 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end rule__Attribute__NameAssignment_2
 
 
-    // $ANTLR start rule__Enum__NameAssignment_1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1614:1: rule__Enum__NameAssignment_1 : ( RULE_ID ) ;
-    public final void rule__Enum__NameAssignment_1() throws RecognitionException {
+    // $ANTLR start rule__Enumeration__NameAssignment_1
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1614:1: rule__Enumeration__NameAssignment_1 : ( RULE_ID ) ;
+    public final void rule__Enumeration__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -3851,9 +3851,9 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1619:1: ( RULE_ID )
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1620:1: RULE_ID
             {
-             before(grammarAccess.getEnumAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Enum__NameAssignment_13175); 
-             after(grammarAccess.getEnumAccess().getNameIDTerminalRuleCall_1_0()); 
+             before(grammarAccess.getEnumerationAccess().getNameIDTerminalRuleCall_1_0()); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Enumeration__NameAssignment_13175); 
+             after(grammarAccess.getEnumerationAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
 
@@ -3872,28 +3872,28 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__Enum__NameAssignment_1
+    // $ANTLR end rule__Enumeration__NameAssignment_1
 
 
-    // $ANTLR start rule__Enum__LiteralsAssignment_3
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1629:1: rule__Enum__LiteralsAssignment_3 : ( ruleEnumLiteral ) ;
-    public final void rule__Enum__LiteralsAssignment_3() throws RecognitionException {
+    // $ANTLR start rule__Enumeration__LiteralsAssignment_3
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1629:1: rule__Enumeration__LiteralsAssignment_3 : ( ruleEnumerationLiteral ) ;
+    public final void rule__Enumeration__LiteralsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1633:1: ( ( ruleEnumLiteral ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1634:1: ( ruleEnumLiteral )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1633:1: ( ( ruleEnumerationLiteral ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1634:1: ( ruleEnumerationLiteral )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1634:1: ( ruleEnumLiteral )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1635:1: ruleEnumLiteral
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1634:1: ( ruleEnumerationLiteral )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1635:1: ruleEnumerationLiteral
             {
-             before(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleEnumLiteral_in_rule__Enum__LiteralsAssignment_33206);
-            ruleEnumLiteral();
+             before(grammarAccess.getEnumerationAccess().getLiteralsEnumerationLiteralParserRuleCall_3_0()); 
+            pushFollow(FOLLOW_ruleEnumerationLiteral_in_rule__Enumeration__LiteralsAssignment_33206);
+            ruleEnumerationLiteral();
             _fsp--;
 
-             after(grammarAccess.getEnumAccess().getLiteralsEnumLiteralParserRuleCall_3_0()); 
+             after(grammarAccess.getEnumerationAccess().getLiteralsEnumerationLiteralParserRuleCall_3_0()); 
 
             }
 
@@ -3912,12 +3912,12 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__Enum__LiteralsAssignment_3
+    // $ANTLR end rule__Enumeration__LiteralsAssignment_3
 
 
-    // $ANTLR start rule__EnumLiteral__NameAssignment_0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1644:1: rule__EnumLiteral__NameAssignment_0 : ( RULE_ID ) ;
-    public final void rule__EnumLiteral__NameAssignment_0() throws RecognitionException {
+    // $ANTLR start rule__EnumerationLiteral__NameAssignment_0
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1644:1: rule__EnumerationLiteral__NameAssignment_0 : ( RULE_ID ) ;
+    public final void rule__EnumerationLiteral__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -3928,9 +3928,9 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1649:1: ( RULE_ID )
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1650:1: RULE_ID
             {
-             before(grammarAccess.getEnumLiteralAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__EnumLiteral__NameAssignment_03237); 
-             after(grammarAccess.getEnumLiteralAccess().getNameIDTerminalRuleCall_0_0()); 
+             before(grammarAccess.getEnumerationLiteralAccess().getNameIDTerminalRuleCall_0_0()); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__EnumerationLiteral__NameAssignment_03237); 
+             after(grammarAccess.getEnumerationLiteralAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
 
@@ -3949,12 +3949,12 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__EnumLiteral__NameAssignment_0
+    // $ANTLR end rule__EnumerationLiteral__NameAssignment_0
 
 
-    // $ANTLR start rule__EnumLiteral__OrdinalAssignment_2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1659:1: rule__EnumLiteral__OrdinalAssignment_2 : ( RULE_INT ) ;
-    public final void rule__EnumLiteral__OrdinalAssignment_2() throws RecognitionException {
+    // $ANTLR start rule__EnumerationLiteral__OrdinalAssignment_2
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1659:1: rule__EnumerationLiteral__OrdinalAssignment_2 : ( RULE_INT ) ;
+    public final void rule__EnumerationLiteral__OrdinalAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -3965,9 +3965,9 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1664:1: ( RULE_INT )
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1665:1: RULE_INT
             {
-             before(grammarAccess.getEnumLiteralAccess().getOrdinalINTTerminalRuleCall_2_0()); 
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__EnumLiteral__OrdinalAssignment_23268); 
-             after(grammarAccess.getEnumLiteralAccess().getOrdinalINTTerminalRuleCall_2_0()); 
+             before(grammarAccess.getEnumerationLiteralAccess().getOrdinalINTTerminalRuleCall_2_0()); 
+            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__EnumerationLiteral__OrdinalAssignment_23268); 
+             after(grammarAccess.getEnumerationLiteralAccess().getOrdinalINTTerminalRuleCall_2_0()); 
 
             }
 
@@ -3986,7 +3986,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__EnumLiteral__OrdinalAssignment_2
+    // $ANTLR end rule__EnumerationLiteral__OrdinalAssignment_2
 
 
  
@@ -4015,15 +4015,15 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute480 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleAttribute487 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Attribute__Group__0_in_ruleAttribute514 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnum_in_entryRuleEnum540 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnum547 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Enum__Group__0_in_ruleEnum574 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumLiteral_in_entryRuleEnumLiteral600 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleEnumLiteral607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumLiteral__Group__0_in_ruleEnumLiteral634 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumeration_in_entryRuleEnumeration540 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnumeration547 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Enumeration__Group__0_in_ruleEnumeration574 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumerationLiteral_in_entryRuleEnumerationLiteral600 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEnumerationLiteral607 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumerationLiteral__Group__0_in_ruleEnumerationLiteral634 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSimpleType_in_rule__Type__Alternatives670 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleEntity_in_rule__Type__Alternatives687 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnum_in_rule__Type__Alternatives704 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumeration_in_rule__Type__Alternatives704 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleEmbed_in_rule__Type__Alternatives721 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Model__ProjectAssignment_0_in_rule__Model__Group__0755 = new BitSet(new long[]{0x0000000000D20002L});
     public static final BitSet FOLLOW_rule__Model__Group__1_in_rule__Model__Group__0764 = new BitSet(new long[]{0x0000000000000002L});
@@ -4092,22 +4092,22 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__Attribute__ManyAssignment_1_in_rule__Attribute__Group__12208 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__Attribute__Group__2_in_rule__Attribute__Group__12218 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Attribute__NameAssignment_2_in_rule__Attribute__Group__22246 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__Enum__Group__02287 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Enum__Group__1_in_rule__Enum__Group__02297 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Enum__NameAssignment_1_in_rule__Enum__Group__12325 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_rule__Enum__Group__2_in_rule__Enum__Group__12334 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_rule__Enum__Group__22363 = new BitSet(new long[]{0x0000000000010010L});
-    public static final BitSet FOLLOW_rule__Enum__Group__3_in_rule__Enum__Group__22373 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Enum__LiteralsAssignment_3_in_rule__Enum__Group__32401 = new BitSet(new long[]{0x0000000000010010L});
-    public static final BitSet FOLLOW_rule__Enum__Group__4_in_rule__Enum__Group__32411 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__Enum__Group__42440 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumLiteral__NameAssignment_0_in_rule__EnumLiteral__Group__02485 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_rule__EnumLiteral__Group__1_in_rule__EnumLiteral__Group__02494 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__EnumLiteral__Group__12523 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__EnumLiteral__Group__2_in_rule__EnumLiteral__Group__12533 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumLiteral__OrdinalAssignment_2_in_rule__EnumLiteral__Group__22561 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_rule__EnumLiteral__Group__3_in_rule__EnumLiteral__Group__22570 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__EnumLiteral__Group__32599 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__Enumeration__Group__02287 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Enumeration__Group__1_in_rule__Enumeration__Group__02297 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Enumeration__NameAssignment_1_in_rule__Enumeration__Group__12325 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_rule__Enumeration__Group__2_in_rule__Enumeration__Group__12334 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_rule__Enumeration__Group__22363 = new BitSet(new long[]{0x0000000000010010L});
+    public static final BitSet FOLLOW_rule__Enumeration__Group__3_in_rule__Enumeration__Group__22373 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Enumeration__LiteralsAssignment_3_in_rule__Enumeration__Group__32401 = new BitSet(new long[]{0x0000000000010010L});
+    public static final BitSet FOLLOW_rule__Enumeration__Group__4_in_rule__Enumeration__Group__32411 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__Enumeration__Group__42440 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumerationLiteral__NameAssignment_0_in_rule__EnumerationLiteral__Group__02485 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_rule__EnumerationLiteral__Group__1_in_rule__EnumerationLiteral__Group__02494 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rule__EnumerationLiteral__Group__12523 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_rule__EnumerationLiteral__Group__2_in_rule__EnumerationLiteral__Group__12533 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumerationLiteral__OrdinalAssignment_2_in_rule__EnumerationLiteral__Group__22561 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_rule__EnumerationLiteral__Group__3_in_rule__EnumerationLiteral__Group__22570 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_rule__EnumerationLiteral__Group__32599 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleProject_in_rule__Model__ProjectAssignment_02642 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleType_in_rule__Model__TypesAssignment_12673 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__Project__NameAssignment_42704 = new BitSet(new long[]{0x0000000000000002L});
@@ -4124,9 +4124,9 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_RULE_ID_in_rule__Attribute__TypeAssignment_03065 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_26_in_rule__Attribute__ManyAssignment_13105 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__Attribute__NameAssignment_23144 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Enum__NameAssignment_13175 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumLiteral_in_rule__Enum__LiteralsAssignment_33206 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__EnumLiteral__NameAssignment_03237 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__EnumLiteral__OrdinalAssignment_23268 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Enumeration__NameAssignment_13175 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumerationLiteral_in_rule__Enumeration__LiteralsAssignment_33206 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__EnumerationLiteral__NameAssignment_03237 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_rule__EnumerationLiteral__OrdinalAssignment_23268 = new BitSet(new long[]{0x0000000000000002L});
 
 }
