@@ -4,13 +4,13 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/main/java/org/xmdl/taslak/dao/"+ this.name + "DAO.java"»
+  «FILE "core/src/main/java/" + this.project().basePackagePath() + "/dao/"+ this.name + "DAO.java"»
 package org.xmdl.taslak.dao;
 
 import java.util.*;
 import org.xmdl.ida.lib.dao.GenericDao;
-import org.xmdl.taslak.model.*;
-import org.xmdl.taslak.model.search.*;
+import «this.basePackageName()».model.*;
+import «this.basePackageName()».model.search.*;
 
 /**
  *

@@ -4,13 +4,13 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/main/java/org/xmdl/taslak/model/search/"+ this.name + "Search.java"»
-package org.xmdl.taslak.model.search;
+  «FILE "core/src/main/java/" + this.project().basePackagePath() + "/model/search/"+ this.name + "Search.java"»
+package «this.basePackageName()».model.search;
 
 import java.util.*;
 import java.io.Serializable;
 import java.text.MessageFormat;
-import org.xmdl.taslak.model.*;
+import «this.basePackageName()».model.*;
 import org.xmdl.mesken.model.*;
 
 /**

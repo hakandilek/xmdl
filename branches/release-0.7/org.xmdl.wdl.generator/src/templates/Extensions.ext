@@ -28,6 +28,8 @@ boolean isChild(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isChild(org
 
 boolean isMaster(Attribute a) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isMaster(org.xmdl.wdl.Attribute);
 
+boolean isChild(Attribute a) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isChild(org.xmdl.wdl.Attribute);
+
 Type master(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.master(org.xmdl.wdl.Type);
 
 boolean isFromMany(Attribute att) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isFromMany(org.xmdl.wdl.Attribute);
@@ -35,3 +37,5 @@ boolean isFromMany(Attribute att) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.i
 boolean isManyToOne(Attribute att) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isManyToOne(org.xmdl.wdl.Attribute);
 
 Collection associations(Model model) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.associations(org.xmdl.wdl.Model);
+
+Project project(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.projectOf(org.xmdl.wdl.Type);

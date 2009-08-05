@@ -37,9 +37,9 @@ public class AssociationManager {
 	}
 
 	private void register(Attribute attribute) {
-		if (attribute != null && attribute.getMany() != null) {
+		if (attribute != null && ExtensionUtils.isMany(attribute)) {
 			Attribute opposite = ExtensionUtils.opposite(attribute);
-			if (opposite != null && opposite.getMany() != null) {
+			if (opposite != null && ExtensionUtils.isMany(opposite)) {
 				Association association = new Association(attribute, opposite);
 				associations.add(association);
 				associationMap.put(attribute, association);

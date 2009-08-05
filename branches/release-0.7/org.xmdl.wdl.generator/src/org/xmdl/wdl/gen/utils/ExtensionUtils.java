@@ -131,17 +131,28 @@ public class ExtensionUtils {
 		return false;
 	}
 
+	public static boolean isMany(Attribute attribute) {
+		if (attribute != null) {
+			AttributeManyReference manyReference = attribute.getManyReference();
+			return manyReference != null && manyReference != AttributeManyReference.NONE;
+		}
+		return false;
+	}
+	
 	public static AssociationType associationType(Attribute attribute) {
 		if (attribute != null) {
 			Attribute ref = opposite(attribute);
-			if (attribute.getMany() != null) {
-				if (ref != null && ref.getMany() != null)
+//			System.out.println("entity    : " + attribute.eContainer());
+//			System.out.println("attribute : " + attribute);
+//			System.out.println("opposite  : " + ref);
+			if (isMany(attribute)) {
+				if (ref != null && isMany(ref))
 					return AssociationType.MANY_TO_MANY;
 				else {
 					return AssociationType.ONE_TO_MANY;
 				}
 			} else {
-				if (ref != null && ref.getMany() != null)
+				if (ref != null && isMany(ref))
 					return AssociationType.MANY_TO_ONE;
 				else {
 					return AssociationType.ONE_TO_ONE;
@@ -194,7 +205,7 @@ public class ExtensionUtils {
 	
 	/** from master-to-child */
 	public static boolean isMaster(Attribute a) {
-		AttributeManyReference many = a.getMany();
+		AttributeManyReference many = a.getManyReference();
 		return many != null && AttributeManyReference.STRONG == many;
 	}
 
@@ -244,7 +255,7 @@ public class ExtensionUtils {
 	public static boolean isFromMany(Attribute attrib) {
 		Attribute opposite = opposite(attrib);
 		if (opposite != null)
-			return opposite.getMany() != null;
+			return isMany(opposite);
 		return false;
 	}
 	
