@@ -91,6 +91,8 @@ public class ExtensionUtils {
 		} else {
 			// Embed, Entity, or Enum
 			Project p = projectOf(t);
+			System.out.println("type:"+t);
+			System.out.println("prj :"+p);
 			if (p != null) {
 				String basePackage = p.getBasePackage();
 				name = basePackage + ".model." + t.getName();
@@ -101,10 +103,14 @@ public class ExtensionUtils {
 
 	public static Project projectOf(Type selected) {
 		EObject parent = selected;
-		while (parent != null && !(parent instanceof Project)) {
+		while (parent != null && !(parent instanceof Model)) {
 			parent = parent.eContainer();
 		}
-		return (Project) parent;
+		if (parent != null) {
+			Model model = (Model) parent;
+			return model.getProject();
+		}
+		return null;
 	}
 
 	/**
