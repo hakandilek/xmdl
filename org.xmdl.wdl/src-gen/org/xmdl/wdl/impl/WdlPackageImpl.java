@@ -2,18 +2,19 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.xmdl.wdl.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.xmdl.wdl.Attribute;
+import org.xmdl.wdl.AttributeManyReference;
 import org.xmdl.wdl.Embed;
 import org.xmdl.wdl.Entity;
 import org.xmdl.wdl.Enumeration;
@@ -102,6 +103,13 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * @generated
    */
   private EClass enumerationLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum attributeManyReferenceEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -441,6 +449,16 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getAttributeManyReference()
+  {
+    return attributeManyReferenceEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public WdlFactory getWdlFactory()
   {
     return (WdlFactory)getEFactoryInstance();
@@ -502,6 +520,9 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     enumerationLiteralEClass = createEClass(ENUMERATION_LITERAL);
     createEAttribute(enumerationLiteralEClass, ENUMERATION_LITERAL__NAME);
     createEAttribute(enumerationLiteralEClass, ENUMERATION_LITERAL__ORDINAL);
+
+    // Create enums
+    attributeManyReferenceEEnum = createEEnum(ATTRIBUTE_MANY_REFERENCE);
   }
 
   /**
@@ -566,7 +587,7 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
 
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAttribute_Type(), this.getType(), null, "type", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAttribute_Many(), ecorePackage.getEBoolean(), "many", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAttribute_Many(), this.getAttributeManyReference(), "many", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(enumerationEClass, Enumeration.class, "Enumeration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -575,6 +596,11 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     initEClass(enumerationLiteralEClass, EnumerationLiteral.class, "EnumerationLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEnumerationLiteral_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEnumerationLiteral_Ordinal(), ecorePackage.getEInt(), "ordinal", null, 0, 1, EnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(attributeManyReferenceEEnum, AttributeManyReference.class, "AttributeManyReference");
+    addEEnumLiteral(attributeManyReferenceEEnum, AttributeManyReference.WEAK);
+    addEEnumLiteral(attributeManyReferenceEEnum, AttributeManyReference.STRONG);
 
     // Create resource
     createResource(eNS_URI);

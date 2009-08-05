@@ -24,7 +24,10 @@ Embed:
   "embed" name=ID ("extends" superEntity=[Entity])? "{" (attributes+=Attribute)* "}";
 
 Attribute:
-  type=[Type] (many?="*")? name=ID;
+  type=[Type] (many=AttributeManyReference)? name=ID;
+
+enum AttributeManyReference: 
+  WEAK = "*" | STRONG = "#";
 
 Enumeration:
   "enum" name=ID "{" (literals+=EnumerationLiteral)* "}";
