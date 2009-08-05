@@ -146,7 +146,7 @@
             <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.0"/>
           </terminal>
         </tokens>
-        <tokens xsi:type="xtext:Assignment" cardinality="?" feature="many" operator="=">
+        <tokens xsi:type="xtext:Assignment" cardinality="?" feature="manyReference" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.8"/>
         </tokens>
         <tokens xsi:type="xtext:Assignment" feature="name" operator="=">
@@ -159,6 +159,10 @@
         <classifier xsi:type="ecore:EEnum" href="http://www.xmdl.org/WDL#//AttributeManyReference"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
+        <groups xsi:type="xtext:EnumLiteralDeclaration">
+          <enumLiteral href="http://www.xmdl.org/WDL#//AttributeManyReference/NONE"/>
+          <literal value="NONE"/>
+        </groups>
         <groups xsi:type="xtext:EnumLiteralDeclaration">
           <enumLiteral href="http://www.xmdl.org/WDL#//AttributeManyReference/WEAK"/>
           <literal value="*"/>

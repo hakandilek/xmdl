@@ -20,5 +20,5 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.xmdl,org.xmdl.services,org.xmdl.wdl,org.xmdl.wdl.i
  mpl,org.xmdl.wdl.util,org.xmdl.parseTreeConstruction,org.xmdl.parser.
  antlr,org.xmdl.validation
-Built-By: Hakan Dilek
+Built-By: ${dist.build.user}
 

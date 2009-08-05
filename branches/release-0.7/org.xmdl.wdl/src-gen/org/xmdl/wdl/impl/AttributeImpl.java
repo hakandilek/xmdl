@@ -26,7 +26,7 @@ import org.xmdl.wdl.WdlPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.xmdl.wdl.impl.AttributeImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.xmdl.wdl.impl.AttributeImpl#getMany <em>Many</em>}</li>
+ *   <li>{@link org.xmdl.wdl.impl.AttributeImpl#getManyReference <em>Many Reference</em>}</li>
  *   <li>{@link org.xmdl.wdl.impl.AttributeImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -46,24 +46,24 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
   protected Type type;
 
   /**
-   * The default value of the '{@link #getMany() <em>Many</em>}' attribute.
+   * The default value of the '{@link #getManyReference() <em>Many Reference</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMany()
+   * @see #getManyReference()
    * @generated
    * @ordered
    */
-  protected static final AttributeManyReference MANY_EDEFAULT = AttributeManyReference.WEAK;
+  protected static final AttributeManyReference MANY_REFERENCE_EDEFAULT = AttributeManyReference.NONE;
 
   /**
-   * The cached value of the '{@link #getMany() <em>Many</em>}' attribute.
+   * The cached value of the '{@link #getManyReference() <em>Many Reference</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMany()
+   * @see #getManyReference()
    * @generated
    * @ordered
    */
-  protected AttributeManyReference many = MANY_EDEFAULT;
+  protected AttributeManyReference manyReference = MANY_REFERENCE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -154,9 +154,9 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
-  public AttributeManyReference getMany()
+  public AttributeManyReference getManyReference()
   {
-    return many;
+    return manyReference;
   }
 
   /**
@@ -164,12 +164,12 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMany(AttributeManyReference newMany)
+  public void setManyReference(AttributeManyReference newManyReference)
   {
-    AttributeManyReference oldMany = many;
-    many = newMany == null ? MANY_EDEFAULT : newMany;
+    AttributeManyReference oldManyReference = manyReference;
+    manyReference = newManyReference == null ? MANY_REFERENCE_EDEFAULT : newManyReference;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WdlPackage.ATTRIBUTE__MANY, oldMany, many));
+      eNotify(new ENotificationImpl(this, Notification.SET, WdlPackage.ATTRIBUTE__MANY_REFERENCE, oldManyReference, manyReference));
   }
 
   /**
@@ -208,8 +208,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case WdlPackage.ATTRIBUTE__TYPE:
         if (resolve) return getType();
         return basicGetType();
-      case WdlPackage.ATTRIBUTE__MANY:
-        return getMany();
+      case WdlPackage.ATTRIBUTE__MANY_REFERENCE:
+        return getManyReference();
       case WdlPackage.ATTRIBUTE__NAME:
         return getName();
     }
@@ -229,8 +229,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case WdlPackage.ATTRIBUTE__TYPE:
         setType((Type)newValue);
         return;
-      case WdlPackage.ATTRIBUTE__MANY:
-        setMany((AttributeManyReference)newValue);
+      case WdlPackage.ATTRIBUTE__MANY_REFERENCE:
+        setManyReference((AttributeManyReference)newValue);
         return;
       case WdlPackage.ATTRIBUTE__NAME:
         setName((String)newValue);
@@ -252,8 +252,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case WdlPackage.ATTRIBUTE__TYPE:
         setType((Type)null);
         return;
-      case WdlPackage.ATTRIBUTE__MANY:
-        setMany(MANY_EDEFAULT);
+      case WdlPackage.ATTRIBUTE__MANY_REFERENCE:
+        setManyReference(MANY_REFERENCE_EDEFAULT);
         return;
       case WdlPackage.ATTRIBUTE__NAME:
         setName(NAME_EDEFAULT);
@@ -274,8 +274,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
     {
       case WdlPackage.ATTRIBUTE__TYPE:
         return type != null;
-      case WdlPackage.ATTRIBUTE__MANY:
-        return many != MANY_EDEFAULT;
+      case WdlPackage.ATTRIBUTE__MANY_REFERENCE:
+        return manyReference != MANY_REFERENCE_EDEFAULT;
       case WdlPackage.ATTRIBUTE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
@@ -293,8 +293,8 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (many: ");
-    result.append(many);
+    result.append(" (manyReference: ");
+    result.append(manyReference);
     result.append(", name: ");
     result.append(name);
     result.append(')');

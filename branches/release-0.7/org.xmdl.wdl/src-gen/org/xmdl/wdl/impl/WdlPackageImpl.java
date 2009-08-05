@@ -379,7 +379,7 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttribute_Many()
+  public EAttribute getAttribute_ManyReference()
   {
     return (EAttribute)attributeEClass.getEStructuralFeatures().get(1);
   }
@@ -511,7 +511,7 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
 
     attributeEClass = createEClass(ATTRIBUTE);
     createEReference(attributeEClass, ATTRIBUTE__TYPE);
-    createEAttribute(attributeEClass, ATTRIBUTE__MANY);
+    createEAttribute(attributeEClass, ATTRIBUTE__MANY_REFERENCE);
     createEAttribute(attributeEClass, ATTRIBUTE__NAME);
 
     enumerationEClass = createEClass(ENUMERATION);
@@ -587,7 +587,7 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
 
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAttribute_Type(), this.getType(), null, "type", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAttribute_Many(), this.getAttributeManyReference(), "many", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAttribute_ManyReference(), this.getAttributeManyReference(), "manyReference", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(enumerationEClass, Enumeration.class, "Enumeration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -599,6 +599,7 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
 
     // Initialize enums and add enum literals
     initEEnum(attributeManyReferenceEEnum, AttributeManyReference.class, "AttributeManyReference");
+    addEEnumLiteral(attributeManyReferenceEEnum, AttributeManyReference.NONE);
     addEEnumLiteral(attributeManyReferenceEEnum, AttributeManyReference.WEAK);
     addEEnumLiteral(attributeManyReferenceEEnum, AttributeManyReference.STRONG);
 

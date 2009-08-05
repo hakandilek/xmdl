@@ -5,6 +5,9 @@
     <genEnums typeSafeEnumCompatible="false">
       <ecoreEnum href="WDL.ecore#//AttributeManyReference"/>
       <genEnumLiterals>
+        <ecoreEnumLiteral href="WDL.ecore#//AttributeManyReference/NONE"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
         <ecoreEnumLiteral href="WDL.ecore#//AttributeManyReference/WEAK"/>
       </genEnumLiterals>
       <genEnumLiterals>
@@ -71,7 +74,7 @@
         <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Attribute/type"/>
       </genFeatures>
       <genFeatures createChild="false">
-        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//Attribute/many"/>
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//Attribute/manyReference"/>
       </genFeatures>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//Attribute/name"/>

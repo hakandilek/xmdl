@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class InternalWDLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'project'", "'{'", "'projectName'", "':'", "'basePackage'", "'}'", "'type'", "'is'", "'.'", "'entity'", "'extends'", "'embed'", "'enum'", "'('", "')'", "'*'", "'#'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'project'", "'{'", "'projectName'", "':'", "'basePackage'", "'}'", "'type'", "'is'", "'.'", "'entity'", "'extends'", "'embed'", "'enum'", "'('", "')'", "'NONE'", "'*'", "'#'"
     };
     public static final int RULE_ID=5;
     public static final int RULE_STRING=4;
@@ -1232,22 +1232,22 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleAttribute
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:600:1: ruleAttribute returns [EObject current=null] : ( ( RULE_ID ) (lv_many_1= ruleAttributeManyReference )? (lv_name_2= RULE_ID ) ) ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:600:1: ruleAttribute returns [EObject current=null] : ( ( RULE_ID ) (lv_manyReference_1= ruleAttributeManyReference )? (lv_name_2= RULE_ID ) ) ;
     public final EObject ruleAttribute() throws RecognitionException {
         EObject current = null;
 
         Token lv_name_2=null;
-        Enumerator lv_many_1 = null;
+        Enumerator lv_manyReference_1 = null;
 
 
          EObject temp=null; setCurrentLookahead(); resetLookahead(); 
             
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:605:6: ( ( ( RULE_ID ) (lv_many_1= ruleAttributeManyReference )? (lv_name_2= RULE_ID ) ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:606:1: ( ( RULE_ID ) (lv_many_1= ruleAttributeManyReference )? (lv_name_2= RULE_ID ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:605:6: ( ( ( RULE_ID ) (lv_manyReference_1= ruleAttributeManyReference )? (lv_name_2= RULE_ID ) ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:606:1: ( ( RULE_ID ) (lv_manyReference_1= ruleAttributeManyReference )? (lv_name_2= RULE_ID ) )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:606:1: ( ( RULE_ID ) (lv_many_1= ruleAttributeManyReference )? (lv_name_2= RULE_ID ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:606:2: ( RULE_ID ) (lv_many_1= ruleAttributeManyReference )? (lv_name_2= RULE_ID )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:606:1: ( ( RULE_ID ) (lv_manyReference_1= ruleAttributeManyReference )? (lv_name_2= RULE_ID ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:606:2: ( RULE_ID ) (lv_manyReference_1= ruleAttributeManyReference )? (lv_name_2= RULE_ID )
             {
             // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:606:2: ( RULE_ID )
             // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:609:3: RULE_ID
@@ -1265,22 +1265,22 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:622:2: (lv_many_1= ruleAttributeManyReference )?
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:622:2: (lv_manyReference_1= ruleAttributeManyReference )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
-            if ( ((LA9_0>=26 && LA9_0<=27)) ) {
+            if ( ((LA9_0>=26 && LA9_0<=28)) ) {
                 alt9=1;
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:625:6: lv_many_1= ruleAttributeManyReference
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:625:6: lv_manyReference_1= ruleAttributeManyReference
                     {
                      
-                    	        currentNode=createCompositeNode(grammarAccess.getAttributeAccess().getManyAttributeManyReferenceEnumRuleCall_1_0(), currentNode); 
+                    	        currentNode=createCompositeNode(grammarAccess.getAttributeAccess().getManyReferenceAttributeManyReferenceEnumRuleCall_1_0(), currentNode); 
                     	    
                     pushFollow(FOLLOW_ruleAttributeManyReference_in_ruleAttribute1350);
-                    lv_many_1=ruleAttributeManyReference();
+                    lv_manyReference_1=ruleAttributeManyReference();
                     _fsp--;
 
 
@@ -1290,7 +1290,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
                     	        }
                     	        
                     	        try {
-                    	       		set(current, "many", lv_many_1, "AttributeManyReference", lastConsumedNode);
+                    	       		set(current, "manyReference", lv_manyReference_1, "AttributeManyReference", lastConsumedNode);
                     	        } catch (ValueConverterException vce) {
                     				handleValueConverterException(vce);
                     	        }
@@ -1630,42 +1630,51 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start ruleAttributeManyReference
-    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:813:1: ruleAttributeManyReference returns [Enumerator current=null] : ( ( '*' ) | ( '#' ) ) ;
+    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:813:1: ruleAttributeManyReference returns [Enumerator current=null] : ( ( 'NONE' ) | ( '*' ) | ( '#' ) ) ;
     public final Enumerator ruleAttributeManyReference() throws RecognitionException {
         Enumerator current = null;
 
          setCurrentLookahead(); resetLookahead(); 
         try {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:817:6: ( ( ( '*' ) | ( '#' ) ) )
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:818:1: ( ( '*' ) | ( '#' ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:817:6: ( ( ( 'NONE' ) | ( '*' ) | ( '#' ) ) )
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:818:1: ( ( 'NONE' ) | ( '*' ) | ( '#' ) )
             {
-            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:818:1: ( ( '*' ) | ( '#' ) )
-            int alt11=2;
-            int LA11_0 = input.LA(1);
-
-            if ( (LA11_0==26) ) {
+            // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:818:1: ( ( 'NONE' ) | ( '*' ) | ( '#' ) )
+            int alt11=3;
+            switch ( input.LA(1) ) {
+            case 26:
+                {
                 alt11=1;
-            }
-            else if ( (LA11_0==27) ) {
+                }
+                break;
+            case 27:
+                {
                 alt11=2;
-            }
-            else {
+                }
+                break;
+            case 28:
+                {
+                alt11=3;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
-                    new NoViableAltException("818:1: ( ( '*' ) | ( '#' ) )", 11, 0, input);
+                    new NoViableAltException("818:1: ( ( 'NONE' ) | ( '*' ) | ( '#' ) )", 11, 0, input);
 
                 throw nvae;
             }
+
             switch (alt11) {
                 case 1 :
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:818:2: ( '*' )
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:818:2: ( 'NONE' )
                     {
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:818:2: ( '*' )
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:818:4: '*'
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:818:2: ( 'NONE' )
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:818:4: 'NONE'
                     {
                     match(input,26,FOLLOW_26_in_ruleAttributeManyReference1742); 
 
-                            current = grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                            createLeafNode(grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_0(), null); 
+                            current = grammarAccess.getAttributeManyReferenceAccess().getNONEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                            createLeafNode(grammarAccess.getAttributeManyReferenceAccess().getNONEEnumLiteralDeclaration_0(), null); 
                         
 
                     }
@@ -1674,15 +1683,32 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:824:6: ( '#' )
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:824:6: ( '*' )
                     {
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:824:6: ( '#' )
-                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:824:8: '#'
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:824:6: ( '*' )
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:824:8: '*'
                     {
                     match(input,27,FOLLOW_27_in_ruleAttributeManyReference1757); 
 
-                            current = grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                            createLeafNode(grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_1(), null); 
+                            current = grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                            createLeafNode(grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_1(), null); 
+                        
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:830:6: ( '#' )
+                    {
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:830:6: ( '#' )
+                    // ../org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g:830:8: '#'
+                    {
+                    match(input,28,FOLLOW_28_in_ruleAttributeManyReference1772); 
+
+                            current = grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                            createLeafNode(grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_2(), null); 
                         
 
                     }
@@ -1766,7 +1792,7 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_16_in_ruleEmbed1223 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAttribute_in_entryRuleAttribute1256 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleAttribute1266 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAttribute1313 = new BitSet(new long[]{0x000000000C000020L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAttribute1313 = new BitSet(new long[]{0x000000001C000020L});
     public static final BitSet FOLLOW_ruleAttributeManyReference_in_ruleAttribute1350 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleAttribute1377 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleEnumeration_in_entryRuleEnumeration1418 = new BitSet(new long[]{0x0000000000000000L});
@@ -1784,5 +1810,6 @@ public class InternalWDLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_25_in_ruleEnumerationLiteral1695 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_26_in_ruleAttributeManyReference1742 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_27_in_ruleAttributeManyReference1757 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_ruleAttributeManyReference1772 = new BitSet(new long[]{0x0000000000000002L});
 
 }
