@@ -51,9 +51,10 @@ public class ProfileDAOTest extends BaseDaoTestCase {
 
 	public void testSearch() throws Exception {
 		ProfileSearch search = new ProfileSearch();
+
 		search.setUser(null);
-		search.setPrivatePhoneMin("r9k32HpZs D5RCV");
-		search.setPrivatePhoneMax("r9k32HpZs D5RCV");
+
+		search.setPrivatePhone("r9k32HpZs D5RCV");
 		Collection<Profile> profiles = profileDAO.search(search);
 		assertTrue(profiles.size() > 0);
 	}

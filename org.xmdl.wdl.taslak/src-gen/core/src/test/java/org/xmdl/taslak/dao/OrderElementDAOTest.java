@@ -48,8 +48,10 @@ public class OrderElementDAOTest extends BaseDaoTestCase {
 
 	public void testSearch() throws Exception {
 		OrderElementSearch search = new OrderElementSearch();
+
 		search.setQuantityMin(new Long(4769081124694304450L));
 		search.setQuantityMax(new Long(4769081124694304450L));
+
 		Collection<OrderElement> orderElements = orderElementDAO.search(search);
 		assertTrue(orderElements.size() > 0);
 	}

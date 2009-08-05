@@ -34,6 +34,7 @@ public class Product extends BaseObject implements Serializable, Cloneable {
 
 	@Embedded
 	private Money price = new Money();
+
 	@Column(name = "F_PRODUCTTYPE", length = 15, columnDefinition = "integer", nullable = false)
 	@Type(type = "org.xmdl.ida.lib.dao.hibernate.GenericEnumUserType", parameters = {
 			@Parameter(name = "enumClass", value = "ProductType"),
@@ -115,6 +116,9 @@ public class Product extends BaseObject implements Serializable, Cloneable {
 		if (name != null)
 			result = 31 * result + ("" + name).hashCode();
 
+		if (price != null)
+			result = 31 * result + ("" + price).hashCode();
+
 		if (productType != null)
 			result = 31 * result + ("" + productType).hashCode();
 
@@ -128,6 +132,8 @@ public class Product extends BaseObject implements Serializable, Cloneable {
 			Product copy = new Product();
 
 			copy.name = this.name;
+
+			copy.price = this.price;
 
 			copy.productType = this.productType;
 

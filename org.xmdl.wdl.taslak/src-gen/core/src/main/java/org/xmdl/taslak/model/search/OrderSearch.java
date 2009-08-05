@@ -15,9 +15,7 @@ import org.xmdl.mesken.model.*;
  */
 public class OrderSearch implements Serializable {
 
-	private String nameMin;
-
-	private String nameMax;
+	private String name;
 
 	private Double priceTotalsMin;
 
@@ -32,20 +30,12 @@ public class OrderSearch implements Serializable {
 	public OrderSearch() {
 	}
 
-	public String getNameMin() {
-		return nameMin;
+	public String getName() {
+		return name;
 	}
 
-	public void setNameMin(String nameMin) {
-		this.nameMin = nameMin;
-	}
-
-	public String getNameMax() {
-		return nameMax;
-	}
-
-	public void setNameMax(String nameMax) {
-		this.nameMax = nameMax;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Double getPriceTotalsMin() {
@@ -95,9 +85,9 @@ public class OrderSearch implements Serializable {
 	public String toString() {
 		return MessageFormat
 				.format(
-						"Order[nameMin={1}][nameMax={2}][priceTotalsMin={3}][priceTotalsMax={4}][createDateMin={5}][createDateMax={6}]",
-						nameMin, nameMax, priceTotalsMin, priceTotalsMax,
-						createDateMin, createDateMax);
+						"Order[name={1}], [priceTotalsMin={2}][priceTotalsMax={3}][createDateMin={4}][createDateMax={5}]",
+						name, priceTotalsMin, priceTotalsMax, createDateMin,
+						createDateMax);
 	}
 
 	/** 
@@ -107,10 +97,8 @@ public class OrderSearch implements Serializable {
 	public int hashCode() {
 		int result = 1;
 
-		if (nameMin != null)
-			result = 31 * result + ("" + nameMin).hashCode();
-		if (nameMax != null)
-			result = 31 * result + ("" + nameMax).hashCode();
+		if (name != null)
+			result = 31 * result + ("" + name).hashCode();
 
 		if (priceTotalsMin != null)
 			result = 31 * result + ("" + priceTotalsMin).hashCode();

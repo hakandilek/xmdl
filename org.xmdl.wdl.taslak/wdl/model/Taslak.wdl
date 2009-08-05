@@ -7,7 +7,6 @@ type Double
 type Long
 type String
 type Date is java.util.Date
-type Currency is java.util.Currency
 type User is org.xmdl.mesken.model.User
 
 enum ProductType {
@@ -19,7 +18,6 @@ enum ProductType {
 
 embed Money {
 	Double amount
-	Currency currency
 }
 
 entity Order {

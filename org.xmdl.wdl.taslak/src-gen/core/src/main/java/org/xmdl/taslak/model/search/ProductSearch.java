@@ -15,9 +15,7 @@ import org.xmdl.mesken.model.*;
  */
 public class ProductSearch implements Serializable {
 
-	private String nameMin;
-
-	private String nameMax;
+	private String name;
 
 	private ProductType productTypeMin;
 
@@ -30,20 +28,12 @@ public class ProductSearch implements Serializable {
 	public ProductSearch() {
 	}
 
-	public String getNameMin() {
-		return nameMin;
+	public String getName() {
+		return name;
 	}
 
-	public void setNameMin(String nameMin) {
-		this.nameMin = nameMin;
-	}
-
-	public String getNameMax() {
-		return nameMax;
-	}
-
-	public void setNameMax(String nameMax) {
-		this.nameMax = nameMax;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public ProductType getProductTypeMin() {
@@ -83,10 +73,9 @@ public class ProductSearch implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return MessageFormat
-				.format(
-						"Product[nameMin={1}][nameMax={2}][productTypeMin={3}][productTypeMax={4}]",
-						nameMin, nameMax, productTypeMin, productTypeMax);
+		return MessageFormat.format(
+				"Product[name={1}], [productTypeMin={2}][productTypeMax={3}]",
+				name, productTypeMin, productTypeMax);
 	}
 
 	/** 
@@ -96,10 +85,8 @@ public class ProductSearch implements Serializable {
 	public int hashCode() {
 		int result = 1;
 
-		if (nameMin != null)
-			result = 31 * result + ("" + nameMin).hashCode();
-		if (nameMax != null)
-			result = 31 * result + ("" + nameMax).hashCode();
+		if (name != null)
+			result = 31 * result + ("" + name).hashCode();
 
 		if (productTypeMin != null)
 			result = 31 * result + ("" + productTypeMin).hashCode();
