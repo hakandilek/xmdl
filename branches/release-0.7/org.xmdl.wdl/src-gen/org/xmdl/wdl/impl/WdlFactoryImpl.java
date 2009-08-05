@@ -2,11 +2,11 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.xmdl.wdl.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -80,6 +80,40 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
       case WdlPackage.ENUMERATION_LITERAL: return createEnumerationLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case WdlPackage.ATTRIBUTE_MANY_REFERENCE:
+        return createAttributeManyReferenceFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case WdlPackage.ATTRIBUTE_MANY_REFERENCE:
+        return convertAttributeManyReferenceToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -191,6 +225,28 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
   {
     EnumerationLiteralImpl enumerationLiteral = new EnumerationLiteralImpl();
     return enumerationLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AttributeManyReference createAttributeManyReferenceFromString(EDataType eDataType, String initialValue)
+  {
+    AttributeManyReference result = AttributeManyReference.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertAttributeManyReferenceToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

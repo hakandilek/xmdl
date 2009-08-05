@@ -2,12 +2,12 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.xmdl.wdl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -439,6 +439,16 @@ public interface WdlPackage extends EPackage
    */
   int ENUMERATION_LITERAL_FEATURE_COUNT = 2;
 
+  /**
+   * The meta object id for the '{@link org.xmdl.wdl.AttributeManyReference <em>Attribute Many Reference</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xmdl.wdl.AttributeManyReference
+   * @see org.xmdl.wdl.impl.WdlPackageImpl#getAttributeManyReference()
+   * @generated
+   */
+  int ATTRIBUTE_MANY_REFERENCE = 10;
+
 
   /**
    * Returns the meta object for class '{@link org.xmdl.wdl.Model <em>Model</em>}'.
@@ -653,11 +663,11 @@ public interface WdlPackage extends EPackage
   EReference getAttribute_Type();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xmdl.wdl.Attribute#isMany <em>Many</em>}'.
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.Attribute#getMany <em>Many</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Many</em>'.
-   * @see org.xmdl.wdl.Attribute#isMany()
+   * @see org.xmdl.wdl.Attribute#getMany()
    * @see #getAttribute()
    * @generated
    */
@@ -726,6 +736,16 @@ public interface WdlPackage extends EPackage
    * @generated
    */
   EAttribute getEnumerationLiteral_Ordinal();
+
+  /**
+   * Returns the meta object for enum '{@link org.xmdl.wdl.AttributeManyReference <em>Attribute Many Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Attribute Many Reference</em>'.
+   * @see org.xmdl.wdl.AttributeManyReference
+   * @generated
+   */
+  EEnum getAttributeManyReference();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -985,6 +1005,16 @@ public interface WdlPackage extends EPackage
      * @generated
      */
     EAttribute ENUMERATION_LITERAL__ORDINAL = eINSTANCE.getEnumerationLiteral_Ordinal();
+
+    /**
+     * The meta object literal for the '{@link org.xmdl.wdl.AttributeManyReference <em>Attribute Many Reference</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xmdl.wdl.AttributeManyReference
+     * @see org.xmdl.wdl.impl.WdlPackageImpl#getAttributeManyReference()
+     * @generated
+     */
+    EEnum ATTRIBUTE_MANY_REFERENCE = eINSTANCE.getAttributeManyReference();
 
   }
 

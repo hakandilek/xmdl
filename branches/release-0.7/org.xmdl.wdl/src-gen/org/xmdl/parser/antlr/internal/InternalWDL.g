@@ -26,6 +26,7 @@ import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.xtext.parsetree.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -620,23 +621,23 @@ ruleAttribute returns [EObject current=null]
 	
 )(	
 	
-	    lv_many_1='*' 
-    {
-        createLeafNode(grammarAccess.getAttributeAccess().getManyAsteriskKeyword_1_0(), "many"); 
-    }
-
- 
+	    
+	    { 
+	        currentNode=createCompositeNode(grammarAccess.getAttributeAccess().getManyAttributeManyReferenceEnumRuleCall_1_0(), currentNode); 
+	    }
+	    lv_many_1=ruleAttributeManyReference 
 	    {
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getAttributeRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
 	        }
 	        
 	        try {
-	       		set($current, "many", true, "*", lastConsumedNode);
+	       		set($current, "many", lv_many_1, "AttributeManyReference", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
+	        currentNode = currentNode.getParent();
 	    }
 	
 )?(	
@@ -805,6 +806,27 @@ ruleEnumerationLiteral returns [EObject current=null]
 );
 
 
+
+
+
+// Rule AttributeManyReference
+ruleAttributeManyReference returns [Enumerator current=null] 
+    @init { setCurrentLookahead(); resetLookahead(); }
+    @after { resetLookahead(); 
+    	lastConsumedNode = currentNode;
+    }:
+((	'*' 
+	{
+        $current = grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        createLeafNode(grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_0(), null); 
+    }
+)
+    |(	'#' 
+	{
+        $current = grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        createLeafNode(grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_1(), null); 
+    }
+));
 
 
 

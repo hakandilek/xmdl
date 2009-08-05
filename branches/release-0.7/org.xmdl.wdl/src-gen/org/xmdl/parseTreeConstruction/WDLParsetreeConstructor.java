@@ -1356,11 +1356,11 @@ protected class Embed_RightCurlyBracketKeyword_5 extends KeywordToken  {
 /************ begin Rule Attribute ****************
  *
  * Attribute:
- *   type=[Type] many?="*"? name=ID;
+ *   type=[Type] many=AttributeManyReference? name=ID;
  *
  **/
 
-// type=[Type] many?="*"? name=ID
+// type=[Type] many=AttributeManyReference? name=ID
 protected class Attribute_Group extends GroupToken {
 	
 	public Attribute_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -1417,7 +1417,7 @@ protected class Attribute_TypeAssignment_0 extends AssignmentToken  {
 
 }
 
-// many?="*"?
+// many=AttributeManyReference?
 protected class Attribute_ManyAssignment_1 extends AssignmentToken  {
 	
 	public Attribute_ManyAssignment_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -1438,9 +1438,9 @@ protected class Attribute_ManyAssignment_1 extends AssignmentToken  {
 	protected IInstanceDescription tryConsumeVal() {
 		if((value = current.getConsumable("many",false)) == null) return null;
 		IInstanceDescription obj = current.cloneAndConsume("many");
-		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
-			type = AssignmentType.KW;
-			element = grammarAccess.getAttributeAccess().getManyAsteriskKeyword_1_0();
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.ERC;
+			element = grammarAccess.getAttributeAccess().getManyAttributeManyReferenceEnumRuleCall_1_0();
 			return obj;
 		}
 		return null;

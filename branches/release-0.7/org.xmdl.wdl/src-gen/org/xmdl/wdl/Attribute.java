@@ -2,7 +2,6 @@
  * <copyright>
  * </copyright>
  *
-
  */
 package org.xmdl.wdl;
 
@@ -17,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.xmdl.wdl.Attribute#getType <em>Type</em>}</li>
- *   <li>{@link org.xmdl.wdl.Attribute#isMany <em>Many</em>}</li>
+ *   <li>{@link org.xmdl.wdl.Attribute#getMany <em>Many</em>}</li>
  *   <li>{@link org.xmdl.wdl.Attribute#getName <em>Name</em>}</li>
  * </ul>
  * </p>
@@ -56,6 +55,7 @@ public interface Attribute extends EObject
 
   /**
    * Returns the value of the '<em><b>Many</b></em>' attribute.
+   * The literals are from the enumeration {@link org.xmdl.wdl.AttributeManyReference}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Many</em>' attribute isn't clear,
@@ -63,22 +63,24 @@ public interface Attribute extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Many</em>' attribute.
-   * @see #setMany(boolean)
+   * @see org.xmdl.wdl.AttributeManyReference
+   * @see #setMany(AttributeManyReference)
    * @see org.xmdl.wdl.WdlPackage#getAttribute_Many()
    * @model
    * @generated
    */
-  boolean isMany();
+  AttributeManyReference getMany();
 
   /**
-   * Sets the value of the '{@link org.xmdl.wdl.Attribute#isMany <em>Many</em>}' attribute.
+   * Sets the value of the '{@link org.xmdl.wdl.Attribute#getMany <em>Many</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Many</em>' attribute.
-   * @see #isMany()
+   * @see org.xmdl.wdl.AttributeManyReference
+   * @see #getMany()
    * @generated
    */
-  void setMany(boolean value);
+  void setMany(AttributeManyReference value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
