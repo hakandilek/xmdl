@@ -147,33 +147,33 @@ public class AbstractWDLProposalProvider extends TerminalsProposalProvider {
 		}
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeEnum_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeEnumeration_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("completeEnum_Name feature '" + assignment.getFeature() + "' terminal '"
+			logger.debug("completeEnumeration_Name feature '" + assignment.getFeature() + "' terminal '"
 					+ assignment.getTerminal() + "' cardinality '" + assignment.getCardinality() + "' and prefix '"
 					+ context.getPrefix() + "'");
 		}
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeEnum_Literals(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeEnumeration_Literals(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("completeEnum_Literals feature '" + assignment.getFeature() + "' terminal '"
+			logger.debug("completeEnumeration_Literals feature '" + assignment.getFeature() + "' terminal '"
 					+ assignment.getTerminal() + "' cardinality '" + assignment.getCardinality() + "' and prefix '"
 					+ context.getPrefix() + "'");
 		}
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeEnumLiteral_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeEnumerationLiteral_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("completeEnumLiteral_Name feature '" + assignment.getFeature() + "' terminal '"
+			logger.debug("completeEnumerationLiteral_Name feature '" + assignment.getFeature() + "' terminal '"
 					+ assignment.getTerminal() + "' cardinality '" + assignment.getCardinality() + "' and prefix '"
 					+ context.getPrefix() + "'");
 		}
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
-	public void completeEnumLiteral_Ordinal(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeEnumerationLiteral_Ordinal(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("completeEnumLiteral_Ordinal feature '" + assignment.getFeature() + "' terminal '"
+			logger.debug("completeEnumerationLiteral_Ordinal feature '" + assignment.getFeature() + "' terminal '"
 					+ assignment.getTerminal() + "' cardinality '" + assignment.getCardinality() + "' and prefix '"
 					+ context.getPrefix() + "'");
 		}
@@ -236,16 +236,16 @@ public class AbstractWDLProposalProvider extends TerminalsProposalProvider {
 		}
 		// subclasses may override
 	}
-	public void complete_Enum(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void complete_Enumeration(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("complete_Enum '" + ruleCall.getRule().getName() + "' cardinality '" + ruleCall.getCardinality()
+			logger.debug("complete_Enumeration '" + ruleCall.getRule().getName() + "' cardinality '" + ruleCall.getCardinality()
 					+ "' for model '" + context.getCurrentModel() + "' and prefix '" + context.getPrefix() + "'");
 		}
 		// subclasses may override
 	}
-	public void complete_EnumLiteral(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void complete_EnumerationLiteral(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		if (logger.isDebugEnabled()) {
-			logger.debug("complete_EnumLiteral '" + ruleCall.getRule().getName() + "' cardinality '" + ruleCall.getCardinality()
+			logger.debug("complete_EnumerationLiteral '" + ruleCall.getRule().getName() + "' cardinality '" + ruleCall.getCardinality()
 					+ "' for model '" + context.getCurrentModel() + "' and prefix '" + context.getPrefix() + "'");
 		}
 		// subclasses may override
