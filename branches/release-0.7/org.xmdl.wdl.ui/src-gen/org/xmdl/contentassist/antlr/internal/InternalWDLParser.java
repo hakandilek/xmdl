@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class InternalWDLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'*'", "'#'", "'project'", "'{'", "'projectName'", "':'", "'basePackage'", "'}'", "'type'", "'is'", "'.'", "'entity'", "'extends'", "'embed'", "'enum'", "'('", "')'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'NONE'", "'*'", "'#'", "'project'", "'{'", "'projectName'", "':'", "'basePackage'", "'}'", "'type'", "'is'", "'.'", "'entity'", "'extends'", "'embed'", "'enum'", "'('", "')'"
     };
     public static final int RULE_ID=4;
     public static final int RULE_STRING=5;
@@ -862,22 +862,22 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
             // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:348:1: ( ( ruleSimpleType ) | ( ruleEntity ) | ( ruleEnumeration ) | ( ruleEmbed ) )
             int alt1=4;
             switch ( input.LA(1) ) {
-            case 19:
+            case 20:
                 {
                 alt1=1;
                 }
                 break;
-            case 22:
+            case 23:
                 {
                 alt1=2;
                 }
                 break;
-            case 25:
+            case 26:
                 {
                 alt1=3;
                 }
                 break;
-            case 24:
+            case 25:
                 {
                 alt1=4;
                 }
@@ -980,44 +980,53 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__AttributeManyReference__Alternatives
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:378:1: rule__AttributeManyReference__Alternatives : ( ( ( '*' ) ) | ( ( '#' ) ) );
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:378:1: rule__AttributeManyReference__Alternatives : ( ( ( 'NONE' ) ) | ( ( '*' ) ) | ( ( '#' ) ) );
     public final void rule__AttributeManyReference__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:382:1: ( ( ( '*' ) ) | ( ( '#' ) ) )
-            int alt2=2;
-            int LA2_0 = input.LA(1);
-
-            if ( (LA2_0==11) ) {
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:382:1: ( ( ( 'NONE' ) ) | ( ( '*' ) ) | ( ( '#' ) ) )
+            int alt2=3;
+            switch ( input.LA(1) ) {
+            case 11:
+                {
                 alt2=1;
-            }
-            else if ( (LA2_0==12) ) {
+                }
+                break;
+            case 12:
+                {
                 alt2=2;
-            }
-            else {
+                }
+                break;
+            case 13:
+                {
+                alt2=3;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
-                    new NoViableAltException("378:1: rule__AttributeManyReference__Alternatives : ( ( ( '*' ) ) | ( ( '#' ) ) );", 2, 0, input);
+                    new NoViableAltException("378:1: rule__AttributeManyReference__Alternatives : ( ( ( 'NONE' ) ) | ( ( '*' ) ) | ( ( '#' ) ) );", 2, 0, input);
 
                 throw nvae;
             }
+
             switch (alt2) {
                 case 1 :
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:383:1: ( ( '*' ) )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:383:1: ( ( 'NONE' ) )
                     {
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:383:1: ( ( '*' ) )
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:384:1: ( '*' )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:383:1: ( ( 'NONE' ) )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:384:1: ( 'NONE' )
                     {
-                     before(grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_0()); 
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:385:1: ( '*' )
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:385:3: '*'
+                     before(grammarAccess.getAttributeManyReferenceAccess().getNONEEnumLiteralDeclaration_0()); 
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:385:1: ( 'NONE' )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:385:3: 'NONE'
                     {
                     match(input,11,FOLLOW_11_in_rule__AttributeManyReference__Alternatives790); 
 
                     }
 
-                     after(grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_0()); 
+                     after(grammarAccess.getAttributeManyReferenceAccess().getNONEEnumLiteralDeclaration_0()); 
 
                     }
 
@@ -1025,20 +1034,41 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:390:6: ( ( '#' ) )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:390:6: ( ( '*' ) )
                     {
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:390:6: ( ( '#' ) )
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:391:1: ( '#' )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:390:6: ( ( '*' ) )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:391:1: ( '*' )
                     {
-                     before(grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_1()); 
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:392:1: ( '#' )
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:392:3: '#'
+                     before(grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_1()); 
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:392:1: ( '*' )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:392:3: '*'
                     {
                     match(input,12,FOLLOW_12_in_rule__AttributeManyReference__Alternatives811); 
 
                     }
 
-                     after(grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_1()); 
+                     after(grammarAccess.getAttributeManyReferenceAccess().getWEAKEnumLiteralDeclaration_1()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:397:6: ( ( '#' ) )
+                    {
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:397:6: ( ( '#' ) )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:398:1: ( '#' )
+                    {
+                     before(grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_2()); 
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:399:1: ( '#' )
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:399:3: '#'
+                    {
+                    match(input,13,FOLLOW_13_in_rule__AttributeManyReference__Alternatives832); 
+
+                    }
+
+                     after(grammarAccess.getAttributeManyReferenceAccess().getSTRONGEnumLiteralDeclaration_2()); 
 
                     }
 
@@ -1063,23 +1093,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Model__Group__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:404:1: rule__Model__Group__0 : ( ( rule__Model__ProjectAssignment_0 ) ) rule__Model__Group__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:411:1: rule__Model__Group__0 : ( ( rule__Model__ProjectAssignment_0 ) ) rule__Model__Group__1 ;
     public final void rule__Model__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:408:1: ( ( ( rule__Model__ProjectAssignment_0 ) ) rule__Model__Group__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:409:1: ( ( rule__Model__ProjectAssignment_0 ) ) rule__Model__Group__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:415:1: ( ( ( rule__Model__ProjectAssignment_0 ) ) rule__Model__Group__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:416:1: ( ( rule__Model__ProjectAssignment_0 ) ) rule__Model__Group__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:409:1: ( ( rule__Model__ProjectAssignment_0 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:410:1: ( rule__Model__ProjectAssignment_0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:416:1: ( ( rule__Model__ProjectAssignment_0 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:417:1: ( rule__Model__ProjectAssignment_0 )
             {
              before(grammarAccess.getModelAccess().getProjectAssignment_0()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:411:1: ( rule__Model__ProjectAssignment_0 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:411:2: rule__Model__ProjectAssignment_0
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:418:1: ( rule__Model__ProjectAssignment_0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:418:2: rule__Model__ProjectAssignment_0
             {
-            pushFollow(FOLLOW_rule__Model__ProjectAssignment_0_in_rule__Model__Group__0848);
+            pushFollow(FOLLOW_rule__Model__ProjectAssignment_0_in_rule__Model__Group__0869);
             rule__Model__ProjectAssignment_0();
             _fsp--;
 
@@ -1090,7 +1120,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Model__Group__1_in_rule__Model__Group__0857);
+            pushFollow(FOLLOW_rule__Model__Group__1_in_rule__Model__Group__0878);
             rule__Model__Group__1();
             _fsp--;
 
@@ -1113,35 +1143,35 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Model__Group__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:422:1: rule__Model__Group__1 : ( ( rule__Model__TypesAssignment_1 )* ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:429:1: rule__Model__Group__1 : ( ( rule__Model__TypesAssignment_1 )* ) ;
     public final void rule__Model__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:426:1: ( ( ( rule__Model__TypesAssignment_1 )* ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:427:1: ( ( rule__Model__TypesAssignment_1 )* )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:433:1: ( ( ( rule__Model__TypesAssignment_1 )* ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:434:1: ( ( rule__Model__TypesAssignment_1 )* )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:427:1: ( ( rule__Model__TypesAssignment_1 )* )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:428:1: ( rule__Model__TypesAssignment_1 )*
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:434:1: ( ( rule__Model__TypesAssignment_1 )* )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:435:1: ( rule__Model__TypesAssignment_1 )*
             {
              before(grammarAccess.getModelAccess().getTypesAssignment_1()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:429:1: ( rule__Model__TypesAssignment_1 )*
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:436:1: ( rule__Model__TypesAssignment_1 )*
             loop3:
             do {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( (LA3_0==19||LA3_0==22||(LA3_0>=24 && LA3_0<=25)) ) {
+                if ( (LA3_0==20||LA3_0==23||(LA3_0>=25 && LA3_0<=26)) ) {
                     alt3=1;
                 }
 
 
                 switch (alt3) {
             	case 1 :
-            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:429:2: rule__Model__TypesAssignment_1
+            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:436:2: rule__Model__TypesAssignment_1
             	    {
-            	    pushFollow(FOLLOW_rule__Model__TypesAssignment_1_in_rule__Model__Group__1885);
+            	    pushFollow(FOLLOW_rule__Model__TypesAssignment_1_in_rule__Model__Group__1906);
             	    rule__Model__TypesAssignment_1();
             	    _fsp--;
 
@@ -1177,25 +1207,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Project__Group__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:443:1: rule__Project__Group__0 : ( 'project' ) rule__Project__Group__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:450:1: rule__Project__Group__0 : ( 'project' ) rule__Project__Group__1 ;
     public final void rule__Project__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:447:1: ( ( 'project' ) rule__Project__Group__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:448:1: ( 'project' ) rule__Project__Group__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:454:1: ( ( 'project' ) rule__Project__Group__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:455:1: ( 'project' ) rule__Project__Group__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:448:1: ( 'project' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:449:1: 'project'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:455:1: ( 'project' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:456:1: 'project'
             {
              before(grammarAccess.getProjectAccess().getProjectKeyword_0()); 
-            match(input,13,FOLLOW_13_in_rule__Project__Group__0925); 
+            match(input,14,FOLLOW_14_in_rule__Project__Group__0946); 
              after(grammarAccess.getProjectAccess().getProjectKeyword_0()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Project__Group__1_in_rule__Project__Group__0935);
+            pushFollow(FOLLOW_rule__Project__Group__1_in_rule__Project__Group__0956);
             rule__Project__Group__1();
             _fsp--;
 
@@ -1218,25 +1248,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Project__Group__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:463:1: rule__Project__Group__1 : ( '{' ) rule__Project__Group__2 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:470:1: rule__Project__Group__1 : ( '{' ) rule__Project__Group__2 ;
     public final void rule__Project__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:467:1: ( ( '{' ) rule__Project__Group__2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:468:1: ( '{' ) rule__Project__Group__2
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:474:1: ( ( '{' ) rule__Project__Group__2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:475:1: ( '{' ) rule__Project__Group__2
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:468:1: ( '{' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:469:1: '{'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:475:1: ( '{' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:476:1: '{'
             {
              before(grammarAccess.getProjectAccess().getLeftCurlyBracketKeyword_1()); 
-            match(input,14,FOLLOW_14_in_rule__Project__Group__1964); 
+            match(input,15,FOLLOW_15_in_rule__Project__Group__1985); 
              after(grammarAccess.getProjectAccess().getLeftCurlyBracketKeyword_1()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Project__Group__2_in_rule__Project__Group__1974);
+            pushFollow(FOLLOW_rule__Project__Group__2_in_rule__Project__Group__1995);
             rule__Project__Group__2();
             _fsp--;
 
@@ -1259,25 +1289,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Project__Group__2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:483:1: rule__Project__Group__2 : ( 'projectName' ) rule__Project__Group__3 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:490:1: rule__Project__Group__2 : ( 'projectName' ) rule__Project__Group__3 ;
     public final void rule__Project__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:487:1: ( ( 'projectName' ) rule__Project__Group__3 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:488:1: ( 'projectName' ) rule__Project__Group__3
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:494:1: ( ( 'projectName' ) rule__Project__Group__3 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:495:1: ( 'projectName' ) rule__Project__Group__3
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:488:1: ( 'projectName' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:489:1: 'projectName'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:495:1: ( 'projectName' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:496:1: 'projectName'
             {
              before(grammarAccess.getProjectAccess().getProjectNameKeyword_2()); 
-            match(input,15,FOLLOW_15_in_rule__Project__Group__21003); 
+            match(input,16,FOLLOW_16_in_rule__Project__Group__21024); 
              after(grammarAccess.getProjectAccess().getProjectNameKeyword_2()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Project__Group__3_in_rule__Project__Group__21013);
+            pushFollow(FOLLOW_rule__Project__Group__3_in_rule__Project__Group__21034);
             rule__Project__Group__3();
             _fsp--;
 
@@ -1300,25 +1330,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Project__Group__3
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:503:1: rule__Project__Group__3 : ( ':' ) rule__Project__Group__4 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:510:1: rule__Project__Group__3 : ( ':' ) rule__Project__Group__4 ;
     public final void rule__Project__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:507:1: ( ( ':' ) rule__Project__Group__4 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:508:1: ( ':' ) rule__Project__Group__4
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:514:1: ( ( ':' ) rule__Project__Group__4 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:515:1: ( ':' ) rule__Project__Group__4
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:508:1: ( ':' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:509:1: ':'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:515:1: ( ':' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:516:1: ':'
             {
              before(grammarAccess.getProjectAccess().getColonKeyword_3()); 
-            match(input,16,FOLLOW_16_in_rule__Project__Group__31042); 
+            match(input,17,FOLLOW_17_in_rule__Project__Group__31063); 
              after(grammarAccess.getProjectAccess().getColonKeyword_3()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Project__Group__4_in_rule__Project__Group__31052);
+            pushFollow(FOLLOW_rule__Project__Group__4_in_rule__Project__Group__31073);
             rule__Project__Group__4();
             _fsp--;
 
@@ -1341,23 +1371,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Project__Group__4
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:523:1: rule__Project__Group__4 : ( ( rule__Project__NameAssignment_4 ) ) rule__Project__Group__5 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:530:1: rule__Project__Group__4 : ( ( rule__Project__NameAssignment_4 ) ) rule__Project__Group__5 ;
     public final void rule__Project__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:527:1: ( ( ( rule__Project__NameAssignment_4 ) ) rule__Project__Group__5 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:528:1: ( ( rule__Project__NameAssignment_4 ) ) rule__Project__Group__5
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:534:1: ( ( ( rule__Project__NameAssignment_4 ) ) rule__Project__Group__5 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:535:1: ( ( rule__Project__NameAssignment_4 ) ) rule__Project__Group__5
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:528:1: ( ( rule__Project__NameAssignment_4 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:529:1: ( rule__Project__NameAssignment_4 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:535:1: ( ( rule__Project__NameAssignment_4 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:536:1: ( rule__Project__NameAssignment_4 )
             {
              before(grammarAccess.getProjectAccess().getNameAssignment_4()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:530:1: ( rule__Project__NameAssignment_4 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:530:2: rule__Project__NameAssignment_4
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:537:1: ( rule__Project__NameAssignment_4 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:537:2: rule__Project__NameAssignment_4
             {
-            pushFollow(FOLLOW_rule__Project__NameAssignment_4_in_rule__Project__Group__41080);
+            pushFollow(FOLLOW_rule__Project__NameAssignment_4_in_rule__Project__Group__41101);
             rule__Project__NameAssignment_4();
             _fsp--;
 
@@ -1368,7 +1398,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Project__Group__5_in_rule__Project__Group__41089);
+            pushFollow(FOLLOW_rule__Project__Group__5_in_rule__Project__Group__41110);
             rule__Project__Group__5();
             _fsp--;
 
@@ -1391,25 +1421,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Project__Group__5
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:541:1: rule__Project__Group__5 : ( 'basePackage' ) rule__Project__Group__6 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:548:1: rule__Project__Group__5 : ( 'basePackage' ) rule__Project__Group__6 ;
     public final void rule__Project__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:545:1: ( ( 'basePackage' ) rule__Project__Group__6 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:546:1: ( 'basePackage' ) rule__Project__Group__6
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:552:1: ( ( 'basePackage' ) rule__Project__Group__6 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:553:1: ( 'basePackage' ) rule__Project__Group__6
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:546:1: ( 'basePackage' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:547:1: 'basePackage'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:553:1: ( 'basePackage' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:554:1: 'basePackage'
             {
              before(grammarAccess.getProjectAccess().getBasePackageKeyword_5()); 
-            match(input,17,FOLLOW_17_in_rule__Project__Group__51118); 
+            match(input,18,FOLLOW_18_in_rule__Project__Group__51139); 
              after(grammarAccess.getProjectAccess().getBasePackageKeyword_5()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Project__Group__6_in_rule__Project__Group__51128);
+            pushFollow(FOLLOW_rule__Project__Group__6_in_rule__Project__Group__51149);
             rule__Project__Group__6();
             _fsp--;
 
@@ -1432,25 +1462,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Project__Group__6
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:561:1: rule__Project__Group__6 : ( ':' ) rule__Project__Group__7 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:568:1: rule__Project__Group__6 : ( ':' ) rule__Project__Group__7 ;
     public final void rule__Project__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:565:1: ( ( ':' ) rule__Project__Group__7 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:566:1: ( ':' ) rule__Project__Group__7
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:572:1: ( ( ':' ) rule__Project__Group__7 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:573:1: ( ':' ) rule__Project__Group__7
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:566:1: ( ':' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:567:1: ':'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:573:1: ( ':' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:574:1: ':'
             {
              before(grammarAccess.getProjectAccess().getColonKeyword_6()); 
-            match(input,16,FOLLOW_16_in_rule__Project__Group__61157); 
+            match(input,17,FOLLOW_17_in_rule__Project__Group__61178); 
              after(grammarAccess.getProjectAccess().getColonKeyword_6()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Project__Group__7_in_rule__Project__Group__61167);
+            pushFollow(FOLLOW_rule__Project__Group__7_in_rule__Project__Group__61188);
             rule__Project__Group__7();
             _fsp--;
 
@@ -1473,23 +1503,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Project__Group__7
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:581:1: rule__Project__Group__7 : ( ( rule__Project__BasePackageAssignment_7 ) ) rule__Project__Group__8 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:588:1: rule__Project__Group__7 : ( ( rule__Project__BasePackageAssignment_7 ) ) rule__Project__Group__8 ;
     public final void rule__Project__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:585:1: ( ( ( rule__Project__BasePackageAssignment_7 ) ) rule__Project__Group__8 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:586:1: ( ( rule__Project__BasePackageAssignment_7 ) ) rule__Project__Group__8
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:592:1: ( ( ( rule__Project__BasePackageAssignment_7 ) ) rule__Project__Group__8 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:593:1: ( ( rule__Project__BasePackageAssignment_7 ) ) rule__Project__Group__8
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:586:1: ( ( rule__Project__BasePackageAssignment_7 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:587:1: ( rule__Project__BasePackageAssignment_7 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:593:1: ( ( rule__Project__BasePackageAssignment_7 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:594:1: ( rule__Project__BasePackageAssignment_7 )
             {
              before(grammarAccess.getProjectAccess().getBasePackageAssignment_7()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:588:1: ( rule__Project__BasePackageAssignment_7 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:588:2: rule__Project__BasePackageAssignment_7
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:595:1: ( rule__Project__BasePackageAssignment_7 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:595:2: rule__Project__BasePackageAssignment_7
             {
-            pushFollow(FOLLOW_rule__Project__BasePackageAssignment_7_in_rule__Project__Group__71195);
+            pushFollow(FOLLOW_rule__Project__BasePackageAssignment_7_in_rule__Project__Group__71216);
             rule__Project__BasePackageAssignment_7();
             _fsp--;
 
@@ -1500,7 +1530,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Project__Group__8_in_rule__Project__Group__71204);
+            pushFollow(FOLLOW_rule__Project__Group__8_in_rule__Project__Group__71225);
             rule__Project__Group__8();
             _fsp--;
 
@@ -1523,20 +1553,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Project__Group__8
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:599:1: rule__Project__Group__8 : ( '}' ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:606:1: rule__Project__Group__8 : ( '}' ) ;
     public final void rule__Project__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:603:1: ( ( '}' ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:604:1: ( '}' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:610:1: ( ( '}' ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:611:1: ( '}' )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:604:1: ( '}' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:605:1: '}'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:611:1: ( '}' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:612:1: '}'
             {
              before(grammarAccess.getProjectAccess().getRightCurlyBracketKeyword_8()); 
-            match(input,18,FOLLOW_18_in_rule__Project__Group__81233); 
+            match(input,19,FOLLOW_19_in_rule__Project__Group__81254); 
              after(grammarAccess.getProjectAccess().getRightCurlyBracketKeyword_8()); 
 
             }
@@ -1560,25 +1590,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__SimpleType__Group__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:636:1: rule__SimpleType__Group__0 : ( 'type' ) rule__SimpleType__Group__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:643:1: rule__SimpleType__Group__0 : ( 'type' ) rule__SimpleType__Group__1 ;
     public final void rule__SimpleType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:640:1: ( ( 'type' ) rule__SimpleType__Group__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:641:1: ( 'type' ) rule__SimpleType__Group__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:647:1: ( ( 'type' ) rule__SimpleType__Group__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:648:1: ( 'type' ) rule__SimpleType__Group__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:641:1: ( 'type' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:642:1: 'type'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:648:1: ( 'type' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:649:1: 'type'
             {
              before(grammarAccess.getSimpleTypeAccess().getTypeKeyword_0()); 
-            match(input,19,FOLLOW_19_in_rule__SimpleType__Group__01287); 
+            match(input,20,FOLLOW_20_in_rule__SimpleType__Group__01308); 
              after(grammarAccess.getSimpleTypeAccess().getTypeKeyword_0()); 
 
             }
 
-            pushFollow(FOLLOW_rule__SimpleType__Group__1_in_rule__SimpleType__Group__01297);
+            pushFollow(FOLLOW_rule__SimpleType__Group__1_in_rule__SimpleType__Group__01318);
             rule__SimpleType__Group__1();
             _fsp--;
 
@@ -1601,23 +1631,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__SimpleType__Group__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:656:1: rule__SimpleType__Group__1 : ( ( rule__SimpleType__NameAssignment_1 ) ) rule__SimpleType__Group__2 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:663:1: rule__SimpleType__Group__1 : ( ( rule__SimpleType__NameAssignment_1 ) ) rule__SimpleType__Group__2 ;
     public final void rule__SimpleType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:660:1: ( ( ( rule__SimpleType__NameAssignment_1 ) ) rule__SimpleType__Group__2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:661:1: ( ( rule__SimpleType__NameAssignment_1 ) ) rule__SimpleType__Group__2
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:667:1: ( ( ( rule__SimpleType__NameAssignment_1 ) ) rule__SimpleType__Group__2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:668:1: ( ( rule__SimpleType__NameAssignment_1 ) ) rule__SimpleType__Group__2
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:661:1: ( ( rule__SimpleType__NameAssignment_1 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:662:1: ( rule__SimpleType__NameAssignment_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:668:1: ( ( rule__SimpleType__NameAssignment_1 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:669:1: ( rule__SimpleType__NameAssignment_1 )
             {
              before(grammarAccess.getSimpleTypeAccess().getNameAssignment_1()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:663:1: ( rule__SimpleType__NameAssignment_1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:663:2: rule__SimpleType__NameAssignment_1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:670:1: ( rule__SimpleType__NameAssignment_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:670:2: rule__SimpleType__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__SimpleType__NameAssignment_1_in_rule__SimpleType__Group__11325);
+            pushFollow(FOLLOW_rule__SimpleType__NameAssignment_1_in_rule__SimpleType__Group__11346);
             rule__SimpleType__NameAssignment_1();
             _fsp--;
 
@@ -1628,7 +1658,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__SimpleType__Group__2_in_rule__SimpleType__Group__11334);
+            pushFollow(FOLLOW_rule__SimpleType__Group__2_in_rule__SimpleType__Group__11355);
             rule__SimpleType__Group__2();
             _fsp--;
 
@@ -1651,31 +1681,31 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__SimpleType__Group__2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:674:1: rule__SimpleType__Group__2 : ( ( rule__SimpleType__Group_2__0 )? ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:681:1: rule__SimpleType__Group__2 : ( ( rule__SimpleType__Group_2__0 )? ) ;
     public final void rule__SimpleType__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:678:1: ( ( ( rule__SimpleType__Group_2__0 )? ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:679:1: ( ( rule__SimpleType__Group_2__0 )? )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:685:1: ( ( ( rule__SimpleType__Group_2__0 )? ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:686:1: ( ( rule__SimpleType__Group_2__0 )? )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:679:1: ( ( rule__SimpleType__Group_2__0 )? )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:680:1: ( rule__SimpleType__Group_2__0 )?
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:686:1: ( ( rule__SimpleType__Group_2__0 )? )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:687:1: ( rule__SimpleType__Group_2__0 )?
             {
              before(grammarAccess.getSimpleTypeAccess().getGroup_2()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:681:1: ( rule__SimpleType__Group_2__0 )?
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:688:1: ( rule__SimpleType__Group_2__0 )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==20) ) {
+            if ( (LA4_0==21) ) {
                 alt4=1;
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:681:2: rule__SimpleType__Group_2__0
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:688:2: rule__SimpleType__Group_2__0
                     {
-                    pushFollow(FOLLOW_rule__SimpleType__Group_2__0_in_rule__SimpleType__Group__21362);
+                    pushFollow(FOLLOW_rule__SimpleType__Group_2__0_in_rule__SimpleType__Group__21383);
                     rule__SimpleType__Group_2__0();
                     _fsp--;
 
@@ -1708,25 +1738,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__SimpleType__Group_2__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:697:1: rule__SimpleType__Group_2__0 : ( 'is' ) rule__SimpleType__Group_2__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:704:1: rule__SimpleType__Group_2__0 : ( 'is' ) rule__SimpleType__Group_2__1 ;
     public final void rule__SimpleType__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:701:1: ( ( 'is' ) rule__SimpleType__Group_2__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:702:1: ( 'is' ) rule__SimpleType__Group_2__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:708:1: ( ( 'is' ) rule__SimpleType__Group_2__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:709:1: ( 'is' ) rule__SimpleType__Group_2__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:702:1: ( 'is' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:703:1: 'is'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:709:1: ( 'is' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:710:1: 'is'
             {
              before(grammarAccess.getSimpleTypeAccess().getIsKeyword_2_0()); 
-            match(input,20,FOLLOW_20_in_rule__SimpleType__Group_2__01404); 
+            match(input,21,FOLLOW_21_in_rule__SimpleType__Group_2__01425); 
              after(grammarAccess.getSimpleTypeAccess().getIsKeyword_2_0()); 
 
             }
 
-            pushFollow(FOLLOW_rule__SimpleType__Group_2__1_in_rule__SimpleType__Group_2__01414);
+            pushFollow(FOLLOW_rule__SimpleType__Group_2__1_in_rule__SimpleType__Group_2__01435);
             rule__SimpleType__Group_2__1();
             _fsp--;
 
@@ -1749,23 +1779,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__SimpleType__Group_2__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:717:1: rule__SimpleType__Group_2__1 : ( ( rule__SimpleType__MappedTypeAssignment_2_1 ) ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:724:1: rule__SimpleType__Group_2__1 : ( ( rule__SimpleType__MappedTypeAssignment_2_1 ) ) ;
     public final void rule__SimpleType__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:721:1: ( ( ( rule__SimpleType__MappedTypeAssignment_2_1 ) ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:722:1: ( ( rule__SimpleType__MappedTypeAssignment_2_1 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:728:1: ( ( ( rule__SimpleType__MappedTypeAssignment_2_1 ) ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:729:1: ( ( rule__SimpleType__MappedTypeAssignment_2_1 ) )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:722:1: ( ( rule__SimpleType__MappedTypeAssignment_2_1 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:723:1: ( rule__SimpleType__MappedTypeAssignment_2_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:729:1: ( ( rule__SimpleType__MappedTypeAssignment_2_1 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:730:1: ( rule__SimpleType__MappedTypeAssignment_2_1 )
             {
              before(grammarAccess.getSimpleTypeAccess().getMappedTypeAssignment_2_1()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:724:1: ( rule__SimpleType__MappedTypeAssignment_2_1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:724:2: rule__SimpleType__MappedTypeAssignment_2_1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:731:1: ( rule__SimpleType__MappedTypeAssignment_2_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:731:2: rule__SimpleType__MappedTypeAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__SimpleType__MappedTypeAssignment_2_1_in_rule__SimpleType__Group_2__11442);
+            pushFollow(FOLLOW_rule__SimpleType__MappedTypeAssignment_2_1_in_rule__SimpleType__Group_2__11463);
             rule__SimpleType__MappedTypeAssignment_2_1();
             _fsp--;
 
@@ -1795,23 +1825,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__JAVAID__Group__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:738:1: rule__JAVAID__Group__0 : ( ( rule__JAVAID__NameAssignment_0 ) ) rule__JAVAID__Group__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:745:1: rule__JAVAID__Group__0 : ( ( rule__JAVAID__NameAssignment_0 ) ) rule__JAVAID__Group__1 ;
     public final void rule__JAVAID__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:742:1: ( ( ( rule__JAVAID__NameAssignment_0 ) ) rule__JAVAID__Group__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:743:1: ( ( rule__JAVAID__NameAssignment_0 ) ) rule__JAVAID__Group__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:749:1: ( ( ( rule__JAVAID__NameAssignment_0 ) ) rule__JAVAID__Group__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:750:1: ( ( rule__JAVAID__NameAssignment_0 ) ) rule__JAVAID__Group__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:743:1: ( ( rule__JAVAID__NameAssignment_0 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:744:1: ( rule__JAVAID__NameAssignment_0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:750:1: ( ( rule__JAVAID__NameAssignment_0 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:751:1: ( rule__JAVAID__NameAssignment_0 )
             {
              before(grammarAccess.getJAVAIDAccess().getNameAssignment_0()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:745:1: ( rule__JAVAID__NameAssignment_0 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:745:2: rule__JAVAID__NameAssignment_0
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:752:1: ( rule__JAVAID__NameAssignment_0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:752:2: rule__JAVAID__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__JAVAID__NameAssignment_0_in_rule__JAVAID__Group__01480);
+            pushFollow(FOLLOW_rule__JAVAID__NameAssignment_0_in_rule__JAVAID__Group__01501);
             rule__JAVAID__NameAssignment_0();
             _fsp--;
 
@@ -1822,7 +1852,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__JAVAID__Group__1_in_rule__JAVAID__Group__01489);
+            pushFollow(FOLLOW_rule__JAVAID__Group__1_in_rule__JAVAID__Group__01510);
             rule__JAVAID__Group__1();
             _fsp--;
 
@@ -1845,35 +1875,35 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__JAVAID__Group__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:756:1: rule__JAVAID__Group__1 : ( ( rule__JAVAID__Group_1__0 )* ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:763:1: rule__JAVAID__Group__1 : ( ( rule__JAVAID__Group_1__0 )* ) ;
     public final void rule__JAVAID__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:760:1: ( ( ( rule__JAVAID__Group_1__0 )* ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:761:1: ( ( rule__JAVAID__Group_1__0 )* )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:767:1: ( ( ( rule__JAVAID__Group_1__0 )* ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:768:1: ( ( rule__JAVAID__Group_1__0 )* )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:761:1: ( ( rule__JAVAID__Group_1__0 )* )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:762:1: ( rule__JAVAID__Group_1__0 )*
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:768:1: ( ( rule__JAVAID__Group_1__0 )* )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:769:1: ( rule__JAVAID__Group_1__0 )*
             {
              before(grammarAccess.getJAVAIDAccess().getGroup_1()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:763:1: ( rule__JAVAID__Group_1__0 )*
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:770:1: ( rule__JAVAID__Group_1__0 )*
             loop5:
             do {
                 int alt5=2;
                 int LA5_0 = input.LA(1);
 
-                if ( (LA5_0==21) ) {
+                if ( (LA5_0==22) ) {
                     alt5=1;
                 }
 
 
                 switch (alt5) {
             	case 1 :
-            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:763:2: rule__JAVAID__Group_1__0
+            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:770:2: rule__JAVAID__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__JAVAID__Group_1__0_in_rule__JAVAID__Group__11517);
+            	    pushFollow(FOLLOW_rule__JAVAID__Group_1__0_in_rule__JAVAID__Group__11538);
             	    rule__JAVAID__Group_1__0();
             	    _fsp--;
 
@@ -1909,25 +1939,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__JAVAID__Group_1__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:777:1: rule__JAVAID__Group_1__0 : ( '.' ) rule__JAVAID__Group_1__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:784:1: rule__JAVAID__Group_1__0 : ( '.' ) rule__JAVAID__Group_1__1 ;
     public final void rule__JAVAID__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:781:1: ( ( '.' ) rule__JAVAID__Group_1__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:782:1: ( '.' ) rule__JAVAID__Group_1__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:788:1: ( ( '.' ) rule__JAVAID__Group_1__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:789:1: ( '.' ) rule__JAVAID__Group_1__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:782:1: ( '.' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:783:1: '.'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:789:1: ( '.' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:790:1: '.'
             {
              before(grammarAccess.getJAVAIDAccess().getFullStopKeyword_1_0()); 
-            match(input,21,FOLLOW_21_in_rule__JAVAID__Group_1__01557); 
+            match(input,22,FOLLOW_22_in_rule__JAVAID__Group_1__01578); 
              after(grammarAccess.getJAVAIDAccess().getFullStopKeyword_1_0()); 
 
             }
 
-            pushFollow(FOLLOW_rule__JAVAID__Group_1__1_in_rule__JAVAID__Group_1__01567);
+            pushFollow(FOLLOW_rule__JAVAID__Group_1__1_in_rule__JAVAID__Group_1__01588);
             rule__JAVAID__Group_1__1();
             _fsp--;
 
@@ -1950,20 +1980,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__JAVAID__Group_1__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:797:1: rule__JAVAID__Group_1__1 : ( RULE_ID ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:804:1: rule__JAVAID__Group_1__1 : ( RULE_ID ) ;
     public final void rule__JAVAID__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:801:1: ( ( RULE_ID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:802:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:808:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:809:1: ( RULE_ID )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:802:1: ( RULE_ID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:803:1: RULE_ID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:809:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:810:1: RULE_ID
             {
              before(grammarAccess.getJAVAIDAccess().getIDTerminalRuleCall_1_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__JAVAID__Group_1__11595); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__JAVAID__Group_1__11616); 
              after(grammarAccess.getJAVAIDAccess().getIDTerminalRuleCall_1_1()); 
 
             }
@@ -1987,25 +2017,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Entity__Group__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:818:1: rule__Entity__Group__0 : ( 'entity' ) rule__Entity__Group__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:825:1: rule__Entity__Group__0 : ( 'entity' ) rule__Entity__Group__1 ;
     public final void rule__Entity__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:822:1: ( ( 'entity' ) rule__Entity__Group__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:823:1: ( 'entity' ) rule__Entity__Group__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:829:1: ( ( 'entity' ) rule__Entity__Group__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:830:1: ( 'entity' ) rule__Entity__Group__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:823:1: ( 'entity' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:824:1: 'entity'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:830:1: ( 'entity' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:831:1: 'entity'
             {
              before(grammarAccess.getEntityAccess().getEntityKeyword_0()); 
-            match(input,22,FOLLOW_22_in_rule__Entity__Group__01633); 
+            match(input,23,FOLLOW_23_in_rule__Entity__Group__01654); 
              after(grammarAccess.getEntityAccess().getEntityKeyword_0()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Entity__Group__1_in_rule__Entity__Group__01643);
+            pushFollow(FOLLOW_rule__Entity__Group__1_in_rule__Entity__Group__01664);
             rule__Entity__Group__1();
             _fsp--;
 
@@ -2028,23 +2058,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Entity__Group__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:838:1: rule__Entity__Group__1 : ( ( rule__Entity__NameAssignment_1 ) ) rule__Entity__Group__2 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:845:1: rule__Entity__Group__1 : ( ( rule__Entity__NameAssignment_1 ) ) rule__Entity__Group__2 ;
     public final void rule__Entity__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:842:1: ( ( ( rule__Entity__NameAssignment_1 ) ) rule__Entity__Group__2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:843:1: ( ( rule__Entity__NameAssignment_1 ) ) rule__Entity__Group__2
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:849:1: ( ( ( rule__Entity__NameAssignment_1 ) ) rule__Entity__Group__2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:850:1: ( ( rule__Entity__NameAssignment_1 ) ) rule__Entity__Group__2
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:843:1: ( ( rule__Entity__NameAssignment_1 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:844:1: ( rule__Entity__NameAssignment_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:850:1: ( ( rule__Entity__NameAssignment_1 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:851:1: ( rule__Entity__NameAssignment_1 )
             {
              before(grammarAccess.getEntityAccess().getNameAssignment_1()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:845:1: ( rule__Entity__NameAssignment_1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:845:2: rule__Entity__NameAssignment_1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:852:1: ( rule__Entity__NameAssignment_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:852:2: rule__Entity__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Entity__NameAssignment_1_in_rule__Entity__Group__11671);
+            pushFollow(FOLLOW_rule__Entity__NameAssignment_1_in_rule__Entity__Group__11692);
             rule__Entity__NameAssignment_1();
             _fsp--;
 
@@ -2055,7 +2085,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Entity__Group__2_in_rule__Entity__Group__11680);
+            pushFollow(FOLLOW_rule__Entity__Group__2_in_rule__Entity__Group__11701);
             rule__Entity__Group__2();
             _fsp--;
 
@@ -2078,31 +2108,31 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Entity__Group__2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:856:1: rule__Entity__Group__2 : ( ( rule__Entity__Group_2__0 )? ) rule__Entity__Group__3 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:863:1: rule__Entity__Group__2 : ( ( rule__Entity__Group_2__0 )? ) rule__Entity__Group__3 ;
     public final void rule__Entity__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:860:1: ( ( ( rule__Entity__Group_2__0 )? ) rule__Entity__Group__3 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:861:1: ( ( rule__Entity__Group_2__0 )? ) rule__Entity__Group__3
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:867:1: ( ( ( rule__Entity__Group_2__0 )? ) rule__Entity__Group__3 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:868:1: ( ( rule__Entity__Group_2__0 )? ) rule__Entity__Group__3
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:861:1: ( ( rule__Entity__Group_2__0 )? )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:862:1: ( rule__Entity__Group_2__0 )?
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:868:1: ( ( rule__Entity__Group_2__0 )? )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:869:1: ( rule__Entity__Group_2__0 )?
             {
              before(grammarAccess.getEntityAccess().getGroup_2()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:863:1: ( rule__Entity__Group_2__0 )?
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:870:1: ( rule__Entity__Group_2__0 )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==23) ) {
+            if ( (LA6_0==24) ) {
                 alt6=1;
             }
             switch (alt6) {
                 case 1 :
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:863:2: rule__Entity__Group_2__0
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:870:2: rule__Entity__Group_2__0
                     {
-                    pushFollow(FOLLOW_rule__Entity__Group_2__0_in_rule__Entity__Group__21708);
+                    pushFollow(FOLLOW_rule__Entity__Group_2__0_in_rule__Entity__Group__21729);
                     rule__Entity__Group_2__0();
                     _fsp--;
 
@@ -2116,7 +2146,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Entity__Group__3_in_rule__Entity__Group__21718);
+            pushFollow(FOLLOW_rule__Entity__Group__3_in_rule__Entity__Group__21739);
             rule__Entity__Group__3();
             _fsp--;
 
@@ -2139,25 +2169,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Entity__Group__3
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:874:1: rule__Entity__Group__3 : ( '{' ) rule__Entity__Group__4 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:881:1: rule__Entity__Group__3 : ( '{' ) rule__Entity__Group__4 ;
     public final void rule__Entity__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:878:1: ( ( '{' ) rule__Entity__Group__4 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:879:1: ( '{' ) rule__Entity__Group__4
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:885:1: ( ( '{' ) rule__Entity__Group__4 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:886:1: ( '{' ) rule__Entity__Group__4
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:879:1: ( '{' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:880:1: '{'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:886:1: ( '{' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:887:1: '{'
             {
              before(grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_3()); 
-            match(input,14,FOLLOW_14_in_rule__Entity__Group__31747); 
+            match(input,15,FOLLOW_15_in_rule__Entity__Group__31768); 
              after(grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_3()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Entity__Group__4_in_rule__Entity__Group__31757);
+            pushFollow(FOLLOW_rule__Entity__Group__4_in_rule__Entity__Group__31778);
             rule__Entity__Group__4();
             _fsp--;
 
@@ -2180,20 +2210,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Entity__Group__4
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:894:1: rule__Entity__Group__4 : ( ( rule__Entity__AttributesAssignment_4 )* ) rule__Entity__Group__5 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:901:1: rule__Entity__Group__4 : ( ( rule__Entity__AttributesAssignment_4 )* ) rule__Entity__Group__5 ;
     public final void rule__Entity__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:898:1: ( ( ( rule__Entity__AttributesAssignment_4 )* ) rule__Entity__Group__5 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:899:1: ( ( rule__Entity__AttributesAssignment_4 )* ) rule__Entity__Group__5
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:905:1: ( ( ( rule__Entity__AttributesAssignment_4 )* ) rule__Entity__Group__5 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:906:1: ( ( rule__Entity__AttributesAssignment_4 )* ) rule__Entity__Group__5
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:899:1: ( ( rule__Entity__AttributesAssignment_4 )* )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:900:1: ( rule__Entity__AttributesAssignment_4 )*
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:906:1: ( ( rule__Entity__AttributesAssignment_4 )* )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:907:1: ( rule__Entity__AttributesAssignment_4 )*
             {
              before(grammarAccess.getEntityAccess().getAttributesAssignment_4()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:901:1: ( rule__Entity__AttributesAssignment_4 )*
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:908:1: ( rule__Entity__AttributesAssignment_4 )*
             loop7:
             do {
                 int alt7=2;
@@ -2206,9 +2236,9 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:901:2: rule__Entity__AttributesAssignment_4
+            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:908:2: rule__Entity__AttributesAssignment_4
             	    {
-            	    pushFollow(FOLLOW_rule__Entity__AttributesAssignment_4_in_rule__Entity__Group__41785);
+            	    pushFollow(FOLLOW_rule__Entity__AttributesAssignment_4_in_rule__Entity__Group__41806);
             	    rule__Entity__AttributesAssignment_4();
             	    _fsp--;
 
@@ -2225,7 +2255,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Entity__Group__5_in_rule__Entity__Group__41795);
+            pushFollow(FOLLOW_rule__Entity__Group__5_in_rule__Entity__Group__41816);
             rule__Entity__Group__5();
             _fsp--;
 
@@ -2248,20 +2278,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Entity__Group__5
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:912:1: rule__Entity__Group__5 : ( '}' ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:919:1: rule__Entity__Group__5 : ( '}' ) ;
     public final void rule__Entity__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:916:1: ( ( '}' ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:917:1: ( '}' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:923:1: ( ( '}' ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:924:1: ( '}' )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:917:1: ( '}' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:918:1: '}'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:924:1: ( '}' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:925:1: '}'
             {
              before(grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_5()); 
-            match(input,18,FOLLOW_18_in_rule__Entity__Group__51824); 
+            match(input,19,FOLLOW_19_in_rule__Entity__Group__51845); 
              after(grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_5()); 
 
             }
@@ -2285,25 +2315,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Entity__Group_2__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:943:1: rule__Entity__Group_2__0 : ( 'extends' ) rule__Entity__Group_2__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:950:1: rule__Entity__Group_2__0 : ( 'extends' ) rule__Entity__Group_2__1 ;
     public final void rule__Entity__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:947:1: ( ( 'extends' ) rule__Entity__Group_2__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:948:1: ( 'extends' ) rule__Entity__Group_2__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:954:1: ( ( 'extends' ) rule__Entity__Group_2__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:955:1: ( 'extends' ) rule__Entity__Group_2__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:948:1: ( 'extends' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:949:1: 'extends'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:955:1: ( 'extends' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:956:1: 'extends'
             {
              before(grammarAccess.getEntityAccess().getExtendsKeyword_2_0()); 
-            match(input,23,FOLLOW_23_in_rule__Entity__Group_2__01872); 
+            match(input,24,FOLLOW_24_in_rule__Entity__Group_2__01893); 
              after(grammarAccess.getEntityAccess().getExtendsKeyword_2_0()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Entity__Group_2__1_in_rule__Entity__Group_2__01882);
+            pushFollow(FOLLOW_rule__Entity__Group_2__1_in_rule__Entity__Group_2__01903);
             rule__Entity__Group_2__1();
             _fsp--;
 
@@ -2326,23 +2356,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Entity__Group_2__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:963:1: rule__Entity__Group_2__1 : ( ( rule__Entity__SuperEntityAssignment_2_1 ) ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:970:1: rule__Entity__Group_2__1 : ( ( rule__Entity__SuperEntityAssignment_2_1 ) ) ;
     public final void rule__Entity__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:967:1: ( ( ( rule__Entity__SuperEntityAssignment_2_1 ) ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:968:1: ( ( rule__Entity__SuperEntityAssignment_2_1 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:974:1: ( ( ( rule__Entity__SuperEntityAssignment_2_1 ) ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:975:1: ( ( rule__Entity__SuperEntityAssignment_2_1 ) )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:968:1: ( ( rule__Entity__SuperEntityAssignment_2_1 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:969:1: ( rule__Entity__SuperEntityAssignment_2_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:975:1: ( ( rule__Entity__SuperEntityAssignment_2_1 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:976:1: ( rule__Entity__SuperEntityAssignment_2_1 )
             {
              before(grammarAccess.getEntityAccess().getSuperEntityAssignment_2_1()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:970:1: ( rule__Entity__SuperEntityAssignment_2_1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:970:2: rule__Entity__SuperEntityAssignment_2_1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:977:1: ( rule__Entity__SuperEntityAssignment_2_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:977:2: rule__Entity__SuperEntityAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__Entity__SuperEntityAssignment_2_1_in_rule__Entity__Group_2__11910);
+            pushFollow(FOLLOW_rule__Entity__SuperEntityAssignment_2_1_in_rule__Entity__Group_2__11931);
             rule__Entity__SuperEntityAssignment_2_1();
             _fsp--;
 
@@ -2372,25 +2402,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Embed__Group__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:984:1: rule__Embed__Group__0 : ( 'embed' ) rule__Embed__Group__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:991:1: rule__Embed__Group__0 : ( 'embed' ) rule__Embed__Group__1 ;
     public final void rule__Embed__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:988:1: ( ( 'embed' ) rule__Embed__Group__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:989:1: ( 'embed' ) rule__Embed__Group__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:995:1: ( ( 'embed' ) rule__Embed__Group__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:996:1: ( 'embed' ) rule__Embed__Group__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:989:1: ( 'embed' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:990:1: 'embed'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:996:1: ( 'embed' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:997:1: 'embed'
             {
              before(grammarAccess.getEmbedAccess().getEmbedKeyword_0()); 
-            match(input,24,FOLLOW_24_in_rule__Embed__Group__01949); 
+            match(input,25,FOLLOW_25_in_rule__Embed__Group__01970); 
              after(grammarAccess.getEmbedAccess().getEmbedKeyword_0()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Embed__Group__1_in_rule__Embed__Group__01959);
+            pushFollow(FOLLOW_rule__Embed__Group__1_in_rule__Embed__Group__01980);
             rule__Embed__Group__1();
             _fsp--;
 
@@ -2413,23 +2443,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Embed__Group__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1004:1: rule__Embed__Group__1 : ( ( rule__Embed__NameAssignment_1 ) ) rule__Embed__Group__2 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1011:1: rule__Embed__Group__1 : ( ( rule__Embed__NameAssignment_1 ) ) rule__Embed__Group__2 ;
     public final void rule__Embed__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1008:1: ( ( ( rule__Embed__NameAssignment_1 ) ) rule__Embed__Group__2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1009:1: ( ( rule__Embed__NameAssignment_1 ) ) rule__Embed__Group__2
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1015:1: ( ( ( rule__Embed__NameAssignment_1 ) ) rule__Embed__Group__2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1016:1: ( ( rule__Embed__NameAssignment_1 ) ) rule__Embed__Group__2
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1009:1: ( ( rule__Embed__NameAssignment_1 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1010:1: ( rule__Embed__NameAssignment_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1016:1: ( ( rule__Embed__NameAssignment_1 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1017:1: ( rule__Embed__NameAssignment_1 )
             {
              before(grammarAccess.getEmbedAccess().getNameAssignment_1()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1011:1: ( rule__Embed__NameAssignment_1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1011:2: rule__Embed__NameAssignment_1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1018:1: ( rule__Embed__NameAssignment_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1018:2: rule__Embed__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Embed__NameAssignment_1_in_rule__Embed__Group__11987);
+            pushFollow(FOLLOW_rule__Embed__NameAssignment_1_in_rule__Embed__Group__12008);
             rule__Embed__NameAssignment_1();
             _fsp--;
 
@@ -2440,7 +2470,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Embed__Group__2_in_rule__Embed__Group__11996);
+            pushFollow(FOLLOW_rule__Embed__Group__2_in_rule__Embed__Group__12017);
             rule__Embed__Group__2();
             _fsp--;
 
@@ -2463,31 +2493,31 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Embed__Group__2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1022:1: rule__Embed__Group__2 : ( ( rule__Embed__Group_2__0 )? ) rule__Embed__Group__3 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1029:1: rule__Embed__Group__2 : ( ( rule__Embed__Group_2__0 )? ) rule__Embed__Group__3 ;
     public final void rule__Embed__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1026:1: ( ( ( rule__Embed__Group_2__0 )? ) rule__Embed__Group__3 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1027:1: ( ( rule__Embed__Group_2__0 )? ) rule__Embed__Group__3
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1033:1: ( ( ( rule__Embed__Group_2__0 )? ) rule__Embed__Group__3 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1034:1: ( ( rule__Embed__Group_2__0 )? ) rule__Embed__Group__3
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1027:1: ( ( rule__Embed__Group_2__0 )? )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1028:1: ( rule__Embed__Group_2__0 )?
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1034:1: ( ( rule__Embed__Group_2__0 )? )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1035:1: ( rule__Embed__Group_2__0 )?
             {
              before(grammarAccess.getEmbedAccess().getGroup_2()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1029:1: ( rule__Embed__Group_2__0 )?
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1036:1: ( rule__Embed__Group_2__0 )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( (LA8_0==23) ) {
+            if ( (LA8_0==24) ) {
                 alt8=1;
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1029:2: rule__Embed__Group_2__0
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1036:2: rule__Embed__Group_2__0
                     {
-                    pushFollow(FOLLOW_rule__Embed__Group_2__0_in_rule__Embed__Group__22024);
+                    pushFollow(FOLLOW_rule__Embed__Group_2__0_in_rule__Embed__Group__22045);
                     rule__Embed__Group_2__0();
                     _fsp--;
 
@@ -2501,7 +2531,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Embed__Group__3_in_rule__Embed__Group__22034);
+            pushFollow(FOLLOW_rule__Embed__Group__3_in_rule__Embed__Group__22055);
             rule__Embed__Group__3();
             _fsp--;
 
@@ -2524,25 +2554,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Embed__Group__3
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1040:1: rule__Embed__Group__3 : ( '{' ) rule__Embed__Group__4 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1047:1: rule__Embed__Group__3 : ( '{' ) rule__Embed__Group__4 ;
     public final void rule__Embed__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1044:1: ( ( '{' ) rule__Embed__Group__4 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1045:1: ( '{' ) rule__Embed__Group__4
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1051:1: ( ( '{' ) rule__Embed__Group__4 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1052:1: ( '{' ) rule__Embed__Group__4
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1045:1: ( '{' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1046:1: '{'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1052:1: ( '{' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1053:1: '{'
             {
              before(grammarAccess.getEmbedAccess().getLeftCurlyBracketKeyword_3()); 
-            match(input,14,FOLLOW_14_in_rule__Embed__Group__32063); 
+            match(input,15,FOLLOW_15_in_rule__Embed__Group__32084); 
              after(grammarAccess.getEmbedAccess().getLeftCurlyBracketKeyword_3()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Embed__Group__4_in_rule__Embed__Group__32073);
+            pushFollow(FOLLOW_rule__Embed__Group__4_in_rule__Embed__Group__32094);
             rule__Embed__Group__4();
             _fsp--;
 
@@ -2565,20 +2595,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Embed__Group__4
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1060:1: rule__Embed__Group__4 : ( ( rule__Embed__AttributesAssignment_4 )* ) rule__Embed__Group__5 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1067:1: rule__Embed__Group__4 : ( ( rule__Embed__AttributesAssignment_4 )* ) rule__Embed__Group__5 ;
     public final void rule__Embed__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1064:1: ( ( ( rule__Embed__AttributesAssignment_4 )* ) rule__Embed__Group__5 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1065:1: ( ( rule__Embed__AttributesAssignment_4 )* ) rule__Embed__Group__5
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1071:1: ( ( ( rule__Embed__AttributesAssignment_4 )* ) rule__Embed__Group__5 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1072:1: ( ( rule__Embed__AttributesAssignment_4 )* ) rule__Embed__Group__5
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1065:1: ( ( rule__Embed__AttributesAssignment_4 )* )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1066:1: ( rule__Embed__AttributesAssignment_4 )*
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1072:1: ( ( rule__Embed__AttributesAssignment_4 )* )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1073:1: ( rule__Embed__AttributesAssignment_4 )*
             {
              before(grammarAccess.getEmbedAccess().getAttributesAssignment_4()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1067:1: ( rule__Embed__AttributesAssignment_4 )*
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1074:1: ( rule__Embed__AttributesAssignment_4 )*
             loop9:
             do {
                 int alt9=2;
@@ -2591,9 +2621,9 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
                 switch (alt9) {
             	case 1 :
-            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1067:2: rule__Embed__AttributesAssignment_4
+            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1074:2: rule__Embed__AttributesAssignment_4
             	    {
-            	    pushFollow(FOLLOW_rule__Embed__AttributesAssignment_4_in_rule__Embed__Group__42101);
+            	    pushFollow(FOLLOW_rule__Embed__AttributesAssignment_4_in_rule__Embed__Group__42122);
             	    rule__Embed__AttributesAssignment_4();
             	    _fsp--;
 
@@ -2610,7 +2640,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Embed__Group__5_in_rule__Embed__Group__42111);
+            pushFollow(FOLLOW_rule__Embed__Group__5_in_rule__Embed__Group__42132);
             rule__Embed__Group__5();
             _fsp--;
 
@@ -2633,20 +2663,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Embed__Group__5
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1078:1: rule__Embed__Group__5 : ( '}' ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1085:1: rule__Embed__Group__5 : ( '}' ) ;
     public final void rule__Embed__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1082:1: ( ( '}' ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1083:1: ( '}' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1089:1: ( ( '}' ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1090:1: ( '}' )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1083:1: ( '}' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1084:1: '}'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1090:1: ( '}' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1091:1: '}'
             {
              before(grammarAccess.getEmbedAccess().getRightCurlyBracketKeyword_5()); 
-            match(input,18,FOLLOW_18_in_rule__Embed__Group__52140); 
+            match(input,19,FOLLOW_19_in_rule__Embed__Group__52161); 
              after(grammarAccess.getEmbedAccess().getRightCurlyBracketKeyword_5()); 
 
             }
@@ -2670,25 +2700,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Embed__Group_2__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1109:1: rule__Embed__Group_2__0 : ( 'extends' ) rule__Embed__Group_2__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1116:1: rule__Embed__Group_2__0 : ( 'extends' ) rule__Embed__Group_2__1 ;
     public final void rule__Embed__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1113:1: ( ( 'extends' ) rule__Embed__Group_2__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1114:1: ( 'extends' ) rule__Embed__Group_2__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1120:1: ( ( 'extends' ) rule__Embed__Group_2__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1121:1: ( 'extends' ) rule__Embed__Group_2__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1114:1: ( 'extends' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1115:1: 'extends'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1121:1: ( 'extends' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1122:1: 'extends'
             {
              before(grammarAccess.getEmbedAccess().getExtendsKeyword_2_0()); 
-            match(input,23,FOLLOW_23_in_rule__Embed__Group_2__02188); 
+            match(input,24,FOLLOW_24_in_rule__Embed__Group_2__02209); 
              after(grammarAccess.getEmbedAccess().getExtendsKeyword_2_0()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Embed__Group_2__1_in_rule__Embed__Group_2__02198);
+            pushFollow(FOLLOW_rule__Embed__Group_2__1_in_rule__Embed__Group_2__02219);
             rule__Embed__Group_2__1();
             _fsp--;
 
@@ -2711,23 +2741,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Embed__Group_2__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1129:1: rule__Embed__Group_2__1 : ( ( rule__Embed__SuperEntityAssignment_2_1 ) ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1136:1: rule__Embed__Group_2__1 : ( ( rule__Embed__SuperEntityAssignment_2_1 ) ) ;
     public final void rule__Embed__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1133:1: ( ( ( rule__Embed__SuperEntityAssignment_2_1 ) ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1134:1: ( ( rule__Embed__SuperEntityAssignment_2_1 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1140:1: ( ( ( rule__Embed__SuperEntityAssignment_2_1 ) ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1141:1: ( ( rule__Embed__SuperEntityAssignment_2_1 ) )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1134:1: ( ( rule__Embed__SuperEntityAssignment_2_1 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1135:1: ( rule__Embed__SuperEntityAssignment_2_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1141:1: ( ( rule__Embed__SuperEntityAssignment_2_1 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1142:1: ( rule__Embed__SuperEntityAssignment_2_1 )
             {
              before(grammarAccess.getEmbedAccess().getSuperEntityAssignment_2_1()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1136:1: ( rule__Embed__SuperEntityAssignment_2_1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1136:2: rule__Embed__SuperEntityAssignment_2_1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1143:1: ( rule__Embed__SuperEntityAssignment_2_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1143:2: rule__Embed__SuperEntityAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__Embed__SuperEntityAssignment_2_1_in_rule__Embed__Group_2__12226);
+            pushFollow(FOLLOW_rule__Embed__SuperEntityAssignment_2_1_in_rule__Embed__Group_2__12247);
             rule__Embed__SuperEntityAssignment_2_1();
             _fsp--;
 
@@ -2757,23 +2787,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1150:1: rule__Attribute__Group__0 : ( ( rule__Attribute__TypeAssignment_0 ) ) rule__Attribute__Group__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1157:1: rule__Attribute__Group__0 : ( ( rule__Attribute__TypeAssignment_0 ) ) rule__Attribute__Group__1 ;
     public final void rule__Attribute__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1154:1: ( ( ( rule__Attribute__TypeAssignment_0 ) ) rule__Attribute__Group__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1155:1: ( ( rule__Attribute__TypeAssignment_0 ) ) rule__Attribute__Group__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1161:1: ( ( ( rule__Attribute__TypeAssignment_0 ) ) rule__Attribute__Group__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1162:1: ( ( rule__Attribute__TypeAssignment_0 ) ) rule__Attribute__Group__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1155:1: ( ( rule__Attribute__TypeAssignment_0 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1156:1: ( rule__Attribute__TypeAssignment_0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1162:1: ( ( rule__Attribute__TypeAssignment_0 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1163:1: ( rule__Attribute__TypeAssignment_0 )
             {
              before(grammarAccess.getAttributeAccess().getTypeAssignment_0()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1157:1: ( rule__Attribute__TypeAssignment_0 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1157:2: rule__Attribute__TypeAssignment_0
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1164:1: ( rule__Attribute__TypeAssignment_0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1164:2: rule__Attribute__TypeAssignment_0
             {
-            pushFollow(FOLLOW_rule__Attribute__TypeAssignment_0_in_rule__Attribute__Group__02264);
+            pushFollow(FOLLOW_rule__Attribute__TypeAssignment_0_in_rule__Attribute__Group__02285);
             rule__Attribute__TypeAssignment_0();
             _fsp--;
 
@@ -2784,7 +2814,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__1_in_rule__Attribute__Group__02273);
+            pushFollow(FOLLOW_rule__Attribute__Group__1_in_rule__Attribute__Group__02294);
             rule__Attribute__Group__1();
             _fsp--;
 
@@ -2807,32 +2837,32 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1168:1: rule__Attribute__Group__1 : ( ( rule__Attribute__ManyAssignment_1 )? ) rule__Attribute__Group__2 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1175:1: rule__Attribute__Group__1 : ( ( rule__Attribute__ManyReferenceAssignment_1 )? ) rule__Attribute__Group__2 ;
     public final void rule__Attribute__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1172:1: ( ( ( rule__Attribute__ManyAssignment_1 )? ) rule__Attribute__Group__2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1173:1: ( ( rule__Attribute__ManyAssignment_1 )? ) rule__Attribute__Group__2
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1179:1: ( ( ( rule__Attribute__ManyReferenceAssignment_1 )? ) rule__Attribute__Group__2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1180:1: ( ( rule__Attribute__ManyReferenceAssignment_1 )? ) rule__Attribute__Group__2
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1173:1: ( ( rule__Attribute__ManyAssignment_1 )? )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1174:1: ( rule__Attribute__ManyAssignment_1 )?
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1180:1: ( ( rule__Attribute__ManyReferenceAssignment_1 )? )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1181:1: ( rule__Attribute__ManyReferenceAssignment_1 )?
             {
-             before(grammarAccess.getAttributeAccess().getManyAssignment_1()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1175:1: ( rule__Attribute__ManyAssignment_1 )?
+             before(grammarAccess.getAttributeAccess().getManyReferenceAssignment_1()); 
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1182:1: ( rule__Attribute__ManyReferenceAssignment_1 )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
-            if ( ((LA10_0>=11 && LA10_0<=12)) ) {
+            if ( ((LA10_0>=11 && LA10_0<=13)) ) {
                 alt10=1;
             }
             switch (alt10) {
                 case 1 :
-                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1175:2: rule__Attribute__ManyAssignment_1
+                    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1182:2: rule__Attribute__ManyReferenceAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__Attribute__ManyAssignment_1_in_rule__Attribute__Group__12301);
-                    rule__Attribute__ManyAssignment_1();
+                    pushFollow(FOLLOW_rule__Attribute__ManyReferenceAssignment_1_in_rule__Attribute__Group__12322);
+                    rule__Attribute__ManyReferenceAssignment_1();
                     _fsp--;
 
 
@@ -2841,11 +2871,11 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-             after(grammarAccess.getAttributeAccess().getManyAssignment_1()); 
+             after(grammarAccess.getAttributeAccess().getManyReferenceAssignment_1()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Attribute__Group__2_in_rule__Attribute__Group__12311);
+            pushFollow(FOLLOW_rule__Attribute__Group__2_in_rule__Attribute__Group__12332);
             rule__Attribute__Group__2();
             _fsp--;
 
@@ -2868,23 +2898,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__Group__2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1186:1: rule__Attribute__Group__2 : ( ( rule__Attribute__NameAssignment_2 ) ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1193:1: rule__Attribute__Group__2 : ( ( rule__Attribute__NameAssignment_2 ) ) ;
     public final void rule__Attribute__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1190:1: ( ( ( rule__Attribute__NameAssignment_2 ) ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1191:1: ( ( rule__Attribute__NameAssignment_2 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1197:1: ( ( ( rule__Attribute__NameAssignment_2 ) ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1198:1: ( ( rule__Attribute__NameAssignment_2 ) )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1191:1: ( ( rule__Attribute__NameAssignment_2 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1192:1: ( rule__Attribute__NameAssignment_2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1198:1: ( ( rule__Attribute__NameAssignment_2 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1199:1: ( rule__Attribute__NameAssignment_2 )
             {
              before(grammarAccess.getAttributeAccess().getNameAssignment_2()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1193:1: ( rule__Attribute__NameAssignment_2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1193:2: rule__Attribute__NameAssignment_2
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1200:1: ( rule__Attribute__NameAssignment_2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1200:2: rule__Attribute__NameAssignment_2
             {
-            pushFollow(FOLLOW_rule__Attribute__NameAssignment_2_in_rule__Attribute__Group__22339);
+            pushFollow(FOLLOW_rule__Attribute__NameAssignment_2_in_rule__Attribute__Group__22360);
             rule__Attribute__NameAssignment_2();
             _fsp--;
 
@@ -2914,25 +2944,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Enumeration__Group__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1209:1: rule__Enumeration__Group__0 : ( 'enum' ) rule__Enumeration__Group__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1216:1: rule__Enumeration__Group__0 : ( 'enum' ) rule__Enumeration__Group__1 ;
     public final void rule__Enumeration__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1213:1: ( ( 'enum' ) rule__Enumeration__Group__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1214:1: ( 'enum' ) rule__Enumeration__Group__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1220:1: ( ( 'enum' ) rule__Enumeration__Group__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1221:1: ( 'enum' ) rule__Enumeration__Group__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1214:1: ( 'enum' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1215:1: 'enum'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1221:1: ( 'enum' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1222:1: 'enum'
             {
              before(grammarAccess.getEnumerationAccess().getEnumKeyword_0()); 
-            match(input,25,FOLLOW_25_in_rule__Enumeration__Group__02380); 
+            match(input,26,FOLLOW_26_in_rule__Enumeration__Group__02401); 
              after(grammarAccess.getEnumerationAccess().getEnumKeyword_0()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Enumeration__Group__1_in_rule__Enumeration__Group__02390);
+            pushFollow(FOLLOW_rule__Enumeration__Group__1_in_rule__Enumeration__Group__02411);
             rule__Enumeration__Group__1();
             _fsp--;
 
@@ -2955,23 +2985,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Enumeration__Group__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1229:1: rule__Enumeration__Group__1 : ( ( rule__Enumeration__NameAssignment_1 ) ) rule__Enumeration__Group__2 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1236:1: rule__Enumeration__Group__1 : ( ( rule__Enumeration__NameAssignment_1 ) ) rule__Enumeration__Group__2 ;
     public final void rule__Enumeration__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1233:1: ( ( ( rule__Enumeration__NameAssignment_1 ) ) rule__Enumeration__Group__2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1234:1: ( ( rule__Enumeration__NameAssignment_1 ) ) rule__Enumeration__Group__2
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1240:1: ( ( ( rule__Enumeration__NameAssignment_1 ) ) rule__Enumeration__Group__2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1241:1: ( ( rule__Enumeration__NameAssignment_1 ) ) rule__Enumeration__Group__2
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1234:1: ( ( rule__Enumeration__NameAssignment_1 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1235:1: ( rule__Enumeration__NameAssignment_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1241:1: ( ( rule__Enumeration__NameAssignment_1 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1242:1: ( rule__Enumeration__NameAssignment_1 )
             {
              before(grammarAccess.getEnumerationAccess().getNameAssignment_1()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1236:1: ( rule__Enumeration__NameAssignment_1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1236:2: rule__Enumeration__NameAssignment_1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1243:1: ( rule__Enumeration__NameAssignment_1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1243:2: rule__Enumeration__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Enumeration__NameAssignment_1_in_rule__Enumeration__Group__12418);
+            pushFollow(FOLLOW_rule__Enumeration__NameAssignment_1_in_rule__Enumeration__Group__12439);
             rule__Enumeration__NameAssignment_1();
             _fsp--;
 
@@ -2982,7 +3012,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Enumeration__Group__2_in_rule__Enumeration__Group__12427);
+            pushFollow(FOLLOW_rule__Enumeration__Group__2_in_rule__Enumeration__Group__12448);
             rule__Enumeration__Group__2();
             _fsp--;
 
@@ -3005,25 +3035,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Enumeration__Group__2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1247:1: rule__Enumeration__Group__2 : ( '{' ) rule__Enumeration__Group__3 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1254:1: rule__Enumeration__Group__2 : ( '{' ) rule__Enumeration__Group__3 ;
     public final void rule__Enumeration__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1251:1: ( ( '{' ) rule__Enumeration__Group__3 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1252:1: ( '{' ) rule__Enumeration__Group__3
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1258:1: ( ( '{' ) rule__Enumeration__Group__3 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1259:1: ( '{' ) rule__Enumeration__Group__3
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1252:1: ( '{' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1253:1: '{'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1259:1: ( '{' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1260:1: '{'
             {
              before(grammarAccess.getEnumerationAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,14,FOLLOW_14_in_rule__Enumeration__Group__22456); 
+            match(input,15,FOLLOW_15_in_rule__Enumeration__Group__22477); 
              after(grammarAccess.getEnumerationAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
 
-            pushFollow(FOLLOW_rule__Enumeration__Group__3_in_rule__Enumeration__Group__22466);
+            pushFollow(FOLLOW_rule__Enumeration__Group__3_in_rule__Enumeration__Group__22487);
             rule__Enumeration__Group__3();
             _fsp--;
 
@@ -3046,20 +3076,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Enumeration__Group__3
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1267:1: rule__Enumeration__Group__3 : ( ( rule__Enumeration__LiteralsAssignment_3 )* ) rule__Enumeration__Group__4 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1274:1: rule__Enumeration__Group__3 : ( ( rule__Enumeration__LiteralsAssignment_3 )* ) rule__Enumeration__Group__4 ;
     public final void rule__Enumeration__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1271:1: ( ( ( rule__Enumeration__LiteralsAssignment_3 )* ) rule__Enumeration__Group__4 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1272:1: ( ( rule__Enumeration__LiteralsAssignment_3 )* ) rule__Enumeration__Group__4
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1278:1: ( ( ( rule__Enumeration__LiteralsAssignment_3 )* ) rule__Enumeration__Group__4 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1279:1: ( ( rule__Enumeration__LiteralsAssignment_3 )* ) rule__Enumeration__Group__4
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1272:1: ( ( rule__Enumeration__LiteralsAssignment_3 )* )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1273:1: ( rule__Enumeration__LiteralsAssignment_3 )*
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1279:1: ( ( rule__Enumeration__LiteralsAssignment_3 )* )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1280:1: ( rule__Enumeration__LiteralsAssignment_3 )*
             {
              before(grammarAccess.getEnumerationAccess().getLiteralsAssignment_3()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1274:1: ( rule__Enumeration__LiteralsAssignment_3 )*
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1281:1: ( rule__Enumeration__LiteralsAssignment_3 )*
             loop11:
             do {
                 int alt11=2;
@@ -3072,9 +3102,9 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
                 switch (alt11) {
             	case 1 :
-            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1274:2: rule__Enumeration__LiteralsAssignment_3
+            	    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1281:2: rule__Enumeration__LiteralsAssignment_3
             	    {
-            	    pushFollow(FOLLOW_rule__Enumeration__LiteralsAssignment_3_in_rule__Enumeration__Group__32494);
+            	    pushFollow(FOLLOW_rule__Enumeration__LiteralsAssignment_3_in_rule__Enumeration__Group__32515);
             	    rule__Enumeration__LiteralsAssignment_3();
             	    _fsp--;
 
@@ -3091,7 +3121,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__Enumeration__Group__4_in_rule__Enumeration__Group__32504);
+            pushFollow(FOLLOW_rule__Enumeration__Group__4_in_rule__Enumeration__Group__32525);
             rule__Enumeration__Group__4();
             _fsp--;
 
@@ -3114,20 +3144,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Enumeration__Group__4
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1285:1: rule__Enumeration__Group__4 : ( '}' ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1292:1: rule__Enumeration__Group__4 : ( '}' ) ;
     public final void rule__Enumeration__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1289:1: ( ( '}' ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1290:1: ( '}' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1296:1: ( ( '}' ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1297:1: ( '}' )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1290:1: ( '}' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1291:1: '}'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1297:1: ( '}' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1298:1: '}'
             {
              before(grammarAccess.getEnumerationAccess().getRightCurlyBracketKeyword_4()); 
-            match(input,18,FOLLOW_18_in_rule__Enumeration__Group__42533); 
+            match(input,19,FOLLOW_19_in_rule__Enumeration__Group__42554); 
              after(grammarAccess.getEnumerationAccess().getRightCurlyBracketKeyword_4()); 
 
             }
@@ -3151,23 +3181,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__EnumerationLiteral__Group__0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1314:1: rule__EnumerationLiteral__Group__0 : ( ( rule__EnumerationLiteral__NameAssignment_0 ) ) rule__EnumerationLiteral__Group__1 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1321:1: rule__EnumerationLiteral__Group__0 : ( ( rule__EnumerationLiteral__NameAssignment_0 ) ) rule__EnumerationLiteral__Group__1 ;
     public final void rule__EnumerationLiteral__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1318:1: ( ( ( rule__EnumerationLiteral__NameAssignment_0 ) ) rule__EnumerationLiteral__Group__1 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1319:1: ( ( rule__EnumerationLiteral__NameAssignment_0 ) ) rule__EnumerationLiteral__Group__1
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1325:1: ( ( ( rule__EnumerationLiteral__NameAssignment_0 ) ) rule__EnumerationLiteral__Group__1 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1326:1: ( ( rule__EnumerationLiteral__NameAssignment_0 ) ) rule__EnumerationLiteral__Group__1
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1319:1: ( ( rule__EnumerationLiteral__NameAssignment_0 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1320:1: ( rule__EnumerationLiteral__NameAssignment_0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1326:1: ( ( rule__EnumerationLiteral__NameAssignment_0 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1327:1: ( rule__EnumerationLiteral__NameAssignment_0 )
             {
              before(grammarAccess.getEnumerationLiteralAccess().getNameAssignment_0()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1321:1: ( rule__EnumerationLiteral__NameAssignment_0 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1321:2: rule__EnumerationLiteral__NameAssignment_0
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1328:1: ( rule__EnumerationLiteral__NameAssignment_0 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1328:2: rule__EnumerationLiteral__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__EnumerationLiteral__NameAssignment_0_in_rule__EnumerationLiteral__Group__02578);
+            pushFollow(FOLLOW_rule__EnumerationLiteral__NameAssignment_0_in_rule__EnumerationLiteral__Group__02599);
             rule__EnumerationLiteral__NameAssignment_0();
             _fsp--;
 
@@ -3178,7 +3208,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__EnumerationLiteral__Group__1_in_rule__EnumerationLiteral__Group__02587);
+            pushFollow(FOLLOW_rule__EnumerationLiteral__Group__1_in_rule__EnumerationLiteral__Group__02608);
             rule__EnumerationLiteral__Group__1();
             _fsp--;
 
@@ -3201,25 +3231,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__EnumerationLiteral__Group__1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1332:1: rule__EnumerationLiteral__Group__1 : ( '(' ) rule__EnumerationLiteral__Group__2 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1339:1: rule__EnumerationLiteral__Group__1 : ( '(' ) rule__EnumerationLiteral__Group__2 ;
     public final void rule__EnumerationLiteral__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1336:1: ( ( '(' ) rule__EnumerationLiteral__Group__2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1337:1: ( '(' ) rule__EnumerationLiteral__Group__2
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1343:1: ( ( '(' ) rule__EnumerationLiteral__Group__2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1344:1: ( '(' ) rule__EnumerationLiteral__Group__2
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1337:1: ( '(' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1338:1: '('
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1344:1: ( '(' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1345:1: '('
             {
              before(grammarAccess.getEnumerationLiteralAccess().getLeftParenthesisKeyword_1()); 
-            match(input,26,FOLLOW_26_in_rule__EnumerationLiteral__Group__12616); 
+            match(input,27,FOLLOW_27_in_rule__EnumerationLiteral__Group__12637); 
              after(grammarAccess.getEnumerationLiteralAccess().getLeftParenthesisKeyword_1()); 
 
             }
 
-            pushFollow(FOLLOW_rule__EnumerationLiteral__Group__2_in_rule__EnumerationLiteral__Group__12626);
+            pushFollow(FOLLOW_rule__EnumerationLiteral__Group__2_in_rule__EnumerationLiteral__Group__12647);
             rule__EnumerationLiteral__Group__2();
             _fsp--;
 
@@ -3242,23 +3272,23 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__EnumerationLiteral__Group__2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1352:1: rule__EnumerationLiteral__Group__2 : ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) ) rule__EnumerationLiteral__Group__3 ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1359:1: rule__EnumerationLiteral__Group__2 : ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) ) rule__EnumerationLiteral__Group__3 ;
     public final void rule__EnumerationLiteral__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1356:1: ( ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) ) rule__EnumerationLiteral__Group__3 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1357:1: ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) ) rule__EnumerationLiteral__Group__3
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1363:1: ( ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) ) rule__EnumerationLiteral__Group__3 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1364:1: ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) ) rule__EnumerationLiteral__Group__3
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1357:1: ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1358:1: ( rule__EnumerationLiteral__OrdinalAssignment_2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1364:1: ( ( rule__EnumerationLiteral__OrdinalAssignment_2 ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1365:1: ( rule__EnumerationLiteral__OrdinalAssignment_2 )
             {
              before(grammarAccess.getEnumerationLiteralAccess().getOrdinalAssignment_2()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1359:1: ( rule__EnumerationLiteral__OrdinalAssignment_2 )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1359:2: rule__EnumerationLiteral__OrdinalAssignment_2
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1366:1: ( rule__EnumerationLiteral__OrdinalAssignment_2 )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1366:2: rule__EnumerationLiteral__OrdinalAssignment_2
             {
-            pushFollow(FOLLOW_rule__EnumerationLiteral__OrdinalAssignment_2_in_rule__EnumerationLiteral__Group__22654);
+            pushFollow(FOLLOW_rule__EnumerationLiteral__OrdinalAssignment_2_in_rule__EnumerationLiteral__Group__22675);
             rule__EnumerationLiteral__OrdinalAssignment_2();
             _fsp--;
 
@@ -3269,7 +3299,7 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            pushFollow(FOLLOW_rule__EnumerationLiteral__Group__3_in_rule__EnumerationLiteral__Group__22663);
+            pushFollow(FOLLOW_rule__EnumerationLiteral__Group__3_in_rule__EnumerationLiteral__Group__22684);
             rule__EnumerationLiteral__Group__3();
             _fsp--;
 
@@ -3292,20 +3322,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__EnumerationLiteral__Group__3
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1370:1: rule__EnumerationLiteral__Group__3 : ( ')' ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1377:1: rule__EnumerationLiteral__Group__3 : ( ')' ) ;
     public final void rule__EnumerationLiteral__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1374:1: ( ( ')' ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1375:1: ( ')' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1381:1: ( ( ')' ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1382:1: ( ')' )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1375:1: ( ')' )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1376:1: ')'
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1382:1: ( ')' )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1383:1: ')'
             {
              before(grammarAccess.getEnumerationLiteralAccess().getRightParenthesisKeyword_3()); 
-            match(input,27,FOLLOW_27_in_rule__EnumerationLiteral__Group__32692); 
+            match(input,28,FOLLOW_28_in_rule__EnumerationLiteral__Group__32713); 
              after(grammarAccess.getEnumerationLiteralAccess().getRightParenthesisKeyword_3()); 
 
             }
@@ -3329,20 +3359,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Model__ProjectAssignment_0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1397:1: rule__Model__ProjectAssignment_0 : ( ruleProject ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1404:1: rule__Model__ProjectAssignment_0 : ( ruleProject ) ;
     public final void rule__Model__ProjectAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1401:1: ( ( ruleProject ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1402:1: ( ruleProject )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1408:1: ( ( ruleProject ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1409:1: ( ruleProject )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1402:1: ( ruleProject )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1403:1: ruleProject
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1409:1: ( ruleProject )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1410:1: ruleProject
             {
              before(grammarAccess.getModelAccess().getProjectProjectParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleProject_in_rule__Model__ProjectAssignment_02735);
+            pushFollow(FOLLOW_ruleProject_in_rule__Model__ProjectAssignment_02756);
             ruleProject();
             _fsp--;
 
@@ -3369,20 +3399,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Model__TypesAssignment_1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1412:1: rule__Model__TypesAssignment_1 : ( ruleType ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1419:1: rule__Model__TypesAssignment_1 : ( ruleType ) ;
     public final void rule__Model__TypesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1416:1: ( ( ruleType ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1417:1: ( ruleType )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1423:1: ( ( ruleType ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1424:1: ( ruleType )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1417:1: ( ruleType )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1418:1: ruleType
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1424:1: ( ruleType )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1425:1: ruleType
             {
              before(grammarAccess.getModelAccess().getTypesTypeParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleType_in_rule__Model__TypesAssignment_12766);
+            pushFollow(FOLLOW_ruleType_in_rule__Model__TypesAssignment_12787);
             ruleType();
             _fsp--;
 
@@ -3409,20 +3439,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Project__NameAssignment_4
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1427:1: rule__Project__NameAssignment_4 : ( RULE_STRING ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1434:1: rule__Project__NameAssignment_4 : ( RULE_STRING ) ;
     public final void rule__Project__NameAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1431:1: ( ( RULE_STRING ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1432:1: ( RULE_STRING )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1438:1: ( ( RULE_STRING ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1439:1: ( RULE_STRING )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1432:1: ( RULE_STRING )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1433:1: RULE_STRING
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1439:1: ( RULE_STRING )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1440:1: RULE_STRING
             {
              before(grammarAccess.getProjectAccess().getNameSTRINGTerminalRuleCall_4_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Project__NameAssignment_42797); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Project__NameAssignment_42818); 
              after(grammarAccess.getProjectAccess().getNameSTRINGTerminalRuleCall_4_0()); 
 
             }
@@ -3446,20 +3476,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Project__BasePackageAssignment_7
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1442:1: rule__Project__BasePackageAssignment_7 : ( RULE_STRING ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1449:1: rule__Project__BasePackageAssignment_7 : ( RULE_STRING ) ;
     public final void rule__Project__BasePackageAssignment_7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1446:1: ( ( RULE_STRING ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1447:1: ( RULE_STRING )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1453:1: ( ( RULE_STRING ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1454:1: ( RULE_STRING )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1447:1: ( RULE_STRING )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1448:1: RULE_STRING
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1454:1: ( RULE_STRING )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1455:1: RULE_STRING
             {
              before(grammarAccess.getProjectAccess().getBasePackageSTRINGTerminalRuleCall_7_0()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Project__BasePackageAssignment_72828); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Project__BasePackageAssignment_72849); 
              after(grammarAccess.getProjectAccess().getBasePackageSTRINGTerminalRuleCall_7_0()); 
 
             }
@@ -3483,20 +3513,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__SimpleType__NameAssignment_1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1457:1: rule__SimpleType__NameAssignment_1 : ( RULE_ID ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1464:1: rule__SimpleType__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__SimpleType__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1461:1: ( ( RULE_ID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1462:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1468:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1469:1: ( RULE_ID )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1462:1: ( RULE_ID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1463:1: RULE_ID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1469:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1470:1: RULE_ID
             {
              before(grammarAccess.getSimpleTypeAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SimpleType__NameAssignment_12859); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SimpleType__NameAssignment_12880); 
              after(grammarAccess.getSimpleTypeAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -3520,20 +3550,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__SimpleType__MappedTypeAssignment_2_1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1472:1: rule__SimpleType__MappedTypeAssignment_2_1 : ( ruleJAVAID ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1479:1: rule__SimpleType__MappedTypeAssignment_2_1 : ( ruleJAVAID ) ;
     public final void rule__SimpleType__MappedTypeAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1476:1: ( ( ruleJAVAID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1477:1: ( ruleJAVAID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1483:1: ( ( ruleJAVAID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1484:1: ( ruleJAVAID )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1477:1: ( ruleJAVAID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1478:1: ruleJAVAID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1484:1: ( ruleJAVAID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1485:1: ruleJAVAID
             {
              before(grammarAccess.getSimpleTypeAccess().getMappedTypeJAVAIDParserRuleCall_2_1_0()); 
-            pushFollow(FOLLOW_ruleJAVAID_in_rule__SimpleType__MappedTypeAssignment_2_12890);
+            pushFollow(FOLLOW_ruleJAVAID_in_rule__SimpleType__MappedTypeAssignment_2_12911);
             ruleJAVAID();
             _fsp--;
 
@@ -3560,20 +3590,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__JAVAID__NameAssignment_0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1487:1: rule__JAVAID__NameAssignment_0 : ( RULE_ID ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1494:1: rule__JAVAID__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__JAVAID__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1491:1: ( ( RULE_ID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1492:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1498:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1499:1: ( RULE_ID )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1492:1: ( RULE_ID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1493:1: RULE_ID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1499:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1500:1: RULE_ID
             {
              before(grammarAccess.getJAVAIDAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__JAVAID__NameAssignment_02921); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__JAVAID__NameAssignment_02942); 
              after(grammarAccess.getJAVAIDAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -3597,20 +3627,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Entity__NameAssignment_1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1502:1: rule__Entity__NameAssignment_1 : ( RULE_ID ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1509:1: rule__Entity__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Entity__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1506:1: ( ( RULE_ID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1507:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1513:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1514:1: ( RULE_ID )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1507:1: ( RULE_ID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1508:1: RULE_ID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1514:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1515:1: RULE_ID
             {
              before(grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Entity__NameAssignment_12952); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Entity__NameAssignment_12973); 
              after(grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -3634,24 +3664,24 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Entity__SuperEntityAssignment_2_1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1517:1: rule__Entity__SuperEntityAssignment_2_1 : ( ( RULE_ID ) ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1524:1: rule__Entity__SuperEntityAssignment_2_1 : ( ( RULE_ID ) ) ;
     public final void rule__Entity__SuperEntityAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1521:1: ( ( ( RULE_ID ) ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1522:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1528:1: ( ( ( RULE_ID ) ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1529:1: ( ( RULE_ID ) )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1522:1: ( ( RULE_ID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1523:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1529:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1530:1: ( RULE_ID )
             {
              before(grammarAccess.getEntityAccess().getSuperEntityEntityCrossReference_2_1_0()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1524:1: ( RULE_ID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1525:1: RULE_ID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1531:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1532:1: RULE_ID
             {
              before(grammarAccess.getEntityAccess().getSuperEntityEntityIDTerminalRuleCall_2_1_0_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Entity__SuperEntityAssignment_2_12987); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Entity__SuperEntityAssignment_2_13008); 
              after(grammarAccess.getEntityAccess().getSuperEntityEntityIDTerminalRuleCall_2_1_0_1()); 
 
             }
@@ -3679,20 +3709,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Entity__AttributesAssignment_4
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1536:1: rule__Entity__AttributesAssignment_4 : ( ruleAttribute ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1543:1: rule__Entity__AttributesAssignment_4 : ( ruleAttribute ) ;
     public final void rule__Entity__AttributesAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1540:1: ( ( ruleAttribute ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1541:1: ( ruleAttribute )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1547:1: ( ( ruleAttribute ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1548:1: ( ruleAttribute )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1541:1: ( ruleAttribute )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1542:1: ruleAttribute
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1548:1: ( ruleAttribute )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1549:1: ruleAttribute
             {
              before(grammarAccess.getEntityAccess().getAttributesAttributeParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleAttribute_in_rule__Entity__AttributesAssignment_43022);
+            pushFollow(FOLLOW_ruleAttribute_in_rule__Entity__AttributesAssignment_43043);
             ruleAttribute();
             _fsp--;
 
@@ -3719,20 +3749,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Embed__NameAssignment_1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1551:1: rule__Embed__NameAssignment_1 : ( RULE_ID ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1558:1: rule__Embed__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Embed__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1555:1: ( ( RULE_ID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1556:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1562:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1563:1: ( RULE_ID )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1556:1: ( RULE_ID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1557:1: RULE_ID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1563:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1564:1: RULE_ID
             {
              before(grammarAccess.getEmbedAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Embed__NameAssignment_13053); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Embed__NameAssignment_13074); 
              after(grammarAccess.getEmbedAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -3756,24 +3786,24 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Embed__SuperEntityAssignment_2_1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1566:1: rule__Embed__SuperEntityAssignment_2_1 : ( ( RULE_ID ) ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1573:1: rule__Embed__SuperEntityAssignment_2_1 : ( ( RULE_ID ) ) ;
     public final void rule__Embed__SuperEntityAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1570:1: ( ( ( RULE_ID ) ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1571:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1577:1: ( ( ( RULE_ID ) ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1578:1: ( ( RULE_ID ) )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1571:1: ( ( RULE_ID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1572:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1578:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1579:1: ( RULE_ID )
             {
              before(grammarAccess.getEmbedAccess().getSuperEntityEntityCrossReference_2_1_0()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1573:1: ( RULE_ID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1574:1: RULE_ID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1580:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1581:1: RULE_ID
             {
              before(grammarAccess.getEmbedAccess().getSuperEntityEntityIDTerminalRuleCall_2_1_0_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Embed__SuperEntityAssignment_2_13088); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Embed__SuperEntityAssignment_2_13109); 
              after(grammarAccess.getEmbedAccess().getSuperEntityEntityIDTerminalRuleCall_2_1_0_1()); 
 
             }
@@ -3801,20 +3831,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Embed__AttributesAssignment_4
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1585:1: rule__Embed__AttributesAssignment_4 : ( ruleAttribute ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1592:1: rule__Embed__AttributesAssignment_4 : ( ruleAttribute ) ;
     public final void rule__Embed__AttributesAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1589:1: ( ( ruleAttribute ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1590:1: ( ruleAttribute )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1596:1: ( ( ruleAttribute ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1597:1: ( ruleAttribute )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1590:1: ( ruleAttribute )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1591:1: ruleAttribute
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1597:1: ( ruleAttribute )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1598:1: ruleAttribute
             {
              before(grammarAccess.getEmbedAccess().getAttributesAttributeParserRuleCall_4_0()); 
-            pushFollow(FOLLOW_ruleAttribute_in_rule__Embed__AttributesAssignment_43123);
+            pushFollow(FOLLOW_ruleAttribute_in_rule__Embed__AttributesAssignment_43144);
             ruleAttribute();
             _fsp--;
 
@@ -3841,24 +3871,24 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Attribute__TypeAssignment_0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1600:1: rule__Attribute__TypeAssignment_0 : ( ( RULE_ID ) ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1607:1: rule__Attribute__TypeAssignment_0 : ( ( RULE_ID ) ) ;
     public final void rule__Attribute__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1604:1: ( ( ( RULE_ID ) ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1605:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1611:1: ( ( ( RULE_ID ) ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1612:1: ( ( RULE_ID ) )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1605:1: ( ( RULE_ID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1606:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1612:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1613:1: ( RULE_ID )
             {
              before(grammarAccess.getAttributeAccess().getTypeTypeCrossReference_0_0()); 
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1607:1: ( RULE_ID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1608:1: RULE_ID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1614:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1615:1: RULE_ID
             {
              before(grammarAccess.getAttributeAccess().getTypeTypeIDTerminalRuleCall_0_0_1()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Attribute__TypeAssignment_03158); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Attribute__TypeAssignment_03179); 
              after(grammarAccess.getAttributeAccess().getTypeTypeIDTerminalRuleCall_0_0_1()); 
 
             }
@@ -3885,25 +3915,25 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end rule__Attribute__TypeAssignment_0
 
 
-    // $ANTLR start rule__Attribute__ManyAssignment_1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1619:1: rule__Attribute__ManyAssignment_1 : ( ruleAttributeManyReference ) ;
-    public final void rule__Attribute__ManyAssignment_1() throws RecognitionException {
+    // $ANTLR start rule__Attribute__ManyReferenceAssignment_1
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1626:1: rule__Attribute__ManyReferenceAssignment_1 : ( ruleAttributeManyReference ) ;
+    public final void rule__Attribute__ManyReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1623:1: ( ( ruleAttributeManyReference ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1624:1: ( ruleAttributeManyReference )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1630:1: ( ( ruleAttributeManyReference ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1631:1: ( ruleAttributeManyReference )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1624:1: ( ruleAttributeManyReference )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1625:1: ruleAttributeManyReference
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1631:1: ( ruleAttributeManyReference )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1632:1: ruleAttributeManyReference
             {
-             before(grammarAccess.getAttributeAccess().getManyAttributeManyReferenceEnumRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleAttributeManyReference_in_rule__Attribute__ManyAssignment_13193);
+             before(grammarAccess.getAttributeAccess().getManyReferenceAttributeManyReferenceEnumRuleCall_1_0()); 
+            pushFollow(FOLLOW_ruleAttributeManyReference_in_rule__Attribute__ManyReferenceAssignment_13214);
             ruleAttributeManyReference();
             _fsp--;
 
-             after(grammarAccess.getAttributeAccess().getManyAttributeManyReferenceEnumRuleCall_1_0()); 
+             after(grammarAccess.getAttributeAccess().getManyReferenceAttributeManyReferenceEnumRuleCall_1_0()); 
 
             }
 
@@ -3922,24 +3952,24 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__Attribute__ManyAssignment_1
+    // $ANTLR end rule__Attribute__ManyReferenceAssignment_1
 
 
     // $ANTLR start rule__Attribute__NameAssignment_2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1634:1: rule__Attribute__NameAssignment_2 : ( RULE_ID ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1641:1: rule__Attribute__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__Attribute__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1638:1: ( ( RULE_ID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1639:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1645:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1646:1: ( RULE_ID )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1639:1: ( RULE_ID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1640:1: RULE_ID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1646:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1647:1: RULE_ID
             {
              before(grammarAccess.getAttributeAccess().getNameIDTerminalRuleCall_2_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Attribute__NameAssignment_23224); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Attribute__NameAssignment_23245); 
              after(grammarAccess.getAttributeAccess().getNameIDTerminalRuleCall_2_0()); 
 
             }
@@ -3963,20 +3993,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Enumeration__NameAssignment_1
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1649:1: rule__Enumeration__NameAssignment_1 : ( RULE_ID ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1656:1: rule__Enumeration__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Enumeration__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1653:1: ( ( RULE_ID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1654:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1660:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1661:1: ( RULE_ID )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1654:1: ( RULE_ID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1655:1: RULE_ID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1661:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1662:1: RULE_ID
             {
              before(grammarAccess.getEnumerationAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Enumeration__NameAssignment_13255); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Enumeration__NameAssignment_13276); 
              after(grammarAccess.getEnumerationAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -4000,20 +4030,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__Enumeration__LiteralsAssignment_3
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1664:1: rule__Enumeration__LiteralsAssignment_3 : ( ruleEnumerationLiteral ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1671:1: rule__Enumeration__LiteralsAssignment_3 : ( ruleEnumerationLiteral ) ;
     public final void rule__Enumeration__LiteralsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1668:1: ( ( ruleEnumerationLiteral ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1669:1: ( ruleEnumerationLiteral )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1675:1: ( ( ruleEnumerationLiteral ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1676:1: ( ruleEnumerationLiteral )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1669:1: ( ruleEnumerationLiteral )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1670:1: ruleEnumerationLiteral
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1676:1: ( ruleEnumerationLiteral )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1677:1: ruleEnumerationLiteral
             {
              before(grammarAccess.getEnumerationAccess().getLiteralsEnumerationLiteralParserRuleCall_3_0()); 
-            pushFollow(FOLLOW_ruleEnumerationLiteral_in_rule__Enumeration__LiteralsAssignment_33286);
+            pushFollow(FOLLOW_ruleEnumerationLiteral_in_rule__Enumeration__LiteralsAssignment_33307);
             ruleEnumerationLiteral();
             _fsp--;
 
@@ -4040,20 +4070,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__EnumerationLiteral__NameAssignment_0
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1679:1: rule__EnumerationLiteral__NameAssignment_0 : ( RULE_ID ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1686:1: rule__EnumerationLiteral__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__EnumerationLiteral__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1683:1: ( ( RULE_ID ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1684:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1690:1: ( ( RULE_ID ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1691:1: ( RULE_ID )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1684:1: ( RULE_ID )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1685:1: RULE_ID
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1691:1: ( RULE_ID )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1692:1: RULE_ID
             {
              before(grammarAccess.getEnumerationLiteralAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__EnumerationLiteral__NameAssignment_03317); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__EnumerationLiteral__NameAssignment_03338); 
              after(grammarAccess.getEnumerationLiteralAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -4077,20 +4107,20 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__EnumerationLiteral__OrdinalAssignment_2
-    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1694:1: rule__EnumerationLiteral__OrdinalAssignment_2 : ( RULE_INT ) ;
+    // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1701:1: rule__EnumerationLiteral__OrdinalAssignment_2 : ( RULE_INT ) ;
     public final void rule__EnumerationLiteral__OrdinalAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1698:1: ( ( RULE_INT ) )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1699:1: ( RULE_INT )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1705:1: ( ( RULE_INT ) )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1706:1: ( RULE_INT )
             {
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1699:1: ( RULE_INT )
-            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1700:1: RULE_INT
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1706:1: ( RULE_INT )
+            // ../org.xmdl.wdl.ui/src-gen/org/xmdl/contentassist/antlr/internal/InternalWDL.g:1707:1: RULE_INT
             {
              before(grammarAccess.getEnumerationLiteralAccess().getOrdinalINTTerminalRuleCall_2_0()); 
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__EnumerationLiteral__OrdinalAssignment_23348); 
+            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__EnumerationLiteral__OrdinalAssignment_23369); 
              after(grammarAccess.getEnumerationLiteralAccess().getOrdinalINTTerminalRuleCall_2_0()); 
 
             }
@@ -4152,108 +4182,109 @@ public class InternalWDLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleEmbed_in_rule__Type__Alternatives757 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_11_in_rule__AttributeManyReference__Alternatives790 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_12_in_rule__AttributeManyReference__Alternatives811 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__ProjectAssignment_0_in_rule__Model__Group__0848 = new BitSet(new long[]{0x0000000003480002L});
-    public static final BitSet FOLLOW_rule__Model__Group__1_in_rule__Model__Group__0857 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__TypesAssignment_1_in_rule__Model__Group__1885 = new BitSet(new long[]{0x0000000003480002L});
-    public static final BitSet FOLLOW_13_in_rule__Project__Group__0925 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_rule__Project__Group__1_in_rule__Project__Group__0935 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__Project__Group__1964 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_rule__Project__Group__2_in_rule__Project__Group__1974 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__Project__Group__21003 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_rule__Project__Group__3_in_rule__Project__Group__21013 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__Project__Group__31042 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__Project__Group__4_in_rule__Project__Group__31052 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Project__NameAssignment_4_in_rule__Project__Group__41080 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__Project__Group__5_in_rule__Project__Group__41089 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__Project__Group__51118 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_rule__Project__Group__6_in_rule__Project__Group__51128 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__Project__Group__61157 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__Project__Group__7_in_rule__Project__Group__61167 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Project__BasePackageAssignment_7_in_rule__Project__Group__71195 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_rule__Project__Group__8_in_rule__Project__Group__71204 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Project__Group__81233 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_rule__SimpleType__Group__01287 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__SimpleType__Group__1_in_rule__SimpleType__Group__01297 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleType__NameAssignment_1_in_rule__SimpleType__Group__11325 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_rule__SimpleType__Group__2_in_rule__SimpleType__Group__11334 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleType__Group_2__0_in_rule__SimpleType__Group__21362 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__SimpleType__Group_2__01404 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__SimpleType__Group_2__1_in_rule__SimpleType__Group_2__01414 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__SimpleType__MappedTypeAssignment_2_1_in_rule__SimpleType__Group_2__11442 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JAVAID__NameAssignment_0_in_rule__JAVAID__Group__01480 = new BitSet(new long[]{0x0000000000200002L});
-    public static final BitSet FOLLOW_rule__JAVAID__Group__1_in_rule__JAVAID__Group__01489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__JAVAID__Group_1__0_in_rule__JAVAID__Group__11517 = new BitSet(new long[]{0x0000000000200002L});
-    public static final BitSet FOLLOW_21_in_rule__JAVAID__Group_1__01557 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__JAVAID__Group_1__1_in_rule__JAVAID__Group_1__01567 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__JAVAID__Group_1__11595 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_rule__Entity__Group__01633 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Entity__Group__1_in_rule__Entity__Group__01643 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Entity__NameAssignment_1_in_rule__Entity__Group__11671 = new BitSet(new long[]{0x0000000000804000L});
-    public static final BitSet FOLLOW_rule__Entity__Group__2_in_rule__Entity__Group__11680 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Entity__Group_2__0_in_rule__Entity__Group__21708 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_rule__Entity__Group__3_in_rule__Entity__Group__21718 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__Entity__Group__31747 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_rule__Entity__Group__4_in_rule__Entity__Group__31757 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Entity__AttributesAssignment_4_in_rule__Entity__Group__41785 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_rule__Entity__Group__5_in_rule__Entity__Group__41795 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Entity__Group__51824 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__Entity__Group_2__01872 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Entity__Group_2__1_in_rule__Entity__Group_2__01882 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Entity__SuperEntityAssignment_2_1_in_rule__Entity__Group_2__11910 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__Embed__Group__01949 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Embed__Group__1_in_rule__Embed__Group__01959 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Embed__NameAssignment_1_in_rule__Embed__Group__11987 = new BitSet(new long[]{0x0000000000804000L});
-    public static final BitSet FOLLOW_rule__Embed__Group__2_in_rule__Embed__Group__11996 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Embed__Group_2__0_in_rule__Embed__Group__22024 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_rule__Embed__Group__3_in_rule__Embed__Group__22034 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__Embed__Group__32063 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_rule__Embed__Group__4_in_rule__Embed__Group__32073 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Embed__AttributesAssignment_4_in_rule__Embed__Group__42101 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_rule__Embed__Group__5_in_rule__Embed__Group__42111 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Embed__Group__52140 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__Embed__Group_2__02188 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Embed__Group_2__1_in_rule__Embed__Group_2__02198 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Embed__SuperEntityAssignment_2_1_in_rule__Embed__Group_2__12226 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__TypeAssignment_0_in_rule__Attribute__Group__02264 = new BitSet(new long[]{0x0000000000001810L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__1_in_rule__Attribute__Group__02273 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__ManyAssignment_1_in_rule__Attribute__Group__12301 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Attribute__Group__2_in_rule__Attribute__Group__12311 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Attribute__NameAssignment_2_in_rule__Attribute__Group__22339 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__Enumeration__Group__02380 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Enumeration__Group__1_in_rule__Enumeration__Group__02390 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Enumeration__NameAssignment_1_in_rule__Enumeration__Group__12418 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_rule__Enumeration__Group__2_in_rule__Enumeration__Group__12427 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__Enumeration__Group__22456 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_rule__Enumeration__Group__3_in_rule__Enumeration__Group__22466 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Enumeration__LiteralsAssignment_3_in_rule__Enumeration__Group__32494 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_rule__Enumeration__Group__4_in_rule__Enumeration__Group__32504 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Enumeration__Group__42533 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumerationLiteral__NameAssignment_0_in_rule__EnumerationLiteral__Group__02578 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_rule__EnumerationLiteral__Group__1_in_rule__EnumerationLiteral__Group__02587 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_rule__EnumerationLiteral__Group__12616 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_rule__EnumerationLiteral__Group__2_in_rule__EnumerationLiteral__Group__12626 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__EnumerationLiteral__OrdinalAssignment_2_in_rule__EnumerationLiteral__Group__22654 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_rule__EnumerationLiteral__Group__3_in_rule__EnumerationLiteral__Group__22663 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_rule__EnumerationLiteral__Group__32692 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProject_in_rule__Model__ProjectAssignment_02735 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_rule__Model__TypesAssignment_12766 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Project__NameAssignment_42797 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Project__BasePackageAssignment_72828 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__SimpleType__NameAssignment_12859 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleJAVAID_in_rule__SimpleType__MappedTypeAssignment_2_12890 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__JAVAID__NameAssignment_02921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Entity__NameAssignment_12952 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Entity__SuperEntityAssignment_2_12987 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttribute_in_rule__Entity__AttributesAssignment_43022 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Embed__NameAssignment_13053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Embed__SuperEntityAssignment_2_13088 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttribute_in_rule__Embed__AttributesAssignment_43123 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Attribute__TypeAssignment_03158 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAttributeManyReference_in_rule__Attribute__ManyAssignment_13193 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Attribute__NameAssignment_23224 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Enumeration__NameAssignment_13255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleEnumerationLiteral_in_rule__Enumeration__LiteralsAssignment_33286 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__EnumerationLiteral__NameAssignment_03317 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__EnumerationLiteral__OrdinalAssignment_23348 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_rule__AttributeManyReference__Alternatives832 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Model__ProjectAssignment_0_in_rule__Model__Group__0869 = new BitSet(new long[]{0x0000000006900002L});
+    public static final BitSet FOLLOW_rule__Model__Group__1_in_rule__Model__Group__0878 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Model__TypesAssignment_1_in_rule__Model__Group__1906 = new BitSet(new long[]{0x0000000006900002L});
+    public static final BitSet FOLLOW_14_in_rule__Project__Group__0946 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__Project__Group__1_in_rule__Project__Group__0956 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__Project__Group__1985 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_rule__Project__Group__2_in_rule__Project__Group__1995 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__Project__Group__21024 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__Project__Group__3_in_rule__Project__Group__21034 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__Project__Group__31063 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__Project__Group__4_in_rule__Project__Group__31073 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Project__NameAssignment_4_in_rule__Project__Group__41101 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_rule__Project__Group__5_in_rule__Project__Group__41110 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_rule__Project__Group__51139 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_rule__Project__Group__6_in_rule__Project__Group__51149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__Project__Group__61178 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__Project__Group__7_in_rule__Project__Group__61188 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Project__BasePackageAssignment_7_in_rule__Project__Group__71216 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_rule__Project__Group__8_in_rule__Project__Group__71225 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_rule__Project__Group__81254 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_rule__SimpleType__Group__01308 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__SimpleType__Group__1_in_rule__SimpleType__Group__01318 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleType__NameAssignment_1_in_rule__SimpleType__Group__11346 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_rule__SimpleType__Group__2_in_rule__SimpleType__Group__11355 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleType__Group_2__0_in_rule__SimpleType__Group__21383 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__SimpleType__Group_2__01425 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__SimpleType__Group_2__1_in_rule__SimpleType__Group_2__01435 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__SimpleType__MappedTypeAssignment_2_1_in_rule__SimpleType__Group_2__11463 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JAVAID__NameAssignment_0_in_rule__JAVAID__Group__01501 = new BitSet(new long[]{0x0000000000400002L});
+    public static final BitSet FOLLOW_rule__JAVAID__Group__1_in_rule__JAVAID__Group__01510 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__JAVAID__Group_1__0_in_rule__JAVAID__Group__11538 = new BitSet(new long[]{0x0000000000400002L});
+    public static final BitSet FOLLOW_22_in_rule__JAVAID__Group_1__01578 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__JAVAID__Group_1__1_in_rule__JAVAID__Group_1__01588 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__JAVAID__Group_1__11616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__Entity__Group__01654 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Entity__Group__1_in_rule__Entity__Group__01664 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__NameAssignment_1_in_rule__Entity__Group__11692 = new BitSet(new long[]{0x0000000001008000L});
+    public static final BitSet FOLLOW_rule__Entity__Group__2_in_rule__Entity__Group__11701 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__Group_2__0_in_rule__Entity__Group__21729 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__Entity__Group__3_in_rule__Entity__Group__21739 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__Entity__Group__31768 = new BitSet(new long[]{0x0000000000080010L});
+    public static final BitSet FOLLOW_rule__Entity__Group__4_in_rule__Entity__Group__31778 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__AttributesAssignment_4_in_rule__Entity__Group__41806 = new BitSet(new long[]{0x0000000000080010L});
+    public static final BitSet FOLLOW_rule__Entity__Group__5_in_rule__Entity__Group__41816 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_rule__Entity__Group__51845 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rule__Entity__Group_2__01893 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Entity__Group_2__1_in_rule__Entity__Group_2__01903 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Entity__SuperEntityAssignment_2_1_in_rule__Entity__Group_2__11931 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_rule__Embed__Group__01970 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Embed__Group__1_in_rule__Embed__Group__01980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Embed__NameAssignment_1_in_rule__Embed__Group__12008 = new BitSet(new long[]{0x0000000001008000L});
+    public static final BitSet FOLLOW_rule__Embed__Group__2_in_rule__Embed__Group__12017 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Embed__Group_2__0_in_rule__Embed__Group__22045 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__Embed__Group__3_in_rule__Embed__Group__22055 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__Embed__Group__32084 = new BitSet(new long[]{0x0000000000080010L});
+    public static final BitSet FOLLOW_rule__Embed__Group__4_in_rule__Embed__Group__32094 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Embed__AttributesAssignment_4_in_rule__Embed__Group__42122 = new BitSet(new long[]{0x0000000000080010L});
+    public static final BitSet FOLLOW_rule__Embed__Group__5_in_rule__Embed__Group__42132 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_rule__Embed__Group__52161 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_rule__Embed__Group_2__02209 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Embed__Group_2__1_in_rule__Embed__Group_2__02219 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Embed__SuperEntityAssignment_2_1_in_rule__Embed__Group_2__12247 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__TypeAssignment_0_in_rule__Attribute__Group__02285 = new BitSet(new long[]{0x0000000000003810L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__1_in_rule__Attribute__Group__02294 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__ManyReferenceAssignment_1_in_rule__Attribute__Group__12322 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Attribute__Group__2_in_rule__Attribute__Group__12332 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Attribute__NameAssignment_2_in_rule__Attribute__Group__22360 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_rule__Enumeration__Group__02401 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Enumeration__Group__1_in_rule__Enumeration__Group__02411 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Enumeration__NameAssignment_1_in_rule__Enumeration__Group__12439 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__Enumeration__Group__2_in_rule__Enumeration__Group__12448 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__Enumeration__Group__22477 = new BitSet(new long[]{0x0000000000080010L});
+    public static final BitSet FOLLOW_rule__Enumeration__Group__3_in_rule__Enumeration__Group__22487 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Enumeration__LiteralsAssignment_3_in_rule__Enumeration__Group__32515 = new BitSet(new long[]{0x0000000000080010L});
+    public static final BitSet FOLLOW_rule__Enumeration__Group__4_in_rule__Enumeration__Group__32525 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_rule__Enumeration__Group__42554 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumerationLiteral__NameAssignment_0_in_rule__EnumerationLiteral__Group__02599 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_rule__EnumerationLiteral__Group__1_in_rule__EnumerationLiteral__Group__02608 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_rule__EnumerationLiteral__Group__12637 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_rule__EnumerationLiteral__Group__2_in_rule__EnumerationLiteral__Group__12647 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__EnumerationLiteral__OrdinalAssignment_2_in_rule__EnumerationLiteral__Group__22675 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_rule__EnumerationLiteral__Group__3_in_rule__EnumerationLiteral__Group__22684 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_rule__EnumerationLiteral__Group__32713 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleProject_in_rule__Model__ProjectAssignment_02756 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_rule__Model__TypesAssignment_12787 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Project__NameAssignment_42818 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Project__BasePackageAssignment_72849 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__SimpleType__NameAssignment_12880 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleJAVAID_in_rule__SimpleType__MappedTypeAssignment_2_12911 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__JAVAID__NameAssignment_02942 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Entity__NameAssignment_12973 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Entity__SuperEntityAssignment_2_13008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttribute_in_rule__Entity__AttributesAssignment_43043 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Embed__NameAssignment_13074 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Embed__SuperEntityAssignment_2_13109 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttribute_in_rule__Embed__AttributesAssignment_43144 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Attribute__TypeAssignment_03179 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAttributeManyReference_in_rule__Attribute__ManyReferenceAssignment_13214 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Attribute__NameAssignment_23245 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Enumeration__NameAssignment_13276 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEnumerationLiteral_in_rule__Enumeration__LiteralsAssignment_33307 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__EnumerationLiteral__NameAssignment_03338 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_rule__EnumerationLiteral__OrdinalAssignment_23369 = new BitSet(new long[]{0x0000000000000002L});
 
 }
