@@ -10,40 +10,47 @@ import org.xmdl.wdl.Type;
 
 public enum BasicType {
 
-	VOID("void"),
+	VOID(false, "void"),
 
-	STRING("String", "java.lang.String"),
+	STRING(false, "String", "java.lang.String"),
 
-	BOOLEAN("boolean", "Boolean", "java.lang.Boolean"),
+	BOOLEAN(false, "boolean", "Boolean", "java.lang.Boolean"),
 
-	DOUBLE("double", "Double", "java.lang.Double"),
+	DOUBLE(true, "double", "Double", "java.lang.Double"),
 
-	FLOAT("float", "Float", "java.lang.Float"),
+	FLOAT(true, "float", "Float", "java.lang.Float"),
 
-	BYTE("byte", "Byte", "java.lang.Byte"),
+	BYTE(true, "byte", "Byte", "java.lang.Byte"),
 
-	CHAR("char", "Character", "java.lang.Character"),
+	CHAR(true, "char", "Character", "java.lang.Character"),
 
-	SHORT("short", "Short", "java.lang.Short"),
+	SHORT(true, "short", "Short", "java.lang.Short"),
 
-	LONG("long", "Long", "java.lang.Long"),
+	LONG(true, "long", "Long", "java.lang.Long"),
 
-	INTEGER("int", "Integer", "java.lang.Integer"),
+	INTEGER(true, "int", "Integer", "java.lang.Integer"),
 
-	DATE("Date", "java.util.Date", "java.sql.Date", "java.sql.Time"),
+	DATE(true, "Date", "java.util.Date", "java.sql.Date", "java.sql.Time"),
 	
-	OBJECT("Object", "java.lang.Object"),
+	OBJECT(false, "Object", "java.lang.Object"),
 
 	;
 
+	private final boolean comparable;
+	
 	private final List<String> variations;
 
-	BasicType(String... variations) {
+	BasicType(boolean comparable, String... variations) {
+		this.comparable = comparable;
 		this.variations = Arrays.asList(variations);
 	}
 
 	public boolean is(Type t) {
 		return variations.contains(t.getName());
+	}
+
+	public boolean isComparable() {
+		return comparable;
 	}
 
 }

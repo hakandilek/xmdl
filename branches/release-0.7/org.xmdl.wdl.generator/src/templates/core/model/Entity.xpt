@@ -39,12 +39,17 @@ public class «this.name» extends BaseObject implements Serializable, Cloneable
     
     «FOREACH this.attributes AS attribute -»
     	«IF !attribute.isReference() -»
+    		«IF attribute.isEmbed() -»
+    @Embedded    	
+    		«ELSE -»
 	@Column(name = "«attribute.columnName()»", length = «attribute.columnSize()»«IF attribute.isEnumeration()», columnDefinition = "integer", nullable = false«ENDIF»)
 			«EXPAND Entity::enumAnnotation FOR attribute »
-    	«ELSE »
+    		«ENDIF -»
+    	«ELSE -»
     «attribute.associationAnnotation()»
     	«ENDIF -»
     private «attribute.wrapType()» «attribute.name.toFirstLower()» «IF attribute.isEmbed()»= new «attribute.type.name»()«ENDIF»;
+    
     «ENDFOREACH -»
 
     public «this.name»() {

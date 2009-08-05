@@ -36,8 +36,6 @@ public class IDAExtensionUtils extends ExtensionUtils {
 
 		Type type = attribute.getType();
 		if (isReference(type)) {
-			AssociationManager associationManager = AssociationManager
-					.getInstance();
 			AssociationType assType = associationType(attribute);
 			switch (assType) {
 			case ONE_TO_ONE:
@@ -86,7 +84,9 @@ public class IDAExtensionUtils extends ExtensionUtils {
 
 				break;
 			case MANY_TO_MANY:
-				if (!associationManager.isRegistered(attribute)) {
+				AssociationManager associationManager = AssociationManager
+						.getInstance();
+				if (associationManager.isSide1(attribute)) {
 					/**
 					 * sample:
 					 * 
@@ -101,12 +101,12 @@ public class IDAExtensionUtils extends ExtensionUtils {
 					 *                  HashSet<Supplier>();
 					 */
 
-					associationManager.register(attribute);
 					opposite = opposite(attribute);
+					Association association = associationManager.association(attribute);
 
 					String columnName1 = associateColumnName(attribute);
 					String columnName2 = associateColumnName(opposite);
-					String assocTableName = associateTableName(opposite);
+					String assocTableName = tableName(association);
 					String typeName = attribute.getType().getName();
 
 					sb.append("@ManyToMany(");
@@ -175,7 +175,7 @@ public class IDAExtensionUtils extends ExtensionUtils {
 		sb.append("return MessageFormat.format(\"").append(name);
 		int i = 0;
 		for (Attribute a : attributes) {
-			if (!isReference(a.getType())) {
+			if (!isReference(a.getType()) && !isEmbed(a.getType())) {
 				if (isSearch && isComparable(a.getType())) {
 					sb.append("[").append(a.getName()).append("Min={").append(
 							++i).append("}").append("]");
@@ -189,7 +189,7 @@ public class IDAExtensionUtils extends ExtensionUtils {
 		}
 		sb.append("\"");
 		for (Attribute a : attributes) {
-			if (!isReference(a.getType())) {
+			if (!isReference(a.getType()) && !isEmbed(a.getType())) {
 				if (isSearch && isComparable(a.getType())) {
 					sb.append(", ").append(a.getName()).append("Min ");
 					sb.append(", ").append(a.getName()).append("Max ");
@@ -219,15 +219,15 @@ public class IDAExtensionUtils extends ExtensionUtils {
 		return "TBL_" + e.getName().toUpperCase(Locale.ENGLISH);
 	}
 
-	public static String associateTableName(Attribute attribute) {
-		String name = "TBL_";
-		name += attribute.getType().getName().toUpperCase(Locale.ENGLISH);
-		EObject container = attribute.eContainer();
-		if (container instanceof Entity) {
-			Entity e = (Entity) container;
-			name += e.getName().toUpperCase(Locale.ENGLISH);
-		}
-		return name;
+	public static String tableName(Association association) {
+		StringBuffer sb = new StringBuffer();
+		sb.append("TBL_");
+		Entity entity1 = association.getEntity1();
+		Entity entity2 = association.getEntity2();
+		sb.append(entity1.getName().toUpperCase(Locale.ENGLISH));
+		sb.append("_");
+		sb.append(entity2.getName().toUpperCase(Locale.ENGLISH));
+		return sb.toString();
 	}
 
 	public static String associateColumnName(Attribute attribute) {
@@ -359,4 +359,17 @@ public class IDAExtensionUtils extends ExtensionUtils {
 			out.append(">");
 		return out.toString();
 	}
+
+	public static String associationTableName(Association association) {
+		return tableName(association);
+	}
+
+	public static String associationColumnName1(Association association) {
+		return columnName(association.getAttribute1());
+	}
+
+	public static String associationColumnName2(Association association) {
+		return columnName(association.getAttribute2());
+	}
+	
 }

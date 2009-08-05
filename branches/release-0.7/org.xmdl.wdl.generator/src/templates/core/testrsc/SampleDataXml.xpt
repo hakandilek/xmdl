@@ -1,10 +1,10 @@
 «IMPORT wdl»
 
-«EXTENSION templates::Extensions»
-«EXTENSION templates::IDAExtensions»
+«EXTENSION templates::Extensions »
+«EXTENSION templates::IDAExtensions »
 
-«DEFINE model FOR wdl::Model»
-«FILE "core/src/test/resources/sample-data.xml" »<?xml version="1.0" encoding="UTF-8"?>
+«DEFINE model FOR wdl::Model -»
+«FILE "core/src/test/resources/sample-data.xml" -»<?xml version="1.0" encoding="UTF-8"?>
 <dataset>
     <table name="TBL_USER">
         <column>id</column>
@@ -103,13 +103,14 @@
     <table name="«entity.tableName()»">
         <column>id</column>
         «FOREACH entity.attributes AS attribute-»
-            «IF !attribute.isReference()-»
+		    «IF !attribute.isEmbed()-»
+            	«IF !attribute.isReference()-»
         <column>«attribute.columnName()»</column>
-            «ENDIF-»
-            «IF attribute.isFromMany()-»
+            	«ENDIF-»
+            	«IF attribute.isManyToOne()-»
         <column>«attribute.columnName()»</column>
-            «ENDIF-»
-		    «IF attribute.isEmbed()-»
+            	«ENDIF-»
+		    «ELSE -»
 				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib -»
             		«IF !attrib.isReference() -»
 		<column>«attrib.columnName()»</column>
@@ -121,16 +122,17 @@
         <row>
             <value description="id">1</value>
         «FOREACH entity.attributes AS attribute-»
-            «IF !attribute.isReference()-»
+		    «IF !attribute.isEmbed()-»
+            	«IF !attribute.isReference()-»
             <value description="«attribute.columnName()»">«attribute.randomize("1", "yyyy-MM-dd")»</value>
-            «ENDIF-»
-            «IF attribute.isFromMany()-»
+            	«ENDIF-»
+            	«IF attribute.isManyToOne()-»
             <value description="«attribute.columnName()»">1</value>
-            «ENDIF-»
-		    «IF attribute.isEmbed()-»
+            	«ENDIF-»
+		    «ELSE -»
 				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
             		«IF !attrib.isReference()-»
-			<value description="«attrib.columnName()»">«attribute.randomize("1", "yyyy-MM-dd")»</value>
+			<value description="«attrib.columnName()»">«attrib.randomize("1", "yyyy-MM-dd")»</value>
 		    		«ENDIF-»
 				«ENDFOREACH-» 
 		    «ENDIF-»
@@ -140,16 +142,17 @@
         <row>
             <value description="id">2</value>
         «FOREACH entity.attributes AS attribute-»
-            «IF !attribute.isReference()-»
+		    «IF !attribute.isEmbed()-»
+            	«IF !attribute.isReference()-»
             <value description="«attribute.columnName()»">«attribute.randomize("2", "yyyy-MM-dd")»</value>
-            «ENDIF-»
-            «IF attribute.isFromMany()-»
+            	«ENDIF-»
+            	«IF attribute.isManyToOne()-»
             <value description="«attribute.columnName()»">2</value>
-            «ENDIF-»
-		    «IF attribute.isEmbed()-»
+            	«ENDIF-»
+		    «ELSE -»
 				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
             		«IF !attrib.isReference()-»
-			<value description="«attrib.columnName()»">«attribute.randomize("2", "yyyy-MM-dd")»</value>
+			<value description="«attrib.columnName()»">«attrib.randomize("2", "yyyy-MM-dd")»</value>
 		    		«ENDIF-»
 				«ENDFOREACH-» 
 		    «ENDIF-»
@@ -159,16 +162,17 @@
         <row>
             <value description="id">3</value>
         «FOREACH entity.attributes AS attribute-»
-            «IF !attribute.isReference()-»
+		    «IF !attribute.isEmbed()-»
+            	«IF !attribute.isReference()-»
             <value description="«attribute.columnName()»">«attribute.randomize("3", "yyyy-MM-dd")»</value>
-            «ENDIF-»
-            «IF attribute.isFromMany()-»
+	            «ENDIF-»
+	            «IF attribute.isManyToOne()-»
             <value description="«attribute.columnName()»">3</value>
-            «ENDIF-»
-		    «IF attribute.isEmbed()-»
+            	«ENDIF-»
+		    «ELSE -»
 				«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
             		«IF !attrib.isReference()-»
-			<value description="«attrib.columnName()»">«attribute.randomize("3", "yyyy-MM-dd")»</value>
+			<value description="«attrib.columnName()»">«attrib.randomize("3", "yyyy-MM-dd")»</value>
 		    		«ENDIF-»
 				«ENDFOREACH-» 
 		    «ENDIF-»
@@ -177,29 +181,23 @@
     </table>
 «ENDFOREACH-»
 
-«REM»association tables here    
-    <table name="«entity.tableName()»">
-        «FOREACH entity.attributes AS attribute»
-        <column>«attribute.columnName()»</column>
-        «ENDFOREACH»
+«FOREACH this.associations() AS association -»
+    <table name="«association.associationTableName()»">
+        <column>«association.associationColumnName1()»</column>
+        <column>«association.associationColumnName2()»</column>
     
         <row>
-        «FOREACH entity.attributes AS attribute»
-            <value description="Value for «attribute.columnName()»">1</value>
-        «ENDFOREACH»
+            <value description="«association.associationColumnName1()»">1</value>
+            <value description="«association.associationColumnName2()»">1</value>
         </row>
 
         <row>
-        «FOREACH entity.attributes AS attribute»
-            <value description="Value for «attribute.columnName()»">2</value>
-        «ENDFOREACH»
+            <value description="«association.associationColumnName1()»">2</value>
+            <value description="«association.associationColumnName2()»">2</value>
         </row>
     </table>
-    
-    <!--«entity.name»-END-->
-    </xd:iterateTables>
-«ENDREM »
+«ENDFOREACH-»
 
 </dataset>
-«ENDFILE»
+«ENDFILE-»
 «ENDDEFINE»

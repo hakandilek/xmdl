@@ -31,3 +31,7 @@ boolean isMaster(Attribute a) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isMas
 Type master(Type t) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.master(org.xmdl.wdl.Type);
 
 boolean isFromMany(Attribute att) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isFromMany(org.xmdl.wdl.Attribute);
+
+boolean isManyToOne(Attribute att) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.isManyToOne(org.xmdl.wdl.Attribute);
+
+Collection associations(Model model) : JAVA org.xmdl.wdl.gen.utils.ExtensionUtils.associations(org.xmdl.wdl.Model);

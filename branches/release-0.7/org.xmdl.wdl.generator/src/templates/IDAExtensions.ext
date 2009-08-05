@@ -10,9 +10,17 @@ String entityToString(Embed e) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.e
 
 String tableName(Entity e) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.tableName(org.xmdl.wdl.Entity);
 
+//String tableName(Association e) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.tableName(org.xmdl.wdl.Association);
+
 String columnName(Attribute a) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.columnName(org.xmdl.wdl.Attribute);
 
 String columnSize(Attribute a) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.columnSize(org.xmdl.wdl.Attribute);
+
+String associationTableName(Object o) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.associationTableName(org.xmdl.wdl.gen.utils.Association);
+
+String associationColumnName1(Object o) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.associationColumnName1(org.xmdl.wdl.gen.utils.Association);
+
+String associationColumnName2(Object o) : JAVA org.xmdl.wdl.gen.utils.IDAExtensionUtils.associationColumnName2(org.xmdl.wdl.gen.utils.Association);
 
 String basePackagePath(Model m) : m.project.basePackagePath();
 
