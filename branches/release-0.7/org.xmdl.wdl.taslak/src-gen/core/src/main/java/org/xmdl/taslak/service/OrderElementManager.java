@@ -15,4 +15,6 @@ public interface OrderElementManager extends GenericManager<OrderElement, Long> 
 
 	Collection<OrderElement> search(OrderElementSearch orderElementSearch);
 
+	void copyFrom(Order source, Order destination);
+
 }
