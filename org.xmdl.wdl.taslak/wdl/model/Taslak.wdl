@@ -24,7 +24,7 @@ entity Order {
     String name
     Double priceTotals
     Date createDate
-    OrderElement* orderElements
+    OrderElement# orderElements
 }
 
 entity Supplier {
