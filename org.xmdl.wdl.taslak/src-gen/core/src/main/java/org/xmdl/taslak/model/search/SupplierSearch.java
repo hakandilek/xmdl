@@ -57,7 +57,7 @@ public class SupplierSearch implements Serializable {
 			result = 31 * result + ("" + name).hashCode();
 
 		if (products != null)
-			result = 31 * result + ("" + products).hashCode();
+			result = 31 * result + products.hashCode();
 
 		return result;
 	}

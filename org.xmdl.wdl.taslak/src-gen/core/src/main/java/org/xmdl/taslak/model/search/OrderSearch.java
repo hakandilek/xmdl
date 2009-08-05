@@ -111,7 +111,7 @@ public class OrderSearch implements Serializable {
 			result = 31 * result + ("" + createDateMax).hashCode();
 
 		if (orderElements != null)
-			result = 31 * result + ("" + orderElements).hashCode();
+			result = 31 * result + orderElements.hashCode();
 
 		return result;
 	}

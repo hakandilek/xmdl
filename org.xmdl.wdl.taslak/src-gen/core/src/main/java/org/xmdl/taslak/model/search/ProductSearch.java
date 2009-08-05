@@ -89,15 +89,15 @@ public class ProductSearch implements Serializable {
 			result = 31 * result + ("" + name).hashCode();
 
 		if (productTypeMin != null)
-			result = 31 * result + ("" + productTypeMin).hashCode();
+			result = 31 * result + productTypeMin.hashCode();
 		if (productTypeMax != null)
-			result = 31 * result + ("" + productTypeMax).hashCode();
+			result = 31 * result + productTypeMax.hashCode();
 
 		if (orderElements != null)
-			result = 31 * result + ("" + orderElements).hashCode();
+			result = 31 * result + orderElements.hashCode();
 
 		if (suppliers != null)
-			result = 31 * result + ("" + suppliers).hashCode();
+			result = 31 * result + suppliers.hashCode();
 
 		return result;
 	}
