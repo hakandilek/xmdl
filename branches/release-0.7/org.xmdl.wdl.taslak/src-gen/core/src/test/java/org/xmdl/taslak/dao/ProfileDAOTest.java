@@ -23,8 +23,6 @@ public class ProfileDAOTest extends BaseDaoTestCase {
 	public void testAddAndRemoveProfile() throws Exception {
 		Profile profile = new Profile();
 
-		profile.setUser(null);
-
 		profile.setPrivatePhone("jm85sM 2s5mntS ");
 
 		profile = profileDAO.save(profile);
@@ -33,7 +31,6 @@ public class ProfileDAOTest extends BaseDaoTestCase {
 		profile = profileDAO.get(profile.getId());
 
 		assertNotNull(profile.getId());
-		assertEquals(null, profile.getUser());
 		assertEquals("jm85sM 2s5mntS ", profile.getPrivatePhone());
 
 		log.debug("removing profile...");
@@ -52,8 +49,6 @@ public class ProfileDAOTest extends BaseDaoTestCase {
 	public void testSearch() throws Exception {
 		ProfileSearch search = new ProfileSearch();
 
-		search.setUser(null);
-
 		search.setPrivatePhone("jm85sM 2s5mntS ");
 		Collection<Profile> profiles = profileDAO.search(search);
 		assertTrue(profiles.size() > 0);
@@ -63,8 +58,6 @@ public class ProfileDAOTest extends BaseDaoTestCase {
 		super.onSetUpBeforeTransaction();
 
 		Profile profile = new Profile();
-
-		profile.setUser(null);
 
 		profile.setPrivatePhone("jm85sM 2s5mntS ");
 
