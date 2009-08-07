@@ -5,7 +5,7 @@
 
 «DEFINE entity FOR wdl::Entity»
   «FILE "core/src/main/java/" + this.project().basePackagePath() + "/dao/"+ this.name + "DAO.java"»
-package org.xmdl.taslak.dao;
+package «this.basePackageName()».dao;
 
 import java.util.*;
 import org.xmdl.ida.lib.dao.GenericDao;

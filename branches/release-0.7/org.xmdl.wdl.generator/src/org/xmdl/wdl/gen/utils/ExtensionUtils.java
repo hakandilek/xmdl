@@ -41,7 +41,7 @@ public class ExtensionUtils {
 	
 	public static boolean isReference(Type t) {
 		boolean result = !isBasic(t) && !isEnumeration(t)
-				&& !(t instanceof SimpleType) && !isEmbed(t);
+				 && !isEmbed(t);
 		return result;
 	}
 
