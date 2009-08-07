@@ -80,7 +80,8 @@ public class IDAExtensionUtils extends ExtensionUtils {
 				sb.append("\t@JoinColumn(");
 				sb.append("name = \"");
 				sb.append(columnName);
-				sb.append("\", nullable = false)");
+				boolean childToMaster = isChild(attribute);
+				sb.append("\", nullable = ").append(childToMaster ? "true" : "false").append(")");
 
 				break;
 			case MANY_TO_MANY:
