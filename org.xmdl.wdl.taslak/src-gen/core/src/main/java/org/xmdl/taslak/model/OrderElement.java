@@ -33,7 +33,7 @@ public class OrderElement extends BaseObject implements Serializable, Cloneable 
 	private Long quantity;
 
 	@ManyToOne()
-	@JoinColumn(name = "F_ORDER", nullable = false)
+	@JoinColumn(name = "F_ORDER", nullable = true)
 	private Order order;
 
 	@ManyToOne()

@@ -29,7 +29,8 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
 	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "F_USER", length = 15)
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
 	private User user;
 
 	@Column(name = "F_PRIVATEPHONE", length = 15)
@@ -63,8 +64,8 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
 	}
 
 	public String toString() {
-		return MessageFormat.format("Profile[user={1}], [privatePhone={2}], ",
-				user, privatePhone);
+		return MessageFormat
+				.format("Profile[privatePhone={1}], ", privatePhone);
 	}
 
 	public boolean equals(Object o) {
@@ -75,9 +76,6 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
 		int result = 1;
 		if (id != null)
 			result = 31 * result + id.hashCode();
-
-		if (user != null)
-			result = 31 * result + ("" + user).hashCode();
 
 		if (privatePhone != null)
 			result = 31 * result + ("" + privatePhone).hashCode();
@@ -90,8 +88,6 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
 			return (Profile) clone();
 		} catch (CloneNotSupportedException e) {
 			Profile copy = new Profile();
-
-			copy.user = this.user;
 
 			copy.privatePhone = this.privatePhone;
 

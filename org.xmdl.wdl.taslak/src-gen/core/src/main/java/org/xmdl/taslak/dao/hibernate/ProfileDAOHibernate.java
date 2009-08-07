@@ -57,8 +57,10 @@ public class ProfileDAOHibernate extends GenericDaoHibernate<Profile, Long>
 			Session session = getSession();
 			Criteria criteria = session.createCriteria(Profile.class);
 
-			if (user != null)
-				criteria.add(Restrictions.eq("user", user));
+			if (user != null) {
+				Criteria subCriteria = criteria.createCriteria("user");
+				subCriteria.add(Restrictions.idEq(user.getId()));
+			}
 
 			if (privatePhone != null)
 				criteria.add(Restrictions.eq("privatePhone", privatePhone));

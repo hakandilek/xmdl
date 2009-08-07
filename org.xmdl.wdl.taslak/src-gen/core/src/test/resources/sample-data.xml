@@ -203,24 +203,20 @@
     <!--Profile -START-->
     <table name="TBL_PROFILE">
         <column>id</column>
-        <column>F_USER</column>
         <column>F_PRIVATEPHONE</column>
 
         <row>
             <value description="id">1</value>
-            <value description="F_USER">null</value>
             <value description="F_PRIVATEPHONE">jm85sM 2s5mntS </value>
         </row>
 
         <row>
             <value description="id">2</value>
-            <value description="F_USER">null</value>
             <value description="F_PRIVATEPHONE">eSqPf89F TvavbZ</value>
         </row>
 
         <row>
             <value description="id">3</value>
-            <value description="F_USER">null</value>
             <value description="F_PRIVATEPHONE">qc2Xb 6MUq nYx2 </value>
         </row>
     </table>

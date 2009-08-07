@@ -29,6 +29,10 @@ public class OrderElementDAOTest extends BaseDaoTestCase {
 		order.setId(1L);
 		orderElement.setOrder(order);
 
+		Product product = new Product();
+		product.setId(1L);
+		orderElement.setProduct(product);
+
 		orderElement = orderElementDAO.save(orderElement);
 		flush();
 
@@ -72,6 +76,9 @@ public class OrderElementDAOTest extends BaseDaoTestCase {
 		order.setId(1L);
 		orderElement.setOrder(order);
 
+		Product product = new Product();
+		product.setId(1L);
+		orderElement.setProduct(product);
 		orderElementDAO.save(orderElement);
 	}
 }
