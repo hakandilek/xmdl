@@ -78,6 +78,14 @@ public class ExtensionUtils {
 		return isString(a.getType());
 	}
 
+	public static boolean isDate(Type t) {
+		return BasicType.DATE.is(t);
+	}
+
+	public static boolean isDate(Attribute a) {
+		return isString(a.getType());
+	}
+
 	public static String simpleName(Type t) {
 		String name = t.getName();
 		return name;
@@ -267,5 +275,5 @@ public class ExtensionUtils {
 	public static Collection<Association> associations(Model model) {
 		return AssociationManager.getInstance().getAssociations();
 	}
-	
+
 }

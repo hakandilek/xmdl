@@ -1,0 +1,26 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+«FILE "web/src/main/resources/" + this.project().basePackagePath() + "/model/" + this.name + "-validation.xml" -»
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+    "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+
+«FOREACH this.attributes AS attribute-»
+    «IF !attribute.isReference()-»
+    	«IF !this.isEnumeration()-»
+    <field name="«this.name.toFirstLower()».«attribute.name.toFirstLower()»">
+        <field-validator type="required«IF attribute.type.isString()»string«ENDIF-»">
+            <message key="errors.required"/>
+        </field-validator>
+    </field>
+    	«ENDIF-»
+    «ENDIF-» 
+«ENDFOREACH-» 
+
+</validators> 
+«ENDFILE-»
+«ENDDEFINE»

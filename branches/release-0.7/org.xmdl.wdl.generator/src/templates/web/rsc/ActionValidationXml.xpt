@@ -1,0 +1,19 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+«FILE "web/src/main/resources/" + this.project().basePackagePath() + "/webapp/action/" + this.name + "Action-validation.xml" -»
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+    "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="«this.name.toFirstLower()»">
+        <field-validator type="visitor">
+            <param name="appendPrefix">false</param>
+            <message/>
+        </field-validator>
+    </field>
+</validators> 
+«ENDFILE-»
+«ENDDEFINE»

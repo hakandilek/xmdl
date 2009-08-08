@@ -1,10 +1,12 @@
-«IMPORT wdl»
+«IMPORT wdl »
 
 «EXTENSION templates::Extensions»
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "core/src/test/resources/log4j.xml" -»<?xml version="1.0" encoding="UTF-8" ?>
+«FILE "web/src/test/resources/log4j.xml"-»
+<?xml version="1.0" encoding="UTF-8" ?>
+
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
     <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
@@ -36,18 +38,10 @@
     </logger-->
 
     <logger name="org.springframework">
-        <level value="WARN"/>
-    </logger>
-
-    <logger name="«this.project.basePackage»">
         <level value="INFO"/>
     </logger>
-
-    <logger name="«this.project.basePackage».dao">
-        <level value="DEBUG"/>
-    </logger>
-
-    <logger name="«this.project.basePackage».service">
+   
+    <logger name="«this.project.basePackage».webapp">
         <level value="DEBUG"/>
     </logger>
 
@@ -57,5 +51,5 @@
     </root>
 
 </log4j:configuration>
-«ENDFILE»
+«ENDFILE-»
 «ENDDEFINE»

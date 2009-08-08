@@ -36,4 +36,38 @@
 	«EXPAND core::testrsc::MailProperties::model FOR this»
 	«EXPAND core::testrsc::PersistenceXml::model FOR this»
 	«EXPAND core::testrsc::SampleDataXml::model FOR this»
+	
+	«EXPAND web::listener::StartupListener::project FOR this.project»
+	«EXPAND web::action::ReloadAction::project FOR this.project»
+	«EXPAND web::action::EntityAction::entity  FOREACH this.types.typeSelect(Entity)»
+
+	«EXPAND web::jsp::EntityFormJsp::entity FOREACH this.types.typeSelect(Entity)»
+	«EXPAND web::jsp::EntityListJsp::entity FOREACH this.types.typeSelect(Entity)»
+	«EXPAND web::jsp::EntityListJsonJsp::entity FOREACH this.types.typeSelect(Entity)»
+	«EXPAND web::jsp::MenuJsp::project FOR this.project»
+	«EXPAND web::jsp::TaglibsJsp::project FOR this.project»
+
+	«EXPAND web::rsc::ActionValidationXml::entity FOREACH this.types.typeSelect(Entity)»
+	«EXPAND web::rsc::ApplicationContextResourcesXml::project FOR this.project»
+	«EXPAND web::rsc::ApplicationResourcesProperties::model FOR this»
+	«EXPAND web::rsc::EntityValidationXml::entity FOREACH this.types.typeSelect(Entity)»
+	«EXPAND web::rsc::HibernateCfgXml::model FOR this»
+	«EXPAND web::rsc::Log4jXml::model FOR this»
+	«EXPAND web::rsc::MailProperties::model FOR this»
+	«EXPAND web::rsc::StrutsEntityXml::entity FOREACH this.types.typeSelect(Entity)»
+	«EXPAND web::rsc::StrutsXml::model FOR this»
+	«EXPAND web::site::SiteXml::model FOR this»
+	«EXPAND web::taglib::ConstantsTag::model FOR this»
+	«EXPAND web::taglib::ConstantsTei::model FOR this»
+
+	«EXPAND web::test::StartupListenerTest::model FOR this»
+	«EXPAND web::test::EntityActionTest::entity FOREACH this.types.typeSelect(Entity)»
+
+	«EXPAND web::testrsc::ApplicationContextDaoXml::model FOR this»
+	«EXPAND web::testrsc::ApplicationContextServiceXml::model FOR this»
+	«EXPAND web::testrsc::Log4jXml::model FOR this»
+	«EXPAND web::testrsc::SampleDataXml::model FOR this»
+	«EXPAND web::testrsc::JdbcProperties::model FOR this»
+	«EXPAND web::testrsc::WebTestsXml::model FOR this»
+
 «ENDDEFINE»

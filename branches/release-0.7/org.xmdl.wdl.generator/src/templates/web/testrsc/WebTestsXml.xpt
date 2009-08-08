@@ -1,0 +1,229 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+«EXTENSION org::eclipse::xtend::util::stdlib::counter»
+
+«DEFINE model FOR wdl::Model»
+«FILE "web/src/test/resources/web-tests.xml"-»
+<project basedir="." default="run-all-tests">
+    <!-- Use i18n bundle, 2nd one listed is the default -->
+    <property file="\${basedir}/target/${webapp.name}/WEB-INF/classes/ApplicationResources_${user.language}.properties"/>
+    <property file="\${basedir}/target/${webapp.name}/WEB-INF/classes/ApplicationResources.properties"/>
+
+    <!-- runs all targets -->
+    <target name="run-all-tests"
+        depends="ApplicationTests"
+        description="Call and executes all test cases (targets)"/>
+
+    <!-- application specific tests grouped by each entity -->
+    <target name="ApplicationTests"
+        depends="«FOREACH this.types.typeSelect(Entity) AS entity-»«IF counterInc("i")>1»,«ENDIF»«entity.name»Tests«ENDFOREACH-»"
+        description="Calls all application tests">
+    </target>
+
+«FOREACH this.types.typeSelect(Entity) AS entity-»
+    <!--«entity.name»-START-->
+    <!-- runs «entity.name.toFirstLower()»-related tests -->
+    <target name="«entity.name»Tests" depends="Search«entity.name»s,Edit«entity.name»,Save«entity.name»,Add«entity.name»,
+                    Copy«entity.name»,Delete«entity.name»,MassDelete«entity.name»"
+            description="Call and executes all «entity.name.toFirstLower()» test cases (targets)">
+        <echo>Successfully ran all «entity.name» UI tests!</echo>
+    </target>
+
+    <!-- Verify the «entity.name.toFirstLower()»s list screen displays without errors -->
+    <target name="Search«entity.name»s" description="Tests search for and displaying all «entity.name.toFirstLower()»s">
+        <webtest name="search«entity.name»s">
+			<config basepath="${webapp.name}" host="${host}" port="${port}" protocol="http" resultfile="web-tests-result.xml" resultpath="target/webtest-data" saveresponse="true" summary="true">
+			    <header name="Accept-Language" value="${user.language}"/>
+			</config>
+            <steps>
+				<sequential>
+				    <invoke description="get Login Page" url="/"/>
+				    <verifytitle description="we should see the login title" regex="true" text=".*${login.title}.*"/>
+				    <setinputfield description="set user name" name="j_username" value="admin"/>
+				    <setinputfield description="set password" name="j_password" value="admin"/>
+				    <clickbutton description="Click the submit button" label="${button.login}"/>
+				    <verifytitle description="Home Page follows if login ok" regex="true" text=".*${mainMenu.title}.*"/>
+				</sequential>
+                <invoke description="click View «entity.name» link" url="/«entity.name»/«entity.name.toFirstLower()»s.do"/>
+                <verifytitle description="we should see the «entity.name.toFirstLower()»List title"
+                             text=".*${«entity.name.toFirstLower()»List.title}.*" regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Verify the edit «entity.name.toFirstLower()» screen displays without errors -->
+    <target name="Edit«entity.name»" description="Tests editing an existing «entity.name»'s information">
+        <webtest name="edit«entity.name»">
+			<config basepath="${webapp.name}" host="${host}" port="${port}" protocol="http" resultfile="web-tests-result.xml" resultpath="target/webtest-data" saveresponse="true" summary="true">
+			    <header name="Accept-Language" value="${user.language}"/>
+			</config>
+            <steps>
+				<sequential>
+				    <invoke description="get Login Page" url="/"/>
+				    <verifytitle description="we should see the login title" regex="true" text=".*${login.title}.*"/>
+				    <setinputfield description="set user name" name="j_username" value="admin"/>
+				    <setinputfield description="set password" name="j_password" value="admin"/>
+				    <clickbutton description="Click the submit button" label="${button.login}"/>
+				    <verifytitle description="Home Page follows if login ok" regex="true" text=".*${mainMenu.title}.*"/>
+				</sequential>
+                <invoke description="click Edit «entity.name» link" url="/«entity.name»/edit«entity.name».do?id=1"/>
+                <verifytitle description="we should see the «entity.name.toFirstLower()»Detail title"
+                             text=".*${«entity.name.toFirstLower()»Detail.title}.*" regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Edit a «entity.name.toFirstLower()» and then save -->
+    <target name="Save«entity.name»" description="Tests editing and saving a «entity.name.toFirstLower()»">
+        <webtest name="save«entity.name»">
+			<config basepath="${webapp.name}" host="${host}" port="${port}" protocol="http" resultfile="web-tests-result.xml" resultpath="target/webtest-data" saveresponse="true" summary="true">
+			    <header name="Accept-Language" value="${user.language}"/>
+			</config>
+            <steps>
+				<sequential>
+				    <invoke description="get Login Page" url="/"/>
+				    <verifytitle description="we should see the login title" regex="true" text=".*${login.title}.*"/>
+				    <setinputfield description="set user name" name="j_username" value="admin"/>
+				    <setinputfield description="set password" name="j_password" value="admin"/>
+				    <clickbutton description="Click the submit button" label="${button.login}"/>
+				    <verifytitle description="Home Page follows if login ok" regex="true" text=".*${mainMenu.title}.*"/>
+				</sequential>
+                <invoke description="click Edit «entity.name» link" url="/«entity.name»/edit«entity.name».do?id=1"/>
+                <verifytitle description="we should see the «entity.name.toFirstLower()»Detail title"
+                             text=".*${«entity.name.toFirstLower()»Detail.title}.*" regex="true"/>
+
+                <!-- update some of the required fields -->
+        «FOREACH entity.attributes AS attribute-»
+            «IF !attribute.isReference()-»
+    			«IF !entity.isEnumeration()-»
+                <setInputField description="set «attribute.name.toFirstLower()»" name="«entity.name.toFirstLower()».«attribute.name.toFirstLower()»" value="«attribute.randomize("1", "MM/dd/yyyy")»"/>
+            	«ENDIF-»
+            «ENDIF-»
+        «ENDFOREACH-» 
+
+                <clickbutton label="${button.update}" description="Click Update"/>
+                <verifytitle description="Page re-appears if save successful"
+                             text=".*${«entity.name.toFirstLower()»Detail.title}.*" regex="true"/>
+                <verifytext description="verify success message" text="${«entity.name.toFirstLower()».updated}"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Add a new «entity.name» -->
+    <target name="Add«entity.name»" description="Adds a new «entity.name»">
+        <webtest name="add«entity.name»">
+			<config basepath="${webapp.name}" host="${host}" port="${port}" protocol="http" resultfile="web-tests-result.xml" resultpath="target/webtest-data" saveresponse="true" summary="true">
+			    <header name="Accept-Language" value="${user.language}"/>
+			</config>
+            <steps>
+				<sequential>
+				    <invoke description="get Login Page" url="/"/>
+				    <verifytitle description="we should see the login title" regex="true" text=".*${login.title}.*"/>
+				    <setinputfield description="set user name" name="j_username" value="admin"/>
+				    <setinputfield description="set password" name="j_password" value="admin"/>
+				    <clickbutton description="Click the submit button" label="${button.login}"/>
+				    <verifytitle description="Home Page follows if login ok" regex="true" text=".*${mainMenu.title}.*"/>
+				</sequential>
+                <invoke description="click Add Button" url="/«entity.name»/edit«entity.name».do"/>
+                <verifytitle description="we should see the «entity.name.toFirstLower()»Detail title"
+                             text=".*${«entity.name.toFirstLower()»Detail.title}.*" regex="true"/>
+
+                <!-- enter required fields -->
+        «FOREACH entity.attributes AS attribute-»
+            «IF !attribute.isReference()-»
+    			«IF !entity.isEnumeration()-»
+                <setInputField description="set «attribute.name.toFirstLower()»" name="«entity.name.toFirstLower()».«attribute.name.toFirstLower()»" value="«attribute.randomize("1", "MM/dd/yyyy")»"/>
+            	«ENDIF-»
+            «ENDIF-»
+        «ENDFOREACH-» 
+
+                <clickbutton label="${button.add}" description="Click button 'Add'"/>
+                <verifytitle description="«entity.name» List appears if save successful"
+                             text=".*${«entity.name.toFirstLower()»List.title}.*" regex="true"/>
+                <verifytext description="verify success message" text="${«entity.name.toFirstLower()».added}"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Copy existing «entity.name.toFirstLower()» -->
+    <target name="Copy«entity.name»" description="Copies existing «entity.name»">
+        <webtest name="copy«entity.name»">
+			<config basepath="${webapp.name}" host="${host}" port="${port}" protocol="http" resultfile="web-tests-result.xml" resultpath="target/webtest-data" saveresponse="true" summary="true">
+			    <header name="Accept-Language" value="${user.language}"/>
+			</config>
+            <steps>
+				<sequential>
+				    <invoke description="get Login Page" url="/"/>
+				    <verifytitle description="we should see the login title" regex="true" text=".*${login.title}.*"/>
+				    <setinputfield description="set user name" name="j_username" value="admin"/>
+				    <setinputfield description="set password" name="j_password" value="admin"/>
+				    <clickbutton description="Click the submit button" label="${button.login}"/>
+				    <verifytitle description="Home Page follows if login ok" regex="true" text=".*${mainMenu.title}.*"/>
+				</sequential>
+                <invoke description="click Entity link" url="/«entity.name»/copy«entity.name».do?idToCopy=1"/>
+                <verifytitle description="Values filled by the properties of the «entity.name.toFirstLower()»"
+                             text=".*${«entity.name.toFirstLower()»Detail.title}.*" regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+
+    <!-- Delete existing «entity.name.toFirstLower()» -->
+    <target name="Delete«entity.name»" description="Deletes existing «entity.name»">
+        <webtest name="delete«entity.name»">
+			<config basepath="${webapp.name}" host="${host}" port="${port}" protocol="http" resultfile="web-tests-result.xml" resultpath="target/webtest-data" saveresponse="true" summary="true">
+			    <header name="Accept-Language" value="${user.language}"/>
+			</config>
+            <steps>
+				<sequential>
+				    <invoke description="get Login Page" url="/"/>
+				    <verifytitle description="we should see the login title" regex="true" text=".*${login.title}.*"/>
+				    <setinputfield description="set user name" name="j_username" value="admin"/>
+				    <setinputfield description="set password" name="j_password" value="admin"/>
+				    <clickbutton description="Click the submit button" label="${button.login}"/>
+				    <verifytitle description="Home Page follows if login ok" regex="true" text=".*${mainMenu.title}.*"/>
+				</sequential>
+                <invoke description="click Edit «entity.name» link" url="/«entity.name»/edit«entity.name».do?id=1"/>
+                <prepareDialogResponse description="Confirm delete" dialogType="confirm" response="true"/>
+                <clickbutton label="${button.delete}" description="Click button 'Delete'"/>
+                <verifyNoDialogResponses/>
+                <verifytitle description="display «entity.name» List" text=".*${«entity.name.toFirstLower()»List.title}.*" regex="true"/>
+                <verifytext description="verify success message" text="${«entity.name.toFirstLower()».deleted}"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- Mass Delete existing «entity.name.toFirstLower()»s -->
+    <target name="MassDelete«entity.name»" description="Mass Delete «entity.name»s">
+        <webtest name="massDelete«entity.name»">
+			<config basepath="${webapp.name}" host="${host}" port="${port}" protocol="http" resultfile="web-tests-result.xml" resultpath="target/webtest-data" saveresponse="true" summary="true">
+			    <header name="Accept-Language" value="${user.language}"/>
+			</config>
+            <steps>
+				<sequential>
+				    <invoke description="get Login Page" url="/"/>
+				    <verifytitle description="we should see the login title" regex="true" text=".*${login.title}.*"/>
+				    <setinputfield description="set user name" name="j_username" value="admin"/>
+				    <setinputfield description="set password" name="j_password" value="admin"/>
+				    <clickbutton description="Click the submit button" label="${button.login}"/>
+				    <verifytitle description="Home Page follows if login ok" regex="true" text=".*${mainMenu.title}.*"/>
+				</sequential>
+                <invoke description="click List «entity.name»s link" url="/«entity.name»/«entity.name.toFirstLower()»s.do"/>
+                <setCheckbox description="clicks the select all checkbox" name="allbox"/>
+                <prepareDialogResponse description="Confirm delete" dialogType="confirm" response="true"/>
+                <clickbutton label="${button.delete}" description="Click button 'Delete'"/>
+                <verifyNoDialogResponses/>
+                <verifytitle description="display «entity.name»s List" text=".*${«entity.name.toFirstLower()»List.title}.*" regex="true"/>
+                <verifytext description="verify success message" text="${«entity.name».deleted}"/>
+            </steps>
+        </webtest>
+    </target>
+    <!--«entity.name»-END-->
+
+«ENDFOREACH-»
+
+</project>
+«ENDFILE-»
+«ENDDEFINE»
