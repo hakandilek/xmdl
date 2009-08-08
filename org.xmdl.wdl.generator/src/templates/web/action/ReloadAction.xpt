@@ -1,0 +1,29 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE project FOR wdl::Project»
+«FILE "web/src/main/java/" + this.basePackagePath() + "/webapp/action/ReloadAction.java"»
+package «this.basePackageName()».webapp.action;
+
+import org.xmdl.ida.lib.web.action.BaseReloadAction;
+import «this.basePackageName()».webapp.listener.StartupListener;
+
+/**
+ *
+ * «this.name» Web Reload action
+ *  
+ * This class is used to reload the drop-downs initialized in the
+ * StartupListener.
+ *
+ */ 
+public class ReloadAction extends BaseReloadAction {
+    
+    @Override
+    protected void setStartupContext() {
+        StartupListener.setupContext(getSession().getServletContext());
+    }
+}
+«ENDFILE »
+«ENDDEFINE »
