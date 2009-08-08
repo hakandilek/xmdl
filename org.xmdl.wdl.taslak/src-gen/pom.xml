@@ -227,9 +227,7 @@
     
     <modules>
         <module>core</module>
-		<!-- 
         <module>web</module>
- 		-->
     </modules>
 
     <reporting>
