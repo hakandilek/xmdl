@@ -33,7 +33,7 @@
     </logger>
    
     <logger name="org.xmdl.taslak.webapp">
-        <level value="DEBUG"/>
+        <level value="INFO"/>
     </logger>
 
     <root>
