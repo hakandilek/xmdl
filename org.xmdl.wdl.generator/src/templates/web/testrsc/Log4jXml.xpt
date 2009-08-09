@@ -42,7 +42,7 @@
     </logger>
    
     <logger name="«this.project.basePackage».webapp">
-        <level value="DEBUG"/>
+        <level value="INFO"/>
     </logger>
 
     <root>
