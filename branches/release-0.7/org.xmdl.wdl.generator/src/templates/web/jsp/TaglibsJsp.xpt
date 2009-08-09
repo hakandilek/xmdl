@@ -5,8 +5,7 @@
 
 «DEFINE project FOR wdl::Project»
 «FILE "web/src/main/webapp/common/taglibs.jsp"-»
-<$@taglib prefix="ct" id="org.eclipse.jet.controlTags" $>
-<$@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" $><%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@ taglib uri="http://acegisecurity.org/authz" prefix="authz" %>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@ taglib uri="http://struts-menu.sf.net/tag-el" prefix="menu" %>
@@ -18,6 +17,7 @@
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/page" prefix="page"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-dojo-tags" prefix="sx" %> 
 <%@ taglib uri="http://xmdl.org/tags/ida" prefix="ida"%>
 <%@ taglib uri="http://xmdl.org/tags/«this.name»" prefix="«this.name»" %>
 

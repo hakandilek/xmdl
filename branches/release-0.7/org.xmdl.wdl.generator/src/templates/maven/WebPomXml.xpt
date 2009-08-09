@@ -7,15 +7,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.xmdl.projects.«this.name»</groupId>
-        <artifactId>«this.name»</artifactId>
+        <groupId>org.xmdl.projects.«this.name.toLowerCase()»</groupId>
+        <artifactId>«this.name.toLowerCase()»</artifactId>
         <version>0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <artifactId>«this.name»-webapp</artifactId>
+    <artifactId>«this.name.toLowerCase()»-webapp</artifactId>
     <packaging>war</packaging>
-    <name>«this.name» - web (struts 2)</name>
+    <name>«this.name.toLowerCase()» - web (struts 2)</name>
     
     <build>
         <plugins>

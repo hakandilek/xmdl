@@ -48,10 +48,26 @@
         <level value="WARN"/>
     </logger>
    
+    <logger name="com.opensymphony.xwork2.ognl.OgnlValueStack">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="org.apache.struts2.util.TextProviderHelper">
+        <level value="INFO"/>
+    </logger>
+   
     <logger name="org.xmdl.ida.lib.web.filter.StaticFilter">
         <level value="INFO"/>
     </logger>
 
+    <logger name="org.apache.struts2">
+        <level value="WARN"/>
+    </logger>
+    
+    <logger name="com.opensymphony.xwork2">
+        <level value="WARN"/>
+    </logger>
+    
     <logger name="«this.project.basePackage»">
         <level value="INFO"/>
     </logger>
