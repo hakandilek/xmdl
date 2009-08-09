@@ -46,7 +46,7 @@
     </logger>
 
     <logger name="org.xmdl.taslak">
-        <level value="DEBUG"/>
+        <level value="INFO"/>
     </logger>
 
     <root>
