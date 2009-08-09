@@ -1,8 +1,0 @@
-<%@ jet 
-	package="org.xmdl.core.templates.ui.web.include.impl" 
-	imports="org.xmdl.xmdl.*"
-	class="HomeJSPImpl"
-	startTag="<$" endTag="$>" 
-%><$ 
-	XProject project = (XProject) argument;	
-$>Welcome to <$=project.getName()$>

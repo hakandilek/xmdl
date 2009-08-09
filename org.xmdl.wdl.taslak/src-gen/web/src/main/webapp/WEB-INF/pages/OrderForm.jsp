@@ -16,20 +16,13 @@
     <li style="display: none">
         <s:hidden key="order.id"/>
     </li>
-	        <ct:choose>
         <s:textfield key="order.name" required="false" cssClass="text medium" labelposition="left"/>
         
-    
-	        <ct:choose>
         <s:textfield key="order.priceTotals" required="false" cssClass="text medium" labelposition="left"/>
         
-    
-	        <ct:choose>
         <s:datetimepicker key="order.createDate" required="false" cssClass="text medium" labelposition="left"
         	displayFormat="%{datePattern}" />
         
-    
-    
 
     <tr>
 		<td class="buttonBar bottom" colspan="2">

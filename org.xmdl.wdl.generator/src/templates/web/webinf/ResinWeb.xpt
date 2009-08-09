@@ -1,0 +1,21 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE model FOR wdl::Model»
+«FILE "web/src/main/webapp/WEB-INF/resin-web.xml" -»
+<web-app id="${project.build.finalName}">
+    <jsp fast-jstl="false"/>
+
+    <!--database>
+        <jndi-name>jdbc/«this.project.name.toLowerCase()»</jndi-name>
+        <driver type="${jdbc.driverClassName}">
+            <url>${jdbc.url}</url>
+            <user>${jdbc.username}</user>
+            <password>${jdbc.password}</password>
+        </driver>
+    </database-->
+</web-app>
+«ENDFILE-»
+«ENDDEFINE»

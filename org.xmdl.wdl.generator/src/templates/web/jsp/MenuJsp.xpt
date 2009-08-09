@@ -4,7 +4,8 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE project FOR wdl::Project»
-«FILE "web/src/main/webapp/common/menu.jsp"»<%@ include file="/common/taglibs.jsp"%>
+«FILE "web/src/main/webapp/common/menu.jsp"-»
+<%@ include file="/common/taglibs.jsp"%>
 
 <menu:useMenuDisplayer name="Velocity" config="cssHorizontalMenu.vm" permissions="rolesAdapter">
 

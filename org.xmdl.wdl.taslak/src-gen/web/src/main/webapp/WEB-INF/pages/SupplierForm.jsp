@@ -16,11 +16,8 @@
     <li style="display: none">
         <s:hidden key="supplier.id"/>
     </li>
-	        <ct:choose>
         <s:textfield key="supplier.name" required="false" cssClass="text medium" labelposition="left"/>
         
-    
-    
 
     <tr>
 		<td class="buttonBar bottom" colspan="2">

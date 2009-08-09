@@ -33,7 +33,7 @@
     <s:select name="«attribute.name.toFirstLower()»Ids" value="«this.name.toFirstLower()»Search.«attribute.name.toFirstLower()».value" 
               listKey="value" key="«this.name.toFirstLower()».«attribute.name.toFirstLower()»"
               list="«attribute.name.toFirstLower()»s" labelposition="left" headerKey="-1" headerValue="*"/>
-    «ENDIF»
+    «ENDIF-»
     «IF !this.isEnumeration()-»
 	    «IF !attribute.isReference()-»
             «IF attribute.isComparable()-»
@@ -56,14 +56,14 @@
 
         <display:column property="id" media="csv excel xml pdf" titleKey="«this.name.toFirstLower()».id"/>
 «FOREACH this.attributes AS attribute-»
-    «IF !attribute.isReference()»
+    «IF !attribute.isReference()-»
         <display:column property="«attribute.name.toFirstLower()»" sortable="true" titleKey="«this.name.toFirstLower()».«attribute.name.toFirstLower()»"/>
-    «ENDIF»
-    «IF attribute.isEmbed()»
+    «ENDIF-»
+    «IF attribute.isEmbed()-»
 		«FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
 		<display:column property="«attribute.name.toFirstLower()».«attrib.name.toFirstLower()»" sortable="true" titleKey="«this.name.toFirstLower()».«attribute.name.toFirstLower()».«attrib.name.toFirstLower()»"/>
 		«ENDFOREACH-» 
-    «ENDIF»
+    «ENDIF-»
 «ENDFOREACH-» 
 
         <display:column media="html" titleKey="List.Edit" >

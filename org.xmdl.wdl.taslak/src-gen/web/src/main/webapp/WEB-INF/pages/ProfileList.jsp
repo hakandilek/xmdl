@@ -21,8 +21,6 @@
 </c:set>
 
 <s:form id="profilesForm" namespace="/Profile" action="profiles">
-    
-    
 	            </ct:when>
 	            <ct:otherwise>
     <s:textfield key="profileSearch.privatePhone" cssClass="text medium" labelposition="left"/>
@@ -34,12 +32,7 @@
             decorator="org.xmdl.ida.lib.web.decorator.BeanDecorator">
 
         <display:column property="id" media="csv excel xml pdf" titleKey="profile.id"/>
-    
-    
-    
         <display:column property="privatePhone" sortable="true" titleKey="profile.privatePhone"/>
-    
-    
 
         <display:column media="html" titleKey="List.Edit" >
             <a href="/Profile/editProfile.do?id=<c:out value="${profileList.id}"/>"><ida:base-url context="icon" path="edit.gif"/></a>

@@ -16,12 +16,8 @@
     <li style="display: none">
         <s:hidden key="orderElement.id"/>
     </li>
-	        <ct:choose>
         <s:textfield key="orderElement.quantity" required="false" cssClass="text medium" labelposition="left"/>
         
-    
-    
-    
 
     <tr>
 		<td class="buttonBar bottom" colspan="2">
