@@ -53,7 +53,7 @@
     </logger>
 
     <logger name="«this.project.basePackage»">
-        <level value="DEBUG"/>
+        <level value="INFO"/>
     </logger>
 
     <root>
