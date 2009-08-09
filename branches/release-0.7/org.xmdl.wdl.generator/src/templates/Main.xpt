@@ -59,6 +59,11 @@
 	«EXPAND web::site::SiteXml::model FOR this»
 	«EXPAND web::taglib::ConstantsTag::model FOR this»
 	«EXPAND web::taglib::ConstantsTei::model FOR this»
+	«EXPAND web::webinf::ApplicationContextHibernate::model FOR this»
+	«EXPAND web::webinf::MenuConfig::model FOR this»
+	«EXPAND web::webinf::ResinWeb::model FOR this»
+	«EXPAND web::webinf::TaglibTld::model FOR this»
+	«EXPAND web::webinf::WebXml::model FOR this»
 
 	«EXPAND web::test::StartupListenerTest::model FOR this»
 	«EXPAND web::test::EntityActionTest::entity FOREACH this.types.typeSelect(Entity)»

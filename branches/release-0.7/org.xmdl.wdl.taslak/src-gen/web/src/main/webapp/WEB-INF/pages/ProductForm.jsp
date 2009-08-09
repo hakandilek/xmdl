@@ -16,24 +16,16 @@
     <li style="display: none">
         <s:hidden key="product.id"/>
     </li>
-	        <ct:choose>
         <s:textfield key="product.name" required="false" cssClass="text medium" labelposition="left"/>
         
-    
-	        <ct:choose>
         <s:textfield key="product.price" required="false" cssClass="text medium" labelposition="left"/>
         
-    
 		<tr>
 	   		<td class="tdLabel" colspan="2"><label class="desc"><fmt:message key="product.price"/></label></td>
 		</tr>
         <s:textfield key="product.price.amount" required="false" cssClass="text medium" labelposition="left"/>
-	        <ct:choose>
         <s:textfield key="product.productType" required="false" cssClass="text medium" labelposition="left"/>
         
-    
-    
-    
 
     <tr>
 		<td class="buttonBar bottom" colspan="2">

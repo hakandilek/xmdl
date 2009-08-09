@@ -21,11 +21,8 @@
 </c:set>
 
 <s:form id="orderElementsForm" namespace="/OrderElement" action="orderElements">
-    
     <s:textfield key="orderElementSearch.quantityMin" cssClass="text medium" labelposition="left"/>
     <s:textfield key="orderElementSearch.quantityMax" cssClass="text medium" labelposition="left"/>
-    
-    
     <s:submit key="button.search" align="left"/>
 </s:form>
 
@@ -34,14 +31,7 @@
             decorator="org.xmdl.ida.lib.web.decorator.BeanDecorator">
 
         <display:column property="id" media="csv excel xml pdf" titleKey="orderElement.id"/>
-    
         <display:column property="quantity" sortable="true" titleKey="orderElement.quantity"/>
-    
-    
-    
-    
-    
-    
 
         <display:column media="html" titleKey="List.Edit" >
             <a href="/OrderElement/editOrderElement.do?id=<c:out value="${orderElementList.id}"/>"><ida:base-url context="icon" path="edit.gif"/></a>

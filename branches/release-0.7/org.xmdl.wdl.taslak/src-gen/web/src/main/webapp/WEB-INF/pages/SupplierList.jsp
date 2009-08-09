@@ -21,11 +21,9 @@
 </c:set>
 
 <s:form id="suppliersForm" namespace="/Supplier" action="suppliers">
-    
 	            </ct:when>
 	            <ct:otherwise>
     <s:textfield key="supplierSearch.name" cssClass="text medium" labelposition="left"/>
-    
     <s:submit key="button.search" align="left"/>
 </s:form>
 
@@ -34,12 +32,7 @@
             decorator="org.xmdl.ida.lib.web.decorator.BeanDecorator">
 
         <display:column property="id" media="csv excel xml pdf" titleKey="supplier.id"/>
-    
         <display:column property="name" sortable="true" titleKey="supplier.name"/>
-    
-    
-    
-    
 
         <display:column media="html" titleKey="List.Edit" >
             <a href="/Supplier/editSupplier.do?id=<c:out value="${supplierList.id}"/>"><ida:base-url context="icon" path="edit.gif"/></a>

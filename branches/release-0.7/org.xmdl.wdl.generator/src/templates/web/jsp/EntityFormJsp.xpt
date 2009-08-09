@@ -26,7 +26,6 @@
 «FOREACH this.attributes AS attribute-»
     «IF !attribute.isReference()-»
         «IF !this.isEnumeration()-»
-	        <ct:choose>
 	        «IF attribute.type.isDate()-»
         <s:datetimepicker key="«this.name.toFirstLower()».«attribute.name.toFirstLower()»" required="false" cssClass="text medium" labelposition="left"
         	displayFormat="%{datePattern}" />
@@ -38,7 +37,7 @@
         <s:select name="«attribute.name.toFirstLower()»Ids" value="«this.name.toFirstLower()».«attribute.name.toFirstLower()».value" listKey="value" key="«this.name.toFirstLower()».«attribute.name.toFirstLower()»"
                   list="«attribute.name.toFirstLower()»s" labelposition="left"/>
         «ENDIF»
-    «ENDIF»
+    «ENDIF-»
     «IF attribute.isEmbed()-»
 		<tr>
 	   		<td class="tdLabel" colspan="2"><label class="desc"><fmt:message key="«this.name.toFirstLower()».«attribute.name.toFirstLower()»"/></label></td>

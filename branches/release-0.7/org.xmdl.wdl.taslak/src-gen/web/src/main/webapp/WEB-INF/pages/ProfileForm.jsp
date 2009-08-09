@@ -16,11 +16,8 @@
     <li style="display: none">
         <s:hidden key="profile.id"/>
     </li>
-    
-	        <ct:choose>
         <s:textfield key="profile.privatePhone" required="false" cssClass="text medium" labelposition="left"/>
         
-    
 
     <tr>
 		<td class="buttonBar bottom" colspan="2">

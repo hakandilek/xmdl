@@ -21,17 +21,13 @@
 </c:set>
 
 <s:form id="ordersForm" namespace="/Order" action="orders">
-    
 	            </ct:when>
 	            <ct:otherwise>
     <s:textfield key="orderSearch.name" cssClass="text medium" labelposition="left"/>
-    
     <s:textfield key="orderSearch.priceTotalsMin" cssClass="text medium" labelposition="left"/>
     <s:textfield key="orderSearch.priceTotalsMax" cssClass="text medium" labelposition="left"/>
-    
     <s:textfield key="orderSearch.createDateMin" cssClass="text medium" labelposition="left"/>
     <s:textfield key="orderSearch.createDateMax" cssClass="text medium" labelposition="left"/>
-    
     <s:submit key="button.search" align="left"/>
 </s:form>
 
@@ -40,20 +36,9 @@
             decorator="org.xmdl.ida.lib.web.decorator.BeanDecorator">
 
         <display:column property="id" media="csv excel xml pdf" titleKey="order.id"/>
-    
         <display:column property="name" sortable="true" titleKey="order.name"/>
-    
-    
-    
         <display:column property="priceTotals" sortable="true" titleKey="order.priceTotals"/>
-    
-    
-    
         <display:column property="createDate" sortable="true" titleKey="order.createDate"/>
-    
-    
-    
-    
 
         <display:column media="html" titleKey="List.Edit" >
             <a href="/Order/editOrder.do?id=<c:out value="${orderList.id}"/>"><ida:base-url context="icon" path="edit.gif"/></a>
