@@ -113,7 +113,11 @@
     </filter>
     <filter>
         <filter-name>struts</filter-name>
-        <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+        <init-param>
+            <param-name>actionPackages</param-name>
+            <param-value>org.xmdl.taslak.webapp.action</param-value>
+        </init-param>
     </filter>
 
     <filter-mapping>
@@ -199,6 +203,18 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>struts</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>struts</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>struts</filter-name>
+        <url-pattern>/struts/*</url-pattern>
+    </filter-mapping>
     
     <listener>
         <listener-class>com.opensymphony.clickstream.ClickstreamListener</listener-class>
@@ -213,8 +229,7 @@
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
     <listener>
-        <listener-class>
-      <xc:qualifiedName element="$project/packages[1]"/>.webapp.listener.StartupListener</listener-class>
+        <listener-class>org.xmdl.taslak.webapp.listener.StartupListener</listener-class>
     </listener>
     <listener>
         <listener-class>org.xmdl.mesken.webapp.listener.UserCounterListener</listener-class>
