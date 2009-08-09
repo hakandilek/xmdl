@@ -237,7 +237,7 @@ List.Edit = Edit
     «FOREACH entity.attributes AS attribute-»
         «IF attribute.isEmbed()-»
             «FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
-«entity.name.toFirstLower()».«attribute.name.toFirstLower()».«attrib.name.toFirstLower()» = <xc:cap element="$attrib"/>
+«entity.name.toFirstLower()».«attribute.name.toFirstLower()».«attrib.name.toFirstLower()» = «attrib.name.toFirstUpper()» 
             «ENDFOREACH-» 
         «ENDIF-»
 «entity.name.toFirstLower()».«attribute.name.toFirstLower()» = «attribute.name.toFirstUpper()» 
