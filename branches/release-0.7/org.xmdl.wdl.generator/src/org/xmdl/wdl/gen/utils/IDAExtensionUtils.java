@@ -167,7 +167,7 @@ public class IDAExtensionUtils extends ExtensionUtils {
 	}
 
 	public static String searchToString(Entity e) {
-		return entityToString(e.getName(), e.getAttributes(), true);
+		return entityToString(e.getName()+"Search", e.getAttributes(), true);
 	}
 
 	private static String entityToString(String name,
@@ -177,13 +177,14 @@ public class IDAExtensionUtils extends ExtensionUtils {
 		int i = 0;
 		for (Attribute a : attributes) {
 			if (!isReference(a.getType()) && !isEmbed(a.getType())) {
+				String n = a.getName();
 				if (isSearch && isComparable(a.getType())) {
-					sb.append("[").append(a.getName()).append("Min={").append(
-							++i).append("}").append("]");
-					sb.append("[").append(a.getName()).append("Max={").append(
-							++i).append("}").append("]");
+					sb.append("[").append(n).append("Min={").append(i++)
+							.append("}").append("]");
+					sb.append("[").append(n).append("Max={").append(i++)
+							.append("}").append("]");
 				} else {
-					sb.append("[").append(a.getName()).append("={").append(++i)
+					sb.append("[").append(n).append("={").append(i++)
 							.append("}").append("], ");
 				}
 			}
@@ -191,11 +192,12 @@ public class IDAExtensionUtils extends ExtensionUtils {
 		sb.append("\"");
 		for (Attribute a : attributes) {
 			if (!isReference(a.getType()) && !isEmbed(a.getType())) {
+				String n = a.getName();
 				if (isSearch && isComparable(a.getType())) {
-					sb.append(", ").append(a.getName()).append("Min ");
-					sb.append(", ").append(a.getName()).append("Max ");
+					sb.append(", ").append(n).append("Min ");
+					sb.append(", ").append(n).append("Max ");
 				} else {
-					sb.append(", ").append(a.getName()).append(" ");
+					sb.append(", ").append(n).append(" ");
 				}
 			}
 		}

@@ -27,8 +27,7 @@
     «IF !attribute.isReference()-»
         «IF !this.isEnumeration()-»
 	        «IF attribute.type.isDate()-»
-        <s:datetimepicker key="«this.name.toFirstLower()».«attribute.name.toFirstLower()»" required="false" cssClass="text medium" labelposition="left"
-        	displayFormat="%{datePattern}" />
+        <sx:datetimepicker key="«this.name.toFirstLower()».«attribute.name.toFirstLower()»" required="false" cssClass="text medium" labelposition="left"/>
         	«ELSE-»
         <s:textfield key="«this.name.toFirstLower()».«attribute.name.toFirstLower()»" required="false" cssClass="text medium" labelposition="left"/>
 	        «ENDIF-»

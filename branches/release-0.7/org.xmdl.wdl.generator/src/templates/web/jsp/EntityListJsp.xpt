@@ -40,8 +40,6 @@
     <s:textfield key="«this.name.toFirstLower()»Search.«attribute.name.toFirstLower()»Min" cssClass="text medium" labelposition="left"/>
     <s:textfield key="«this.name.toFirstLower()»Search.«attribute.name.toFirstLower()»Max" cssClass="text medium" labelposition="left"/>
     		«ELSE-»
-	            </ct:when>
-	            <ct:otherwise>
     <s:textfield key="«this.name.toFirstLower()»Search.«attribute.name.toFirstLower()»" cssClass="text medium" labelposition="left"/>
 	    	«ENDIF-»
 	    «ENDIF-»

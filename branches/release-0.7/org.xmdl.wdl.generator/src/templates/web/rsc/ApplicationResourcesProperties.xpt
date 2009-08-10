@@ -17,6 +17,7 @@ copyright.year=${copyright.year}
 
 user.status=Logged in as: 
 user.logout=Logout
+date.format=yyyy-MM-dd'T'HH:mm:ss
 
 # -- validator errors --
 errors.invalid={0} is invalid.
@@ -119,7 +120,6 @@ icon.email=E-Mail
 icon.email.img=/images/iconEmail.gif
 icon.warning=Warning
 icon.warning.img=/images/iconWarning.gif
-date.format=MM/dd/yyyy
 
 # -- role form --
 roleForm.name=Name
