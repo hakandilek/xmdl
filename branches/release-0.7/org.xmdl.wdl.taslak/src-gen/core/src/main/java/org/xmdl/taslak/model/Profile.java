@@ -65,7 +65,7 @@ public class Profile extends BaseObject implements Serializable, Cloneable {
 
 	public String toString() {
 		return MessageFormat
-				.format("Profile[privatePhone={1}], ", privatePhone);
+				.format("Profile[privatePhone={0}], ", privatePhone);
 	}
 
 	public boolean equals(Object o) {

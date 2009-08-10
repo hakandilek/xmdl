@@ -65,7 +65,7 @@ public class Supplier extends BaseObject implements Serializable, Cloneable {
 	}
 
 	public String toString() {
-		return MessageFormat.format("Supplier[name={1}], ", name);
+		return MessageFormat.format("Supplier[name={0}], ", name);
 	}
 
 	public boolean equals(Object o) {

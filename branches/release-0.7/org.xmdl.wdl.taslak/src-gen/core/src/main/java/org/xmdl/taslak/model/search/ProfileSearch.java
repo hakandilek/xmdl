@@ -43,8 +43,8 @@ public class ProfileSearch implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return MessageFormat
-				.format("Profile[privatePhone={1}], ", privatePhone);
+		return MessageFormat.format("ProfileSearch[privatePhone={0}], ",
+				privatePhone);
 	}
 
 	/** 

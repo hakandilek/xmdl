@@ -64,8 +64,8 @@ public class OrderElementSearch implements Serializable {
 	@Override
 	public String toString() {
 		return MessageFormat.format(
-				"OrderElement[quantityMin={1}][quantityMax={2}]", quantityMin,
-				quantityMax);
+				"OrderElementSearch[quantityMin={0}][quantityMax={1}]",
+				quantityMin, quantityMax);
 	}
 
 	/** 

@@ -86,7 +86,7 @@ public class Order extends BaseObject implements Serializable, Cloneable {
 
 	public String toString() {
 		return MessageFormat.format(
-				"Order[name={1}], [priceTotals={2}], [createDate={3}], ", name,
+				"Order[name={0}], [priceTotals={1}], [createDate={2}], ", name,
 				priceTotals, createDate);
 	}
 

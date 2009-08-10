@@ -100,7 +100,7 @@ public class Product extends BaseObject implements Serializable, Cloneable {
 	}
 
 	public String toString() {
-		return MessageFormat.format("Product[name={1}], [productType={2}], ",
+		return MessageFormat.format("Product[name={0}], [productType={1}], ",
 				name, productType);
 	}
 

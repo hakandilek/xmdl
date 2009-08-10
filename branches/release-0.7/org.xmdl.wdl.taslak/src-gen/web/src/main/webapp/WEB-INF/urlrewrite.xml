@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.0//EN"
-    "http://tuckey.org/res/dtds/urlrewrite3.0.dtd">
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.0//EN" "http://tuckey.org/res/dtds/urlrewrite3.0.dtd">
 <urlrewrite>
     <rule>
         <from>^/admin/user/(.*).do$</from>
@@ -14,11 +12,4 @@
         <from>^//services/(.*)$</from>
         <to type="forward">/services/$1</to>
     </rule>
-
-    <!-- Override default validation.js from WebWork -->
-    <rule>
-        <from>^/struts/css_xhtml/validation.js$</from>
-        <to type="forward">/template/css_xhtml/validation.js</to>
-    </rule>
 </urlrewrite>
-

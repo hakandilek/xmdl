@@ -69,8 +69,8 @@ public class OrderDAOHibernate extends GenericDaoHibernate<Order, Long>
 			Session session = getSession();
 			Criteria criteria = session.createCriteria(Order.class);
 
-			if (name != null)
-				criteria.add(Restrictions.eq("name", name));
+			if (!StringUtils.isEmpty(name))
+				criteria.add(Restrictions.like("name", "%" + name + "%"));
 
 			if (minPriceTotals != null)
 				criteria.add(Restrictions.ge("priceTotals", minPriceTotals));

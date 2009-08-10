@@ -43,7 +43,7 @@ public class SupplierSearch implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return MessageFormat.format("Supplier[name={1}], ", name);
+		return MessageFormat.format("SupplierSearch[name={0}], ", name);
 	}
 
 	/** 

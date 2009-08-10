@@ -73,9 +73,10 @@ public class ProductSearch implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return MessageFormat.format(
-				"Product[name={1}], [productTypeMin={2}][productTypeMax={3}]",
-				name, productTypeMin, productTypeMax);
+		return MessageFormat
+				.format(
+						"ProductSearch[name={0}], [productTypeMin={1}][productTypeMax={2}]",
+						name, productTypeMin, productTypeMax);
 	}
 
 	/** 
