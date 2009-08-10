@@ -62,8 +62,9 @@ public class ProfileDAOHibernate extends GenericDaoHibernate<Profile, Long>
 				subCriteria.add(Restrictions.idEq(user.getId()));
 			}
 
-			if (privatePhone != null)
-				criteria.add(Restrictions.eq("privatePhone", privatePhone));
+			if (!StringUtils.isEmpty(privatePhone))
+				criteria.add(Restrictions.like("privatePhone", "%"
+						+ privatePhone + "%"));
 
 			list = criteria.list();
 

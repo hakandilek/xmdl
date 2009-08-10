@@ -76,7 +76,7 @@ public class OrderElement extends BaseObject implements Serializable, Cloneable 
 	}
 
 	public String toString() {
-		return MessageFormat.format("OrderElement[quantity={1}], ", quantity);
+		return MessageFormat.format("OrderElement[quantity={0}], ", quantity);
 	}
 
 	public boolean equals(Object o) {

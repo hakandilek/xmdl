@@ -57,8 +57,8 @@ public class SupplierDAOHibernate extends GenericDaoHibernate<Supplier, Long>
 			Session session = getSession();
 			Criteria criteria = session.createCriteria(Supplier.class);
 
-			if (name != null)
-				criteria.add(Restrictions.eq("name", name));
+			if (!StringUtils.isEmpty(name))
+				criteria.add(Restrictions.like("name", "%" + name + "%"));
 
 			if (products != null) {
 				Criteria subCriteria = criteria.createCriteria("products");

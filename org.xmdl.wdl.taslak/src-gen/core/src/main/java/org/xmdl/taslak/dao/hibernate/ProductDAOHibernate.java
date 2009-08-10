@@ -67,8 +67,8 @@ public class ProductDAOHibernate extends GenericDaoHibernate<Product, Long>
 			Session session = getSession();
 			Criteria criteria = session.createCriteria(Product.class);
 
-			if (name != null)
-				criteria.add(Restrictions.eq("name", name));
+			if (!StringUtils.isEmpty(name))
+				criteria.add(Restrictions.like("name", "%" + name + "%"));
 
 			if (minProductType != null)
 				criteria.add(Restrictions.ge("productType", minProductType));

@@ -34,7 +34,7 @@ public class Money extends BaseObject implements Serializable, Cloneable {
 	}
 
 	public String toString() {
-		return MessageFormat.format("Money[amount={1}], ", amount);
+		return MessageFormat.format("Money[amount={0}], ", amount);
 	}
 
 	public boolean equals(Object o) {
