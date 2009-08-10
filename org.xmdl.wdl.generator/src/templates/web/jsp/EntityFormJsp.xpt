@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-«FILE "web/src/main/webapp/WEB-INF/pages/" + this.name + "Form.jsp"-»
+«FILE "web/src/main/webapp/WEB-INF/pages/" + this.name.toFirstLower() + "Form.jsp"-»
 <%@ include file="/common/taglibs.jsp"%>
 
 <head>
