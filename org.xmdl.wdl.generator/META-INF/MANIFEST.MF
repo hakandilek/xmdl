@@ -12,7 +12,7 @@ Require-Bundle: org.xmdl.wdl,org.eclipse.xpand,org.eclipse.xtend,org.e
  clipse.xtext,org.eclipse.emf.mwe.core,org.eclipse.emf.mwe.utils,org.e
  clipse.xtend.typesystem.emf,org.eclipse.xtend.util.stdlib;bundle-vers
  ion="0.7.1"
-Built-By: ${dist.build.user}
+Built-By: Hakan Dilek
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.xmdl.wdl.gen.utils
 

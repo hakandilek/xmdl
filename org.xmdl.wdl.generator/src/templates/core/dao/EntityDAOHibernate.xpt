@@ -74,25 +74,25 @@ public class «this.name»DAOHibernate extends GenericDaoHibernate<«this.name»
                 Criteria criteria = session.createCriteria(«this.name».class);
 «FOREACH this.attributes AS attribute»
     «IF!attribute.isEmbed()-»
-	    «IF attribute.isReference()-»
-	            if («attribute.name.toFirstLower()» != null){
-	                Criteria subCriteria = criteria.createCriteria("«attribute.name.toFirstLower()»");
-	                subCriteria.add(Restrictions.idEq(«attribute.name.toFirstLower()».getId()));
-	            }
-	    «ELSE-»
-	        «IF attribute.isComparable()-»
-	            if (min«attribute.name.toFirstUpper()» != null)
-	                criteria.add(Restrictions.ge("«attribute.name.toFirstLower()»", min«attribute.name.toFirstUpper()»));
-	            if (max«attribute.name.toFirstUpper()» != null)
-	                criteria.add(Restrictions.le("«attribute.name.toFirstLower()»", max«attribute.name.toFirstUpper()»));
-	        «ELSEIF attribute.type == 'String'-»
-	            if (!StringUtils.isEmpty(«attribute.name.toFirstLower()»))
-	                criteria.add(Restrictions.eq("«attribute.name.toFirstLower()»", «attribute.name.toFirstLower()»));
-	        «ELSE-»
-	            if («attribute.name.toFirstLower()» != null)
-	                criteria.add(Restrictions.eq("«attribute.name.toFirstLower()»", «attribute.name.toFirstLower()»));
-	        «ENDIF-»
-	    «ENDIF-»
+        «IF attribute.isReference()-»
+                if («attribute.name.toFirstLower()» != null){
+                    Criteria subCriteria = criteria.createCriteria("«attribute.name.toFirstLower()»");
+                    subCriteria.add(Restrictions.idEq(«attribute.name.toFirstLower()».getId()));
+                }
+        «ELSE-»
+            «IF attribute.isComparable()-»
+                if (min«attribute.name.toFirstUpper()» != null)
+                    criteria.add(Restrictions.ge("«attribute.name.toFirstLower()»", min«attribute.name.toFirstUpper()»));
+                if (max«attribute.name.toFirstUpper()» != null)
+                    criteria.add(Restrictions.le("«attribute.name.toFirstLower()»", max«attribute.name.toFirstUpper()»));
+            «ELSEIF attribute.type.isString() -»
+                if (!StringUtils.isEmpty(«attribute.name.toFirstLower()»))
+                    criteria.add(Restrictions.like("«attribute.name.toFirstLower()»", "%" + «attribute.name.toFirstLower()» + "%"));
+            «ELSE-»
+                if («attribute.name.toFirstLower()» != null)
+                    criteria.add(Restrictions.eq("«attribute.name.toFirstLower()»", «attribute.name.toFirstLower()»));
+            «ENDIF-»
+        «ENDIF-»
     «ENDIF-»
 «ENDFOREACH» 
             list = criteria.list();

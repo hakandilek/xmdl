@@ -49,6 +49,7 @@
 
 	«EXPAND web::rsc::ActionValidationXml::entity FOREACH this.types.typeSelect(Entity)»
 	«EXPAND web::rsc::ApplicationContextResourcesXml::project FOR this.project»
+	«EXPAND web::rsc::ApplicationContextActionXml::model FOR this»
 	«EXPAND web::rsc::ApplicationResourcesProperties::model FOR this»
 	«EXPAND web::rsc::EntityValidationXml::entity FOREACH this.types.typeSelect(Entity)»
 	«EXPAND web::rsc::HibernateCfgXml::model FOR this»
@@ -64,6 +65,7 @@
 	«EXPAND web::webinf::ResinWeb::model FOR this»
 	«EXPAND web::webinf::TaglibTld::model FOR this»
 	«EXPAND web::webinf::WebXml::model FOR this»
+	«EXPAND web::decorators::DefaultJsp::model FOR this»
 
 	«EXPAND web::test::StartupListenerTest::model FOR this»
 	«EXPAND web::test::EntityActionTest::entity FOREACH this.types.typeSelect(Entity)»
