@@ -80,7 +80,7 @@
                 <!-- update some of the required fields -->
                 <setInputField description="set name" name="order.name" value="EbmK afatU2Xc8 "/>
                 <setInputField description="set priceTotals" name="order.priceTotals" value="0.6571071197650238"/>
-                <setInputField description="set createDate" name="dojo.order.createDate" value="11/17/2002"/>
+                <setInputField description="set createDate" name="order.createDate" value="11/17/2002"/>
 
                 <clickbutton description="Click Update" label="${button.update}"/>
                 <verifytitle description="Page re-appears if save successful" regex="true" text=".*${orderDetail.title}.*"/>
