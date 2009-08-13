@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/main/java/" + this.project().basePackagePath() + "/service/impl/"+ this.name + "ManagerImpl.java"»
+  «FILE "main/java/" + this.project().basePackagePath() + "/service/impl/"+ this.name + "ManagerImpl.java" TO_CORE_SRC-»
 package «this.basePackageName()».service.impl;
 
 import java.util.Collection;
@@ -47,7 +47,10 @@ public class «this.name»ManagerImpl extends GenericManagerImpl<«this.name», 
         }
     }
 «ENDIF»
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".svc.imp.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
 
 }
-«ENDFILE»
+«ENDFILE-»
 «ENDDEFINE»

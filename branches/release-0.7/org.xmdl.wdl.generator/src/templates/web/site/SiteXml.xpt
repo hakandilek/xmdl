@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/site/site.xml" -»
+«FILE "site/site.xml" TO_WEB_SRC-»
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="«this.project.name»">
   <bannerLeft>

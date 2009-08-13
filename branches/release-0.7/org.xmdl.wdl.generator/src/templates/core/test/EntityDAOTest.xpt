@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/test/java/" + this.project().basePackagePath() + "/dao/"+ this.name + "DAOTest.java"»
+  «FILE "test/java/" + this.project().basePackagePath() + "/dao/"+ this.name + "DAOTest.java" TO_CORE_SRC-»
 package «this.basePackageName()».dao;
 
 import java.util.*;
@@ -128,6 +128,10 @@ public class «this.name»DAOTest extends BaseDaoTestCase {
 «ENDFOREACH -» 
         «this.name.toFirstLower()»DAO.save(«this.name.toFirstLower()»);
     }
+    
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".dao.t.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
 }
-«ENDFILE»
+«ENDFILE-»
 «ENDDEFINE»

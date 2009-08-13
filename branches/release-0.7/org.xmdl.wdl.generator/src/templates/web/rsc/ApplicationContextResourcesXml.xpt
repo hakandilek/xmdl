@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE project FOR wdl::Project»
-«FILE "web/src/main/resources/applicationContext-resources.xml" -»
+«FILE "main/resources/applicationContext-resources.xml" TO_WEB_SRC-»
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jee="http://www.springframework.org/schema/jee"

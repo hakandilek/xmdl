@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/main/java/" + this.project().basePackagePath() + "/model/"+ this.name + ".java"»
+  «FILE "main/java/" + this.project().basePackagePath() + "/model/"+ this.name + ".java" TO_CORE_SRC-»
 package «this.basePackageName()».model;
 
 import javax.persistence.*;
@@ -25,13 +25,9 @@ import org.xmdl.mesken.model.*;
  *
  */ 
 @Entity (name="TBL_«this.name.toUpperCase()»")
-public class «this.name» extends BaseObject implements Serializable, Cloneable {
+public class «this.name» extends «PROTECT CSTART '/*' CEND '*/' ID this.name+".ent.ext"-» BaseObject«ENDPROTECT-» implements Serializable, Cloneable «PROTECT CSTART '/*' CEND '*/' ID this.name+".ent.imp"-»/*, AnotherInterface */«ENDPROTECT-» {
 
-    /** 
-     * Unique identifier
-     * 
-     * @generated
-     */
+    /** Unique identifier */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
@@ -85,15 +81,15 @@ public class «this.name» extends BaseObject implements Serializable, Cloneable
     public int hashCode() {
         int result = 1;
         if (id != null) result = 31 * result + id.hashCode();
-    «FOREACH this.attributes AS attribute»
-        «IF !attribute.isReference()»
-            «IF attribute.isPrimitive()»
+    «FOREACH this.attributes AS attribute-»
+        «IF !attribute.isReference()-»
+            «IF attribute.isPrimitive()-»
         if («attribute.name.toFirstLower()» != null) result = 31 * result + ("" + «attribute.name.toFirstLower()»).hashCode();
-            «ELSE»
+            «ELSE-»
         if («attribute.name.toFirstLower()» != null) result = 31 * result + «attribute.name.toFirstLower()».hashCode();
-            «ENDIF»
-        «ENDIF»
-    «ENDFOREACH»
+            «ENDIF-»
+        «ENDIF-»
+    «ENDFOREACH-»
         return result;
     }
 
@@ -102,16 +98,20 @@ public class «this.name» extends BaseObject implements Serializable, Cloneable
              return («this.name») clone();
         } catch (CloneNotSupportedException e) {
             «this.name» copy = new «this.name»();
-    «FOREACH this.attributes AS attribute»
-        «IF !attribute.isReference()»
+    «FOREACH this.attributes AS attribute-»
+        «IF !attribute.isReference()-»
             copy.«attribute.name.toFirstLower()» = this.«attribute.name.toFirstLower()»;
-        «ENDIF»
-    «ENDFOREACH»
+        «ENDIF-»
+    «ENDFOREACH-»
             return copy;
         }
      }
+     
+     «PROTECT CSTART '/*' CEND '*/' ID this.name + ".ent.bdy" »
+     //This is the protected region that will not be overwritten on generation
+     «ENDPROTECT»
 }
-  «ENDFILE»
+  «ENDFILE-»
 «ENDDEFINE»
 
 «DEFINE enumAnnotation FOR wdl::Attribute»

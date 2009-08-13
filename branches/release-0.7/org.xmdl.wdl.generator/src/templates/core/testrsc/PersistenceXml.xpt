@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "core/src/test/resources/persistence.xml"»
+«FILE "test/resources/persistence.xml" TO_CORE_SRC-»
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
 
@@ -18,5 +18,5 @@
     </persistence-unit>
 
 </persistence>
-«ENDFILE»
+«ENDFILE-»
 «ENDDEFINE»

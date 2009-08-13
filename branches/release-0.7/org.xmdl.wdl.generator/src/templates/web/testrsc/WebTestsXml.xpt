@@ -5,7 +5,7 @@
 «EXTENSION org::eclipse::xtend::util::stdlib::counter»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/test/resources/web-tests.xml"-»
+«FILE "test/resources/web-tests.xml" TO_WEB_SRC-»
 <project basedir="." default="run-all-tests">
     <!-- Use i18n bundle, 2nd one listed is the default -->
     <property file="\${basedir}/target/${webapp.name}/WEB-INF/classes/ApplicationResources_${user.language}.properties"/>

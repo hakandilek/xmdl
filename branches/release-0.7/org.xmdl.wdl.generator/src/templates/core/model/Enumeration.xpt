@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Enumeration»
-  «FILE "core/src/main/java/" + this.project().basePackagePath() + "/model/"+ this.name + ".java"»
+  «FILE "main/java/" + this.project().basePackagePath() + "/model/"+ this.name + ".java" TO_CORE_SRC-»
 package «this.basePackageName()».model;
 
 /**
@@ -14,7 +14,7 @@ package «this.basePackageName()».model;
  * $Id$
  *
  */ 
-public enum «this.name» {
+public enum «this.name» «PROTECT CSTART '/*' CEND '*/' ID this.name+".enm.imp"-»/* implements Interface */«ENDPROTECT-»{
 	«FOREACH this.literals AS literal»
 	«literal.name»(«literal.ordinal»),
 	«ENDFOREACH»
@@ -61,6 +61,10 @@ public enum «this.name» {
                 return null;
         }
     }
+    
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".enm.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
 }
-  «ENDFILE»
+  «ENDFILE-»
 «ENDDEFINE»

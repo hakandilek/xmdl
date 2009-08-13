@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/main/webapp/WEB-INF/" + this.project.name.toLowerCase().toLowerCase() + ".tld" -»
+«FILE "main/webapp/WEB-INF/" + this.project.name.toLowerCase().toLowerCase() + ".tld" TO_WEB_SRC-»
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
     "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">

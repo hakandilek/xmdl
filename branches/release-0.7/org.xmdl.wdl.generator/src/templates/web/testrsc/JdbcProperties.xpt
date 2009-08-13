@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/test/resources/jdbc.properties"-»
+«FILE "test/resources/jdbc.properties" TO_WEB_SRC-»
 jdbc.driverClassName=${jdbc.driverClassName}
 jdbc.url=${jdbc.url}
 jdbc.username=${jdbc.username}

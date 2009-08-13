@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-«FILE "web/src/main/resources/struts-" + this.name + ".xml" -»
+«FILE "main/resources/struts-" + this.name + ".xml" TO_WEB_SRC-»
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE struts PUBLIC
         "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"

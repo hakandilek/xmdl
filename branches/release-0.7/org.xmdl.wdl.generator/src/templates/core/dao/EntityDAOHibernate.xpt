@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/main/java/" + this.project().basePackagePath() + "/dao/hibernate/"+ this.name + "DAOHibernate.java"»
+  «FILE "main/java/" + this.project().basePackagePath() + "/dao/hibernate/"+ this.name + "DAOHibernate.java" TO_CORE_SRC-»
 package «this.basePackageName()».dao.hibernate;
 
 import org.xmdl.ida.lib.dao.hibernate.GenericDaoHibernate;
@@ -104,5 +104,5 @@ public class «this.name»DAOHibernate extends GenericDaoHibernate<«this.name»
         return list;
     }
 }
-  «ENDFILE»
+  «ENDFILE-»
 «ENDDEFINE»

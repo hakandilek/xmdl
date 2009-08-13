@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE project FOR wdl::Project»
-«FILE "web/src/main/java/" + this.basePackagePath() + "/webapp/listener/StartupListener.java"»
+«FILE "main/java/" + this.basePackagePath() + "/webapp/listener/StartupListener.java" TO_WEB_SRC-»
 package «this.basePackageName()».webapp.listener;
 
 import «this.basePackageName()».ApplicationConstants;
@@ -109,7 +109,6 @@ public class StartupListener implements ServletContextListener {
     /**
      * This method uses the LookupManager to lookup available roles from the data layer.
      * @param context The servlet context
-     * @generated
      */
     public static void setupContext(ServletContext context) {
         ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(context);
@@ -124,7 +123,6 @@ public class StartupListener implements ServletContextListener {
      * Shutdown servlet context (currently a no-op method).
      *
      * @param servletContextEvent The servlet context event
-     * @generated
      */
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         //LogFactory.release(Thread.currentThread().getContextClassLoader());
@@ -132,6 +130,10 @@ public class StartupListener implements ServletContextListener {
         //WARN: The method class org.apache.commons.logging.impl.SLF4JLogFactory#release() was invoked.
         //WARN: Please see http://www.slf4j.org/codes.html for an explanation.
     }
+
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".stdl.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
 }
-«ENDFILE »
+«ENDFILE-»
 «ENDDEFINE »

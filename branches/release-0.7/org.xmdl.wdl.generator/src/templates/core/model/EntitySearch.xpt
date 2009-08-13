@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/main/java/" + this.project().basePackagePath() + "/model/search/"+ this.name + "Search.java"»
+  «FILE "main/java/" + this.project().basePackagePath() + "/model/search/"+ this.name + "Search.java" TO_CORE_SRC-»
 package «this.basePackageName()».model.search;
 
 import java.util.*;
@@ -20,7 +20,8 @@ import org.xmdl.mesken.model.*;
  * $Id$
  *
  */ 
-public class «this.name»Search implements Serializable {
+public class «this.name»Search «PROTECT CSTART '/*' CEND '*/' ID this.name+".ens.ext"-» «ENDPROTECT-» implements Serializable «PROTECT CSTART '/*' CEND '*/' ID this.name+".ens.imp"-»/*, AnotherInterface */«ENDPROTECT-» {
+    
     «FOREACH this.attributes AS attribute»
     	«IF !attribute.isEmbed()»
     		«IF attribute.type.isComparable()»
@@ -70,17 +71,11 @@ public class «this.name»Search implements Serializable {
     	«ENDIF»
     «ENDFOREACH»
 
-    /** 
-     * @generated
-     */
 	@Override
     public String toString() {
     	«this.searchToString()»;
     }
 
-    /** 
-     * @generated
-     */
 	@Override
     public int hashCode() {
         int result = 1;
@@ -110,6 +105,10 @@ public class «this.name»Search implements Serializable {
 	public boolean equals(Object obj) {
 		return hashCode() == obj.hashCode();
 	}
+    
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".ens.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
 }
   «ENDFILE»
 «ENDDEFINE»

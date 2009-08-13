@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/main/java/" + this.project().basePackagePath() + "/dao/"+ this.name + "DAO.java"»
+  «FILE "main/java/" + this.project().basePackagePath() + "/dao/"+ this.name + "DAO.java" TO_CORE_SRC-»
 package «this.basePackageName()».dao;
 
 import java.util.*;
@@ -25,5 +25,5 @@ public interface «this.name»DAO extends GenericDao<«this.name», Long> {
 
 }
 
-  «ENDFILE»
+  «ENDFILE-»
 «ENDDEFINE»

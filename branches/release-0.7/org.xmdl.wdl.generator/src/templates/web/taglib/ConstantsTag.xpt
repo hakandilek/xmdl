@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/main/java/" + this.project.basePackagePath() + "/webapp/taglib/ConstantsTag.java"-»
+«FILE "main/java/" + this.project.basePackagePath() + "/webapp/taglib/ConstantsTag.java" TO_WEB_SRC-»
 package «this.project.basePackage».webapp.taglib;
 
 import «this.project.basePackage».ApplicationConstants;

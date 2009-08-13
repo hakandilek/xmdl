@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-«FILE "web/src/main/java/" + this.project().basePackagePath() + "/webapp/action/" + this.name + "Action.java"»
+«FILE "main/java/" + this.project().basePackagePath() + "/webapp/action/" + this.name + "Action.java" TO_WEB_SRC-»
 package «this.project().basePackageName()».webapp.action;
 
 import «this.project().basePackageName()».service.*;
@@ -278,6 +278,10 @@ public class «this.name»Action extends BaseAction implements Preparable {
     
     «ENDIF»
 «ENDFOREACH» 
+
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".act.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
 
 }
 «ENDFILE-»
