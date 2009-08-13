@@ -6,11 +6,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.taslak.model.search.*;
 
 /**
- *
  * Profile DAO interface
- *  
- * $Id$
- *
  */
 public interface ProfileDAO extends GenericDao<Profile, Long> {
 

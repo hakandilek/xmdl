@@ -1,11 +1,7 @@
 package org.xmdl.taslak.model;
 
 /**
- *
  * ProductType enumeration type
- *  
- * $Id$
- *
  */
 public enum ProductType /*PROTECTED REGION ID(ProductType.enm.imp) ENABLED START*//* implements Interface *//*PROTECTED REGION END*/{
 

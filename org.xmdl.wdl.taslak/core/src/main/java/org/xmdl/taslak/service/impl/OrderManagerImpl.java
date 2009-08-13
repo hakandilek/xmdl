@@ -8,11 +8,7 @@ import org.xmdl.taslak.service.*;
 import org.xmdl.taslak.dao.*;
 
 /**
- *
  * Order Service implementation
- *  
- * $Id$
- *
  */
 public class OrderManagerImpl extends GenericManagerImpl<Order, Long>
 		implements

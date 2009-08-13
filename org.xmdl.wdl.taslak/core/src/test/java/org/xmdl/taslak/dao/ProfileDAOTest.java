@@ -7,10 +7,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.taslak.model.search.*;
 
 /**
- *
  * Profile DAO Test Case
- *  
- * $Id$
  */
 public class ProfileDAOTest extends BaseDaoTestCase {
 

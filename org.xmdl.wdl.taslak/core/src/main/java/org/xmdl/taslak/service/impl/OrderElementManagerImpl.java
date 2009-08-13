@@ -8,11 +8,7 @@ import org.xmdl.taslak.service.*;
 import org.xmdl.taslak.dao.*;
 
 /**
- *
  * OrderElement Service implementation
- *  
- * $Id$
- *
  */
 public class OrderElementManagerImpl
 		extends

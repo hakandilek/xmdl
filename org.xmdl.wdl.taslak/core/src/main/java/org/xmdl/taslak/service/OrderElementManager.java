@@ -6,10 +6,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.taslak.model.search.*;
 
 /**
- *
  * OrderElement Service interface
- *  
- * $Id$
  */
 public interface OrderElementManager extends GenericManager<OrderElement, Long> {
 

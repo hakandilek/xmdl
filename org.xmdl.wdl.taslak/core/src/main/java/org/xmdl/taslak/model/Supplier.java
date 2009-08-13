@@ -10,19 +10,13 @@ import java.util.*;
 import org.xmdl.mesken.model.*;
 
 /**
- *
  * Supplier entity bean
- *  
- * $Id$
- *
  */
 @Entity(name = "TBL_SUPPLIER")
 public class Supplier
 		extends
 			/*PROTECTED REGION ID(Supplier.ent.ext) ENABLED START*/BaseObject
-		/*PROTECTED REGION END*/implements
-			Serializable,
-			Cloneable /*PROTECTED REGION ID(Supplier.ent.imp) ENABLED START*//*, AnotherInterface *//*PROTECTED REGION END*/{
+/*PROTECTED REGION END*/implements Serializable, Cloneable /*PROTECTED REGION ID(Supplier.ent.imp) ENABLED START*//*, AnotherInterface *//*PROTECTED REGION END*/{
 
 	/** Unique identifier */
 	@Id

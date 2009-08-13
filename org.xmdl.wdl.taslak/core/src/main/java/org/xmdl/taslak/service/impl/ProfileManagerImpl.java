@@ -8,11 +8,7 @@ import org.xmdl.taslak.service.*;
 import org.xmdl.taslak.dao.*;
 
 /**
- *
  * Profile Service implementation
- *  
- * $Id$
- *
  */
 public class ProfileManagerImpl extends GenericManagerImpl<Profile, Long>
 		implements

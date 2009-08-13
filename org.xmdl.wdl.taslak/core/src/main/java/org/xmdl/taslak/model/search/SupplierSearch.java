@@ -7,11 +7,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.mesken.model.*;
 
 /**
- *
  * Supplier entity search bean
- *  
- * $Id$
- *
  */
 public class SupplierSearch
 		/*PROTECTED REGION ID(Supplier.ens.ext) ENABLED START*//*PROTECTED REGION END*/implements
