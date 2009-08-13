@@ -14,10 +14,7 @@ import «this.basePackageName()».model.*;
 import «this.basePackageName()».model.search.*;
 
 /**
- *
  * «this.name» DAO Test Case
- *  
- * $Id$
  */ 
 public class «this.name»DAOTest extends BaseDaoTestCase {
 

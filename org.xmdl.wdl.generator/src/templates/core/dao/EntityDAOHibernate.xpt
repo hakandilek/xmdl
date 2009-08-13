@@ -20,11 +20,7 @@ import «this.basePackageName()».model.search.*;
 import «this.basePackageName()».dao.*;
 
 /**
- *
  * «this.name» DAO Hibernate implementation
- *  
- * $Id$
- *
  */ 
 public class «this.name»DAOHibernate extends GenericDaoHibernate<«this.name», Long> implements «this.name»DAO {
 

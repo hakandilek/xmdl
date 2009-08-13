@@ -8,11 +8,7 @@
 package «this.basePackageName()».model;
 
 /**
- *
  * «this.name» enumeration type
- *  
- * $Id$
- *
  */ 
 public enum «this.name» «PROTECT CSTART '/*' CEND '*/' ID this.name+".enm.imp"-»/* implements Interface */«ENDPROTECT-»{
 	«FOREACH this.literals AS literal»

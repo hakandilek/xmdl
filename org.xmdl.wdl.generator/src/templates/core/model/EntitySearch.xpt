@@ -14,11 +14,7 @@ import «this.basePackageName()».model.*;
 import org.xmdl.mesken.model.*;
 
 /**
- *
  * «this.name» entity search bean
- *  
- * $Id$
- *
  */ 
 public class «this.name»Search «PROTECT CSTART '/*' CEND '*/' ID this.name+".ens.ext"-» «ENDPROTECT-» implements Serializable «PROTECT CSTART '/*' CEND '*/' ID this.name+".ens.imp"-»/*, AnotherInterface */«ENDPROTECT-» {
     

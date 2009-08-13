@@ -18,11 +18,7 @@ import org.xmdl.mesken.model.*;
 
 
 /**
- *
  * «this.name» entity bean
- *  
- * $Id$
- *
  */ 
 @Entity (name="TBL_«this.name.toUpperCase()»")
 public class «this.name» extends «PROTECT CSTART '/*' CEND '*/' ID this.name+".ent.ext"-» BaseObject«ENDPROTECT-» implements Serializable, Cloneable «PROTECT CSTART '/*' CEND '*/' ID this.name+".ent.imp"-»/*, AnotherInterface */«ENDPROTECT-» {
