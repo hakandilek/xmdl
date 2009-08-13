@@ -15,11 +15,7 @@ import «this.basePackageName()».service.*;
 import «this.basePackageName()».dao.*;
 
 /**
- *
  * «this.name» Service implementation
- *  
- * $Id$
- *
  */ 
 public class «this.name»ManagerImpl extends GenericManagerImpl<«this.name», Long> implements «this.name»Manager {
 

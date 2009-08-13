@@ -15,11 +15,7 @@ import org.xmdl.ida.lib.test.BaseManagerMockTestCase;
 import «this.basePackageName()».dao.*;
 
 /**
- *
  * «this.name» Service Implementation Test
- *  
- * $Id$
- *
  */ 
 public class «this.name»ManagerImplTest extends BaseManagerMockTestCase {
 

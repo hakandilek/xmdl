@@ -1,6 +1,10 @@
 <workflow>
     <bean class="org.eclipse.emf.mwe.utils.StandaloneSetup" platformUri=".."/>
     
+    <component class="org.eclipse.emf.mwe.utils.DirectoryCleaner" directory="target/"/>
+    <component class="org.eclipse.emf.mwe.utils.DirectoryCleaner" directory="core/target/"/>
+    <component class="org.eclipse.emf.mwe.utils.DirectoryCleaner" directory="web/target/"/>
+    
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="core/src/"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="core/src/main/java"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="core/src/main/resources"/>
@@ -27,11 +31,18 @@
         <metaModel class="org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel"/>
         <fileEncoding value="UTF-8"/>
         <expand value="templates::Main::main FOR model"/>
-        <outlet path="."/>
-        <outlet name="TO_CORE_SRC" path="core/src"/>
-        <outlet name="TO_WEB_SRC" path="web/src"/>
+        <outlet path=".">
+	        <postprocessor class="org.eclipse.xpand2.output.JavaBeautifier"/>
+	        <postprocessor class="org.eclipse.xpand2.output.XmlBeautifier"/>
+        </outlet>
+        <outlet name="TO_CORE_SRC" path="core/src">
+	        <postprocessor class="org.eclipse.xpand2.output.JavaBeautifier"/>
+	        <postprocessor class="org.eclipse.xpand2.output.XmlBeautifier"/>
+        </outlet>
+        <outlet name="TO_WEB_SRC" path="web/src">
+	        <postprocessor class="org.eclipse.xpand2.output.JavaBeautifier"/>
+	        <postprocessor class="org.eclipse.xpand2.output.XmlBeautifier"/>
+        </outlet>
         <prSrcPaths value="core,web"/>
-        <beautifier class="org.eclipse.xpand2.output.JavaBeautifier"/>
-        <beautifier class="org.eclipse.xpand2.output.XmlBeautifier"/>
     </component>
 </workflow>

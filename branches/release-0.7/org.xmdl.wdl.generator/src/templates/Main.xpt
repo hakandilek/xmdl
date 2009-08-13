@@ -2,6 +2,7 @@
 
 «DEFINE main FOR Model»
 	«EXPAND eclipse::Classpath::project FOR this.project»
+	«EXPAND eclipse::Project::project FOR this.project»
 
 	«EXPAND maven::RootPomXml::project FOR this.project»
 	«EXPAND maven::CorePomXml::project FOR this.project»

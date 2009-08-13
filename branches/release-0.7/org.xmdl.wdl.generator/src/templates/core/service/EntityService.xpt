@@ -13,10 +13,7 @@ import «this.basePackageName()».model.*;
 import «this.basePackageName()».model.search.*;
 
 /**
- *
  * «this.name» Service interface
- *  
- * $Id$
  */ 
 public interface «this.name»Manager extends GenericManager<«this.name», Long>{
 

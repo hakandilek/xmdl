@@ -18,11 +18,7 @@ import org.xmdl.mesken.model.*;
 
 
 /**
- *
  * «this.name» entity bean
- *  
- * $Id$
- *
  */ 
 @Embeddable
 public class «this.name» extends «PROTECT CSTART '/*' CEND '*/' ID this.name+".ebd.ext"-» BaseObject«ENDPROTECT-» implements Serializable, Cloneable «PROTECT CSTART '/*' CEND '*/' ID this.name+".ebd.imp"-»/*, AnotherInterface */«ENDPROTECT-» {

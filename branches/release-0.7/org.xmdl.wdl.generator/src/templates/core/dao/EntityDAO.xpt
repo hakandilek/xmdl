@@ -13,11 +13,7 @@ import «this.basePackageName()».model.*;
 import «this.basePackageName()».model.search.*;
 
 /**
- *
  * «this.name» DAO interface
- *  
- * $Id$
- *
  */ 
 public interface «this.name»DAO extends GenericDao<«this.name», Long> {
 

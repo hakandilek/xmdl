@@ -2,7 +2,7 @@
 «DEFINE project FOR wdl::Project»
 «FILE ".project"-»<?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>«this.basePackage»</name>
+	<name>«this.name» - «this.basePackage»</name>
 	<comment></comment>
 	<projects>
 	</projects>
