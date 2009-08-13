@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-  «FILE "core/src/main/java/" + this.project.basePackagePath() + "/ApplicationConstants.java"»
+  «FILE "main/java/" + this.project.basePackagePath() + "/ApplicationConstants.java" TO_CORE_SRC-»
 package «this.basePackageName()»;
 
 /**
@@ -16,7 +16,10 @@ package «this.basePackageName()»;
  */ 
 public interface ApplicationConstants extends  org.xmdl.ida.lib.BaseConstants {
 
+    «PROTECT CSTART '/*' CEND '*/' ID this.project.name + ".constants.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
 
 }
-  «ENDFILE»
+  «ENDFILE-»
 «ENDDEFINE»

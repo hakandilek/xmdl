@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/main/webapp/WEB-INF/menu-config.xml" -»
+«FILE "main/webapp/WEB-INF/menu-config.xml" TO_WEB_SRC-»
 <?xml version="1.0" encoding="UTF-8"?>
 <MenuConfig>
     <Displayers>

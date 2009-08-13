@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-  «FILE "core/src/test/java/" + this.project().basePackagePath() + "/service/impl/"+ this.name + "ManagerImplTest.java"»
+  «FILE "test/java/" + this.project().basePackagePath() + "/service/impl/"+ this.name + "ManagerImplTest.java" TO_CORE_SRC-»
 package «this.basePackageName()».service.impl;
 
 import java.util.*;
@@ -108,6 +108,9 @@ public class «this.name»ManagerImplTest extends BaseManagerMockTestCase {
         manager.remove(id);
     }
 
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".svc.t.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
 }
-«ENDFILE»
+«ENDFILE-»
 «ENDDEFINE»

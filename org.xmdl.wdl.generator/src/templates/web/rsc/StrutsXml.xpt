@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/main/resources/struts.xml" -»
+«FILE "main/resources/struts.xml" TO_WEB_SRC-»
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.0.dtd">

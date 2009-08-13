@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions »
 
 «DEFINE model FOR wdl::Model -»
-«FILE "core/src/test/resources/sample-data.xml" -»<?xml version="1.0" encoding="UTF-8"?>
+«FILE "test/resources/sample-data.xml" TO_CORE_SRC-»<?xml version="1.0" encoding="UTF-8"?>
 <dataset>
     <table name="TBL_USER">
         <column>id</column>

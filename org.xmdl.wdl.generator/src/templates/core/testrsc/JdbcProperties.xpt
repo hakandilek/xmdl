@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "core/src/test/resources/jdbc.properties"»
+«FILE "test/resources/jdbc.properties" TO_CORE_SRC-»
 jdbc.driverClassName=${jdbc.driverClassName}
 jdbc.url=${jdbc.url}
 jdbc.username=${jdbc.username}
@@ -17,5 +17,5 @@ hibernate.connection.username=${jdbc.username}
 hibernate.connection.password=${jdbc.password}
 hibernate.connection.url=${jdbc.url}
 hibernate.connection.driver_class=${jdbc.driverClassName}
-«ENDFILE»
+«ENDFILE-»
 «ENDDEFINE»

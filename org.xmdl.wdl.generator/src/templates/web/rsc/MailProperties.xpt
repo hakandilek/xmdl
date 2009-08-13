@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/main/resources/mail.properties" -»
+«FILE "main/resources/mail.properties" TO_WEB_SRC-»
 # This properties file is used to configure mail settings in 
 # /WEB-INF/applicationContext-service.xml.
 

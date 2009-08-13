@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/test/resources/log4j.xml"-»
+«FILE "test/resources/log4j.xml" TO_WEB_SRC-»
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">

@@ -4,9 +4,10 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-  «FILE "core/src/main/resources/default-data.xml"»
+  «FILE "main/resources/default-data.xml" TO_CORE_SRC-»
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
+    «PROTECT CSTART '<!--' CEND '-->' ID this.project.name + ".cor.def-dat" »«ENDPROTECT»
 </dataset>
-  «ENDFILE»
+  «ENDFILE-»
 «ENDDEFINE»

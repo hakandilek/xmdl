@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-«FILE "web/src/main/resources/" + this.project().basePackagePath() + "/webapp/action/" + this.name + "Action-validation.xml" -»
+«FILE "main/resources/" + this.project().basePackagePath() + "/webapp/action/" + this.name + "Action-validation.xml" TO_WEB_SRC-»
 <!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
     "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
 <validators>

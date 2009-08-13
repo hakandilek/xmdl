@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-«FILE "web/src/test/java/" + this.project().basePackagePath() + "/webapp/action/" + this.name + "ActionTest.java"-»
+«FILE "test/java/" + this.project().basePackagePath() + "/webapp/action/" + this.name + "ActionTest.java" TO_WEB_SRC-»
 package «this.project().basePackage».webapp.action;
 
 import «this.project().basePackage».service.*;
@@ -150,6 +150,10 @@ public class «this.name»ActionTest extends BaseActionTestCase {
             e.printStackTrace();
         }
     }
+    
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".act.t.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
 }
 «ENDFILE-»
 «ENDDEFINE»

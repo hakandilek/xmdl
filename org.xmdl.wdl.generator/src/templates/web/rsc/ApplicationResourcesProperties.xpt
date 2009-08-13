@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/main/resources/ApplicationResources.properties" -»
+«FILE "main/resources/ApplicationResources.properties" TO_WEB_SRC-»
 # The block of messages below are only found in this file. If you'd
 # like to override them for other languages, simply add the keys
 # to the other resource bundles.

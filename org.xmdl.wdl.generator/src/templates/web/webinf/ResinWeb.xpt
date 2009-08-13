@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/main/webapp/WEB-INF/resin-web.xml" -»
+«FILE "main/webapp/WEB-INF/resin-web.xml" TO_WEB_SRC-»
 <web-app id="${project.build.finalName}">
     <jsp fast-jstl="false"/>
 

@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "web/src/main/java/" + this.project.basePackagePath() + "/webapp/listener/StartupListenerTest.java"-»
+«FILE "main/java/" + this.project.basePackagePath() + "/webapp/listener/StartupListenerTest.java" TO_WEB_SRC-»
 package «this.project.basePackage».webapp.listener;
 
 import «this.project.basePackage».ApplicationConstants;
@@ -34,9 +34,6 @@ public class StartupListenerTest extends TestCase {
     
     private ContextLoaderListener springListener = null;
 
-    /**
-     * @generated
-     */ 
     protected void setUp() throws Exception {
         super.setUp();
         sc = new MockServletContext("");
@@ -73,6 +70,10 @@ public class StartupListenerTest extends TestCase {
                 .ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE) != null);
         assertTrue(sc.getAttribute(ApplicationConstants.AVAILABLE_ROLES) != null);
     }
+
+    «PROTECT CSTART '/*' CEND '*/' ID this.project.name + ".stdl.t.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
 }
 «ENDFILE-»
 «ENDDEFINE»

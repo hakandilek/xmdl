@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE project FOR wdl::Project»
-«FILE "web/src/main/java/" + this.basePackagePath() + "/webapp/action/ReloadAction.java"»
+«FILE "main/java/" + this.basePackagePath() + "/webapp/action/ReloadAction.java" TO_WEB_SRC-»
 package «this.basePackageName()».webapp.action;
 
 import org.xmdl.ida.lib.web.action.BaseReloadAction;
@@ -24,6 +24,9 @@ public class ReloadAction extends BaseReloadAction {
     protected void setStartupContext() {
         StartupListener.setupContext(getSession().getServletContext());
     }
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".rld.act.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
 }
-«ENDFILE »
+«ENDFILE-»
 «ENDDEFINE »

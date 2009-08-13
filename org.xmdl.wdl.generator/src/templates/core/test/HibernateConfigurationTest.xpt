@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE entity FOR wdl::Entity»
-«FILE "core/src/test/java/" + this.project().basePackagePath() + "/dao/hibernate/HibernateConfigurationTest.java"»
+«FILE "test/java/" + this.project().basePackagePath() + "/dao/hibernate/HibernateConfigurationTest.java" TO_CORE_SRC-»
 package «this.basePackageName()».dao.hibernate;
 
 import java.util.*;
@@ -46,5 +46,5 @@ public class HibernateConfigurationTest extends BaseDaoTestCase {
         }
     }
 }
-«ENDFILE»
+«ENDFILE-»
 «ENDDEFINE»

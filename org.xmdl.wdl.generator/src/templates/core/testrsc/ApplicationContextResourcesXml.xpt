@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-«FILE "core/src/test/resources/applicationContext-resources.xml"»
+«FILE "test/resources/applicationContext-resources.xml" TO_CORE_SRC-»
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
@@ -25,5 +25,5 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 </beans>
-«ENDFILE»
+«ENDFILE-»
 «ENDDEFINE»

@@ -4,7 +4,7 @@
 «EXTENSION templates::IDAExtensions»
 
 «DEFINE model FOR wdl::Model»
-  «FILE "core/src/main/resources/hibernate.cfg.xml"»
+  «FILE "main/resources/hibernate.cfg.xml" TO_CORE_SRC-»
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
@@ -14,7 +14,8 @@
         <mapping class="org.xmdl.mesken.model.Role"/>
 «FOREACH this.types.typeSelect(Entity) AS entity»
         <mapping class="«this.project.basePackage».model.«entity.name»"/>«ENDFOREACH» 
+    	«PROTECT CSTART '<!--' CEND '-->' ID this.project.name + ".hib.cfg-xml" »«ENDPROTECT»
     </session-factory>
 </hibernate-configuration>
-  «ENDFILE»
+  «ENDFILE-»
 «ENDDEFINE»
