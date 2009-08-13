@@ -6,10 +6,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.taslak.model.search.*;
 
 /**
- *
  * Product Service interface
- *  
- * $Id$
  */
 public interface ProductManager extends GenericManager<Product, Long> {
 

@@ -8,11 +8,7 @@ import org.xmdl.ida.lib.test.BaseManagerMockTestCase;
 import org.xmdl.taslak.dao.*;
 
 /**
- *
  * Supplier Service Implementation Test
- *  
- * $Id$
- *
  */
 public class SupplierManagerImplTest extends BaseManagerMockTestCase {
 

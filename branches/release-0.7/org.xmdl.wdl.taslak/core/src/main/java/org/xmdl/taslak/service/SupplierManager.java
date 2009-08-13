@@ -6,10 +6,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.taslak.model.search.*;
 
 /**
- *
  * Supplier Service interface
- *  
- * $Id$
  */
 public interface SupplierManager extends GenericManager<Supplier, Long> {
 

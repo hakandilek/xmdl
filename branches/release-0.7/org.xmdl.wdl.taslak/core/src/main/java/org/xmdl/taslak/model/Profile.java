@@ -10,19 +10,13 @@ import java.util.*;
 import org.xmdl.mesken.model.*;
 
 /**
- *
  * Profile entity bean
- *  
- * $Id$
- *
  */
 @Entity(name = "TBL_PROFILE")
 public class Profile
 		extends
 			/*PROTECTED REGION ID(Profile.ent.ext) ENABLED START*/BaseObject
-		/*PROTECTED REGION END*/implements
-			Serializable,
-			Cloneable /*PROTECTED REGION ID(Profile.ent.imp) ENABLED START*//*, AnotherInterface *//*PROTECTED REGION END*/{
+/*PROTECTED REGION END*/implements Serializable, Cloneable /*PROTECTED REGION ID(Profile.ent.imp) ENABLED START*//*, AnotherInterface *//*PROTECTED REGION END*/{
 
 	/** Unique identifier */
 	@Id

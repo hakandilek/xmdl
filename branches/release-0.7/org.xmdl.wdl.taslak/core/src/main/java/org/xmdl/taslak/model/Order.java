@@ -10,19 +10,13 @@ import java.util.*;
 import org.xmdl.mesken.model.*;
 
 /**
- *
  * Order entity bean
- *  
- * $Id$
- *
  */
 @Entity(name = "TBL_ORDER")
 public class Order
 		extends
 			/*PROTECTED REGION ID(Order.ent.ext) ENABLED START*/BaseObject
-		/*PROTECTED REGION END*/implements
-			Serializable,
-			Cloneable /*PROTECTED REGION ID(Order.ent.imp) ENABLED START*//*, AnotherInterface *//*PROTECTED REGION END*/{
+/*PROTECTED REGION END*/implements Serializable, Cloneable /*PROTECTED REGION ID(Order.ent.imp) ENABLED START*//*, AnotherInterface *//*PROTECTED REGION END*/{
 
 	/** Unique identifier */
 	@Id

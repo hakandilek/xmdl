@@ -8,11 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.persister.entity.EntityPersister;
 
 /**
- *
  * 'org.xmdl.taslak' package Hibernate Configuration Test Case
- *  
- * $Id$
- *
  */
 public class HibernateConfigurationTest extends BaseDaoTestCase {
 

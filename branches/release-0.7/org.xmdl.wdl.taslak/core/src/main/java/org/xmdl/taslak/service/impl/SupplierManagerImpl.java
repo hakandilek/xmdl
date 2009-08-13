@@ -8,11 +8,7 @@ import org.xmdl.taslak.service.*;
 import org.xmdl.taslak.dao.*;
 
 /**
- *
  * Supplier Service implementation
- *  
- * $Id$
- *
  */
 public class SupplierManagerImpl extends GenericManagerImpl<Supplier, Long>
 		implements

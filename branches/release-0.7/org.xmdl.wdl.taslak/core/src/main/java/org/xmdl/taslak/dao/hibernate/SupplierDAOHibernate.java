@@ -13,11 +13,7 @@ import org.xmdl.taslak.model.search.*;
 import org.xmdl.taslak.dao.*;
 
 /**
- *
  * Supplier DAO Hibernate implementation
- *  
- * $Id$
- *
  */
 public class SupplierDAOHibernate extends GenericDaoHibernate<Supplier, Long>
 		implements

@@ -8,11 +8,7 @@ import org.xmdl.ida.lib.test.BaseManagerMockTestCase;
 import org.xmdl.taslak.dao.*;
 
 /**
- *
  * OrderElement Service Implementation Test
- *  
- * $Id$
- *
  */
 public class OrderElementManagerImplTest extends BaseManagerMockTestCase {
 

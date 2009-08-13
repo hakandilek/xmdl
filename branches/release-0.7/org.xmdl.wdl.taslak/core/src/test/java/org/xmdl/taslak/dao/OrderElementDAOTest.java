@@ -7,10 +7,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.taslak.model.search.*;
 
 /**
- *
  * OrderElement DAO Test Case
- *  
- * $Id$
  */
 public class OrderElementDAOTest extends BaseDaoTestCase {
 

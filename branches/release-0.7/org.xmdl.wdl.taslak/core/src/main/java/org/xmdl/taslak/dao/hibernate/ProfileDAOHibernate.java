@@ -13,11 +13,7 @@ import org.xmdl.taslak.model.search.*;
 import org.xmdl.taslak.dao.*;
 
 /**
- *
  * Profile DAO Hibernate implementation
- *  
- * $Id$
- *
  */
 public class ProfileDAOHibernate extends GenericDaoHibernate<Profile, Long>
 		implements

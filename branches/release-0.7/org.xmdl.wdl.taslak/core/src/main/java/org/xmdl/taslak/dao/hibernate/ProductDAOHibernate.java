@@ -13,11 +13,7 @@ import org.xmdl.taslak.model.search.*;
 import org.xmdl.taslak.dao.*;
 
 /**
- *
  * Product DAO Hibernate implementation
- *  
- * $Id$
- *
  */
 public class ProductDAOHibernate extends GenericDaoHibernate<Product, Long>
 		implements

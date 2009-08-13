@@ -10,19 +10,13 @@ import java.util.*;
 import org.xmdl.mesken.model.*;
 
 /**
- *
  * Money entity bean
- *  
- * $Id$
- *
  */
 @Embeddable
 public class Money
 		extends
 			/*PROTECTED REGION ID(Money.ebd.ext) ENABLED START*/BaseObject
-		/*PROTECTED REGION END*/implements
-			Serializable,
-			Cloneable /*PROTECTED REGION ID(Money.ebd.imp) ENABLED START*//*, AnotherInterface *//*PROTECTED REGION END*/{
+/*PROTECTED REGION END*/implements Serializable, Cloneable /*PROTECTED REGION ID(Money.ebd.imp) ENABLED START*//*, AnotherInterface *//*PROTECTED REGION END*/{
 
 	@Column(name = "F_AMOUNT", length = 15)
 	private Double amount;

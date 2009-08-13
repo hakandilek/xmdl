@@ -7,11 +7,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.mesken.model.*;
 
 /**
- *
  * Product entity search bean
- *  
- * $Id$
- *
  */
 public class ProductSearch
 		/*PROTECTED REGION ID(Product.ens.ext) ENABLED START*//*PROTECTED REGION END*/implements

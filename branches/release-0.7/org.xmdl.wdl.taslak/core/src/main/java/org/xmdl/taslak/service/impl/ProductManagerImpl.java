@@ -8,11 +8,7 @@ import org.xmdl.taslak.service.*;
 import org.xmdl.taslak.dao.*;
 
 /**
- *
  * Product Service implementation
- *  
- * $Id$
- *
  */
 public class ProductManagerImpl extends GenericManagerImpl<Product, Long>
 		implements

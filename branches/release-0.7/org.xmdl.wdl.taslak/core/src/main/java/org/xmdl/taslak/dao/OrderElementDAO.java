@@ -6,11 +6,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.taslak.model.search.*;
 
 /**
- *
  * OrderElement DAO interface
- *  
- * $Id$
- *
  */
 public interface OrderElementDAO extends GenericDao<OrderElement, Long> {
 

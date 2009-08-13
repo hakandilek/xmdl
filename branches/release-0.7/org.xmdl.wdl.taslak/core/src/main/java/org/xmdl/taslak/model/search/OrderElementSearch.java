@@ -7,11 +7,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.mesken.model.*;
 
 /**
- *
  * OrderElement entity search bean
- *  
- * $Id$
- *
  */
 public class OrderElementSearch
 		/*PROTECTED REGION ID(OrderElement.ens.ext) ENABLED START*//*PROTECTED REGION END*/implements

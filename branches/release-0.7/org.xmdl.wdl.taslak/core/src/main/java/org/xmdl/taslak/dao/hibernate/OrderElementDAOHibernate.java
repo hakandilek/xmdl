@@ -13,11 +13,7 @@ import org.xmdl.taslak.model.search.*;
 import org.xmdl.taslak.dao.*;
 
 /**
- *
  * OrderElement DAO Hibernate implementation
- *  
- * $Id$
- *
  */
 public class OrderElementDAOHibernate
 		extends

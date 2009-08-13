@@ -6,10 +6,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.taslak.model.search.*;
 
 /**
- *
  * Profile Service interface
- *  
- * $Id$
  */
 public interface ProfileManager extends GenericManager<Profile, Long> {
 

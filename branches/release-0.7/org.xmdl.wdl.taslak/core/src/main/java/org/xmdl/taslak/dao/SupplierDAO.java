@@ -6,11 +6,7 @@ import org.xmdl.taslak.model.*;
 import org.xmdl.taslak.model.search.*;
 
 /**
- *
  * Supplier DAO interface
- *  
- * $Id$
- *
  */
 public interface SupplierDAO extends GenericDao<Supplier, Long> {
 
