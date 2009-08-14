@@ -34,7 +34,7 @@
          ================================= -->
     <target name="generate" description="description">
     	<java classname="org.eclipse.emf.mwe.core.WorkflowRunner" classpathref="generator.classpath">
-    		<arg value="wdl/workflow/Generator.mwe"/>
+    		<arg value="wdl/generator.mwe"/>
     	</java>
     </target>
 
