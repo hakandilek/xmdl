@@ -1,0 +1,43 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Jul 27, 2009 12:11:36 AM                                                        
+
+     org.xmdl.wdl.generator    
+     IDA generator
+                   
+     hakan                                                                
+     ====================================================================== -->
+<project name="org.xmdl.wdl.generator" default="generate">
+
+	<property file="${symbol_dollar}{user.home}/generator.properties" />
+	<loadproperties srcFile="generator.properties" />
+
+	<path id="generator.classpath">
+		<pathelement location="wdl"/>
+		<fileset dir="${symbol_dollar}{generator.libs}" includes="**/*.jar">
+			<exclude name="org.apache.log4j*"/>
+		</fileset>
+	</path>
+
+	<!-- ================================= 
+          target: generate              
+         ================================= -->
+    <target name="generate" depends="check" description="description">
+    	<java classname="org.eclipse.emf.mwe.core.WorkflowRunner" classpathref="generator.classpath">
+    		<arg value="wdl/generator.mwe"/>
+    	</java>
+    </target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: check
+          check if the generator is ok.                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="check">
+    </target>
+
+
+</project>
+     
