@@ -1,0 +1,731 @@
+Apache Ant version 1.7.1 compiled on February 4 2009
+Apache Ant version 1.7.1 compiled on February 4 2009
+Buildfile: build.xml
+Adding reference: ant.PropertyHelper
+Detected Java version: 1.6 in: /opt/sun-jdk/jre
+Detected OS: Linux
+Adding reference: ant.ComponentHelper
+Setting ro project property: ant.file -> /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build.xml
+Adding reference: ant.projectHelper
+Adding reference: ant.parsing.context
+Adding reference: ant.targets
+parsing buildfile /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build.xml with URI = file:/mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build.xml
+Setting ro project property: ant.project.name -> org.xmdl.wdl.build
+Adding reference: org.xmdl.wdl.build
+Setting ro project property: ant.file.org.xmdl.wdl.build -> /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build.xml
+Project base dir set to: /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build
+ +Target: 
+ +Target: clean
+ +Target: build_and_update_libs
+ +Target: build-all
+[antlib:org.apache.tools.ant] Could not load definitions from resource org/apache/tools/ant/antlib.xml. It could not be found.
+ [property] Loading /home/hakan/wdl.build.properties
+Setting project property: eclipse.plugin.dir -> /home/hakan/archive/opt/eclipse-xt/plugins
+Setting project property: dist.version.prefix -> 0.7.0
+Setting project property: dist.version.suffix -> alpha1
+Setting project property: build.user -> hakan
+Setting project property: TODAY -> 20090816
+Setting project property: DSTAMP -> 20090816
+Setting project property: TSTAMP -> 0127
+Override ignored for property "TODAY"
+Setting project property: version.pattern -> 0.7.0.20090816_alpha1
+Adding reference: generator.classpath
+ +Datatype dist_plugin org.apache.tools.ant.taskdefs.MacroInstance
+ [macrodef] creating macro  dist_plugin
+ +Datatype update_manifest org.apache.tools.ant.taskdefs.MacroInstance
+ [macrodef] creating macro  update_manifest
+Attempting to create object of type org.apache.tools.ant.helper.DefaultExecutor
+Adding reference: ant.executor
+Build sequence for target(s) `build_and_update_libs' is [build-all, build_and_update_libs]
+Complete build sequence is [build-all, build_and_update_libs, clean, ]
+
+build-all:
+     [echo]  --- Building plugin : org.xmdl.wdl
+    [mkdir] Skipping /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl because it already exists.
+    [mkdir] Skipping /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins because it already exists.
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src with patternSet{ includes: [] excludes: [] }
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src/org/xmdl/GenerateWDL.mwe skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src/org/xmdl/GenerateWDL.properties skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src/org/xmdl/WDL.xtext skipped - don't know how to handle it
+    [javac] org/xmdl/WDLRuntimeModule.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/WDLRuntimeModule.class is up to date.
+    [javac] org/xmdl/formatting/WDLFormatter.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/formatting/WDLFormatter.class is up to date.
+    [javac] org/xmdl/scoping/WDLScopeProvider.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/scoping/WDLScopeProvider.class is up to date.
+    [javac] org/xmdl/validation/WDLJavaValidator.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/validation/WDLJavaValidator.class is up to date.
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src-gen with patternSet{ includes: [] excludes: [] }
+    [javac] org/xmdl/AbstractWDLRuntimeModule.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/AbstractWDLRuntimeModule.class is up to date.
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src-gen/org/xmdl/WDL.ecore skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src-gen/org/xmdl/WDL.genmodel skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src-gen/org/xmdl/WDL.xmi skipped - don't know how to handle it
+    [javac] org/xmdl/WDLStandaloneSetup.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/WDLStandaloneSetup.class is up to date.
+    [javac] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parseTreeConstruction/WDLParsetreeConstructor.class is up to date.
+    [javac] org/xmdl/parser/antlr/WDLAntlrTokenFileProvider.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parser/antlr/WDLAntlrTokenFileProvider.class is up to date.
+    [javac] org/xmdl/parser/antlr/WDLParser.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parser/antlr/WDLParser.class is up to date.
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.g skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL.tokens skipped - don't know how to handle it
+    [javac] org/xmdl/parser/antlr/internal/InternalWDLLexer.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parser/antlr/internal/InternalWDLLexer.class is up to date.
+    [javac] org/xmdl/parser/antlr/internal/InternalWDLParser.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parser/antlr/internal/InternalWDLParser.class is up to date.
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src-gen/org/xmdl/parser/antlr/internal/InternalWDL__.g skipped - don't know how to handle it
+    [javac] org/xmdl/services/WDLGrammarAccess.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/services/WDLGrammarAccess.class is up to date.
+    [javac] org/xmdl/validation/AbstractWDLJavaValidator.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/validation/AbstractWDLJavaValidator.class is up to date.
+    [javac] org/xmdl/wdl/Attribute.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/Attribute.class is up to date.
+    [javac] org/xmdl/wdl/AttributeManyReference.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/AttributeManyReference.class is up to date.
+    [javac] org/xmdl/wdl/Embed.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/Embed.class is up to date.
+    [javac] org/xmdl/wdl/Entity.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/Entity.class is up to date.
+    [javac] org/xmdl/wdl/Enumeration.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/Enumeration.class is up to date.
+    [javac] org/xmdl/wdl/EnumerationLiteral.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/EnumerationLiteral.class is up to date.
+    [javac] org/xmdl/wdl/JAVAID.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/JAVAID.class is up to date.
+    [javac] org/xmdl/wdl/Model.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/Model.class is up to date.
+    [javac] org/xmdl/wdl/Project.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/Project.class is up to date.
+    [javac] org/xmdl/wdl/SimpleType.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/SimpleType.class is up to date.
+    [javac] org/xmdl/wdl/Type.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/Type.class is up to date.
+    [javac] org/xmdl/wdl/WdlFactory.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/WdlFactory.class is up to date.
+    [javac] org/xmdl/wdl/WdlPackage.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/WdlPackage.class is up to date.
+    [javac] org/xmdl/wdl/impl/AttributeImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/AttributeImpl.class is up to date.
+    [javac] org/xmdl/wdl/impl/EmbedImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/EmbedImpl.class is up to date.
+    [javac] org/xmdl/wdl/impl/EntityImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/EntityImpl.class is up to date.
+    [javac] org/xmdl/wdl/impl/EnumerationImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/EnumerationImpl.class is up to date.
+    [javac] org/xmdl/wdl/impl/EnumerationLiteralImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/EnumerationLiteralImpl.class is up to date.
+    [javac] org/xmdl/wdl/impl/JAVAIDImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/JAVAIDImpl.class is up to date.
+    [javac] org/xmdl/wdl/impl/ModelImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/ModelImpl.class is up to date.
+    [javac] org/xmdl/wdl/impl/ProjectImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/ProjectImpl.class is up to date.
+    [javac] org/xmdl/wdl/impl/SimpleTypeImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/SimpleTypeImpl.class is up to date.
+    [javac] org/xmdl/wdl/impl/TypeImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/TypeImpl.class is up to date.
+    [javac] org/xmdl/wdl/impl/WdlFactoryImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/WdlFactoryImpl.class is up to date.
+    [javac] org/xmdl/wdl/impl/WdlPackageImpl.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl/WdlPackageImpl.class is up to date.
+    [javac] org/xmdl/wdl/util/WdlAdapterFactory.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/util/WdlAdapterFactory.class is up to date.
+    [javac] org/xmdl/wdl/util/WdlSwitch.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/util/WdlSwitch.class is up to date.
+Property "dist.build.user" has not been set
+ [manifest] Manifest has not changed, do not recreate
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src with patternSet{ includes: [] excludes: [**/*.java] }
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl/src-gen with patternSet{ includes: [] excludes: [**/*.java] }
+     [copy] org/xmdl/WDL.ecore omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/WDL.ecore is up to date.
+     [copy] org/xmdl/WDL.genmodel omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/WDL.genmodel is up to date.
+     [copy] org/xmdl/WDL.xmi omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/WDL.xmi is up to date.
+     [copy] org/xmdl/parser/antlr/internal/InternalWDL.g omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parser/antlr/internal/InternalWDL.g is up to date.
+     [copy] org/xmdl/parser/antlr/internal/InternalWDL.tokens omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parser/antlr/internal/InternalWDL.tokens is up to date.
+     [copy] org/xmdl/parser/antlr/internal/InternalWDL__.g omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parser/antlr/internal/InternalWDL__.g is up to date.
+     [copy]  omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl is up to date.
+     [copy] org omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org is up to date.
+     [copy] org/xmdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl is up to date.
+     [copy] org/xmdl/parseTreeConstruction omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parseTreeConstruction is up to date.
+     [copy] org/xmdl/parser omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parser is up to date.
+     [copy] org/xmdl/parser/antlr omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parser/antlr is up to date.
+     [copy] org/xmdl/parser/antlr/internal omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/parser/antlr/internal is up to date.
+     [copy] org/xmdl/services omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/services is up to date.
+     [copy] org/xmdl/validation omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/validation is up to date.
+     [copy] org/xmdl/wdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl is up to date.
+     [copy] org/xmdl/wdl/impl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/impl is up to date.
+     [copy] org/xmdl/wdl/util omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/wdl/util is up to date.
+     [copy] org/xmdl/GenerateWDL.mwe omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/GenerateWDL.mwe is up to date.
+     [copy] org/xmdl/GenerateWDL.properties omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/GenerateWDL.properties is up to date.
+     [copy] org/xmdl/WDL.xtext omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/WDL.xtext is up to date.
+     [copy]  omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl is up to date.
+     [copy] org omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org is up to date.
+     [copy] org/xmdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl is up to date.
+     [copy] org/xmdl/formatting omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/formatting is up to date.
+     [copy] org/xmdl/scoping omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/scoping is up to date.
+     [copy] org/xmdl/validation omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl/org/xmdl/validation is up to date.
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl with patternSet{ includes: [] excludes: [**/Test.class] }
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl with patternSet{ includes: [plugin.*, model/*, res/*, icons/**] excludes: [] }
+      [jar] org omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/ is up to date.
+      [jar] org/xmdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/ is up to date.
+      [jar] org/xmdl/formatting omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/formatting/ is up to date.
+      [jar] org/xmdl/parseTreeConstruction omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/ is up to date.
+      [jar] org/xmdl/parser omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parser/ is up to date.
+      [jar] org/xmdl/parser/antlr omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parser/antlr/ is up to date.
+      [jar] org/xmdl/parser/antlr/internal omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parser/antlr/internal/ is up to date.
+      [jar] org/xmdl/scoping omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/scoping/ is up to date.
+      [jar] org/xmdl/services omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/ is up to date.
+      [jar] org/xmdl/validation omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/validation/ is up to date.
+      [jar] org/xmdl/wdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/ is up to date.
+      [jar] org/xmdl/wdl/impl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/ is up to date.
+      [jar] org/xmdl/wdl/util omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/util/ is up to date.
+      [jar] org/xmdl/AbstractWDLRuntimeModule.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/AbstractWDLRuntimeModule.class is up to date.
+      [jar] org/xmdl/GenerateWDL.mwe omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/GenerateWDL.mwe is up to date.
+      [jar] org/xmdl/GenerateWDL.properties omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/GenerateWDL.properties is up to date.
+      [jar] org/xmdl/WDL.ecore omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/WDL.ecore is up to date.
+      [jar] org/xmdl/WDL.genmodel omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/WDL.genmodel is up to date.
+      [jar] org/xmdl/WDL.xmi omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/WDL.xmi is up to date.
+      [jar] org/xmdl/WDL.xtext omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/WDL.xtext is up to date.
+      [jar] org/xmdl/WDLRuntimeModule.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/WDLRuntimeModule.class is up to date.
+      [jar] org/xmdl/WDLStandaloneSetup.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/WDLStandaloneSetup.class is up to date.
+      [jar] org/xmdl/formatting/WDLFormatter.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/formatting/WDLFormatter.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Attribute_Group.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Attribute_Group.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Attribute_ManyReferenceAssignment_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Attribute_ManyReferenceAssignment_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Attribute_NameAssignment_2.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Attribute_NameAssignment_2.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Attribute_TypeAssignment_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Attribute_TypeAssignment_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_AttributesAssignment_4.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_AttributesAssignment_4.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_EmbedKeyword_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_EmbedKeyword_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_ExtendsKeyword_2_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_ExtendsKeyword_2_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_Group.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_Group.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_Group_2.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_Group_2.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_LeftCurlyBracketKeyword_3.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_LeftCurlyBracketKeyword_3.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_NameAssignment_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_NameAssignment_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_RightCurlyBracketKeyword_5.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_RightCurlyBracketKeyword_5.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_SuperEntityAssignment_2_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Embed_SuperEntityAssignment_2_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_AttributesAssignment_4.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_AttributesAssignment_4.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_EntityKeyword_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_EntityKeyword_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_ExtendsKeyword_2_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_ExtendsKeyword_2_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_Group.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_Group.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_Group_2.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_Group_2.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_LeftCurlyBracketKeyword_3.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_LeftCurlyBracketKeyword_3.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_NameAssignment_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_NameAssignment_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_RightCurlyBracketKeyword_5.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_RightCurlyBracketKeyword_5.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_SuperEntityAssignment_2_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Entity_SuperEntityAssignment_2_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$EnumerationLiteral_Group.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$EnumerationLiteral_Group.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$EnumerationLiteral_LeftParenthesisKeyword_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$EnumerationLiteral_LeftParenthesisKeyword_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$EnumerationLiteral_NameAssignment_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$EnumerationLiteral_NameAssignment_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$EnumerationLiteral_OrdinalAssignment_2.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$EnumerationLiteral_OrdinalAssignment_2.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$EnumerationLiteral_RightParenthesisKeyword_3.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$EnumerationLiteral_RightParenthesisKeyword_3.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_EnumKeyword_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_EnumKeyword_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_Group.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_Group.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_LeftCurlyBracketKeyword_2.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_LeftCurlyBracketKeyword_2.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_LiteralsAssignment_3.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_LiteralsAssignment_3.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_NameAssignment_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_NameAssignment_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_RightCurlyBracketKeyword_4.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Enumeration_RightCurlyBracketKeyword_4.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$JAVAID_FullStopKeyword_1_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$JAVAID_FullStopKeyword_1_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$JAVAID_Group.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$JAVAID_Group.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$JAVAID_Group_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$JAVAID_Group_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$JAVAID_IDTerminalRuleCall_1_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$JAVAID_IDTerminalRuleCall_1_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$JAVAID_NameAssignment_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$JAVAID_NameAssignment_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Model_Group.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Model_Group.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Model_ProjectAssignment_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Model_ProjectAssignment_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Model_TypesAssignment_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Model_TypesAssignment_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_BasePackageAssignment_7.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_BasePackageAssignment_7.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_BasePackageKeyword_5.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_BasePackageKeyword_5.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_ColonKeyword_3.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_ColonKeyword_3.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_ColonKeyword_6.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_ColonKeyword_6.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_Group.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_Group.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_LeftCurlyBracketKeyword_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_LeftCurlyBracketKeyword_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_NameAssignment_4.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_NameAssignment_4.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_ProjectKeyword_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_ProjectKeyword_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_ProjectNameKeyword_2.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_ProjectNameKeyword_2.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_RightCurlyBracketKeyword_8.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Project_RightCurlyBracketKeyword_8.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_Group.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_Group.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_Group_2.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_Group_2.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_IsKeyword_2_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_IsKeyword_2_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_MappedTypeAssignment_2_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_MappedTypeAssignment_2_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_NameAssignment_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_NameAssignment_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_TypeKeyword_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$SimpleType_TypeKeyword_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$ThisRootNode.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$ThisRootNode.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Type_Alternatives.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Type_Alternatives.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Type_EmbedParserRuleCall_3.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Type_EmbedParserRuleCall_3.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Type_EntityParserRuleCall_1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Type_EntityParserRuleCall_1.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Type_EnumerationParserRuleCall_2.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Type_EnumerationParserRuleCall_2.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Type_SimpleTypeParserRuleCall_0.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor$Type_SimpleTypeParserRuleCall_0.class is up to date.
+      [jar] org/xmdl/parseTreeConstruction/WDLParsetreeConstructor.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parseTreeConstruction/WDLParsetreeConstructor.class is up to date.
+      [jar] org/xmdl/parser/antlr/WDLAntlrTokenFileProvider.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parser/antlr/WDLAntlrTokenFileProvider.class is up to date.
+      [jar] org/xmdl/parser/antlr/WDLParser.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parser/antlr/WDLParser.class is up to date.
+      [jar] org/xmdl/parser/antlr/internal/InternalWDL.g omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parser/antlr/internal/InternalWDL.g is up to date.
+      [jar] org/xmdl/parser/antlr/internal/InternalWDL.tokens omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parser/antlr/internal/InternalWDL.tokens is up to date.
+      [jar] org/xmdl/parser/antlr/internal/InternalWDLLexer.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parser/antlr/internal/InternalWDLLexer.class is up to date.
+      [jar] org/xmdl/parser/antlr/internal/InternalWDLParser.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parser/antlr/internal/InternalWDLParser.class is up to date.
+      [jar] org/xmdl/parser/antlr/internal/InternalWDL__.g omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/parser/antlr/internal/InternalWDL__.g is up to date.
+      [jar] org/xmdl/scoping/WDLScopeProvider.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/scoping/WDLScopeProvider.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess$AttributeElements.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess$AttributeElements.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess$AttributeManyReferenceElements.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess$AttributeManyReferenceElements.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess$EmbedElements.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess$EmbedElements.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess$EntityElements.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess$EntityElements.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess$EnumerationElements.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess$EnumerationElements.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess$EnumerationLiteralElements.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess$EnumerationLiteralElements.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess$JAVAIDElements.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess$JAVAIDElements.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess$ModelElements.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess$ModelElements.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess$ProjectElements.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess$ProjectElements.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess$SimpleTypeElements.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess$SimpleTypeElements.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess$TypeElements.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess$TypeElements.class is up to date.
+      [jar] org/xmdl/services/WDLGrammarAccess.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/services/WDLGrammarAccess.class is up to date.
+      [jar] org/xmdl/validation/AbstractWDLJavaValidator.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/validation/AbstractWDLJavaValidator.class is up to date.
+      [jar] org/xmdl/validation/WDLJavaValidator.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/validation/WDLJavaValidator.class is up to date.
+      [jar] org/xmdl/wdl/Attribute.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/Attribute.class is up to date.
+      [jar] org/xmdl/wdl/AttributeManyReference.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/AttributeManyReference.class is up to date.
+      [jar] org/xmdl/wdl/Embed.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/Embed.class is up to date.
+      [jar] org/xmdl/wdl/Entity.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/Entity.class is up to date.
+      [jar] org/xmdl/wdl/Enumeration.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/Enumeration.class is up to date.
+      [jar] org/xmdl/wdl/EnumerationLiteral.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/EnumerationLiteral.class is up to date.
+      [jar] org/xmdl/wdl/JAVAID.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/JAVAID.class is up to date.
+      [jar] org/xmdl/wdl/Model.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/Model.class is up to date.
+      [jar] org/xmdl/wdl/Project.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/Project.class is up to date.
+      [jar] org/xmdl/wdl/SimpleType.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/SimpleType.class is up to date.
+      [jar] org/xmdl/wdl/Type.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/Type.class is up to date.
+      [jar] org/xmdl/wdl/WdlFactory.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/WdlFactory.class is up to date.
+      [jar] org/xmdl/wdl/WdlPackage$Literals.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/WdlPackage$Literals.class is up to date.
+      [jar] org/xmdl/wdl/WdlPackage.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/WdlPackage.class is up to date.
+      [jar] org/xmdl/wdl/impl/AttributeImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/AttributeImpl.class is up to date.
+      [jar] org/xmdl/wdl/impl/EmbedImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/EmbedImpl.class is up to date.
+      [jar] org/xmdl/wdl/impl/EntityImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/EntityImpl.class is up to date.
+      [jar] org/xmdl/wdl/impl/EnumerationImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/EnumerationImpl.class is up to date.
+      [jar] org/xmdl/wdl/impl/EnumerationLiteralImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/EnumerationLiteralImpl.class is up to date.
+      [jar] org/xmdl/wdl/impl/JAVAIDImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/JAVAIDImpl.class is up to date.
+      [jar] org/xmdl/wdl/impl/ModelImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/ModelImpl.class is up to date.
+      [jar] org/xmdl/wdl/impl/ProjectImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/ProjectImpl.class is up to date.
+      [jar] org/xmdl/wdl/impl/SimpleTypeImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/SimpleTypeImpl.class is up to date.
+      [jar] org/xmdl/wdl/impl/TypeImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/TypeImpl.class is up to date.
+      [jar] org/xmdl/wdl/impl/WdlFactoryImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/WdlFactoryImpl.class is up to date.
+      [jar] org/xmdl/wdl/impl/WdlPackageImpl.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/impl/WdlPackageImpl.class is up to date.
+      [jar] org/xmdl/wdl/util/WdlAdapterFactory$1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/util/WdlAdapterFactory$1.class is up to date.
+      [jar] org/xmdl/wdl/util/WdlAdapterFactory.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/util/WdlAdapterFactory.class is up to date.
+      [jar] org/xmdl/wdl/util/WdlSwitch.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/util/WdlSwitch.class is up to date.
+      [jar] plugin.xml omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar:plugin.xml is up to date.
+      [jar] No Implementation-Title set.No Implementation-Version set.No Implementation-Vendor set.
+      [jar] Location: /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build.xml:108: 
+     [echo]  --- Building plugin : org.xmdl.wdl.generator
+    [mkdir] Skipping /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator because it already exists.
+    [mkdir] Skipping /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins because it already exists.
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.generator/src with patternSet{ includes: [] excludes: [] }
+    [javac] org/xmdl/wdl/gen/utils/ArchiveExtractor.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/ArchiveExtractor.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/ArchiveUtils.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/ArchiveUtils.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/Association.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/Association.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/AssociationManager.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/AssociationManager.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/AssociationManagerReset.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/AssociationManagerReset.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/AssociationType.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/AssociationType.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/BasicType.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/BasicType.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/DirectoryCreator.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/DirectoryCreator.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/ExtensionUtils.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/ExtensionUtils.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/FileUtils.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/FileUtils.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/RandomUtils.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/RandomUtils.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/TemplateMigrator.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/TemplateMigrator.class is up to date.
+    [javac] org/xmdl/wdl/gen/utils/TestUtils.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils/TestUtils.class is up to date.
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.generator/src/templates/Extensions.ext skipped - don't know how to handle it
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.generator/src-gen with patternSet{ includes: [] excludes: [] }
+    [javac] No sources found.
+Property "dist.build.user" has not been set
+ [manifest] Manifest has not changed, do not recreate
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.generator/src with patternSet{ includes: [] excludes: [**/*.java] }
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.generator/src-gen with patternSet{ includes: [] excludes: [**/*.java] }
+     [copy] No sources found.
+     [copy]  omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator is up to date.
+     [copy] templates/Extensions.ext omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/Extensions.ext is up to date.
+     [copy]  omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator is up to date.
+     [copy] model omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/model is up to date.
+     [copy] org omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org is up to date.
+     [copy] org/xmdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl is up to date.
+     [copy] org/xmdl/wdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl is up to date.
+     [copy] org/xmdl/wdl/gen omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen is up to date.
+     [copy] org/xmdl/wdl/gen/utils omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/org/xmdl/wdl/gen/utils is up to date.
+     [copy] templates omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates is up to date.
+     [copy] templates/core omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/core is up to date.
+     [copy] templates/core/dao omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/core/dao is up to date.
+     [copy] templates/core/model omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/core/model is up to date.
+     [copy] templates/core/project omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/core/project is up to date.
+     [copy] templates/core/rsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/core/rsc is up to date.
+     [copy] templates/core/service omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/core/service is up to date.
+     [copy] templates/core/test omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/core/test is up to date.
+     [copy] templates/core/testrsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/core/testrsc is up to date.
+     [copy] templates/eclipse omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/eclipse is up to date.
+     [copy] templates/maven omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/maven is up to date.
+     [copy] templates/web omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/web is up to date.
+     [copy] templates/web/action omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/web/action is up to date.
+     [copy] templates/web/decorators omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/web/decorators is up to date.
+     [copy] templates/web/jsp omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/web/jsp is up to date.
+     [copy] templates/web/listener omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/web/listener is up to date.
+     [copy] templates/web/rsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/web/rsc is up to date.
+     [copy] templates/web/site omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/web/site is up to date.
+     [copy] templates/web/taglib omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/web/taglib is up to date.
+     [copy] templates/web/test omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/web/test is up to date.
+     [copy] templates/web/testrsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/web/testrsc is up to date.
+     [copy] templates/web/webinf omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/templates/web/webinf is up to date.
+     [copy] workflow omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator/workflow is up to date.
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.generator with patternSet{ includes: [] excludes: [**/Test.class] }
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.generator with patternSet{ includes: [plugin.*, model/*, res/*, icons/**] excludes: [] }
+      [jar] model omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:model/ is up to date.
+      [jar] org omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/ is up to date.
+      [jar] org/xmdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/ is up to date.
+      [jar] org/xmdl/wdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/ is up to date.
+      [jar] org/xmdl/wdl/gen omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/ is up to date.
+      [jar] org/xmdl/wdl/gen/utils omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/ is up to date.
+      [jar] templates omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/ is up to date.
+      [jar] templates/core omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/core/ is up to date.
+      [jar] templates/core/dao omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/core/dao/ is up to date.
+      [jar] templates/core/model omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/core/model/ is up to date.
+      [jar] templates/core/project omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/core/project/ is up to date.
+      [jar] templates/core/rsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/core/rsc/ is up to date.
+      [jar] templates/core/service omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/core/service/ is up to date.
+      [jar] templates/core/test omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/core/test/ is up to date.
+      [jar] templates/core/testrsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/core/testrsc/ is up to date.
+      [jar] templates/eclipse omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/eclipse/ is up to date.
+      [jar] templates/maven omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/maven/ is up to date.
+      [jar] templates/web omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/web/ is up to date.
+      [jar] templates/web/action omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/web/action/ is up to date.
+      [jar] templates/web/decorators omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/web/decorators/ is up to date.
+      [jar] templates/web/jsp omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/web/jsp/ is up to date.
+      [jar] templates/web/listener omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/web/listener/ is up to date.
+      [jar] templates/web/rsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/web/rsc/ is up to date.
+      [jar] templates/web/site omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/web/site/ is up to date.
+      [jar] templates/web/taglib omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/web/taglib/ is up to date.
+      [jar] templates/web/test omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/web/test/ is up to date.
+      [jar] templates/web/testrsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/web/testrsc/ is up to date.
+      [jar] templates/web/webinf omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/web/webinf/ is up to date.
+      [jar] workflow omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:workflow/ is up to date.
+      [jar] org/xmdl/wdl/gen/utils/ArchiveExtractor.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/ArchiveExtractor.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/ArchiveUtils.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/ArchiveUtils.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/Association.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/Association.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/AssociationManager.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/AssociationManager.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/AssociationManagerReset.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/AssociationManagerReset.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/AssociationType.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/AssociationType.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/BasicType.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/BasicType.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/DirectoryCreator.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/DirectoryCreator.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/ExtensionUtils.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/ExtensionUtils.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/FileUtils.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/FileUtils.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/RandomUtils.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/RandomUtils.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/TemplateMigrator.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/TemplateMigrator.class is up to date.
+      [jar] org/xmdl/wdl/gen/utils/TestUtils.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/utils/TestUtils.class is up to date.
+      [jar] templates/Extensions.ext omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar:templates/Extensions.ext is up to date.
+      [jar] No Implementation-Title set.No Implementation-Version set.No Implementation-Vendor set.
+      [jar] Location: /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build.xml:108: 
+     [echo]  --- Building plugin : org.xmdl.wdl.ida
+    [mkdir] Skipping /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida because it already exists.
+    [mkdir] Skipping /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins because it already exists.
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src with patternSet{ includes: [] excludes: [] }
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/model/TaslakModel.wdl skipped - don't know how to handle it
+    [javac] org/xmdl/wdl/gen/ida/IDAExtensionUtils.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/org/xmdl/wdl/gen/ida/IDAExtensionUtils.class is up to date.
+    [javac] org/xmdl/wdl/gen/ida/IDATestUtils.java omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/org/xmdl/wdl/gen/ida/IDATestUtils.class is up to date.
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/Extensions.ext skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/IDAExtensions.ext skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/Main.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/dao/EntityDAO.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/dao/EntityDAOHibernate.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/model/Embed.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/model/Entity.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/model/EntitySearch.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/model/Enumeration.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/project/Constants.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/rsc/ApplicationContextDaoXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/rsc/ApplicationContextServiceXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/rsc/DetaultDataXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/rsc/HibernateCfgXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/service/EntityService.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/service/EntityServiceImplementation.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/test/EntityDAOTest.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/test/EntityServiceTest.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/test/HibernateConfigurationTest.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/testrsc/ApplicationContextResourcesXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/testrsc/ApplicationContextTestXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/testrsc/JdbcProperties.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/testrsc/Log4jXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/testrsc/MailProperties.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/testrsc/PersistenceXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/core/testrsc/SampleDataXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/eclipse/Classpath.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/eclipse/Project.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/maven/CorePomXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/maven/RootPomXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/maven/WebPomXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/action/EntityAction.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/action/ReloadAction.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/decorators/DefaultJsp.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/jsp/EntityFormJsp.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/jsp/EntityListJsonJsp.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/jsp/EntityListJsp.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/jsp/MenuJsp.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/jsp/TaglibsJsp.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/listener/StartupListener.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/rsc/ActionValidationXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/rsc/ApplicationContextActionXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/rsc/ApplicationContextResourcesXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/rsc/ApplicationResourcesProperties.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/rsc/EntityValidationXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/rsc/HibernateCfgXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/rsc/Log4jXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/rsc/MailProperties.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/rsc/StrutsEntityXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/rsc/StrutsXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/site/SiteXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/taglib/ConstantsTag.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/taglib/ConstantsTei.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/test/EntityActionTest.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/test/StartupListenerTest.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/testrsc/ApplicationContextDaoXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/testrsc/ApplicationContextServiceXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/testrsc/JdbcProperties.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/testrsc/Log4jXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/testrsc/SampleDataXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/testrsc/WebTestsXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/webinf/ApplicationContextHibernate.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/webinf/MenuConfig.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/webinf/ResinWeb.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/webinf/TaglibTld.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/webinf/UrlrewriteXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/templates/web/webinf/WebXml.xpt skipped - don't know how to handle it
+    [javac] /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src/workflow/IDAGenerator.mwe skipped - don't know how to handle it
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src-gen with patternSet{ includes: [] excludes: [] }
+    [javac] No sources found.
+Property "dist.build.user" has not been set
+ [manifest] Manifest has not changed, do not recreate
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src with patternSet{ includes: [] excludes: [**/*.java] }
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida/src-gen with patternSet{ includes: [] excludes: [**/*.java] }
+     [copy] No sources found.
+     [copy]  omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida is up to date.
+     [copy] model/TaslakModel.wdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/model/TaslakModel.wdl is up to date.
+     [copy] templates/Extensions.ext omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/Extensions.ext is up to date.
+     [copy] templates/IDAExtensions.ext omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/IDAExtensions.ext is up to date.
+     [copy] templates/Main.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/Main.xpt is up to date.
+     [copy] templates/core/dao/EntityDAO.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/dao/EntityDAO.xpt is up to date.
+     [copy] templates/core/dao/EntityDAOHibernate.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/dao/EntityDAOHibernate.xpt is up to date.
+     [copy] templates/core/model/Embed.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/model/Embed.xpt is up to date.
+     [copy] templates/core/model/Entity.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/model/Entity.xpt is up to date.
+     [copy] templates/core/model/EntitySearch.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/model/EntitySearch.xpt is up to date.
+     [copy] templates/core/model/Enumeration.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/model/Enumeration.xpt is up to date.
+     [copy] templates/core/project/Constants.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/project/Constants.xpt is up to date.
+     [copy] templates/core/rsc/ApplicationContextDaoXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/rsc/ApplicationContextDaoXml.xpt is up to date.
+     [copy] templates/core/rsc/ApplicationContextServiceXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/rsc/ApplicationContextServiceXml.xpt is up to date.
+     [copy] templates/core/rsc/DetaultDataXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/rsc/DetaultDataXml.xpt is up to date.
+     [copy] templates/core/rsc/HibernateCfgXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/rsc/HibernateCfgXml.xpt is up to date.
+     [copy] templates/core/service/EntityService.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/service/EntityService.xpt is up to date.
+     [copy] templates/core/service/EntityServiceImplementation.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/service/EntityServiceImplementation.xpt is up to date.
+     [copy] templates/core/test/EntityDAOTest.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/test/EntityDAOTest.xpt is up to date.
+     [copy] templates/core/test/EntityServiceTest.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/test/EntityServiceTest.xpt is up to date.
+     [copy] templates/core/test/HibernateConfigurationTest.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/test/HibernateConfigurationTest.xpt is up to date.
+     [copy] templates/core/testrsc/ApplicationContextResourcesXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/testrsc/ApplicationContextResourcesXml.xpt is up to date.
+     [copy] templates/core/testrsc/ApplicationContextTestXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/testrsc/ApplicationContextTestXml.xpt is up to date.
+     [copy] templates/core/testrsc/JdbcProperties.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/testrsc/JdbcProperties.xpt is up to date.
+     [copy] templates/core/testrsc/Log4jXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/testrsc/Log4jXml.xpt is up to date.
+     [copy] templates/core/testrsc/MailProperties.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/testrsc/MailProperties.xpt is up to date.
+     [copy] templates/core/testrsc/PersistenceXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/testrsc/PersistenceXml.xpt is up to date.
+     [copy] templates/core/testrsc/SampleDataXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/testrsc/SampleDataXml.xpt is up to date.
+     [copy] templates/eclipse/Classpath.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/eclipse/Classpath.xpt is up to date.
+     [copy] templates/eclipse/Project.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/eclipse/Project.xpt is up to date.
+     [copy] templates/maven/CorePomXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/maven/CorePomXml.xpt is up to date.
+     [copy] templates/maven/RootPomXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/maven/RootPomXml.xpt is up to date.
+     [copy] templates/maven/WebPomXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/maven/WebPomXml.xpt is up to date.
+     [copy] templates/web/action/EntityAction.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/action/EntityAction.xpt is up to date.
+     [copy] templates/web/action/ReloadAction.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/action/ReloadAction.xpt is up to date.
+     [copy] templates/web/decorators/DefaultJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/decorators/DefaultJsp.xpt is up to date.
+     [copy] templates/web/jsp/EntityFormJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/jsp/EntityFormJsp.xpt is up to date.
+     [copy] templates/web/jsp/EntityListJsonJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/jsp/EntityListJsonJsp.xpt is up to date.
+     [copy] templates/web/jsp/EntityListJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/jsp/EntityListJsp.xpt is up to date.
+     [copy] templates/web/jsp/MenuJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/jsp/MenuJsp.xpt is up to date.
+     [copy] templates/web/jsp/TaglibsJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/jsp/TaglibsJsp.xpt is up to date.
+     [copy] templates/web/listener/StartupListener.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/listener/StartupListener.xpt is up to date.
+     [copy] templates/web/rsc/ActionValidationXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/rsc/ActionValidationXml.xpt is up to date.
+     [copy] templates/web/rsc/ApplicationContextActionXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/rsc/ApplicationContextActionXml.xpt is up to date.
+     [copy] templates/web/rsc/ApplicationContextResourcesXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/rsc/ApplicationContextResourcesXml.xpt is up to date.
+     [copy] templates/web/rsc/ApplicationResourcesProperties.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/rsc/ApplicationResourcesProperties.xpt is up to date.
+     [copy] templates/web/rsc/EntityValidationXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/rsc/EntityValidationXml.xpt is up to date.
+     [copy] templates/web/rsc/HibernateCfgXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/rsc/HibernateCfgXml.xpt is up to date.
+     [copy] templates/web/rsc/Log4jXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/rsc/Log4jXml.xpt is up to date.
+     [copy] templates/web/rsc/MailProperties.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/rsc/MailProperties.xpt is up to date.
+     [copy] templates/web/rsc/StrutsEntityXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/rsc/StrutsEntityXml.xpt is up to date.
+     [copy] templates/web/rsc/StrutsXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/rsc/StrutsXml.xpt is up to date.
+     [copy] templates/web/site/SiteXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/site/SiteXml.xpt is up to date.
+     [copy] templates/web/taglib/ConstantsTag.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/taglib/ConstantsTag.xpt is up to date.
+     [copy] templates/web/taglib/ConstantsTei.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/taglib/ConstantsTei.xpt is up to date.
+     [copy] templates/web/test/EntityActionTest.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/test/EntityActionTest.xpt is up to date.
+     [copy] templates/web/test/StartupListenerTest.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/test/StartupListenerTest.xpt is up to date.
+     [copy] templates/web/testrsc/ApplicationContextDaoXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/testrsc/ApplicationContextDaoXml.xpt is up to date.
+     [copy] templates/web/testrsc/ApplicationContextServiceXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/testrsc/ApplicationContextServiceXml.xpt is up to date.
+     [copy] templates/web/testrsc/JdbcProperties.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/testrsc/JdbcProperties.xpt is up to date.
+     [copy] templates/web/testrsc/Log4jXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/testrsc/Log4jXml.xpt is up to date.
+     [copy] templates/web/testrsc/SampleDataXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/testrsc/SampleDataXml.xpt is up to date.
+     [copy] templates/web/testrsc/WebTestsXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/testrsc/WebTestsXml.xpt is up to date.
+     [copy] templates/web/webinf/ApplicationContextHibernate.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/webinf/ApplicationContextHibernate.xpt is up to date.
+     [copy] templates/web/webinf/MenuConfig.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/webinf/MenuConfig.xpt is up to date.
+     [copy] templates/web/webinf/ResinWeb.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/webinf/ResinWeb.xpt is up to date.
+     [copy] templates/web/webinf/TaglibTld.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/webinf/TaglibTld.xpt is up to date.
+     [copy] templates/web/webinf/UrlrewriteXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/webinf/UrlrewriteXml.xpt is up to date.
+     [copy] templates/web/webinf/WebXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/webinf/WebXml.xpt is up to date.
+     [copy] workflow/IDAGenerator.mwe omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/workflow/IDAGenerator.mwe is up to date.
+     [copy]  omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida is up to date.
+     [copy] model omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/model is up to date.
+     [copy] org omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/org is up to date.
+     [copy] org/xmdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/org/xmdl is up to date.
+     [copy] org/xmdl/wdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/org/xmdl/wdl is up to date.
+     [copy] org/xmdl/wdl/gen omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/org/xmdl/wdl/gen is up to date.
+     [copy] org/xmdl/wdl/gen/ida omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/org/xmdl/wdl/gen/ida is up to date.
+     [copy] templates omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates is up to date.
+     [copy] templates/core omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core is up to date.
+     [copy] templates/core/dao omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/dao is up to date.
+     [copy] templates/core/model omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/model is up to date.
+     [copy] templates/core/project omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/project is up to date.
+     [copy] templates/core/rsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/rsc is up to date.
+     [copy] templates/core/service omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/service is up to date.
+     [copy] templates/core/test omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/test is up to date.
+     [copy] templates/core/testrsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/core/testrsc is up to date.
+     [copy] templates/eclipse omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/eclipse is up to date.
+     [copy] templates/maven omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/maven is up to date.
+     [copy] templates/web omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web is up to date.
+     [copy] templates/web/action omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/action is up to date.
+     [copy] templates/web/decorators omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/decorators is up to date.
+     [copy] templates/web/jsp omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/jsp is up to date.
+     [copy] templates/web/listener omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/listener is up to date.
+     [copy] templates/web/rsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/rsc is up to date.
+     [copy] templates/web/site omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/site is up to date.
+     [copy] templates/web/taglib omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/taglib is up to date.
+     [copy] templates/web/test omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/test is up to date.
+     [copy] templates/web/testrsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/testrsc is up to date.
+     [copy] templates/web/webinf omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/templates/web/webinf is up to date.
+     [copy] workflow omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida/workflow is up to date.
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build/org.xmdl.wdl.ida with patternSet{ includes: [] excludes: [**/Test.class] }
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.ida with patternSet{ includes: [plugin.*, model/*, res/*, icons/**] excludes: [] }
+      [jar] model omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:model/ is up to date.
+      [jar] org omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:org/ is up to date.
+      [jar] org/xmdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:org/xmdl/ is up to date.
+      [jar] org/xmdl/wdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/ is up to date.
+      [jar] org/xmdl/wdl/gen omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/ is up to date.
+      [jar] org/xmdl/wdl/gen/ida omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/ida/ is up to date.
+      [jar] templates omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/ is up to date.
+      [jar] templates/core omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/ is up to date.
+      [jar] templates/core/dao omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/dao/ is up to date.
+      [jar] templates/core/model omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/model/ is up to date.
+      [jar] templates/core/project omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/project/ is up to date.
+      [jar] templates/core/rsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/rsc/ is up to date.
+      [jar] templates/core/service omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/service/ is up to date.
+      [jar] templates/core/test omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/test/ is up to date.
+      [jar] templates/core/testrsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/testrsc/ is up to date.
+      [jar] templates/eclipse omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/eclipse/ is up to date.
+      [jar] templates/maven omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/maven/ is up to date.
+      [jar] templates/web omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/ is up to date.
+      [jar] templates/web/action omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/action/ is up to date.
+      [jar] templates/web/decorators omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/decorators/ is up to date.
+      [jar] templates/web/jsp omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/jsp/ is up to date.
+      [jar] templates/web/listener omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/listener/ is up to date.
+      [jar] templates/web/rsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/rsc/ is up to date.
+      [jar] templates/web/site omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/site/ is up to date.
+      [jar] templates/web/taglib omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/taglib/ is up to date.
+      [jar] templates/web/test omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/test/ is up to date.
+      [jar] templates/web/testrsc omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/testrsc/ is up to date.
+      [jar] templates/web/webinf omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/webinf/ is up to date.
+      [jar] workflow omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:workflow/ is up to date.
+      [jar] model/TaslakModel.wdl omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:model/TaslakModel.wdl is up to date.
+      [jar] org/xmdl/wdl/gen/ida/IDAExtensionUtils$1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/ida/IDAExtensionUtils$1.class is up to date.
+      [jar] org/xmdl/wdl/gen/ida/IDAExtensionUtils.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/ida/IDAExtensionUtils.class is up to date.
+      [jar] org/xmdl/wdl/gen/ida/IDATestUtils$1.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/ida/IDATestUtils$1.class is up to date.
+      [jar] org/xmdl/wdl/gen/ida/IDATestUtils.class omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:org/xmdl/wdl/gen/ida/IDATestUtils.class is up to date.
+      [jar] templates/Extensions.ext omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/Extensions.ext is up to date.
+      [jar] templates/IDAExtensions.ext omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/IDAExtensions.ext is up to date.
+      [jar] templates/Main.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/Main.xpt is up to date.
+      [jar] templates/core/dao/EntityDAO.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/dao/EntityDAO.xpt is up to date.
+      [jar] templates/core/dao/EntityDAOHibernate.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/dao/EntityDAOHibernate.xpt is up to date.
+      [jar] templates/core/model/Embed.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/model/Embed.xpt is up to date.
+      [jar] templates/core/model/Entity.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/model/Entity.xpt is up to date.
+      [jar] templates/core/model/EntitySearch.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/model/EntitySearch.xpt is up to date.
+      [jar] templates/core/model/Enumeration.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/model/Enumeration.xpt is up to date.
+      [jar] templates/core/project/Constants.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/project/Constants.xpt is up to date.
+      [jar] templates/core/rsc/ApplicationContextDaoXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/rsc/ApplicationContextDaoXml.xpt is up to date.
+      [jar] templates/core/rsc/ApplicationContextServiceXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/rsc/ApplicationContextServiceXml.xpt is up to date.
+      [jar] templates/core/rsc/DetaultDataXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/rsc/DetaultDataXml.xpt is up to date.
+      [jar] templates/core/rsc/HibernateCfgXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/rsc/HibernateCfgXml.xpt is up to date.
+      [jar] templates/core/service/EntityService.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/service/EntityService.xpt is up to date.
+      [jar] templates/core/service/EntityServiceImplementation.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/service/EntityServiceImplementation.xpt is up to date.
+      [jar] templates/core/test/EntityDAOTest.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/test/EntityDAOTest.xpt is up to date.
+      [jar] templates/core/test/EntityServiceTest.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/test/EntityServiceTest.xpt is up to date.
+      [jar] templates/core/test/HibernateConfigurationTest.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/test/HibernateConfigurationTest.xpt is up to date.
+      [jar] templates/core/testrsc/ApplicationContextResourcesXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/testrsc/ApplicationContextResourcesXml.xpt is up to date.
+      [jar] templates/core/testrsc/ApplicationContextTestXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/testrsc/ApplicationContextTestXml.xpt is up to date.
+      [jar] templates/core/testrsc/JdbcProperties.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/testrsc/JdbcProperties.xpt is up to date.
+      [jar] templates/core/testrsc/Log4jXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/testrsc/Log4jXml.xpt is up to date.
+      [jar] templates/core/testrsc/MailProperties.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/testrsc/MailProperties.xpt is up to date.
+      [jar] templates/core/testrsc/PersistenceXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/testrsc/PersistenceXml.xpt is up to date.
+      [jar] templates/core/testrsc/SampleDataXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/core/testrsc/SampleDataXml.xpt is up to date.
+      [jar] templates/eclipse/Classpath.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/eclipse/Classpath.xpt is up to date.
+      [jar] templates/eclipse/Project.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/eclipse/Project.xpt is up to date.
+      [jar] templates/maven/CorePomXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/maven/CorePomXml.xpt is up to date.
+      [jar] templates/maven/RootPomXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/maven/RootPomXml.xpt is up to date.
+      [jar] templates/maven/WebPomXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/maven/WebPomXml.xpt is up to date.
+      [jar] templates/web/action/EntityAction.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/action/EntityAction.xpt is up to date.
+      [jar] templates/web/action/ReloadAction.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/action/ReloadAction.xpt is up to date.
+      [jar] templates/web/decorators/DefaultJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/decorators/DefaultJsp.xpt is up to date.
+      [jar] templates/web/jsp/EntityFormJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/jsp/EntityFormJsp.xpt is up to date.
+      [jar] templates/web/jsp/EntityListJsonJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/jsp/EntityListJsonJsp.xpt is up to date.
+      [jar] templates/web/jsp/EntityListJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/jsp/EntityListJsp.xpt is up to date.
+      [jar] templates/web/jsp/MenuJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/jsp/MenuJsp.xpt is up to date.
+      [jar] templates/web/jsp/TaglibsJsp.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/jsp/TaglibsJsp.xpt is up to date.
+      [jar] templates/web/listener/StartupListener.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/listener/StartupListener.xpt is up to date.
+      [jar] templates/web/rsc/ActionValidationXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/rsc/ActionValidationXml.xpt is up to date.
+      [jar] templates/web/rsc/ApplicationContextActionXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/rsc/ApplicationContextActionXml.xpt is up to date.
+      [jar] templates/web/rsc/ApplicationContextResourcesXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/rsc/ApplicationContextResourcesXml.xpt is up to date.
+      [jar] templates/web/rsc/ApplicationResourcesProperties.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/rsc/ApplicationResourcesProperties.xpt is up to date.
+      [jar] templates/web/rsc/EntityValidationXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/rsc/EntityValidationXml.xpt is up to date.
+      [jar] templates/web/rsc/HibernateCfgXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/rsc/HibernateCfgXml.xpt is up to date.
+      [jar] templates/web/rsc/Log4jXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/rsc/Log4jXml.xpt is up to date.
+      [jar] templates/web/rsc/MailProperties.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/rsc/MailProperties.xpt is up to date.
+      [jar] templates/web/rsc/StrutsEntityXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/rsc/StrutsEntityXml.xpt is up to date.
+      [jar] templates/web/rsc/StrutsXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/rsc/StrutsXml.xpt is up to date.
+      [jar] templates/web/site/SiteXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/site/SiteXml.xpt is up to date.
+      [jar] templates/web/taglib/ConstantsTag.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/taglib/ConstantsTag.xpt is up to date.
+      [jar] templates/web/taglib/ConstantsTei.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/taglib/ConstantsTei.xpt is up to date.
+      [jar] templates/web/test/EntityActionTest.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/test/EntityActionTest.xpt is up to date.
+      [jar] templates/web/test/StartupListenerTest.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/test/StartupListenerTest.xpt is up to date.
+      [jar] templates/web/testrsc/ApplicationContextDaoXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/testrsc/ApplicationContextDaoXml.xpt is up to date.
+      [jar] templates/web/testrsc/ApplicationContextServiceXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/testrsc/ApplicationContextServiceXml.xpt is up to date.
+      [jar] templates/web/testrsc/JdbcProperties.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/testrsc/JdbcProperties.xpt is up to date.
+      [jar] templates/web/testrsc/Log4jXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/testrsc/Log4jXml.xpt is up to date.
+      [jar] templates/web/testrsc/SampleDataXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/testrsc/SampleDataXml.xpt is up to date.
+      [jar] templates/web/testrsc/WebTestsXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/testrsc/WebTestsXml.xpt is up to date.
+      [jar] templates/web/webinf/ApplicationContextHibernate.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/webinf/ApplicationContextHibernate.xpt is up to date.
+      [jar] templates/web/webinf/MenuConfig.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/webinf/MenuConfig.xpt is up to date.
+      [jar] templates/web/webinf/ResinWeb.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/webinf/ResinWeb.xpt is up to date.
+      [jar] templates/web/webinf/TaglibTld.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/webinf/TaglibTld.xpt is up to date.
+      [jar] templates/web/webinf/UrlrewriteXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/webinf/UrlrewriteXml.xpt is up to date.
+      [jar] templates/web/webinf/WebXml.xpt omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:templates/web/webinf/WebXml.xpt is up to date.
+      [jar] workflow/IDAGenerator.mwe omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:workflow/IDAGenerator.mwe is up to date.
+      [jar] res/extras.zip omitted as /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar:res/extras.zip is up to date.
+      [jar] No Implementation-Title set.No Implementation-Version set.No Implementation-Vendor set.
+      [jar] Location: /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/build.xml:108: 
+
+build_and_update_libs:
+   [delete] DEPRECATED - Use of the implicit FileSet is deprecated.  Use a nested fileset element instead.
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator with patternSet{ includes: [*] excludes: [] }
+   [delete] Deleting /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar
+   [delete] Deleting /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar
+   [delete] Deleting /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.xmdl.wdl_0.7.0.20090816_alpha1.jar
+    [mkdir] Skipping /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator because it already exists.
+fileset: Setup scanner in dir /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins with patternSet{ includes: [] excludes: [] }
+     [copy] org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar added as org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar doesn't exist.
+     [copy] org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar added as org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar doesn't exist.
+     [copy] org.xmdl.wdl_0.7.0.20090816_alpha1.jar added as org.xmdl.wdl_0.7.0.20090816_alpha1.jar doesn't exist.
+     [copy] No sources found.
+     [copy] Copying 3 files to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator
+     [copy] Copying /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.xmdl.wdl.generator_0.7.0.20090816_alpha1.jar
+     [copy] Copying /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl_0.7.0.20090816_alpha1.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.xmdl.wdl_0.7.0.20090816_alpha1.jar
+     [copy] Copying /mnt/archive/mutfak/xmdl/org.xmdl.wdl.build/dist/plugins/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.xmdl.wdl.ida_0.7.0.20090816_alpha1.jar
+     [echo] /home/hakan/archive/opt/eclipse-xt/plugins 
+fileset: Setup scanner in dir /home/hakan/archive/opt/eclipse-xt/plugins with patternSet{ includes: [com.google.guice_1.0.1.v200907171100/aopalliance.jar, com.google.guice_1.0.1.v200907171100/guice-1.0_patched.jar, com.google.collect_0.8.0.v200907171100.jar, com.ibm.icu_4.0.1.v20090415.jar, org.antlr.runtime_3.0.0.v200803061811.jar, org.apache.commons.cli_1.0.0.v20080604-1500.jar, org.apache.commons.logging_1.1.1.v200904062255.jar, org.eclipse.emf.common_2.5.0.v200906151043.jar, org.eclipse.emf.ecore_2.5.0.v200906151043.jar, org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar, org.eclipse.emf.mwe.core_0.7.1.v200907170432.jar, org.eclipse.emf.mwe.utils_0.7.1.v200907170432.jar, org.eclipse.equinox.common_3.5.0.v20090520-1800.jar, org.eclipse.jdt.core_3.5.0.v_963.jar, org.eclipse.text_3.5.0.v20090513-2000.jar, org.eclipse.xpand_0.7.1.v200907170713.jar, org.eclipse.xtend_0.7.1.v200907170713.jar, org.eclipse.xtend.typesystem.emf_0.7.1.v200907170713.jar, org.eclipse.xtend.util.stdlib_0.7.1.v200907170713.jar, org.eclipse.xtext_0.7.1.v200907171100.jar, org.eclipse.xtext.log4j_1.2.15.v200907171100.jar, org.eclipse.xtext.util_0.7.1.v200907171100.jar, org.xmdl.wdl_0.7.0.20090815_alpha1.jar, org.xmdl.wdl.generator_0.7.0.20090815_alpha1.jar] excludes: [] }
+     [copy] com.google.collect_0.8.0.v200907171100.jar added as com.google.collect_0.8.0.v200907171100.jar doesn't exist.
+     [copy] com.google.guice_1.0.1.v200907171100/aopalliance.jar added as com.google.guice_1.0.1.v200907171100/aopalliance.jar doesn't exist.
+     [copy] com.google.guice_1.0.1.v200907171100/guice-1.0_patched.jar added as com.google.guice_1.0.1.v200907171100/guice-1.0_patched.jar doesn't exist.
+     [copy] com.ibm.icu_4.0.1.v20090415.jar added as com.ibm.icu_4.0.1.v20090415.jar doesn't exist.
+     [copy] org.antlr.runtime_3.0.0.v200803061811.jar added as org.antlr.runtime_3.0.0.v200803061811.jar doesn't exist.
+     [copy] org.apache.commons.cli_1.0.0.v20080604-1500.jar added as org.apache.commons.cli_1.0.0.v20080604-1500.jar doesn't exist.
+     [copy] org.apache.commons.logging_1.1.1.v200904062255.jar added as org.apache.commons.logging_1.1.1.v200904062255.jar doesn't exist.
+     [copy] org.eclipse.emf.common_2.5.0.v200906151043.jar added as org.eclipse.emf.common_2.5.0.v200906151043.jar doesn't exist.
+     [copy] org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar added as org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar doesn't exist.
+     [copy] org.eclipse.emf.ecore_2.5.0.v200906151043.jar added as org.eclipse.emf.ecore_2.5.0.v200906151043.jar doesn't exist.
+     [copy] org.eclipse.emf.mwe.core_0.7.1.v200907170432.jar added as org.eclipse.emf.mwe.core_0.7.1.v200907170432.jar doesn't exist.
+     [copy] org.eclipse.emf.mwe.utils_0.7.1.v200907170432.jar added as org.eclipse.emf.mwe.utils_0.7.1.v200907170432.jar doesn't exist.
+     [copy] org.eclipse.equinox.common_3.5.0.v20090520-1800.jar added as org.eclipse.equinox.common_3.5.0.v20090520-1800.jar doesn't exist.
+     [copy] org.eclipse.jdt.core_3.5.0.v_963.jar added as org.eclipse.jdt.core_3.5.0.v_963.jar doesn't exist.
+     [copy] org.eclipse.text_3.5.0.v20090513-2000.jar added as org.eclipse.text_3.5.0.v20090513-2000.jar doesn't exist.
+     [copy] org.eclipse.xpand_0.7.1.v200907170713.jar added as org.eclipse.xpand_0.7.1.v200907170713.jar doesn't exist.
+     [copy] org.eclipse.xtend.typesystem.emf_0.7.1.v200907170713.jar added as org.eclipse.xtend.typesystem.emf_0.7.1.v200907170713.jar doesn't exist.
+     [copy] org.eclipse.xtend.util.stdlib_0.7.1.v200907170713.jar added as org.eclipse.xtend.util.stdlib_0.7.1.v200907170713.jar doesn't exist.
+     [copy] org.eclipse.xtend_0.7.1.v200907170713.jar added as org.eclipse.xtend_0.7.1.v200907170713.jar doesn't exist.
+     [copy] org.eclipse.xtext.log4j_1.2.15.v200907171100.jar added as org.eclipse.xtext.log4j_1.2.15.v200907171100.jar doesn't exist.
+     [copy] org.eclipse.xtext.util_0.7.1.v200907171100.jar added as org.eclipse.xtext.util_0.7.1.v200907171100.jar doesn't exist.
+     [copy] org.eclipse.xtext_0.7.1.v200907171100.jar added as org.eclipse.xtext_0.7.1.v200907171100.jar doesn't exist.
+     [copy] No sources found.
+     [copy] Copying 22 files to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.xtext.log4j_1.2.15.v200907171100.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.xtext.log4j_1.2.15.v200907171100.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.apache.commons.cli_1.0.0.v20080604-1500.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.apache.commons.cli_1.0.0.v20080604-1500.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.xpand_0.7.1.v200907170713.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.xpand_0.7.1.v200907170713.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.emf.ecore_2.5.0.v200906151043.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.emf.ecore_2.5.0.v200906151043.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.emf.common_2.5.0.v200906151043.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.emf.common_2.5.0.v200906151043.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.apache.commons.logging_1.1.1.v200904062255.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.apache.commons.logging_1.1.1.v200904062255.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.antlr.runtime_3.0.0.v200803061811.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.antlr.runtime_3.0.0.v200803061811.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.equinox.common_3.5.0.v20090520-1800.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.equinox.common_3.5.0.v20090520-1800.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.emf.mwe.core_0.7.1.v200907170432.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.emf.mwe.core_0.7.1.v200907170432.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.emf.mwe.utils_0.7.1.v200907170432.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.emf.mwe.utils_0.7.1.v200907170432.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/com.google.guice_1.0.1.v200907171100/aopalliance.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/com.google.guice_1.0.1.v200907171100/aopalliance.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/com.google.guice_1.0.1.v200907171100/guice-1.0_patched.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/com.google.guice_1.0.1.v200907171100/guice-1.0_patched.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.xtend.util.stdlib_0.7.1.v200907170713.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.xtend.util.stdlib_0.7.1.v200907170713.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.xtend.typesystem.emf_0.7.1.v200907170713.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.xtend.typesystem.emf_0.7.1.v200907170713.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.xtext.util_0.7.1.v200907171100.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.xtext.util_0.7.1.v200907171100.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.xtend_0.7.1.v200907170713.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.xtend_0.7.1.v200907170713.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.jdt.core_3.5.0.v_963.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.jdt.core_3.5.0.v_963.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/com.ibm.icu_4.0.1.v20090415.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/com.ibm.icu_4.0.1.v20090415.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.text_3.5.0.v20090513-2000.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.text_3.5.0.v20090513-2000.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/com.google.collect_0.8.0.v200907171100.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/com.google.collect_0.8.0.v200907171100.jar
+     [copy] Copying /home/hakan/archive/opt/eclipse-xt/plugins/org.eclipse.xtext_0.7.1.v200907171100.jar to /mnt/archive/mutfak/xmdl/org.xmdl.wdl.taslak/generator/org.eclipse.xtext_0.7.1.v200907171100.jar
+
+BUILD SUCCESSFUL
+Total time: 0 seconds
