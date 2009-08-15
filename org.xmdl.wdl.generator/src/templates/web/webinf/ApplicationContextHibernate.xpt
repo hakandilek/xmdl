@@ -18,7 +18,7 @@
                 <value>org.xmdl.mesken.model.User</value>
                 <value>org.xmdl.mesken.model.Role</value>
 «FOREACH this.types.typeSelect(Entity) AS entity-»
-                <value>org.xmdl.taslak.model.«entity.name»</value>
+                <value>«this.project.basePackage».model.«entity.name»</value>
 «ENDFOREACH-»
             </list>
         </property>
