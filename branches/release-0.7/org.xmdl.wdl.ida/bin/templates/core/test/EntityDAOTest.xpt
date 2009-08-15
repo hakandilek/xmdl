@@ -1,0 +1,134 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+  «FILE "test/java/" + this.project().basePackagePath() + "/dao/"+ this.name + "DAOTest.java" TO_CORE_SRC-»
+package «this.basePackageName()».dao;
+
+import java.util.*;
+import org.springframework.dao.DataAccessException;
+import org.xmdl.ida.lib.test.BaseDaoTestCase;
+import «this.basePackageName()».model.*;
+import «this.basePackageName()».model.search.*;
+
+/**
+ * «this.name» DAO Test Case
+ */ 
+public class «this.name»DAOTest extends BaseDaoTestCase {
+
+    private «this.name»DAO «this.name.toFirstLower()»DAO = null;
+
+    public void set«this.name»DAO(«this.name»DAO «this.name.toFirstLower()»DAO) {
+        this.«this.name.toFirstLower()»DAO = «this.name.toFirstLower()»DAO;
+    }
+
+    public void testAddAndRemove«this.name»() throws Exception {
+        «this.name» «this.name.toFirstLower()» = new «this.name»();
+
+«FOREACH this.attributes AS attribute -»
+    «IF !attribute.isReference() »
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
+    «ENDIF»
+    «IF attribute.isManyToOne() -»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «attribute.name.toFirstLower()».setId(1L);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    «ENDIF-»
+    «IF attribute.isEmbed() -»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
+            «IF !attrib.isReference()-»
+        «attribute.name.toFirstLower()».set«attrib.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
+            «ENDIF-»
+    		«IF attribute.isManyToOne() -»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «attribute.name.toFirstLower()».setId(1L);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    		«ENDIF-»
+        «ENDFOREACH-»
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    «ENDIF-»
+«ENDFOREACH-» 
+
+        «this.name.toFirstLower()» = «this.name.toFirstLower()»DAO.save(«this.name.toFirstLower()»);
+        flush();
+
+        «this.name.toFirstLower()» = «this.name.toFirstLower()»DAO.get(«this.name.toFirstLower()».getId());
+
+        assertNotNull(«this.name.toFirstLower()».getId());
+«FOREACH this.attributes AS attribute-»
+    «IF!attribute.isReference()-»
+        assertEquals(«attribute.randomizeWrap("1")», «this.name.toFirstLower()».get«attribute.name.toFirstUpper()»());
+    «ENDIF-»
+«ENDFOREACH-» 
+
+        log.debug("removing «this.name.toFirstLower()»...");
+        «this.name.toFirstLower()»DAO.remove(«this.name.toFirstLower()».getId());
+        flush();
+
+        try {
+            «this.name.toFirstLower()»DAO.get(«this.name.toFirstLower()».getId());
+            fail("«this.name» found in database");
+        } catch (DataAccessException dae) {
+            log.debug("Expected exception: " + dae.getMessage());
+            assertNotNull(dae);
+        }
+    }
+
+    public void testSearch() throws Exception {
+        «this.name»Search search = new «this.name»Search();
+«FOREACH this.attributes AS attribute-»
+	«IF !attribute.isEmbed()»
+    «IF!attribute.isReference()-»
+	    «IF attribute.isComparable()-»
+        search.set«attribute.name.toFirstUpper()»Min(«attribute.randomizeWrap("1")»);
+        search.set«attribute.name.toFirstUpper()»Max(«attribute.randomizeWrap("1")»);
+	    «ELSE-»
+        search.set«attribute.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
+	    «ENDIF-»
+    «ENDIF-»
+    «ENDIF-»
+«ENDFOREACH-»
+        Collection<«this.name»> «this.name.toFirstLower()»s = «this.name.toFirstLower()»DAO.search(search);
+        assertTrue(«this.name.toFirstLower()»s.size() > 0);
+    }
+
+    protected void onSetUpBeforeTransaction() throws Exception {
+        super.onSetUpBeforeTransaction();
+
+        «this.name» «this.name.toFirstLower()» = new «this.name»();
+«FOREACH this.attributes AS attribute-»
+    «IF!attribute.isReference() »
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
+    «ENDIF »
+    «IF attribute.isManyToOne() -»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «attribute.name.toFirstLower()».setId(1L);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    «ENDIF -»
+    «IF attribute.isEmbed() -»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
+            «IF !attrib.isReference()-»
+        «attribute.name.toFirstLower()».set«attrib.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
+            «ENDIF -»
+    		«IF attribute.isManyToOne() -»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «attribute.name.toFirstLower()».setId(1L);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    		«ENDIF -»
+        «ENDFOREACH -»
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    «ENDIF -»
+«ENDFOREACH -» 
+        «this.name.toFirstLower()»DAO.save(«this.name.toFirstLower()»);
+    }
+    
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".dao.t.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
+}
+«ENDFILE-»
+«ENDDEFINE»
