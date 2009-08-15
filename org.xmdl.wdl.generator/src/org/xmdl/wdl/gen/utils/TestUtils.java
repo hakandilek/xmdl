@@ -10,7 +10,6 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -22,17 +21,13 @@ import org.xmdl.wdl.Enumeration;
 import org.xmdl.wdl.EnumerationLiteral;
 import org.xmdl.wdl.Type;
 
-public class TestUtils {
+public abstract class TestUtils {
 	
 	private Log logger = LogFactory.getLog(this.getClass());
-
-	public static final TestUtils INSTANCE = new TestUtils();
 
 	public static final String TEST_PRESERVE_PATH = "/model/testValues.properties";
 
 	private Map<Attribute, Map<String, Object>> randomValues = new HashMap<Attribute, Map<String, Object>>();
-
-	private RandomUtils utils = RandomUtils.INST;
 
 	private File preserveFile;
 
@@ -99,71 +94,9 @@ public class TestUtils {
 		return randomValue(attrib, null);
 	}
 
-	public Object randomValue(Attribute attrib, String variant) {
-		Object preserved = getPreservedValue(attrib, variant);
-		logger.debug("entity   :" + attrib.eContainer());
-		logger.debug("attrib   :" + attrib);
-		logger.debug("preserved:" + preserved);
-		if (preserved != null)
-			return preserved;
+	public abstract Object randomValue(Attribute attrib, String variant);
 
-		Type type = attrib.getType();
-		int length = IDAExtensionUtils.columnSize(attrib);
-		Object result = null;
-		
-		BasicType basicType = ExtensionUtils.basicType(type);
-		logger.debug("basicType:" + basicType);
-		if (basicType != null)
-		{
-			switch (basicType) {
-			case BOOLEAN:
-				result = utils.randomBoolean();
-				break;
-
-			case DOUBLE:
-			case FLOAT:
-				result = utils.randomDouble(Math.pow(10, length));
-				break;
-
-			case INTEGER:
-				result = utils.randomInt((int) Math.pow(10, length));
-				break;
-
-			case LONG:
-				result = utils.randomLong();
-				break;
-
-			case STRING:
-				result = utils.randomString(length);
-				break;
-
-			case DATE:
-				// 347068800000L = 10 years in msecs
-				result = utils.randomLong(347068800000L);
-				break;
-
-			default:
-				break;
-			}
-		} else {
-			if (type instanceof Enumeration) {
-				Enumeration enumer = (Enumeration) type;
-				List<EnumerationLiteral> literals = enumer.getLiterals();
-				logger.debug("literals:" + literals);
-				EnumerationLiteral literal = (EnumerationLiteral) utils
-						.randomObject(literals);
-				result = literal;
-			}
-		}
-		logger.debug("result:" + result);
-
-		if (result != null) {
-			preserveValue(attrib, variant, result);
-		}
-		return result;
-	}
-
-	private void preserveValue(Attribute attrib, String variant, Object value) {
+	protected void preserveValue(Attribute attrib, String variant, Object value) {
 		File file = getPreserveFile(attrib);
 		if (file == null)
 			return;
@@ -209,7 +142,7 @@ public class TestUtils {
 		return name;
 	}
 
-	private Object getPreservedValue(Attribute attrib, String variant) {
+	protected Object getPreservedValue(Attribute attrib, String variant) {
 		File file = getPreserveFile(attrib);
 		if (file == null)
 			return null;
