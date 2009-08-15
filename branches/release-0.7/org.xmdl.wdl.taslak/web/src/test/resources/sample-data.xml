@@ -33,7 +33,7 @@
             <value description="phone_number"/>
             <value description="postal_code">80210</value>
             <value description="province">CO</value>
-            <value description="website">http://code.google.com/p/taslak/</value>
+            <value description="website">http://www.taslak.com/</value>
             <value description="password_hint"><![CDATA[A male kitty.]]></value>
             <value description="version">1</value>
             <value description="account_enabled">1</value>
@@ -54,7 +54,7 @@
             <value description="phone_number"/>
             <value description="postal_code">80210</value>
             <value description="province">CO</value>
-            <value description="website">http://code.google.com/p/taslak/</value>
+            <value description="website">http://www.taslak.com/</value>
             <value description="password_hint"><![CDATA[Not a female kitty.]]></value>
             <value description="version">1</value>
             <value description="account_enabled">1</value>
