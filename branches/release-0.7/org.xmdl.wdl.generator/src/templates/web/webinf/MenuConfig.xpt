@@ -23,7 +23,7 @@
             <Item name="Clickstream" title="menu.clickstream" page="/admin/clickstreams.jsp"/>
         </Menu>
 
-        <Menu name="org.xmdl.taslakMenu" title="menu.title.org.xmdl.taslak" description="org.xmdl.taslak" roles="ROLE_ADMIN,ROLE_USER">
+        <Menu name="«this.project.basePackage»Menu" title="menu.title.«this.project.basePackage»" description="«this.project.basePackage»" roles="ROLE_ADMIN,ROLE_USER">
 «FOREACH this.types.typeSelect(Entity) AS entity-»
             <Item name="«entity.name»Edit"   title="menu.edit.«entity.name»"   page="/«entity.name»/edit«entity.name».do"/>
             <Item name="«entity.name»Search" title="menu.search.«entity.name»" page="/«entity.name»/«entity.name.toFirstLower()»s.do"/>

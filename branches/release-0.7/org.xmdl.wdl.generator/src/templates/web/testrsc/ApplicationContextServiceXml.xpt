@@ -71,7 +71,7 @@
     </bean>
 
 «FOREACH this.types.typeSelect(Entity) AS entity-»
-    <bean id="«entity.name.toFirstLower()»Manager" class="org.xmdl.taslak.service.impl.«entity.name»ManagerImpl">
+    <bean id="«entity.name.toFirstLower()»Manager" class="«this.project.basePackage».service.impl.«entity.name»ManagerImpl">
         <constructor-arg ref="«entity.name.toFirstLower()»DAO"/>
     </bean>
 «ENDFOREACH-»
