@@ -1,0 +1,27 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+«FILE "main/webapp/WEB-INF/pages/" + this.name.toLowerCase() + "ListJson.jsp" TO_WEB_SRC-»
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/json;charset=utf-8" %>
+<%@ include file="/common/taglibs.jsp"%>
+[
+<s:iterator value="«this.name.toFirstLower()»s" status="iteratorStatus">
+	"«this.name.toFirstLower()»": {
+		"id" : <s:property value="id"/>,
+«FOREACH this.attributes AS attribute-»
+    «IF !attribute.isReference()-»
+		"«attribute.name.toFirstLower()»" : <s:property value="«attribute.name.toFirstLower()»" />, 
+    «ELSE-»
+		"«attribute.name.toFirstLower()».id" : <s:property value="«attribute.name.toFirstLower()».id" />, 
+    «ENDIF-»
+«ENDFOREACH-» 
+	}<s:if test="!#iteratorStatus.last">,</s:if>
+	
+</s:iterator>
+]
+
+«ENDFILE-»
+«ENDDEFINE»

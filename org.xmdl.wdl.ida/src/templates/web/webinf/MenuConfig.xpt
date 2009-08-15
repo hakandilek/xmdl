@@ -1,0 +1,37 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE model FOR wdl::Model»
+«FILE "main/webapp/WEB-INF/menu-config.xml" TO_WEB_SRC-»
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuConfig>
+    <Displayers>
+        <Displayer name="CoolMenu" type="net.sf.navigator.displayer.CoolMenuDisplayer"/>
+        <Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>
+    </Displayers>
+    <Menus>
+        <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu.do" roles="ROLE_ADMIN,ROLE_USER"/>
+        <Menu name="UserMenu" title="menu.user" description="User Menu" page="/editProfile.do" roles="ROLE_ADMIN,ROLE_USER"/>
+        <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="ROLE_ADMIN" width="120" page="/admin/users.do">
+            <Item name="ViewUsers" title="menu.admin.users" page="/admin/users.do"/>
+            <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/admin/activeUsers.do"/>
+            <Element name="ReloadContext" title="menu.admin.reload" page="/admin/reload.do"/>
+            <Item name="FileUpload" title="menu.selectFile" page="/uploadFile.do"/>
+            <Item name="FlushCache" title="menu.flushCache" page="/admin/flushCache.do"/>
+            <Item name="Clickstream" title="menu.clickstream" page="/admin/clickstreams.jsp"/>
+        </Menu>
+
+        <Menu name="«this.project.basePackage»Menu" title="menu.title.«this.project.basePackage»" description="«this.project.basePackage»" roles="ROLE_ADMIN,ROLE_USER">
+«FOREACH this.types.typeSelect(Entity) AS entity-»
+            <Item name="«entity.name»Edit"   title="menu.edit.«entity.name»"   page="/«entity.name»/edit«entity.name».do"/>
+            <Item name="«entity.name»Search" title="menu.search.«entity.name»" page="/«entity.name»/«entity.name.toFirstLower()»s.do"/>
+«ENDFOREACH-»
+        </Menu>
+
+        <Menu name="Logout" title="user.logout" page="/logout.jsp" roles="ROLE_ADMIN,ROLE_USER"/>
+    </Menus>
+</MenuConfig>
+«ENDFILE-»
+«ENDDEFINE»

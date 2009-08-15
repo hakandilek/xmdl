@@ -1,0 +1,159 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+«FILE "test/java/" + this.project().basePackagePath() + "/webapp/action/" + this.name + "ActionTest.java" TO_WEB_SRC-»
+package «this.project().basePackage».webapp.action;
+
+import «this.project().basePackage».service.*;
+import «this.project().basePackage».model.*;
+import «this.project().basePackage».model.search.*;
+import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
+import org.xmdl.ida.lib.web.test.BaseActionTestCase;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.hibernate.exception.ConstraintViolationException;
+import java.util.*;
+
+/**
+ * Web action test case for «this.name»Action
+ *  
+ * @author Hakan Dilek
+ */
+public class «this.name»ActionTest extends BaseActionTestCase {
+
+    private «this.name»Action action;
+
+    @Override
+    protected void onSetUpBeforeTransaction() throws Exception {
+        super.onSetUpBeforeTransaction();
+        action = new «this.name»Action();
+        «this.name»Manager «this.name.toFirstLower()»Manager = («this.name»Manager) applicationContext.getBean("«this.name.toFirstLower()»Manager");
+        action.set«this.name»Manager(«this.name.toFirstLower()»Manager);
+
+        // add a test «this.name.toFirstLower()» to the database
+        «this.name» «this.name.toFirstLower()» = new «this.name»();
+
+        // enter all required fields
+«FOREACH this.attributes AS attribute-»
+    «IF !attribute.isReference()-»
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
+    «ENDIF-»
+    «IF attribute.isManyToOne() -»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «attribute.name.toFirstLower()».setId(1L);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    «ENDIF -»
+    «IF attribute.isEmbed() -»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «FOREACH attribute.type.eContents.typeSelect(Attribute) AS attrib-»
+            «IF !attrib.isReference()-»
+        «attribute.name.toFirstLower()».set«attrib.name.toFirstUpper()»(«attribute.randomizeWrap("1")»);
+            «ENDIF -»
+    	    «IF attribute.isManyToOne() -»
+        «attribute.type.name» «attribute.name.toFirstLower()» = new «attribute.type.name»();
+        «attribute.name.toFirstLower()».setId(1L);
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    		«ENDIF -»
+        «ENDFOREACH -»
+        «this.name.toFirstLower()».set«attribute.name.toFirstUpper()»(«attribute.name.toFirstLower()»);
+    «ENDIF -»
+«ENDFOREACH-» 
+
+«FOREACH this.attributes AS attribute-»
+    «IF this.isEnumeration()-»
+        action.set«attribute.name.toFirstUpper()»Ids(«attribute.name.toFirstLower()»Ids);
+    «ENDIF-»
+«ENDFOREACH-» 
+
+        «this.name.toFirstLower()»Manager.save(«this.name.toFirstLower()»);
+    }
+
+    public void testSearch() throws Exception {
+    «FOREACH this.attributes AS attribute-»
+        «IF this.isEnumeration()-»
+        action.set«attribute.name.toFirstUpper()»Ids(null);
+        «ENDIF-»
+    «ENDFOREACH-» 
+        «this.name»Search search = new «this.name»Search();
+        action.set«this.name»Search(search);
+
+        assertEquals(action.list(), ActionSupport.SUCCESS);
+        assertTrue(action.get«this.name»s().size() >= 1);
+    «FOREACH this.attributes AS attribute-»
+        «IF this.isEnumeration()-»
+        action.set«attribute.name.toFirstUpper()»Ids(«attribute.name.toFirstLower()»Ids);
+        «ENDIF-»
+    «ENDFOREACH-» 
+    }
+
+    public void testCopy() throws Exception {
+        action.setIdToCopy(1L);
+        assertEquals("success", action.copy());
+        assertNotNull(action.get«this.name»());
+        assertNull(action.get«this.name»().getId());
+    }
+
+    public void testEdit() throws Exception {
+        log.debug("testing edit...");
+        action.setId(1L);
+        assertNull(action.get«this.name»());
+        assertEquals("success", action.edit());
+        assertNotNull(action.get«this.name»());
+        assertFalse(action.hasActionErrors());
+    }
+
+    public void testSave() throws Exception {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        ServletActionContext.setRequest(request);
+        action.setId(1L);
+        assertEquals("success", action.edit());
+        assertNotNull(action.get«this.name»());
+
+        «this.name» «this.name.toFirstLower()» = action.get«this.name»();
+        // update required fields
+
+        action.set«this.name»(«this.name.toFirstLower()»);
+
+        assertEquals("input", action.save());
+        assertFalse(action.hasActionErrors());
+        assertFalse(action.hasFieldErrors());
+        assertNotNull(request.getSession().getAttribute("messages"));
+    }
+
+    public void testRemove() throws Exception {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        ServletActionContext.setRequest(request);
+        action.setDelete("");
+        «this.name» «this.name.toFirstLower()» = new «this.name»();
+        «this.name.toFirstLower()».setId(2L);
+        action.set«this.name»(«this.name.toFirstLower()»);
+        assertEquals("success", action.delete());
+        assertNotNull(request.getSession().getAttribute("messages"));
+    }
+
+    public void testMassDelete() throws Exception {
+        «this.name» p = action.get«this.name»Manager().get(new Long(3));
+
+        List<String> deleteIds = new ArrayList<String>();
+        deleteIds.add(p.getId() + "");
+
+        action.setDeleteId(deleteIds);
+        try {
+            assertEquals("success", action.deleteMass());
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+        } catch (ConstraintViolationException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".act.t.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
+}
+«ENDFILE-»
+«ENDDEFINE»

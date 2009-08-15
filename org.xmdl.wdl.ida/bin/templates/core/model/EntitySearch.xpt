@@ -1,0 +1,110 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+  «FILE "main/java/" + this.project().basePackagePath() + "/model/search/"+ this.name + "Search.java" TO_CORE_SRC-»
+package «this.basePackageName()».model.search;
+
+import java.util.*;
+import java.io.Serializable;
+import java.text.MessageFormat;
+import «this.basePackageName()».model.*;
+import org.xmdl.mesken.model.*;
+
+/**
+ * «this.name» entity search bean
+ */ 
+public class «this.name»Search «PROTECT CSTART '/*' CEND '*/' ID this.name+".ens.ext"-» «ENDPROTECT-» implements Serializable «PROTECT CSTART '/*' CEND '*/' ID this.name+".ens.imp"-»/*, AnotherInterface */«ENDPROTECT-» {
+    
+    «FOREACH this.attributes AS attribute»
+    	«IF !attribute.isEmbed()»
+    		«IF attribute.type.isComparable()»
+
+    private «attribute.type.name» «attribute.name.toFirstLower()»Min;
+
+    private «attribute.type.name» «attribute.name.toFirstLower()»Max;
+			«ELSE»
+
+    private «attribute.type.name» «attribute.name.toFirstLower()»;
+    		«ENDIF»
+    	«ENDIF»
+    «ENDFOREACH»
+
+    public «this.name»Search() {
+    }
+
+    «FOREACH this.attributes AS attribute»
+    	«IF !attribute.isEmbed()»
+    		«IF attribute.type.isComparable()»
+
+    public «attribute.type.name» get«attribute.name.toFirstUpper()»Min() {
+        return «attribute.name.toFirstLower()»Min;
+    }
+
+    public void set«attribute.name.toFirstUpper()»Min(«attribute.type.name» «attribute.name.toFirstLower()»Min) {
+        this.«attribute.name.toFirstLower()»Min = «attribute.name.toFirstLower()»Min;
+    }
+
+    public «attribute.type.name» get«attribute.name.toFirstUpper()»Max() {
+        return «attribute.name.toFirstLower()»Max;
+    }
+
+    public void set«attribute.name.toFirstUpper()»Max(«attribute.type.name» «attribute.name.toFirstLower()»Max) {
+        this.«attribute.name.toFirstLower()»Max = «attribute.name.toFirstLower()»Max;
+    }
+			«ELSE»
+
+    public «attribute.type.name» get«attribute.name.toFirstUpper()»() {
+        return «attribute.name.toFirstLower()»;
+    }
+
+    public void set«attribute.name.toFirstUpper()»(«attribute.type.name» «attribute.name.toFirstLower()») {
+        this.«attribute.name.toFirstLower()» = «attribute.name.toFirstLower()»;
+    }
+    		«ENDIF»
+    	«ENDIF»
+    «ENDFOREACH»
+
+	@Override
+    public String toString() {
+    	«this.searchToString()»;
+    }
+
+	@Override
+    public int hashCode() {
+        int result = 1;
+    «FOREACH this.attributes AS attribute»
+    	«IF !attribute.isEmbed()»
+    		«IF attribute.type.isComparable()»
+    			«IF attribute.type.isPrimitive()»
+        if («attribute.name.toFirstLower()»Min != null) result = 31 * result + ("" + «attribute.name.toFirstLower()»Min).hashCode();
+        if («attribute.name.toFirstLower()»Max != null) result = 31 * result + ("" + «attribute.name.toFirstLower()»Max).hashCode();
+    			«ELSE»
+        if («attribute.name.toFirstLower()»Min != null) result = 31 * result + «attribute.name.toFirstLower()»Min.hashCode();
+		if («attribute.name.toFirstLower()»Max != null) result = 31 * result + «attribute.name.toFirstLower()»Max.hashCode();
+    			«ENDIF»
+			«ELSE»
+    			«IF attribute.type.isPrimitive()»
+        if («attribute.name.toFirstLower()» != null) result = 31 * result + ("" + «attribute.name.toFirstLower()»).hashCode();
+    			«ELSE»
+        if («attribute.name.toFirstLower()» != null) result = 31 * result + «attribute.name.toFirstLower()».hashCode();
+    			«ENDIF»
+    		«ENDIF»
+    	«ENDIF»
+    «ENDFOREACH»
+        return result;
+    }
+
+	@Override
+	public boolean equals(Object obj) {
+		return hashCode() == obj.hashCode();
+	}
+    
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".ens.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
+}
+  «ENDFILE»
+«ENDDEFINE»
