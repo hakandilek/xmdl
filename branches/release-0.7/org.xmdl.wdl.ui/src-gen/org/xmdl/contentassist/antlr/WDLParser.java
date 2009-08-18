@@ -44,6 +44,7 @@ public class WDLParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 					put(grammarAccess.getAttributeManyReferenceAccess().getAlternatives(), "rule__AttributeManyReference__Alternatives");
+					put(grammarAccess.getQueryOrderTypeAccess().getAlternatives(), "rule__QueryOrderType__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getProjectAccess().getGroup(), "rule__Project__Group__0");
 					put(grammarAccess.getSimpleTypeAccess().getGroup(), "rule__SimpleType__Group__0");
@@ -57,8 +58,19 @@ public class WDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAttributeAccess().getGroup(), "rule__Attribute__Group__0");
 					put(grammarAccess.getEnumerationAccess().getGroup(), "rule__Enumeration__Group__0");
 					put(grammarAccess.getEnumerationLiteralAccess().getGroup(), "rule__EnumerationLiteral__Group__0");
+					put(grammarAccess.getQueryAccess().getGroup(), "rule__Query__Group__0");
+					put(grammarAccess.getQueryAccess().getGroup_4(), "rule__Query__Group_4__0");
+					put(grammarAccess.getQueryAccess().getGroup_9(), "rule__Query__Group_9__0");
+					put(grammarAccess.getQueryAccess().getGroup_13(), "rule__Query__Group_13__0");
+					put(grammarAccess.getQueryAccess().getGroup_14(), "rule__Query__Group_14__0");
+					put(grammarAccess.getQueryAccess().getGroup_15(), "rule__Query__Group_15__0");
+					put(grammarAccess.getQueryAccess().getGroup_15_3(), "rule__Query__Group_15_3__0");
+					put(grammarAccess.getQueryParameterAccess().getGroup(), "rule__QueryParameter__Group__0");
+					put(grammarAccess.getQueryFilterAccess().getGroup(), "rule__QueryFilter__Group__0");
+					put(grammarAccess.getQueryOrderAccess().getGroup(), "rule__QueryOrder__Group__0");
 					put(grammarAccess.getModelAccess().getProjectAssignment_0(), "rule__Model__ProjectAssignment_0");
 					put(grammarAccess.getModelAccess().getTypesAssignment_1(), "rule__Model__TypesAssignment_1");
+					put(grammarAccess.getModelAccess().getQueriesAssignment_2(), "rule__Model__QueriesAssignment_2");
 					put(grammarAccess.getProjectAccess().getNameAssignment_4(), "rule__Project__NameAssignment_4");
 					put(grammarAccess.getProjectAccess().getBasePackageAssignment_7(), "rule__Project__BasePackageAssignment_7");
 					put(grammarAccess.getSimpleTypeAccess().getNameAssignment_1(), "rule__SimpleType__NameAssignment_1");
@@ -77,6 +89,24 @@ public class WDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnumerationAccess().getLiteralsAssignment_3(), "rule__Enumeration__LiteralsAssignment_3");
 					put(grammarAccess.getEnumerationLiteralAccess().getNameAssignment_0(), "rule__EnumerationLiteral__NameAssignment_0");
 					put(grammarAccess.getEnumerationLiteralAccess().getOrdinalAssignment_2(), "rule__EnumerationLiteral__OrdinalAssignment_2");
+					put(grammarAccess.getQueryAccess().getNameAssignment_1(), "rule__Query__NameAssignment_1");
+					put(grammarAccess.getQueryAccess().getEntitiesAssignment_3(), "rule__Query__EntitiesAssignment_3");
+					put(grammarAccess.getQueryAccess().getEntitiesAssignment_4_1(), "rule__Query__EntitiesAssignment_4_1");
+					put(grammarAccess.getQueryAccess().getParametersAssignment_8(), "rule__Query__ParametersAssignment_8");
+					put(grammarAccess.getQueryAccess().getParametersAssignment_9_1(), "rule__Query__ParametersAssignment_9_1");
+					put(grammarAccess.getQueryAccess().getFiltersAssignment_12(), "rule__Query__FiltersAssignment_12");
+					put(grammarAccess.getQueryAccess().getMaxAssignment_13_2(), "rule__Query__MaxAssignment_13_2");
+					put(grammarAccess.getQueryAccess().getOffsetAssignment_14_2(), "rule__Query__OffsetAssignment_14_2");
+					put(grammarAccess.getQueryAccess().getOrdersAssignment_15_2(), "rule__Query__OrdersAssignment_15_2");
+					put(grammarAccess.getQueryAccess().getOrdersAssignment_15_3_1(), "rule__Query__OrdersAssignment_15_3_1");
+					put(grammarAccess.getQueryParameterAccess().getTypeAssignment_0(), "rule__QueryParameter__TypeAssignment_0");
+					put(grammarAccess.getQueryParameterAccess().getNameAssignment_1(), "rule__QueryParameter__NameAssignment_1");
+					put(grammarAccess.getQueryFilterAccess().getEntityAssignment_0(), "rule__QueryFilter__EntityAssignment_0");
+					put(grammarAccess.getQueryFilterAccess().getAttributeAssignment_2(), "rule__QueryFilter__AttributeAssignment_2");
+					put(grammarAccess.getQueryFilterAccess().getValueAssignment_4(), "rule__QueryFilter__ValueAssignment_4");
+					put(grammarAccess.getQueryOrderAccess().getEntityAssignment_0(), "rule__QueryOrder__EntityAssignment_0");
+					put(grammarAccess.getQueryOrderAccess().getAttributeAssignment_2(), "rule__QueryOrder__AttributeAssignment_2");
+					put(grammarAccess.getQueryOrderAccess().getTypeAssignment_3(), "rule__QueryOrder__TypeAssignment_3");
 				}
 			};
 		}
