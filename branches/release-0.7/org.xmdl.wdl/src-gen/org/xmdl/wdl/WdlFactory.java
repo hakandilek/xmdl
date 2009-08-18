@@ -116,6 +116,42 @@ public interface WdlFactory extends EFactory
   EnumerationLiteral createEnumerationLiteral();
 
   /**
+   * Returns a new object of class '<em>Query</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Query</em>'.
+   * @generated
+   */
+  Query createQuery();
+
+  /**
+   * Returns a new object of class '<em>Query Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Query Parameter</em>'.
+   * @generated
+   */
+  QueryParameter createQueryParameter();
+
+  /**
+   * Returns a new object of class '<em>Query Filter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Query Filter</em>'.
+   * @generated
+   */
+  QueryFilter createQueryFilter();
+
+  /**
+   * Returns a new object of class '<em>Query Order</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Query Order</em>'.
+   * @generated
+   */
+  QueryOrder createQueryOrder();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.xmdl.wdl.Model#getProject <em>Project</em>}</li>
  *   <li>{@link org.xmdl.wdl.Model#getTypes <em>Types</em>}</li>
+ *   <li>{@link org.xmdl.wdl.Model#getQueries <em>Queries</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,5 +70,21 @@ public interface Model extends EObject
    * @generated
    */
   EList<Type> getTypes();
+
+  /**
+   * Returns the value of the '<em><b>Queries</b></em>' containment reference list.
+   * The list contents are of type {@link org.xmdl.wdl.Query}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Queries</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Queries</em>' containment reference list.
+   * @see org.xmdl.wdl.WdlPackage#getModel_Queries()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Query> getQueries();
 
 } // Model

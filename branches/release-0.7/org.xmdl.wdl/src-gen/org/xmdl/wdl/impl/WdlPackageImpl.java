@@ -21,6 +21,11 @@ import org.xmdl.wdl.Enumeration;
 import org.xmdl.wdl.EnumerationLiteral;
 import org.xmdl.wdl.Model;
 import org.xmdl.wdl.Project;
+import org.xmdl.wdl.Query;
+import org.xmdl.wdl.QueryFilter;
+import org.xmdl.wdl.QueryOrder;
+import org.xmdl.wdl.QueryOrderType;
+import org.xmdl.wdl.QueryParameter;
 import org.xmdl.wdl.SimpleType;
 import org.xmdl.wdl.Type;
 import org.xmdl.wdl.WdlFactory;
@@ -109,7 +114,42 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass queryEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass queryParameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass queryFilterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass queryOrderEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EEnum attributeManyReferenceEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum queryOrderTypeEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -202,6 +242,16 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
   public EReference getModel_Types()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModel_Queries()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -449,9 +499,209 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getQuery()
+  {
+    return queryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getQuery_Name()
+  {
+    return (EAttribute)queryEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getQuery_Entities()
+  {
+    return (EReference)queryEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getQuery_Parameters()
+  {
+    return (EReference)queryEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getQuery_Filters()
+  {
+    return (EReference)queryEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getQuery_Max()
+  {
+    return (EAttribute)queryEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getQuery_Offset()
+  {
+    return (EAttribute)queryEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getQuery_Orders()
+  {
+    return (EReference)queryEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getQueryParameter()
+  {
+    return queryParameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getQueryParameter_Type()
+  {
+    return (EReference)queryParameterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getQueryParameter_Name()
+  {
+    return (EAttribute)queryParameterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getQueryFilter()
+  {
+    return queryFilterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getQueryFilter_Entity()
+  {
+    return (EReference)queryFilterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getQueryFilter_Attribute()
+  {
+    return (EReference)queryFilterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getQueryFilter_Value()
+  {
+    return (EReference)queryFilterEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getQueryOrder()
+  {
+    return queryOrderEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getQueryOrder_Entity()
+  {
+    return (EReference)queryOrderEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getQueryOrder_Attribute()
+  {
+    return (EReference)queryOrderEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getQueryOrder_Type()
+  {
+    return (EAttribute)queryOrderEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getAttributeManyReference()
   {
     return attributeManyReferenceEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getQueryOrderType()
+  {
+    return queryOrderTypeEEnum;
   }
 
   /**
@@ -487,6 +737,7 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     modelEClass = createEClass(MODEL);
     createEReference(modelEClass, MODEL__PROJECT);
     createEReference(modelEClass, MODEL__TYPES);
+    createEReference(modelEClass, MODEL__QUERIES);
 
     projectEClass = createEClass(PROJECT);
     createEAttribute(projectEClass, PROJECT__NAME);
@@ -521,8 +772,32 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     createEAttribute(enumerationLiteralEClass, ENUMERATION_LITERAL__NAME);
     createEAttribute(enumerationLiteralEClass, ENUMERATION_LITERAL__ORDINAL);
 
+    queryEClass = createEClass(QUERY);
+    createEAttribute(queryEClass, QUERY__NAME);
+    createEReference(queryEClass, QUERY__ENTITIES);
+    createEReference(queryEClass, QUERY__PARAMETERS);
+    createEReference(queryEClass, QUERY__FILTERS);
+    createEAttribute(queryEClass, QUERY__MAX);
+    createEAttribute(queryEClass, QUERY__OFFSET);
+    createEReference(queryEClass, QUERY__ORDERS);
+
+    queryParameterEClass = createEClass(QUERY_PARAMETER);
+    createEReference(queryParameterEClass, QUERY_PARAMETER__TYPE);
+    createEAttribute(queryParameterEClass, QUERY_PARAMETER__NAME);
+
+    queryFilterEClass = createEClass(QUERY_FILTER);
+    createEReference(queryFilterEClass, QUERY_FILTER__ENTITY);
+    createEReference(queryFilterEClass, QUERY_FILTER__ATTRIBUTE);
+    createEReference(queryFilterEClass, QUERY_FILTER__VALUE);
+
+    queryOrderEClass = createEClass(QUERY_ORDER);
+    createEReference(queryOrderEClass, QUERY_ORDER__ENTITY);
+    createEReference(queryOrderEClass, QUERY_ORDER__ATTRIBUTE);
+    createEAttribute(queryOrderEClass, QUERY_ORDER__TYPE);
+
     // Create enums
     attributeManyReferenceEEnum = createEEnum(ATTRIBUTE_MANY_REFERENCE);
+    queryOrderTypeEEnum = createEEnum(QUERY_ORDER_TYPE);
   }
 
   /**
@@ -563,6 +838,7 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getModel_Project(), this.getProject(), null, "project", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Types(), this.getType(), null, "types", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Queries(), this.getQuery(), null, "queries", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(projectEClass, Project.class, "Project", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProject_Name(), ecorePackage.getEString(), "name", null, 0, 1, Project.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -597,11 +873,38 @@ public class WdlPackageImpl extends EPackageImpl implements WdlPackage
     initEAttribute(getEnumerationLiteral_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEnumerationLiteral_Ordinal(), ecorePackage.getEInt(), "ordinal", null, 0, 1, EnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(queryEClass, Query.class, "Query", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getQuery_Name(), ecorePackage.getEString(), "name", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQuery_Entities(), this.getEntity(), null, "entities", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQuery_Parameters(), this.getQueryParameter(), null, "parameters", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQuery_Filters(), this.getQueryFilter(), null, "filters", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getQuery_Max(), ecorePackage.getEInt(), "max", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getQuery_Offset(), ecorePackage.getEInt(), "offset", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQuery_Orders(), this.getQueryOrder(), null, "orders", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(queryParameterEClass, QueryParameter.class, "QueryParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getQueryParameter_Type(), this.getType(), null, "type", null, 0, 1, QueryParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getQueryParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, QueryParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(queryFilterEClass, QueryFilter.class, "QueryFilter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getQueryFilter_Entity(), this.getEntity(), null, "entity", null, 0, 1, QueryFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQueryFilter_Attribute(), this.getAttribute(), null, "attribute", null, 0, 1, QueryFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQueryFilter_Value(), this.getQueryParameter(), null, "value", null, 0, 1, QueryFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(queryOrderEClass, QueryOrder.class, "QueryOrder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getQueryOrder_Entity(), this.getEntity(), null, "entity", null, 0, 1, QueryOrder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQueryOrder_Attribute(), this.getAttribute(), null, "attribute", null, 0, 1, QueryOrder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getQueryOrder_Type(), this.getQueryOrderType(), "type", null, 0, 1, QueryOrder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     // Initialize enums and add enum literals
     initEEnum(attributeManyReferenceEEnum, AttributeManyReference.class, "AttributeManyReference");
     addEEnumLiteral(attributeManyReferenceEEnum, AttributeManyReference.NONE);
     addEEnumLiteral(attributeManyReferenceEEnum, AttributeManyReference.WEAK);
     addEEnumLiteral(attributeManyReferenceEEnum, AttributeManyReference.STRONG);
+
+    initEEnum(queryOrderTypeEEnum, QueryOrderType.class, "QueryOrderType");
+    addEEnumLiteral(queryOrderTypeEEnum, QueryOrderType.ASC);
+    addEEnumLiteral(queryOrderTypeEEnum, QueryOrderType.DESC);
 
     // Create resource
     createResource(eNS_URI);

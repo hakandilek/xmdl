@@ -128,6 +128,26 @@ public class WdlAdapterFactory extends AdapterFactoryImpl
         return createEnumerationLiteralAdapter();
       }
       @Override
+      public Adapter caseQuery(Query object)
+      {
+        return createQueryAdapter();
+      }
+      @Override
+      public Adapter caseQueryParameter(QueryParameter object)
+      {
+        return createQueryParameterAdapter();
+      }
+      @Override
+      public Adapter caseQueryFilter(QueryFilter object)
+      {
+        return createQueryFilterAdapter();
+      }
+      @Override
+      public Adapter caseQueryOrder(QueryOrder object)
+      {
+        return createQueryOrderAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -295,6 +315,66 @@ public class WdlAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEnumerationLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.Query <em>Query</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xmdl.wdl.Query
+   * @generated
+   */
+  public Adapter createQueryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.QueryParameter <em>Query Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xmdl.wdl.QueryParameter
+   * @generated
+   */
+  public Adapter createQueryParameterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.QueryFilter <em>Query Filter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xmdl.wdl.QueryFilter
+   * @generated
+   */
+  public Adapter createQueryFilterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xmdl.wdl.QueryOrder <em>Query Order</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xmdl.wdl.QueryOrder
+   * @generated
+   */
+  public Adapter createQueryOrderAdapter()
   {
     return null;
   }
