@@ -78,6 +78,10 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
       case WdlPackage.ATTRIBUTE: return createAttribute();
       case WdlPackage.ENUMERATION: return createEnumeration();
       case WdlPackage.ENUMERATION_LITERAL: return createEnumerationLiteral();
+      case WdlPackage.QUERY: return createQuery();
+      case WdlPackage.QUERY_PARAMETER: return createQueryParameter();
+      case WdlPackage.QUERY_FILTER: return createQueryFilter();
+      case WdlPackage.QUERY_ORDER: return createQueryOrder();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -95,6 +99,8 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
     {
       case WdlPackage.ATTRIBUTE_MANY_REFERENCE:
         return createAttributeManyReferenceFromString(eDataType, initialValue);
+      case WdlPackage.QUERY_ORDER_TYPE:
+        return createQueryOrderTypeFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -112,6 +118,8 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
     {
       case WdlPackage.ATTRIBUTE_MANY_REFERENCE:
         return convertAttributeManyReferenceToString(eDataType, instanceValue);
+      case WdlPackage.QUERY_ORDER_TYPE:
+        return convertQueryOrderTypeToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -232,6 +240,50 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Query createQuery()
+  {
+    QueryImpl query = new QueryImpl();
+    return query;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public QueryParameter createQueryParameter()
+  {
+    QueryParameterImpl queryParameter = new QueryParameterImpl();
+    return queryParameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public QueryFilter createQueryFilter()
+  {
+    QueryFilterImpl queryFilter = new QueryFilterImpl();
+    return queryFilter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public QueryOrder createQueryOrder()
+  {
+    QueryOrderImpl queryOrder = new QueryOrderImpl();
+    return queryOrder;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public AttributeManyReference createAttributeManyReferenceFromString(EDataType eDataType, String initialValue)
   {
     AttributeManyReference result = AttributeManyReference.get(initialValue);
@@ -245,6 +297,28 @@ public class WdlFactoryImpl extends EFactoryImpl implements WdlFactory
    * @generated
    */
   public String convertAttributeManyReferenceToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public QueryOrderType createQueryOrderTypeFromString(EDataType eDataType, String initialValue)
+  {
+    QueryOrderType result = QueryOrderType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertQueryOrderTypeToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

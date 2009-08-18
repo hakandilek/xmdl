@@ -169,6 +169,34 @@ public class WdlSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case WdlPackage.QUERY:
+      {
+        Query query = (Query)theEObject;
+        T result = caseQuery(query);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WdlPackage.QUERY_PARAMETER:
+      {
+        QueryParameter queryParameter = (QueryParameter)theEObject;
+        T result = caseQueryParameter(queryParameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WdlPackage.QUERY_FILTER:
+      {
+        QueryFilter queryFilter = (QueryFilter)theEObject;
+        T result = caseQueryFilter(queryFilter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WdlPackage.QUERY_ORDER:
+      {
+        QueryOrder queryOrder = (QueryOrder)theEObject;
+        T result = caseQueryOrder(queryOrder);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -329,6 +357,70 @@ public class WdlSwitch<T>
    * @generated
    */
   public T caseEnumerationLiteral(EnumerationLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Query</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Query</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQuery(Query object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Query Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Query Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQueryParameter(QueryParameter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Query Filter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Query Filter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQueryFilter(QueryFilter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Query Order</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Query Order</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQueryOrder(QueryOrder object)
   {
     return null;
   }

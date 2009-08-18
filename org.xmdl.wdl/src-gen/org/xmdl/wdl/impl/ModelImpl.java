@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xmdl.wdl.Model;
 import org.xmdl.wdl.Project;
+import org.xmdl.wdl.Query;
 import org.xmdl.wdl.Type;
 import org.xmdl.wdl.WdlPackage;
 
@@ -35,6 +36,7 @@ import org.xmdl.wdl.WdlPackage;
  * <ul>
  *   <li>{@link org.xmdl.wdl.impl.ModelImpl#getProject <em>Project</em>}</li>
  *   <li>{@link org.xmdl.wdl.impl.ModelImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link org.xmdl.wdl.impl.ModelImpl#getQueries <em>Queries</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,6 +63,16 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @ordered
    */
   protected EList<Type> types;
+
+  /**
+   * The cached value of the '{@link #getQueries() <em>Queries</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getQueries()
+   * @generated
+   * @ordered
+   */
+  protected EList<Query> queries;
 
   /**
    * <!-- begin-user-doc -->
@@ -150,6 +162,20 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Query> getQueries()
+  {
+    if (queries == null)
+    {
+      queries = new EObjectContainmentEList<Query>(Query.class, this, WdlPackage.MODEL__QUERIES);
+    }
+    return queries;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -159,6 +185,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return basicSetProject(null, msgs);
       case WdlPackage.MODEL__TYPES:
         return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
+      case WdlPackage.MODEL__QUERIES:
+        return ((InternalEList<?>)getQueries()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -177,6 +205,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return getProject();
       case WdlPackage.MODEL__TYPES:
         return getTypes();
+      case WdlPackage.MODEL__QUERIES:
+        return getQueries();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -199,6 +229,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         getTypes().clear();
         getTypes().addAll((Collection<? extends Type>)newValue);
         return;
+      case WdlPackage.MODEL__QUERIES:
+        getQueries().clear();
+        getQueries().addAll((Collection<? extends Query>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -219,6 +253,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case WdlPackage.MODEL__TYPES:
         getTypes().clear();
         return;
+      case WdlPackage.MODEL__QUERIES:
+        getQueries().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -237,6 +274,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return project != null;
       case WdlPackage.MODEL__TYPES:
         return types != null && !types.isEmpty();
+      case WdlPackage.MODEL__QUERIES:
+        return queries != null && !queries.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -89,13 +89,22 @@ public interface WdlPackage extends EPackage
   int MODEL__TYPES = 1;
 
   /**
+   * The feature id for the '<em><b>Queries</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__QUERIES = 2;
+
+  /**
    * The number of structural features of the '<em>Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 2;
+  int MODEL_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.xmdl.wdl.impl.ProjectImpl <em>Project</em>}' class.
@@ -440,6 +449,217 @@ public interface WdlPackage extends EPackage
   int ENUMERATION_LITERAL_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link org.xmdl.wdl.impl.QueryImpl <em>Query</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xmdl.wdl.impl.QueryImpl
+   * @see org.xmdl.wdl.impl.WdlPackageImpl#getQuery()
+   * @generated
+   */
+  int QUERY = 10;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Entities</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY__ENTITIES = 1;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY__PARAMETERS = 2;
+
+  /**
+   * The feature id for the '<em><b>Filters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY__FILTERS = 3;
+
+  /**
+   * The feature id for the '<em><b>Max</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY__MAX = 4;
+
+  /**
+   * The feature id for the '<em><b>Offset</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY__OFFSET = 5;
+
+  /**
+   * The feature id for the '<em><b>Orders</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY__ORDERS = 6;
+
+  /**
+   * The number of structural features of the '<em>Query</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_FEATURE_COUNT = 7;
+
+  /**
+   * The meta object id for the '{@link org.xmdl.wdl.impl.QueryParameterImpl <em>Query Parameter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xmdl.wdl.impl.QueryParameterImpl
+   * @see org.xmdl.wdl.impl.WdlPackageImpl#getQueryParameter()
+   * @generated
+   */
+  int QUERY_PARAMETER = 11;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_PARAMETER__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_PARAMETER__NAME = 1;
+
+  /**
+   * The number of structural features of the '<em>Query Parameter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_PARAMETER_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.xmdl.wdl.impl.QueryFilterImpl <em>Query Filter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xmdl.wdl.impl.QueryFilterImpl
+   * @see org.xmdl.wdl.impl.WdlPackageImpl#getQueryFilter()
+   * @generated
+   */
+  int QUERY_FILTER = 12;
+
+  /**
+   * The feature id for the '<em><b>Entity</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_FILTER__ENTITY = 0;
+
+  /**
+   * The feature id for the '<em><b>Attribute</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_FILTER__ATTRIBUTE = 1;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_FILTER__VALUE = 2;
+
+  /**
+   * The number of structural features of the '<em>Query Filter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_FILTER_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link org.xmdl.wdl.impl.QueryOrderImpl <em>Query Order</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xmdl.wdl.impl.QueryOrderImpl
+   * @see org.xmdl.wdl.impl.WdlPackageImpl#getQueryOrder()
+   * @generated
+   */
+  int QUERY_ORDER = 13;
+
+  /**
+   * The feature id for the '<em><b>Entity</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_ORDER__ENTITY = 0;
+
+  /**
+   * The feature id for the '<em><b>Attribute</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_ORDER__ATTRIBUTE = 1;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_ORDER__TYPE = 2;
+
+  /**
+   * The number of structural features of the '<em>Query Order</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_ORDER_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link org.xmdl.wdl.AttributeManyReference <em>Attribute Many Reference</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -447,7 +667,17 @@ public interface WdlPackage extends EPackage
    * @see org.xmdl.wdl.impl.WdlPackageImpl#getAttributeManyReference()
    * @generated
    */
-  int ATTRIBUTE_MANY_REFERENCE = 10;
+  int ATTRIBUTE_MANY_REFERENCE = 14;
+
+  /**
+   * The meta object id for the '{@link org.xmdl.wdl.QueryOrderType <em>Query Order Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xmdl.wdl.QueryOrderType
+   * @see org.xmdl.wdl.impl.WdlPackageImpl#getQueryOrderType()
+   * @generated
+   */
+  int QUERY_ORDER_TYPE = 15;
 
 
   /**
@@ -481,6 +711,17 @@ public interface WdlPackage extends EPackage
    * @generated
    */
   EReference getModel_Types();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xmdl.wdl.Model#getQueries <em>Queries</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Queries</em>'.
+   * @see org.xmdl.wdl.Model#getQueries()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_Queries();
 
   /**
    * Returns the meta object for class '{@link org.xmdl.wdl.Project <em>Project</em>}'.
@@ -738,6 +979,211 @@ public interface WdlPackage extends EPackage
   EAttribute getEnumerationLiteral_Ordinal();
 
   /**
+   * Returns the meta object for class '{@link org.xmdl.wdl.Query <em>Query</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Query</em>'.
+   * @see org.xmdl.wdl.Query
+   * @generated
+   */
+  EClass getQuery();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.Query#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xmdl.wdl.Query#getName()
+   * @see #getQuery()
+   * @generated
+   */
+  EAttribute getQuery_Name();
+
+  /**
+   * Returns the meta object for the reference list '{@link org.xmdl.wdl.Query#getEntities <em>Entities</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Entities</em>'.
+   * @see org.xmdl.wdl.Query#getEntities()
+   * @see #getQuery()
+   * @generated
+   */
+  EReference getQuery_Entities();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xmdl.wdl.Query#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
+   * @see org.xmdl.wdl.Query#getParameters()
+   * @see #getQuery()
+   * @generated
+   */
+  EReference getQuery_Parameters();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xmdl.wdl.Query#getFilters <em>Filters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Filters</em>'.
+   * @see org.xmdl.wdl.Query#getFilters()
+   * @see #getQuery()
+   * @generated
+   */
+  EReference getQuery_Filters();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.Query#getMax <em>Max</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Max</em>'.
+   * @see org.xmdl.wdl.Query#getMax()
+   * @see #getQuery()
+   * @generated
+   */
+  EAttribute getQuery_Max();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.Query#getOffset <em>Offset</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Offset</em>'.
+   * @see org.xmdl.wdl.Query#getOffset()
+   * @see #getQuery()
+   * @generated
+   */
+  EAttribute getQuery_Offset();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xmdl.wdl.Query#getOrders <em>Orders</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Orders</em>'.
+   * @see org.xmdl.wdl.Query#getOrders()
+   * @see #getQuery()
+   * @generated
+   */
+  EReference getQuery_Orders();
+
+  /**
+   * Returns the meta object for class '{@link org.xmdl.wdl.QueryParameter <em>Query Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Query Parameter</em>'.
+   * @see org.xmdl.wdl.QueryParameter
+   * @generated
+   */
+  EClass getQueryParameter();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xmdl.wdl.QueryParameter#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Type</em>'.
+   * @see org.xmdl.wdl.QueryParameter#getType()
+   * @see #getQueryParameter()
+   * @generated
+   */
+  EReference getQueryParameter_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.QueryParameter#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xmdl.wdl.QueryParameter#getName()
+   * @see #getQueryParameter()
+   * @generated
+   */
+  EAttribute getQueryParameter_Name();
+
+  /**
+   * Returns the meta object for class '{@link org.xmdl.wdl.QueryFilter <em>Query Filter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Query Filter</em>'.
+   * @see org.xmdl.wdl.QueryFilter
+   * @generated
+   */
+  EClass getQueryFilter();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xmdl.wdl.QueryFilter#getEntity <em>Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Entity</em>'.
+   * @see org.xmdl.wdl.QueryFilter#getEntity()
+   * @see #getQueryFilter()
+   * @generated
+   */
+  EReference getQueryFilter_Entity();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xmdl.wdl.QueryFilter#getAttribute <em>Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Attribute</em>'.
+   * @see org.xmdl.wdl.QueryFilter#getAttribute()
+   * @see #getQueryFilter()
+   * @generated
+   */
+  EReference getQueryFilter_Attribute();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xmdl.wdl.QueryFilter#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Value</em>'.
+   * @see org.xmdl.wdl.QueryFilter#getValue()
+   * @see #getQueryFilter()
+   * @generated
+   */
+  EReference getQueryFilter_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.xmdl.wdl.QueryOrder <em>Query Order</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Query Order</em>'.
+   * @see org.xmdl.wdl.QueryOrder
+   * @generated
+   */
+  EClass getQueryOrder();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xmdl.wdl.QueryOrder#getEntity <em>Entity</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Entity</em>'.
+   * @see org.xmdl.wdl.QueryOrder#getEntity()
+   * @see #getQueryOrder()
+   * @generated
+   */
+  EReference getQueryOrder_Entity();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xmdl.wdl.QueryOrder#getAttribute <em>Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Attribute</em>'.
+   * @see org.xmdl.wdl.QueryOrder#getAttribute()
+   * @see #getQueryOrder()
+   * @generated
+   */
+  EReference getQueryOrder_Attribute();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xmdl.wdl.QueryOrder#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.xmdl.wdl.QueryOrder#getType()
+   * @see #getQueryOrder()
+   * @generated
+   */
+  EAttribute getQueryOrder_Type();
+
+  /**
    * Returns the meta object for enum '{@link org.xmdl.wdl.AttributeManyReference <em>Attribute Many Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -746,6 +1192,16 @@ public interface WdlPackage extends EPackage
    * @generated
    */
   EEnum getAttributeManyReference();
+
+  /**
+   * Returns the meta object for enum '{@link org.xmdl.wdl.QueryOrderType <em>Query Order Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Query Order Type</em>'.
+   * @see org.xmdl.wdl.QueryOrderType
+   * @generated
+   */
+  EEnum getQueryOrderType();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -795,6 +1251,14 @@ public interface WdlPackage extends EPackage
      * @generated
      */
     EReference MODEL__TYPES = eINSTANCE.getModel_Types();
+
+    /**
+     * The meta object literal for the '<em><b>Queries</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__QUERIES = eINSTANCE.getModel_Queries();
 
     /**
      * The meta object literal for the '{@link org.xmdl.wdl.impl.ProjectImpl <em>Project</em>}' class.
@@ -1007,6 +1471,166 @@ public interface WdlPackage extends EPackage
     EAttribute ENUMERATION_LITERAL__ORDINAL = eINSTANCE.getEnumerationLiteral_Ordinal();
 
     /**
+     * The meta object literal for the '{@link org.xmdl.wdl.impl.QueryImpl <em>Query</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xmdl.wdl.impl.QueryImpl
+     * @see org.xmdl.wdl.impl.WdlPackageImpl#getQuery()
+     * @generated
+     */
+    EClass QUERY = eINSTANCE.getQuery();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute QUERY__NAME = eINSTANCE.getQuery_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Entities</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUERY__ENTITIES = eINSTANCE.getQuery_Entities();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUERY__PARAMETERS = eINSTANCE.getQuery_Parameters();
+
+    /**
+     * The meta object literal for the '<em><b>Filters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUERY__FILTERS = eINSTANCE.getQuery_Filters();
+
+    /**
+     * The meta object literal for the '<em><b>Max</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute QUERY__MAX = eINSTANCE.getQuery_Max();
+
+    /**
+     * The meta object literal for the '<em><b>Offset</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute QUERY__OFFSET = eINSTANCE.getQuery_Offset();
+
+    /**
+     * The meta object literal for the '<em><b>Orders</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUERY__ORDERS = eINSTANCE.getQuery_Orders();
+
+    /**
+     * The meta object literal for the '{@link org.xmdl.wdl.impl.QueryParameterImpl <em>Query Parameter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xmdl.wdl.impl.QueryParameterImpl
+     * @see org.xmdl.wdl.impl.WdlPackageImpl#getQueryParameter()
+     * @generated
+     */
+    EClass QUERY_PARAMETER = eINSTANCE.getQueryParameter();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUERY_PARAMETER__TYPE = eINSTANCE.getQueryParameter_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute QUERY_PARAMETER__NAME = eINSTANCE.getQueryParameter_Name();
+
+    /**
+     * The meta object literal for the '{@link org.xmdl.wdl.impl.QueryFilterImpl <em>Query Filter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xmdl.wdl.impl.QueryFilterImpl
+     * @see org.xmdl.wdl.impl.WdlPackageImpl#getQueryFilter()
+     * @generated
+     */
+    EClass QUERY_FILTER = eINSTANCE.getQueryFilter();
+
+    /**
+     * The meta object literal for the '<em><b>Entity</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUERY_FILTER__ENTITY = eINSTANCE.getQueryFilter_Entity();
+
+    /**
+     * The meta object literal for the '<em><b>Attribute</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUERY_FILTER__ATTRIBUTE = eINSTANCE.getQueryFilter_Attribute();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUERY_FILTER__VALUE = eINSTANCE.getQueryFilter_Value();
+
+    /**
+     * The meta object literal for the '{@link org.xmdl.wdl.impl.QueryOrderImpl <em>Query Order</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xmdl.wdl.impl.QueryOrderImpl
+     * @see org.xmdl.wdl.impl.WdlPackageImpl#getQueryOrder()
+     * @generated
+     */
+    EClass QUERY_ORDER = eINSTANCE.getQueryOrder();
+
+    /**
+     * The meta object literal for the '<em><b>Entity</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUERY_ORDER__ENTITY = eINSTANCE.getQueryOrder_Entity();
+
+    /**
+     * The meta object literal for the '<em><b>Attribute</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference QUERY_ORDER__ATTRIBUTE = eINSTANCE.getQueryOrder_Attribute();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute QUERY_ORDER__TYPE = eINSTANCE.getQueryOrder_Type();
+
+    /**
      * The meta object literal for the '{@link org.xmdl.wdl.AttributeManyReference <em>Attribute Many Reference</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1015,6 +1639,16 @@ public interface WdlPackage extends EPackage
      * @generated
      */
     EEnum ATTRIBUTE_MANY_REFERENCE = eINSTANCE.getAttributeManyReference();
+
+    /**
+     * The meta object literal for the '{@link org.xmdl.wdl.QueryOrderType <em>Query Order Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xmdl.wdl.QueryOrderType
+     * @see org.xmdl.wdl.impl.WdlPackageImpl#getQueryOrderType()
+     * @generated
+     */
+    EEnum QUERY_ORDER_TYPE = eINSTANCE.getQueryOrderType();
 
   }
 

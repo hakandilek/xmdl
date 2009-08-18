@@ -14,6 +14,15 @@
         <ecoreEnumLiteral href="WDL.ecore#//AttributeManyReference/STRONG"/>
       </genEnumLiterals>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false">
+      <ecoreEnum href="WDL.ecore#//QueryOrderType"/>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="WDL.ecore#//QueryOrderType/ASC"/>
+      </genEnumLiterals>
+      <genEnumLiterals>
+        <ecoreEnumLiteral href="WDL.ecore#//QueryOrderType/DESC"/>
+      </genEnumLiterals>
+    </genEnums>
     <genClasses>
       <ecoreClass href="WDL.ecore#//Model"/>
       <genFeatures property="None" children="true" createChild="true">
@@ -21,6 +30,9 @@
       </genFeatures>
       <genFeatures property="None" children="true" createChild="true">
         <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Model/types"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Model/queries"/>
       </genFeatures>
     </genClasses>
     <genClasses>
@@ -93,6 +105,63 @@
       </genFeatures>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//EnumerationLiteral/ordinal"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//Query"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//Query/name"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Query/entities"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Query/parameters"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Query/filters"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//Query/max"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//Query/offset"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//Query/orders"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//QueryParameter"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//QueryParameter/type"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//QueryParameter/name"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//QueryFilter"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//QueryFilter/entity"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//QueryFilter/attribute"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//QueryFilter/value"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="WDL.ecore#//QueryOrder"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//QueryOrder/entity"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="WDL.ecore#//QueryOrder/attribute"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="WDL.ecore#//QueryOrder/type"/>
       </genFeatures>
     </genClasses>
   </genPackages>

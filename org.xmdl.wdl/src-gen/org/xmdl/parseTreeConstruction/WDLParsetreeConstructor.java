@@ -42,6 +42,10 @@ protected class ThisRootNode extends RootToken {
 			case 7: return new Attribute_Group(this, this, 7, inst);
 			case 8: return new Enumeration_Group(this, this, 8, inst);
 			case 9: return new EnumerationLiteral_Group(this, this, 9, inst);
+			case 10: return new Query_Group(this, this, 10, inst);
+			case 11: return new QueryParameter_Group(this, this, 11, inst);
+			case 12: return new QueryFilter_Group(this, this, 12, inst);
+			case 13: return new QueryOrder_Group(this, this, 13, inst);
 			default: return null;
 		}	
 	}	
@@ -51,11 +55,11 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule Model ****************
  *
  * Model:
- *   project=Project types+=Type*;
+ *   project=Project types+=Type* queries+=Query*;
  *
  **/
 
-// project=Project types+=Type*
+// project=Project types+=Type* queries+=Query*
 protected class Model_Group extends GroupToken {
 	
 	public Model_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
@@ -68,8 +72,9 @@ protected class Model_Group extends GroupToken {
 
 	public AbstractToken createFollower(int index, IInstanceDescription inst) {
 		switch(index) {
-			case 0: return new Model_TypesAssignment_1(parent, this, 0, inst);
-			case 1: return new Model_ProjectAssignment_0(parent, this, 1, inst);
+			case 0: return new Model_QueriesAssignment_2(parent, this, 0, inst);
+			case 1: return new Model_TypesAssignment_1(parent, this, 1, inst);
+			case 2: return new Model_ProjectAssignment_0(parent, this, 2, inst);
 			default: return null;
 		}	
 	}	
@@ -159,6 +164,50 @@ protected class Model_TypesAssignment_1 extends AssignmentToken  {
 		switch(index) {
 			case 0: return new Model_TypesAssignment_1(parent, next, actIndex, consumed);
 			case 1: return new Model_ProjectAssignment_0(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// queries+=Query*
+protected class Model_QueriesAssignment_2 extends AssignmentToken  {
+	
+	public Model_QueriesAssignment_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getModelAccess().getQueriesAssignment_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("queries",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("queries");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getModelAccess().getQueriesQueryParserRuleCall_2_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Model_QueriesAssignment_2(parent, next, actIndex, consumed);
+			case 1: return new Model_TypesAssignment_1(parent, next, actIndex, consumed);
+			case 2: return new Model_ProjectAssignment_0(parent, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
@@ -1787,5 +1836,1392 @@ protected class EnumerationLiteral_RightParenthesisKeyword_3 extends KeywordToke
 
 
 /************ end Rule EnumerationLiteral ****************/
+
+
+/************ begin Rule Query ****************
+ *
+ * Query:
+ *   "query" name=ID "<" entities+=[Entity] ("," entities+=[Entity])* ">" "with" "("
+ *   parameters+=QueryParameter? ("," parameters+=QueryParameter)* ")" "{" filters+=
+ *   QueryFilter* ("-max" "(" max=INT ")")? ("-offset" "(" offset=INT ")")? ("-order" "(" orders
+ *   +=QueryOrder? ("," orders+=QueryOrder)* ")")? "}";
+ *
+ **/
+
+// "query" name=ID "<" entities+=[Entity] ("," entities+=[Entity])* ">" "with" "("
+// parameters+=QueryParameter? ("," parameters+=QueryParameter)* ")" "{" filters+=
+// QueryFilter* ("-max" "(" max=INT ")")? ("-offset" "(" offset=INT ")")? ("-order" "(" orders
+// +=QueryOrder? ("," orders+=QueryOrder)* ")")? "}"
+protected class Query_Group extends GroupToken {
+	
+	public Query_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getQueryAccess().getGroup();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_RightCurlyBracketKeyword_16(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	public IInstanceDescription tryConsume() {
+		if(!current.isInstanceOf(grammarAccess.getQueryRule().getType().getClassifier())) return null;
+		return tryConsumeVal();
+	}
+}
+
+// "query"
+protected class Query_QueryKeyword_0 extends KeywordToken  {
+	
+	public Query_QueryKeyword_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getQueryKeyword_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			default: return parent.createParentFollower(this, index, index, inst);
+		}	
+	}	
+		
+}
+
+// name=ID
+protected class Query_NameAssignment_1 extends AssignmentToken  {
+	
+	public Query_NameAssignment_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryAccess().getNameAssignment_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_QueryKeyword_0(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("name",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("name");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getQueryAccess().getNameIDTerminalRuleCall_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// "<"
+protected class Query_LessThanSignKeyword_2 extends KeywordToken  {
+	
+	public Query_LessThanSignKeyword_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getLessThanSignKeyword_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_NameAssignment_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// entities+=[Entity]
+protected class Query_EntitiesAssignment_3 extends AssignmentToken  {
+	
+	public Query_EntitiesAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryAccess().getEntitiesAssignment_3();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_LessThanSignKeyword_2(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("entities",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("entities");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryAccess().getEntitiesEntityCrossReference_3_0().getType().getClassifier())) {
+				type = AssignmentType.CR;
+				element = grammarAccess.getQueryAccess().getEntitiesEntityCrossReference_3_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// ("," entities+=[Entity])*
+protected class Query_Group_4 extends GroupToken {
+	
+	public Query_Group_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getQueryAccess().getGroup_4();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_EntitiesAssignment_4_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// ","
+protected class Query_CommaKeyword_4_0 extends KeywordToken  {
+	
+	public Query_CommaKeyword_4_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getCommaKeyword_4_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_Group_4(parent, this, 0, inst);
+			case 1: return new Query_EntitiesAssignment_3(parent, this, 1, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// entities+=[Entity]
+protected class Query_EntitiesAssignment_4_1 extends AssignmentToken  {
+	
+	public Query_EntitiesAssignment_4_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryAccess().getEntitiesAssignment_4_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_CommaKeyword_4_0(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("entities",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("entities");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryAccess().getEntitiesEntityCrossReference_4_1_0().getType().getClassifier())) {
+				type = AssignmentType.CR;
+				element = grammarAccess.getQueryAccess().getEntitiesEntityCrossReference_4_1_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+
+// ">"
+protected class Query_GreaterThanSignKeyword_5 extends KeywordToken  {
+	
+	public Query_GreaterThanSignKeyword_5(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getGreaterThanSignKeyword_5();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_Group_4(parent, this, 0, inst);
+			case 1: return new Query_EntitiesAssignment_3(parent, this, 1, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// "with"
+protected class Query_WithKeyword_6 extends KeywordToken  {
+	
+	public Query_WithKeyword_6(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getWithKeyword_6();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_GreaterThanSignKeyword_5(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// "("
+protected class Query_LeftParenthesisKeyword_7 extends KeywordToken  {
+	
+	public Query_LeftParenthesisKeyword_7(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getLeftParenthesisKeyword_7();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_WithKeyword_6(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// parameters+=QueryParameter?
+protected class Query_ParametersAssignment_8 extends AssignmentToken  {
+	
+	public Query_ParametersAssignment_8(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryAccess().getParametersAssignment_8();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryParameter_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("parameters",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("parameters");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryParameterRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getQueryAccess().getParametersQueryParameterParserRuleCall_8_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Query_LeftParenthesisKeyword_7(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// ("," parameters+=QueryParameter)*
+protected class Query_Group_9 extends GroupToken {
+	
+	public Query_Group_9(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getQueryAccess().getGroup_9();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_ParametersAssignment_9_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// ","
+protected class Query_CommaKeyword_9_0 extends KeywordToken  {
+	
+	public Query_CommaKeyword_9_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getCommaKeyword_9_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_Group_9(parent, this, 0, inst);
+			case 1: return new Query_ParametersAssignment_8(parent, this, 1, inst);
+			case 2: return new Query_LeftParenthesisKeyword_7(parent, this, 2, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// parameters+=QueryParameter
+protected class Query_ParametersAssignment_9_1 extends AssignmentToken  {
+	
+	public Query_ParametersAssignment_9_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryAccess().getParametersAssignment_9_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryParameter_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("parameters",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("parameters");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryParameterRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getQueryAccess().getParametersQueryParameterParserRuleCall_9_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Query_CommaKeyword_9_0(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
+// ")"
+protected class Query_RightParenthesisKeyword_10 extends KeywordToken  {
+	
+	public Query_RightParenthesisKeyword_10(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getRightParenthesisKeyword_10();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_Group_9(parent, this, 0, inst);
+			case 1: return new Query_ParametersAssignment_8(parent, this, 1, inst);
+			case 2: return new Query_LeftParenthesisKeyword_7(parent, this, 2, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// "{"
+protected class Query_LeftCurlyBracketKeyword_11 extends KeywordToken  {
+	
+	public Query_LeftCurlyBracketKeyword_11(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getLeftCurlyBracketKeyword_11();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_RightParenthesisKeyword_10(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// filters+=QueryFilter*
+protected class Query_FiltersAssignment_12 extends AssignmentToken  {
+	
+	public Query_FiltersAssignment_12(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryAccess().getFiltersAssignment_12();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryFilter_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("filters",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("filters");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryFilterRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getQueryAccess().getFiltersQueryFilterParserRuleCall_12_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Query_FiltersAssignment_12(parent, next, actIndex, consumed);
+			case 1: return new Query_LeftCurlyBracketKeyword_11(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// ("-max" "(" max=INT ")")?
+protected class Query_Group_13 extends GroupToken {
+	
+	public Query_Group_13(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getQueryAccess().getGroup_13();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_RightParenthesisKeyword_13_3(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// "-max"
+protected class Query_MaxKeyword_13_0 extends KeywordToken  {
+	
+	public Query_MaxKeyword_13_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getMaxKeyword_13_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_FiltersAssignment_12(parent, this, 0, inst);
+			case 1: return new Query_LeftCurlyBracketKeyword_11(parent, this, 1, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// "("
+protected class Query_LeftParenthesisKeyword_13_1 extends KeywordToken  {
+	
+	public Query_LeftParenthesisKeyword_13_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getLeftParenthesisKeyword_13_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_MaxKeyword_13_0(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// max=INT
+protected class Query_MaxAssignment_13_2 extends AssignmentToken  {
+	
+	public Query_MaxAssignment_13_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryAccess().getMaxAssignment_13_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_LeftParenthesisKeyword_13_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("max",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("max");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getQueryAccess().getMaxINTTerminalRuleCall_13_2_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// ")"
+protected class Query_RightParenthesisKeyword_13_3 extends KeywordToken  {
+	
+	public Query_RightParenthesisKeyword_13_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getRightParenthesisKeyword_13_3();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_MaxAssignment_13_2(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+
+// ("-offset" "(" offset=INT ")")?
+protected class Query_Group_14 extends GroupToken {
+	
+	public Query_Group_14(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getQueryAccess().getGroup_14();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_RightParenthesisKeyword_14_3(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// "-offset"
+protected class Query_OffsetKeyword_14_0 extends KeywordToken  {
+	
+	public Query_OffsetKeyword_14_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getOffsetKeyword_14_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_Group_13(parent, this, 0, inst);
+			case 1: return new Query_FiltersAssignment_12(parent, this, 1, inst);
+			case 2: return new Query_LeftCurlyBracketKeyword_11(parent, this, 2, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// "("
+protected class Query_LeftParenthesisKeyword_14_1 extends KeywordToken  {
+	
+	public Query_LeftParenthesisKeyword_14_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getLeftParenthesisKeyword_14_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_OffsetKeyword_14_0(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// offset=INT
+protected class Query_OffsetAssignment_14_2 extends AssignmentToken  {
+	
+	public Query_OffsetAssignment_14_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryAccess().getOffsetAssignment_14_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_LeftParenthesisKeyword_14_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("offset",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("offset");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getQueryAccess().getOffsetINTTerminalRuleCall_14_2_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// ")"
+protected class Query_RightParenthesisKeyword_14_3 extends KeywordToken  {
+	
+	public Query_RightParenthesisKeyword_14_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getRightParenthesisKeyword_14_3();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_OffsetAssignment_14_2(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+
+// ("-order" "(" orders+=QueryOrder? ("," orders+=QueryOrder)* ")")?
+protected class Query_Group_15 extends GroupToken {
+	
+	public Query_Group_15(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getQueryAccess().getGroup_15();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_RightParenthesisKeyword_15_4(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// "-order"
+protected class Query_OrderKeyword_15_0 extends KeywordToken  {
+	
+	public Query_OrderKeyword_15_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getOrderKeyword_15_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_Group_14(parent, this, 0, inst);
+			case 1: return new Query_Group_13(parent, this, 1, inst);
+			case 2: return new Query_FiltersAssignment_12(parent, this, 2, inst);
+			case 3: return new Query_LeftCurlyBracketKeyword_11(parent, this, 3, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// "("
+protected class Query_LeftParenthesisKeyword_15_1 extends KeywordToken  {
+	
+	public Query_LeftParenthesisKeyword_15_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getLeftParenthesisKeyword_15_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_OrderKeyword_15_0(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// orders+=QueryOrder?
+protected class Query_OrdersAssignment_15_2 extends AssignmentToken  {
+	
+	public Query_OrdersAssignment_15_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryAccess().getOrdersAssignment_15_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryOrder_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("orders",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("orders");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryOrderRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getQueryAccess().getOrdersQueryOrderParserRuleCall_15_2_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Query_LeftParenthesisKeyword_15_1(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// ("," orders+=QueryOrder)*
+protected class Query_Group_15_3 extends GroupToken {
+	
+	public Query_Group_15_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getQueryAccess().getGroup_15_3();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_OrdersAssignment_15_3_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// ","
+protected class Query_CommaKeyword_15_3_0 extends KeywordToken  {
+	
+	public Query_CommaKeyword_15_3_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getCommaKeyword_15_3_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_Group_15_3(parent, this, 0, inst);
+			case 1: return new Query_OrdersAssignment_15_2(parent, this, 1, inst);
+			case 2: return new Query_LeftParenthesisKeyword_15_1(parent, this, 2, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// orders+=QueryOrder
+protected class Query_OrdersAssignment_15_3_1 extends AssignmentToken  {
+	
+	public Query_OrdersAssignment_15_3_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryAccess().getOrdersAssignment_15_3_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryOrder_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("orders",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("orders");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryOrderRule().getType().getClassifier())) {
+				type = AssignmentType.PRC;
+				element = grammarAccess.getQueryAccess().getOrdersQueryOrderParserRuleCall_15_3_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+	public AbstractToken createParentFollower(AbstractToken next,	int actIndex, int index, IInstanceDescription inst) {
+		if(value == inst.getDelegate() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new Query_CommaKeyword_15_3_0(parent, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
+// ")"
+protected class Query_RightParenthesisKeyword_15_4 extends KeywordToken  {
+	
+	public Query_RightParenthesisKeyword_15_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getRightParenthesisKeyword_15_4();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_Group_15_3(parent, this, 0, inst);
+			case 1: return new Query_OrdersAssignment_15_2(parent, this, 1, inst);
+			case 2: return new Query_LeftParenthesisKeyword_15_1(parent, this, 2, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+
+// "}"
+protected class Query_RightCurlyBracketKeyword_16 extends KeywordToken  {
+	
+	public Query_RightCurlyBracketKeyword_16(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryAccess().getRightCurlyBracketKeyword_16();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new Query_Group_15(parent, this, 0, inst);
+			case 1: return new Query_Group_14(parent, this, 1, inst);
+			case 2: return new Query_Group_13(parent, this, 2, inst);
+			case 3: return new Query_FiltersAssignment_12(parent, this, 3, inst);
+			case 4: return new Query_LeftCurlyBracketKeyword_11(parent, this, 4, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+
+/************ end Rule Query ****************/
+
+
+/************ begin Rule QueryParameter ****************
+ *
+ * QueryParameter:
+ *   type=[Type] name=ID;
+ *
+ **/
+
+// type=[Type] name=ID
+protected class QueryParameter_Group extends GroupToken {
+	
+	public QueryParameter_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getQueryParameterAccess().getGroup();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryParameter_NameAssignment_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	public IInstanceDescription tryConsume() {
+		if(!current.isInstanceOf(grammarAccess.getQueryParameterRule().getType().getClassifier())) return null;
+		return tryConsumeVal();
+	}
+}
+
+// type=[Type]
+protected class QueryParameter_TypeAssignment_0 extends AssignmentToken  {
+	
+	public QueryParameter_TypeAssignment_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryParameterAccess().getTypeAssignment_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			default: return parent.createParentFollower(this, index, index, inst);
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("type",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("type");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryParameterAccess().getTypeTypeCrossReference_0_0().getType().getClassifier())) {
+				type = AssignmentType.CR;
+				element = grammarAccess.getQueryParameterAccess().getTypeTypeCrossReference_0_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// name=ID
+protected class QueryParameter_NameAssignment_1 extends AssignmentToken  {
+	
+	public QueryParameter_NameAssignment_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryParameterAccess().getNameAssignment_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryParameter_TypeAssignment_0(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("name",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("name");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for lexer rule
+			type = AssignmentType.LRC;
+			element = grammarAccess.getQueryParameterAccess().getNameIDTerminalRuleCall_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+/************ end Rule QueryParameter ****************/
+
+
+/************ begin Rule QueryFilter ****************
+ *
+ * QueryFilter:
+ *   entity=[Entity]? "." attribute=[Attribute] "=" value=[QueryParameter];
+ *
+ **/
+
+// entity=[Entity]? "." attribute=[Attribute] "=" value=[QueryParameter]
+protected class QueryFilter_Group extends GroupToken {
+	
+	public QueryFilter_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getQueryFilterAccess().getGroup();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryFilter_ValueAssignment_4(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	public IInstanceDescription tryConsume() {
+		if(!current.isInstanceOf(grammarAccess.getQueryFilterRule().getType().getClassifier())) return null;
+		return tryConsumeVal();
+	}
+}
+
+// entity=[Entity]?
+protected class QueryFilter_EntityAssignment_0 extends AssignmentToken  {
+	
+	public QueryFilter_EntityAssignment_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryFilterAccess().getEntityAssignment_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			default: return parent.createParentFollower(this, index, index, inst);
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("entity",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("entity");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryFilterAccess().getEntityEntityCrossReference_0_0().getType().getClassifier())) {
+				type = AssignmentType.CR;
+				element = grammarAccess.getQueryFilterAccess().getEntityEntityCrossReference_0_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "."
+protected class QueryFilter_FullStopKeyword_1 extends KeywordToken  {
+	
+	public QueryFilter_FullStopKeyword_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryFilterAccess().getFullStopKeyword_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryFilter_EntityAssignment_0(parent, this, 0, inst);
+			default: return parent.createParentFollower(this, index, index - 1, inst);
+		}	
+	}	
+		
+}
+
+// attribute=[Attribute]
+protected class QueryFilter_AttributeAssignment_2 extends AssignmentToken  {
+	
+	public QueryFilter_AttributeAssignment_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryFilterAccess().getAttributeAssignment_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryFilter_FullStopKeyword_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("attribute",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("attribute");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryFilterAccess().getAttributeAttributeCrossReference_2_0().getType().getClassifier())) {
+				type = AssignmentType.CR;
+				element = grammarAccess.getQueryFilterAccess().getAttributeAttributeCrossReference_2_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "="
+protected class QueryFilter_EqualsSignKeyword_3 extends KeywordToken  {
+	
+	public QueryFilter_EqualsSignKeyword_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryFilterAccess().getEqualsSignKeyword_3();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryFilter_AttributeAssignment_2(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+}
+
+// value=[QueryParameter]
+protected class QueryFilter_ValueAssignment_4 extends AssignmentToken  {
+	
+	public QueryFilter_ValueAssignment_4(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryFilterAccess().getValueAssignment_4();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryFilter_EqualsSignKeyword_3(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("value",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("value");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryFilterAccess().getValueQueryParameterCrossReference_4_0().getType().getClassifier())) {
+				type = AssignmentType.CR;
+				element = grammarAccess.getQueryFilterAccess().getValueQueryParameterCrossReference_4_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+
+/************ end Rule QueryFilter ****************/
+
+
+/************ begin Rule QueryOrder ****************
+ *
+ * QueryOrder:
+ *   entity=[Entity]? "." attribute=[Attribute] type=QueryOrderType?;
+ *
+ **/
+
+// entity=[Entity]? "." attribute=[Attribute] type=QueryOrderType?
+protected class QueryOrder_Group extends GroupToken {
+	
+	public QueryOrder_Group(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Group getGrammarElement() {
+		return grammarAccess.getQueryOrderAccess().getGroup();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryOrder_TypeAssignment_3(parent, this, 0, inst);
+			case 1: return new QueryOrder_AttributeAssignment_2(parent, this, 1, inst);
+			default: return null;
+		}	
+	}	
+		
+	public IInstanceDescription tryConsume() {
+		if(!current.isInstanceOf(grammarAccess.getQueryOrderRule().getType().getClassifier())) return null;
+		return tryConsumeVal();
+	}
+}
+
+// entity=[Entity]?
+protected class QueryOrder_EntityAssignment_0 extends AssignmentToken  {
+	
+	public QueryOrder_EntityAssignment_0(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryOrderAccess().getEntityAssignment_0();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			default: return parent.createParentFollower(this, index, index, inst);
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("entity",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("entity");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryOrderAccess().getEntityEntityCrossReference_0_0().getType().getClassifier())) {
+				type = AssignmentType.CR;
+				element = grammarAccess.getQueryOrderAccess().getEntityEntityCrossReference_0_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// "."
+protected class QueryOrder_FullStopKeyword_1 extends KeywordToken  {
+	
+	public QueryOrder_FullStopKeyword_1(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Keyword getGrammarElement() {
+		return grammarAccess.getQueryOrderAccess().getFullStopKeyword_1();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryOrder_EntityAssignment_0(parent, this, 0, inst);
+			default: return parent.createParentFollower(this, index, index - 1, inst);
+		}	
+	}	
+		
+}
+
+// attribute=[Attribute]
+protected class QueryOrder_AttributeAssignment_2 extends AssignmentToken  {
+	
+	public QueryOrder_AttributeAssignment_2(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryOrderAccess().getAttributeAssignment_2();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryOrder_FullStopKeyword_1(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("attribute",true)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("attribute");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
+			IInstanceDescription param = getDescr((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getQueryOrderAccess().getAttributeAttributeCrossReference_2_0().getType().getClassifier())) {
+				type = AssignmentType.CR;
+				element = grammarAccess.getQueryOrderAccess().getAttributeAttributeCrossReference_2_0(); 
+				return obj;
+			}
+		}
+		return null;
+	}
+
+}
+
+// type=QueryOrderType?
+protected class QueryOrder_TypeAssignment_3 extends AssignmentToken  {
+	
+	public QueryOrder_TypeAssignment_3(AbstractToken parent, AbstractToken next, int no, IInstanceDescription current) {
+		super(parent, next, no, current);
+	}
+	
+	public Assignment getGrammarElement() {
+		return grammarAccess.getQueryOrderAccess().getTypeAssignment_3();
+	}
+
+	public AbstractToken createFollower(int index, IInstanceDescription inst) {
+		switch(index) {
+			case 0: return new QueryOrder_AttributeAssignment_2(parent, this, 0, inst);
+			default: return null;
+		}	
+	}	
+		
+	protected IInstanceDescription tryConsumeVal() {
+		if((value = current.getConsumable("type",false)) == null) return null;
+		IInstanceDescription obj = current.cloneAndConsume("type");
+		if(Boolean.TRUE.booleanValue()) { // org::eclipse::xtext::impl::RuleCallImpl FIXME: check if value is valid for datatype rule
+			type = AssignmentType.ERC;
+			element = grammarAccess.getQueryOrderAccess().getTypeQueryOrderTypeEnumRuleCall_3_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+
+/************ end Rule QueryOrder ****************/
 
 }
