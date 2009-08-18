@@ -3,6 +3,8 @@
  */
 package org.xmdl.labeling;
 
+import java.util.List;
+
 import org.eclipse.xtext.ui.core.DefaultLabelProvider;
 import org.xmdl.wdl.Attribute;
 import org.xmdl.wdl.Embed;
@@ -11,6 +13,8 @@ import org.xmdl.wdl.Enumeration;
 import org.xmdl.wdl.EnumerationLiteral;
 import org.xmdl.wdl.Model;
 import org.xmdl.wdl.Project;
+import org.xmdl.wdl.Query;
+import org.xmdl.wdl.QueryParameter;
 import org.xmdl.wdl.SimpleType;
 import org.xmdl.wdl.Type;
 import org.xmdl.wdl.gen.utils.ExtensionUtils;
@@ -52,6 +56,14 @@ public class WDLLabelProvider extends DefaultLabelProvider {
 
 	public String image(EnumerationLiteral x) {
 		return "full/obj16/EnumerationLiteral.gif";
+	}
+
+	public String image(Query x) {
+		return "full/obj16/Query.gif";
+	}
+
+	public String image(QueryParameter x) {
+		return "full/obj16/QueryParameter.gif";
 	}
 
 	public String image(Attribute x) {
@@ -106,6 +118,31 @@ public class WDLLabelProvider extends DefaultLabelProvider {
 		StringBuffer sb = new StringBuffer();
 		sb.append(x.getOrdinal());
 		sb.append(" : ").append(x.getName());
+		return sb.toString();
+	}
+	
+	public String text(Query x) {
+		StringBuffer sb = new StringBuffer();
+		sb.append(x.getName());
+		sb.append(" <");
+		List<Entity> entities = x.getEntities();
+		for (int i = 0; i < entities.size(); i++) {
+			Entity e = entities.get(i);
+			if (i != 0)
+				sb.append(", ");
+			sb.append(e.getName());
+		}
+		sb.append(">");
+		return sb.toString();
+	}
+
+	public String text(QueryParameter x) {
+		StringBuffer sb = new StringBuffer();
+		sb.append(x.getName());
+		Type type = x.getType();
+		if (type != null) {
+			sb.append(" : ").append(type.getName());
+		}
 		return sb.toString();
 	}
 }

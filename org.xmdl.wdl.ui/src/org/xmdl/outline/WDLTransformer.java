@@ -3,13 +3,15 @@
  */
 package org.xmdl.outline;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.ui.common.editor.outline.transformer.AbstractDeclarativeSemanticModelTransformer;
 import org.xmdl.wdl.Model;
+import org.xmdl.wdl.Query;
+import org.xmdl.wdl.QueryParameter;
 import org.xmdl.wdl.SimpleType;
-import org.xmdl.wdl.Type;
 
 /**
  * customization of the default outline structure
@@ -17,11 +19,20 @@ import org.xmdl.wdl.Type;
  */
 public class WDLTransformer extends AbstractDeclarativeSemanticModelTransformer {
 
-	public List<Type> getChildren(Model model) {
-		return model.getTypes();
+	public List<EObject> getChildren(Model model) {
+		List<EObject> children = new ArrayList<EObject>();
+		children.addAll(model.getTypes());
+		children.addAll(model.getQueries());
+		return children;
 	}
 
 	public List<EObject> getChildren(SimpleType attribute) {
 		return NO_CHILDREN;
 	}
+
+	public List<QueryParameter> getChildren(Query query) {
+		List<QueryParameter> params = query.getParameters();
+		return params;
+	}
+
 }
