@@ -12,29 +12,33 @@
 	<property file="${user.home}/generator.properties" />
 	<loadproperties srcFile="generator.properties" />
 
+	<echo message="compile_classpath : ${compile_classpath}"></echo>
+	<condition property="genlibs_classpath" value="${compile_classpath}" else="**/*.jar" >
+		<isset property="compile_classpath"/>
+	</condition>
+	<echo message="genlibs_classpath : ${generator_classpath}"></echo>
+	
 	<path id="generator.classpath">
-		<pathelement location="wdl"/>
-		<fileset dir="${generator.libs}" includes="**/*.jar">
-			<exclude name="org.apache.log4j*"/>
-		</fileset>
+		<pathelement location="wdl" />
+		<fileset dir="generator" includes="**/*.jar"/>
+		<pathelement path="${genlibs_classpath}" />
 	</path>
 
 	<!-- ================================= 
           target: generate              
          ================================= -->
-    <target name="generate" depends="check" description="description">
-    	<java classname="org.eclipse.emf.mwe.core.WorkflowRunner" classpathref="generator.classpath">
-    		<arg value="wdl/generator.mwe"/>
-    	</java>
-    </target>
-	
+	<target name="generate" depends="check" description="description">
+		<java classname="org.eclipse.emf.mwe.core.WorkflowRunner" classpathref="generator.classpath">
+			<arg value="wdl/generator.mwe"/>
+		</java>
+	</target>
+
 	<!-- - - - - - - - - - - - - - - - - - 
           target: check
           check if the generator is ok.                      
          - - - - - - - - - - - - - - - - - -->
-    <target name="check">
-    </target>
+	<target name="check">
+	</target>
 
 
 </project>
-     
