@@ -50,3 +50,12 @@ entity Profile {
     User user
     String privatePhone
 }
+
+query ProductsByNameAndType<Product> 
+with (String name, ProductType productType) {
+	Product.name = name
+	.productType = productType
+	-max(10)
+	-offset(0)
+	-order(.price-)
+}
