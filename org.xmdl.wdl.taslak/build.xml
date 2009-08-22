@@ -49,6 +49,9 @@
 		<dist_plugin 
 			plugin.name="org.xmdl.wdl.generator" 
 			plugin.path="org.xmdl.wdl.generator" />
+		<dist_plugin 
+			plugin.name="org.xmdl.wdl.ida" 
+			plugin.path="org.xmdl.wdl.ida" />
     </target>
 	
 	<!-- ================================= 
