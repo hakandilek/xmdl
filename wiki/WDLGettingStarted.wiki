@@ -1,5 +1,5 @@
 #summary Getting Started with WDL
-#labels Phase-Support, WDL
+#labels Phase-Support,WDL
 
 == Introduction ==
 
@@ -13,10 +13,6 @@ This guide is intended to be functional with the following configuration of soft
  
  _Even though eclipse is not required to generate code with WDL, it is recomended to be used for model file editing. The WDL editor embedded in Eclipse, performs dynamic syntax checking which may reduce errors in modeling phase. _
 
-== Installing WDL Generator ==
-
- * TODO...
-
 == Creating Project ==
 
  * Create an empty directory:
@@ -29,12 +25,31 @@ This guide is intended to be functional with the following configuration of soft
  mvn archetype:create \
  -DgroupId=com.example \
  -DartifactId=sample \
- -DarchetypeGroupId=org.xmdl.wdl \
+ -DarchetypeGroupId=org.xmdl.wdl.gen \
  -DarchetypeArtifactId=org.xmdl.wdl.ida-archetype \
- -DarchetypeVersion=0.1 \
- -DremoteRepositories=http://taslak.googlecode.com/svn/repository
+ -DarchetypeVersion=0.1.0 \
+ -DremoteRepositories=http://xmdl.googlecode.com/svn/branches/release-0.7/repository
  }}}
 
-== Installing Eclipse WDL Editor ==
+== Code Generation ==
+ * Go into the project directory (sample/sample/):
+ {{{
+ cd sample
+ }}}
+ * Generate source code and run unit tests:
+ {{{
+mvn hsql:start test -Pgenerate 
+ }}}
+*hsql:start* parameter runs a local HSQL server to perform unit tests,
+*-Pgenerate* initiates code generation. If you do not perform this parameter, code generation will not be performed during maven build process.
+== Model ==
+
+ * TODO...
+
+== Project Structure ==
+
+ * TODO...
+
+== Installing Eclipse WDL Editor (Optional) ==
 
  * TODO...
