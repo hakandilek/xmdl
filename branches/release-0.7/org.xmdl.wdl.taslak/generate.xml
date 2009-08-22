@@ -21,6 +21,7 @@
 	<path id="generator.classpath">
 		<pathelement location="wdl" />
 		<fileset dir="generator" includes="**/*.jar"/>
+		<fileset dir="dist/plugins" includes="**/*.jar"/>
 		<pathelement path="${genlibs_classpath}" />
 	</path>
 
