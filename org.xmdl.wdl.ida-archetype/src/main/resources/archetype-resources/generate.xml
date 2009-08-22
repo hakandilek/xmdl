@@ -15,11 +15,16 @@
 	<property file="${symbol_dollar}{user.home}/generator.properties" />
 	<loadproperties srcFile="generator.properties" />
 
+	<echo message="compile_classpath : ${symbol_dollar}{compile_classpath}"></echo>
+	<condition property="genlibs_classpath" value="${symbol_dollar}{compile_classpath}" else="**/*.jar" >
+		<isset property="compile_classpath"/>
+	</condition>
+	<echo message="genlibs_classpath : ${symbol_dollar}{generator_classpath}"></echo>
+	
 	<path id="generator.classpath">
-		<pathelement location="wdl"/>
-		<fileset dir="${symbol_dollar}{generator.libs}" includes="**/*.jar">
-			<exclude name="org.apache.log4j*"/>
-		</fileset>
+		<pathelement location="wdl" />
+		<fileset dir="generator" includes="**/*.jar"/>
+		<pathelement path="${symbol_dollar}{genlibs_classpath}" />
 	</path>
 
 	<!-- ================================= 
