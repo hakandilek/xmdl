@@ -43,7 +43,7 @@ mvn hsql:start test -Pgenerate
 
 *hsql:start* parameter runs a local HSQL server to perform unit tests,
 
-*-Pgenerate* initiates code generation. If you do not perform this parameter, code generation will not be performed during maven build process.
+*-Pgenerate* parameter initiates code generation. If you do not provide this parameter, code generation will not be performed during maven build process.
 
 == Model ==
 
