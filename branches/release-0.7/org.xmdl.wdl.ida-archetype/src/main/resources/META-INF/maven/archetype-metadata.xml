@@ -1,33 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?><archetype-descriptor name="xmdl-ida">
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor name="xmdl-ida">
+  <requiredProperties>
+    <requiredProperty key="org.xmdl.wdl.version"/>
+  </requiredProperties>
   <fileSets>
-    <fileSet filtered="true" encoding="UTF-8">
-      <directory>wdl</directory>
-      <includes>
-        <include>**/*.mwe</include>
-        <include>**/*.wdl</include>
-      </includes>
-    </fileSet>
-    <fileSet encoding="UTF-8">
-      <directory>generator</directory>
-      <includes>
-        <include>**/*.jar</include>
-      </includes>
-    </fileSet>
-    <fileSet encoding="UTF-8">
-      <directory>generator/com.google.guice_1.0.1.v200907171100</directory>
-      <includes>
-        <include>**/*.SF</include>
-        <include>**/*.MF</include>
-        <include>**/*.jar</include>
-        <include>**/*.inf</include>
-        <include>**/*.RSA</include>
-      </includes>
-    </fileSet>
     <fileSet filtered="true" encoding="UTF-8">
       <directory></directory>
       <includes>
         <include>generate.xml</include>
         <include>generator.properties</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>wdl</directory>
+      <includes>
+        <include>**/*.mwe</include>
+        <include>**/*.wdl</include>
       </includes>
     </fileSet>
   </fileSets>
