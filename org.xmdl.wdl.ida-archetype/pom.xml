@@ -5,7 +5,7 @@
   <artifactId>org.xmdl.wdl.ida-archetype</artifactId>
   <packaging>maven-archetype</packaging>
   <name>ida-archetype</name>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
   <build>
     <extensions>
       <extension>
