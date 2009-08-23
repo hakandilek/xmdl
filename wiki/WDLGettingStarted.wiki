@@ -38,13 +38,23 @@ This guide is intended to be functional with the following configuration of soft
  }}}
  * Generate source code and run unit tests:
  {{{
-mvn hsql:start test -Pgenerate 
+mvn -Pgenerate 
  }}}
 
-*hsql:start* parameter runs a local HSQL server to perform unit tests,
-
-*-Pgenerate* parameter initiates code generation. If you do not provide this parameter, code generation will not be performed during maven build process.
-
+== Running Web Application==
+ * Install the "core" module
+ {{{
+ cd core
+ mvn hsql:start install
+ }}}
+ This will run the unit tests and install the core atrifact into the local maven repository.
+ * Run web application
+ {{{
+ cd ../web
+ mvn hsql:start jetty:run
+ }}}
+ This will run the unit tests for the web module and run the web server with the application installed.
+ * Browse to the address [http://localhost:8080/] to see the running web application.
 == Model ==
 
  * TODO...
