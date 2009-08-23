@@ -110,7 +110,7 @@
 
 	<target name="build-archetype">
 		<build_archetype archetypeId="org.xmdl.wdl.ida-archetype" 
-			version="0.1.0"/>
+			version="0.1.1"/>
 	</target>
 
 	<macrodef name="dist_plugin">

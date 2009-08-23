@@ -118,6 +118,18 @@
             <id>appfuse</id>
             <url>http://static.appfuse.org/repository</url>
         </repository>
+        <repository>
+            <id>jboss</id>
+            <url>http://repository.jboss.com/maven2</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>ida</id>
+            <url>http://taslak.googlecode.com/svn/repository</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -506,17 +518,17 @@
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.xmdl.wdl</artifactId>
-                    <version>0.7.0.20090816_alpha1</version>
+                    <version>${org.xmdl.wdl.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.xmdl.wdl.generator</artifactId>
-                    <version>0.7.0.20090816_alpha1</version>
+                    <version>${org.xmdl.wdl.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.xmdl.wdl.ida</artifactId>
-                    <version>0.7.0.20090816_alpha1</version>
+                    <version>${org.xmdl.wdl.version}</version>
                 </dependency>
             </dependencies>
             <build>
@@ -620,6 +632,7 @@
         <velocity.version>1.4</velocity.version>
         <xfire.version>1.2.6</xfire.version>
         
+        <org.xmdl.wdl.version>0.7.0.20090823_alpha1</org.xmdl.wdl.version>
         <ida-corelib.version>0.1.1</ida-corelib.version>
         <revision>$Revision: $</revision>
     </properties>
