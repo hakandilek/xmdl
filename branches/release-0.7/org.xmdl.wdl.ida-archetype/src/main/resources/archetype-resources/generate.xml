@@ -23,7 +23,6 @@
 	
 	<path id="generator.classpath">
 		<pathelement location="wdl" />
-		<fileset dir="generator" includes="**/*.jar"/>
 		<pathelement path="${symbol_dollar}{genlibs_classpath}" />
 	</path>
 
