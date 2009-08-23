@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><archetype>
-  <id>xmdl-idaS</id>
+  <id>xmdl-ida</id>
   <resources>
     <resource>wdl/model.wdl</resource>
     <resource>wdl/generator.mwe</resource>
