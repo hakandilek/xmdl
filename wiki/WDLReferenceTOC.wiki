@@ -1,0 +1,7 @@
+#summary WDL Reference Table of Contents
+#labels Phase-Support,WDL,0.7
+
+ * [WDLGettingStarted Getting Started Guide]
+ * [WDLReference WDL Reference Guide]
+   * [WDLReference#Directory_Structure Project Directory Structure]
+   * [WDLReference#Model Modeling]
