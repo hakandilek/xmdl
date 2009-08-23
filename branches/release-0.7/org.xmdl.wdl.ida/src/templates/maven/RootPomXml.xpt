@@ -386,6 +386,12 @@
         <!-- ================= Generator Profile ================= -->
         <profile>
             <id>generate</id>
+            <repositories>
+                <repository>
+                    <id>org.xmdl.wdl.gen</id>
+                    <url>http://xmdl.googlecode.com/svn/branches/release-0.7/repository</url>
+                </repository>
+            </repositories>
             <dependencies>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>

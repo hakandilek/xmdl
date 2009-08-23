@@ -5,15 +5,19 @@
     <component class="org.eclipse.emf.mwe.utils.DirectoryCleaner" directory="core/target/"/>
     <component class="org.eclipse.emf.mwe.utils.DirectoryCleaner" directory="web/target/"/>
     
-    <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="core/src/"/>
+    <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="core/src"/>
+    <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="core/src/main"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="core/src/main/java"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="core/src/main/resources"/>
+    <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="core/src/test"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="core/src/test/java"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="core/src/test/resources"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="web/src"/>
+    <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="web/src/main"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="web/src/main/java"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="web/src/main/resources"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="web/src/main/webapp"/>
+    <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="web/src/test"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="web/src/test/java"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="web/src/test/resources"/>
     <component class="org.xmdl.wdl.gen.utils.DirectoryCreator" directory="web/target/classes"/>
