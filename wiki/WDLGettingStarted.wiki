@@ -54,15 +54,7 @@ mvn -Pgenerate
  mvn hsql:start jetty:run
  }}}
  This will run the unit tests for the web module and run the web server with the application installed.
- * Browse to the address [http://localhost:8080/] to see the running web application.
-== Model ==
+ * Browse to the address [http://localhost:8080/] to see the running web application. You'll see a web page similar to this:
+ [http://xmdl.googlecode.com/svn/wiki/WDLGettingStarted/shot01.png]
 
- * TODO...
-
-== Project Structure ==
-
- * TODO...
-
-== Installing Eclipse WDL Editor (Optional) ==
-
- * TODO...
+This is the end of the Getting Started Guide. For further instructions please go to the [WDLReference].
