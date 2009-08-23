@@ -1,5 +1,5 @@
 #summary Getting Started with WDL
-#labels Phase-Support,WDL
+#labels Phase-Support,WDL,0.7
 
 == Introduction ==
 
