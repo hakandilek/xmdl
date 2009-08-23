@@ -11,7 +11,7 @@ This manual contains useful information for programming using the WDL tools.
 == Contents  ==
 <wiki:toc/>
 
-== Project Structure ==
+== Directory Structure ==
 
  * TODO...
 
