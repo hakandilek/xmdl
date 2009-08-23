@@ -28,7 +28,7 @@ This guide is intended to be functional with the following configuration of soft
  -DartifactId=sample \
  -DarchetypeGroupId=org.xmdl.wdl.gen \
  -DarchetypeArtifactId=org.xmdl.wdl.ida-archetype \
- -DarchetypeVersion=0.1.0 \
+ -DarchetypeVersion=0.1.1 \
  -DremoteRepositories=http://xmdl.googlecode.com/svn/branches/release-0.7/repository
  }}}
 
