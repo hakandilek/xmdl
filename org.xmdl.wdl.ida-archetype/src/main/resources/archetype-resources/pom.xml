@@ -16,8 +16,8 @@
 
     <licenses>
         <license>
-            <name>LGPL</name>
-            <url>http://www.gnu.org/licenses/lgpl.html</url>
+            <name>Eclipse Public License</name>
+            <url>http://www.eclipse.org/legal/epl-v10.html</url>
         </license>
     </licenses>
 
@@ -114,11 +114,10 @@
             <id>appfuse</id>
             <url>http://static.appfuse.org/repository</url>
         </pluginRepository>
-    <pluginRepository>
-        <id>javagen</id>
-        <url>http://www.javagen.com/maven</url>
-    </pluginRepository>
-    
+        <pluginRepository>
+            <id>javagen</id>
+            <url>http://www.javagen.com/maven</url>
+        </pluginRepository>
     </pluginRepositories>
 
     <!-- Dependencies calculated by AppFuse when running full-source plugin -->
@@ -278,7 +277,7 @@
                 <jdbc.artifactId>derbyclient</jdbc.artifactId>
                 <jdbc.version>10.2.2.0</jdbc.version>
                 <jdbc.driverClassName>org.apache.derby.jdbc.ClientDriver</jdbc.driverClassName>
-                <jdbc.url>jdbc:derby://localhost/${rootArtifactId};create=true</jdbc.url>
+                <jdbc.url>jdbc:derby://localhost/${artifactId};create=true</jdbc.url>
                 <jdbc.username>any</jdbc.username>
                 <jdbc.password>value</jdbc.password>
             </properties>
@@ -292,7 +291,7 @@
                 <jdbc.artifactId>h2</jdbc.artifactId>
                 <jdbc.version>1.0.20061217</jdbc.version>
                 <jdbc.driverClassName>org.h2.Driver</jdbc.driverClassName>
-                <jdbc.url>jdbc:h2:${rootArtifactId}</jdbc.url>
+                <jdbc.url>jdbc:h2:${artifactId}</jdbc.url>
                 <jdbc.username>sa</jdbc.username>
             </properties>
         </profile>
@@ -305,7 +304,7 @@
                 <jdbc.artifactId>hsqldb</jdbc.artifactId>
                 <jdbc.version>1.8.0.7</jdbc.version>
                 <jdbc.driverClassName>org.hsqldb.jdbcDriver</jdbc.driverClassName>
-                <jdbc.url>jdbc:hsqldb:${rootArtifactId};shutdown=true</jdbc.url>
+                <jdbc.url>jdbc:hsqldb:${artifactId};shutdown=true</jdbc.url>
                 <jdbc.username>sa</jdbc.username>
             </properties>
         </profile>
@@ -332,7 +331,7 @@
                 <jdbc.artifactId>postgresql</jdbc.artifactId>
                 <jdbc.version>8.1-407.jdbc3</jdbc.version>
                 <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-                <jdbc.url>jdbc:postgresql://localhost/${rootArtifactId}</jdbc.url>
+                <jdbc.url>jdbc:postgresql://localhost/${artifactId}</jdbc.url>
                 <jdbc.username>postgres</jdbc.username>
                 <jdbc.password>postgres</jdbc.password>
             </properties>
@@ -349,7 +348,7 @@
                 <jdbc.artifactId>jtds</jdbc.artifactId>
                 <jdbc.version>1.2</jdbc.version>
                 <jdbc.driverClassName>net.sourceforge.jtds.jdbc.Driver</jdbc.driverClassName>
-                <jdbc.url>jdbc:jtds:sqlserver://localhost:3683/${rootArtifactId}</jdbc.url>
+                <jdbc.url>jdbc:jtds:sqlserver://localhost:3683/${artifactId}</jdbc.url>
                 <jdbc.username>sa</jdbc.username>
                 <jdbc.password>appfuse</jdbc.password>
             </properties>
@@ -368,6 +367,12 @@
         <!-- ================= Generator Profile ================= -->
         <profile>
             <id>generate</id>
+            <repositories>
+                <repository>
+                    <id>org.xmdl.wdl.gen</id>
+                    <url>http://xmdl.googlecode.com/svn/branches/release-0.7/repository</url>
+                </repository>
+            </repositories>
             <dependencies>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
@@ -507,6 +512,7 @@
                                 <phase>generate-sources</phase>
                                 <configuration>
                                     <tasks>
+                                        <property name="compile_classpath" refid="maven.runtime.classpath"/>
                                         <ant antfile="${dollar}{project.basedir}/generate.xml">
                                           <target name="generate" />
                                         </ant>
@@ -555,8 +561,8 @@
         <cargo.wait>false</cargo.wait>
                 
         <!-- Database settings -->
-        <hsql.dbname>${rootArtifactId}</hsql.dbname>
-        <hsql.dbfile>${dollar}{user.home}/${rootArtifactId}db</hsql.dbfile>
+        <hsql.dbname>${artifactId}</hsql.dbname>
+        <hsql.dbfile>${dollar}{user.home}/${artifactId}db</hsql.dbfile>
         <dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
         <dbunit.dataTypeFactoryName>org.dbunit.ext.hsqldb.HsqldbDataTypeFactory</dbunit.dataTypeFactoryName>
         <hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>
@@ -594,7 +600,7 @@
         <velocity.version>1.4</velocity.version>
         <xfire.version>1.2.6</xfire.version>
         
-        <org.xmdl.wdl.version>0.7.0.20090822_alpha1</org.xmdl.wdl.version>
+        <org.xmdl.wdl.version>0.7.0.20090823_alpha1</org.xmdl.wdl.version>
         <ida-corelib.version>0.1.1</ida-corelib.version>
         <revision>${dollar}Revision: ${dollar}</revision>
     </properties>
