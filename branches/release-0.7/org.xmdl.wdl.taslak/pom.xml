@@ -119,21 +119,32 @@
             <id>jboss</id>
             <url>http://repository.jboss.com/maven2</url>
             <releases>
-        <enabled>true</enabled>
-      </releases>
+                <enabled>true</enabled>
+            </releases>
             <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <repository>
             <id>ida</id>
             <url>http://taslak.googlecode.com/svn/repository</url>
             <releases>
-        <enabled>true</enabled>
-      </releases>
+                <enabled>true</enabled>
+            </releases>
             <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>openqa-releases</id>
+            <name>OpenQA Releases</name>
+            <url>http://nexus.openqa.org/content/repositories/releases</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -636,9 +647,16 @@
         <urlrewrite.version>3.0.4</urlrewrite.version>
         <velocity.version>1.4</velocity.version>
         <xfire.version>1.2.6</xfire.version>
+        <webdriver.version>0.6.1039</webdriver.version>
+        <htmlunit.version>2.5</htmlunit.version>
+        <sac.version>1.3</sac.version>
+        <xerces.version>2.9.1</xerces.version>
+        <cssparser.version>0.9.5</cssparser.version>
+        <nekohtml.version>1.9.11</nekohtml.version>
+        <xalan.version>2.7.1</xalan.version>
         
         <org.xmdl.wdl.version>0.7.0.20090823_alpha1</org.xmdl.wdl.version>
-        <ida-corelib.version>0.1.1</ida-corelib.version>
+        <ida-corelib.version>0.1.2-SNAPSHOT</ida-corelib.version>
         <revision>$Revision: $</revision>
     </properties>
 </project>
