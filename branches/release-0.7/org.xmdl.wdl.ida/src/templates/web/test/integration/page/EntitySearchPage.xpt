@@ -1,0 +1,63 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+«FILE "test/java/org/xmdl/taslak/webapp/integration/page/" + this.name + "SearchPage.java" TO_WEB_SRC-»
+package «this.project().basePackageName()».webapp.integration.page;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+public class «this.name»SearchPage extends AbstractNavigationPage {
+
+	@FindBy(how = How.CLASS_NAME, using = "pagebanner")
+	private WebElement pageBanner;
+
+	@FindBy(how = How.ID, using = "«this.name.toFirstLower()»List")
+	private WebElement table;
+
+	@FindBy(how = How.ID_OR_NAME, using = "allbox")
+	private WebElement allbox;
+	
+	@FindBy(how = How.ID_OR_NAME, using = "method:deleteMass")
+	private WebElement deleteMass;
+	
+	public «this.name»SearchPage(WebDriver driver) {
+		super(driver);
+	}
+
+	public String getPageBannerText() {
+		return pageBanner.getText();
+	}
+
+	public String getTableCell(int row, int col) {
+		WebElement el = table.findElement(By.xpath(".//tr[" + row + "]//td[" + col + "]"));
+		if (el != null)
+			return el.getText();
+		return null;
+	}
+	
+	public int getTableRowCount() {
+		List<WebElement> elems = table.findElements(By.xpath(".//tr"));
+		return elems.size();
+	}
+
+	public «this.name»SearchPage deleteAll() {
+		allbox.toggle();
+		deleteMass.submit();
+		return page(«this.name»SearchPage.class);
+	}
+
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".ent.srch.page.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
+}
+«ENDFILE-»
+«ENDDEFINE»

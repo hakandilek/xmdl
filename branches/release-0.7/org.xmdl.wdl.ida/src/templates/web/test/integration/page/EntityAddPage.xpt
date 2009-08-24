@@ -1,0 +1,80 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+«EXTENSION org::eclipse::xtend::util::stdlib::counter»
+
+«DEFINE entity FOR wdl::Entity»
+«FILE "test/java/org/xmdl/taslak/webapp/integration/page/" + this.name + "AddPage.java" TO_WEB_SRC-»
+package «this.project().basePackageName()».webapp.integration.page;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+public class «this.name»AddPage extends AbstractNavigationPage {
+
+	public «this.name»AddPage(WebDriver driver) {
+		super(driver);
+	}
+
+«FOREACH this.attributes AS attribute-»
+    «IF !attribute.isReference()-»
+        «IF !this.isEnumeration()-»
+            «IF attribute.type.isDate()-»
+
+    @FindBy(how = How.ID_OR_NAME, using = "dojo.«this.name.toFirstLower()».«attribute.name »")
+    private WebElement «attribute.name »;
+            «ELSE-»
+
+    @FindBy(how = How.ID_OR_NAME, using = "«this.name.toFirstLower()».«attribute.name »")
+    private WebElement «attribute.name »;
+            «ENDIF-»
+        «ENDIF-»
+    «ENDIF-»
+    «IF attribute.isEmbed()-»
+    «ENDIF-»
+«ENDFOREACH-» 
+
+	@FindBy(how = How.ID_OR_NAME, using = "«this.name.toFirstLower()»Form_button_add")
+	private WebElement add;
+
+	@FindBy(how = How.ID_OR_NAME, using = "«this.name.toFirstLower()»Form_button_cancel")
+	private WebElement cancel;
+
+	public «this.name»SearchPage add(
+«FOREACH this.attributes AS attribute-»
+    «IF !attribute.isReference()-»
+        «IF !this.isEnumeration()-»
+    «IF counterInc(this.name + "add")>1»,«ENDIF»String «attribute.name»
+        «ENDIF-»
+    «ENDIF-»
+«ENDFOREACH-» 
+        ) {
+«FOREACH this.attributes AS attribute-»
+    «IF !attribute.isReference()-»
+        «IF !this.isEnumeration()-»
+        if («attribute.name» != null)
+            this.«attribute.name».sendKeys(«attribute.name»);
+        «ENDIF-»
+    «ENDIF-»
+    «IF attribute.isEmbed()-»
+    «ENDIF-»
+«ENDFOREACH-» 
+
+		this.add.submit();
+		return page(«this.name»SearchPage.class);
+	}
+	
+	public «this.name»SearchPage cancel() {
+		this.cancel.submit();
+		return page(«this.name»SearchPage.class);
+	}
+
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".ent.add.page.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
+}
+«ENDFILE-»
+«ENDDEFINE»

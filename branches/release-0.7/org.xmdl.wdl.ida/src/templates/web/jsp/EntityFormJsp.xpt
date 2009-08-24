@@ -13,7 +13,7 @@
 </head>
 
 <!--copy URL-->
-<s:url id="copyUrl" namespace="/«this.name»" action="copy«this.name».do" includeParams="false">
+<s:url id="copyUrl" namespace="/«this.name»" action="copy«this.name».do" >
     <s:param name="idToCopy">
         <s:property value="«this.name.toFirstLower()».id"/>
     </s:param>

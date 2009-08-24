@@ -74,9 +74,17 @@
 
 	«EXPAND web::testrsc::ApplicationContextDaoXml::model FOR this»
 	«EXPAND web::testrsc::ApplicationContextServiceXml::model FOR this»
+    «EXPAND web::testrsc::ApplicationContextWebdriverXml::model FOR this»
 	«EXPAND web::testrsc::Log4jXml::model FOR this»
 	«EXPAND web::testrsc::SampleDataXml::model FOR this»
 	«EXPAND web::testrsc::JdbcProperties::model FOR this»
-	«EXPAND web::testrsc::WebTestsXml::model FOR this»
 
+    «EXPAND web::test::integration::LoginTest::model FOR this»
+    «EXPAND web::test::integration::EntityTest::entity FOREACH this.types.typeSelect(Entity)»
+    «EXPAND web::test::integration::page::MainPage::model FOR this»
+    «EXPAND web::test::integration::page::AbstractNavigationPage::model FOR this»
+    «EXPAND web::test::integration::page::EntityAddPage::entity FOREACH this.types.typeSelect(Entity)»
+    «EXPAND web::test::integration::page::EntityEditPage::entity FOREACH this.types.typeSelect(Entity)»
+    «EXPAND web::test::integration::page::EntitySearchPage::entity FOREACH this.types.typeSelect(Entity)»
+    
 «ENDDEFINE»

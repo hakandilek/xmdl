@@ -131,6 +131,17 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*ActionTest.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/integration/**Test.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -372,7 +383,7 @@
                     <plugin>
                         <groupId>org.codehaus.cargo</groupId>
                         <artifactId>cargo-maven2-plugin</artifactId>
-                        <version>0.3</version>
+                        <version>0.3.1</version>
                         <configuration>
                             <wait>${cargo.wait}</wait>
                             <container>
@@ -389,6 +400,13 @@
                                     <cargo.hostname>${cargo.host}</cargo.hostname>
                                     <cargo.servlet.port>${cargo.port}</cargo.servlet.port>
                                 </properties>
+                                <deployables>
+                                    <deployable>
+                                        <properties>
+                                            <context>ROOT</context>
+                                        </properties>
+                                    </deployable>
+                                </deployables>
                             </configuration>
                         </configuration>
                         <executions>
@@ -409,48 +427,75 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.1</version>
-                        <configuration>
-                            <tasks>
-                                <taskdef resource="webtest_base_relaxed.taskdef">
-                                    <classpath refid="maven.test.classpath"/>
-                                </taskdef>
-                                <mkdir dir="target/webtest-data"/>
-                                <!-- Delete old results file if it exists -->
-                                <delete file="target/webtest-data/web-tests-result.xml"/>
-                                <!-- This is so the default will be used if no test case is specified -->
-                                <property name="test" value="run-all-tests"/>
-                                <echo level="info">Testing '${project.build.finalName}' with locale '${user.language}'</echo>
-                                <ant antfile="src/test/resources/web-tests.xml" target="${test}">
-                                    <property name="user.language" value="${user.language}"/>
-                                    <property name="webapp.name" value="${project.build.finalName}"/>
-                                    <property name="host" value="${cargo.host}"/>
-                                    <property name="port" value="${cargo.port}"/>
-                                </ant>
-                            </tasks>
-                        </configuration>
+                        <artifactId>maven-surefire-plugin</artifactId>
                         <executions>
                             <execution>
+                                <id>surefire-it</id>
                                 <phase>integration-test</phase>
                                 <goals>
-                                    <goal>run</goal>
+                                    <goal>test</goal>
                                 </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*ActionTest.java</exclude>
+                                        <exclude>**/*ActionTest</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/integration/**Test.java</include>
+                                    </includes>
+                                </configuration>
                             </execution>
                         </executions>
                         <dependencies>
                             <dependency>
-                                <groupId>com.canoo.webtest</groupId>
-                                <artifactId>webtest</artifactId>
-                                <version>${webtest.version}</version>
-                                <!-- groovy-all doesn't have a pom in central repo -->
-                                <!-- exclude groovy to prevent trying to fetch pom -->
-                                <exclusions>
-                                    <exclusion>
-                                        <groupId>groovy</groupId>
-                                        <artifactId>groovy-all</artifactId>
-                                    </exclusion>
-                                </exclusions>
+                                <groupId>org.w3c.css</groupId>
+                                <artifactId>sac</artifactId>
+                                <version>${sac.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>xerces</groupId>
+                                <artifactId>xercesImpl</artifactId>
+                                <version>${xerces.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>net.sourceforge.cssparser</groupId>
+                                <artifactId>cssparser</artifactId>
+                                <version>${cssparser.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>net.sourceforge.nekohtml</groupId>
+                                <artifactId>nekohtml</artifactId>
+                                <version>${nekohtml.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>xalan</groupId>
+                                <artifactId>xalan</artifactId>
+                                <version>${xalan.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.openqa.selenium.webdriver</groupId>
+                                <artifactId>webdriver-support</artifactId>
+                                <version>${webdriver.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.openqa.selenium.webdriver</groupId>
+                                <artifactId>webdriver-htmlunit</artifactId>
+                                <version>${webdriver.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.openqa.selenium.webdriver</groupId>
+                                <artifactId>webdriver-firefox</artifactId>
+                                <version>${webdriver.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>net.sourceforge.htmlunit</groupId>
+                                <artifactId>htmlunit</artifactId>
+                                <version>${htmlunit.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>net.sourceforge.htmlunit</groupId>
+                                <artifactId>htmlunit-core-js</artifactId>
+                                <version>${htmlunit.version}</version>
                             </dependency>
                         </dependencies>
                     </plugin>
