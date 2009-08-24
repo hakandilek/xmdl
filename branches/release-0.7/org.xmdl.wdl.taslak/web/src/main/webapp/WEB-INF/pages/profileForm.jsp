@@ -6,7 +6,7 @@
 </head>
 
 <!--copy URL-->
-<s:url id="copyUrl" namespace="/Profile" action="copyProfile.do" includeParams="false">
+<s:url id="copyUrl" namespace="/Profile" action="copyProfile.do" >
     <s:param name="idToCopy">
         <s:property value="profile.id"/>
     </s:param>

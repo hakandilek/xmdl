@@ -1,7 +1,5 @@
 package org.xmdl.taslak.webapp.integration.page;
 
-import java.util.Date;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -46,15 +44,19 @@ public class OrderEditPage extends AbstractNavigationPage {
 	public String getCreateDate() {
 		return createDate.getValue();
 	}
-	
-	public OrderEditPage update(String name, Double priceTotals,
-			Date createDate) {
+
+	public OrderEditPage update(String name, String priceTotals,
+			String createDate) {
+
 		if (name != null)
 			this.name.sendKeys(name);
+
 		if (priceTotals != null)
-			this.priceTotals.sendKeys(priceTotals + "");
+			this.priceTotals.sendKeys(priceTotals);
+
 		if (createDate != null)
-			this.createDate.sendKeys(createDate + "");
+			this.createDate.sendKeys(createDate);
+
 		this.update.submit();
 		return page(OrderEditPage.class);
 	}
@@ -77,4 +79,7 @@ public class OrderEditPage extends AbstractNavigationPage {
 		return page(OrderEditPage.class);
 	}
 
+	/*PROTECTED REGION ID(Order.ent.edt.page.bdy) ENABLED START*/
+	//This is the protected region that will not be overwritten on generation
+	/*PROTECTED REGION END*/
 }

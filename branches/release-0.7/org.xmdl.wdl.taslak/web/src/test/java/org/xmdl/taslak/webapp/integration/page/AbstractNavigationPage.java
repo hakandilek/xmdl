@@ -39,7 +39,7 @@ public class AbstractNavigationPage extends AbstractPage {
 
 	@FindBy(how = How.LINK_TEXT, using = "Logout")
 	private WebElement linkLogout;
-	
+
 	//Application specific links
 	@FindBy(how = How.LINK_TEXT, using = "Edit Orders")
 	private WebElement linkEditOrders;
@@ -61,22 +61,22 @@ public class AbstractNavigationPage extends AbstractPage {
 		linkViewUsers.click();
 		return page(ViewUsersPage.class);
 	}
-	
+
 	public CurrentUsersPage currentUsers() {
 		linkCurrentUsers.click();
 		return page(CurrentUsersPage.class);
 	}
-	
+
 	public FlushCachePage flushCache() {
 		linkFlushCache.click();
 		return page(FlushCachePage.class);
 	}
-	
+
 	public ClickstreamPage clickstream() {
 		linkClickstream.click();
 		return page(ClickstreamPage.class);
 	}
-	
+
 	public LogoutPage logout() {
 		linkLogout.click();
 		return page(LogoutPage.class);
@@ -92,4 +92,9 @@ public class AbstractNavigationPage extends AbstractPage {
 		linkSearchOrders.click();
 		return page(OrderSearchPage.class);
 	}
+
+	/*PROTECTED REGION ID(.abs.nav.page.bdy) ENABLED START*/
+	//This is the protected region that will not be overwritten on generation
+	/*PROTECTED REGION END*/
+
 }
