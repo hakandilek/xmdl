@@ -85,4 +85,8 @@
     <classpathentry kind="var" path="M2_REPO/org/apache/struts/struts2-codebehind-plugin/2.1.6/struts2-codebehind-plugin-2.1.6.jar"/>
 	<classpathentry kind="var" path="M2_REPO/displaytag/displaytag/1.1.1/displaytag-1.1.1.jar" sourcepath="/M2_REPO/displaytag/displaytag/1.1.1/displaytag-1.1.1-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/opensymphony/ognl/2.6.11/ognl-2.6.11.jar" sourcepath="M2_REPO/opensymphony/ognl/2.6.11/ognl-2.6.11-sources.jar"/>
+    <classpathentry kind="var" path="M2_REPO/org/openqa/selenium/webdriver/webdriver-common/0.6.1039/webdriver-common-0.6.1039.jar" sourcepath="M2_REPO/org/openqa/selenium/webdriver/webdriver-common/0.6.1039/webdriver-common-0.6.1039-sources.jar"/>
+    <classpathentry kind="var" path="M2_REPO/org/openqa/selenium/webdriver/webdriver-support/0.6.1039/webdriver-support-0.6.1039.jar" sourcepath="M2_REPO/org/openqa/selenium/webdriver/webdriver-support/0.6.1039/webdriver-support-0.6.1039-sources.jar"/>
+    <classpathentry kind="var" path="M2_REPO/org/openqa/selenium/webdriver/webdriver-firefox/0.6.1039/webdriver-firefox-0.6.1039.jar" sourcepath="M2_REPO/org/openqa/selenium/webdriver/webdriver-firefox/0.6.1039/webdriver-firefox-0.6.1039-sources.jar"/>
+    <classpathentry kind="var" path="M2_REPO/org/openqa/selenium/webdriver/webdriver-htmlunit/0.6.1039/webdriver-htmlunit-0.6.1039.jar" sourcepath="M2_REPO/org/openqa/selenium/webdriver/webdriver-htmlunit/0.6.1039/webdriver-htmlunit-0.6.1039-sources.jar"/>
 </classpath>
