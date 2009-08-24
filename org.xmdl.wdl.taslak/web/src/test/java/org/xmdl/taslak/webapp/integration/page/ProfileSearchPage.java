@@ -8,12 +8,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class OrderSearchPage extends AbstractNavigationPage {
+public class ProfileSearchPage extends AbstractNavigationPage {
 
 	@FindBy(how = How.CLASS_NAME, using = "pagebanner")
 	private WebElement pageBanner;
 
-	@FindBy(how = How.ID, using = "orderList")
+	@FindBy(how = How.ID, using = "profileList")
 	private WebElement table;
 
 	@FindBy(how = How.ID_OR_NAME, using = "allbox")
@@ -22,7 +22,7 @@ public class OrderSearchPage extends AbstractNavigationPage {
 	@FindBy(how = How.ID_OR_NAME, using = "method:deleteMass")
 	private WebElement deleteMass;
 
-	public OrderSearchPage(WebDriver driver) {
+	public ProfileSearchPage(WebDriver driver) {
 		super(driver);
 	}
 
@@ -43,13 +43,13 @@ public class OrderSearchPage extends AbstractNavigationPage {
 		return elems.size();
 	}
 
-	public OrderSearchPage deleteAll() {
+	public ProfileSearchPage deleteAll() {
 		allbox.toggle();
 		deleteMass.submit();
-		return page(OrderSearchPage.class);
+		return page(ProfileSearchPage.class);
 	}
 
-	/*PROTECTED REGION ID(Order.ent.srch.page.bdy) ENABLED START*/
+	/*PROTECTED REGION ID(Profile.ent.srch.page.bdy) ENABLED START*/
 	//This is the protected region that will not be overwritten on generation
 	/*PROTECTED REGION END*/
 }

@@ -365,31 +365,6 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.openqa.selenium.webdriver</groupId>
-            <artifactId>webdriver-support</artifactId>
-            <version>${webdriver.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openqa.selenium.webdriver</groupId>
-            <artifactId>webdriver-htmlunit</artifactId>
-            <version>${webdriver.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openqa.selenium.webdriver</groupId>
-            <artifactId>webdriver-firefox</artifactId>
-            <version>${webdriver.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sourceforge.htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
-            <version>${htmlunit.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sourceforge.htmlunit</groupId>
-            <artifactId>htmlunit-core-js</artifactId>
-            <version>${htmlunit.version}</version>
-        </dependency>
     </dependencies>
 
     <profiles>
@@ -493,6 +468,31 @@
                                 <groupId>xalan</groupId>
                                 <artifactId>xalan</artifactId>
                                 <version>${xalan.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.openqa.selenium.webdriver</groupId>
+                                <artifactId>webdriver-support</artifactId>
+                                <version>${webdriver.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.openqa.selenium.webdriver</groupId>
+                                <artifactId>webdriver-htmlunit</artifactId>
+                                <version>${webdriver.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.openqa.selenium.webdriver</groupId>
+                                <artifactId>webdriver-firefox</artifactId>
+                                <version>${webdriver.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>net.sourceforge.htmlunit</groupId>
+                                <artifactId>htmlunit</artifactId>
+                                <version>${htmlunit.version}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>net.sourceforge.htmlunit</groupId>
+                                <artifactId>htmlunit-core-js</artifactId>
+                                <version>${htmlunit.version}</version>
                             </dependency>
                         </dependencies>
                     </plugin>
