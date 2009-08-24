@@ -1,0 +1,134 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+«EXTENSION org::eclipse::xtend::util::stdlib::counter»
+
+«DEFINE entity FOR wdl::Entity»
+«FILE "test/java/org/xmdl/taslak/webapp/integration/" + this.name + "Test.java" TO_WEB_SRC-»
+package «this.project().basePackageName()».webapp.integration;
+
+import org.xmdl.ida.lib.web.webdriver.test.BaseSeleniumTestCase;
+import «this.project().basePackageName()».webapp.integration.page.«this.name»AddPage;
+import «this.project().basePackageName()».webapp.integration.page.«this.name»EditPage;
+import «this.project().basePackageName()».webapp.integration.page.«this.name»SearchPage;
+
+public class «this.name»Test extends BaseSeleniumTestCase {
+
+	public void testSearch() {
+		login();
+		«this.name»SearchPage searchPage = get("/«this.name»/«this.name.toFirstLower()»s.do", «this.name»SearchPage.class);
+		
+		String pageBannerText = searchPage.getPageBannerText();
+		assertNotNull(pageBannerText);
+		assertTrue(pageBannerText.endsWith("«this.name.toFirstLower()»s found, displaying all «this.name.toFirstLower()»s."));
+		assertEquals(3+2, searchPage.getTableRowCount());
+	}
+
+	public void testEdit() {
+		login();
+		«this.name»EditPage editPage = get("/«this.name»/edit«this.name».do?id=1", «this.name»EditPage.class);
+		
+«FOREACH this.attributes AS attribute-»
+    «IF !attribute.isReference()-»
+        «IF !this.isEnumeration()-»
+        String «attribute.name» = editPage.get«attribute.name.toFirstUpper()»();
+        assertNotNull(«attribute.name»);
+        assertEquals(«attribute.randomizeString("1")», «attribute.name»);
+        
+        «ENDIF-»
+    «ENDIF-»
+«ENDFOREACH-» 
+	}
+
+	public void testSave() {
+		login();
+		«this.name»EditPage editPage = get("/«this.name»/edit«this.name».do?id=1", «this.name»EditPage.class);
+		«this.name»EditPage updatePage = editPage.update(
+«FOREACH this.attributes AS attribute-»
+    «IF !attribute.isReference()-»
+        «IF !this.isEnumeration()-»
+            «IF attribute.type.isDate()-»
+                «IF counterInc(this.name + "save")>1»,«ENDIF»null            
+            «ELSE-»
+                «IF counterInc(this.name + "save")>1»,«ENDIF»""            
+            «ENDIF-»
+        «ENDIF-»
+    «ENDIF-»
+«ENDFOREACH-» 
+		);
+		
+		String successMessages = updatePage.getSuccessMessages();
+		assertNotNull(successMessages);
+	}
+
+	public void testAdd() {
+		login();
+		«this.name»AddPage addPage = get("/«this.name»/edit«this.name».do", «this.name»AddPage.class);
+		«this.name»SearchPage searchPage = addPage.add(
+«FOREACH this.attributes AS attribute-»
+    «IF !attribute.isReference()-»
+        «IF !this.isEnumeration()-»
+            «IF counterInc(this.name + "tadd")>1»,«ENDIF»"random"            
+        «ENDIF-»
+    «ENDIF-»
+«ENDFOREACH-» 
+		);
+		
+		String successMessages = searchPage.getSuccessMessages();
+		assertNotNull(successMessages);
+	}
+
+	public void testCopy() {
+		login();
+		«this.name»EditPage copyPage = get("/«this.name»/copy«this.name».do?idToCopy=1", «this.name»EditPage.class);
+		
+«FOREACH this.attributes AS attribute-»
+    «IF !attribute.isReference()-»
+        «IF !this.isEnumeration()-»
+        String «attribute.name» = copyPage.get«attribute.name.toFirstUpper()»();
+        assertNotNull(«attribute.name»);
+        assertEquals(«attribute.randomizeString("1")», «attribute.name»);
+        
+        «ENDIF-»
+    «ENDIF-»
+«ENDFOREACH-» 
+	}
+
+	/** 
+	 * Delete tests don't work because of confirmation dialog.
+	 * See related webdriver issue:
+	 * http://code.google.com/p/webdriver/issues/detail?id=27
+	 * 
+
+	public void testDelete() {
+		login();
+		«this.name»EditPage editPage = get("/«this.name»/edit«this.name».do?id=1", «this.name»EditPage.class);
+		«this.name»SearchPage searchPage = editPage.delete();
+		
+		String successMessages = searchPage.getSuccessMessages();
+		assertNotNull(successMessages);
+		assertEquals("«this.name» has been deleted successfully.", successMessages);
+	}
+
+	public void testMassDelete() {
+		login();
+		«this.name»SearchPage searchPage = get("/«this.name»/«this.name.toFirstLower()»s.do", «this.name»SearchPage.class);
+		«this.name»SearchPage deletePage = searchPage.deleteAll();
+
+		String successMessages = deletePage.getSuccessMessages();
+		assertNotNull(successMessages);
+		assertEquals("deleted", successMessages);
+		String pageBannerText = searchPage.getPageBannerText();
+		assertNotNull(pageBannerText);
+		assertEquals("No «this.name.toFirstLower()»s found", pageBannerText);
+	}
+	**/
+	
+     «PROTECT CSTART '/*' CEND '*/' ID this.name + ".IntTest.bdy" »
+     //This is the protected region that will not be overwritten on generation
+     «ENDPROTECT»
+	
+}
+«ENDFILE-»
+«ENDDEFINE»

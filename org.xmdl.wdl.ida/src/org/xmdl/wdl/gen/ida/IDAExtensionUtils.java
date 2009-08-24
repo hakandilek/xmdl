@@ -340,6 +340,11 @@ public class IDAExtensionUtils extends ExtensionUtils {
 		return plain;
 	}
 	
+	public static String randomizeString(Attribute a, String variant) {
+		//TODO:random
+		return "\"TODO:random\"";
+	}
+	
 	public static String wrapType(Attribute attribute) {
 		return wrapType(attribute, false);
 	}
