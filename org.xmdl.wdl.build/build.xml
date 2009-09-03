@@ -50,33 +50,33 @@
 
 	<target name="build-generator-extlibs">
 		<build_external_artifact artifactId="com.google.collect" 
-			version="0.8.0.v200907171100"/>
+			version="0.8.0.v200908120607"/>
 		<build_external_artifact artifactId="org.eclipse.emf.ecore.xmi" 
 			version="2.5.0.v200906151043"/>
 		<build_external_artifact artifactId="org.eclipse.xtend.typesystem.emf" 
-			version="0.7.1.v200907170713"/>
+			version="0.7.2.v200908120436"/>
 		<build_external_artifact artifactId="org.eclipse.emf.mwe.core" 
-			version="0.7.1.v200907170432"/>
+			version="0.7.2.v200908120417"/>
 		<build_external_artifact artifactId="org.eclipse.xtend.util.stdlib" 
-			version="0.7.1.v200907170713"/>
+			version="0.7.2.v200908120436"/>
 		<build_external_artifact artifactId="com.ibm.icu" 
 			version="4.0.1.v20090415"/>
 		<build_external_artifact artifactId="org.eclipse.emf.mwe.utils" 
-			version="0.7.1.v200907170432"/>
+			version="0.7.2.v200908120417"/>
 		<build_external_artifact artifactId="org.eclipse.xtext" 
-			version="0.7.1.v200907171100"/>
+			version="0.7.2.v200908120607"/>
 		<build_external_artifact artifactId="org.antlr.runtime" 
-			version="3.0.0.v200803061811"/>
+			version="3.0.0.v200908120607"/>
 		<build_external_artifact artifactId="org.eclipse.equinox.common" 
 			version="3.5.0.v20090520-1800"/>
 		<build_external_artifact artifactId="org.eclipse.xtext.log4j" 
-			version="1.2.15.v200907171100"/>
+			version="1.2.15.v200908120607"/>
 		<build_external_artifact artifactId="org.apache.commons.cli" 
 			version="1.0.0.v20080604-1500"/>
 		<build_external_artifact artifactId="org.eclipse.jdt.core" 
 			version="3.5.0.v_963"/>
 		<build_external_artifact artifactId="org.eclipse.xtext.util" 
-			version="0.7.1.v200907171100"/>
+			version="0.7.2.v200908120607"/>
 		<build_external_artifact artifactId="org.apache.commons.logging" 
 			version="1.1.1.v200904062255"/>
 		<build_external_artifact artifactId="org.eclipse.text" 
@@ -84,17 +84,17 @@
 		<build_external_artifact artifactId="org.eclipse.emf.common" 
 			version="2.5.0.v200906151043"/>
 		<build_external_artifact artifactId="org.eclipse.xpand" 
-			version="0.7.1.v200907170713"/>
+			version="0.7.2.v200908120436"/>
 		<build_external_artifact artifactId="org.eclipse.emf.ecore" 
 			version="2.5.0.v200906151043"/>
 		<build_external_artifact artifactId="org.eclipse.xtend" 
-			version="0.7.1.v200907170713"/>
+			version="0.7.2.v200908120436"/>
 		<build_external_artifact artifactId="com.google.guice-aopalliance" 
-			version="1.0.1.v200907171100" 
-			filename="com.google.guice_1.0.1.v200907171100-aopalliance"/>
+			version="1.0.1.v200908120607" 
+			filename="com.google.guice_1.0.1.v200908120607-aopalliance"/>
 		<build_external_artifact artifactId="com.google.guice-guice-1.0_patched" 
-			version="1.0.1.v200907171100" 
-			filename="com.google.guice_1.0.1.v200907171100-guice-1.0_patched"/>
+			version="1.0.1.v200908120607" 
+			filename="com.google.guice_1.0.1.v200908120607-guice-1.0_patched"/>
 	</target>
 
 	<target name="build-generator">
@@ -110,7 +110,7 @@
 
 	<target name="build-archetype">
 		<build_archetype archetypeId="org.xmdl.wdl.ida-archetype" 
-			version="0.1.1"/>
+			version="0.1.2-SNAPSHOT"/>
 	</target>
 
 	<macrodef name="dist_plugin">
