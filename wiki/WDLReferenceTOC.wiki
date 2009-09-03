@@ -5,3 +5,4 @@
  * [WDLReference WDL Reference Guide]
    * [WDLReference#Directory_Structure Project Directory Structure]
    * [WDLReference#Model Modeling]
+   * [WDLReference#Installing_Eclipse_WDL_Editor_(Optional) Installing Eclipse WDL Editor]
