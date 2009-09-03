@@ -4,7 +4,7 @@ Created-By: 1.6.0_02-b06 (Sun Microsystems Inc.)
 Bundle-ManifestVersion: 2
 Bundle-Name: org.xmdl.wdl.ida
 Bundle-Vendor: xmdl.org
-Bundle-Version: 0.7.0.20090824_alpha1
+Bundle-Version: 0.7.0.20090903_alpha1
 Bundle-SymbolicName: org.xmdl.wdl.ida;singleton:=true
 Eclipse-RegisterBuddy: org.eclipse.xtext.log4j
 Bundle-ActivationPolicy: lazy
@@ -12,7 +12,7 @@ Require-Bundle: org.xmdl.wdl,org.xmdl.wdl.generator;bundle-version="0.
  7.0",org.eclipse.xpand,org.eclipse.xtend,org.eclipse.xtext,org.eclips
  e.emf.mwe.core,org.eclipse.emf.mwe.utils,org.eclipse.xtend.typesystem
  .emf,org.eclipse.xtend.util.stdlib;bundle-version="0.7.1"
-Built-By: Hakan Dilek
+Built-By: ${dist.build.user}
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.xmdl.wdl.gen.ida
 
