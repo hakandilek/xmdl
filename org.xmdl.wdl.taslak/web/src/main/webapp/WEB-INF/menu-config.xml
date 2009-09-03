@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<MenuConfig>
+<?xml version="1.0" encoding="UTF-8"?><MenuConfig>
     <Displayers>
         <Displayer name="CoolMenu" type="net.sf.navigator.displayer.CoolMenuDisplayer"/>
         <Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>

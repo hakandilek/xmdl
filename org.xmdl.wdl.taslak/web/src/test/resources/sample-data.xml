@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<dataset>
+<?xml version="1.0" encoding="UTF-8"?><dataset>
     <table name="TBL_USER">
         <column>id</column>
         <column>username</column>

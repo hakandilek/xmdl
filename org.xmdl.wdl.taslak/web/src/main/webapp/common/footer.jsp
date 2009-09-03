@@ -7,7 +7,8 @@
             <a href="http://jigsaw.w3.org/css-validator/validator-uri.html">CSS Valid</a>
         </span>
         <c:if test="${pageContext.request.remoteUser != null}">
-        | <fmt:message key="user.status"/> <authz:authentication operation="fullName"/>
+        | <fmt:message key="user.status"/> 
+        <span id="username"><authz:authentication operation="username"/></span>
         </c:if>
     </span>
     <span class="right">
