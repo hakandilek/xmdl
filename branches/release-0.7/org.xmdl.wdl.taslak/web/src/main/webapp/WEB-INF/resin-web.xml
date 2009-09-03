@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<web-app id="${project.build.finalName}">
+<?xml version="1.0" encoding="UTF-8"?><web-app id="${project.build.finalName}">
     <jsp fast-jstl="false"/>
 
     <!--database>

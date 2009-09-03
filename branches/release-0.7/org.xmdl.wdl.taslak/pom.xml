@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.xmdl.projects.taslak</groupId>
@@ -424,17 +423,17 @@
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>com.google.collect</artifactId>
-                    <version>0.8.0.v200907171100</version>
+                    <version>0.8.0.v200908120607</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>com.google.guice-aopalliance</artifactId>
-                    <version>1.0.1.v200907171100</version>
+                    <version>1.0.1.v200908120607</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>com.google.guice-guice-1.0_patched</artifactId>
-                    <version>1.0.1.v200907171100</version>
+                    <version>1.0.1.v200908120607</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
@@ -444,7 +443,7 @@
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.antlr.runtime</artifactId>
-                    <version>3.0.0.v200803061811</version>
+                    <version>3.0.0.v200908120607</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
@@ -474,12 +473,12 @@
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.eclipse.emf.mwe.core</artifactId>
-                    <version>0.7.1.v200907170432</version>
+                    <version>0.7.2.v200908120417</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.eclipse.emf.mwe.utils</artifactId>
-                    <version>0.7.1.v200907170432</version>
+                    <version>0.7.2.v200908120417</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
@@ -499,37 +498,37 @@
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.eclipse.xpand</artifactId>
-                    <version>0.7.1.v200907170713</version>
+                    <version>0.7.2.v200908120436</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.eclipse.xtend</artifactId>
-                    <version>0.7.1.v200907170713</version>
+                    <version>0.7.2.v200908120436</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.eclipse.xtend.typesystem.emf</artifactId>
-                    <version>0.7.1.v200907170713</version>
+                    <version>0.7.2.v200908120436</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.eclipse.xtend.util.stdlib</artifactId>
-                    <version>0.7.1.v200907170713</version>
+                    <version>0.7.2.v200908120436</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.eclipse.xtext</artifactId>
-                    <version>0.7.1.v200907171100</version>
+                    <version>0.7.2.v200908120607</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.eclipse.xtext.log4j</artifactId>
-                    <version>1.2.15.v200907171100</version>
+                    <version>1.2.15.v200908120607</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
                     <artifactId>org.eclipse.xtext.util</artifactId>
-                    <version>0.7.1.v200907171100</version>
+                    <version>0.7.2.v200908120607</version>
                 </dependency>
                 <dependency>
                     <groupId>org.xmdl.wdl.gen</groupId>
