@@ -1,5 +1,0 @@
-<%@jet package="org.xmdl.genext.taglib.xc" class="AccessorTagTestTemplate"%>
-<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
-:<xc:accessor attribute="$attribute1"/>;
-:<xc:accessor attribute="$attribute2"/>;
-:<xc:accessor attribute="$attribute3"/>;

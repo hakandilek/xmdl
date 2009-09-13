@@ -1,3 +1,0 @@
-<%@taglib prefix="xd" id="org.xmdl.genext.xmdlDB" %>
-<%@ jet package="org.xmdl.genext.taglib.xd" class="TableNameTagTestTemplate"%>
-:<xd:tableName class="$class"/>;
