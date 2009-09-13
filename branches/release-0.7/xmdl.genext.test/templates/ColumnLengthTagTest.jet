@@ -1,3 +1,0 @@
-<%@taglib prefix="xd" id="org.xmdl.genext.xmdlDB" %>
-<%@ jet package="org.xmdl.genext.taglib.xd" class="ColumnLengthTagTestTemplate"%>
-:<xd:columnLength attribute="$attribute"/>;
