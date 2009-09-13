@@ -1,0 +1,3 @@
+<workflow>
+  <cartridge file="workflow/IDAGenerator.mwe" model="classpath:/model.wdl"/>
+</workflow>

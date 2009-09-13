@@ -1,0 +1,34 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE model FOR wdl::Model»
+«FILE "test/java/org/xmdl/taslak/webapp/integration/page/MainPage.java" TO_WEB_SRC-»
+package «this.project.basePackageName()».webapp.integration.page;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+public class MainPage extends AbstractNavigationPage {
+
+	@FindBy(how = How.ID, using = "username")
+	private WebElement username;
+
+
+	public MainPage(WebDriver driver) {
+		super(driver);
+	}
+
+	public String getLoginUsername() {
+		return username.getText();
+	}
+
+    «PROTECT CSTART '/*' CEND '*/' ID ".main.page.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
+}
+«ENDFILE-»
+«ENDDEFINE»

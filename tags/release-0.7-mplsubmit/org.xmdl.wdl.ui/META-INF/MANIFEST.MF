@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.xmdl.wdl.ui
+Bundle-Vendor: xmdl.org
+Bundle-Version: 0.7.0.20090903_alpha1
+Bundle-SymbolicName: org.xmdl.wdl.ui; singleton:=true
+Eclipse-RegisterBuddy: org.eclipse.xtext.log4j
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.xmdl.wdl;visibility:=reexport,
+ org.eclipse.xtext.ui.core,
+ org.eclipse.xtext.ui.common,
+ org.eclipse.xtext.log4j;bundle-version="1.2.15",
+ org.eclipse.ui.editors;bundle-version="3.4.0",
+ org.eclipse.ui.ide;bundle-version="3.4.0",
+ org.eclipse.ui,
+ org.antlr.runtime,
+ org.xmdl.wdl.generator;bundle-version="0.7.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.xmdl.contentassist,
+ org.xmdl.contentassist.antlr
+Bundle-Activator: org.xmdl.internal.WDLActivator

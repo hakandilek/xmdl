@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Jul 27, 2009 12:11:36 AM                                                        
+
+     org.xmdl.wdl.taslak    
+     Taslak generation project
+                   
+     hakan                                                                
+     ====================================================================== -->
+<project name="org.xmdl.wdl.build" default="build-all" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+	<description>
+    	XMDL WDL builder 
+    </description>
+
+	<!-- in order to use maven from ant -->
+	<path id="maven-ant-tasks.classpath" path="lib/maven-ant-tasks-2.0.10.jar" />
+	<typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="antlib:org.apache.maven.artifact.ant" classpathref="maven-ant-tasks.classpath" />
+
+	<property file="${user.home}/wdl.build.properties" />
+	<loadproperties srcFile="build.properties" />
+
+	<tstamp>
+		<format property="TODAY" pattern="yyyyMMdd" />
+	</tstamp>
+	<property name="version.pattern"  value="${dist.version.prefix}.${TODAY}_${dist.version.suffix}" />
+	<property name="maven.repository" value="${user.home}/.m2/repository" />
+
+	<path id="generator.classpath">
+		<pathelement location="wdl" />
+		<fileset dir="${eclipse.plugin.dir}" includes="**/*.jar" excludes="**/org.apache.jasper*">
+			<exclude name="org.apache.log4j*" />
+		</fileset>
+		<fileset dir="dist/plugins/" includes="**/*.jar" />
+	</path>
+
+	<!-- ================================= 
+          target: clean              
+         ================================= -->
+	<target name="clean" description="clean build artifacts">
+		<delete dir="build" />
+		<delete dir="dist" />
+	</target>
+
+	<target name="build-all">
+		<antcall target="build-generator-extlibs" />
+		<antcall target="build-generator" />
+		<antcall target="build-archetype" />
+	</target>
+
+	<target name="build-generator-extlibs">
+		<build_external_artifact artifactId="com.google.collect" 
+			version="0.8.0.v200908120607"/>
+		<build_external_artifact artifactId="org.eclipse.emf.ecore.xmi" 
+			version="2.5.0.v200906151043"/>
+		<build_external_artifact artifactId="org.eclipse.xtend.typesystem.emf" 
+			version="0.7.2.v200908120436"/>
+		<build_external_artifact artifactId="org.eclipse.emf.mwe.core" 
+			version="0.7.2.v200908120417"/>
+		<build_external_artifact artifactId="org.eclipse.xtend.util.stdlib" 
+			version="0.7.2.v200908120436"/>
+		<build_external_artifact artifactId="com.ibm.icu" 
+			version="4.0.1.v20090415"/>
+		<build_external_artifact artifactId="org.eclipse.emf.mwe.utils" 
+			version="0.7.2.v200908120417"/>
+		<build_external_artifact artifactId="org.eclipse.xtext" 
+			version="0.7.2.v200908120607"/>
+		<build_external_artifact artifactId="org.antlr.runtime" 
+			version="3.0.0.v200908120607"/>
+		<build_external_artifact artifactId="org.eclipse.equinox.common" 
+			version="3.5.0.v20090520-1800"/>
+		<build_external_artifact artifactId="org.eclipse.xtext.log4j" 
+			version="1.2.15.v200908120607"/>
+		<build_external_artifact artifactId="org.apache.commons.cli" 
+			version="1.0.0.v20080604-1500"/>
+		<build_external_artifact artifactId="org.eclipse.jdt.core" 
+			version="3.5.0.v_963"/>
+		<build_external_artifact artifactId="org.eclipse.xtext.util" 
+			version="0.7.2.v200908120607"/>
+		<build_external_artifact artifactId="org.apache.commons.logging" 
+			version="1.1.1.v200904062255"/>
+		<build_external_artifact artifactId="org.eclipse.text" 
+			version="3.5.0.v20090513-2000"/>
+		<build_external_artifact artifactId="org.eclipse.emf.common" 
+			version="2.5.0.v200906151043"/>
+		<build_external_artifact artifactId="org.eclipse.xpand" 
+			version="0.7.2.v200908120436"/>
+		<build_external_artifact artifactId="org.eclipse.emf.ecore" 
+			version="2.5.0.v200906151043"/>
+		<build_external_artifact artifactId="org.eclipse.xtend" 
+			version="0.7.2.v200908120436"/>
+		<build_external_artifact artifactId="com.google.guice-aopalliance" 
+			version="1.0.1.v200908120607" 
+			filename="com.google.guice_1.0.1.v200908120607-aopalliance"/>
+		<build_external_artifact artifactId="com.google.guice-guice-1.0_patched" 
+			version="1.0.1.v200908120607" 
+			filename="com.google.guice_1.0.1.v200908120607-guice-1.0_patched"/>
+	</target>
+
+	<target name="build-generator">
+		<!-- temporary part that compiles the generator  -->
+		<dist_plugin plugin.name="org.xmdl.wdl" plugin.path="org.xmdl.wdl" />
+		<dist_plugin plugin.name="org.xmdl.wdl.generator" plugin.path="org.xmdl.wdl.generator" />
+		<dist_plugin plugin.name="org.xmdl.wdl.ida" plugin.path="org.xmdl.wdl.ida" />
+
+		<build_external_artifact basedir="dist/plugins/" version="${version.pattern}" artifactId="org.xmdl.wdl" />
+		<build_external_artifact basedir="dist/plugins/" version="${version.pattern}" artifactId="org.xmdl.wdl.generator" />
+		<build_external_artifact basedir="dist/plugins/" version="${version.pattern}" artifactId="org.xmdl.wdl.ida" />
+	</target>
+
+	<target name="build-archetype">
+		<build_archetype archetypeId="org.xmdl.wdl.ida-archetype" 
+			version="0.1.2-SNAPSHOT"/>
+	</target>
+
+	<macrodef name="dist_plugin">
+		<attribute name="plugin.name" />
+		<attribute name="plugin.path" />
+
+		<sequential>
+			<echo message=" --- Building plugin : @{plugin.name}" />
+			<mkdir dir="build/@{plugin.name}" />
+			<mkdir dir="dist/plugins/" />
+			<javac fork="true" debug="on" 
+				srcdir="../@{plugin.path}/src" 
+				destdir="build/@{plugin.name}" 
+				memoryinitialsize="256m" memorymaximumsize="256m">
+				<src path="../@{plugin.path}/src" />
+				<src path="../@{plugin.path}/src-gen" />
+				<classpath refid="generator.classpath" />
+			</javac>
+			<update_manifest plugin.path="@{plugin.path}" />
+			<copy todir="build/@{plugin.name}">
+				<fileset dir="../@{plugin.path}/src" excludes="**/*.java" />
+				<fileset dir="../@{plugin.path}/src-gen" excludes="**/*.java" />
+			</copy>
+			<jar destfile="dist/plugins/@{plugin.name}_${version.pattern}.jar" manifest="../@{plugin.path}/META-INF/MANIFEST.MF">
+				<fileset dir="build/@{plugin.name}" excludes="**/Test.class" />
+				<fileset dir="../@{plugin.path}">
+					<include name="plugin.*" />
+					<include name="model/*" />
+					<include name="res/*" />
+					<include name="icons/**" />
+				</fileset>
+			</jar>
+		</sequential>
+	</macrodef>
+
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: build_archetype          
+         = = = = = = = = = = = = = = = = = -->
+	<macrodef name="build_archetype">
+		<attribute name="archetypeId" />
+		<attribute name="version" />
+		<attribute name="baseDir" default="../@{archetypeId}" />
+		<sequential>
+			<echo message=" --- Building archetype : @{archetypeId}" />
+			<echo message=" ---          version   : @{version}" />
+			<echo message=" ---          baseDir   : @{baseDir}" />
+			<echo message=" ---          pom       : @{baseDir}/pom.xml" />
+			<artifact:mvn fork="true" pom="@{baseDir}/pom.xml">
+				<jvmarg value="-Xms32m"/>
+				<jvmarg value="-Xmx256m"/>
+				<arg value="install" />
+				<arg value="-e"/>
+			</artifact:mvn>
+			<echo message=" --- Copying           : @{archetypeId}/@{version}/*" />
+			<copy todir="../repository/org/xmdl/wdl/gen/@{archetypeId}/@{version}/">
+				<fileset dir="${maven.repository}/org/xmdl/wdl/gen/@{archetypeId}/@{version}/"/>
+			</copy>
+		</sequential>
+	</macrodef>
+
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: build_external_artifact
+          Builds an external maven artifact  via installing it into the local repository 
+          and copying to the svn repository path.          
+         = = = = = = = = = = = = = = = = = -->
+	<macrodef name="build_external_artifact">
+		<attribute name="artifactId" />
+		<attribute name="version" />
+		<attribute name="filename" default="@{artifactId}_@{version}" />
+		<attribute name="baseDir" default="../org.xmdl.wdl.taslak/generator" />
+		<sequential>
+			<echo message=" --- Building artifact : @{artifactId}" />
+			<echo message=" ---          version  : @{version}" />
+			<echo message=" ---          filename : @{filename}.jar" />
+			<echo message=" ---          baseDir  : @{baseDir}" />
+			<artifact:mvn fork="true">
+				<jvmarg value="-Xms32m"/>
+				<jvmarg value="-Xmx256m"/>
+				<arg value="install:install-file" />
+				<arg value="-Dpackaging=jar" />
+				<arg value="-DgeneratePom=true" />
+				<arg value="-DcreateChecksum=true" />
+				<arg value="-DgroupId=org.xmdl.wdl.gen" />
+				<arg value="-DartifactId=@{artifactId}" />
+				<arg value="-Dversion=@{version}" />
+				<arg value="-Dfile=@{baseDir}/@{filename}.jar" />
+				<arg value="-e" />
+			</artifact:mvn>
+			<echo message=" --- Copying           : @{artifactId}/@{version}/@{filename}.*" />
+			<copy todir="../repository/org/xmdl/wdl/gen/@{artifactId}/@{version}/">
+				<fileset dir="${maven.repository}/org/xmdl/wdl/gen/@{artifactId}/@{version}/"/>
+			</copy>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="update_manifest">
+		<attribute name="plugin.path" />
+
+		<sequential>
+			<manifest file="../@{plugin.path}/META-INF/MANIFEST.MF" mode="update">
+				<attribute name="Built-By" value="${dist.build.user}" />
+				<attribute name="Bundle-Version" value="${version.pattern}" />
+			</manifest>
+		</sequential>
+	</macrodef>
+
+</project>

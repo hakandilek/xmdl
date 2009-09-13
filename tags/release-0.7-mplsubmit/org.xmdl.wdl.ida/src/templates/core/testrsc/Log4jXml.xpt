@@ -1,0 +1,61 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE model FOR wdl::Model»
+«FILE "test/resources/log4j.xml" TO_CORE_SRC-»<?xml version="1.0" encoding="UTF-8" ?>
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%p - %C{1}.%M(%L) | %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="net.sf.ehcache">
+        <level value="ERROR"/>
+    </logger>
+
+    <!-- Suppress success logging from InteractiveAuthenticationSuccessEvent -->
+    <logger name="org.acegisecurity">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="org.apache">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="org.hibernate">
+        <level value="WARN"/>
+    </logger>
+  
+    <!--logger name="org.hibernate.SQL">
+        <level value="DEBUG"/>
+    </logger-->
+
+    <logger name="org.springframework">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="«this.project.basePackage»">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="«this.project.basePackage».dao">
+        <level value="DEBUG"/>
+    </logger>
+
+    <logger name="«this.project.basePackage».service">
+        <level value="DEBUG"/>
+    </logger>
+
+    <root>
+        <level value="WARN"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</log4j:configuration>
+«ENDFILE»
+«ENDDEFINE»

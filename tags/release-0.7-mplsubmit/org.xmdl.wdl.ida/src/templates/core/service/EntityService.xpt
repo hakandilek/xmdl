@@ -1,0 +1,31 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE entity FOR wdl::Entity»
+	«FILE "main/java/" + this.project().basePackagePath() + "/service/"+ this.name + "Manager.java" TO_CORE_SRC-»
+package «this.basePackageName()».service;
+
+import java.util.Collection;
+import org.xmdl.ida.lib.service.GenericManager;
+import «this.basePackageName()».model.*;
+import «this.basePackageName()».model.search.*;
+
+/**
+ * «this.name» Service interface
+ */ 
+public interface «this.name»Manager extends GenericManager<«this.name», Long>{
+
+    Collection<«this.name»> search(«this.name»Search «this.name.toFirstLower()»Search);
+
+	«IF this.isChild()»
+    void copyFrom(«this.master().name» source, «this.master().name» destination);
+	«ENDIF»
+
+    «PROTECT CSTART '/*' CEND '*/' ID this.name + ".svc.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
+}
+	«ENDFILE-»
+«ENDDEFINE»
