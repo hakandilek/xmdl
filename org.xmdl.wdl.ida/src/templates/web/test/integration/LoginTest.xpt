@@ -1,0 +1,31 @@
+«IMPORT wdl »
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE model FOR wdl::Model»
+«FILE "test/java/org/xmdl/taslak/webapp/integration/LoginTest.java" TO_WEB_SRC-»
+package «this.project.basePackageName()».webapp.integration;
+
+import org.xmdl.ida.lib.web.webdriver.page.LoginPage;
+import org.xmdl.ida.lib.web.webdriver.test.BaseSeleniumTestCase;
+import «this.project.basePackageName()».webapp.integration.page.MainPage;
+
+
+public class LoginTest extends BaseSeleniumTestCase {
+
+	public void testLogin() throws Exception {
+		LoginPage loginPage = get("/", LoginPage.class);
+		loginPage.login(TEST_USERNAME, TEST_PASSWORD, false);
+		MainPage mainPage = get("/", MainPage.class);
+		assertNotNull(mainPage);
+		assertEquals(TEST_USERNAME, mainPage.getLoginUsername());
+	}
+
+     «PROTECT CSTART '/*' CEND '*/' ID "LoginTest.bdy" »
+     //This is the protected region that will not be overwritten on generation
+     «ENDPROTECT»
+
+}
+«ENDFILE-»
+«ENDDEFINE»

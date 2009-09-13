@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mappingmodel.mapping:TypeMappingRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mappingmodel.mapping="http://www.metys.com/merlin/generation/mappingmodel/mapping.ecore" topToBottom="true">
-  <nested xsi:type="mappingmodel.mapping:TypeMapping">
-    <inputs href="../../xmdl/model/xmdl.ecore#//XProject"/>
-    <outputs href="templates.ecore#//JETTemplateContainer"/>
-  </nested>
-  <inputs href="../../xmdl/model/xmdl.ecore#/"/>
-  <outputs href="templates.ecore#/"/>
-</mappingmodel.mapping:TypeMappingRoot>

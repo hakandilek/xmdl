@@ -9,6 +9,9 @@
    <feature url="features/org.xmdl_0.6.0.20081112_beta1.jar" id="org.xmdl" version="0.6.0.20081112_beta1">
       <category name="org.xmdl.development"/>
    </feature>
+   <feature url="features/org.xmdl.wdl.tools_0.7.0.20090903_alpha1.jar" id="org.xmdl.wdl.tools" version="0.7.0.20090903_alpha1">
+      <category name="org.xmdl.wdl"/>
+   </feature>
    <category-def name="org.xmdl.stable" label="XMDL Stable updates">
       <description>
          Here you can find final versions of XMDL releases.
@@ -19,4 +22,5 @@
          Here you can find alpha or beta (ongoing development) versions of XMDL releases.
       </description>
    </category-def>
+   <category-def name="org.xmdl.wdl" label="WDL Tools Update Site"/>
 </site>

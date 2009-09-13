@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><archetype>
+  <id>xmdl-ida</id>
+  <resources>
+    <resource>wdl/model.wdl</resource>
+    <resource>wdl/generator.mwe</resource>
+    <resource>core/pom.xml</resource>
+    <resource>web/pom.xml</resource>
+    <resource>generate.xml</resource>
+    <resource>generator.properties</resource>
+  </resources>
+</archetype>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><web-app id="${project.build.finalName}">
+    <jsp fast-jstl="false"/>
+
+    <!--database>
+        <jndi-name>jdbc/taslak</jndi-name>
+        <driver type="${jdbc.driverClassName}">
+            <url>${jdbc.url}</url>
+            <user>${jdbc.username}</user>
+            <password>${jdbc.password}</password>
+        </driver>
+    </database-->
+</web-app>

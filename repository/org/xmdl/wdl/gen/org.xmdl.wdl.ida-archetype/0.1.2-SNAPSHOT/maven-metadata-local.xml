@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.xmdl.wdl.gen</groupId>
+  <artifactId>org.xmdl.wdl.ida-archetype</artifactId>
+  <version>0.1.2-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <localCopy>true</localCopy>
+    </snapshot>
+    <lastUpdated>20090903215827</lastUpdated>
+  </versioning>
+</metadata>

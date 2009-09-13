@@ -1,0 +1,55 @@
+grammar org.xmdl.WDL with org.eclipse.xtext.common.Terminals
+
+generate wdl "http://www.xmdl.org/WDL"
+
+Model:
+  project=Project
+  (types+=Type)*
+  (queries+=Query)*;
+
+Project:
+  "project" "{" "projectName" ":" name=STRING "basePackage" ":" basePackage=STRING "}";
+  
+Type:
+  SimpleType|Entity|Enumeration|Embed;
+
+SimpleType:
+  "type" name=ID ("is" mappedType=JAVAID)?;
+
+JAVAID:
+  name=ID ("." ID)*;
+
+Entity:
+  "entity" name=ID ("extends" superEntity=[Entity])? "{" (attributes+=Attribute)* "}";
+
+Embed:
+  "embed" name=ID ("extends" superEntity=[Entity])? "{" (attributes+=Attribute)* "}";
+
+Attribute:
+  type=[Type] (manyReference=AttributeManyReference)? name=ID;
+
+enum AttributeManyReference: 
+  NONE | WEAK = "*" | STRONG = "#";
+
+Enumeration:
+  "enum" name=ID "{" (literals+=EnumerationLiteral)* "}";
+
+EnumerationLiteral:
+  name=ID "(" ordinal=INT ")";
+
+Query:
+  "query" name=ID "<" entities+=[Entity] ("," entities+=[Entity])* ">"
+  "with" "(" (parameters+=QueryParameter)? ("," parameters+=QueryParameter)* ")" 
+    "{" (filters+=QueryFilter)*
+      ("-max" "(" max=INT ")")?
+      ("-offset" "(" offset=INT ")")?
+      ("-order" "(" (orders+=QueryOrder)? ("," orders+=QueryOrder)* ")")?
+    "}";
+
+QueryParameter: type=[Type] name=ID;
+
+QueryFilter: (entity=[Entity])? "." attribute=[Attribute] "=" value=[QueryParameter];
+
+QueryOrder: (entity=[Entity])? "." attribute=[Attribute] (type=QueryOrderType)?;
+
+enum QueryOrderType: ASC = "+" | DESC = "-";

@@ -1,6 +1,0 @@
-<%@ jet 
-	package="org.xmdl.core.templates.ui.web.impl" 
-	class="IndexJSPImpl"
-	startTag="<$" endTag="$>" 
-%><%@ include file="/include/taglibs.jsp"%>
-<logic:forward name="home"/>

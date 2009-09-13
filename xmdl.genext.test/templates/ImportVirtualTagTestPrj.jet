@@ -1,5 +1,0 @@
-<%@taglib prefix="j" id="org.eclipse.jet.javaTags" %>
-<%@taglib prefix="xc" id="org.xmdl.genext.xmdlClass" %>
-<%@ jet package="org.xmdl.genext.taglib.xc" class="ImportVirtualTagTestTemplatePrj"%>
-<j:importsLocation package=""/>
-<xc:importVirtual element="$project"/>

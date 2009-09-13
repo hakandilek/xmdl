@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: taslak
+Bundle-SymbolicName: org.xmdl.wdl.taslak
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.xpand,
+ org.eclipse.xtend,
+ org.eclipse.xtext,
+ org.eclipse.emf.mwe.core,
+ org.eclipse.emf.mwe.utils,
+ org.eclipse.xtend.typesystem.emf,
+ org.eclipse.jface.text,
+ org.eclipse.core.runtime,
+ org.eclipse.jdt.core,
+ org.eclipse.xtext.log4j,
+ com.ibm.icu,
+ org.xmdl.wdl;bundle-version="1.0.0",
+ org.xmdl.wdl.generator
+Export-Package: model,
+ workflow
+

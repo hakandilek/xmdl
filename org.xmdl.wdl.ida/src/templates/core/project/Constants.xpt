@@ -1,0 +1,21 @@
+«IMPORT wdl»
+
+«EXTENSION templates::Extensions»
+«EXTENSION templates::IDAExtensions»
+
+«DEFINE model FOR wdl::Model»
+  «FILE "main/java/" + this.project.basePackagePath() + "/ApplicationConstants.java" TO_CORE_SRC-»
+package «this.basePackageName()»;
+
+/**
+ * Constant values used throughout the application.
+ */ 
+public interface ApplicationConstants extends  org.xmdl.ida.lib.BaseConstants {
+
+    «PROTECT CSTART '/*' CEND '*/' ID this.project.name + ".constants.bdy" »
+    //This is the protected region that will not be overwritten on generation
+    «ENDPROTECT»
+
+}
+  «ENDFILE-»
+«ENDDEFINE»
